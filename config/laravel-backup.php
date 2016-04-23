@@ -29,30 +29,26 @@ return [
                 'exclude' => [
                     base_path('vendor'),
                     base_path('node_modules'),
-                    storage_path('debugbar'),
-                    storage_path('framework'),
-                    storage_path('laravel-backup'),
-                    storage_path('logs'),
+                    storage_path(),
                 ],
             ],
 
             /*
-             * The names of the connections to the databases  that should be part of the backup.
-             * Currently only MySQL-databases are supported.
+             * The names of the connections to the databases that should be part of the backup.
+             * Currently only MySQL- and PostgreSQL-databases are supported.
              */
             'databases' => [
-                'mysql'
+                'mysql',
             ],
         ],
 
         'destination' => [
 
             /*
-             * The disks you on which the backups will be stored. Choose one or more
-             * of the filesystems you configured in app/config/filesystems.php
+             * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local'
+                'local',
             ],
         ],
     ],
@@ -60,7 +56,7 @@ return [
     'cleanup' => [
         /*
          * The strategy that will be used to cleanup old backups.
-         * The youngest backup wil never be deleted.
+         * The youngest backup will never be deleted.
          */
         'strategy' => \Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy::class,
 
@@ -92,8 +88,8 @@ return [
             'keepYearlyBackupsForYears' => 2,
 
             /*
-             * After clean up the backups remove the oldest backup until
-             * this amount of megabytes is reached.
+             * After cleaning up the backups remove the oldest backup until
+             * this amount of megabytes has been reached.
              */
             'deleteOldestBackupsWhenUsingMoreMegabytesThan' => 5000
         ]
@@ -132,9 +128,9 @@ return [
 
         /*
          * Here you can specify the ways you want to be notified when certain
-         * events take place. Possible values are "log", "mail" and "slack".
+         * events take place. Possible values are "log", "mail", "slack" and "pushover".
          *
-         * Slack requires the installation of the maknz/slack package
+         * Slack requires the installation of the maknz/slack package.
          */
         'events' => [
             'whenBackupWasSuccessful'     => ['log'],
@@ -142,24 +138,36 @@ return [
             'whenHealthyBackupWasFound'   => ['log'],
             'whenBackupHasFailed'         => ['log', 'mail'],
             'whenCleanupHasFailed'        => ['log', 'mail'],
-            'whenUnHealthyBackupWasFound' => ['log', 'mail']
+            'whenUnhealthyBackupWasFound' => ['log', 'mail'],
         ],
 
         /*
-         * Here you can specify how mails should be sent.
+         * Here you can specify how emails should be sent.
          */
         'mail' => [
-            'from' => config('mail.from.address'),
+            'from' => 'your@email.com',
             'to'   => 'your@email.com',
         ],
 
         /*
-         * Here you can how messages should be sent to Slack.
+         * Here you can specify how messages should be sent to Slack.
          */
         'slack' => [
             'channel'  => '#backups',
             'username' => 'Backup bot',
             'icon'     => ':robot:',
+        ],
+
+        /*
+         * Here you can specify how messages should be sent to Pushover.
+         */
+        'pushover' => [
+            'token'  => env('PUSHOVER_APP_TOKEN'),
+            'user'   => env('PUSHOVER_USER_KEY'),
+            'sounds' => [
+                'success' => env('PUSHOVER_SOUND_SUCCESS','pushover'),
+                'error'   => env('PUSHOVER_SOUND_ERROR','siren'),
+            ],
         ],
     ]
 ];
