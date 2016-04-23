@@ -15,11 +15,6 @@
         "hieu-le/active": "~2.0",
         "arcanedev/log-viewer": "~3.0",
         "spatie/laravel-backup": "^3.0",
-        "simplesoftwareio/simple-qrcode": "~1.4",
-        "alaouy/youtube": "~1.2",
-        "maddhatter/laravel-fullcalendar": "~1.2",
-        "ktquez/laravel-tinymce": "~1.0",
-        "maatwebsite/excel": "~2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
