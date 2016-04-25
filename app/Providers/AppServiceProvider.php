@@ -54,6 +54,7 @@ class AppServiceProvider extends ServiceProvider
             $loader->alias('Debugbar', \Barryvdh\Debugbar\Facade::class);
 
             $this->app->register(\Laracasts\Generators\GeneratorsServiceProvider::class);
+
         }
     }
 }

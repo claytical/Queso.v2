@@ -35,4 +35,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function submissions() {
+        return $this->hasMany('App\Submission');
+    }
+    
+    public function notifications() {
+        return $this->hasMany('App\Notice');
+    }
+
+    public function quests() {
+        return $this->belongsToMany('App\Quest');
+    }
+
+    public function skills() {
+        return $this->belongsToMany('App\Skill')->withPivot('quest_id', 'amount');
+    }
+
+    public function skill_history() {
+        return $this->hasMany('App\UserSkillHistory');
+    }
 }
