@@ -11,6 +11,6 @@ class Tag extends Model
     }
 
     public function courses() {
-    	return $this->hasManyThrough('App\Course', 'App\Content');
+    	return $this->hasManyThrough('App\Content', 'App\Course');
     }
 }
