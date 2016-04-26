@@ -11,7 +11,7 @@ class Submission extends Model
     }
 
     public function user() {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\Models\Access\User');
     }
 
     public function history() {

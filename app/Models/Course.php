@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     public function users() {
-    	return $this->belongsToMany('App\User')->withPivot('instructor', 'active');
+    	return $this->belongsToMany('App\Models\Access\User')->withPivot('instructor', 'active');
 
     }
 

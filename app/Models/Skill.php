@@ -16,7 +16,7 @@ class Skill extends Model
     }
 
     public function users() {
-    	return $this->belongsToMany('App\User')->withPivot('quest_id', 'amount');    	
+    	return $this->belongsToMany('App\Models\Access\User')->withPivot('quest_id', 'amount');    	
     }
 
     public function thresholds() {
