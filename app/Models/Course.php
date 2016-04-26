@@ -10,6 +10,18 @@ class Course extends Model
     	return $this->belongsToMany('App\User')->withPivot('instructor', 'active');
 
     }
+
+    public function announcements() {
+        return $this->hasMany('App\Announcement');
+    }
+
+    public function tags() {
+        return $this->hasManyThrough('App\Tag', 'App\Content');
+    }
+
+    public function content() {
+        return $this->hasMany('App\Content');
+    }
     
     public function teams() {
     	return $this->hasManyThrough('App\Team', 'App\User');
