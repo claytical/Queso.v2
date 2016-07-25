@@ -67,8 +67,7 @@
                         <li class="user-header">
                             <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Avatar" />
                             <p>
-                                {{ access()->user()->name }} - {{ implode(", ", access()->user()->roles->lists('name')->toArray()) }}
-                                <small>{{ trans('strings.backend.general.member_since') }} {{ access()->user()->created_at->format("m/d/Y") }}</small>
+                                {{ access()->user()->name }}
                             </p>
                         </li>
 

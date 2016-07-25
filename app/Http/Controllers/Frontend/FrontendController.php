@@ -13,6 +13,10 @@ class FrontendController extends Controller
     /**
      * @return \Illuminate\View\View
      */
+    public function welcome() {
+        return view('frontend.welcome');        
+    }
+
     public function index()
     {
         javascript()->put([
