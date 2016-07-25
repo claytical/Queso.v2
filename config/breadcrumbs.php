@@ -2,6 +2,9 @@
 
 return [
 
-	'view' => 'breadcrumbs::bootstrap3',
+	/**
+	 * The view that controls how the breadcrumbs are displayed
+	 */
+    'view' => 'backend.includes.partials.breadcrumbs',
 
 ];

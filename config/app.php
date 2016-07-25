@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'name' => 'Queso',
+    'name' => 'Laravel 5 Bootstrap',
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'timezone' => 'EST',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -132,6 +132,8 @@ return [
 
     'log' => env('APP_LOG', 'daily'),
 
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -176,30 +178,29 @@ return [
         App\Providers\AccessServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+		App\Providers\BladeServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HistoryServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
         /*
          * Third Party Providers
          */
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        Arcanedev\NoCaptcha\NoCaptchaServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+		HieuLe\Active\ActiveServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
-        HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         /*
          * Has to override the Collective\Html\HtmlServiceProvider form singleton
          */
         App\Providers\MacroServiceProvider::class,
-  //      Ktquez\Tinymce\TinymceServiceProvider::class,
-  //      MaddHatter\LaravelFullcalendar\ServiceProvider::class,
-  //      Alaouy\Youtube\YoutubeServiceProvider::class,
-  //      SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-//        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -251,12 +252,10 @@ return [
          */
         'Active'      => HieuLe\Active\Facades\Active::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'Captcha'     => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
         'Form'        => Collective\Html\FormFacade::class,
         'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
-//        'Calendar'    => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
- //       'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-   //     'Excel' =>  Maatwebsite\Excel\Facades\Excel::class,
     ],
 ];

@@ -29,6 +29,16 @@ class AppServiceProvider extends ServiceProvider
          * setLocale to use Carbon source locales. Enables diffForHumans() localized
          */
         Carbon::setLocale(config('app.locale'));
+
+        /**
+         * Set the session variable for whether or not the app is using RTL support
+		 * For use in the blade directive in BladeServiceProvider
+         */
+        if (config('locale.languages')[config('app.locale')][2]) {
+            session(['lang-rtl' => true]);
+        } else {
+            session()->forget('lang-rtl');
+        }
     }
 
     /**
@@ -54,7 +64,6 @@ class AppServiceProvider extends ServiceProvider
             $loader->alias('Debugbar', \Barryvdh\Debugbar\Facade::class);
 
             $this->app->register(\Laracasts\Generators\GeneratorsServiceProvider::class);
-
         }
     }
 }

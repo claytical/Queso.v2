@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Gestion des accès',
 
-            'permissions' => [
-                'all' => 'Toutes les Permissions',
-                'create' => 'Créer une Permission',
-                'edit' => 'Éditer une Permissions',
-                'groups' => [
-                    'all' => 'Tous les Groupes',
-                    'create' => 'Créer un Groupe',
-                    'edit' => 'Éditer un Groupe',
-                    'main' => 'Groupes',
-                ],
-                'main' => 'Permissions',
-                'management' => 'Gestion des Permissions',
-            ],
-
             'roles' => [
                 'all' => 'Tous les Rôles',
                 'create' => 'Créer un Rôle',
@@ -71,6 +57,7 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
+            'ar' => 'العربية (Arabic)',
             'da' => 'Danois (Danish)',
             'de' => 'Allemand (German)',
             'en' => 'Anglais (English)',

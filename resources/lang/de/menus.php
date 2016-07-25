@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Zugriffsverwaltung',
 
-            'permissions' => [
-                'all' => 'Alle Berechtigungen',
-                'create' => 'Berechtigung erstellen',
-                'edit' => 'Berechtigung bearbeiten',
-                'groups' => [
-                    'all' => 'Alle Gruppen',
-                    'create' => 'Gruppe erstellen',
-                    'edit' => 'Gruppe bearbeiten',
-                    'main' => 'Gruppen',
-                ],
-                'main' => 'Berechtigungen',
-                'management' => 'Berechtigungen Verwalten',
-            ],
-
             'roles' => [
                 'all' => 'Alle Rollen',
                 'create' => 'Rolle erstellen',
@@ -71,6 +57,7 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
+            'ar' => 'العربية (Arabic)',
             'da' => 'Danish (Danish)',
             'de' => 'Deutsch (German)',
             'en' => 'Englisch (English)',

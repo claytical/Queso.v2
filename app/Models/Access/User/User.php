@@ -18,11 +18,11 @@ class User extends Authenticatable
     use SoftDeletes, UserAccess, UserAttribute, UserRelationship;
 
     /**
-     * The attributes that are not mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $fillable = ['name', 'email', 'password', 'status', 'confirmation_code', 'confirmed'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -35,24 +35,4 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
-
-    public function submissions() {
-        return $this->hasMany('App\Submission');
-    }
-    
-    public function notifications() {
-        return $this->hasMany('App\Notice');
-    }
-
-    public function quests() {
-        return $this->belongsToMany('App\Quest');
-    }
-
-    public function skills() {
-        return $this->belongsToMany('App\Skill')->withPivot('quest_id', 'amount');
-    }
-
-    public function skill_history() {
-        return $this->hasMany('App\UserSkillHistory');
-    }
 }

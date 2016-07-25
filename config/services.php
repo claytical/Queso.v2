@@ -19,6 +19,10 @@ return [
         'secret' => env('MAILGUN_SECRET'),
     ],
 
+    'mandrill' => [
+        'secret' => env('MANDRILL_SECRET'),
+    ],
+
     'ses' => [
         'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
@@ -59,6 +63,7 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT'),
         'scopes' => [],
         'with' => [],
+		'fields' => [],
     ],
 
     'github' => [
@@ -93,6 +98,7 @@ return [
         'redirect' => env('LINKEDIN_REDIRECT'),
         'scopes' => [],
         'with' => [],
+		'fields' => [],
     ],
 
     'twitter' => [
