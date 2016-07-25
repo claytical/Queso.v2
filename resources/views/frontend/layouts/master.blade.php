@@ -28,24 +28,40 @@
         <!-- Fonts -->
         {{ Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') }}
     </head>
-    <body id="app-layout">
+    <body class="skin-{{ config('backend.theme') }}">
         @include('includes.partials.logged-in-as')
-        @include('frontend.includes.nav')
 
-        <div class="container">
-            @include('includes.partials.messages')
-            @yield('content')
-        </div><!-- container -->
+        <div class="wrapper">
+            @include('frontend.includes.header')
+            @include('frontend.includes.sidebar')
 
-        <!-- Scripts -->
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    @yield('page-header')
+
+                    {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
+                    {!! Breadcrumbs::renderIfExists() !!}
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    @include('includes.partials.messages')
+                    @yield('content')
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
+
+            @include('backend.includes.footer')
+        </div><!-- ./wrapper -->
+
+        <!-- JavaScripts -->
         {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
-        {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
+        {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
 
         @yield('before-scripts-end')
-        {!! Html::script(elixir('js/frontend.js')) !!}
+        {{ HTML::script(elixir('js/frontend.js')) }}
         @yield('after-scripts-end')
-
-        @include('includes.partials.ga')
     </body>
 </html>
