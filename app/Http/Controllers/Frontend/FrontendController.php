@@ -13,17 +13,14 @@ class FrontendController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-    public function welcome() {
-        return view('frontend.welcome');        
-    }
 
-    public function index()
+    public function splash()
     {
         javascript()->put([
             'test' => 'it works!',
         ]);
 
-        return view('frontend.index');
+        return view('frontend.splash');
     }
 
     /**
