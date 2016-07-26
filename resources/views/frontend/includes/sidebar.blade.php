@@ -19,16 +19,23 @@
             <li class="header">Quests</li>
 
             <!-- Optionally, you can add icons to the links -->
-            <li class="{{ Active::pattern('admin/dashboard') }}">
-                {{ link_to_route('admin.dashboard', "Available" }}
+            <li class="{{ Active::pattern('quests/available') }}">
+                {{ link_to('#', 'Available') }}
             </li>
-            <li class="{{ Active::pattern('admin/dashboard') }}">
-                {{ link_to_route('admin.dashboard', "Completed" }}
+            <li class="{{ Active::pattern('quests/completed') }}">
+                {{ link_to('#', 'Completed') }}
             </li>
-            <li class="{{ Active::pattern('admin/dashboard') }}">
-                {{ link_to_route('admin.dashboard', "Peer Feedback" }}
+            <li class="{{ Active::pattern('quests/feedback') }}">
+                {{ link_to('#', 'Peer Feedback') }}
             </li>
 
+            <li class="header">Resources</li>
+            <li class="{{ Active::pattern('resource/1') }}">
+                {{ link_to('#', 'Handouts') }}
+            </li>
+            <li class="{{ Active::pattern('resource/2') }}">
+                {{ link_to('#', 'Presentatinos') }}
+            </li>
 
 
         </ul><!-- /.sidebar-menu -->
