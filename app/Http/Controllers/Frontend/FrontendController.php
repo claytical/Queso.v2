@@ -14,14 +14,9 @@ class FrontendController extends Controller
      * @return \Illuminate\View\View
      */
 
-    public function splash()
-    {
-
-        return view('frontend.splash');
-    }
 
     public function index() {
-        return view('frontend.welcome')
+        return view('frontend.welcome');
     }
 
     /**
