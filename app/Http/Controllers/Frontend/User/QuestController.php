@@ -41,6 +41,16 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
+    public function redeem() {
+        return view('frontend.quests.redeem')
+            ->withUser(access()->user());
+    }
+
+    public function redeemed() {
+        return view('frontend.quests.redeemed')
+            ->withUser(access()->user());
+    }
+
     public function revise() {
         return view('frontend.quests.revised')
             ->withUser(access()->user());

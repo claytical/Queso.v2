@@ -22,6 +22,11 @@
             <li class="{{ Active::pattern('quests/available') }}">
                 {{ link_to('quests/available', 'Available') }}
             </li>
+
+            <li class="{{ Active::pattern('quests/redeem') }}">
+                {{ link_to('quest/redeem', 'Instant Credit') }}
+            </li>
+
             <li class="{{ Active::pattern('quests/history') }}">
                 {{ link_to('quests/history', 'History') }}
             </li>

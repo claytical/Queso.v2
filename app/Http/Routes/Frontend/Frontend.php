@@ -17,7 +17,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt'); //done
         Route::get('quest/{quest_id}/attempt/link', 'QuestController@attempt_link')->name('link.attempt');
         Route::get('quest/{quest_id}/watch', 'QuestController@watch_video')->name('quest.watch');
-
+        Route::get('quest/redeem', 'QuestController@redeem')->name('quest.redeem');
+        Route::post('quest/redeem', 'QuestController@redeemed')->name('quest.redeemed');
         Route::post('quest/submit', 'QuestController@submit')->name('quest.submitted'); 
         Route::post('quest/revise', 'QuestController@revise')->name('quest.revised'); 
         Route::post('quest/watched', 'QuestController@watched')->name('quest.watched'); 

@@ -73,13 +73,10 @@
 
                         <li class="user-body">
                             <div class="col-xs-4 text-center">
-                                {{ link_to('#', 'Link') }}
+                                {{ link_to('profile/edit', 'Settings') }}
                             </div>
                             <div class="col-xs-4 text-center">
-                                {{ link_to('#', 'Link') }}
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                {{ link_to('#', 'Link') }}
+                                {{ link_to('password/change', 'Change Password') }}
                             </div>
                         </li>
 
