@@ -27,6 +27,10 @@
 
         <!-- Fonts -->
         {{ Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') }}
+
+        <!-- front loading scripts -->
+        {{ HTML::script('js/vendor/dropzone.js')}}
+
     </head>
     <body class="skin-{{ config('backend.theme') }}">
         @include('includes.partials.logged-in-as')
@@ -57,7 +61,6 @@
 
         <!-- JavaScripts -->
         {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
-        {{ HTML::script('js/vendor/dropzone.js')}}
         {{ HTML::script('https://cdn.tinymce.com/4/tinymce.min.js')}}
 
         <script>tinymce.init({ selector:'textarea', plugins: [
