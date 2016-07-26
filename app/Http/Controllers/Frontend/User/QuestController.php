@@ -25,6 +25,11 @@ class QuestController extends Controller
         return view('frontend.quests.attempt_submission')
             ->withUser(access()->user());
     }
+    
+    public function watch_video($quest_id) {
+        return view('frontend.quests.watch')
+            ->withUser(access()->user());
+    }
 
     public function attempt_link($quest_id) {
         return view('frontend.quests.attempt_link')
@@ -41,8 +46,7 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
-    public function completed()
-    {
+    public function completed() {
         return view('frontend.quests.completed')
             ->withUser(access()->user());
     }
