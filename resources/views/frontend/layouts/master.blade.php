@@ -32,6 +32,7 @@
         @include('includes.partials.logged-in-as')
 
         <div class="wrapper">
+            @include('frontend.includes.header')
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
