@@ -6,7 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 /**
- * Class DashboardController
+ * Class QuestController
  * @package App\Http\Controllers\Frontend
  */
 class QuestController extends Controller
