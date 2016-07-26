@@ -10,25 +10,15 @@
                     <h4>Quest Name</h4>
 
                     <ul class="list-unstyled">
-                        <li>Student Name</li>
-                        <li>Student Name</li>
-                        <li>Student Name</li>
+                        <li>{{ link_to('review/1', 'Edward Sharp') }}</li>
+                        <li>{{ link_to('review/2', 'Joan Dawson') }}</li>
                     </ul>
 
                     <h4>Quest Name</h4>
 
                     <ul class="list-unstyled">
-                        <li>Student Name</li>
-                        <li>Student Name</li>
-                        <li>Student Name</li>
-                    </ul>
-
-                    <h4>Quest Name</h4>
-
-                    <ul class="list-unstyled">
-                        <li>Student Name</li>
-                        <li>Student Name</li>
-                        <li>Student Name</li>
+                        <li>{{ link_to('review/3', 'Donny Walker') }}</li>
+                        <li>{{ link_to('review/4', 'Sally Fields') }}</li>
                     </ul>
 
                   </div>
@@ -50,7 +40,7 @@
                         <div class="panel-body">
                         <ul class="list-unstyled">
                             <li>Quest was graded</li>
-                            <li>You got feedback on something</li>
+                            <li>{{ link_to('quest/1/feedback', 'Feedback from Doris on Quest Name') }}</li>
                             <li>Someone did something</li>
                         </ul>                
                         </div>
