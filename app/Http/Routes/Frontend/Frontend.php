@@ -3,7 +3,7 @@
 /**
  * Frontend Controllers
  */
-Route::get('/', 'FrontendController@splash')->name('frontend.splash');
+Route::get('/', 'FrontendController@splash')->name('frontend.index');
 
 /**
  * These frontend controllers require the user to be logged in

@@ -20,6 +20,10 @@ class FrontendController extends Controller
         return view('frontend.splash');
     }
 
+    public function index() {
+        return view('frontend.welcome')
+    }
+
     /**
      * @return \Illuminate\View\View
      */
