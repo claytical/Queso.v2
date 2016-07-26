@@ -20,4 +20,10 @@ class DashboardController extends Controller
         return view('frontend.welcome')
             ->withUser(access()->user());
     }
+    
+    public function available_quests()
+    {
+        return view('frontend.quests.available');
+//            ->withUser(access()->user());
+    }    
 }
