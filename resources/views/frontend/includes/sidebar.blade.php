@@ -23,10 +23,10 @@
                 {{ link_to('quests/available', 'Available') }}
             </li>
             <li class="{{ Active::pattern('quests/completed') }}">
-                {{ link_to('#', 'Completed') }}
+                {{ link_to('quests/completed', 'Completed') }}
             </li>
             <li class="{{ Active::pattern('quests/feedback') }}">
-                {{ link_to('#', 'Peer Feedback') }}
+                {{ link_to('quests/feedback', 'Peer Feedback') }}
             </li>
 
             <li class="header">Resources</li>
