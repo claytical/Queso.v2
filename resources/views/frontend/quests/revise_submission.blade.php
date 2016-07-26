@@ -11,7 +11,7 @@
 <!-- Flip Through Previous Submissions and Feedback -->
                 <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
 
-                {!! Form::open(array('url' => 'foo/bar')) !!}
+                {!! Form::open(array('url' => 'quest/revise')) !!}
         
                 {!! Form::textarea('notes', null, ['class' => 'field', 'files' => true]) !!}
                 {!! Form::file('image') !!}
