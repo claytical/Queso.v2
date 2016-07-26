@@ -29,11 +29,18 @@
         {{ Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') }}
     </head>
     <body>
+        <section class="content-header">
+            @yield('page-header')
 
-        <div class="wrapper">
-            <h1>Welcome to Queso</h1>
-            
-        </div><!-- ./wrapper -->
+            {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
+            {!! Breadcrumbs::renderIfExists() !!}
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            @include('includes.partials.messages')
+            @yield('content')
+        </section><!-- /.content -->
 
         <!-- JavaScripts -->
         {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
