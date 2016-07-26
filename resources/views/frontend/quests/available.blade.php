@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('page-header')
-<h2>Available Quests</h2>
+    <h2>Available Quests</h2>
 @endsection
 
 @section('content')
@@ -41,7 +41,9 @@
 
         </div>
     </div>
+
 <h2>Quests That Can Be Revised for More Points</h2>
+   
    <div class="row">
         <div class="col-lg-12">
             <div class="row">
@@ -84,4 +86,5 @@
 @section('after-scripts-end')
     <script>
     </script>
+@endsection
 @stop
