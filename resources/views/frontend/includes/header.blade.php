@@ -72,10 +72,10 @@
                         </li>
 
                         <li class="user-body">
-                            <div class="col-xs-4 text-center">
+                            <div class="col-xs-6 text-center">
                                 {{ link_to('profile/edit', 'Settings') }}
                             </div>
-                            <div class="col-xs-4 text-center">
+                            <div class="col-xs-6 text-center">
                                 {{ link_to('password/change', 'Change Password') }}
                             </div>
                         </li>
