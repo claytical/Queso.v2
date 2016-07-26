@@ -22,8 +22,8 @@
             <li class="{{ Active::pattern('quests/available') }}">
                 {{ link_to('quests/available', 'Available') }}
             </li>
-            <li class="{{ Active::pattern('quests/completed') }}">
-                {{ link_to('quests/completed', 'Completed') }}
+            <li class="{{ Active::pattern('quests/history') }}">
+                {{ link_to('quests/history', 'History') }}
             </li>
             <li class="{{ Active::pattern('quests/feedback') }}">
                 {{ link_to('quests/feedback', 'Peer Feedback') }}

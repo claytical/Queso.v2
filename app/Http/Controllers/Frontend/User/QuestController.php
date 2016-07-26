@@ -46,8 +46,8 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
-    public function completed() {
-        return view('frontend.quests.completed')
+    public function history() {
+        return view('frontend.quests.history')
             ->withUser(access()->user());
     }
 

@@ -21,12 +21,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('quest/submit', 'QuestController@submit')->name('quest.submitted'); //done
         Route::get('quest/{quest_id}/revise/submission', 'QuestController@revise_submission')->name('revise.submission'); //done
 
-        Route::get('quests/completed', 'QuestController@completed')->name('quests.completed');//done
+        Route::get('quests/history', 'QuestController@history')->name('quests.history');//done
         
         Route::get('quest/{quest_id}/feedback', 'QuestController@view_feedback')->name('quest.feedback');//done
         Route::get('review/{submission_id}', 'QuestController@give_feedback')->name('quest.review');//done
-        Route::post('quest/feedback', 'QuestController@submit_feedback')->name('feedback.submitted');
-        Route::get('feedback', 'QuestController@feedback_overview')->name('feedback.overview');
+        Route::post('quest/feedback', 'QuestController@submit_feedback')->name('feedback.submitted');//done
+        Route::get('feedback', 'QuestController@feedback_overview')->name('feedback.overview');//done
 
     });
 });
