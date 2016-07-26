@@ -18,6 +18,18 @@
         <ul class="sidebar-menu">
             <li class="header">Quests</li>
 
+            <!-- Optionally, you can add icons to the links -->
+            <li class="{{ Active::pattern('admin/dashboard') }}">
+                {{ link_to_route('admin.dashboard', "Available" }}
+            </li>
+            <li class="{{ Active::pattern('admin/dashboard') }}">
+                {{ link_to_route('admin.dashboard', "Completed" }}
+            </li>
+            <li class="{{ Active::pattern('admin/dashboard') }}">
+                {{ link_to_route('admin.dashboard', "Peer Feedback" }}
+            </li>
+
+
 
         </ul><!-- /.sidebar-menu -->
     </section><!-- /.sidebar -->
