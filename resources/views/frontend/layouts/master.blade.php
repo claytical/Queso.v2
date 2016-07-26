@@ -31,6 +31,39 @@
         <!-- front loading scripts -->
         {{ HTML::script('js/vendor/dropzone.js')}}
 
+        <script>
+            Dropzone.options.noAjaxUpload = {
+                autoProcessQueue: false,
+                uploadMultiple: true,
+                parallelUploads: 100,
+                maxFiles: 100,
+
+                init: function() {
+                    var myDropzone = this;
+
+                    this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        myDropzone.processQueue();
+                    });
+
+                    this.on("sendingmultiple", function() {
+                        alert('sending mulitple!');
+                    });
+
+                    this.on("successmultiple", function(files, response)) {
+                        alert('success multiple!');
+                    });
+
+                    this.on("errormultiple", function(files, response) {
+                        alert('error multiple!!');
+                    });
+                }
+            }
+
+
+        </script>
+
     </head>
     <body class="skin-{{ config('backend.theme') }}">
         @include('includes.partials.logged-in-as')
