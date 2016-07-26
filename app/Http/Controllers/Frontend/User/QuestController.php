@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 /**
  * Class QuestController
@@ -36,9 +37,9 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
-    public function submit() {
-        return view('frontend.quests.submitted')
-            ->withUser(access()->user());
+    public function submit(Request $request) {
+        return view('frontend.quests.submitted', ['data' => $request->all()])
+                ->withUser(access()->user());
     }
 
     public function redeem() {
