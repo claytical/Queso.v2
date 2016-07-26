@@ -57,7 +57,9 @@
 
         <!-- JavaScripts -->
         {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
+        {{ HTML::script('public/js/vendor/dropzone.js')}}
         {{ HTML::script('https://cdn.tinymce.com/4/tinymce.min.js')}}
+
         <script>tinymce.init({ selector:'textarea', plugins: [
     'autolink autoresize link image',
     'searchreplace wordcount visualblocks fullscreen',
