@@ -69,7 +69,5 @@ class QuestController extends Controller
     		->withUser(access()->user());
     }
 
-}
-
 
 }
