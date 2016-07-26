@@ -34,7 +34,7 @@
                 {{ link_to('#', 'Handouts') }}
             </li>
             <li class="{{ Active::pattern('resource/2') }}">
-                {{ link_to('#', 'Presentatinos') }}
+                {{ link_to('#', 'Presentations') }}
             </li>
 
 
