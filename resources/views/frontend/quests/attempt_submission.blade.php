@@ -11,7 +11,7 @@
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'dropzone')) !!}
         
                 {!! Form::textarea('notes', null, ['class' => 'field', 'files' => true]) !!}
-                {!! Form::file('image', ['multiple' => 'multiple']) !!}
+                <input type="file" name="file" multiple />
                 {!! Form::submit('Submit') !!}
 
                 {!! Form::close() !!}
