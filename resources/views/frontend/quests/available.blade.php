@@ -4,36 +4,29 @@
 <h2>Available Quests</h2>
 
         <div class="col-lg-12">
+
             <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
+                <h4>Submission Quest</h4>
+                <h6>Due by 00/00/000</h6>
                 <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
                 <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Do It</a>
+                {{ link_to('quest/1/attempt/submission', 'Do It') }}
             </div>
 
             <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
+                <h4>Link Quest</h4>
+                <h6>Due by 00/00/000</h6>
                 <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
                 <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Do It</a>
+                {{ link_to('quest/1/attempt/link', 'Do It') }}
             </div>
 
             <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
+                <h4>Watch Video Quest</h4>
+                <h6>Due by 00/00/000</h6>
                 <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
                 <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Do It</a>
-            </div>
-
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Do It</a>
+                {{ link_to('quest/1/watch', 'Watch') }}
             </div>
 
         </div>
@@ -43,37 +36,12 @@
 
         <div class="col-lg-12">
             <div class="row">
-                <h4>Quest Name</h4>
+                <h4>Submission Quest</h4>
                 <h6>Due 00/00/000</h6>
                 <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
                 <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
+                {{ link_to('quest/1/revise/submission', 'Revise It') }}
             </div>
-
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
-            </div>
-
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
-            </div>
-
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
-            </div>
-
     </div>
 
 @endsection

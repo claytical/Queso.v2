@@ -10,7 +10,7 @@
 </ul>
         <div class="col-lg-12">
             <div class="row">
-                <iframe src="https://player.vimeo.com/video/171365895?title=0&byline=0&portrait=0" width="64" height="36" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/171365895?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
 
 <h4>What Your Peers Liked</h4>

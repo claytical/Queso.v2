@@ -13,16 +13,18 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('dashboard', 'DashboardController@index')->name('frontend.user.dashboard');
         Route::get('profile/edit', 'ProfileController@edit')->name('frontend.user.profile.edit');
         Route::patch('profile/update', 'ProfileController@update')->name('frontend.user.profile.update');    
-        Route::get('quests/available', 'QuestController@available')->name('quests.available');
-        Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt');
-        Route::get('quest/{quest_id}/attempt/link', 'QuestController@attempt_link')->name('link.attempt');
-        Route::post('quest/submit', 'QuestController@submit')->name('quest.submitted');
-        Route::get('quest/{quest_id}/revise/submission', 'QuestController@revise_submission')->name('revise.submission');
+        Route::get('quests/available', 'QuestController@available')->name('quests.available'); //done
+        Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt'); //done
+        Route::get('quest/{quest_id}/attempt/link', 'QuestController@attempt_link')->name('link.attempt');//done
+        Route::get('quest/{quest_id}/watch', 'QuestController@watch_video')->name('quest.watch');//done
 
-        Route::get('quests/completed', 'QuestController@completed')->name('quests.completed');
+        Route::post('quest/submit', 'QuestController@submit')->name('quest.submitted'); //done
+        Route::get('quest/{quest_id}/revise/submission', 'QuestController@revise_submission')->name('revise.submission'); //done
+
+        Route::get('quests/completed', 'QuestController@completed')->name('quests.completed');//done
         
-        Route::get('quest/{quest_id}/feedback', 'QuestController@view_feedback')->name('quest.feedback');
-        Route::get('review/{submission_id}', 'QuestController@give_feedback')->name('quest.review');
+        Route::get('quest/{quest_id}/feedback', 'QuestController@view_feedback')->name('quest.feedback');//done
+        Route::get('review/{submission_id}', 'QuestController@give_feedback')->name('quest.review');//done
         Route::post('quest/feedback', 'QuestController@submit_feedback')->name('feedback.submitted');
         Route::get('feedback', 'QuestController@feedback_overview')->name('feedback.overview');
 
