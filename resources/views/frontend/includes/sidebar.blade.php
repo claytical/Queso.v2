@@ -20,7 +20,7 @@
 
             <!-- Optionally, you can add icons to the links -->
             <li class="{{ Active::pattern('quests/available') }}">
-                {{ link_to('#', 'Available') }}
+                {{ link_to('quests/available', 'Available') }}
             </li>
             <li class="{{ Active::pattern('quests/completed') }}">
                 {{ link_to('#', 'Completed') }}
