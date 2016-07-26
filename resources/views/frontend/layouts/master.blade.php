@@ -33,6 +33,7 @@
 
         <div class="wrapper">
             @include('frontend.includes.header')
+            @include('frontend.includes.sidebar') 
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
