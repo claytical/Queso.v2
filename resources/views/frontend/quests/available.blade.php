@@ -3,7 +3,6 @@
 @section('content')
 <h2>Available Quests</h2>
 
-   <div class="row">
         <div class="col-lg-12">
             <div class="row">
                 <h4>Quest Name</h4>
@@ -38,11 +37,10 @@
             </div>
 
         </div>
-    </div>
 
 <h2>Quests That Can Be Revised for More Points</h2>
    
-   <div class="row">
+
         <div class="col-lg-12">
             <div class="row">
                 <h4>Quest Name</h4>
@@ -75,8 +73,7 @@
                 <h6>00 Points</h6>
                 <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
             </div>
-                                    
-        </div>
+
     </div>
 
 @endsection
