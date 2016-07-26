@@ -1,5 +1,5 @@
 <header class="main-header">
-    {{ link_to_route('frontend.index', app_name(), [], ['class' => 'logo']) }}
+    {{ link_to_route('frontend.user.dashboard', app_name(), [], ['class' => 'logo']) }}
 
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -96,7 +96,7 @@
 
                         <li class="user-footer">
                             <div class="pull-left">
-                                {{ link_to_route('frontend.index', trans('navs.general.home'), [], ['class' => 'btn btn-default btn-flat']) }}
+                                {{ link_to_route('frontend.user.dashboard', trans('navs.general.home'), [], ['class' => 'btn btn-default btn-flat']) }}
                             </div>
                             <div class="pull-right">
                                 {{ link_to_route('auth.logout', trans('navs.general.logout'), [], ['class' => 'btn btn-default btn-flat']) }}
