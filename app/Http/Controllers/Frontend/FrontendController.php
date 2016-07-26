@@ -16,9 +16,6 @@ class FrontendController extends Controller
 
     public function splash()
     {
-        javascript()->put([
-            'test' => 'it works!',
-        ]);
 
         return view('frontend.splash');
     }
