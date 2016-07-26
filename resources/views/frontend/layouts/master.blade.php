@@ -51,7 +51,7 @@
                         alert('sending mulitple!');
                     });
 
-                    this.on("successmultiple", function(files, response)) {
+                    this.on("successmultiple", function(files, response) {
                         alert('success multiple!');
                     });
 
