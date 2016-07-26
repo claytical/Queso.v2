@@ -25,8 +25,8 @@
             <li class="{{ Active::pattern('quests/history') }}">
                 {{ link_to('quests/history', 'History') }}
             </li>
-            <li class="{{ Active::pattern('quests/feedback') }}">
-                {{ link_to('quests/feedback', 'Peer Feedback') }}
+            <li class="{{ Active::pattern('feedback') }}">
+                {{ link_to('feedback', 'Peer Feedback') }}
             </li>
 
             <li class="header">Resources</li>

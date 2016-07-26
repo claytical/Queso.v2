@@ -7,7 +7,7 @@
                 <iframe src="https://player.vimeo.com/video/171365895?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
             <div class="row">
-                {!! Form::open(array('url' => 'quest/submit')) !!}
+                {!! Form::open(array('url' => 'quest/watched')) !!}
                 {!! Form::submit('Get Points') !!}
                 {!! Form::close() !!}
             </div>
