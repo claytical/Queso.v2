@@ -18,8 +18,11 @@
                 {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
 
             @endif
-            {{ Form::checkbox('email_notifications', 1) }}
             
+            Email Notifications
+
+            {{ Form::checkbox('email_notifications', 1) }}
+
             {{ Form::select('default_course', array('1' => 'Psychology', '2' => 'Game Design'), '2') }}
             
             {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary']) }}
