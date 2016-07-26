@@ -41,7 +41,7 @@
                 init: function() {
                     var myDropzone = this;
 
-                    this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+                     this.element.querySelector("input[type=submit]").addEventListener("click", function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         myDropzone.processQueue();
