@@ -1,84 +1,63 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Available Quests</h2>
-
    <div class="row">
         <div class="col-lg-12">
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Do It</a>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Peer Feedback Requests</div>
+                  <div class="panel-body">
+                    <h4>Quest Name</h4>
+
+                    <ul class="list-unstyled">
+                        <li>Student Name</li>
+                        <li>Student Name</li>
+                        <li>Student Name</li>
+                    </ul>
+
+                    <h4>Quest Name</h4>
+
+                    <ul class="list-unstyled">
+                        <li>Student Name</li>
+                        <li>Student Name</li>
+                        <li>Student Name</li>
+                    </ul>
+
+                    <h4>Quest Name</h4>
+
+                    <ul class="list-unstyled">
+                        <li>Student Name</li>
+                        <li>Student Name</li>
+                        <li>Student Name</li>
+                    </ul>
+
+                  </div>
+                </div>            
             </div>
 
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Do It</a>
-            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Class Name</div>
+                        <div class="panel-body">
+                            <h4>Instructor: John Doe</h4>
+                            <h4>Class Time: Wednesdays at 3pm</h4>
+                            <h4>Current Level: B+ (89/100)</h4>
+                        </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">Notifications</div>
+                        <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li>Quest was graded</li>
+                            <li>You got feedback on something</li>
+                            <li>Someone did something</li>
+                        </ul>                
+                        </div>
+                </div>
 
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Do It</a>
             </div>
-
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Do It</a>
-            </div>
-
-        </div>
     </div>
-
-<h2>Quests That Can Be Revised for More Points</h2>
-   
-   <div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
-            </div>
-
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
-            </div>
-
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
-            </div>
-
-            <div class="row">
-                <h4>Quest Name</h4>
-                <h6>Due 00/00/000</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                <h6>00 Points</h6>
-                <a class="btn btn-default pull-right" href="#" role="button">Revise It</a>
-            </div>
-                                    
-        </div>
-    </div>
-
 @endsection
 
 @section('after-scripts-end')
