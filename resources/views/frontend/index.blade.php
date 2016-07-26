@@ -1,5 +1,10 @@
 @extends('frontend.layouts.guest')
 
+@section('page-header')
+
+@endsection
+
+
 @section('content')
     <div class="row">
 
