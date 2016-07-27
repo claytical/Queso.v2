@@ -7,12 +7,32 @@
                 <div><div style="width: 100%; height: 0px; position: relative; padding-bottom: 56.2493%;"><iframe src="//player.vimeo.com/video/176459945?byline=0&badge=0&portrait=0&title=0" frameborder="0" allowfullscreen style="width: 100%; height: 100%; position: absolute;"></iframe></div></div>
         </div>
         <div class="col-lg-3">
-            <ul>
-                <li>Skill #1:   10/15</li>
-                <li>Skill #1:   5/20</li>
-                <li>Total:      15/35</li>
-            </ul>
-        </div>
+            <div class="col-lg-9">
+                Listening Skill
+            </div>
+            
+            <div class="col-lg-3">
+                10/15
+            </div>
+
+            <div class="col-lg-9">
+                Speaking Skill
+            </div>
+            
+            <div class="col-lg-3">
+                15/20
+            </div>
+
+            <div class="col-lg-9">
+                Total Points
+            </div>
+            
+            <div class="col-lg-3">
+                25/35
+            </div>
+
+
+        </div>  
     </div>
     <div class="row">
             <div class="col-lg-12">
