@@ -2,32 +2,34 @@
 
 @section('content')
 <h2>Peer Feedback</h2>
-<h3>Quest Name</h3>
-<h4>Student Name</h4>
+<h3>Quest Name, Student Name</h3>
+    <div class="col-lg-12">
+        <div class="row">
+            <iframe src="https://player.vimeo.com/video/171365895?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <div class="row">
 
-        <div class="col-lg-12">
-            <div class="row">
-                <iframe src="https://player.vimeo.com/video/171365895?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            </div>
+            <h4>What did you like?</h4>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Etiam porta sem malesuada magna mollis euismod.</p>
+        </div>
+        <div class="row">
+            {!! Form::open(array('url' => 'quest/feedback')) !!}
+    
+            {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}
 
-<h5>What did you like?</h5>
-            <div class="row">
-                {!! Form::open(array('url' => 'quest/feedback')) !!}
-        
-                {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}
+        </div>
 
-            </div>
-
-
-<h4>What could be improved?</h4>
-            <div class="row">
-        
-                {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}
-                {!! Form::submit('Submit') !!}
-                {!! Form::close() !!}
-            </div>
+        <div class="row">
+            <h4>What could be improved?</h4>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Etiam porta sem malesuada magna mollis euismod.</p>
+        </div>
+        <div class="row">
+            {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}
+            {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-lg']) !!}
+            {!! Form::close() !!}
+        </div>
  
-         </div>
+    </div>
 @endsection
 
 @section('after-scripts-end')
