@@ -3,17 +3,18 @@
 @section('content')
         <div class="col-lg-12">
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <h2>Quest Name</h2>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Points Available</h4>
-                    <h6>Due 00/00/000</h6>
                 </div>
                 <div class="col-lg-9">
                     <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
+                    <h4>Points Available</h4>
+                    <h6>Due 00/00/000</h6>
+                </div>
+
+                <div class="col-lg-1">
                     <button type="button" class="btn btn-primary btn-lg">Submit</button>
                 </div>
 
