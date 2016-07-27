@@ -5,10 +5,10 @@
 
         <div class="col-lg-12">
             <div id="submission-list">
-            <div class="col-lg-11">
+            <div class="col-lg-9">
               <input class="form-control search" placeholder="Search" />
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-3">
                 <div class="btn-group">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Sort <span class="caret"></span>
