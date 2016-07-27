@@ -15,24 +15,21 @@
         </div>
     </div>
     <div class="row">
-            <div class="col-lg-11">
+            <div class="col-lg-12">
                 <h4>What Your Peers Liked</h4>
                 <h6>Student Name</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a></p>
             </div>
 
             <div class="col-lg-1">
-                <a class="btn btn-default pull-right" href="#" role="button">Like</a>
+                
             </div>
 
-            <div class="col-lg-11">
+            <div class="col-lg-12">
                 <h6>Student Name</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a></p>
             </div>
 
-            <div class="col-lg-1">
-                <a class="btn btn-default pull-right" href="#" role="button">Like</a>
-            </div>
     </div>
 
     <div class="row">
@@ -40,29 +37,22 @@
                 <h4>Suggestions From Your Peers</h4>
             </div>    
 
-            <div class="col-lg-11">
+            <div class="col-lg-12">
                 <h6>Student Name</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a></p>
             </div>
 
-            <div class="col-lg-1">
-                <a class="btn btn-default pull-right" href="#" role="button">Like</a>
-            </div>
-
-            <div class="col-lg-11">
+            <div class="col-lg-12">
                 <h6>Student Name</h6>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a></p>
             </div>
 
-            <div class="col-lg-1">
-                <a class="btn btn-default pull-right" href="#" role="button">Like</a>
-            </div>
     </div>
     
     <div class="row">
             <div class="col-lg-12">
                 <h4>From The Professor</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a></p>
             </div>
  
     </div>
