@@ -27,6 +27,13 @@
 @section('after-scripts-end')
     <script>
     Dropzone.options.myAwesomeDropzone = {
+    params: {
+        _token: csrfToken
+    },
+    parallelUploads: 10000,
+    method: "post",
+    addRemoveLinks: false,
+    uploadMultiple: true,
     paramName: "file", // The name that will be used to transfer the file
     maxFilesize: 2, // MB
     url: '/dropzone/uploadFiles'
