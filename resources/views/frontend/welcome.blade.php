@@ -27,7 +27,7 @@
 
             <div class="col-lg-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Class Name <a href="#" class="btn btn-default pull-right">Switch Course</a></div>
+                    <div class="panel-heading">Class Name <a href="#" class="btn btn-default btn-xs pull-right">Switch Course</a></div>
                         <div class="panel-body">
                             <h4>Instructor: John Doe</h4>
                             <h4>Class Time: Wednesdays at 3pm</h4>
