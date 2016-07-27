@@ -17,13 +17,7 @@
 
                 {!! Form::close() !!}
 
-<form action="/dropzone/uploadFiles"
-      class="dropzone"
-      id="my-awesome-dropzone"></form>
-      
-                  <div class="dropzone" id="dropzoneFileUpload">
-
-                    </div>
+                <form class="dropzone" id="my-awesome-dropzone"></form>
 
             </div>
             
@@ -33,5 +27,10 @@
 
 @section('after-scripts-end')
     <script>
+    Dropzone.options.myAwesomeDropzone = {
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    url: '/dropzone/uploadFiles'
+};
     </script>
 @stop
