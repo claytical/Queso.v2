@@ -35,11 +35,21 @@
             </li>
 
             <li class="header">Resources</li>
+
             <li class="{{ Active::pattern('resource/1') }}">
-                {{ link_to('#', 'Handouts') }}
+                {{ link_to('resource/1', 'Single Resource #1') }}
             </li>
-            <li class="{{ Active::pattern('resource/2') }}">
-                {{ link_to('#', 'Presentations') }}
+
+            <li class="{{ Active::pattern('resource/1') }}">
+                {{ link_to('resource/2', 'Single Resource #2') }}
+            </li>
+
+            <li class="{{ Active::pattern('resources/category/1') }}">
+                {{ link_to('resource/category/1', 'Category #1') }}
+            </li>
+
+            <li class="{{ Active::pattern('resources/category/2') }}">
+                {{ link_to('resource/category/2', 'Category #2') }}
             </li>
 
 

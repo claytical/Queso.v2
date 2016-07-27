@@ -42,6 +42,11 @@ class QuestController extends Controller
         if($request->quest_type == "link") {
             $client = new HttpClient;
             $response = $client->get("http://iframe.ly/api/oembed?url=" . urlencode($request->link) . "&api_key=a705fe8012d914a446d7e4");
+            $embedly = json_decode($response->json());
+            //TODO: Save link into quest submission if it returns html, otherwise, produce an error
+
+            //TODO: Return title of page, type, preview
+
             return view('frontend.quests.submitted', ['data' => $response->json()])
                 ->withUser(access()->user());
         }

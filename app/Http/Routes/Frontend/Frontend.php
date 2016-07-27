@@ -15,6 +15,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('profile/update', 'ProfileController@update')->name('frontend.user.profile.update');    
         Route::get('quests/available', 'QuestController@available')->name('quests.available'); 
         Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt'); //done
+        Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt'); //done
         Route::get('quest/{quest_id}/attempt/link', 'QuestController@attempt_link')->name('link.attempt');
         Route::get('quest/{quest_id}/watch', 'QuestController@watch_video')->name('quest.watch');
         Route::get('quest/redeem', 'QuestController@redeem')->name('quest.redeem');
@@ -32,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('quest/feedback', 'QuestController@submit_feedback')->name('feedback.submitted');
         Route::get('feedback', 'QuestController@feedback_overview')->name('feedback.overview');
 
+        Route::get('resource/{resource_id}', 'ResourceController@by_id')->name('resource.view');
+        Route::get('resource/category/{category_id}', 'ResourceController@by_category')->name('resource.category');
 
 // FILE HANDLING
 
