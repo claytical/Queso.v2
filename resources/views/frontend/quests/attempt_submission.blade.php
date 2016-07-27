@@ -27,9 +27,9 @@
 @section('after-scripts-end')
     <script>
     Dropzone.options.myAwesomeDropzone = {
-    params: {
+/*    params: {
         _token: csrfToken
-    },
+    },*/
     parallelUploads: 10000,
     method: "post",
     addRemoveLinks: false,
