@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h3>What's the name of this quest?</h3>
-            {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'A New Adventure')]) }}
+            {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'A New Adventure']) }}
     </div>
 </div>
 
@@ -57,7 +57,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h3>What's the URL for the video?</h3>
-            {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAA')]) }}
+            {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAA']) }}
 
     </div>
 </div>
