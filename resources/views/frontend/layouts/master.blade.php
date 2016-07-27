@@ -29,28 +29,10 @@
         {{ Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') }}
 
         <!-- front loading scripts -->
-        {{ HTML::script('js/vendor/dropzone/dropzone.min.js')}}
+        {{ HTML::script('js/vendor/dropzone/dropzone.js')}}
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
 
 <script>
-var baseUrl = "{{ url('/') }}";
-            var token = "{{ Session::getToken() }}";
-            Dropzone.autoDiscover = false;
-             var myDropzone = new Dropzone("div#dropzoneFileUpload", {
-                 url: baseUrl+"/dropzone/uploadFiles",
-                 params: {
-                    _token: token
-                  }
-             });
-             Dropzone.options.myAwesomeDropzone = {
-                paramName: "file", // The name that will be used to transfer the file
-                maxFilesize: 2, // MB
-                addRemoveLinks: true,
-                accept: function(file, done) {
-                  
-                },
-              };
-- See more at: https://arjunphp.com/how-to-use-dropzone-js-laravel-5/#sthash.AghlOr0C.dpuf
 </script>
     </head>
     <body class="skin-{{ config('backend.theme') }}">
