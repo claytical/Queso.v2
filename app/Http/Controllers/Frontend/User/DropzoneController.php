@@ -28,7 +28,7 @@ public function uploadFiles(Request $request) {
         for($i=0;$i<$no_of_files;$i++) {
             $file = $files[$i];
             if($file){
-                $random__name=str_random(30).".".$file->getClientOriginalExtension();
+                $random_name=str_random(30).".".$file->getClientOriginalExtension();
                 $file->move(public_path().'/uploads/',$random_name);
                 $original_image_name=base_path()."/public/uploads/".$random_name;
                 $thumb_image_name=base_path()."/public/uploads/".$random_name;
