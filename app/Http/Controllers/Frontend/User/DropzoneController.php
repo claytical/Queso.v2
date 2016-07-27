@@ -15,39 +15,26 @@ class DropzoneController extends Controller
      * @return \Illuminate\View\View
      */
 
-public function test() {
-    return response()->json("Hi");
-}
+
 public function uploadFiles(Request $request) {
  
         $files = $request->file('file');
+        $files_on_server = array();
         $no_of_files = count($files);
         if($no_of_files==0) {
-            return "Valueless calling!";
+            return "ERROR, NO FILES!";
         }
         for($i=0;$i<$no_of_files;$i++) {
             $file = $files[$i];
             if($file){
-                $random_name=str_random(30).".".$file->getClientOriginalExtension();
+                $random_name=$file->getClientOriginalName().str_random(5).".".$file->getClientOriginalExtension();
                 $file->move(public_path().'/uploads/',$random_name);
-                $original_image_name=base_path()."/public/uploads/".$random_name;
-                $thumb_image_name=base_path()."/public/uploads/".$random_name;
-     
+                $files_on_server[] = $random_name;
+                //TODO: Store in database with user id
+
             }
         }
-/*        $destinationPath = 'uploads'; // upload path
-        $extension = $request->file('file')->getClientOriginalExtension(); // getting file extension
-        $fileName = rand(11111, 99999) . '.' . $extension; // renameing image
-        $upload_success = $request->file('file')->move($destinationPath, $fileName); // uploading file to given path
- 
-        if ($upload_success) {
-
-            return response()->json(['success']);
-        } else {
-            return response()->json(['error']);
-        }
-  */
-        return "SUCCESS";
+        return response()->json($files_on_server);
     }
 
 }

@@ -27,9 +27,13 @@
 @section('after-scripts-end')
     <script>
     Dropzone.options.myAwesomeDropzone = {
-/*    params: {
-        _token: csrfToken
-    },*/
+    init: function() {
+        this.on("success", function(file, response){
+            foreach(f in response) {
+                alert("Uploaded " + f);
+            }
+        });
+    },
     parallelUploads: 10000,
     method: "post",
     addRemoveLinks: false,
