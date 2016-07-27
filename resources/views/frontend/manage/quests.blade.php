@@ -13,56 +13,52 @@
 
 <div class="row">
     <div class="col-lg-12">
-
         <div class="col-lg-9">
-            <div class="col-lg-6">
-                <h6>Quest Name</h6>
-            </div>
-            <div class="col-lg-3">
-                <h6>Category</h6>
-            </div>
-             <ul class="list-unstyled list">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-lg-6 quest">
-                                            {{ link_to('quest/1/attempt/submission', 'Submission Quest') }}
-                                        </div>
-
-                                        <div class="col-lg-3 category">
-                                            Prototypes
-                                        </div>
-                                    </div>
-                                </li>
-     
-                                <li>
-                                    <div class="row">
-                                        <div class="col-lg-6 quest">
-                                            {{ link_to('quest/1/attempt/submission', 'Link Quest') }}
-                                        </div>
-
-                                        <div class="col-lg-3 category">
-                                            Prototypes
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-lg-6 quest">
-                                            {{ link_to('quest/1/attempt/submission', 'Video Quest') }}
-                                        </div>
-
-                                        <div class="col-lg-3 category">
-                                            Prototypes
-                                        </div>
-                                    </div>
-                                </li>
-            </ul>
+            <h6>Quest Name</h6>
         </div>
+        <div class="col-lg-3">
+            <h6>Category</h6>
+        </div>
+         <ul class="list-unstyled list">
+            <li>
+                <div class="row">
+                    <div class="col-lg-9 quest">
+                        {{ link_to('quest/1/attempt/submission', 'Submission Quest') }}
+                    </div>
 
+                    <div class="col-lg-3 category">
+                        Prototypes
+                    </div>
+                </div>
+            </li>
 
+            <li>
+                <div class="row">
+                    <div class="col-lg-9 quest">
+                        {{ link_to('quest/1/attempt/submission', 'Link Quest') }}
+                    </div>
+
+                    <div class="col-lg-3 category">
+                        Prototypes
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="row">
+                    <div class="col-lg-9 quest">
+                        {{ link_to('quest/1/attempt/submission', 'Video Quest') }}
+                    </div>
+
+                    <div class="col-lg-3 category">
+                        Prototypes
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
+
 
 @endsection
 
