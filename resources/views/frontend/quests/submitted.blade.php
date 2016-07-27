@@ -7,9 +7,7 @@
             <div class="row">
                 <h4>40 Points Available</h4>
 
-                @if($data->url)
-                    <h5>{!! $data->title !!}</h5>
-                    <h6>{!! $data->type !!}</h6>
+                @if($data->html)
                     <div class="col-lg-12">
                         {!! $data->html !!}
                     </div>
