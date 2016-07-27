@@ -60,51 +60,6 @@
             </ul>
         </div>
 
-        <div class="col-lg-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Filter Options</div>
-                            <div class="panel-body">
-                                <div class="btn-group btn-block">
-                                  <button type="button" class="btn-block btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Category <span class="caret"></span>
-                                  </button>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#" class="sort" data-sort="submission">Prototypes</a></li>
-                                    <li><a href="#" class="sort" data-sort="date">Research Papers</a></li>
-                                  </ul>
-                                </div>   
-                                    <h5>Requirements</h5>
-                                        <form class="form-horizontal">
-                                          <div class="form-group">
-                                            <label for="skill1" class="col-sm-2 control-label">Skill #1</label>
-                                            <div class="col-sm-10">
-                                              <input type="text" class="form-control" id="skill1">
-                                            </div>
-                                          </div>
-                                          <div class="form-group">
-                                            <label for="skill2" class="col-sm-2 control-label">Skill #2</label>
-                                            <div class="col-sm-10">
-                                              <input type="text" class="form-control" id="skill2">
-                                            </div>
-                                          </div>
-
-                                          <div class="form-group">
-                                            <label for="skill2" class="col-sm-2 control-label">Skill #2</label>
-                                            <div class="col-sm-10">
-                                              <input type="text" class="form-control" id="skill2">
-                                            </div>
-                                          </div>
-
-                                          <button class="btn btn-default btn-block">Filter</button>
-
-                                        </form> 
-
-
-
-                            </div>
-                    </div>
-
-        </div>
 
     </div>
 </div>
