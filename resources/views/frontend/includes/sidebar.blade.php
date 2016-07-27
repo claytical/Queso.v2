@@ -65,7 +65,7 @@
                     {{ link_to('manage/course', 'Course') }}
                 </li>
 
-             @endaif
+             @endif
 
 
             <li class="header">Resources</li>
