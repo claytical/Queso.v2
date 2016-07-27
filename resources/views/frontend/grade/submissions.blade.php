@@ -12,16 +12,9 @@
     Sort <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <li><button class="sort" data-sort="submission">
-                    Quest Name
-                  </button></li>
-    <li><button class="sort" data-sort="date">
-                    Date
-                  </button></li>
-    <li><button class="sort" data-sort="student">
-                    Student Name
-                  </button></li>
-    <li><a href="#" class="sort" data-sort="date">Date #2</a></li>
+    <li><a href="#" class="sort" data-sort="submission">Quest Name</a></li>
+    <li><a href="#" class="sort" data-sort="date">Date</a></li>
+    <li><a href="#" class="sort" data-sort="student">Student Name</a></li>
   </ul>
 </div>              
                   
