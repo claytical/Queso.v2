@@ -16,6 +16,11 @@
                 {!! Form::submit('Submit') !!}
 
                 {!! Form::close() !!}
+
+                  <div class="dropzone" id="dropzoneFileUpload">
+
+                    </div>
+
             </div>
             
         </div>

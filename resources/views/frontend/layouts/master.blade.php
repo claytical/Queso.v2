@@ -29,41 +29,29 @@
         {{ Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') }}
 
         <!-- front loading scripts -->
-        {{ HTML::script('js/vendor/dropzone.js')}}
+        {{ HTML::script('js/vendor/dropzone/dropzone.min.js')}}
+        {{ Html::style('css/vendor/dropzone/dropzone.css') }}
 
-        <script>
-            Dropzone.options.noAjaxUpload = {
-                autoProcessQueue: false,
-                uploadMultiple: true,
-                parallelUploads: 100,
-                maxFiles: 100,
-
-                init: function() {
-                    var myDropzone = this;
-
-                     this.element.querySelector("input[type=submit]").addEventListener("click", function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        myDropzone.processQueue();
-                    });
-
-                    this.on("sendingmultiple", function() {
-                        alert('sending mulitple!');
-                    });
-
-                    this.on("successmultiple", function(files, response) {
-                        alert('success multiple!');
-                    });
-
-                    this.on("errormultiple", function(files, response) {
-                        alert('error multiple!!');
-                    });
-                }
-            }
-
-
-        </script>
-
+<script>
+var baseUrl = "{{ url('/') }}";
+            var token = "{{ Session::getToken() }}";
+            Dropzone.autoDiscover = false;
+             var myDropzone = new Dropzone("div#dropzoneFileUpload", {
+                 url: baseUrl+"/dropzone/uploadFiles",
+                 params: {
+                    _token: token
+                  }
+             });
+             Dropzone.options.myAwesomeDropzone = {
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 2, // MB
+                addRemoveLinks: true,
+                accept: function(file, done) {
+                  
+                },
+              };
+- See more at: https://arjunphp.com/how-to-use-dropzone-js-laravel-5/#sthash.AghlOr0C.dpuf
+</script>
     </head>
     <body class="skin-{{ config('backend.theme') }}">
         @include('includes.partials.logged-in-as')

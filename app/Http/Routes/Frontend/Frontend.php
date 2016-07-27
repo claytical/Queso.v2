@@ -32,5 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('quest/feedback', 'QuestController@submit_feedback')->name('feedback.submitted');
         Route::get('feedback', 'QuestController@feedback_overview')->name('feedback.overview');
 
+
+// FILE HANDLING
+
+        Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles');
+
     });
 });
