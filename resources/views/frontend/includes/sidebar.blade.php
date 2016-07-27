@@ -16,23 +16,56 @@
 
          <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">Quests</li>
 
-            <!-- Optionally, you can add icons to the links -->
-            <li class="{{ Active::pattern('quests/available') }}">
-                {{ link_to('quests/available', 'Available') }}
-            </li>
+            @if (access()->hasRole('Instructor'))
+                <li class="{{ Active::pattern('grade/submissions') }}">
+                    {{ link_to('grade/submissions', 'Submissions') }}
+                </li>
 
-            <li class="{{ Active::pattern('quests/redeem') }}">
-                {{ link_to('quest/redeem', 'Instant Credit') }}
-            </li>
+                <li class="{{ Active::pattern('grade/inclass') }}">
+                    {{ link_to('grade/inclass', 'In Class Work') }}
+                </li>
+            @else
+                <li class="header">Quests</li>
 
-            <li class="{{ Active::pattern('quests/history') }}">
-                {{ link_to('quests/history', 'History') }}
-            </li>
-            <li class="{{ Active::pattern('feedback') }}">
-                {{ link_to('feedback', 'Peer Feedback') }}
-            </li>
+                <!-- Optionally, you can add icons to the links -->
+                <li class="{{ Active::pattern('quests/available') }}">
+                    {{ link_to('quests/available', 'Available') }}
+                </li>
+
+                <li class="{{ Active::pattern('quests/redeem') }}">
+                    {{ link_to('quest/redeem', 'Instant Credit') }}
+                </li>
+
+                <li class="{{ Active::pattern('quests/history') }}">
+                    {{ link_to('quests/history', 'History') }}
+                </li>
+                <li class="{{ Active::pattern('feedback') }}">
+                    {{ link_to('feedback', 'Peer Feedback') }}
+                </li>
+
+            @endif
+
+             @permission('view-backend')
+                <li class="header">Manage</li>
+                <li class="{{ Active::pattern('manage/quests') }}">
+                    {{ link_to('manage/quests', 'Quests') }}
+                </li>
+                <li class="{{ Active::pattern('manage/students') }}">
+                    {{ link_to('manage/students', 'Students') }}
+                </li>
+                <li class="{{ Active::pattern('manage/resources') }}">
+                    {{ link_to('manage/resources', 'Resources') }}
+                </li>
+                <li class="{{ Active::pattern('manage/announcements') }}">
+                    {{ link_to('manage/announcements', 'Announcements') }}
+                </li>
+                <li class="{{ Active::pattern('manage/course') }}">
+                    {{ link_to('manage/course', 'Course') }}
+                </li>
+
+             @endauth
+
 
             <li class="header">Resources</li>
 
@@ -51,6 +84,8 @@
             <li class="{{ Active::pattern('resources/category/2') }}">
                 {{ link_to('resource/category/2', 'Category #2') }}
             </li>
+
+
 
 
         </ul><!-- /.sidebar-menu -->
