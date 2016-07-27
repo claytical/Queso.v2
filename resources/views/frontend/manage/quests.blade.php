@@ -17,6 +17,7 @@
         </div>
         <div class="col-lg-3">
             <h6>Category</h6>
+        </div>
         <div class="col-lg-12">
              <ul class="list-unstyled list">
                 <li>
@@ -55,7 +56,6 @@
                     </div>
                 </li>
             </ul>
-        </div>
     </div>
 </div>
 
