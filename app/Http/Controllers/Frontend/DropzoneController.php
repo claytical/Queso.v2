@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Request;
-use Response;
 
 /**
  * Class FrontendController
@@ -16,7 +15,9 @@ class DropzoneController extends Controller
      * @return \Illuminate\View\View
      */
 
-
+public function test() {
+    return 
+}
 public function uploadFiles(Request $request) {
  
 
@@ -26,9 +27,10 @@ public function uploadFiles(Request $request) {
         $upload_success = $request->file('file')->move($destinationPath, $fileName); // uploading file to given path
  
         if ($upload_success) {
-            return Response::json('success', 200);
+
+            return response()->json(['success']);
         } else {
-            return Response::json('error', 400);
+            return response()->json(['error']);
         }
     }
 
