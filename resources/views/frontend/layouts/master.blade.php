@@ -30,6 +30,7 @@
 
         <!-- front loading scripts -->
         {{ HTML::script('js/vendor/dropzone/dropzone.js')}}
+        {{ HTML::script('js/vendor/list.min.js')}}
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
 
 <script>
