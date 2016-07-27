@@ -17,6 +17,10 @@
 
                 {!! Form::close() !!}
 
+<form action="/dropzone/uploadFiles"
+      class="dropzone"
+      id="my-awesome-dropzone"></form>
+      
                   <div class="dropzone" id="dropzoneFileUpload">
 
                     </div>
