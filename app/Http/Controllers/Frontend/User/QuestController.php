@@ -42,7 +42,7 @@ class QuestController extends Controller
         if($request->quest_type == "link") {
             $client = new HttpClient;
             $response = $client->get("http://iframe.ly/api/oembed?url=" . urlencode($request->link) . "&api_key=a705fe8012d914a446d7e4");
-            return view('frontend.quests.submitted', ['data' => $response->content()])
+            return view('frontend.quests.submitted', ['data' => $response->json()])
                 ->withUser(access()->user());
         }
 
