@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
-use Request;
+use Illuminate\Http\Request;
 
 /**
  * Class FrontendController
