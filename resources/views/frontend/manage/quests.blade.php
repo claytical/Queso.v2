@@ -3,20 +3,17 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h2>Quests <a href="#" class="btn btn-primary btn-lg pull-right">New Quest</a></h2>
+        <h2>Manage Quests {{ link_to('manage/quest/create', 'New Quest', ['class' => 'btn btn-primary btn-lg pull-right']) }}</h2>
     </div>
 </div>
 
-<div class="row">
-    <hr/>
-</div>
 
 <div class="row">
         <div class="col-lg-9">
-            <h6>Quest Name</h6>
+            <h5>Quest Name</h5>
         </div>
         <div class="col-lg-3">
-            <h6>Category</h6>
+            <h5>Category</h5>
         </div>
         <div class="col-lg-12">
              <ul class="list-unstyled list">

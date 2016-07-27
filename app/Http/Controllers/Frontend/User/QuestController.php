@@ -28,6 +28,12 @@ class QuestController extends Controller
             ->withUser(access()->user());
 
     }
+
+    public function create() {
+        return view('frontend.manage.newquest')
+            ->withUser(access()->user());
+
+    }
     public function attempt_submission($quest_id) {
         return view('frontend.quests.attempt_submission')
             ->withUser(access()->user());

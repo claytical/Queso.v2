@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('grade/inclass', 'GradeController@inclass')->name('grade.inclass');
 
         Route::get('manage/quests', 'QuestController@manage')->name('quests.manage');
+        Route::get('manage/quest/create', 'QuestController@create')->name('quests.create');
 
 // FILE HANDLING
 
