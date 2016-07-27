@@ -197,6 +197,8 @@ return [
         Spatie\Backup\BackupServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
 
+        Vinelab\Http\HttpServiceProvider::class,
+
         /*
          * Has to override the Collective\Html\HtmlServiceProvider form singleton
          */
