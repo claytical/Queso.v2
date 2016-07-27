@@ -19,10 +19,15 @@ class QuestController extends Controller
      */
     public function available()
     {
-        return view('frontend.quests.available');
-//            ->withUser(access()->user());
+        return view('frontend.quests.available')
+            ->withUser(access()->user());
     }
 
+    public function manage() {
+        return view('frontend.manage.quests')
+            ->withUser(access()->user());
+
+    }
     public function attempt_submission($quest_id) {
         return view('frontend.quests.attempt_submission')
             ->withUser(access()->user());

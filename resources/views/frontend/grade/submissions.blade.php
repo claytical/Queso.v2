@@ -1,7 +1,11 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Ungraded Submissions</h2>
+<div class="col-lg-12">
+    <div class="row">
+        <h2>Ungraded Submissions</h2>
+    </div>
+</div>
 
         <div class="col-lg-12">
             <div id="submission-list">

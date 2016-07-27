@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('grade/submissions', 'GradeController@submission_list')->name('grade.submissions');
         Route::get('grade/inclass', 'GradeController@inclass')->name('grade.inclass');
 
+        Route::get('manage/quests', 'QuestController@manage')->name('quests.manage');
+
 // FILE HANDLING
 
         Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
