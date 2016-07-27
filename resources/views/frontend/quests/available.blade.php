@@ -6,12 +6,9 @@
         <div class="col-lg-12">
 
             <div class="row">
-                <div class="col-lg-9">
-                    <h4>Submission Quest</h4>
+                <div class="col-lg-12">
+                    <h4>{{ link_to('quest/1/attempt/submission', 'Submission Quest') }}</h4>
                     <h5>00 Points, Due by 00/00/000</h5>
-                </div>
-                <div class="col-lg-3">
-                    {{ link_to('quest/1/attempt/submission', 'Do It', ['class' => 'btn btn-default pull-right']) }}
                 </div>
                 <div class="col-lg-12">
                     <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
@@ -19,12 +16,9 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-9">
-                    <h4>Link Quest</h4>
+                <div class="col-lg-12">
+                    <h4>{{ link_to('quest/1/attempt/link', 'Link Quest') }}</h4>
                     <h5>00 Points, Due by 00/00/000</h5>
-                </div>
-                <div class="col-lg-3">
-                    {{ link_to('quest/1/attempt/link', 'Do It', ['class' => 'btn btn-default pull-right']) }}
                 </div>
                 <div class="col-lg-12">
                     <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
@@ -33,12 +27,9 @@
 
 
             <div class="row">
-                <div class="col-lg-9">
-                    <h4>Watch Video Quest</h4>
+                <div class="col-lg-12">
+                    <h4>{{ link_to('quest/1/watch', 'Watch Video Quest') }}</h4>
                     <h5>00 Points, Due by 00/00/000</h5>
-                </div>
-                <div class="col-lg-3">
-                    {{ link_to('quest/1/watch', 'Watch', ['class' => 'btn btn-default pull-right']) }}
                 </div>
                 <div class="col-lg-12">
                     <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
@@ -52,11 +43,8 @@
 
             <div class="row">
                 <div class="col-lg-9">
-                    <h4>Submission Quest</h4>
+                    <h4>{{ link_to('quest/1/revise/submission', 'Submission Quest') }}</h4>
                     <h5>00 Points, Due by 00/00/000</h5>
-                </div>
-                <div class="col-lg-3">
-                    {{ link_to('quest/1/revise/submission', 'Revise It', ['class' => 'btn btn-default pull-right']) }}
                 </div>
                 <div class="col-lg-12">
                     <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
