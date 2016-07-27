@@ -4,10 +4,17 @@
 <div class="col-lg-12">
     <h2>Quests <a href="#" class="btn btn-primary btn-lg pull-right">New Quest</a></h2>
 </div>
+<hr/>
 
 <div class="col-lg-12">
 
     <div class="col-lg-9">
+        <div class="col-lg-6">
+            <h6>Quest Name</h6>
+        </div>
+        <div class="col-lg-3">
+            <h6>Category</h6>
+        </div>
          <ul class="list-unstyled list">
                             <li>
                                 <div class="row">
