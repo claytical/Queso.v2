@@ -5,10 +5,9 @@
 
         <div class="col-lg-12">
             <div class="row">
-                <h4>Quest Name</h4>
+                <h4>{{ link_to('quest/1/feedback', 'Quest Name') }}</h4>
                 <p>2 peers have submitted feedback!</p>
                 <p>Still waiting on x and y</p>
-                {{ link_to('quest/1/feedback', 'View') }}
             </div>  
         </div>
 
@@ -16,13 +15,19 @@
         <div class="col-lg-12">
             <div class="row">
                 <h4>Quest #1</h4>
-                {{ link_to('review/1', 'Edward Sharp') }}
-                {{ link_to('review/2', 'Dolly Dawkins') }}
+                <ul class="list-unstyled">
+                    <li>{{ link_to('review/1', 'Edward Sharp') }}</li>
+                    <li>{{ link_to('review/2', 'Dolly Dawkins') }}</li>
+                </ul>
+                
+                
             </div>  
             <div class="row">
                 <h4>Quest #2</h4>
-                {{ link_to('review/1', 'Billy Bob') }}
-                {{ link_to('review/2', 'Joan Hawkins') }}
+                <ul class="list-unstyled">
+                    <li>{{ link_to('review/1', 'Edward Sharp') }}</li>
+                    <li>{{ link_to('review/2', 'Dolly Dawkins') }}</li>
+                </ul>
             </div>  
 
         </div>
