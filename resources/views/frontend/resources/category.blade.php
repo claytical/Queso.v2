@@ -17,7 +17,6 @@
                     <a href="#" class="btn btn-default">filename.pdf</a>
                     EMBEDLY CARD GOES HERE
                 </div>
-            </div>
 
                 <div class="col-lg-12">
                     <h4>Resource Name</h4>
@@ -28,7 +27,6 @@
                     <a href="#" class="btn btn-default">filename.pdf</a>
                     EMBEDLY CARD GOES HERE
                 </div>
-            </div>
 
                 <div class="col-lg-12">
                     <h4>Resource Name</h4>
@@ -39,6 +37,7 @@
                     <a href="#" class="btn btn-default">filename.pdf</a>
                     EMBEDLY CARD GOES HERE
                 </div>
+            
             </div>
 
         </div>
