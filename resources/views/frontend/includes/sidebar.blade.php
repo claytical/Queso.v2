@@ -45,8 +45,9 @@
                 </li>
 
             @endif
+            
+             @if (access()->hasRole('Instructor') && access()->hasPermission(4))
 
-             @permission('view-backend')
                 <li class="header">Manage</li>
                 <li class="{{ Active::pattern('manage/quests') }}">
                     {{ link_to('manage/quests', 'Quests') }}
@@ -64,7 +65,7 @@
                     {{ link_to('manage/course', 'Course') }}
                 </li>
 
-             @endauth
+             @endaif
 
 
             <li class="header">Resources</li>
