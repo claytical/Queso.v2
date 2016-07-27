@@ -6,15 +6,27 @@
         <div class="col-lg-12">
             <div id="submission-list">
               <input class="search" placeholder="Search" />
-                  <button class="sort" data-sort="submission">
-                    Sort by Quest Name
-                  </button>
-                  <button class="sort" data-sort="date">
-                    Sort by Date
-                  </button>
-                  <button class="sort" data-sort="student">
-                    Sort by Student Name
-                  </button>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><button class="sort" data-sort="submission">
+                    Quest Name
+                  </button></li>
+    <li><button class="sort" data-sort="date">
+                    Date
+                  </button></li>
+    <li><button class="sort" data-sort="student">
+                    Student Name
+                  </button></li>
+    <li><a href="#" class="sort" data-sort="date">Date #2</a></li>
+  </ul>
+</div>              
+                  
+                  
+                  
 
                 <ul class="list-unstyled list">
                     <li>
