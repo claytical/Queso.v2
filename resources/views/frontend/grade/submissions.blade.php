@@ -5,19 +5,22 @@
 
         <div class="col-lg-12">
             <div id="submission-list">
-              <input class="search" placeholder="Search" />
-
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Sort <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#" class="sort" data-sort="submission">Quest Name</a></li>
-    <li><a href="#" class="sort" data-sort="date">Date</a></li>
-    <li><a href="#" class="sort" data-sort="student">Student Name</a></li>
-  </ul>
-</div>              
-                  
+            <div class="col-lg-11">
+              <input class="form-control search" placeholder="Search" />
+            </div>
+            <div class="col-lg-1">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" class="sort" data-sort="submission">Quest Name</a></li>
+                    <li><a href="#" class="sort" data-sort="date">Date</a></li>
+                    <li><a href="#" class="sort" data-sort="student">Student Name</a></li>
+                  </ul>
+                </div>              
+            </div>
+            <div class="col-lg-12">
                   
                   
 
@@ -38,6 +41,7 @@
                     </li>
 
                 </ul>
+            </div>
             </div>
         </div>
 
