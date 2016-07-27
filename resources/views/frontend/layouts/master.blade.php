@@ -77,7 +77,7 @@
         {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
 
         @yield('before-scripts-end')
-        {{ HTML::script(elixir('js/frontend.js')) }}
+        {{ HTML::script(elixir('js/backend.js')) }}
         @yield('after-scripts-end')
     </body>
 </html>
