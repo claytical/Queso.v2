@@ -27,7 +27,7 @@ public function uploadFiles(Request $request) {
         for($i=0;$i<$no_of_files;$i++) {
             $file = $files[$i];
             if($file){
-                $random_name=$file->getClientOriginalName().str_random(5).".".$file->getClientOriginalExtension();
+                $random_name=str_random(5).$file->getClientOriginalName();
                 $file->move(public_path().'/uploads/',$random_name);
                 $files_on_server[] = $random_name;
                 //TODO: Store in database with user id

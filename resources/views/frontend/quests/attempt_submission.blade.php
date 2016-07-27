@@ -28,7 +28,7 @@
     <script>
     Dropzone.options.myAwesomeDropzone = {
     init: function() {
-        this.on("success", function(file, response){
+        this.on("successmultiple", function(file, response){
             response.forEach(function(entry) {
                 console.log(entry);
             });
