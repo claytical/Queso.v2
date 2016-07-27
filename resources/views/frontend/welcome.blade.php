@@ -26,20 +26,7 @@
                         </div>
                 </div>
             </div>
-  
-            <div class="col-lg-6">                
-                <div class="panel panel-default">
-                    <div class="panel-heading">Notifications</div>
-                        <div class="panel-body">
-                        <ul class="list-unstyled">
-                            <li>Quest was graded</li>
-                            <li>{{ link_to('quest/1/feedback', 'Feedback from Doris on Quest Name') }}</li>
-                            <li>Someone did something</li>
-                        </ul>                
-                        </div>
-                </div>
 
-            </div>
             <div class="col-lg-6">
                 <div class="panel panel-default">
                   <div class="panel-heading">Peer Feedback Requests</div>
@@ -62,6 +49,19 @@
                 </div>            
             </div>
 
+            <div class="col-lg-6">                
+                <div class="panel panel-default">
+                    <div class="panel-heading">Notifications</div>
+                        <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li>Quest was graded</li>
+                            <li>{{ link_to('quest/1/feedback', 'Feedback from Doris on Quest Name') }}</li>
+                            <li>Someone did something</li>
+                        </ul>                
+                        </div>
+                </div>
+
+            </div>
 
 
         </div>
