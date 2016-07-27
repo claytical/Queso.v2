@@ -22,7 +22,9 @@
             <div class="col-lg-3">
                 15/20
             </div>
-
+            <div class="col-lg-12">
+                <hr/>
+            </div>
             <div class="col-lg-9">
                 Total Points
             </div>
