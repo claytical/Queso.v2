@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Vinelab\Http\Client;
+use Vinelab\Http\Client as HttpClient;
 
 /**
  * Class QuestController
