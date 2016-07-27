@@ -18,13 +18,13 @@ class ResourceController extends Controller
      */
     public function by_id($id)
     {
-        return view('resources.view')
+        return view('frontend.resources.view')
             ->withUser(access()->user());
     }
 
     public function by_category($category)
     {
-        return view('resources.category')
+        return view('frontend.resources.category')
             ->withUser(access()->user());
     }    
 }
