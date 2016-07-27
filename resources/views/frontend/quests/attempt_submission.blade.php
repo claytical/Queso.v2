@@ -16,7 +16,7 @@
                 {!! Form::submit('Submit') !!}
 
                 {!! Form::close() !!}
-                {!! Form::open(['url' => route('dropzone/uploadFiles'), 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
+                {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
 
             </div>
             
