@@ -16,7 +16,7 @@ class DropzoneController extends Controller
      */
 
 public function test() {
-    return 
+    return response()->json("Hi");
 }
 public function uploadFiles(Request $request) {
  
