@@ -29,9 +29,9 @@
     Dropzone.options.myAwesomeDropzone = {
     init: function() {
         this.on("success", function(file, response){
-            foreach(f in response) {
-                alert("Uploaded " + f);
-            }
+            response.forEach(function(entry) {
+                console.log(entry);
+            });
         });
     },
     parallelUploads: 10000,
