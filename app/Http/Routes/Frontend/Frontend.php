@@ -36,6 +36,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('resource/{resource_id}', 'ResourceController@by_id')->name('resource.view');
         Route::get('resource/category/{category_id}', 'ResourceController@by_category')->name('resource.category');
 
+
+        Route::get('grade/submissions', 'GradeController@submission_list')->name('grade.submissions');
+        Route::get('grade/inclass', 'GradeController@inclass')->name('grade.inclass');
+
 // FILE HANDLING
 
         Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
