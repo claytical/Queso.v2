@@ -11,13 +11,12 @@
                 {!! Form::open(array('url' => 'quest/submit', 'class' => '', 'id' => 'no-ajax-upload')) !!}
         
                 {!! Form::textarea('notes', null, ['class' => 'field', 'files' => true]) !!}
-                <div class="dropzone-previews"></div>
+
 <!--                <input type="file" name="file" multiple /> -->
                 {!! Form::submit('Submit') !!}
 
                 {!! Form::close() !!}
-
-                <form class="dropzone" id="my-awesome-dropzone"></form>
+                {!! Form::open(['url' => route('dropzone/uploadFiles'), 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
 
             </div>
             
