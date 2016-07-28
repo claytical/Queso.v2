@@ -48,7 +48,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/quests', 'QuestController@manage')->name('quests.manage');
         Route::get('manage/quest/create', 'QuestController@create_form')->name('quests.create.begin');
         Route::post('manage/quest/create', 'QuestController@create')->name('quests.create');
-
+        Route::get('manage/quest/clone', 'QuestController@clone_form')->name('quests.clone.begin');
+        Route::post('manage/quest/clone', 'QuestController@clone')->name('quest.clone');
 // FILE HANDLING
 
         Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');

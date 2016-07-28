@@ -35,6 +35,20 @@ class QuestController extends Controller
 
     }
 
+
+    public function clone_form() {
+        return view('frontend.manage.clonequest')
+            ->withUser(access()->user());
+
+    }
+
+   public function clone() {
+        return view('frontend.manage.cloned')
+            ->withUser(access()->user());
+
+    }
+
+
     public function create() {
         return view('frontend.manage.created_quest')
             ->withUser(access()->user());
