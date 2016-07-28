@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('grade/activity/{quest_id}', 'GradeController@activity')->name('grade.activity');
         Route::get('grade/inclass', 'GradeController@inclass')->name('grade.inclass');
         Route::post('grade/confirm', 'GradeController@confirm')->name('grade.confirm');
+        Route::post('grade/confirm/activity', 'GradeController@group_confirm')->name('grade.group.confirm');
 
         Route::get('manage/quests', 'QuestController@manage')->name('quests.manage');
         Route::get('manage/quest/create', 'QuestController@create')->name('quests.create');

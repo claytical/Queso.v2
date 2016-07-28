@@ -6,10 +6,9 @@
     <h2>Quest Name</h2>
     <h4>00 Points Available</h4>
 </div>
-  {!! Form::open(array('url' => 'grade/confirm')) !!}
+  {!! Form::open(array('url' => 'grade/confirm/activity')) !!}
 
 <div class="col-lg-3">
-  {{ Form::select('students', array('1' => 'Sally Fields', '2' => 'Tom Hanks'), '2') }}
 
 </div>
 
@@ -23,6 +22,9 @@
                 {!! Form::textarea('notes', null, ['class' => 'field', 'files' => false]) !!}
             </div>
             <div class="col-lg-3">
+                <div class="col-lg-12">
+                  {{ Form::select('students', array('1' => 'Sally Fields', '2' => 'Tom Hanks'), '2') }}
+                </div>
                 <div class="col-lg-6">
                     <label>Skill #1</label>
                 </div>

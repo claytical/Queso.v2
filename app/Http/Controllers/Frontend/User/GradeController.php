@@ -37,6 +37,12 @@ class GradeController extends Controller
             ->withUser(access()->user());
     }
 
+    public function group_confirm() {
+        return view('frontend.grade.group_remaining')
+            ->withUser(access()->user());
+    }
+
+
     public function inclass()
     {
         return view('frontend.grade.inclass')
