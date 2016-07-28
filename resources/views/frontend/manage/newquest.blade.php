@@ -194,7 +194,7 @@
                   </div>
 
                   <div class="form-group">
-                    <button type="button" class="btn btn-default" id="set_thresholds">Next</button>
+                    <button type="button" class="btn btn-default" id="thresholds_set">Next</button>
 
                   </div>
 
