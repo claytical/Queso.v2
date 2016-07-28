@@ -15,7 +15,8 @@
     </div>
 
 <div class="col-lg-12">
-    <h3>Completed Quests</h3>
+    <h3>Graded Quests</h3>
+    <!-- Links should be to view only, not add feedback -->
         <div class="col-lg-12">
             <div class="col-lg-4">
                 <h5>Quest Name</h5>
@@ -74,6 +75,7 @@
             </div>
         </div>
     <h3>Pending Quests</h3>
+    <!-- Links should be to grade submission -->
         <div class="col-lg-12">
             <div class="col-lg-4">
                 <h5>Quest Name</h5>
@@ -133,6 +135,7 @@
         </div>
 
     <h3>Available Quests</h3>
+    <!-- no links needed, unless on behalf of? -->
         <div class="col-lg-12">
             <div class="col-lg-9">
                 <h5>Quest Name</h5>

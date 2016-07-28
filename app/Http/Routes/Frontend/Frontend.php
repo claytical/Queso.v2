@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('resource/{resource_id}', 'ResourceController@by_id')->name('resource.view');
         Route::get('resource/category/{category_id}', 'ResourceController@by_category')->name('resource.category');
 
+        Route::get('announcements', 'AnnouncementController@index')->name('announcements');
 
         Route::get('grade/submissions', 'GradeController@submission_list')->name('grade.submissions');
         Route::get('grade/submission/{submission_id}', 'GradeController@submission')->name('grade.submission');
@@ -52,6 +53,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('manage/quest/clone', 'QuestController@clone')->name('quest.clone');
         Route::get('manage/students', 'StudentController@index')->name('students.manage');
         Route::get('manage/student/{student_id}', 'StudentController@detail')->name('student.detail');
+
+        Route::get('manage/announcements', 'AnnouncementController@manage')->name('announcements.manage');
+        Route::get('manage/announcement/create', 'AnnouncementController@create')->name('announcements.create');
+        Route::get('manage/announcement/{announcement_id}', 'AnnouncementController@details')->name('announcements.details');
+        Route::post('manage/announcements/create', 'AnnouncementController@save')->name('announcements.save'); 
+        Route::post('manage/announcement/update', 'AnnouncementController@update')->name('announcement.update');
+
 // FILE HANDLING
 
         Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
