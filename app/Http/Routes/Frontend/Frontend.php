@@ -46,7 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('grade/confirm/activity', 'GradeController@group_confirm')->name('grade.group.confirm');
 
         Route::get('manage/quests', 'QuestController@manage')->name('quests.manage');
-        Route::get('manage/quest/create', 'QuestController@create')->name('quests.create');
+        Route::get('manage/quest/create', 'QuestController@create_form')->name('quests.create.begin');
+        Route::post('manage/quest/create', 'QuestController@create')->name('quests.create');
 
 // FILE HANDLING
 
