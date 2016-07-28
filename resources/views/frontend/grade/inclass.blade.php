@@ -39,7 +39,7 @@
                     <li>
                         <div class="row">
                             <div class="col-lg-6 quest">
-                                {{ link_to('quest/1/attempt/submission', 'Submission Quest') }}
+                                {{ link_to('grade/activity/1', 'Activity #1') }}
                             </div>
 
                             <div class="col-lg-3 category">
@@ -57,7 +57,7 @@
                     <li>
                         <div class="row">
                             <div class="col-lg-6 quest">
-                                {{ link_to('quest/1/attempt/submission', 'Link Quest') }}
+                                {{ link_to('grade/activity/2', 'Activity #2') }}
                             </div>
 
                             <div class="col-lg-3 category">
@@ -74,7 +74,7 @@
                     <li>
                         <div class="row">
                             <div class="col-lg-6 quest">
-                                {{ link_to('quest/1/attempt/submission', 'Feedback Quest') }}
+                                {{ link_to('grade/activity/{quest_id}', 'Activity #3') }}
                             </div>
 
                             <div class="col-lg-3 category">
