@@ -23,7 +23,7 @@
              <ul class="list-unstyled list">
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 student">
+                        <div class="col-lg-6 student">
                             {{ link_to('manage/student/1', 'Sally Fields') }}
                         </div>
 
@@ -39,7 +39,7 @@
 
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 student">
+                        <div class="col-lg-6 student">
                             {{ link_to('manage/student/1', 'Joan Rivers') }}
                         </div>
 
@@ -55,7 +55,7 @@
 
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 student">
+                        <div class="col-lg-6 student">
                             {{ link_to('manage/student/1', 'Dwayne Johnson') }}
                         </div>
 
