@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="col-lg-12">
-    <div class="row">
         <h2>In Class Work</h2>
-    </div>
 </div>
         <div class="col-lg-12">
             <div id="quest-list">

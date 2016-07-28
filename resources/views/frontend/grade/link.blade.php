@@ -55,6 +55,7 @@ Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at
         </blockquote>
 
         <h4>Feedback to Student</h4>
+        {!! Form::open(array('url' => 'grade/confirm')) !!}
 
         <div class="row">
             <div class="col-lg-9">
@@ -98,7 +99,8 @@ Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at
 
 
         </div>
- 
+         {!! Form::close() !!}
+
     </div>
 @endsection
 
