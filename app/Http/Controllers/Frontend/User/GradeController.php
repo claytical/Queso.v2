@@ -27,6 +27,11 @@ class GradeController extends Controller
             ->withUser(access()->user());
     }
 
+    public function link() {
+        return view('frontend.grade.link')
+            ->withUser(access()->user());
+    }
+
     public function inclass()
     {
         return view('frontend.grade.inclass')

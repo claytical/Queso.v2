@@ -147,10 +147,9 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
+
                     <button type="button" class="btn btn-default" id="skills_set">Next</button>
 
-                  </div>
                 </form>
         </div>
     </div>
