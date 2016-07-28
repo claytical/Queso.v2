@@ -42,4 +42,8 @@ class GradeController extends Controller
         return view('frontend.grade.inclass')
             ->withUser(access()->user());
     }    
+    public function activity() {
+        return view('frontend.grade.activity')
+            ->withUser(access()->user());
+    }
 }
