@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div id="quest_type" class="hidden">
+<div id="quest_type" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>What kind of quest is this?</h3>
@@ -32,7 +32,7 @@
 </div>
 
 
-<div id="submission_selection" class="hidden">
+<div id="submission_selection" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>How should students submit their work?</h3>
@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<div id="submission_revisions" class="hidden">
+<div id="submission_revisions" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>Should a student be able to revise their submission?</h3>
@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<div id="peer_feedback" class="hidden">
+<div id="peer_feedback" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>Do you want to allow peer feedback?</h3>
@@ -66,28 +66,28 @@
     </div>
 </div>
 
-<div id="inclass_instant" class="hidden">
+<div id="inclass_instant" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>Do you want to allow a student to enter unique code for instant credit?</h3>
-                <button type="button" class="btn btn-default">Yes</button>
-                <button type="button" class="btn btn-default">No</button>
+                <button type="button" class="btn btn-default" id="instant_allowed">Yes</button>
+                <button type="button" class="btn btn-default" id="instant_disallowed">No</button>
 
         </div>
     </div>
 </div>
 
-<div id="video_url" class="hidden">
+<div id="video_url" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>What's the URL for the video?</h3>
                 {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAA']) }}
-
+            <button type="button" class="btn btn-default" id="video_next">Next</button>
         </div>
     </div>
 </div>
 
-<div id="expiration" class="hidden">
+<div id="expiration" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>Should this quest disappear after a certain date?</h3>
@@ -97,7 +97,7 @@
     </div>
 </div>
 
-<div id="set_expiration" class="hidden">
+<div id="set_expiration" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>When should the quest disappear?</h3>
@@ -108,7 +108,7 @@
     </div>
 </div>
 
-<div id="quest_description" class="hidden">
+<div id="quest_description" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</h3>
@@ -120,7 +120,7 @@
 
 </div>
 
-<div id="skills" class="hidden">
+<div id="skills" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>What are the maximum point values for each skill?</h3>
@@ -156,7 +156,7 @@
     </div>
 </div>
 
-<div id="thresholds" class="hidden">
+<div id="thresholds" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>Should a student be required to have a minimum skill level in order to see this quest?</h3>
@@ -166,7 +166,7 @@
     </div>
 </div>
 
-<div id="set_thresholds" class="hidden">
+<div id="set_thresholds" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>What are the minimum skill level values in order to see this quest?</h3>
@@ -203,7 +203,7 @@
     </div>
 </div>
 
-<div id="attach_files" class="hidden">
+<div id="attach_files" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>Would you like to attach any supporting files to this quest?</h3>
@@ -213,7 +213,7 @@
     </div>
 </div>
 
-<div id="file_attachments" class="hidden">
+<div id="file_attachments" style="display:none;">
     <div class="row">
             <div class="col-lg-12">
                 {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
@@ -227,7 +227,7 @@
     </div>
 </div>
 
-<div id="finished" class="hidden">
+<div id="finished" style="display:none;">
     <div class="row">
         <div class="col-lg-12">
             <h3>You're all set, ready to create this quest?</h3>
@@ -256,9 +256,24 @@
         $("#inclass_instant").show();
     });
 
+    $( "#instant_allowed" ).click(function() {
+        $("#inclass_instant").hide();
+        $("#expiration").show();
+    });
+
+    $( "#instant_disallowed" ).click(function() {
+        $("#inclass_instant").hide();
+        $("#expiration").show();
+    });
+
     $( "#watch_next" ).click(function() {
         $("#quest_type").hide();
         $("#video_url").show();
+    });
+
+    $( "#video_next" ).click(function() {
+        $("#video_url").hide();
+        $("#expiration").show();
     });
 
     $( "#link_next" ).click(function() {
