@@ -136,7 +136,7 @@
                 </div>
 
                   <div class="col-lg-12">
-                        <button type="button" class="btn btn-default btn-block">Grade</button>
+                    {!! Form::submit('Grade', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
                   </div>
             </div>
