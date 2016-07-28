@@ -240,7 +240,7 @@
 
 @section('after-scripts-end')
     <script>
-
+    var skipThresholds = false;
     $( "#name_next" ).click(function() {
         $("#quest_name").hide();
         $("#quest_type").show();
@@ -252,6 +252,8 @@
     });
 
     $( "#activity_next" ).click(function() {
+        //flag to skip minimum thresholds
+        skipThresholds = true;
         $("#quest_type").hide();
         $("#inclass_instant").show();
     });
@@ -338,7 +340,14 @@
 
     $( "#skills_set" ).click(function() {
         $("#skills").hide();
-        $("#thresholds").show();
+        if (skipThresholds) {
+            $("#files_allowed").show();
+
+        }
+        else {
+            $("#thresholds").show();
+
+        }
     });
 
     $( "#thresholds_allowed" ).click(function() {
