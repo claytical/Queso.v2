@@ -7,9 +7,25 @@
     <h4>Submitted 00/00/0000</h4>
 </div>
 <div class="col-lg-3">
-<div class="btn-group pull-right">
-  <button type="button" class="btn btn-default">More Information</button>
-</div>              
+    <div class="btn-group pull-right">
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#information">Information</button>
+    </div>              
+</div>
+<div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="information">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="information">Quest Information</h4>
+      </div>
+      <div class="modal-body">
+Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
     <div class="col-lg-12">
             <div><div style="width: 100%; height: 0px; position: relative; padding-bottom: 56.2493%;"><iframe src="//player.vimeo.com/video/176459945?byline=0&badge=0&portrait=0&title=0" frameborder="0" allowfullscreen style="width: 100%; height: 100%; position: absolute;"></iframe></div></div>
