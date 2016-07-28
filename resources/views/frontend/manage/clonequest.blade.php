@@ -44,7 +44,7 @@
     <div id="instant_selection" style="display:none;">Instant Credit</div>
     <div id="upload_selection" style="display:none;">Uploads</div>
     <div id="revision_selection" style="display:none;">Revisions</div>
-    <div id="expires_selection">Expires {{ Form::input('date', 'expires', null, ['class' => 'form-control''id' => 'quest_expiration']) }} <!-- #peer_feedback -->
+    <div id="expires_selection">Expires {{ Form::input('date', 'expires', null, ['class' => 'form-control', 'id' => 'quest_expiration']) }} <!-- #peer_feedback -->
 </div>
     <div id="feedback_selection" style="display:none;">Expires 00/00/0000</div>
     <div id="file_selection" style="display:none;">Files Attached</div>
