@@ -73,6 +73,64 @@
                 </ul>
             </div>
         </div>
+    <h3>Pending Quests</h3>
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <h5>Quest Name</h5>
+            </div>
+            <div class="col-lg-3">
+                <h5>Submitted</h5>
+            </div>
+            <div class="col-lg-2">
+                <h5>Revisions</h5>
+            </div>
+            
+            <div class="col-lg-3">
+                <h5>Points</h5>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12">
+            <div id="pending-list">
+                 <ul class="list-unstyled list">
+                    <li>
+                        <div class="col-lg-4 quest">
+                            Another Quest
+                        </div>
+
+                        <div class="col-lg-3 date">
+                            00/00/0000
+                        </div>
+                        <div class="col-lg-2 revisions">
+                            0
+                        </div>
+                        <div class="col-lg-3 points">
+                            25 / 40
+                        </div>
+
+                    </li>
+
+                    <li>
+                        <div class="col-lg-4 quest">
+                            First Quest
+                        </div>
+
+                        <div class="col-lg-3 date">
+                            00/00/0000
+                        </div>
+                        <div class="col-lg-2 revisions">
+                            1
+                        </div>
+                        <div class="col-lg-3 points">
+                            60 / 60
+                        </div>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
 
     <h3>Available Quests</h3>
         <div class="col-lg-12">
