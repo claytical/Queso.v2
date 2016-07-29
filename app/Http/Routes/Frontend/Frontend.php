@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/announcement/{announcement_id}', 'AnnouncementController@details')->name('announcements.details');
         Route::post('manage/announcements/create', 'AnnouncementController@save')->name('announcements.created'); 
         Route::post('manage/announcement/update', 'AnnouncementController@update')->name('announcement.update');
+        Route::get('manage/announcement/{announcement_id}/delete', 'AnnouncementController@delete')->name('announcement.delete');
 
 // FILE HANDLING
 
