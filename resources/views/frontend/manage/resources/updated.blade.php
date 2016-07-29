@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="col-lg-12">
-    <h2>[HEADLINE] Updated</h2>
+    <h2>[TITLE] Updated</h2>
 </div>
 
 <p>
-Announcements appear in the dashboard. If you want to make sure it's shown, make it sticky!
+Resource has been updated!
 </p>
 @endsection
 

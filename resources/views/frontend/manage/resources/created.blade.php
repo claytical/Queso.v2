@@ -2,12 +2,10 @@
 
 @section('content')
 <div class="col-lg-12">
-    <h2>[HEADLINE] Created!</h2>
+    <h2>[TITLE] Created!</h2>
 </div>
 
-<p>
-Announcements appear in the dashboard. If you want to make sure it's shown, make it sticky!
-</p>
+<p>Your resource is now available to students.</p>
 @endsection
 
 @section('after-scripts-end')

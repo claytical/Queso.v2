@@ -61,8 +61,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('manage/announcement/update', 'AnnouncementController@update')->name('announcement.update');
         Route::get('manage/announcement/{announcement_id}/delete', 'AnnouncementController@delete')->name('announcement.delete');
 
+        Route::get('manage/resources', 'ResourceController@manage')->name('resources.manage');
         Route::get('manage/resources/create', 'ResourceController@create')->name('resource.create');
-
+        Route::get('manage/resources/{resource_id}', 'ResourceController@details')->name('resource.details');
+        Route::post('manage/resources/create', 'ResourceController@save')->name('resources.created');
+        Route::post('manage/resource/update', 'ResourceController@update')->name('resource.update');
+        Route::get('manage/resource/{resource_id}/delete', 'ResourceController@delete')->name('resource.delete');
 
 // FILE HANDLING
 

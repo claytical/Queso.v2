@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-lg-12">
-    <h2>[HEADLINE] Deleted</h2>
+    <h2>[TITLE] Deleted</h2>
 </div>
 
 <p>

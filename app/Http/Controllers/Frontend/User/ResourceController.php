@@ -35,4 +35,27 @@ class ResourceController extends Controller
             ->withUser(access()->user());
     }
 
+    public function manage() {
+        return view('frontend.manage.resources.index')
+            ->withUser(access()->user());
+
+    }
+
+    public function details() {
+        return view('frontend.manage.resources.details')
+            ->withUser(access()->user());
+
+    }
+    
+    public function save() {
+        return view('frontend.manage.resources.created')
+            ->withUser(access()->user());
+
+    }
+
+    public function update() {
+        return view('frontend.manage.resources.update')
+            ->withUser(access()->user());
+
+    }    
 }

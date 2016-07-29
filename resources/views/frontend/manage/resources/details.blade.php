@@ -2,22 +2,31 @@
 
 @section('content')
 <div class="col-lg-12">
-    <h2>Update Announcement</h2>
+    <h2>Update Resource</h2>
 </div>
 
 <div class="col-lg-9">
-    {!! Form::open(['url' => 'manage/announcement/update', 'id'=>'announcement-update-form']) !!}
-    {{ Form::input('text', 'headline', null, ['class' => 'form-control', 'placeholder' => 'Adventure Awaits!', 'id' => 'headline']) }}
+    {!! Form::open(['url' => 'manage/resources/update', 'id'=>'resource-update-form']) !!}
+    {{ Form::input('text', 'title', null, ['class' => 'form-control', 'placeholder' => 'Syllabus', 'id' => 'title']) }}
     {!! Form::textarea('description', null, ['class' => 'field', 'files' => true]) !!}
 
 </div>
 
 
 <div class="col-lg-3">
-                    {!! Form::checkbox('sticky', 1) !!} Sticky
-                    {!! Form::submit('Post', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
-                    {!! Form::close() !!}
+   	{{ Form::input('text', 'link', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
+    {!! Form::close() !!}
+
+                    <a href="#" class="btn btn-default">filename.pdf</a>[x]          
+                    <a href="#" class="btn btn-default">filename.pdf</a>[x] 
+                    <a href="#" class="btn btn-default">filename.pdf</a>[x] 
+
+
+    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
+    {!! Form::close() !!}
+
+
 </div>
 @endsection
 
