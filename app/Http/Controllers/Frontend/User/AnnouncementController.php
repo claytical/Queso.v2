@@ -29,26 +29,26 @@ class AnnouncementController extends Controller
     }
 
     public function details($id) {
-        return view('frontend.manage.announcement_details')
+        return view('frontend.manage.announcements.details')
             ->withUser(access()->user());
 
     }
 
     public function update()
     {
-        return view('frontend.manage.updated_announcement')
+        return view('frontend.manage.announcements.updated')
             ->withUser(access()->user());
     }
 
     public function created() {
-        return view('frontend.manage.created_announcement')
+        return view('frontend.manage.announcements.created')
             ->withUser(access()->user());
     }
 
 
     public function manage()
     {
-        return view('frontend.manage.announcements')
+        return view('frontend.manage.announcements.index')
             ->withUser(access()->user());
     }    
 }
