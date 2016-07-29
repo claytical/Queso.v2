@@ -14,7 +14,7 @@
 
 
 <div class="col-lg-3">
-                    {!! Form::checkbox('sticky', 1)} Sticky
+                    {!! Form::checkbox('sticky', 1) !!} Sticky
                     {!! Form::submit('Post', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
                     {!! Form::close() !!}

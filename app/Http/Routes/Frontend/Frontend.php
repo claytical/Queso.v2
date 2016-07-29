@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/student/{student_id}', 'StudentController@detail')->name('student.detail');
 
         Route::get('manage/announcements', 'AnnouncementController@manage')->name('announcements.manage');
-        Route::get('manage/announcement/create', 'AnnouncementController@create')->name('announcements.create');
+        Route::get('manage/announcement/create', 'AnnouncementController@create')->name('announcements.new');
         Route::get('manage/announcement/{announcement_id}', 'AnnouncementController@details')->name('announcements.details');
         Route::post('manage/announcements/create', 'AnnouncementController@save')->name('announcements.save'); 
         Route::post('manage/announcement/update', 'AnnouncementController@update')->name('announcement.update');
