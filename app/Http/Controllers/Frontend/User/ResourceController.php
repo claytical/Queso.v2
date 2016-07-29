@@ -58,4 +58,11 @@ class ResourceController extends Controller
             ->withUser(access()->user());
 
     }    
+
+    public function delete() {
+        return view('frontend.manage.resources.deleted')
+            ->withUser(access()->user());
+
+    }
+
 }
