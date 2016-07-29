@@ -25,7 +25,8 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="general">
-                {!! Form::open(['url' => 'manage/course/update', 'class' => '', 'id'=>'update-course']) !!}
+                {!! Form::open(['url' => 'manage/course/update', 'class' => '', 'id' => 'update-course']) !!}
+
                 {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}
 
                 {{ Form::input('text', 'reg_code', null, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
@@ -40,8 +41,11 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="skills">
                 {!! Form::open(['url' => 'manage/skills/add', 'class' => 'id'=>'add-skills']) !!}
+
                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
+                
                 {!! Form::submit('Add This Skill', ['class' => 'btn btn-primary btn-lg']) !!}
+                
                 {!! Form::close() !!}
 
                 <h4>Current Skills</h4>
@@ -50,7 +54,6 @@
                         <div class="pull-right">
                             <div class="btn-group" role="group" aria-label="...">
                               <button type="button" class="btn btn-default">Edit</button>
-                              <button type="button" class="btn btn-default">Remove</button>
                             </div>
                         </div>
                     </li>
@@ -59,7 +62,6 @@
                         <div class="pull-right">
                             <div class="btn-group" role="group" aria-label="...">
                               <button type="button" class="btn btn-default">Edit</button>
-                              <button type="button" class="btn btn-default">Remove</button>
                             </div>
                         </div>
                     </li>
@@ -67,7 +69,6 @@
                         <div class="pull-right">
                             <div class="btn-group" role="group" aria-label="...">
                               <button type="button" class="btn btn-default">Edit</button>
-                              <button type="button" class="btn btn-default">Remove</button>
                             </div>
                         </div>
                     </li>
@@ -76,7 +77,7 @@
 
             </div>
             <div role="tabpanel" class="tab-pane" id="levels">
-                {!! Form::open(['url' => 'manage/levels/add', 'class' => 'id'=>'add-levels']) !!}
+                {!! Form::open(['url' => 'manage/levels/add', 'class' => '', 'id' => 'add-levels']) !!}
                 
                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
 
@@ -129,8 +130,10 @@
 
             </div>
             <div role="tabpanel" class="tab-pane" id="teams">
-                {!! Form::open(['url' => 'manage/skills/add', 'class' => 'id'=>'add-skills']) !!}
+                {!! Form::open(['url' => 'manage/skills/add', 'class' => '', 'id' => 'add-skills']) !!}
+
                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
+
                 {!! Form::submit('Add This Skill', ['class' => 'btn btn-primary btn-lg']) !!}
                 {!! Form::close() !!}
 
@@ -165,7 +168,9 @@
             <div role="tabpanel" class="tab-pane" id="share">
                 <p>Students can sign up for this course by using this link:[URL]</p>
                 <p>If you prefer, you can enter their email addresses and send the link directly to their inbox.</p>
+
                 {{ Form::input('textarea', 'email_list', null, ['class' => 'form-control', 'placeholder' => 'Email Addresses', 'id' => 'email_list']) }}
+
                 {!! Form::submit('Share Course', ['class' => 'btn btn-primary btn-lg']) !!}
 
                 {!! Form::close() !!}
