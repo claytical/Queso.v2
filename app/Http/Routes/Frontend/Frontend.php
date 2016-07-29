@@ -61,6 +61,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('manage/announcement/update', 'AnnouncementController@update')->name('announcement.update');
         Route::get('manage/announcement/{announcement_id}/delete', 'AnnouncementController@delete')->name('announcement.delete');
 
+        Route::get('manage/resources/create', 'ResourceController@create')->name('resource.create');
+
+
 // FILE HANDLING
 
         Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');

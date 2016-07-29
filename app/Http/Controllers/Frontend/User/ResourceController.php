@@ -26,5 +26,13 @@ class ResourceController extends Controller
     {
         return view('frontend.resources.category')
             ->withUser(access()->user());
-    }    
+    }
+
+    public function create()
+    
+    {
+        return view('frontend.manage.resources.create')
+            ->withUser(access()->user());
+    }
+
 }

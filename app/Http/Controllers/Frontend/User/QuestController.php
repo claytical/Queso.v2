@@ -24,33 +24,33 @@ class QuestController extends Controller
     }
 
     public function manage() {
-        return view('frontend.manage.quests')
+        return view('frontend.manage.quests.index')
             ->withUser(access()->user());
 
     }
 
     public function create_form() {
-        return view('frontend.manage.newquest')
+        return view('frontend.manage.quests.new')
             ->withUser(access()->user());
 
     }
 
 
     public function clone_form() {
-        return view('frontend.manage.clonequest')
+        return view('frontend.manage.quests.clone')
             ->withUser(access()->user());
 
     }
 
    public function clone() {
-        return view('frontend.manage.cloned_quest')
+        return view('frontend.manage.quests.cloned')
             ->withUser(access()->user());
 
     }
 
 
     public function create() {
-        return view('frontend.manage.created_quest')
+        return view('frontend.manage.quests.created')
             ->withUser(access()->user());
     }
     public function attempt_submission($quest_id) {
