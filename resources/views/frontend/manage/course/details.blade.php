@@ -50,26 +50,40 @@
 
                 <h4>Current Skills</h4>
                 <ul class="list-unstyled list">
-                    <li><div class="name">Skill #1
+                    <li>
+                        <div class="col-lg-9">
+                            <div class="name">Skill #1
+                            </div>
                         </div>
-                        <div class="pull-right">
-                              <button type="button" class="btn btn-default">Edit</button>
+                        <div class="col-lg-3">
+                            <div class="pull-right">
+                                  <button type="button" class="btn btn-default">Edit</button>
+                            </div>
                         </div>
                     </li>
 
                     <li>
-                        <div class="name">Skill #2
+                        <div class="col-lg-9">
+                            <div class="name">Skill #2
+                            </div>
                         </div>
-                        <div class="pull-right">
-                              <button type="button" class="btn btn-default">Edit</button>
-                            
+                        <div class="col-lg-3">
+                            <div class="pull-right">
+                                  <button type="button" class="btn btn-default">Edit</button>
+                            </div>
                         </div>
                     </li>
-                    <li><div class="name">Skill #3
+                    <li>
+                        <div class="col-lg-9">
+                            <div class="name">Skill #3
+                            </div>
                         </div>
-                        <div class="pull-right">
-                              <button type="button" class="btn btn-default">Edit</button>
+                        <div class="col-lg-3">
+                            <div class="pull-right">
+                                  <button type="button" class="btn btn-default">Edit</button>
+                            </div>
                         </div>
+
                     </li>
 
                 </ul>
@@ -144,27 +158,39 @@
 
                 <h4>Current Skills</h4>
                 <ul class="list-unstyled list">
-                    <li>Blue Team
-                        <div class="pull-right">
-                            <div class="btn-group" role="group" aria-label="...">
-                              <button type="button" class="btn btn-default">Edit</button>
+                    <li>
+                        <div class="col-lg-9">
+                            <div class="name">Blue Team
                             </div>
                         </div>
-                    </li>
+                        <div class="col-lg-3">
+                            <div class="pull-right">
+                                  <button type="button" class="btn btn-default">Edit</button>
+                            </div>
+                        </div>
+                    <li>
+                        <div class="col-lg-9">
+                            <div class="name">Red Team
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="pull-right">
+                                  <button type="button" class="btn btn-default">Edit</button>
+                            </div>
+                        </div>
 
-                    <li>Red Team
-                        <div class="pull-right">
-                            <div class="btn-group" role="group" aria-label="...">
-                              <button type="button" class="btn btn-default">Edit</button>
-                            </div>
-                        </div>
                     </li>
-                    <li>Yellow Team
-                        <div class="pull-right">
-                            <div class="btn-group" role="group" aria-label="...">
-                              <button type="button" class="btn btn-default">Edit</button>
+                    <li>
+                        <div class="col-lg-9">
+                            <div class="name">Yellow Team
                             </div>
                         </div>
+                        <div class="col-lg-3">
+                            <div class="pull-right">
+                                  <button type="button" class="btn btn-default">Edit</button>
+                            </div>
+                        </div>
+
                     </li>
 
                 </ul>
@@ -173,8 +199,7 @@
             <div role="tabpanel" class="tab-pane" id="share">
                 <p>Students can sign up for this course by using this link:[URL]</p>
                 <p>If you prefer, you can enter their email addresses and send the link directly to their inbox.</p>
-
-                {{ Form::input('textarea', 'email_list', null, ['class' => 'form-control', 'placeholder' => 'Email Addresses', 'id' => 'email_list']) }}
+                 {!! Form::textarea('email_list', null, ['class' => 'field']) !!}
 
                 {!! Form::submit('Share Course', ['class' => 'btn btn-primary btn-lg']) !!}
 
