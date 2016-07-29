@@ -25,7 +25,7 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="general">
-                {!! Form::open(['url' => 'manage/course/update', 'class' => 'id'=>'update-course']) !!}
+                {!! Form::open(['url' => 'manage/course/update', 'class' => '', id'=>'update-course']) !!}
                 {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}
 
                 {{ Form::input('text', 'reg_code', null, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
