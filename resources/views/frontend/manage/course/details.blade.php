@@ -177,7 +177,7 @@
             </div>
 
             <div role="tabpanel" class="tab-pane" id="feedback">
-                {!! Form::open(['url' => 'manage/levels/add', 'class' => 'id'=>'add-levels']) !!}
+                {!! Form::open(['url' => 'manage/levels/add', 'class' => '', 'id' => 'add-levels']) !!}
                 
                 {{ Form::input('number', 'peer_group_size', null, ['class' => 'form-control', 'placeholder' => 'Peer Group Size', 'id' => 'peer_group_size']) }}
 
