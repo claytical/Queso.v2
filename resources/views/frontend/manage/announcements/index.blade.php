@@ -23,7 +23,7 @@
                 <li>
                     <div class="row">
                         <div class="col-lg-6 announcement">
-                            {{ link_to('manage/announcement/1', 'Sally Fields') }}
+                            {{ link_to('manage/announcement/1', 'Welcome to Class!') }}
                         </div>
 
                         <div class="col-lg-3 date">
@@ -40,7 +40,7 @@
                 <li>
                     <div class="row">
                         <div class="col-lg-6 announcement">
-                            {{ link_to('manage/announcement/1', 'Sally Fields') }}
+                            {{ link_to('manage/announcement/1', 'Reminder, Pay Attention') }}
                         </div>
                         <div class="col-lg-3 date">
                             00/00/0000
@@ -55,13 +55,15 @@
                 <li>
                     <div class="row">
                         <div class="col-lg-6 announcement">
-                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
+                            {{ link_to('manage/announcement/1', 'No Class On Tuesday') }}
+
                         </div>
                         <div class="col-lg-3 date">
                             00/00/0000
                         </div>
 
                         <div class="col-lg-3">
+                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
                         </div>
  
                     </div>
