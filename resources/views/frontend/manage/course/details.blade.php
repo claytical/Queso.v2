@@ -40,7 +40,7 @@
 
             </div>
             <div role="tabpanel" class="tab-pane" id="skills">
-                {!! Form::open(['url' => 'manage/skills/add', 'class' => 'id'=>'add-skills']) !!}
+                {!! Form::open(['url' => 'manage/skills/add', 'class' => '', 'id' => 'add-skills']) !!}
 
                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
                 
