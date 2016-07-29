@@ -25,6 +25,7 @@
 
     {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
     {!! Form::close() !!}
+    <button class="btn btn-primary btn-lg btn-block">Update</button>
 
 
 </div>

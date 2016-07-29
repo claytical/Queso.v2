@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="col-lg-6">
                 <div class="panel panel-default">
-                  <div class="panel-heading">Announcements</div>
+                  <div class="panel-heading">Announcements <a href="#" class="btn btn-default btn-xs pull-right">View All</a></div>
                   <div class="panel-body">
                     <h4>Announcement Headline</h4>
                     <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
