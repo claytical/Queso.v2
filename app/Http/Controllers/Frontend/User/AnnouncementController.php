@@ -40,7 +40,7 @@ class AnnouncementController extends Controller
             ->withUser(access()->user());
     }
 
-    public function save() {
+    public function created() {
         return view('frontend.manage.created_announcement')
             ->withUser(access()->user());
     }
