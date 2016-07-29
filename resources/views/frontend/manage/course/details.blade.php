@@ -50,26 +50,25 @@
 
                 <h4>Current Skills</h4>
                 <ul class="list-unstyled list">
-                    <li>Skill #1
+                    <li><div class="name">Skill #1
+                        </div>
                         <div class="pull-right">
-                            <div class="btn-group" role="group" aria-label="...">
                               <button type="button" class="btn btn-default">Edit</button>
-                            </div>
                         </div>
                     </li>
 
-                    <li>Skill #2
+                    <li>
+                        <div class="name">Skill #2
+                        </div>
                         <div class="pull-right">
-                            <div class="btn-group" role="group" aria-label="...">
                               <button type="button" class="btn btn-default">Edit</button>
-                            </div>
+                            
                         </div>
                     </li>
-                    <li>Skill #3
+                    <li><div class="name">Skill #3
+                        </div>
                         <div class="pull-right">
-                            <div class="btn-group" role="group" aria-label="...">
                               <button type="button" class="btn btn-default">Edit</button>
-                            </div>
                         </div>
                     </li>
 
@@ -97,7 +96,9 @@
                         0
                     </div>
                     <div class="col-lg-4">
-                         <button type="button" class="btn btn-default">Remove</button>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default">Edit</button>
+                        </div>
                     </div>
                     </li>
 
@@ -109,7 +110,9 @@
                             40
                         </div>
                         <div class="col-lg-4">
-                             <button type="button" class="btn btn-default">Remove</button>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-default">Edit</button>
+                            </div>
                         </div>
                     </li>
 
@@ -121,7 +124,9 @@
                             80
                         </div>
                         <div class="col-lg-4">
-                             <button type="button" class="btn btn-default">Remove</button>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-default">Edit</button>
+                            </div>
                         </div>
                     </li>
 
