@@ -19,36 +19,58 @@
              <ul class="list-unstyled list">
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 quest">
+                        <div class="col-lg-6 quest">
                             {{ link_to('quest/1/attempt/submission', 'Submission Quest') }}
                         </div>
 
                         <div class="col-lg-3 category">
                             Prototypes
                         </div>
+
+                        <div class="col-lg-3">
+                        {{ link_to('manage/quest/1/delete', 'Delete') }}
+                        {{ link_to('manage/quest/1/clone', 'Clone') }}
+                        {{ link_to('manage/quest/1/show', 'Show') }}
+                        {{ link_to('manage/quest/1/hide', 'Hide') }}
+
+                        </div>                        
                     </div>
                 </li>
 
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 quest">
+                        <div class="col-lg-6 quest">
                             {{ link_to('quest/1/attempt/submission', 'Link Quest') }}
                         </div>
 
                         <div class="col-lg-3 category">
                             Prototypes
                         </div>
+                        <div class="col-lg-3">
+                        {{ link_to('manage/quest/1/delete', 'Delete') }}
+                        {{ link_to('manage/quest/1/clone', 'Clone') }}
+                        {{ link_to('manage/quest/1/show', 'Show') }}
+                        {{ link_to('manage/quest/1/hide', 'Hide') }}
+
+                        </div>                         
                     </div>
                 </li>
 
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 quest">
-                            {{ link_to('quest/1/attempt/submission', 'Video Quest') }}
+                        <div class="col-lg-6 quest">
+                            {{ link_to('quest/1/attempt/submission', 'Instant Quest') }}
                         </div>
 
                         <div class="col-lg-3 category">
                             Prototypes
+                        </div>
+                        <div class="col-lg-3">
+                        {{ link_to('manage/quest/1/delete', 'Delete') }}
+                        {{ link_to('manage/quest/1/clone', 'Clone') }}
+                        {{ link_to('manage/quest/1/show', 'Show') }}
+                        {{ link_to('manage/quest/1/hide', 'Hide') }}
+                        {{ link_to('manage/quest/1/qrcodes', 'QR Codes') }}
                         </div>
                     </div>
                 </li>

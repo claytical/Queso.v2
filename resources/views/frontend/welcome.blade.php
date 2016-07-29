@@ -23,6 +23,8 @@
                             <h4>Instructor: John Doe</h4>
                             <h4>Class Time: Wednesdays at 3pm</h4>
                             <h4>Current Level: B+ (89/100)</h4>
+                            <h5>Your Peer Group</h5>
+                            <p>Edward Sharp, Joan Dawson, Donny Walker, Sally Fields</p>
                         </div>
                 </div>
             </div>

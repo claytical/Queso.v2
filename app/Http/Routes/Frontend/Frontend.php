@@ -49,6 +49,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/quests', 'QuestController@manage')->name('quests.manage');
         Route::get('manage/quest/create', 'QuestController@create_form')->name('quests.create.begin');
         Route::post('manage/quest/create', 'QuestController@create')->name('quests.create');
+        Route::get('manage/quest/{quest_id}/delete', 'QuestController@delete')->name('quests.delete');
+        Route::get('manage/quest/{quest_id}/show', 'QuestController@show')->name('quests.show');
+        Route::get('manage/quest/{quest_id}/hide', 'QuestController@hide')->name('quests.hide');
+        Route::get('manage/quest/{quest_id}/qrcodes', 'QuestController@qrcodes')->name('quests.qrcodes');
+        Route::get('manage/quest/{quest_id}/qrcards', 'QuestController@qrcade_sheet')->name('quests.qrcards');
+
+        Route::get('manage/quest/{quest_id}', 'QuestController@edit')->name('quests.edit');
         Route::get('manage/quest/clone', 'QuestController@clone_form')->name('quests.clone.begin');
         Route::post('manage/quest/clone', 'QuestController@clone')->name('quest.clone');
         Route::get('manage/students', 'StudentController@index')->name('students.manage');

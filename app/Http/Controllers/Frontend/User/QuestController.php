@@ -36,6 +36,44 @@ class QuestController extends Controller
     }
 
 
+    public function edit_form() {
+        return view('frontend.manage.quests.edit')
+            ->withUser(access()->user());
+
+    }
+    public function qrcodes() {
+        return view('frontend.manage.quests.qrcodes')
+            ->withUser(access()->user());
+
+    }
+    
+    public function qrcards() {
+        return view('frontend.manage.quests.qrcards')
+            ->withUser(access()->user());
+
+    }
+
+    public function show() {
+        return view('frontend.manage.quests.show')
+            ->withUser(access()->user());
+
+    }
+    public function hide() {
+        return view('frontend.manage.quests.hide')
+            ->withUser(access()->user());
+
+    }
+
+    public function update() {
+        return view('frontend.manage.quests.updated')
+            ->withUser(access()->user());
+
+    }
+    public function delete() {
+        return view('frontend.manage.quests.deleted')
+            ->withUser(access()->user());
+    }
+
     public function clone_form() {
         return view('frontend.manage.quests.clone')
             ->withUser(access()->user());
