@@ -24,7 +24,7 @@ class AnnouncementController extends Controller
 
     public function create()
     {
-        return view('frontend.manage.create_announcement')
+        return view('frontend.manage.announcements.create')
             ->withUser(access()->user());
     }
 
@@ -40,7 +40,7 @@ class AnnouncementController extends Controller
             ->withUser(access()->user());
     }
 
-    public function created() {
+    public function save() {
         return view('frontend.manage.announcements.created')
             ->withUser(access()->user());
     }
