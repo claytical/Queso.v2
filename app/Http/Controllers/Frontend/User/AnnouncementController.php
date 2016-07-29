@@ -45,6 +45,9 @@ class AnnouncementController extends Controller
             ->withUser(access()->user());
     }
 
+    public function delete() {
+        return view('frontend.manage.announcements.deleted');
+    }
 
     public function manage()
     {

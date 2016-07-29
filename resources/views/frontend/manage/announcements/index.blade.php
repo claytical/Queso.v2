@@ -13,19 +13,25 @@
             <h5>Headline</h5>
         </div>
         <div class="col-lg-3">
-            <h5>Actions</h5>
+            <h5>Date</h5>
+        </div>
+        <div class="col-lg-3">
         </div>
 
         <div class="col-lg-12">
              <ul class="list-unstyled list">
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 announcement">
+                        <div class="col-lg-6 announcement">
                             {{ link_to('manage/announcement/1', 'Sally Fields') }}
                         </div>
 
-                        <div class="col-lg-3 grade">
-                            [STICKY] / [DELETE]
+                        <div class="col-lg-3 date">
+                            00/00/0000
+                        </div>
+
+                        <div class="col-lg-3">
+                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
                         </div>
  
                     </div>
@@ -33,12 +39,14 @@
 
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 announcement">
+                        <div class="col-lg-6 announcement">
                             {{ link_to('manage/announcement/1', 'Sally Fields') }}
                         </div>
-
-                        <div class="col-lg-3 grade">
-                            [STICKY] / [DELETE]
+                        <div class="col-lg-3 date">
+                            00/00/0000
+                        </div>
+                        <div class="col-lg-3">
+                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
                         </div>
  
                     </div>
@@ -46,12 +54,14 @@
 
                 <li>
                     <div class="row">
-                        <div class="col-lg-9 announcement">
-                            {{ link_to('manage/announcement/1', 'Sally Fields') }}
+                        <div class="col-lg-6 announcement">
+                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
+                        </div>
+                        <div class="col-lg-3 date">
+                            00/00/0000
                         </div>
 
-                        <div class="col-lg-3 grade">
-                            [STICKY] / [DELETE]
+                        <div class="col-lg-3">
                         </div>
  
                     </div>
