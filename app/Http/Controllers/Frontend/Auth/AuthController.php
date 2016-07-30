@@ -39,7 +39,7 @@ class AuthController extends Controller
         //Check if user has a default course
         //if they do, go to dashboard, if not
         //page to add class or join course
-        if(access()->user()->default_course_id) {
+        if(is_null(access()->user()->default_course_id)) {
             return route('frontend.user.dashboard');
         }
         else {
