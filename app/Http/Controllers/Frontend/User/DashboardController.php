@@ -21,4 +21,9 @@ class DashboardController extends Controller
             ->withUser(access()->user());
     }
     
+    public function choose() {
+        return view('frontend.user.choose')
+            ->withUser(access()->user());
+
+    }
 }

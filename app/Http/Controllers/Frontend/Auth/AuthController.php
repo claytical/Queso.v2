@@ -43,8 +43,7 @@ class AuthController extends Controller
             return route('frontend.user.dashboard');
         }
         else {
-            return view('frontend.user.choose')
-            ->withUser(access()->user());
+            return route('frontend.user.choose');
         }
 /*
         if (access()->allow('view-backend')) {
