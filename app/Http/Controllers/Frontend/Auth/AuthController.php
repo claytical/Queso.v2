@@ -43,7 +43,7 @@ class AuthController extends Controller
             return route('frontend.user.dashboard');
         }
         else {
-            return view('frontend.user')
+            return view('frontend.user.choose')
             ->withUser(access()->user());
         }
 /*
