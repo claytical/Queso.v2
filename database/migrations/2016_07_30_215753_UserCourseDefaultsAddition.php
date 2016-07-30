@@ -13,7 +13,7 @@ class UserCourseDefaultsAddition extends Migration
     public function up()
     {
         Schema::table(config('access.users_table'), function ($table) {
-            $table->integer('default_course_id')->nullable();
+            $table->integer('default_course_id')->default(0);
         });
 
     }
