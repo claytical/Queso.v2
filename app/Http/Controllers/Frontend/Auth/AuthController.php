@@ -35,10 +35,23 @@ class AuthController extends Controller
      */
     public function redirectPath()
     {
+
+        //Check if user has a default course
+        //if they do, go to dashboard, if not
+        //page to add class or join course
+        if(access()->user()->default_course_id) {
+            return route('frontend.user.dashboard');
+        }
+        else {
+            return view('frontend.user')
+            ->withUser(access()->user());
+        }
+/*
         if (access()->allow('view-backend')) {
             return route('admin.dashboard');
         }
         
         return route('frontend.user.dashboard');
+*/
     }
 }

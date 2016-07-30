@@ -1,17 +1,10 @@
 @extends('frontend.layouts.guest')
 
 @section('content')
-    <div class="row">
+<h2>Register</h2>
 
-        <div class="col-md-8 col-md-offset-2">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('labels.frontend.auth.register_box_title') }}</div>
-
-                <div class="panel-body">
-
+        <div class="col-md-12">
                     {{ Form::open(['route' => 'auth.register', 'class' => 'form-horizontal']) }}
-
                     <div class="form-group">
                         {{ Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">
@@ -25,6 +18,14 @@
                             {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
+
+                    <div class="form-group">
+                        {{ Form::label('registration_code', 'Registration Code', ['class' => 'col-md-4 control-label']) }}
+                        <div class="col-md-6">
+                            {{ Form::input('text', 'registration_code', null, ['class' => 'form-control', 'placeholder' => '']) }}
+                        </div><!--col-md-6-->
+                    </div><!--form-group-->
+
 
                     <div class="form-group">
                         {{ Form::label('password', trans('validation.attributes.frontend.password'), ['class' => 'col-md-4 control-label']) }}
@@ -57,13 +58,7 @@
 
                     {{ Form::close() }}
 
-                </div><!-- panel body -->
-
-            </div><!-- panel -->
-
-        </div><!-- col-md-8 -->
-
-    </div><!-- row -->
+        </div><!-- col-lg-12 -->
 @endsection
 
 @section('after-scripts-end')
