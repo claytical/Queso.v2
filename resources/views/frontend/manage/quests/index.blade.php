@@ -20,7 +20,7 @@
                 <li>
                     <div class="row">
                         <div class="col-lg-6 quest">
-                            {{ link_to('quest/1/attempt/submission', 'Submission Quest') }}
+                            {{ link_to('manage/quest/1', 'Submission Quest') }}
                         </div>
 
                         <div class="col-lg-3 category">
@@ -40,7 +40,7 @@
                 <li>
                     <div class="row">
                         <div class="col-lg-6 quest">
-                            {{ link_to('quest/1/attempt/submission', 'Link Quest') }}
+                            {{ link_to('manage/quest/1', 'Link Quest') }}
                         </div>
 
                         <div class="col-lg-3 category">
@@ -59,7 +59,7 @@
                 <li>
                     <div class="row">
                         <div class="col-lg-6 quest">
-                            {{ link_to('quest/1/attempt/submission', 'Instant Quest') }}
+                            {{ link_to('manage/quest/1', 'Instant Quest') }}
                         </div>
 
                         <div class="col-lg-3 category">

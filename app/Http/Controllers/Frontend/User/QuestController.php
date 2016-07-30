@@ -37,7 +37,7 @@ class QuestController extends Controller
 
 
     public function edit_form() {
-        return view('frontend.manage.quests.edit')
+        return view('frontend.manage.quests.details')
             ->withUser(access()->user());
 
     }
