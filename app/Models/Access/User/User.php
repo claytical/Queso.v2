@@ -37,7 +37,7 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     public function courses() {
-        return $this->hasMany('App\Course');
+        return $this->belongsToMany('App\Course');
 
     }
 }
