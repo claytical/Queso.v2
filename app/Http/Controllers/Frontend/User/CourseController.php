@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Vinelab\Http\Client as HttpClient;
-use Course;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 /**
