@@ -25,7 +25,7 @@ class CourseController extends Controller
     public function create() {
 		//TODO: Create new course
 		//TODO: Set default_course_id
-    	return redirect()->route('add.skills');
+    	return redirect()->route('course.add.skills');
     }
 
     public function add_skills() {
