@@ -8,6 +8,7 @@
 
         <p>If you prefer to not use sets of skills, you can create just one skill. For example, "Points" or "XP."</p>
                {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
+               
                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
                 {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-lg']) !!}
                 {!! Form::close() !!}

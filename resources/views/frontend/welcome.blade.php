@@ -12,7 +12,6 @@
 
                     <h4>Announcement Headline</h4>
                     <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-                    {!! var_dump(access()->user()) !!}
                   </div>
                 </div>            
             </div>

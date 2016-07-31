@@ -18,7 +18,7 @@
 
     </div>
     <div class="col-lg-12">
-        {{ link_to('instructions', 'Finish!', ['class' => 'btn btn-default btn-block']) }}
+        {{ link_to('course/instructions', 'Finish!', ['class' => 'btn btn-default btn-block']) }}
     </div>
 @endsection
 
