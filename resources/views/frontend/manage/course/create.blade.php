@@ -4,7 +4,7 @@
 
     <div class="col-lg-12">
         <h2>Create a Course</h2>
-                {!! Form::open(['url' => 'manage/course/create', 'class' => '', 'id' => 'create-course']) !!}
+                {!! Form::open(['url' => 'course/create', 'class' => '', 'id' => 'create-course']) !!}
 
                 {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}
 
