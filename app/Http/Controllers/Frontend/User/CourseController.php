@@ -32,7 +32,7 @@ class CourseController extends Controller
     	$course->description = $request->description;
     	$course->meeting = $request->meeting_time;
     	if ($request->reg_code) {
-    		$course->code = $request->code;
+    		$course->code = $request->reg_code;
 		}
 		else {
 			$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
