@@ -65,7 +65,7 @@ class CourseController extends Controller
         $coursePermission->created_at   = Carbon::now();
         $coursePermission->updated_at   = Carbon::now();
         $coursePermission->save();
-        $user->attachRole($coursePermission->id);
+        $user->allow($coursePermission);
 		
 		//Add course-instructor permission
 
@@ -76,7 +76,7 @@ class CourseController extends Controller
         $course_instructorPermission->created_at   = Carbon::now();
         $course_instructorPermission->updated_at   = Carbon::now();
         $course_instructorPermission->save();
-        $user->attachRole($course_instructorPermission->id);
+        $user->allow($course_instructorPermission);
 
         //save course_id as current course session
         $request->session()->put('current_course', $course->id);
