@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.unassigned')
 
 @section('content')
 
@@ -15,9 +15,11 @@
         <ul>
             <li></li>
         </ul>
-
-        <a href="#" class="btn btn-default">Continue to Levels</a>
     </div>
+    <div class="col-lg-12">
+        {{ link_to('course/add/levels', 'Continue to Levels', ['class' => 'btn btn-default btn-block']) }}
+    </div>
+
 
 
 @endsection

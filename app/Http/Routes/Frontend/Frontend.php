@@ -12,6 +12,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'User'], function() {
 		Route::get('dashboard', 'DashboardController@index')->name('frontend.user.dashboard');
         Route::get('choose', 'DashboardController@choose')->name('frontend.user.choose');
+        
+        Route::get('course/join', 'CourseController@register')->name('course.register');
+        Route::post('course/join', 'CourseController@join')->name('course.join');
+
+        Route::get('course/create', 'CourseController@create_form')->name('course.create');
+        Route::post('course/create', 'CourseController@create')->name('course.created');
+        Route::get('course/add/levels', 'CourseController@add_levels')->name('course.add.levels');
+        Route::get('course/add/skills', 'CourseController@add_skills')->name('course.add.skills');
+        Route::get('course/instructions', 'CourseController@instructions')->name('course.instructions');
         Route::get('profile/edit', 'ProfileController@edit')->name('frontend.user.profile.edit');
         Route::patch('profile/update', 'ProfileController@update')->name('frontend.user.profile.update');    
         Route::get('quests/available', 'QuestController@available')->name('quests.available'); 

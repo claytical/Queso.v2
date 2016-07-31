@@ -1,8 +1,16 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.unassigned')
 
 @section('content')
 <h2>Choose Your Destiny</h2>
-<div class="col-lg-12">
-    <a href="#" class="btn btn-default">Student</a> or <a href="#" class="btn btn-default">Instructor</a>
+<p class="lead">
+    Before we begin, are you a student looking to add a class or an instructor looking to create one?
+</p>
+    
+<div class="col-lg-6">
+    {{ link_to('course/join', 'Student', ['class' => 'btn btn-default btn-block']) }}
+</div>
+
+<div class="col-lg-6">
+    {{ link_to('course/create', 'Instructor', ['class' => 'btn btn-default btn-block']) }}
 </div>
 @endsection

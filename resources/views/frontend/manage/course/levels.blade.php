@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.unassigned')
 
 @section('content')
 
@@ -17,9 +17,9 @@
         </ul>
 
     </div>
-
-        <a href="#" class="btn btn-default">Finish</a>
-
+    <div class="col-lg-12">
+        {{ link_to('instructions', 'Finish!', ['class' => 'btn btn-default btn-block']) }}
+    </div>
 @endsection
 
 @section('after-scripts-end')

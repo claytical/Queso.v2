@@ -14,7 +14,9 @@
 
 
     </div>
-
+    <div class="col-lg-12">
+        {{ link_to('dashboard', 'Go to Dashboard', ['class' => 'btn btn-default btn-block']) }}
+    </div>
 @endsection
 
 @section('after-scripts-end')
