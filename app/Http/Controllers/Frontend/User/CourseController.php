@@ -9,6 +9,7 @@ use App\Course;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Skill;
+use App\Models\Access\Role\Role;
 
 /**
  * Class DashboardController
@@ -66,7 +67,6 @@ class CourseController extends Controller
         $coursePermission->created_at   = Carbon::now();
         $coursePermission->updated_at   = Carbon::now();
         $coursePermission->save();
-        $user->allow($coursePermission);
 		
 		//Add course-instructor permission
 
@@ -77,7 +77,21 @@ class CourseController extends Controller
         $course_instructorPermission->created_at   = Carbon::now();
         $course_instructorPermission->updated_at   = Carbon::now();
         $course_instructorPermission->save();
-        $user->allow($course_instructorPermission);
+
+        $role = new Role;
+        $role->name = $course->name . " Student ";
+        $role->all = false;
+        $role->save();
+        $role->permissions()->sync([$coursePermission->id]);
+
+
+        $role = new Role;
+        $role->name = $course->name . " Instructor";
+        $role->all = false;
+        $role->save();
+        $role->permissions()->sync([$course_instructorPermission->id, $coursePermission->id]);
+
+        $user->attachRole($role->id);
 
         //save course_id as current course session
         $request->session()->put('current_course', $course->id);
