@@ -11,7 +11,7 @@
                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
                 {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-lg']) !!}
                 {!! Form::close() !!}
-
+                {!! var_dump($skills) !!}
         <ul id="skills">
             @foreach($skills as $skill)
                <li>{!! $skill->name !!}</li>
