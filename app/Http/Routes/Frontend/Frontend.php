@@ -16,8 +16,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('course/join', 'CourseController@register')->name('course.register');
         Route::post('course/join', 'CourseController@join')->name('course.join');
 
-//        Route::get('course/create', 'CourseController@create_form')->name('course.create');
-        Route::post('course/create', 'CourseController@create')->name('course.created');
+        Route::get('course/create', 'CourseController@create_form')->name('course.create');
+//        Route::post('course/create', 'CourseController@create')->name('course.created');
         Route::get('course/add/levels', 'CourseController@add_levels')->name('course.add.levels');
         Route::get('course/add/skills', 'CourseController@add_skills')->name('course.add.skills');
         Route::get('course/instructions', 'CourseController@instructions')->name('course.instructions');
