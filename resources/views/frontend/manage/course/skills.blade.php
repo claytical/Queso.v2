@@ -46,8 +46,8 @@
     }; 
  
     // bind to the form's submit event 
-    $('#add-skill').submit(function() { 
-        // inside event callbacks 'this' is the DOM element so we first 
+    $('#add-skill').bind('submit', function() {
+       // inside event callbacks 'this' is the DOM element so we first 
         // wrap it in a jQuery object and then invoke ajaxSubmit 
         $(this).ajaxSubmit(options); 
  
@@ -69,7 +69,7 @@ function showRequest(formData, jqForm, options) {
  
     // here we could return false to prevent the form from being submitted; 
     // returning anything other than false will allow the form submit to continue 
-    return true; 
+    return false; 
 } 
  
 // post-submit callback 
