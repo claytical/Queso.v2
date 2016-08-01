@@ -46,8 +46,9 @@
     }; 
  
     // bind to the form's submit event 
-    $('#add-skill').bind('submit', function() {
-       // inside event callbacks 'this' is the DOM element so we first 
+$( "#add-skill" ).submit(function( event ) {
+          alert( "Handler for .submit() called." );
+            event.preventDefault();       // inside event callbacks 'this' is the DOM element so we first 
         // wrap it in a jQuery object and then invoke ajaxSubmit 
         $(this).ajaxSubmit(options); 
  
