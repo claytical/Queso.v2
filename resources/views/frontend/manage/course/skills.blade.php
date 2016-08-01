@@ -47,8 +47,8 @@
  
     // bind to the form's submit event 
 $( "#add-skill" ).submit(function( event ) {
-          alert( "Handler for .submit() called." );
-            event.preventDefault();       // inside event callbacks 'this' is the DOM element so we first 
+//          alert( "Handler for .submit() called." );
+ //           event.preventDefault();       // inside event callbacks 'this' is the DOM element so we first 
         // wrap it in a jQuery object and then invoke ajaxSubmit 
         $(this).ajaxSubmit(options); 
  
@@ -86,6 +86,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
     // property set to 'json' then the first argument to the success callback 
     // is the json data object returned by the server 
     $('#skills').append("<li>" + responseText.name + "</li>");
+    console.log(responseText);
 } 
 
 
