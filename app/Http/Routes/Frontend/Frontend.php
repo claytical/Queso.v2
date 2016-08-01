@@ -15,17 +15,19 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::get('course/join', 'CourseController@register')->name('course.register');
         Route::post('course/join', 'CourseController@join')->name('course.join');
-
         Route::get('course/create', 'CourseController@create_form')->name('course.create');
         Route::post('course/create', 'CourseController@create')->name('course.created');
         Route::get('course/add/levels', 'CourseController@add_levels')->name('course.add.levels');
         Route::get('course/add/skills', 'CourseController@add_skills')->name('course.add.skills');
+        Route::post('course/add/skill', 'CourseController@add_skill')->name('course.add.skill');
+
         Route::get('course/instructions', 'CourseController@instructions')->name('course.instructions');
+
         Route::get('profile/edit', 'ProfileController@edit')->name('frontend.user.profile.edit');
         Route::patch('profile/update', 'ProfileController@update')->name('frontend.user.profile.update');    
         Route::get('quests/available', 'QuestController@available')->name('quests.available'); 
-        Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt'); //done
-        Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt'); //done
+        Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt');
+        Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt');
         Route::get('quest/{quest_id}/attempt/link', 'QuestController@attempt_link')->name('link.attempt');
         Route::get('quest/{quest_id}/watch', 'QuestController@watch_video')->name('quest.watch');
         Route::get('quest/redeem', 'QuestController@redeem')->name('quest.redeem');
@@ -34,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('quest/revise', 'QuestController@revise')->name('quest.revised'); 
         Route::post('quest/watched', 'QuestController@watched')->name('quest.watched'); 
 
-        Route::get('quest/{quest_id}/revise/submission', 'QuestController@revise_submission')->name('revise.submission'); //done
+        Route::get('quest/{quest_id}/revise/submission', 'QuestController@revise_submission')->name('revise.submission');
 
         Route::get('quests/history', 'QuestController@history')->name('quests.history');
         
