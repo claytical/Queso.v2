@@ -8,6 +8,7 @@ use Vinelab\Http\Client as HttpClient;
 use App\Course;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Skill;
 
 /**
  * Class DashboardController
@@ -85,9 +86,18 @@ class CourseController extends Controller
     }
 
     public function add_skills() {
-        return view('frontend.manage.course.skills')
-            ->withUser(access()->user());
+    	$skills = Course::find(session('current_course')->skills();
 
+        return view('frontend.manage.course.skills', ['skills' => $skills])
+            ->withUser(access()->user());
+    }
+
+    public function add_skill(Request $request) {
+    	$skill = new Skill;
+    	$skill->name = $request->skill;
+    	$skill->course_id = $request->session()->get('current_course');
+    	$skill->save();
+    	return response()->json($skill);
     }
 
     public function add_levels() {

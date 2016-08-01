@@ -8,7 +8,7 @@ use App\Services\Access\Traits\UseSocialite;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use App\Services\Access\Traits\AuthenticatesAndRegistersUsers;
 use App\Repositories\Frontend\Access\User\UserRepositoryContract;
-
+use App\Course;
 /**
  * Class AuthController
  * @package App\Http\Controllers\Frontend\Auth
@@ -41,11 +41,32 @@ class AuthController extends Controller
         //page to add class or join course
         //return route('frontend.user.choose');
 
-        if(access()->user()->default_course_id == 0) {
+        $user = access()->user();
+        if($user->default_course_id == 0) {
             return route('frontend.user.choose');
         }
         else {
+            session(['current_course' => $user->default_course_id]);
+
+            //CHECK IF INSTRUCTOR OF DEFAULT COURSE
+//            $course = Course::find($user->default_course_id);
+            if(access()->hasPermission(access()->hasPermission('course-' . $user->default_course_id . '-instructor'))) {
+                //IS INSTRUCTOR
+
+                $course = Course::find($user->default_course_id);
+                if($course->skills()->count == 0) {
+                    //no skills, go to skills page
+                    return route('course.add.skills');
+                }
+                else if($course->levels()->count == 0) {
+                    //no levels, go to the levels page
+                    return route('course.add.levels');
+                }
+
+            }
+            //double check access for user?
             return route('frontend.user.dashboard');
+
         }
 
 
