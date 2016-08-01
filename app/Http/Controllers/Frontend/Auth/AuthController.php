@@ -52,6 +52,8 @@ class AuthController extends Controller
 //            $course = Course::find($user->default_course_id);
             if(access()->hasPermission(access()->hasPermission('course-' . $user->default_course_id . '-instructor'))) {
                 //IS INSTRUCTOR
+                                session('perm' => 'is instructor');
+
 
                 $course = Course::find($user->default_course_id);
                 if($course->skills()->count == 0) {
@@ -63,6 +65,9 @@ class AuthController extends Controller
                     return route('course.add.levels');
                 }
 
+            }
+            else {
+                session('perm' => 'not available');
             }
             //double check access for user?
             return route('frontend.user.dashboard');
