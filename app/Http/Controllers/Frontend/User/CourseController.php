@@ -103,7 +103,7 @@ class CourseController extends Controller
 
     public function add_skills() {
     	
-    	$skills = Course::find(session('current_course')->skills();
+    	$skills = Course::find(session('current_course'))->skills();
 
         return view('frontend.manage.course.skills', ['skills' => $skills])
             ->withUser(access()->user());
@@ -111,13 +111,13 @@ class CourseController extends Controller
     }
 
     public function add_skill(Request $request) {
-    /*
+    
     	$skill = new Skill;
     	$skill->name = $request->skill;
     	$skill->course_id = $request->session()->get('current_course');
     	$skill->save();
     	return response()->json($skill);
-    */
+    
     }
 
     public function add_levels() {
