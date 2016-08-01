@@ -1,7 +1,6 @@
 @extends('frontend.layouts.unassigned')
 
 @section('content')
-    <script src="http://malsup.github.com/jquery.form.js"></script> 
     <div class="col-lg-12">
         <h2>Skills</h2>
         <p>Skills allow you to evaluate quests. You can set thresholds of points for specific skills before specific quests are able to be attempted by a student. The combined totals of each skill will be used to assign levels.</p>
