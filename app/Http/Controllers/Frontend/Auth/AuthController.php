@@ -52,7 +52,7 @@ class AuthController extends Controller
 //            $course = Course::find($user->default_course_id);
             if(access()->hasPermission(access()->hasPermission('course-' . $user->default_course_id . '-instructor'))) {
                 //IS INSTRUCTOR
-                                session('perm' => 'is instructor');
+                                session(['perm' => 'is instructor']);
 
 
                 $course = Course::find($user->default_course_id);
@@ -67,7 +67,7 @@ class AuthController extends Controller
 
             }
             else {
-                session('perm' => 'not available');
+                session(['perm' => 'not available']);
             }
             //double check access for user?
             return route('frontend.user.dashboard');
