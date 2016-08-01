@@ -28,7 +28,7 @@ class CourseController extends Controller
     }
 
     public function create(Request $request) {
-    	/*
+    	
     	//CREATE COURSE
     	$course = new Course;
     	$course->name = $request->name;
@@ -98,7 +98,7 @@ class CourseController extends Controller
         $request->session()->put('current_course', $course->id);
 
     	return redirect()->route('course.add.skills');
-    	*/
+    	
     }
 
     public function add_skills() {
