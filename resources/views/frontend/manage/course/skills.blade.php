@@ -30,7 +30,6 @@
 @section('after-scripts-end')
     <script>
 // prepare the form when the DOM is ready 
-$(document).ready(function() { 
     var options = { 
         target:        '#skills',   // target element(s) to be updated with server response 
         beforeSubmit:  showRequest,  // pre-submit callback 
@@ -57,7 +56,6 @@ $(document).ready(function() {
         // always return false to prevent standard browser submit and page navigation 
         return false; 
     }); 
-}); 
  
 // pre-submit callback 
 function showRequest(formData, jqForm, options) { 
