@@ -23,9 +23,8 @@ class CourseController extends Controller
      */
 
     public function create_form() {
-    	return view('frontend.user.dashboard');
-//    	return view('frontend.manage.course.create')
-//           ->withUser(access()->user());
+    	return view('frontend.manage.course.create')
+           ->withUser(access()->user());
     }
 
     public function create(Request $request) {
