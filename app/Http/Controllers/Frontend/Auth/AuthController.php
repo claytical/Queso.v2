@@ -43,6 +43,7 @@ class AuthController extends Controller
 
         $user = access()->user();
         if($user->default_course_id == 0) {
+            session(['current_course' => 0);
             return route('frontend.user.choose');
         }
         else {
