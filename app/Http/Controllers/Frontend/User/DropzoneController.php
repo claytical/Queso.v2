@@ -24,14 +24,21 @@ public function uploadFiles(Request $request) {
         if($no_of_files==0) {
             return "ERROR, NO FILES!";
         }
-        for($i=0;$i<$no_of_files;$i++) {
-            $file = $files[$i];
-            if($file){
-                $random_name=str_random(5).$file->getClientOriginalName();
-                $file->move(public_path().'/uploads/',$random_name);
-                $files_on_server[] = $random_name;
-                //TODO: Store in database with user id
+        else if ($no_of_files == 1) {
+            $random_name = str_random(5).$file->getClientOriginalName();
+            $file->move(public_path().'/uploads/',$random_name);
+            $files_on_server[] = $random_name;
+        }
+        else {
+            for($i=0;$i<$no_of_files;$i++) {
+                $file = $files[$i];
+                if($file){
+                    $random_name=str_random(5).$file->getClientOriginalName();
+                    $file->move(public_path().'/uploads/',$random_name);
+                    $files_on_server[] = $random_name;
+                    //TODO: Store in database with user id
 
+                }
             }
         }
         return response()->json($files_on_server);
