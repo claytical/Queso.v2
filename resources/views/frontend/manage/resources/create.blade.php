@@ -17,7 +17,7 @@
    	{{ Form::input('text', 'link', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
     {!! Form::close() !!}
 
-    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
+    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'resource-dropzone']) !!}
     {!! Form::close() !!}
 
     <button class="btn btn-primary btn-lg btn-block">Create</button>
@@ -27,5 +27,13 @@
 
 @section('after-scripts-end')
     <script>
+    Dropzone.options.resourceDropzone = {
+      init: function() {
+        this.on("sendingmultiple", function(file) { 
+                console.log(file);
+//            $('#resource-create-form').append("<input name='files[]' type='hidden' value=''>");
+            });
+        }
+    };
     </script>
 @stop
