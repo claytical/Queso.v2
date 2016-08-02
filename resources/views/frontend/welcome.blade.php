@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">Announcements {{ link_to('announcements', 'View All', ['class' =>'btn btn-default btn-xs pull-right']) }}</div>
                   <div class="panel-body">
-                    @if($announcements)
+                    @if(!$announcements->isEmpty())
                         @foreach($announcements as $announcement)
                             <h4>{!! $announcement->title !!}</h4>
                             <div>
