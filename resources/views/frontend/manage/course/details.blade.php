@@ -55,6 +55,7 @@
                                 </div>
                             </div>
                         </li>
+                    @endforeach
                         <li>
                             <div class="col-lg-9">
                                 {!! Form::open(['url' => 'course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
@@ -68,7 +69,7 @@
 
                                 </div>
                             </div>
-                    @endforeach
+                        </li>
                 </ul>
 
             </div>
