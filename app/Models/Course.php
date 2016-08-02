@@ -28,7 +28,7 @@ class Course extends Model
     }
     
     public function skillsCount() {
-        return $this->hasOne('Skill')
+        return $this->hasOne('App\Skill')
                 ->selectRaw('skill_id, count(*) as aggregate')
                 ->groupBy('skill_id');
     }
