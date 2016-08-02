@@ -54,21 +54,21 @@
                 <h4>Current Skills</h4>
                 <ul class="list-unstyled list">
                     @foreach($skills as $skill)
-                    <li>
-                        <div class="col-lg-9">
-                            <div class="name">{!! $skill->name !!}
+                        <li>
+                            <div class="col-lg-9">
+                                <div class="name">{!! $skill->name !!}
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pull-right">
-                                                {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
-                                                {!! Form::hidden('skill', $skill->id) !!}
-                                                {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
-                                                {!! Form::close() !!}
+                            <div class="col-lg-3">
+                                <div class="pull-right">
+                                    {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
+                                    {!! Form::hidden('skill', $skill->id) !!}
+                                    {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
+                                    {!! Form::close() !!}
+                                </div>
                             </div>
-                        </div>
-                    </li>
-
+                        </li>
+                    @endforeach
                 </ul>
 
             </div>
@@ -90,19 +90,20 @@
                 <h4>Current Levels</h4>
                 <ul class="list-unstyled list">
                     @foreach($levels as $level)
-                    <li>
-                    <div class="col-lg-4">
-                        {!! $level->name !!}
-                    </div>
-                    <div class="col-lg-4">
-                        {!! $level->amount !!}
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-default">Edit</button>
-                        </div>
-                    </div>
-                    </li>
+                        <li>
+                            <div class="col-lg-4">
+                                {!! $level->name !!}
+                            </div>
+                            <div class="col-lg-4">
+                                {!! $level->amount !!}
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-default">Edit</button>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
 
 
