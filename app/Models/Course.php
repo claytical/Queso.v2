@@ -22,16 +22,17 @@ class Course extends Model
     public function content() {
         return $this->hasMany('App\Content');
     }
-    /*
+    
     public function teams() {
     	return $this->hasManyThrough('App\Team', 'App\Models\Access\User\User');
     }
-    */
+    
 
+/*
     public function teams() {
         return $this->hasMany('App\Team');
     }
-    
+  */  
     public function skills() {
     	return $this->hasMany('App\Skill');
     }

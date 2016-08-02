@@ -226,7 +226,7 @@ class CourseController extends Controller
     	$course = Course::find(session('current_course'));
     	$skills = $course->skills;
     	$levels = $course->levels;
-    	$teams = $course->teams;
+    	$teams = [];
         return view('frontend.manage.course.details', ['course' => $course, 'skills' => $skills, 'levels' => $levels, 'teams' => $teams])
             ->withUser(access()->user());
 
