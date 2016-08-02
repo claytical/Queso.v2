@@ -3,7 +3,7 @@
 @section('content')
 <h2>Announcements</h2>
     <div class="col-lg-12">
-        @if(count($announcements) <= 0)
+        @if(is_empty($announcements))
             <p class="lead">There are no announcements!</p>
         @endif
         <ul class="list-unstyled list">
