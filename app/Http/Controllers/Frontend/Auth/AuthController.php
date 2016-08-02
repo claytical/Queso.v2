@@ -58,11 +58,14 @@ class AuthController extends Controller
 
                 $course = Course::find($user->default_course_id);
                 session(['course' => $course]);
-                if($course->skills) {
+                $skills = $course->skills();
+                $levels = $course->levels();
+
+                if(count($skills) <= 0) {
                     //no skills, go to skills page
                     return route('course.add.skills');
                 }
-                else if($course->levels()->count == 0) {
+                else if(count($levels) <= 0) {
                     //no levels, go to the levels page
                     return route('course.add.levels');
                 }
