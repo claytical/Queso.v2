@@ -9,6 +9,38 @@
 
 {!! var_dump($announcements) !!}
 <div class="row">
+        @if(count($announcements) > 0)
+            <div class="col-lg-9">
+                <h5>Headline</h5>
+            </div>
+            <div class="col-lg-3">
+                <h5>Date</h5>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        @endif
+        <div class="col-lg-12">
+             <ul class="list-unstyled list">
+                @foreach($announcements as $announcement)
+                <li>
+                    <div class="row">
+                        <div class="col-lg-6 announcement">
+                            {{ link_to('manage/announcement/' . $announcement->id, $announcement->title) }}
+                        </div>
+
+                        <div class="col-lg-3 date">
+                            00/00/0000
+                        </div>
+
+                        <div class="col-lg-3">
+                            {{ link_to('manage/announcement/'.$announcement->id.'/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
+                        </div>
+ 
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+    </div>
 </div>
 
 
