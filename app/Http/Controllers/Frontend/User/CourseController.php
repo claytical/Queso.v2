@@ -172,7 +172,10 @@ class CourseController extends Controller
     }
 
     public function manage() {
-        return view('frontend.manage.course.details')
+    	$course = Course::find(session('current_course'));
+    	$skills = $course->skills;
+    	$levels = $course->levels;
+        return view('frontend.manage.course.details', ['course' => $course, 'skills' => $skills, 'levels' => $levels])
             ->withUser(access()->user());
 
     }

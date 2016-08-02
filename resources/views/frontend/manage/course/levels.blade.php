@@ -27,14 +27,10 @@
             <label for="skill">Level Name</label>
                 {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Amount', 'id' => 'level_amount']) }}
           </div>
+    </div>
 
-          <div class="form-group">
-          </div>
             {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
             {!! Form::close() !!}
-
-
-    </div>
 
 
     <div class="col-lg-12">

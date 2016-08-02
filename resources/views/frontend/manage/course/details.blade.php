@@ -27,87 +27,75 @@
             <div role="tabpanel" class="tab-pane active" id="general">
                 {!! Form::open(['url' => 'manage/course/update', 'class' => '', 'id' => 'update-course']) !!}
 
-                {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}
+                {{ Form::input('text', 'name', $course->name, ['class' => 'form-control', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}
 
-                {{ Form::input('text', 'reg_code', null, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
+                {{ Form::input('text', 'reg_code', $course->code, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
 
-                {{ Form::input('text', 'meeting_time', null, ['class' => 'form-control', 'placeholder' => 'Wednesdays @ 3pm', 'id' => 'meeting_time']) }}
-
-                {{ Form::input('text', 'meeting_location', null, ['class' => 'form-control', 'placeholder' => 'Wolfson Building, Room 1018', 'id' => 'meeting_location']) }}
+                {{ Form::input('text', 'meeting_time', $course->meeting, ['class' => 'form-control', 'placeholder' => 'Wednesdays @ 3pm', 'id' => 'meeting_time']) }}
 
                 {!! Form::submit('Update Course', ['class' => 'btn btn-primary btn-lg']) !!}
                 {!! Form::close() !!}
 
             </div>
             <div role="tabpanel" class="tab-pane" id="skills">
-                {!! Form::open(['url' => 'manage/skills/add', 'class' => '', 'id' => 'add-skills']) !!}
+            
+            {!! Form::open(['url' => 'course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
+            <div class="form-group">
+                <label for="skill">Skill Name</label>
+                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
+            </div>
+            <div class="form-group">
+            </div>
+            {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-lg']) !!}
+            {!! Form::close() !!}
 
-                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
-                
-                {!! Form::submit('Add This Skill', ['class' => 'btn btn-primary btn-lg']) !!}
-                
-                {!! Form::close() !!}
+
 
                 <h4>Current Skills</h4>
                 <ul class="list-unstyled list">
+                    @foreach($skills as $skill)
                     <li>
                         <div class="col-lg-9">
-                            <div class="name">Skill #1
+                            <div class="name">{!! $skill->name !!}
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="pull-right">
-                                  <button type="button" class="btn btn-default">Edit</button>
+                                                {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
+                                                {!! Form::hidden('skill', $skill->id) !!}
+                                                {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
+                                                {!! Form::close() !!}
                             </div>
                         </div>
-                    </li>
-
-                    <li>
-                        <div class="col-lg-9">
-                            <div class="name">Skill #2
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pull-right">
-                                  <button type="button" class="btn btn-default">Edit</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col-lg-9">
-                            <div class="name">Skill #3
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pull-right">
-                                  <button type="button" class="btn btn-default">Edit</button>
-                            </div>
-                        </div>
-
                     </li>
 
                 </ul>
 
             </div>
             <div role="tabpanel" class="tab-pane" id="levels">
-                {!! Form::open(['url' => 'manage/levels/add', 'class' => '', 'id' => 'add-levels']) !!}
-                
-                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
+                {!! Form::open(['url' => 'course/add/level', 'class' => 'form-inline', 'id' => 'add-level']) !!}
+                  <div class="form-group">
+                    <label for="skill">Level Name</label>
+                        {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
+                  </div>
+                  <div class="form-group">
+                    <label for="skill">Level Name</label>
+                        {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Amount', 'id' => 'level_amount']) }}
+                  </div>
 
-                {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => '0', 'id' => 'skill_amount']) }}
+                    {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
+                    {!! Form::close() !!}
 
-                {!! Form::submit('Add This Level', ['class' => 'btn btn-primary btn-lg']) !!}
-
-                {!! Form::close() !!}
 
                 <h4>Current Levels</h4>
                 <ul class="list-unstyled list">
+                    @foreach($levels as $level)
                     <li>
                     <div class="col-lg-4">
-                        Newbie
+                        {!! $level->name !!}
                     </div>
                     <div class="col-lg-4">
-                        0
+                        {!! $level->amount !!}
                     </div>
                     <div class="col-lg-4">
                         <div class="pull-right">
@@ -115,48 +103,19 @@
                         </div>
                     </div>
                     </li>
-
-                    <li>
-                        <div class="col-lg-4">
-                            Other Rank
-                        </div>
-                        <div class="col-lg-4">
-                            40
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-default">Edit</button>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="col-lg-4">
-                            Higher Rank
-                        </div>
-                        <div class="col-lg-4">
-                            80
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-default">Edit</button>
-                            </div>
-                        </div>
-                    </li>
-
                 </ul>
 
 
             </div>
             <div role="tabpanel" class="tab-pane" id="teams">
-                {!! Form::open(['url' => 'manage/skills/add', 'class' => '', 'id' => 'add-skills']) !!}
+                {!! Form::open(['url' => 'manage/teams/add', 'class' => '', 'id' => 'add-skills']) !!}
 
-                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
+                {{ Form::input('text', 'team', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
 
-                {!! Form::submit('Add This Skill', ['class' => 'btn btn-primary btn-lg']) !!}
+                {!! Form::submit('Add This Team', ['class' => 'btn btn-primary btn-lg']) !!}
                 {!! Form::close() !!}
 
-                <h4>Current Skills</h4>
+                <h4>Current Teams</h4>
                 <ul class="list-unstyled list">
                     <li>
                         <div class="col-lg-9">
@@ -207,7 +166,7 @@
             </div>
 
             <div role="tabpanel" class="tab-pane" id="feedback">
-                {!! Form::open(['url' => 'manage/levels/add', 'class' => '', 'id' => 'add-levels']) !!}
+                {!! Form::open(['url' => 'manage/peers', 'class' => '', 'id' => 'peer-form']) !!}
                 
                 {{ Form::input('number', 'peer_group_size', null, ['class' => 'form-control', 'placeholder' => 'Peer Group Size', 'id' => 'peer_group_size']) }}
 
