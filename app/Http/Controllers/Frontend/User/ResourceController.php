@@ -55,6 +55,7 @@ class ResourceController extends Controller
         $resource->title = $request->title;
         $resource->description = $request->description;
         $html = "";
+        /*
         if(strlen($request->link) > 0) {
             $resource->link = $request->link;
             $client = new HttpClient;
@@ -67,6 +68,7 @@ class ResourceController extends Controller
         if(strlen($request->tag) > 0) {
             $resource->tag = $request->tag;
         }
+        */
         $resource->save();
     //    $resource = new Content;
   //      $resource->course_id = session('current_course');
@@ -88,8 +90,8 @@ class ResourceController extends Controller
             $resource->tag = $request->tag;
         }
 */
-        return view('frontend.manage.resources.created', ['resource' => $resource, 'html' => $html]);
-                ->withUser(access()->user());
+  //      return view('frontend.manage.resources.created', ['resource' => $resource, 'html' => $html]);
+    //            ->withUser(access()->user());
 
     }
 
