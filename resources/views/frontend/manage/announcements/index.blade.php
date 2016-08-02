@@ -6,8 +6,6 @@
         <h2>Manage Announcements {{ link_to('manage/announcement/create', 'New Announcement', ['class' => 'btn btn-primary btn-lg pull-right']) }}</h2>
     </div>
 </div>
-
-{!! var_dump($announcements) !!}
 <div class="row">
         @if(count($announcements) > 0)
             <div class="col-lg-9">
