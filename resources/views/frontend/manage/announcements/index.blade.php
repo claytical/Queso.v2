@@ -7,7 +7,7 @@
     </div>
 </div>
 
-
+{!! var_dump($announcements) !!}
 <div class="row">
         @if(count($announcements) > 0)
             <div class="col-lg-9">
