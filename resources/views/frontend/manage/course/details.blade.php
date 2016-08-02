@@ -144,7 +144,7 @@
                     <li>
                         <div class="col-lg-9">
                         {!! Form::open(['url' => 'manage/course/add/team', 'class' => '', 'id' => 'add-team']) !!}
-                        {{ Form::input('text', 'team', null, ['class' => 'form-control', 'placeholder' => 'Team Name', 'id' => 'team_title']) }}
+                        {!! Form::input('text', 'team', null, ['class' => 'form-control', 'placeholder' => 'Team Name', 'id' => 'team_title']) !!}
 
 
                         </div>

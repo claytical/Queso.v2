@@ -24,7 +24,7 @@ class Course extends Model
     }
     
     public function teams() {
-    	return $this->hasManyThrough('App\Team', 'App\User');
+    	return $this->hasManyThrough('App\Team', 'App\Models\Access\User\User');
     }
     
     public function skills() {
