@@ -120,50 +120,40 @@
 
             </div>
             <div role="tabpanel" class="tab-pane" id="teams">
-                {!! Form::open(['url' => 'manage/teams/add', 'class' => '', 'id' => 'add-skills']) !!}
-
-                {{ Form::input('text', 'team', null, ['class' => 'form-control', 'placeholder' => 'Points', 'id' => 'skill_title']) }}
-
-                {!! Form::submit('Add This Team', ['class' => 'btn btn-primary btn-lg']) !!}
-                {!! Form::close() !!}
-
                 <h4>Current Teams</h4>
                 <ul class="list-unstyled list">
+                    @foreach($teams as $team)
                     <li>
                         <div class="col-lg-9">
-                            <div class="name">Blue Team
+                            <div class="name">{!! $team->name !!}
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="pull-right">
-                                  <button type="button" class="btn btn-default">Edit</button>
-                            </div>
-                        </div>
-                    <li>
-                        <div class="col-lg-9">
-                            <div class="name">Red Team
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pull-right">
-                                  <button type="button" class="btn btn-default">Edit</button>
-                            </div>
-                        </div>
+                                {!! $level->name !!}
+                                {!! Form::open(['url' => 'manage/course/remove/team', 'class' => 'remove-team']) !!}
+                                {!! Form::hidden('team_id', $team->id) !!}
+                                {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
+                                {!! Form::close() !!}
 
+
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <li>
+                        <div class="col-lg-9">
+                        {!! Form::open(['url' => 'manage/course/add/team', 'class' => '', 'id' => 'add-team']) !!}
+                        {{ Form::input('text', 'team', null, ['class' => 'form-control', 'placeholder' => 'Team Name', 'id' => 'team_title']) }}
+
+
+                        </div>
+                        <div class="col-lg-3">
+                            {!! Form::submit('Add This Team', ['class' => 'btn btn-primary btn-lg']) !!}
+                            {!! Form::close() !!}
+
+                        </div>
                     </li>
-                    <li>
-                        <div class="col-lg-9">
-                            <div class="name">Yellow Team
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pull-right">
-                                  <button type="button" class="btn btn-default">Edit</button>
-                            </div>
-                        </div>
-
-                    </li>
-
                 </ul>
 
             </div>

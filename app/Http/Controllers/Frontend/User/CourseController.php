@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Skill;
 use App\Level;
+use App\Team;
 use App\Models\Access\Role\Role;
 
 /**
@@ -128,6 +129,19 @@ class CourseController extends Controller
 
     }
 
+    public function add_team(Request $request) {
+    	$team = new Team;
+    	$team->name = $request->team;
+    	$team->save();
+		return redirect(route('course.manage'));
+    }
+
+    public function remove_team(Request $request) {
+    	$team = Team::find($request->team_id);
+    	$team->delete();
+    	return redirect(route('course.manage'));
+    }
+
     public function add_levels() {
     	$levels = Course::find(session('current_course'))->levels;
         return view('frontend.manage.course.levels', ['levels' => $levels])
@@ -212,7 +226,8 @@ class CourseController extends Controller
     	$course = Course::find(session('current_course'));
     	$skills = $course->skills;
     	$levels = $course->levels;
-        return view('frontend.manage.course.details', ['course' => $course, 'skills' => $skills, 'levels' => $levels])
+    	$teams = $course->teams;
+        return view('frontend.manage.course.details', ['course' => $course, 'skills' => $skills, 'levels' => $levels, 'teams' => $teams])
             ->withUser(access()->user());
 
     }
