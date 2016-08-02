@@ -9,7 +9,7 @@
 
 
 <div class="row">
-        @if($announcements)
+        @if(count($announcements) > 0)
             <div class="col-lg-9">
                 <h5>Headline</h5>
             </div>
