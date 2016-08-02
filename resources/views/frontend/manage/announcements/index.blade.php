@@ -20,10 +20,11 @@
 
         <div class="col-lg-12">
              <ul class="list-unstyled list">
+                @foreach($announcements as $announcement)
                 <li>
                     <div class="row">
                         <div class="col-lg-6 announcement">
-                            {{ link_to('manage/announcement/1', 'Welcome to Class!') }}
+                            {{ link_to('manage/announcement/' . $announcement->id, $announcement->title) }}
                         </div>
 
                         <div class="col-lg-3 date">
@@ -31,44 +32,12 @@
                         </div>
 
                         <div class="col-lg-3">
-                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
+                            {{ link_to('manage/announcement/'.$announcement->id.'/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
                         </div>
  
                     </div>
                 </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-lg-6 announcement">
-                            {{ link_to('manage/announcement/1', 'Reminder, Pay Attention') }}
-                        </div>
-                        <div class="col-lg-3 date">
-                            00/00/0000
-                        </div>
-                        <div class="col-lg-3">
-                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
-                        </div>
- 
-                    </div>
-                </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-lg-6 announcement">
-                            {{ link_to('manage/announcement/1', 'No Class On Tuesday') }}
-
-                        </div>
-                        <div class="col-lg-3 date">
-                            00/00/0000
-                        </div>
-
-                        <div class="col-lg-3">
-                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
-                        </div>
- 
-                    </div>
-                </li>
-
+                @endforeach
             </ul>
     </div>
 </div>
