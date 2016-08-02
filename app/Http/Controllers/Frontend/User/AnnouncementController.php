@@ -71,8 +71,8 @@ class AnnouncementController extends Controller
 
     public function manage()
     {
-     //   $announcements = Announcement::where('course_id', '=', session('current_course'));
-        $announcements = Announcement::all();
+        $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
+     //   $announcements = Announcement::all();
         return view('frontend.manage.announcements.index', ['announcements' => $announcements])
             ->withUser(access()->user());
     }    

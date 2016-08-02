@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="col-lg-3 date">
-                            00/00/0000
+                            {!! $announcement->created_at !!}
                         </div>
 
                         <div class="col-lg-3">

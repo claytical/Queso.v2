@@ -7,11 +7,17 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">Announcements {{ link_to('announcements', 'View All', ['class' =>'btn btn-default btn-xs pull-right']) }}</div>
                   <div class="panel-body">
-                    <h4>Announcement Headline</h4>
-                    <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                    @if($announcements)
+                        @foreach($announcements as $announcement)
+                            <h4>{!! $announcement->title !!}</h4>
+                            <div>
+                                {!! $announcement->body !!}
+                            </div>
 
-                    <h4>Announcement Headline</h4>
-                    <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                        @endforeach
+                    @else
+                        <p>No Announcements!
+                    @endif
                   </div>
                 </div>            
             </div>

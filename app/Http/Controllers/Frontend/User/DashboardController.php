@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Announcement;
 
 /**
  * Class DashboardController
@@ -17,7 +18,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('frontend.welcome')
+        $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
+        return view('frontend.welcome', ['announcements' => $announcements])
             ->withUser(access()->user());
     }
     
