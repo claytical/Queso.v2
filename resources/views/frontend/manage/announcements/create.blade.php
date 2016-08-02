@@ -7,8 +7,8 @@
 
 <div class="col-lg-9">
     {!! Form::open(['url' => 'manage/announcements/create', 'id'=>'quest-create-form']) !!}
-    {{ Form::input('text', 'headline', null, ['class' => 'form-control', 'placeholder' => 'Adventure Awaits!', 'id' => 'headline']) }}
-    {!! Form::textarea('description', null, ['class' => 'field', 'files' => true]) !!}
+    {{ Form::input('text', 'title', null, ['class' => 'form-control', 'placeholder' => 'Adventure Awaits!', 'id' => 'headline']) }}
+    {!! Form::textarea('body', null, ['class' => 'field', 'files' => true]) !!}
 
 </div>
 

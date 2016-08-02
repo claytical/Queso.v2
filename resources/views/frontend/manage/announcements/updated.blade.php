@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-lg-12">
-    <h2>[HEADLINE] Updated</h2>
+    <h2>{!! $announcement->title !!} Updated</h2>
 </div>
 
 <p>

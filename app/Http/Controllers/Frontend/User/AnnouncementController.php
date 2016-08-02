@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Vinelab\Http\Client as HttpClient;
+use App\Announcement;
 
 /**
  * Class AnnouncementController
@@ -18,7 +19,8 @@ class AnnouncementController extends Controller
      */
 
     public function index() {
-        return view('frontend.announcements')
+        $announcements = Announcement::where('course_id', '=', session('current_course'));
+        return view('frontend.announcements', ['announcements' => $announcements])
             ->withUser(access()->user());
     }
 
@@ -29,29 +31,45 @@ class AnnouncementController extends Controller
     }
 
     public function details($id) {
-        return view('frontend.manage.announcements.details')
+        $announcement = Announcement::find($id);
+
+        return view('frontend.manage.announcements.details', ['announcement' => $announcement])
             ->withUser(access()->user());
 
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        return view('frontend.manage.announcements.updated')
+        $announcement = Announcement::find($request->announcement_id);
+        $announcement->title = $request->title;
+        $announcement->body = $request->body;
+        $announcement->course_id = session('current_course');
+        $announcement->save();
+
+        return view('frontend.manage.announcements.updated', ['announcement' => $announcement])
             ->withUser(access()->user());
     }
 
-    public function save() {
-        return view('frontend.manage.announcements.created')
+    public function save(Request $request) {
+        $announcement = new Announcement;
+        $announcement->title = $request->title;
+        $announcement->body = $request->body;
+        $announcement->course_id = session('current_course');
+        $announcement->save();
+        return view('frontend.manage.announcements.created', ['announcement' => $announcement])
             ->withUser(access()->user());
     }
 
-    public function delete() {
+    public function delete(Request $request) {
+        $announcement = Announcement::find($request->announcement_id);
+        $announcement->delete();        
         return view('frontend.manage.announcements.deleted');
     }
 
     public function manage()
     {
-        return view('frontend.manage.announcements.index')
+        $announcements = Announcement::where('course_id', '=', session('current_course'));
+        return view('frontend.manage.announcements.index', ['announcements' => $announcements])
             ->withUser(access()->user());
     }    
 }
