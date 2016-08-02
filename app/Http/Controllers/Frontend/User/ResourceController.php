@@ -30,7 +30,7 @@ class ResourceController extends Controller
         $resources = Content::where('course_id', '=', session('current_course'))
                     ->where('tag', '=', $category)
                     ->get();
-        return view('frontend.resources.category', 'resources' => $resources)
+        return view('frontend.resources.category', ['resources' => $resources])
             ->withUser(access()->user());
     }
 
