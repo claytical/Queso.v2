@@ -94,7 +94,9 @@ function showResponse(responseText, statusText, xhr, $form)  {
     // if the ajaxSubmit method was passed an Options Object with the dataType 
     // property set to 'json' then the first argument to the success callback 
     // is the json data object returned by the server 
-    $('#levels').append("<div class='row'>" + responseText.name + "<form method='POST' action='{!! route('course.remove.level') !!}'><input name='level' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
+    var token = $('input[name="_token"]').eq(0);
+
+    $('#levels').append("<div class='row'>" + responseText.name + "<form method='POST' action='{!! route('course.remove.level') !!}'>"+token.html()+"<input name='level' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
     console.log(responseText);
 }  
     </script>
