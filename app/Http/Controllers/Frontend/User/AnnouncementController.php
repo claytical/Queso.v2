@@ -56,6 +56,7 @@ class AnnouncementController extends Controller
         $announcement->title = $request->title;
         $announcement->body = $request->body;
         $announcement->course_id = session('current_course');
+        $announcement->sticky = false;
         $announcement->save();
         return view('frontend.manage.announcements.created', ['announcement' => $announcement])
             ->withUser(access()->user());
