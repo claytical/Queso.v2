@@ -51,7 +51,7 @@ class ResourceController extends Controller
     
     public function save(Request $request) {
   
-        $resource = new Content;
+    //    $resource = new Content;
   //      $resource->course_id = session('current_course');
  //       $resource->title = $request->title;
 //        $resource->description = $request->description;
@@ -71,8 +71,8 @@ class ResourceController extends Controller
             $resource->tag = $request->tag;
         }
 */
-        $resource->save();
-
+   //     $resource->save();
+        $resource = "hey";
         return view('frontend.manage.resources.created', ['resource' => $resource, 'html' => $html]);
             ->withUser(access()->user());
 
