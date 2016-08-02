@@ -65,8 +65,9 @@ class AnnouncementController extends Controller
 
     public function delete(Request $request) {
         $announcement = Announcement::find($request->announcement_id);
+        $title = $announcement->title;
         $announcement->delete();        
-        return view('frontend.manage.announcements.deleted');
+        return view('frontend.manage.announcements.deleted', ["title" => $title]);
     }
 
     public function manage()
