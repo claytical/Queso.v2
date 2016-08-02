@@ -32,6 +32,7 @@
         {{ HTML::script('js/vendor/dropzone/dropzone.js')}}
         {{ HTML::script('js/vendor/list.min.js')}}
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
+        {{ HTML::script('js/vendor/bootstrap/bootstrap3-typeahead.min.js') }}
 
 <script>
 </script>

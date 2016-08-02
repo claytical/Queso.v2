@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Vinelab\Http\Client as HttpClient;
+use App\Content;
+use Illuminate\Http\Request;
 
 /**
  * Class DashboardController
@@ -18,13 +20,17 @@ class ResourceController extends Controller
      */
     public function by_id($id)
     {
-        return view('frontend.resources.view')
+        $resource = Content::find($id);
+        return view('frontend.resources.view', ['resource' => $resource])
             ->withUser(access()->user());
     }
 
     public function by_category($category)
     {
-        return view('frontend.resources.category')
+        $resources = Content::where('course_id', '=', session('current_course'))
+                    ->where('tag', '=', $category)
+                    ->get();
+        return view('frontend.resources.category', 'resources' => $resources)
             ->withUser(access()->user());
     }
 
@@ -47,8 +53,29 @@ class ResourceController extends Controller
 
     }
     
-    public function save() {
-        return view('frontend.manage.resources.created')
+    public function save(Request $request) {
+        $resource = new Content;
+        $resource->course_id = session('current_course');
+        $resource->title = $request->title;
+        $resource->description = $request->description;
+        $html = null;
+        if(strlen($request->link > 0)) {
+            $resource->link = $request->link;
+            $client = new HttpClient;
+            $response = $client->get("http://iframe.ly/api/oembed?url=" . urlencode($request->link) . "&api_key=a705fe8012d914a446d7e4");
+            $embedly = json_decode($response->json());
+            if (!empty($embedly->html)) {
+                $html = $embedly->html;
+            }
+
+        }
+        if(strlen($request->tag > 0)) {
+            $resource->tag = $request->tag;
+        }
+
+        $resource->save();
+
+        return view('frontend.manage.resources.created', ['resource' => $resource, 'html' => $html]);
             ->withUser(access()->user());
 
     }
