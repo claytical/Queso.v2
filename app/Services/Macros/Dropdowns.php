@@ -19,8 +19,7 @@ trait Dropdowns
 
     public function singleResourceList() {
         
-        $resources = Content::whereNull('tag')
-                                    ->where('course_id', '=', session('current_course'))
+        $resources = Content::where('course_id', '=', session('current_course'))
                                     ->get();
         $html = "";
         foreach($resources as $resource) {
