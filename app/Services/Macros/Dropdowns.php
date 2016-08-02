@@ -3,7 +3,6 @@
 namespace App\Services\Macros;
 use App\Content;
 use DB;
-use HieuLe\Active;
 /**
  * Class Dropdowns
  * @package App\Services\Macros
@@ -25,7 +24,8 @@ trait Dropdowns
                                     ->get();
         $html = "";
         foreach($resources as $resource) {
-            $html += "<li class='" . Active::pattern('resource/' . $resource->id) . "'><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
+            //" . Active::pattern('resource/' . $resource->id) . "
+            $html += "<li class=''><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
         }
         
   /*
