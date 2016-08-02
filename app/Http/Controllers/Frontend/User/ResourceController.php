@@ -50,12 +50,13 @@ class ResourceController extends Controller
     }
     
     public function save(Request $request) {
-  /*
+  
         $resource = new Content;
         $resource->course_id = session('current_course');
         $resource->title = $request->title;
         $resource->description = $request->description;
-        $html = null;
+        $html = "";
+ /*
         if(strlen($request->link > 0)) {
             $resource->link = $request->link;
             $client = new HttpClient;
@@ -69,12 +70,12 @@ class ResourceController extends Controller
         if(strlen($request->tag > 0)) {
             $resource->tag = $request->tag;
         }
-
+*/
         $resource->save();
 
         return view('frontend.manage.resources.created', ['resource' => $resource, 'html' => $html]);
             ->withUser(access()->user());
-*/
+
     }
 
     public function update() {
