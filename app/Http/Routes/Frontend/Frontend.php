@@ -96,6 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/resource/{resource_id}/delete', 'ResourceController@delete')->name('resource.delete');
 
         Route::get('manage/course', 'CourseController@manage')->name('course.manage');
+        Route::post('manage/course/update', 'CourseController@update')->name('course.update');
 
 // FILE HANDLING
 

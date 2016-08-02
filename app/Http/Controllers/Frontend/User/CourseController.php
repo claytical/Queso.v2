@@ -146,13 +146,13 @@ class CourseController extends Controller
 //    	return response()->json($level);
     
     }
-    
+
     public function remove_level(Request $request) {
     	Level::find($request->level)->delete();
 		return redirect(route('course.add.levels'));
 
     }
-        public function add_level_m(Request $request) {
+    public function add_level_m(Request $request) {
 
     	$level = new Level;
     	$level->name = $request->level;
@@ -217,5 +217,14 @@ class CourseController extends Controller
 
     }
 
+    public function update(Request $request) {
+    	$course = Course::find(session('current_course'));
+    	$course->name = $request->name;
+    	$course->code = $request->reg_code;
+    	$course->meeting = $request->meeting_time;
+    	$course->save();
+    	return redirect(route('course.manage'));
+
+    }
 
 }
