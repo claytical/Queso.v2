@@ -17,7 +17,8 @@
         "arcanedev/no-captcha": "~3.0",
         "spatie/laravel-backup": "^3.0",
         "yajra/laravel-datatables-oracle": "~6.0",
-        "vinelab/http": "~1.2"
+        "vinelab/http": "~1.2",
+        "spatie/laravel-medialibrary": "^3.18"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
