@@ -29,7 +29,7 @@
     <script>
 // prepare the form when the DOM is ready 
     var options = { 
-        target:        '#skills',   // target element(s) to be updated with server response 
+        target:        '#add-skill',   // target element(s) to be updated with server response 
         beforeSubmit:  showRequest,  // pre-submit callback 
         success:       showResponse,  // post-submit callback 
         dataType: 'json'

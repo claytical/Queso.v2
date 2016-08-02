@@ -103,9 +103,9 @@ class CourseController extends Controller
 
     public function add_skills() {
     	
-    	$skills = Course::find(session('current_course'))->skills;
-
-        return view('frontend.manage.course.skills', ['skills' => $skills, 'stuff' => [1,2,3]])
+//    	$skills = Course::find(session('current_course'))->skills;
+    	$skills = Skill::all();
+        return view('frontend.manage.course.skills', ['skills' => $skills])
             ->withUser(access()->user());
     
     }
