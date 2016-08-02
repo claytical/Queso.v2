@@ -65,10 +65,11 @@ class ResourceController extends Controller
                 $html = $embedly->html;
             }
         }
+        */
         if(strlen($request->tag) > 0) {
             $resource->tag = $request->tag;
         }
-        */
+        
         $resource->save();
     //    $resource = new Content;
   //      $resource->course_id = session('current_course');
