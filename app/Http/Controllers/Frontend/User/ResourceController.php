@@ -91,7 +91,7 @@ class ResourceController extends Controller
             $resource->tag = $request->tag;
         }
 */
-        return view('frontend.manage.resources.created', ['resource' => $resource]);
+        return view('frontend.manage.resources.created', ['resource' => $resource])
             ->withUser(access()->user());
 
     }
