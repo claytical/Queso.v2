@@ -26,7 +26,7 @@ public function uploadFiles(Request $request) {
         }
         else if ($no_of_files == 1) {
             $random_name = str_random(5).$files->getClientOriginalName();
-            $file->move(public_path().'/uploads/',$random_name);
+            $files->move(public_path().'/uploads/',$random_name);
             $files_on_server[] = $random_name;
         }
         else {
