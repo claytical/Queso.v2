@@ -26,6 +26,12 @@ class Course extends Model
     public function teams() {
     	return $this->hasManyThrough('App\Team', 'App\User');
     }
+    
+    public function skillsCount() {
+      return $this->skills()
+        ->selectRaw('skill_id, count(*) as aggregate')
+        ->groupBy('skill_id');
+    }
 
     public function skills() {
     	return $this->hasMany('App\Skill');
