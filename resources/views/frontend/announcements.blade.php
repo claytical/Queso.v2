@@ -3,8 +3,8 @@
 @section('content')
 <h2>Announcements</h2>
     <div class="col-lg-12">
-        @if(!$announcements)
-        <p class="lead">There are no announcements!</p>
+        @if(count($announcements) <= 0)
+            <p class="lead">There are no announcements!</p>
         @endif
         <ul class="list-unstyled list">
         @foreach($announcements as $announcement)
