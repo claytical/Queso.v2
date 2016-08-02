@@ -9,6 +9,7 @@ use App\Course;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Skill;
+use App\Level;
 use App\Models\Access\Role\Role;
 
 /**
@@ -129,6 +130,21 @@ class CourseController extends Controller
     public function add_levels() {
         return view('frontend.manage.course.levels')
             ->withUser(access()->user());
+
+    }
+    public function add_level(Request $request) {
+
+    	$level = new Level;
+    	$level->name = $request->level;
+    	$level->course_id = $request->session()->get('current_course');
+    	$level->save();
+    	return response()->json($level);
+    
+    }
+
+    public function remove_level(Request $request) {
+    	Level::find($request->level)->delete();
+		return redirect(route('course.add.levels'));
 
     }
 
