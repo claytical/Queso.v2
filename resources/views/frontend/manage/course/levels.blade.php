@@ -24,6 +24,11 @@
                 {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
           </div>
           <div class="form-group">
+            <label for="skill">Level Name</label>
+                {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Amount', 'id' => 'level_amount']) }}
+          </div>
+
+          <div class="form-group">
           </div>
             {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
             {!! Form::close() !!}

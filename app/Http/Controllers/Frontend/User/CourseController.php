@@ -136,6 +136,7 @@ class CourseController extends Controller
 
     	$level = new Level;
     	$level->name = $request->level;
+    	$level->amount = $request->amount;
     	$level->course_id = $request->session()->get('current_course');
     	$level->save();
     	return response()->json($level);
