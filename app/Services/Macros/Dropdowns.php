@@ -35,7 +35,7 @@ trait Dropdowns
     }
 
     public function categoryResourceList() {
-
+/*
         $resource_categories = Content::distinct()->whereNotNull('tag')
                                 ->where('course_id', '=', session('current_course'))
                                 ->get(['tag']);
