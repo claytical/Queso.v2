@@ -50,7 +50,7 @@ class ResourceController extends Controller
     }
     
     public function save(Request $request) {
-  
+        $resource = new Content;
     //    $resource = new Content;
   //      $resource->course_id = session('current_course');
  //       $resource->title = $request->title;
