@@ -63,7 +63,7 @@
     }; 
  
     // bind to the form's submit event 
-$( "#add-skill" ).submit(function( event ) {
+$( "#add-level" ).submit(function( event ) {
 //          alert( "Handler for .submit() called." );
  //           event.preventDefault();       // inside event callbacks 'this' is the DOM element so we first 
         // wrap it in a jQuery object and then invoke ajaxSubmit 
@@ -94,7 +94,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
     // if the ajaxSubmit method was passed an Options Object with the dataType 
     // property set to 'json' then the first argument to the success callback 
     // is the json data object returned by the server 
-    $('#skills').append("<div class='row'>" + responseText.name + "<form method='POST' action='course/remove/level'><input name='level' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
+    $('#levels').append("<div class='row'>" + responseText.name + "<form method='POST' action='course/remove/level'><input name='level' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
     console.log(responseText);
 }  
     </script>
