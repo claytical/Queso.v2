@@ -14,7 +14,7 @@
 
 
 <div class="col-lg-3">
-    {{ Form::input('text', 'tag', null, ['class' => 'form-control', 'placeholder' => 'Category', 'id' => 'tag', 'data-provide' => ['Handouts', 'Presentations']]) }}
+    {{ Form::input('text', 'tag', null, ['class' => 'form-control', 'placeholder' => 'Category', 'id' => 'tag']) }}
 
    	{{ Form::input('text', 'link', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
     {!! Form::close() !!}
