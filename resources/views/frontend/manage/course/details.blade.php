@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="pull-right">
-                                    {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
+                                    {!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
                                     {!! Form::hidden('skill', $skill->id) !!}
                                     {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
                                     {!! Form::close() !!}
@@ -58,7 +58,7 @@
                     @endforeach
                         <li>
                             <div class="col-lg-9">
-                                {!! Form::open(['url' => 'course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
+                                {!! Form::open(['url' => 'manage/course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
                                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
 
                             </div>
@@ -74,19 +74,6 @@
 
             </div>
             <div role="tabpanel" class="tab-pane" id="levels">
-                {!! Form::open(['url' => 'course/add/level', 'class' => 'form-inline', 'id' => 'add-level']) !!}
-                  <div class="form-group">
-                    <label for="skill">Level Name</label>
-                        {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
-                  </div>
-                  <div class="form-group">
-                    <label for="skill">Level Name</label>
-                        {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Amount', 'id' => 'level_amount']) }}
-                  </div>
-
-                    {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
-                    {!! Form::close() !!}
-
 
                 <h4>Current Levels</h4>
                 <ul class="list-unstyled list">
@@ -100,11 +87,34 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="pull-right">
-                                    <button type="button" class="btn btn-default">Edit</button>
+                                {!! $level->name !!}
+                                {!! Form::open(['url' => 'manage/course/remove/level', 'class' => 'remove-level']) !!}
+                                {!! Form::hidden('level', $level->id) !!}
+                                {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
+                                {!! Form::close() !!}
+
                                 </div>
                             </div>
                         </li>
                     @endforeach
+
+                    <li>
+                        <div class="col-lg-4">
+                        {!! Form::open(['url' => 'manage/course/add/level', 'class' => 'form-inline', 'id' => 'add-level']) !!}
+
+                        {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
+
+                        </div>
+                        <div class="col-lg-4">
+                        {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Amount', 'id' => 'level_amount']) }}
+
+                        </div>
+                        <div class="col-lg-4">
+                            {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
+                            {!! Form::close() !!}
+
+                        </div>
+                    </li>
                 </ul>
 
 

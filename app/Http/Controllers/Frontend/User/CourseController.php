@@ -146,12 +146,49 @@ class CourseController extends Controller
 //    	return response()->json($level);
     
     }
-
+    
     public function remove_level(Request $request) {
     	Level::find($request->level)->delete();
 		return redirect(route('course.add.levels'));
 
     }
+        public function add_level_m(Request $request) {
+
+    	$level = new Level;
+    	$level->name = $request->level;
+    	$level->amount = $request->amount;
+    	$level->course_id = $request->session()->get('current_course');
+    	$level->save();
+		return redirect(route('course.manage'));
+
+//    	return response()->json($level);
+    
+    }
+
+    public function add_skill_m(Request $request) {
+    
+    	$skill = new Skill;
+    	$skill->name = $request->skill;
+    	$skill->course_id = $request->session()->get('current_course');
+    	$skill->save();
+		return redirect(route('course.manage'));
+
+//    	return response()->json($skill);
+    
+    }
+
+    public function remove_skill_m(Request $request) {
+    	Skill::find($request->skill)->delete();
+		return redirect(route('course.manage'));
+
+    }
+    public function remove_level_m(Request $request) {
+    	Level::find($request->level)->delete();
+		return redirect(route('course.manage'));
+
+    }
+
+
 
     public function instructions() {
         return view('frontend.manage.course.instructions')

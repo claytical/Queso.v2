@@ -24,6 +24,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('course/add/skill', 'CourseController@add_skill')->name('course.add.skill');
         Route::post('course/remove/skill', 'CourseController@remove_skill')->name('course.remove.skill');
 
+        Route::post('manage/course/add/level', 'CourseController@add_level_m')->name('course.add.level.m');
+        Route::post('manage/course/remove/level', 'CourseController@remove_level_m')->name('course.remove.level.m');
+        Route::post('manage/course/add/skill', 'CourseController@add_skill_m')->name('course.add.skill.m');
+        Route::post('manage/course/remove/skill', 'CourseController@remove_skill_m')->name('course.remove.skill.m');
+
         Route::get('course/instructions', 'CourseController@instructions')->name('course.instructions');
 
         Route::get('profile/edit', 'ProfileController@edit')->name('frontend.user.profile.edit');
