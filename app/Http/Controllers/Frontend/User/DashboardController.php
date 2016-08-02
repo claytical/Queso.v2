@@ -18,11 +18,10 @@ class DashboardController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
-    {
+    public function index() {
 
         $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
-        return view('frontend.welcome', ['announcements' => $announcements)
+        return view('frontend.welcome', ['announcements' => $announcements])
                                 ->withUser(access()->user());
     }
     
