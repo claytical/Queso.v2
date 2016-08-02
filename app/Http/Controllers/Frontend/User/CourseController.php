@@ -120,6 +120,12 @@ class CourseController extends Controller
     
     }
 
+    public function remove_skill(Request $request) {
+    	Skill::find($request->skill)->delete();
+		return redirect(route('course.add.skills'));
+
+    }
+
     public function add_levels() {
         return view('frontend.manage.course.levels')
             ->withUser(access()->user());
