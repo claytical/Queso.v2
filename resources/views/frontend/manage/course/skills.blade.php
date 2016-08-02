@@ -29,7 +29,7 @@
     <script>
 // prepare the form when the DOM is ready 
     var options = { 
-        target:        '#add-skill',   // target element(s) to be updated with server response 
+        target:        '#skills',   // target element(s) to be updated with server response 
         beforeSubmit:  showRequest,  // pre-submit callback 
         success:       showResponse,  // post-submit callback 
         dataType: 'json'
@@ -69,7 +69,7 @@ function showRequest(formData, jqForm, options) {
  
     // here we could return false to prevent the form from being submitted; 
     // returning anything other than false will allow the form submit to continue 
-    return false; 
+    return true; 
 } 
  
 // post-submit callback 
