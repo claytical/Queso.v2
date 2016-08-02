@@ -7,9 +7,9 @@
 
         <p>If you prefer to not use sets of skills, you can create just one skill. For example, "Points" or "XP."</p>
 
-        <div id="skills" class="row">
+        <div id="skills">
             @foreach($skills as $skill)
-                <div>
+                <div class="row">
                     {!! $skill->name !!}
                     {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
                     {!! Form::hidden('skill', $skill->id) !!}
@@ -18,25 +18,24 @@
                 </div>
             @endforeach
         </div>
-               {!! Form::open(['url' => 'course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
-               
-<form class="form-inline">
-  <div class="form-group">
-    <label for="skill">Skill Name</label>
-        {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
-  </div>
-  <div class="form-group">
-  </div>
-        {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-lg']) !!}
-</form>
+    </div>
 
+    <div class="col-lg-12">
+        {!! Form::open(['url' => 'course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
+          <div class="form-group">
+            <label for="skill">Skill Name</label>
+                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
+          </div>
+          <div class="form-group">
+          </div>
+            {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-lg']) !!}
+            {!! Form::close() !!}
 
-
-                {!! Form::close() !!}
 
     </div>
+    
     <div class="col-lg-12">
-        {{ link_to('course/add/levels', 'Continue to Levels', ['class' => 'btn btn-default btn-block']) }}
+        {{ link_to('course/add/levels', 'Continue to Levels', ['class' => 'btn btn-default btn-block pull-right']) }}
     </div>
 
 
@@ -103,7 +102,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
     // if the ajaxSubmit method was passed an Options Object with the dataType 
     // property set to 'json' then the first argument to the success callback 
     // is the json data object returned by the server 
-    $('#skills').append("<div>" + responseText.name + "<form method='POST' action='course/remove/skill'><input name='skill' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
+    $('#skills').append("<div class='row'>" + responseText.name + "<form method='POST' action='course/remove/skill'><input name='skill' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
     console.log(responseText);
 } 
 
