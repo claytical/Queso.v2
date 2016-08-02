@@ -22,13 +22,17 @@
     {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'resource-dropzone']) !!}
     {!! Form::close() !!}
 
-    <button class="btn btn-primary btn-lg btn-block">Create</button>
+    <button class="btn btn-primary btn-lg btn-block" id="create_resource">Create</button>
 
 </div>
 @endsection
 
 @section('after-scripts-end')
     <script>
+    $('create_resource').click(function()) {
+        $("#resource-create-form").submit();
+    });
+
     Dropzone.options.resourceDropzone = {
       init: function() {
         this.on("successmultiple", function(file) { 
