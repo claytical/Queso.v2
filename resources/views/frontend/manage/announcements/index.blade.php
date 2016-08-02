@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="row">
-        @if(count($announcements) > 0)
+        @if(!$announcements->isEmpty())
             <div class="col-lg-9">
                 <h5>Headline</h5>
             </div>
