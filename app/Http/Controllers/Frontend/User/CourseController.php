@@ -116,7 +116,9 @@ class CourseController extends Controller
     	$skill->name = $request->skill;
     	$skill->course_id = $request->session()->get('current_course');
     	$skill->save();
-    	return response()->json($skill);
+		return redirect(route('course.add.skills'));
+
+//    	return response()->json($skill);
     
     }
 
@@ -139,7 +141,9 @@ class CourseController extends Controller
     	$level->amount = $request->amount;
     	$level->course_id = $request->session()->get('current_course');
     	$level->save();
-    	return response()->json($level);
+		return redirect(route('course.add.levels'));
+
+//    	return response()->json($level);
     
     }
 
