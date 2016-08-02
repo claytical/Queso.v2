@@ -19,7 +19,7 @@ trait Dropdowns
      */
 
     public function singleResourceList() {
-        /*
+        
         $resources = Content::whereNull('tag')
                                     ->where('course_id', '=', session('current_course'))
                                     ->get();
@@ -27,13 +27,13 @@ trait Dropdowns
         foreach($resources as $resource) {
             $html += "<li class='" . Active::pattern('resource/' . $resource->id) . "'><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
         }
-        */
+        
   /*
             <li class="{{ Active::pattern('resource/1') }}">
                 {{ link_to('resource/1', 'Single Resource #1') }}
             </li>
 */
-        return "hello";
+        return $html;
     }
 
     public function categoryResourceList() {
