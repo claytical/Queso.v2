@@ -69,14 +69,7 @@
 
 
             <li class="header">Resources</li>
-
-            <li class="{{ Active::pattern('resource/1') }}">
-                {{ link_to('resource/1', 'Single Resource #1') }}
-            </li>
-
-            <li class="{{ Active::pattern('resource/1') }}">
-                {{ link_to('resource/2', 'Single Resource #2') }}
-            </li>
+            {{ singleResourceList() }}
 
             <li class="{{ Active::pattern('resources/category/1') }}">
                 {{ link_to('resource/category/1', 'Category #1') }}

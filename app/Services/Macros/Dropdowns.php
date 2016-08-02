@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services\Macros;
+use App\Content;
+use DB;
 
 /**
  * Class Dropdowns
@@ -15,6 +17,47 @@ trait Dropdowns
      * @param  array    $options
      * @return string
      */
+
+    public function singleResourceList() {
+        $resources = Content::whereNull('tag')
+                                    ->where('course_id', '=', session('current_course'))
+                                    ->get();
+        $html = "";
+        foreach($resources as $resource) {
+            $html += "<li class='" . Active::pattern('resource/' . $resource->id) . "'><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
+        }
+  /*
+            <li class="{{ Active::pattern('resource/1') }}">
+                {{ link_to('resource/1', 'Single Resource #1') }}
+            </li>
+*/
+        return $html;
+    }
+
+    public function categoryResourceList() {
+
+        $resource_categories = Content::distinct()->whereNotNull('tag')
+                                ->where('course_id', '=', session('current_course'))
+                                ->get(['tag']);
+        $html = "";
+        foreach($resource_categories as $category) {
+            $html += "<li class='" . Active::pattern('resource/category/' . $category) . "'><a href='".url('resource/category/'.$category)."'>".$category."</a></li>";
+        }
+/*        $html = "";
+        foreach($resource_categories as $tag) {
+            $html += "<li class='header'>".$tag."</li>";
+            $multi_resources = Content::where('tag', '=', $tag)
+                                    ->where('course_id', '=', session('current_course'))
+                                    ->get();
+            foreach($multi_resources as $resource) {
+               $html += "<li class='" . Active::pattern('resource/' . $resource->id) . "'><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
+            }
+        }
+*/
+        return $html;
+
+    }
+
     public function selectState($name, $selected = null, $options = array())
     {
         return $this->selectStateUS($name, $selected, $options);

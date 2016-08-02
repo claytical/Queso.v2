@@ -20,26 +20,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $resource_categories = Content::distinct()->whereNotNull('tag')
-                                ->where('course_id', '=', session('current_course'))
-                                ->get(['tag']);
-
-        $resources = array();
-        foreach($resource_categories as $tag) {
-            $multi_resources = Content::where('tag', '=', $tag)
-                                    ->where('course_id', '=', session('current_course'))
-                                    ->get();
-            $resources[] = ["category" => $tag, "resources" => $multi_resources];
-        }
-
-        $single_resources = Content::whereNull('tag')
-                                    ->where('course_id', '=', session('current_course'))
-                                    ->get();
 
         $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
-        return view('frontend.welcome', ['announcements' => $announcements, 
-                                        'single_resources' => $single_resources,
-                                        'multi_resources' => $resources])
+        return view('frontend.welcome', ['announcements' => $announcements)
                                 ->withUser(access()->user());
     }
     
