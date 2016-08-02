@@ -7,9 +7,8 @@
 
         <p>If you prefer to not use sets of skills, you can create just one skill. For example, "Points" or "XP."</p>
 
-        <ul id="skills" class="list-unstyled">
+        <div id="skills">
             @foreach($skills as $skill)
-               <li>
                    <div class="col-lg-6">
                       {!! $skill->name !!}
                     </div>
@@ -19,9 +18,8 @@
                         {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs']) !!}                           
                         {!! Form::close() !!}
                     </div>
-                    </li>
             @endforeach
-        </ul>
+        </div>
                {!! Form::open(['url' => 'course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
                
 <form class="form-inline">
@@ -78,17 +76,6 @@ $( "#add-skill" ).submit(function( event ) {
         // always return false to prevent standard browser submit and page navigation 
         return false; 
     }); 
- $( ".remove-skill" ).submit(function( event ) {
-//          alert( "Handler for .submit() called." );
- //           event.preventDefault();       // inside event callbacks 'this' is the DOM element so we first 
-        // wrap it in a jQuery object and then invoke ajaxSubmit 
-        $(this).ajaxSubmit(options); 
- 
-        // !!! Important !!! 
-        // always return false to prevent standard browser submit and page navigation 
-        return false; 
-    }); 
- 
 
 // pre-submit callback 
 function showRequest(formData, jqForm, options) { 
@@ -118,7 +105,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
     // if the ajaxSubmit method was passed an Options Object with the dataType 
     // property set to 'json' then the first argument to the success callback 
     // is the json data object returned by the server 
-    $('#skills').append("<li>" + responseText.name + "</li>");
+    $('#skills').append("<div class='col-lg-6'>" + responseText.name + "</div><div class='col-lg-6'></div><form method='POST' action='course/remove/skill'><input name='skill' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs' type='submit' value='Remove'></form>");
     console.log(responseText);
 } 
 
