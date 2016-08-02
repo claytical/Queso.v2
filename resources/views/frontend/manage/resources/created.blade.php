@@ -5,9 +5,6 @@
     <h2>Resource Created!</h2>
 </div>
 <p>Your resource is now available to students.</p>
-@if($html)
-	{{ $html }}
-@endif
 
 @endsection
 
