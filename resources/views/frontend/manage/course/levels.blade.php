@@ -46,7 +46,7 @@
     <script>
 // prepare the form when the DOM is ready 
     var options = { 
-        target:        '#skills',   // target element(s) to be updated with server response 
+        target:        '#levels',   // target element(s) to be updated with server response 
         beforeSubmit:  showRequest,  // pre-submit callback 
         success:       showResponse,  // post-submit callback 
         dataType: 'json',
@@ -94,7 +94,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
     // if the ajaxSubmit method was passed an Options Object with the dataType 
     // property set to 'json' then the first argument to the success callback 
     // is the json data object returned by the server 
-    $('#levels').append("<div class='row'>" + responseText.name + "<form method='POST' action='course/remove/level'><input name='level' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
+    $('#levels').append("<div class='row'>" + responseText.name + "<form method='POST' action='/course/remove/level'><input name='level' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
     console.log(responseText);
 }  
     </script>
