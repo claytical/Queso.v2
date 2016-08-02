@@ -28,11 +28,22 @@ class Course extends Model
     }
     
     public function skillsCount() {
-      return $this->skills()
-        ->selectRaw('skill_id, count(*) as aggregate')
-        ->groupBy('skill_id');
+        return $this->hasOne('Skill')
+                ->selectRaw('skill_id, count(*) as aggregate')
+                ->groupBy('skill_id');
     }
-
+    
+    public function getSkillCountAttribute() {
+      // if relation is not loaded already, let's do it first
+      if ( ! array_key_exists('skillsCount', $this->relations)) 
+        $this->load('skillsCount');
+     
+          $related = $this->getRelation('skillsCount');
+     
+          // then return the count directly
+         return ($related) ? (int) $related->aggregate : 0;
+    }
+    
     public function skills() {
     	return $this->hasMany('App\Skill');
     }
