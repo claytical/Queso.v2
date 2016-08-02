@@ -60,7 +60,7 @@ class CourseController extends Controller
 		
 		//Add course-student permission
         
-        $permission_model          = config('access.permission');
+        $permission_model          		= config('access.permission');
         $coursePermission               = new $permission_model;
         $coursePermission->name         = 'course-'.$course->id;
         $coursePermission->display_name = $course->name;

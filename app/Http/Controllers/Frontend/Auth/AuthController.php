@@ -57,7 +57,7 @@ class AuthController extends Controller
 
 
                 $course = Course::find($user->default_course_id);
-                if($course->getSkillCountAttribute <= 0) {
+                if($course->skills->count() <= 0) {
                     //no skills, go to skills page
                     return route('course.add.skills');
                 }
