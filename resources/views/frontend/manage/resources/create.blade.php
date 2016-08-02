@@ -29,7 +29,7 @@
 
 @section('after-scripts-end')
     <script>
-    $('create_resource').click(function()) {
+    $('#create_resource').click(function() {
         $("#resource-create-form").submit();
     });
 
