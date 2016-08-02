@@ -53,7 +53,7 @@ class AuthController extends Controller
 //            $course = Course::find($user->default_course_id);
             if(access()->hasPermission(access()->hasPermission('course-' . $user->default_course_id . '-instructor'))) {
                 //IS INSTRUCTOR
-                    session(['perm' => 'is instructor']);
+                session(['perm' => 'is instructor']);
 
 
                 $course = Course::find($user->default_course_id);
@@ -63,13 +63,17 @@ class AuthController extends Controller
 
                 if(count($skills) <= 0) {
                     //no skills, go to skills page
+                    session(['skills' => 'none']);
                     return route('course.add.skills');
                 }
                 else if(count($levels) <= 0) {
                     //no levels, go to the levels page
+                    session(['levels' => 'none']);
+
                     return route('course.add.levels');
                 }
-
+                    session(['skills' => count($skills)]);
+                    session(['levels' => count($levels)]);
             }
             else {
                 session(['perm' => 'not available']);
