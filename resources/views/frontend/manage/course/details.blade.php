@@ -38,19 +38,6 @@
 
             </div>
             <div role="tabpanel" class="tab-pane" id="skills">
-            
-            {!! Form::open(['url' => 'course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
-            <div class="form-group">
-                <label for="skill">Skill Name</label>
-                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
-            </div>
-            <div class="form-group">
-            </div>
-            {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-lg']) !!}
-            {!! Form::close() !!}
-
-
-
                 <h4>Current Skills</h4>
                 <ul class="list-unstyled list">
                     @foreach($skills as $skill)
@@ -68,6 +55,19 @@
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            <div class="col-lg-9">
+                                {!! Form::open(['url' => 'course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
+                                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
+
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="pull-right">
+                                {!! Form::submit('Add Skill', ['class' => 'btn btn-default btn-lg']) !!}
+                                {!! Form::close() !!}
+
+                                </div>
+                            </div>
                     @endforeach
                 </ul>
 
