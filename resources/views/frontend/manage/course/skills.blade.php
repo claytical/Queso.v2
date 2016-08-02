@@ -11,7 +11,7 @@
             @foreach($skills as $skill)
                 <div class="row">
                     {!! $skill->name !!}
-                    {!! Form::open(['url' => '/course/remove/skill', 'class' => 'remove-skill']) !!}
+                    {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
                     {!! Form::hidden('skill', $skill->id) !!}
                     {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
                     {!! Form::close() !!}
@@ -102,7 +102,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
     // if the ajaxSubmit method was passed an Options Object with the dataType 
     // property set to 'json' then the first argument to the success callback 
     // is the json data object returned by the server 
-    $('#skills').append("<div class='row'>" + responseText.name + "<form method='POST' action='course/remove/skill'><input name='skill' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
+    $('#skills').append("<div class='row'>" + responseText.name + "<form method='POST' action='"+ {!! route('course.remove.skill') !!} +"'><input name='skill' type='hidden' value='" + responseText.id + "'><input class='btn btn-danger btn-xs pull-right' type='submit' value='Remove'></form></div>");
     console.log(responseText);
 } 
 
