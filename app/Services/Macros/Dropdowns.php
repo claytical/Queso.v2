@@ -56,6 +56,7 @@ trait Dropdowns
             }
         }
 */
+        $html = "YOHOHO";
         return $html;
 
     }

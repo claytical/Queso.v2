@@ -82,7 +82,5 @@
 
 
         </ul><!-- /.sidebar-menu -->
-        {!! var_dump($single_resources)!!}
-        {!! var_dump($multi_resources) !!}
     </section><!-- /.sidebar -->
 </aside>
