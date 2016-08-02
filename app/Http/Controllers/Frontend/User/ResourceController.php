@@ -18,25 +18,21 @@ class ResourceController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function by_id($id)
-    {
+    public function by_id($id) {
         $resource = Content::find($id);
         return view('frontend.resources.view', ['resource' => $resource])
             ->withUser(access()->user());
     }
 
-    public function by_category($category)
-    {
+    public function by_category($category) {
         $resources = Content::where('course_id', '=', session('current_course'))
-                    ->where('tag', '=', $category)
-                    ->get();
+                            ->where('tag', '=', $category)
+                            ->get();
         return view('frontend.resources.category', ['resources' => $resources])
             ->withUser(access()->user());
     }
 
-    public function create()
-    
-    {
+    public function create() {
         return view('frontend.manage.resources.create')
             ->withUser(access()->user());
     }
@@ -54,6 +50,7 @@ class ResourceController extends Controller
     }
     
     public function save(Request $request) {
+  /*
         $resource = new Content;
         $resource->course_id = session('current_course');
         $resource->title = $request->title;
@@ -77,7 +74,7 @@ class ResourceController extends Controller
 
         return view('frontend.manage.resources.created', ['resource' => $resource, 'html' => $html]);
             ->withUser(access()->user());
-
+*/
     }
 
     public function update() {
