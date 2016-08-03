@@ -107,7 +107,7 @@ class ResourceController extends Controller
         $resource->description = $request->description;
         $resource->link = $request->link;
         $resource->save();
-        return view('frontend.manage.resources.update')
+        return view('frontend.manage.resources.updated')
             ->withUser(access()->user());
 
     }    
