@@ -71,7 +71,7 @@
             <li class="header">Resources</li>
                 {!! HTML::decode(Form::singleResourceList()) !!}
 
-                {!! HTML::decode(Form::categoryResourceList()) !!}
+                {!! var_dump(Form::categoryResourceList()) !!}
 
 
         </ul><!-- /.sidebar-menu -->

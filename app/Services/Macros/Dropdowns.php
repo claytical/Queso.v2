@@ -62,7 +62,7 @@ trait Dropdowns
             }
         }
 */
-        return $html;
+        return $resource_categories;
 
     }
 
