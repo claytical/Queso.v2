@@ -32,7 +32,6 @@
         {{ HTML::script('js/vendor/dropzone/dropzone.js')}}
         {{ HTML::script('js/vendor/list.min.js')}}
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
-        {{ HTML::script('js/vendor/bootstrap/bootstrap3-typeahead.min.js') }}
 
 <script>
 </script>
@@ -67,6 +66,7 @@
         <!-- JavaScripts -->
         {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
         {{ HTML::script('https://cdn.tinymce.com/4/tinymce.min.js')}}
+        {{ Html::script('js/vendor/jquery/jquery.form.js') }}
 
         <script>tinymce.init({ selector:'textarea', plugins: [
     'autolink autoresize link image',
