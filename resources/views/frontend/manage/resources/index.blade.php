@@ -25,7 +25,7 @@
                     <div class="row">
                         @foreach($resources as $resource)
                             <div class="col-lg-6 name">
-                                {{ link_to('manage/resource/' . $resource->id, 'Handout #1') }}
+                                {{ link_to('manage/resource/' . $resource->id, $resource->title) }}
                             </div>
 
                             <div class="col-lg-3 category">
