@@ -31,7 +31,6 @@
         <!-- front loading scripts -->
         {{ HTML::script('js/vendor/dropzone/dropzone.js')}}
         {{ HTML::script('js/vendor/list.min.js')}}
-        <script async charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=a705fe8012d914a446d7e4" ></script>
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
 
 <script>
