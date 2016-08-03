@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-lg-12">
-    <h2>{{ $request->title }}</h2>
+    <h2>{{ $resource->title }}</h2>
 </div>
 
 <p>Resource has been updated!</p>
