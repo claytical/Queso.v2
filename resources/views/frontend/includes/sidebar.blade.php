@@ -71,15 +71,7 @@
             <li class="header">Resources</li>
                 {!! HTML::decode(Form::singleResourceList()) !!}
 
-            <li class="{{ Active::pattern('resources/category/1') }}">
-                {{ link_to('resource/category/1', 'Category #1') }}
-            </li>
-
-            <li class="{{ Active::pattern('resources/category/2') }}">
-                {{ link_to('resource/category/2', 'Category #2') }}
-            </li>
-
-
+                {!! HTML::decode(Form::categoryResourceList) !!}
 
 
         </ul><!-- /.sidebar-menu -->
