@@ -25,11 +25,11 @@ class ResourceController extends Controller
     }
 
     public function by_category($category) {
-        $category = str_replace($category, "-", " ");
+        $category = str_replace(" ", "-", $category);
         $resources = Content::where('course_id', '=', session('current_course'))
                             ->where('tag', '=', $category)
                             ->get();
-        return view('frontend.resources.category', ['resources' => $resources])
+        return view('frontend.resources.category', ['resources' => $resources, 'title' => $category])
             ->withUser(access()->user());
     }
 
