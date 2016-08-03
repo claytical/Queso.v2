@@ -29,5 +29,17 @@
 
 @section('after-scripts-end')
     <script>
+    $('#create_resource').click(function() {
+        $("#resource-create-form").submit();
+    });
+
+    Dropzone.options.resourceDropzone = {
+      init: function() {
+        this.on("successmultiple", function(file) { 
+                console.log(file);
+//            $('#resource-create-form').append("<input name='files[]' type='hidden' value=''>");
+            });
+        }
+    };
     </script>
 @stop
