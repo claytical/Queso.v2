@@ -9,7 +9,7 @@
         </div>
         <div class="col-lg-12">
             <div>
-                EMBEDLY CARD GOES HERE
+                <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>
             </div>
 
             <h6>Attached Files</h6>

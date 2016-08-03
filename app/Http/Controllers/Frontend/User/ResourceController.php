@@ -58,46 +58,12 @@ class ResourceController extends Controller
         $resource->course_id = session('current_course');
         $resource->title = $request->title;
         $resource->description = $request->description;
-        $html = "";
-        /*
-        if(strlen($request->link) > 0) {
-            $resource->link = $request->link;
-            $client = new HttpClient;
-            $response = $client->get("http://iframe.ly/api/oembed?url=" . urlencode($request->link) . "&api_key=a705fe8012d914a446d7e4");
-            $embedly = json_decode($response->json());
-            if (!empty($embedly->html)) {
-                $html = $embedly->html;
-            }
-        }
-        */
+        $resource->link = $request->link;
         if(strlen($request->tag) > 0) {
             $resource->tag = $request->tag;
         }
         
         $resource->save();
-    //    $resource = new Content;
-  //      $resource->course_id = session('current_course');
- //       $resource->title = $request->title;
-//        $resource->description = $request->description;
-//        $html = "";
- /*
-        if(strlen($request->link > 0)) {
-            $resource->link = $request->link;
-            $client = new HttpClient;
-            $response = $client->get("http://iframe.ly/api/oembed?url=" . urlencode($request->link) . "&api_key=a705fe8012d914a446d7e4");
-            $embedly = json_decode($response->json());
-            if (!empty($embedly->html)) {
-                $html = $embedly->html;
-            }
-
-        }
-        if(strlen($request->tag > 0)) {
-            $resource->tag = $request->tag;
-        }
-
-
-*/
-
         return view('frontend.manage.resources.created')
             ->withUser(access()->user());
 

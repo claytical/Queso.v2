@@ -35,11 +35,13 @@
 
     Dropzone.options.resourceDropzone = {
       init: function() {
-        this.on("successmultiple", function(file) { 
-                console.log(file);
+        this.on("successmultiple", function(file, response) { 
+                console.log(response);
 //            $('#resource-create-form').append("<input name='files[]' type='hidden' value=''>");
             });
         }
+
+
     };
     </script>
 @stop
