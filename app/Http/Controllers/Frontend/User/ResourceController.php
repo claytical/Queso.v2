@@ -44,8 +44,9 @@ class ResourceController extends Controller
 
     }
 
-    public function details() {
-        return view('frontend.manage.resources.details')
+    public function details($id) {
+        $resource = Content::find($id);
+        return view('frontend.manage.resources.details', ['resource' => $resource])
             ->withUser(access()->user());
 
     }
