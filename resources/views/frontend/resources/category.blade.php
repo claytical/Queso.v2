@@ -14,7 +14,7 @@
                     <h5>{!! $resource->created_at !!}</h5>
                     {!! $resource->description !!}
                     <div>
-                        EMBEDLY CARD GOES HERE
+                     <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>
                     </div>
 
                     <h6>Attached Files</h6>
