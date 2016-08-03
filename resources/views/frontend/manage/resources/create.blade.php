@@ -29,19 +29,5 @@
 
 @section('after-scripts-end')
     <script>
-    $('#create_resource').click(function() {
-        $("#resource-create-form").submit();
-    });
-
-    Dropzone.options.resourceDropzone = {
-      init: function() {
-        this.on("successmultiple", function(file, response) { 
-                console.log(response);
-//            $('#resource-create-form').append("<input name='files[]' type='hidden' value=''>");
-            });
-        }
-
-
-    };
     </script>
 @stop
