@@ -16,6 +16,7 @@
 
 
 <div class="col-lg-3">
+    {{ Form::input('text', 'tag', null, ['class' => 'form-control', 'placeholder' => 'Category', 'id' => 'tag']) }}
 
    	{{ Form::input('text', 'link', $resource->link, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
     {!! Form::close() !!}

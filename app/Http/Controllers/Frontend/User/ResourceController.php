@@ -74,6 +74,13 @@ class ResourceController extends Controller
         $resource->title = $request->title;
         $resource->description = $request->description;
         $resource->link = $request->link;
+        if(strlen($request->tag) > 0) {
+            $resource->tag = $request->tag;
+        }
+        else {
+            $resource->tag = null;
+        }
+
         $resource->save();
         return view('frontend.manage.resources.updated', ['resource' => $resource])
             ->withUser(access()->user());
