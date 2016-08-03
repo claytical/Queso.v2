@@ -8,6 +8,7 @@
 </div>
 
 <div class="col-lg-8">
+
     <div id="quest_name">
         <div class="row">
             <div class="col-lg-12">
@@ -27,6 +28,7 @@
                     <button type="button" class="btn btn-default" id="activity_next">In Class Activity</button> <!-- #inclass_instant -->
                     <button type="button" class="btn btn-default" id="watch_next">Watch a Video</button> <!-- #video_url -->
                     <button type="button" class="btn btn-default" id="link_next">Link</button> <!-- #peer_feedback -->
+                    {{ Form::hidden('quest_type', null, ['id' => 'quest_type_id']) }}
 
             </div>
         </div>
@@ -40,6 +42,7 @@
                     <button type="button" class="btn btn-default" id="written_next">Write in a Textbox</button>
                     <button type="button" class="btn btn-default" id="upload_next">Upload Files</button>
                     <button type="button" class="btn btn-default" id="either_next">Either</button>
+                    {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
 
             </div>
         </div>
@@ -51,6 +54,7 @@
                 <h3>Should a student be able to revise their submission?</h3>
                     <button type="button" class="btn btn-default" id="revisions_allowed">Yes</button>
                     <button type="button" class="btn btn-default" id="revisions_disallowed">No</button>
+                    {{ Form::hidden('revisions', true, ['id' => 'revisions_option']) }}
 
             </div>
         </div>
@@ -62,6 +66,7 @@
                 <h3>Do you want to allow peer feedback?</h3>
                     <button type="button" class="btn btn-default" id="feedback_allowed">Yes</button>
                     <button type="button" class="btn btn-default" id="feedback_disallowed">No</button>
+                    {{ Form::hidden('feedback', false, ['id' => 'feedback_option']) }}
 
             </div>
         </div>
@@ -73,6 +78,7 @@
                 <h3>Do you want to allow a student to enter unique code for instant credit?</h3>
                     <button type="button" class="btn btn-default" id="instant_allowed">Yes</button>
                     <button type="button" class="btn btn-default" id="instant_disallowed">No</button>
+                    {{ Form::hidden('instant', true, ['id' => 'instant_option']) }}
 
             </div>
         </div>
@@ -82,7 +88,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>What's the URL for the video?</h3>
-                    {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAA']) }}
+                    {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAA', 'id' => 'video_url']) }}
                 <button type="button" class="btn btn-default" id="video_next">Next</button>
             </div>
         </div>
@@ -102,7 +108,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>When should the quest disappear?</h3>
-                    {{ Form::input('date', 'expiration', null, ['class' => 'form-control']) }}
+                    {{ Form::input('date', 'expiration', null, ['class' => 'form-control', 'id' => 'expiration_date']) }}
                     <button type="button" class="btn btn-default" id="expiration_set">Next</button>
 
             </div>
@@ -113,7 +119,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</h3>
-                {!! Form::textarea('description', null, ['class' => 'field', 'files' => true]) !!}
+                {!! Form::textarea('description', null, ['class' => 'field', 'files' => true, 'id' => 'description']) !!}
                 <button type="button" class="btn btn-default" id="description_set">Next</button>
 
             </div>
@@ -126,30 +132,18 @@
             <div class="col-lg-12">
                 <h3>What are the maximum point values for each skill?</h3>
                     <form class="form-horizontal">
+                    @foreach($skills as $skill)
                       <div class="form-group">
-                        <label for="skill1" class="col-sm-2 control-label">Skill #1</label>
+                        <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" id="skill1">
+                          <input type="number" class="form-control skills-input" id="skill{!! $skill->id!!}" name="skill[]">
+                          <input type="hidden" name="skill_id[] skills-input" value={!! $skill->id !!}>
+
                         </div>
                       </div>
-
-                      <div class="form-group">
-                        <label for="skill2" class="col-sm-2 control-label">Skill #2</label>
-                        <div class="col-sm-10">
-                          <input type="number" class="form-control" id="skill2">
-                        </div>
-                      </div>
-
-
-                      <div class="form-group">
-                        <label for="skill3" class="col-sm-2 control-label">Skill #3</label>
-                        <div class="col-sm-10">
-                          <input type="number" class="form-control" id="skill3">
-                        </div>
-                      </div>
-
-
-                        <button type="button" class="btn btn-default" id="skills_set">Next</button>
+                    @endforeach
+                    
+                    <button type="button" class="btn btn-default" id="skills_set">Next</button>
 
                     </form>
             </div>
@@ -172,26 +166,15 @@
                 <h3>What are the minimum skill level values in order to see this quest?</h3>
                     <form class="form-horizontal">
                       <div class="form-group">
-                        <label for="skill1" class="col-sm-2 control-label">Skill #1</label>
+                      @foreach($skills as $skill)
+                        <label for="threshold{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name!!}</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" id="skill1">
+                            <input type="number" class="form-control thresholds-input" id="threshold{!! $skill->id!!}" name="threshold[]">
+                            <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $skill->id !!}>
+
                         </div>
                       </div>
-
-                      <div class="form-group">
-                        <label for="skill2" class="col-sm-2 control-label">Skill #2</label>
-                        <div class="col-sm-10">
-                          <input type="number" class="form-control" id="skill2">
-                        </div>
-                      </div>
-
-
-                      <div class="form-group">
-                        <label for="skill3" class="col-sm-2 control-label">Skill #3</label>
-                        <div class="col-sm-10">
-                          <input type="number" class="form-control" id="skill3">
-                        </div>
-                      </div>
+                      @endforeach
 
                       <div class="form-group">
                         <button type="button" class="btn btn-default" id="thresholds_set">Next</button>
@@ -255,19 +238,25 @@
     <div id="thresholds_selection" style="display:none;">40 Skill #1</div>
 
 </div>
+    
+
 @endsection
 
 @section('after-scripts-end')
     <script>
+    var qf = $("#quest-create-form");
     var skipThresholds = false;
     $( "#name_next" ).click(function() {
         $("#quest_name").hide();
+        qf.append($("#quest_title"));
         $("#quest_name_selection").html($("#quest_title").val());
         $("#quest_type").show();
     });
 
     $( "#submission_next" ).click(function() {
         $("#quest_type").hide();
+        $("#quest_type_id").val(1);
+        qf.append($("#quest_type_id"));
         $("#submission_selection").show();
     });
 
@@ -275,66 +264,92 @@
         //flag to skip minimum thresholds
         skipThresholds = true;
         $("#quest_type").hide();
+        $("#quest_type_id").val(2);
+        qf.append($("#quest_type_id"));
         $("#inclass_instant").show();
     });
 
     $( "#instant_allowed" ).click(function() {
         $("#inclass_instant").hide();
+        $("#instant_option").val(true);        
+        qf.append($("#instant_option")); 
         $("#expiration").show();
     });
 
     $( "#instant_disallowed" ).click(function() {
         $("#inclass_instant").hide();
+        ("#instant_option").val(false);
+        qf.append($("#instant_option")); 
         $("#expiration").show();
     });
 
     $( "#watch_next" ).click(function() {
         $("#quest_type").hide();
+        $("#quest_type_id").val(3);
+        qf.append($("#quest_type_id"));
         $("#video_url").show();
     });
 
     $( "#video_next" ).click(function() {
         $("#video_url").hide();
+        qf.append($("#video_url"));
         $("#expiration").show();
     });
 
     $( "#link_next" ).click(function() {
         $("#quest_type").hide();
+        $("#quest_type_id").val(4);        
+        qf.append($("#quest_type_id"));
         $("#peer_feedback").show();
     });
 
     $( "#written_next" ).click(function() {
         $("#submission_selection").hide();
+        $("#submission_type_id").val(1);
+        qf.append($("#submission_type_id"));
         $("#submission_revisions").show();
     });
 
     $( "#upload_next" ).click(function() {
         $("#submission_selection").hide();
+        $("#submission_type_id").val(2);
+        qf.append($("#submission_type_id"));
         $("#submission_revisions").show();
     });
 
     $( "#either_next" ).click(function() {
         $("#submission_selection").hide();
+        $("#submission_type_id").val(3);
+        qf.append($("#submission_type_id"));
         $("#submission_revisions").show();
     });
 
     $( "#revisions_allowed" ).click(function() {
         $("#submission_revisions").hide();
+        $("#revisions_option").val(true);
+        qf.append($("#revisions_option"));
         $("#peer_feedback").show();
     });
 
     $( "#revisions_disallowed" ).click(function() {
         $("#submission_revisions").hide();
+        $("#revisions_option").val(false);
+        qf.append($("#revisions_option"));
         $("#peer_feedback").show();
     });
 
     $( "#feedback_disallowed" ).click(function() {
         $("#peer_feedback").hide();
+        $("#feedback_option").val(false);        
+        qf.append($("#feedback_option")); 
+
         $("#expiration").show();
     });
 
     $( "#feedback_allowed" ).click(function() {
         $("#peer_feedback").hide();
+        $("#feedback_option").val(true);        
+        qf.append($("#feedback_option")); 
         $("#expiration").show();
     });
 
@@ -348,18 +363,21 @@
         $("#quest_description").show();
     });
 
-    $( "#expiration_set" ).click(function() {
+    $( "#expiration_set").click(function() {
         $("#set_expiration").hide();
+        qf.append($("#expiration_date"));
         $("#quest_description").show();
     });
 
     $( "#description_set" ).click(function() {
         $("#quest_description").hide();
+        qf.append($("#description"));
         $("#skills").show();
     });
 
     $( "#skills_set" ).click(function() {
         $("#skills").hide();
+        qf.append($(".skills-input"));
         if (skipThresholds) {
             $("#files_allowed").show();
 
@@ -382,6 +400,7 @@
 
     $( "#thresholds_set" ).click(function() {
         $("#set_thresholds").hide();
+        qf.append($(".thresholds-input"));
         $("#attach_files").show();
     });
 

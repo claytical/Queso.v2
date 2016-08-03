@@ -6,6 +6,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Vinelab\Http\Client as HttpClient;
+use App\Quest;
+use App\Skill;
 
 /**
  * Class QuestController
@@ -30,7 +32,8 @@ class QuestController extends Controller
     }
 
     public function create_form() {
-        return view('frontend.manage.quests.new')
+        $skills = Skill::where('course_id', '=', session('current_course'))->get();
+        return view('frontend.manage.quests.new', ['skills' => $skills])
             ->withUser(access()->user());
 
     }
@@ -87,8 +90,8 @@ class QuestController extends Controller
     }
 
 
-    public function create() {
-        return view('frontend.manage.quests.created')
+    public function create(Request $request) {
+        return view('frontend.manage.quests.created', ['data' => $request])
             ->withUser(access()->user());
     }
     public function attempt_submission($quest_id) {
