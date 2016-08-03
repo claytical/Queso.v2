@@ -36,7 +36,8 @@ trait Dropdowns
         $resource_categories = DB::table('contents')
                                 ->select( DB::raw('DISTINCT(tag)') )
                                 ->where('course_id', '=', session('current_course'))
-                                ->groupBy('user_id')->get();
+                                ->groupBy('tag')
+                                ->get();
 
 /*
         Content::distinct()
