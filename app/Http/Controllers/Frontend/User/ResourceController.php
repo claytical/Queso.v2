@@ -39,7 +39,9 @@ class ResourceController extends Controller
     }
 
     public function manage() {
-        return view('frontend.manage.resources.index')
+        $resources = Content::where('course_id', '=', session('current_course'))
+                    ->get();
+        return view('frontend.manage.resources.index', ['resources' => $resources])
             ->withUser(access()->user());
 
     }
@@ -112,7 +114,9 @@ class ResourceController extends Controller
 
     }    
 
-    public function delete() {
+    public function delete($id) {
+        $resource = Content::find($id);
+        $resource->delete();
         return view('frontend.manage.resources.deleted')
             ->withUser(access()->user());
 

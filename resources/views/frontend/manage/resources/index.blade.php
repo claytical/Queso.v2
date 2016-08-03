@@ -23,52 +23,21 @@
              <ul class="list-unstyled list">
                 <li>
                     <div class="row">
-                        <div class="col-lg-6 name">
-                            {{ link_to('manage/resource/1', 'Handout #1') }}
-                        </div>
+                        @foreach($resources as $resource)
+                            <div class="col-lg-6 name">
+                                {{ link_to('manage/resource/' . $resource->id, 'Handout #1') }}
+                            </div>
 
-                        <div class="col-lg-3 category">
-                            Handouts
-                        </div>
+                            <div class="col-lg-3 category">
+                                {{ $resource->tag }}
+                            </div>
 
-                        <div class="col-lg-3">
-                            {{ link_to('manage/resource/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
-                        </div>
- 
+                            <div class="col-lg-3">
+                                {{ link_to('manage/resource/' . $resource->id . '/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
+                            </div>
+                        @endforeach
                     </div>
                 </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-lg-6 name">
-                            {{ link_to('manage/resource/1', 'Handout #2') }}
-                        </div>
-                        <div class="col-lg-3 category">
-                            Handouts
-                        </div>
-                        <div class="col-lg-3">
-                            {{ link_to('manage/resource/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
-                        </div>
- 
-                    </div>
-                </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-lg-6 name">
-                            {{ link_to('manage/resource/1', 'Syllabus') }}
-
-                        </div>
-                        <div class="col-lg-3 category">
-                        </div>
-
-                        <div class="col-lg-3">
-                            {{ link_to('manage/announcement/1/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
-                        </div>
- 
-                    </div>
-                </li>
-
             </ul>
     </div>
 </div>

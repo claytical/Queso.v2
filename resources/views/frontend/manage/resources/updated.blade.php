@@ -2,12 +2,10 @@
 
 @section('content')
 <div class="col-lg-12">
-    <h2>[TITLE] Updated</h2>
+    <h2>{{ $request->title }}</h2>
 </div>
 
-<p>
-Resource has been updated!
-</p>
+<p>Resource has been updated!</p>
 @endsection
 
 @section('after-scripts-end')
