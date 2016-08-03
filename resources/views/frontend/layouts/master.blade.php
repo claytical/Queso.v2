@@ -40,7 +40,7 @@
     <body class="skin-{{ config('backend.theme') }}">
         @include('includes.partials.logged-in-as')
 
-        <div class="wrapper">@yield('content')
+        <div class="wrapper">
             @include('frontend.includes.header')
             @include('frontend.includes.sidebar') 
 
