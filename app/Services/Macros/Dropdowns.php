@@ -37,7 +37,7 @@ trait Dropdowns
                                 ->select( DB::raw('DISTINCT(tag) as tag') )
                                 ->where('course_id', '=', session('current_course'))
                                 ->whereNotNull('tag')
-//                                ->groupBy('tag')
+                                ->groupBy('tag')
                                 ->get();
 
 
