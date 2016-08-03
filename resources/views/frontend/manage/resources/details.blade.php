@@ -6,7 +6,7 @@
 </div>
 
 <div class="col-lg-9">
-    {!! Form::open(['url' => 'manage/resources/update', 'id'=> 'resource-update-form']) !!}
+    {!! Form::open(['url' => 'manage/resource/update', 'id'=> 'resource-update-form']) !!}
     {{ Form::input('text', 'title', $resource->title, ['class' => 'form-control', 'placeholder' => 'Syllabus', 'id' => 'title']) }}
     {{ Form::hidden('id', $resource->id) }}
 
