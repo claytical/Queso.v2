@@ -36,7 +36,7 @@ trait Dropdowns
                                 ->get(['tag']);
         $html = "";
         foreach($resource_categories as $category) {
-            $category = str_replace($cateory, " ", "-");
+            $category = str_replace($category, " ", "-");
             $html += "<li class='" . Active::pattern('resource/category/' . $category) . "'><a href='".url('resource/category/'.$category)."'>".$category."</a></li>";
         }
         $html = "";
