@@ -37,7 +37,7 @@ trait Dropdowns
         $html = "";
         foreach($resource_categories as $category) {
             $category = str_replace($category, " ", "-");
-            $html += "<li class='" . Active::pattern('resource/category/' . $category) . "'><a href='".url('resource/category/'.$category)."'>".$category."</a></li>";
+            $html += "<li class=''><a href='".url('resource/category/'.$category)."'>".$category."</a></li>";
         }
         $html = "";
         foreach($resource_categories as $tag) {
@@ -46,7 +46,7 @@ trait Dropdowns
                                     ->where('course_id', '=', session('current_course'))
                                     ->get();
             foreach($multi_resources as $resource) {
-               $html += "<li class='" . Active::pattern('resource/' . $resource->id) . "'><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
+               $html += "<li class=''><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
             }
         }
 
