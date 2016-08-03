@@ -25,7 +25,7 @@ trait Dropdowns
         $html = "";
         foreach($resources as $resource) {
             //" . Active::pattern('resource/' . $resource->id) . "
-            $html = $html . "<li class=''><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
+            $html = $html . "<li class=''><a href='".url('resource/'.$resource->id)."'>".$resource->title."</a></li>";
         }
         
   /*
