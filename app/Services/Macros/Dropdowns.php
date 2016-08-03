@@ -19,7 +19,9 @@ trait Dropdowns
 
     public function singleResourceList() {
         
-        $resources = Content::all();
+        $resources = Content::where('course_id', '=', session('current_course'))
+                                ->whereNull('tag')
+                                ->get();
         $html = "";
         foreach($resources as $resource) {
             //" . Active::pattern('resource/' . $resource->id) . "
@@ -39,7 +41,7 @@ trait Dropdowns
             $category = str_replace($category, " ", "-");
             $html += "<li class=''><a href='".url('resource/category/'.$category)."'>".$category."</a></li>";
         }
-        $html = "";
+/*
         foreach($resource_categories as $tag) {
             $html += "<li class='header'>".$tag."</li>";
             $multi_resources = Content::where('tag', '=', $tag)
@@ -49,7 +51,7 @@ trait Dropdowns
                $html += "<li class=''><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
             }
         }
-
+*/
         return $html;
 
     }
