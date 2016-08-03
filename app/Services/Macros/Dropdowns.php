@@ -33,9 +33,11 @@ trait Dropdowns
 
     public function categoryResourceList() {
 
-        $resource_categories = Content::distinct()->whereNotNull('tag')
-                                ->where('course_id', '=', session('current_course'))
-                                ->get(['tag']);
+        $resource_categories = Content::distinct()
+                                    ->select('tag')
+                                    ->where('course_id', '=', session('current_course'))
+                                    ->whereNotNull('tag')
+                                    ->groupBy('tag')->get();                                
         $html = "";
         foreach($resource_categories as $category) {
             $category = str_replace($category, " ", "-");
