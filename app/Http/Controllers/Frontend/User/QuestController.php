@@ -91,7 +91,7 @@ class QuestController extends Controller
 
 
     public function create(Request $request) {
-        return view('frontend.manage.quests.created', ['data' => $request])
+        return view('frontend.manage.quests.created', ['data' => $request->all();])
             ->withUser(access()->user());
     }
     public function attempt_submission($quest_id) {
