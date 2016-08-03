@@ -404,12 +404,12 @@
         $("#attach_files").show();
     });
 
-    $( "#files_allowed" ).click(function() {
+    $( "#files_allowed").click(function() {
         $("#attach_files").hide();
         $("#file_attachments").show();
     });
 
-    $( "#set_files" ).click(function() {
+    $( "#set_files").click(function() {
         $("#file_attachments").hide();
         $("#finished").show();
     });
