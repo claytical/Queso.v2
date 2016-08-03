@@ -6,8 +6,10 @@
 </div>
 
 <div class="col-lg-9">
-    {!! Form::open(['url' => 'manage/resources/update', 'id'=>'resource-update-form']) !!}
+    {!! Form::open(['url' => 'manage/resources/update', 'id'=> 'resource-update-form']) !!}
     {{ Form::input('text', 'title', $resource->title, ['class' => 'form-control', 'placeholder' => 'Syllabus', 'id' => 'title']) }}
+    {{ Form::hidden('id', $resource->id) }}
+
     {!! Form::textarea('description', $resource->description, ['class' => 'field', 'files' => true]) !!}
 
 </div>
@@ -25,7 +27,7 @@
 
     {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
     {!! Form::close() !!}
-    <button class="btn btn-primary btn-lg btn-block">Update</button>
+    <button class="btn btn-primary btn-lg btn-block" id="update_resource">Update</button>
 
 
 </div>
@@ -33,5 +35,9 @@
 
 @section('after-scripts-end')
     <script>
+        $('#update_resource').click(function() {
+        $("#resource-update-form").submit();
+    });
+
     </script>
 @stop

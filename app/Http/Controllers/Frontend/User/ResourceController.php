@@ -101,7 +101,12 @@ class ResourceController extends Controller
 
     }
 
-    public function update() {
+    public function update(Request $request) {
+        $resource = Content::find($request->id);
+        $resource->title = $request->title;
+        $resource->description = $request->description;
+        $resource->link = $request->link;
+        $resource->save();
         return view('frontend.manage.resources.update')
             ->withUser(access()->user());
 
