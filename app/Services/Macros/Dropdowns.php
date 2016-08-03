@@ -43,7 +43,8 @@ trait Dropdowns
 
         $html = "";
         foreach($resource_categories as $category) {
-            $tag = str_replace($category->tag, " ", "-");
+
+            $tag = str_replace(" ", "-", $category->tag);
             $html = $html . "<li class=''><a href='" . url('resource/category/'.$tag)."'>".$tag."</a></li>";
         }
 /*
