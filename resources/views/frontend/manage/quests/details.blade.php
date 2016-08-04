@@ -22,7 +22,7 @@
         <div role="tabpanel" class="tab-pane active" id="home">
             {{ Form::input('text', 'name', $quest->name, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
 
-            {!! Form::textarea('description', $quest->instructions, ['class' => 'field']) !!}
+            {!! Form::textarea('description', null, ['class' => 'field']) !!}
 
         </div>
         <div role="tabpanel" class="tab-pane" id="skills">
