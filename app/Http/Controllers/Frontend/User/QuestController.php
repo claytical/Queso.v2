@@ -41,8 +41,9 @@ class QuestController extends Controller
     }
 
 
-    public function edit_form() {
-        return view('frontend.manage.quests.details')
+    public function edit_form($id) {
+        $quest = Quest::find($id);
+        return view('frontend.manage.quests.details', ['quest' => $quest])
             ->withUser(access()->user());
 
     }
