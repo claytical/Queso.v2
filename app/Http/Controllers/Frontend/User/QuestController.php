@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Vinelab\Http\Client as HttpClient;
 use App\Quest;
 use App\Skill;
+use App\Threshold;
 
 /**
  * Class QuestController
@@ -110,21 +111,114 @@ class QuestController extends Controller
     }
 
     public function submit(Request $request) {
-        /*
-        if($request->quest_type == "link") {
-            $client = new HttpClient;
-            $response = $client->get("http://iframe.ly/api/oembed?url=" . urlencode($request->link) . "&api_key=a705fe8012d914a446d7e4");
-            $embedly = json_decode($response->json());
-            //TODO: Save link into quest submission if it returns html, otherwise, produce an error
+        $quest = new Quest;
+        $quest->name = $request->quest_title;
+        $quest->instructions = $request->description;
+        $quest->course_id = session('current_course');
+        $quest->visible = true;
+//category?
+//color?        
 
-            //TODO: Return title of page, type, preview
 
-            return view('frontend.quests.submitted', ['data' => $response->json()])
-                ->withUser(access()->user());
-        
+//expirations
+        if ($request->has('expiration_date')) {
+//            $quest->expires_at
         }
-        */
-        return view('frontend.quests.submitted', ['data' => $request->all()])
+//file attachments
+
+//type specific options
+        switch($request->quest_type_id) {
+            //SUBMISSION
+            case 1:
+                $quest->quest_type_id = 1;
+                //feedback
+                if ($request->has('feedback_option')) {
+                    $quest->peer_feedback = true;
+                }
+                else {
+                    $quest->peer_feedback = false;
+                }
+                //revisions
+                if($request->has('revisions_option')) {
+                    $quest->revisions = true;
+                }
+                else {
+                    $quest->revisions = false;
+                }
+                //written
+                if($request->has('submissions_allowed')) {
+                    $quest->submissions = true;
+                }
+                else {
+                    $quest->submissions = false;
+                }
+
+                //uploads
+                if($request->has('uploads_allowed') {
+                    $quest->uploads = true;
+                }
+                else {
+                    $quest->uploads = false;
+                }
+
+                break;
+            //IN CLASS
+            case 2:
+                $quest->quest_type_id = 2;
+
+                if($request->instant_option == 1) {
+                    $quest->instant = true;
+                }
+                else {
+                    $quest->instant = false;
+                }
+                break;
+            //WATCH VIDEO
+            case 3:
+                $quest->quest_type_id = 3;
+
+                $quest->youtube_id = $request->video_url;
+                break;
+            //LINK
+            case 4:
+                $quest->quest_type_id = 4;
+                //feedback
+                if ($request->has('feedback_option')) {
+                    $quest->peer_feedback = true;
+                }
+                else {
+                    $quest->peer_feedback = false;
+                }
+
+                break;
+            default:
+                break;
+
+        }
+
+        $quest->save();
+
+//skills
+        for($i = 0; $i < count($request->skill); $i++) {
+            $skill_id = $request->skill_id[$i];
+            if ($request->skill[$skill_id] > 0) {
+                //INSERT QUEST SKILL
+                $quest->skills()->attach($skill_id, ['amount' => $request->skill[$skill_id]]);                
+            }
+        }
+//thresholds
+        for($i = 0; $i < count($request->threshold); $i++) {
+            $threshold_skill_id = $request->threshold_skill_id[$i];
+            if ($request->threshold[$threshold_skill_id] > 0) {
+                //INSERT QUEST SKILL THRESHOLD
+                $threshold = new Threshold;
+                $threshold->quest_id = $quest->id;
+                $threshold->skill_id = $threshold_skill_id;
+                $threshold->amount = $request->threshold[$threshold_skill_id];
+                $threshold->save();
+            }
+        }        
+        return view('frontend.quests.submitted', ['data' => $request->all(), 'quest' => $quest])
                 ->withUser(access()->user());
     
     }

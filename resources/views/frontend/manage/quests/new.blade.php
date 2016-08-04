@@ -265,14 +265,14 @@
 
     $( "#instant_allowed" ).click(function() {
         $("#inclass_instant").hide();
-        $("#instant_option").val(true);        
+        $("#instant_option").val(1);        
         qf.append($("#instant_option")); 
         $("#expiration").show();
     });
 
     $( "#instant_disallowed" ).click(function() {
         $("#inclass_instant").hide();
-        ("#instant_option").val(false);
+        ("#instant_option").val(0);
         qf.append($("#instant_option")); 
         $("#expiration").show();
     });
@@ -301,12 +301,14 @@
         $("#submission_selection").hide();
         $("#submission_type_id").val(1);
         qf.append($("#submission_type_id"));
+        //written only
         $("#submission_revisions").show();
     });
 
     $( "#upload_next" ).click(function() {
         $("#submission_selection").hide();
         $("#submission_type_id").val(2);
+        //uploads only
         qf.append($("#submission_type_id"));
         $("#submission_revisions").show();
     });
@@ -314,27 +316,28 @@
     $( "#either_next" ).click(function() {
         $("#submission_selection").hide();
         $("#submission_type_id").val(3);
+        //both written and upload
         qf.append($("#submission_type_id"));
         $("#submission_revisions").show();
     });
 
     $( "#revisions_allowed" ).click(function() {
         $("#submission_revisions").hide();
-        $("#revisions_option").val(true);
+        $("#revisions_option").val(1);
         qf.append($("#revisions_option"));
         $("#peer_feedback").show();
     });
 
     $( "#revisions_disallowed" ).click(function() {
         $("#submission_revisions").hide();
-        $("#revisions_option").val(false);
+        $("#revisions_option").val(0);
         qf.append($("#revisions_option"));
         $("#peer_feedback").show();
     });
 
     $( "#feedback_disallowed" ).click(function() {
         $("#peer_feedback").hide();
-        $("#feedback_option").val(false);        
+        $("#feedback_option").val(0);        
         qf.append($("#feedback_option")); 
 
         $("#expiration").show();
@@ -342,7 +345,7 @@
 
     $( "#feedback_allowed" ).click(function() {
         $("#peer_feedback").hide();
-        $("#feedback_option").val(true);        
+        $("#feedback_option").val(1);        
         qf.append($("#feedback_option")); 
         $("#expiration").show();
     });
