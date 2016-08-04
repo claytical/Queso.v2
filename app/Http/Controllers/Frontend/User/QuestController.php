@@ -94,25 +94,6 @@ class QuestController extends Controller
 
 
     public function create(Request $request) {
-        return view('frontend.manage.quests.created', ['data' => $request->all()])
-            ->withUser(access()->user());
-    }
-    public function attempt_submission($quest_id) {
-        return view('frontend.quests.attempt_submission')
-            ->withUser(access()->user());
-    }
-    
-    public function watch_video($quest_id) {
-        return view('frontend.quests.watch')
-            ->withUser(access()->user());
-    }
-
-    public function attempt_link($quest_id) {
-        return view('frontend.quests.attempt_link')
-            ->withUser(access()->user());
-    }
-
-    public function submit(Request $request) {
         $quest = new Quest;
         $quest->name = $request->quest_title;
         $quest->instructions = $request->description;
@@ -223,7 +204,28 @@ class QuestController extends Controller
             }
         }        
 
-        return view('frontend.quests.submitted', ['data' => $request->all(), 'quest' => $quest])
+
+        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest])
+            ->withUser(access()->user());
+    }
+    public function attempt_submission($quest_id) {
+        return view('frontend.quests.attempt_submission')
+            ->withUser(access()->user());
+    }
+    
+    public function watch_video($quest_id) {
+        return view('frontend.quests.watch')
+            ->withUser(access()->user());
+    }
+
+    public function attempt_link($quest_id) {
+        return view('frontend.quests.attempt_link')
+            ->withUser(access()->user());
+    }
+
+    public function submit(Request $request) {
+
+        return view('frontend.quests.submitted', ['data' => $request->all()])
                 ->withUser(access()->user());
     
     }
