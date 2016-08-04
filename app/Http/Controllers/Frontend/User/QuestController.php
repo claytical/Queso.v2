@@ -110,6 +110,7 @@ class QuestController extends Controller
     }
 
     public function submit(Request $request) {
+        /*
         if($request->quest_type == "link") {
             $client = new HttpClient;
             $response = $client->get("http://iframe.ly/api/oembed?url=" . urlencode($request->link) . "&api_key=a705fe8012d914a446d7e4");
@@ -120,10 +121,12 @@ class QuestController extends Controller
 
             return view('frontend.quests.submitted', ['data' => $response->json()])
                 ->withUser(access()->user());
+        
         }
 
         return view('frontend.quests.submitted', ['data' => $request->all()])
                 ->withUser(access()->user());
+    */
     }
 
     public function redeem() {
