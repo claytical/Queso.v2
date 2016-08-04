@@ -129,7 +129,7 @@ class QuestController extends Controller
 //type specific options
         switch($request->quest_type_id) {
             //SUBMISSION
-            /*
+            
             case '1':
                 $quest->quest_type_id = 1;
                 //feedback
@@ -155,7 +155,7 @@ class QuestController extends Controller
                 }
 
                 //uploads
-                if($request->has('uploads_allowed') {
+                if($request->has('uploads_allowed')) {
                     $quest->uploads = true;
                 }
                 else {
@@ -163,7 +163,7 @@ class QuestController extends Controller
                 }
 
                 break;
-*/
+
             //IN CLASS
             case '2':
                 $quest->quest_type_id = 2;
