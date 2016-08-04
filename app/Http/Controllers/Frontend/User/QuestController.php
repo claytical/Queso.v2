@@ -129,7 +129,7 @@ class QuestController extends Controller
 //type specific options
         switch($request->quest_type_id) {
             //SUBMISSION
-            case 1:
+            case '1':
                 $quest->quest_type_id = 1;
                 //feedback
                 if ($request->has('feedback_option')) {
@@ -163,7 +163,7 @@ class QuestController extends Controller
 
                 break;
             //IN CLASS
-            case 2:
+            case '2':
                 $quest->quest_type_id = 2;
 
                 if($request->instant_option == 1) {
@@ -174,13 +174,13 @@ class QuestController extends Controller
                 }
                 break;
             //WATCH VIDEO
-            case 3:
+            case '3':
                 $quest->quest_type_id = 3;
 
                 $quest->youtube_id = $request->video_url;
                 break;
             //LINK
-            case 4:
+            case '4':
                 $quest->quest_type_id = 4;
                 //feedback
                 if ($request->has('feedback_option')) {
