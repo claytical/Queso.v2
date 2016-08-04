@@ -43,7 +43,9 @@ class QuestController extends Controller
 
     public function edit_form($id) {
         $quest = Quest::find($id);
-        return view('frontend.manage.quests.details', ['quest' => $quest])
+        $skills = $quest->skills();
+        $thresholds = $quest->thresholds();
+        return view('frontend.manage.quests.details', ['quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds])
             ->withUser(access()->user());
 
     }
@@ -110,11 +112,11 @@ class QuestController extends Controller
 //file attachments
 
 //type specific options
-        switch($request->quest_type_id) {
+        switch($request->quest_type) {
             //SUBMISSION
             
             case '1':
-                $quest->quest_type_id = 1;
+                $quest->quest_type = 1;
                 //feedback
                 if ($request->has('feedback')) {
                     $quest->peer_feedback = true;
@@ -149,7 +151,7 @@ class QuestController extends Controller
 
             //IN CLASS
             case '2':
-                $quest->quest_type_id = 2;
+                $quest->quest_type = 2;
 
                 if($request->has('instant')) {
                     $quest->instant = true;
@@ -160,13 +162,13 @@ class QuestController extends Controller
                 break;
             //WATCH VIDEO
             case '3':
-                $quest->quest_type_id = 3;
+                $quest->quest_type = 3;
 
                 $quest->youtube_id = $request->video_url;
                 break;
             //LINK
             case '4':
-                $quest->quest_type_id = 4;
+                $quest->quest_type = 4;
                 //feedback
                 if ($request->has('feedback_option')) {
                     $quest->peer_feedback = true;

@@ -5,6 +5,11 @@
     <h2>Quest Details</h2>
 </div>
 {!! var_dump($quest) !!}
+----
+{!! var_dump($skills) !!}
+---
+{!! var_dump($thresholds) !!}
+
 <div class="col-lg-9">
 
     <div>
