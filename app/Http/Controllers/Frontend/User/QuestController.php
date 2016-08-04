@@ -151,7 +151,7 @@ class QuestController extends Controller
             case '2':
                 $quest->quest_type_id = 2;
 
-                if($request->has('instant') {
+                if($request->has('instant')) {
                     $quest->instant = true;
                 }
                 else {
