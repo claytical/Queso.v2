@@ -163,7 +163,7 @@ class QuestController extends Controller
                 }
 
                 break;
-/*
+*/
             //IN CLASS
             case '2':
                 $quest->quest_type_id = 2;
@@ -193,7 +193,6 @@ class QuestController extends Controller
                 }
 
                 break;
-                */
             default:
                 break;
 
