@@ -129,6 +129,7 @@ class QuestController extends Controller
 //type specific options
         switch($request->quest_type_id) {
             //SUBMISSION
+            /*
             case '1':
                 $quest->quest_type_id = 1;
                 //feedback
