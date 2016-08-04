@@ -125,7 +125,7 @@ class QuestController extends Controller
 //            $quest->expires_at
         }
 //file attachments
-/*
+
 //type specific options
         switch($request->quest_type_id) {
             //SUBMISSION
@@ -162,6 +162,7 @@ class QuestController extends Controller
                 }
 
                 break;
+/*
             //IN CLASS
             case '2':
                 $quest->quest_type_id = 2;
@@ -191,11 +192,12 @@ class QuestController extends Controller
                 }
 
                 break;
+                */
             default:
                 break;
 
         }
-*/
+
         $quest->save();
 
 //skills
