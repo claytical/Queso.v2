@@ -4,6 +4,7 @@
 <div class="col-lg-12">
     <h2>Quest Details</h2>
 </div>
+{!! $data !!}
 <div class="col-lg-9">
 
     <div>
