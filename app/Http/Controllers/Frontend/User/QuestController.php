@@ -123,10 +123,10 @@ class QuestController extends Controller
                 ->withUser(access()->user());
         
         }
-
+        */
         return view('frontend.quests.submitted', ['data' => $request->all()])
                 ->withUser(access()->user());
-    */
+    
     }
 
     public function redeem() {
