@@ -27,7 +27,8 @@ class QuestController extends Controller
     }
 
     public function manage() {
-        return view('frontend.manage.quests.index')
+        $quests = Quest::where('course_id', '=', session('current_course'))->get();
+        return view('frontend.manage.quests.index', ['quests' => $quests])
             ->withUser(access()->user());
 
     }

@@ -36,44 +36,26 @@
                         </div>                        
                     </div>
                 </li>
-
+                @foreach($quests as $quest)
                 <li>
                     <div class="row">
                         <div class="col-lg-6 quest">
-                            {{ link_to('manage/quest/1', 'Link Quest') }}
+                            {{ link_to('manage/quest/'.$quest->id, $quest->name) }}
                         </div>
 
                         <div class="col-lg-3 category">
                             Prototypes
                         </div>
                         <div class="col-lg-3">
-                        {{ link_to('manage/quest/1/delete', 'Delete') }}
-                        {{ link_to('manage/quest/1/clone', 'Clone') }}
-                        {{ link_to('manage/quest/1/show', 'Show') }}
-                        {{ link_to('manage/quest/1/hide', 'Hide') }}
+                        {{ link_to('manage/quest/'.$quest->id.'/delete', 'Delete') }}
+                        {{ link_to('manage/quest/'.$quest->id.'/clone', 'Clone') }}
+                        {{ link_to('manage/quest/'.$quest->id.'/show', 'Show') }}
+                        {{ link_to('manage/quest/'.$quest->id.'/hide', 'Hide') }}
 
                         </div>                         
                     </div>
                 </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-lg-6 quest">
-                            {{ link_to('manage/quest/1', 'Instant Quest') }}
-                        </div>
-
-                        <div class="col-lg-3 category">
-                            Prototypes
-                        </div>
-                        <div class="col-lg-3">
-                        {{ link_to('manage/quest/1/delete', 'Delete') }}
-                        {{ link_to('manage/quest/1/clone', 'Clone') }}
-                        {{ link_to('manage/quest/1/show', 'Show') }}
-                        {{ link_to('manage/quest/1/hide', 'Hide') }}
-                        {{ link_to('manage/quest/1/qrcodes', 'QR Codes') }}
-                        </div>
-                    </div>
-                </li>
+                @endforeach
             </ul>
     </div>
 </div>
