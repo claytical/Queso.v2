@@ -195,7 +195,7 @@ class QuestController extends Controller
                 break;
 
         }
-
+*/
         $quest->save();
 
 //skills
@@ -218,7 +218,7 @@ class QuestController extends Controller
                 $threshold->save();
             }
         }        
-*/
+
         return view('frontend.quests.submitted', ['data' => $request->all(), 'quest' => $quest])
                 ->withUser(access()->user());
     
