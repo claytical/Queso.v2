@@ -43,7 +43,6 @@
                     <button type="button" class="btn btn-default" id="upload_next">Upload Files</button>
                     <button type="button" class="btn btn-default" id="either_next">Either</button>
                     {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
-
             </div>
         </div>
     </div>
@@ -121,10 +120,8 @@
                 <h3>Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</h3>
                 {!! Form::textarea('description', null, ['class' => 'field', 'files' => true, 'id' => 'description']) !!}
                 <button type="button" class="btn btn-default" id="description_set">Next</button>
-
             </div>
         </div>
-
     </div>
 
     <div id="skills" style="display:none;">
@@ -137,14 +134,12 @@
                         <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
                         <div class="col-sm-10">
                           <input type="number" class="form-control skills-input" id="skill{!! $skill->id!!}" name="skill[]">
-                          <input type="hidden" name="skill_id[] skills-input" value={!! $skill->id !!}>
-
+                          <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
                         </div>
                       </div>
                     @endforeach
-                    
+                
                     <button type="button" class="btn btn-default" id="skills_set">Next</button>
-
                     </form>
             </div>
         </div>
@@ -173,9 +168,8 @@
                             <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $skill->id !!}>
 
                         </div>
-                      </div>
                       @endforeach
-
+                      </div>
                       <div class="form-group">
                         <button type="button" class="btn btn-default" id="thresholds_set">Next</button>
 
