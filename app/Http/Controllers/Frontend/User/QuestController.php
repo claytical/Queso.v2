@@ -118,7 +118,7 @@ class QuestController extends Controller
         $quest->visible = true;
 //category?
 //color?        
-
+/*
 
 //expirations
         if ($request->has('expiration_date')) {
@@ -197,7 +197,7 @@ class QuestController extends Controller
         }
 
         $quest->save();
-/*
+
 //skills
         for($i = 0; $i < count($request->skill); $i++) {
             $skill_id = $request->skill_id[$i];
@@ -218,7 +218,7 @@ class QuestController extends Controller
                 $threshold->save();
             }
         }        
-        */
+*/
         return view('frontend.quests.submitted', ['data' => $request->all(), 'quest' => $quest])
                 ->withUser(access()->user());
     
