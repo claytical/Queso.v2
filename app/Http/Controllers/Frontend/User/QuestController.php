@@ -186,7 +186,7 @@ class QuestController extends Controller
 //skills
         for($i = 0; $i < count($request->skill); $i++) {
             $skill_id = $request->skill_id[$i];
-            if ($request->has(skill[$skill_id])) {
+            if ($request->has('skill['.$skill_id.']')) {
                 //INSERT QUEST SKILL
                 $quest->skills()->attach($skill_id, ['amount' => $request->skill[$skill_id]]);                
             }
@@ -194,7 +194,7 @@ class QuestController extends Controller
 //thresholds
         for($i = 0; $i < count($request->threshold); $i++) {
             $threshold_skill_id = $request->threshold_skill_id[$i];
-            if ($request->has(threshold[$threshold_skill_id])) {
+            if ($request->has('threshold['.$threshold_skill_id.']')) {
                 //INSERT QUEST SKILL THRESHOLD
                 $threshold = new Threshold;
                 $threshold->quest_id = $quest->id;
