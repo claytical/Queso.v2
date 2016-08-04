@@ -79,7 +79,9 @@ class QuestController extends Controller
             ->withUser(access()->user());
 
     }
-    public function delete() {
+    public function delete($id) {
+        $quest = Quest::find($id);
+        $quest->delete();
         return view('frontend.manage.quests.deleted')
             ->withUser(access()->user());
     }

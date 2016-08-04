@@ -27,7 +27,7 @@ class Quest extends Model
     }
 
     public function skills() {
-    	return $this->belongsToMany('App\Quest')->withPivot('amount');
+    	return $this->belongsToMany('App\Skill')->withPivot('amount');
     }
 
     public function thresholds() {
