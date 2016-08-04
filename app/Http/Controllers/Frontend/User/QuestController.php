@@ -46,8 +46,8 @@ class QuestController extends Controller
         $skills = $quest->skills()->get();
         $thresholds = $quest->thresholds()->get();
         $data = [$quest, $skills, $thresholds];
- //['quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds]
-        return view('frontend.manage.quests.details', ['data' => $data])
+ 
+        return view('frontend.manage.quests.details', ['quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds])
             ->withUser(access()->user());
 
     }

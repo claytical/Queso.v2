@@ -4,7 +4,6 @@
 <div class="col-lg-12">
     <h2>Quest Details</h2>
 </div>
-{!! var_dump($data) !!}
 <div class="col-lg-9">
 
     <div>
@@ -20,14 +19,15 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
-            {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
+            {{ Form::input('text', 'name', $quest->name, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
 
-            {!! Form::textarea('description', null, ['class' => 'field']) !!}
+            {!! Form::textarea('description', $quest->instructions, ['class' => 'field']) !!}
 
         </div>
         <div role="tabpanel" class="tab-pane" id="skills">
-            SKILL SET
-
+        @foreach($skills as $skill)
+        {!! var_dump($skill) !!}
+        @endforeach
         </div>
         <div role="tabpanel" class="tab-pane" id="thresholds">
             THRESHOLDS
