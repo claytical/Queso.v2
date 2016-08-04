@@ -95,7 +95,7 @@ class QuestController extends Controller
 
     public function create(Request $request) {
         $quest = new Quest;
-        $quest->name = $request->quest_title;
+        $quest->name = $request->name;
         $quest->instructions = $request->description;
         $quest->course_id = session('current_course');
         $quest->visible = true;
@@ -104,7 +104,7 @@ class QuestController extends Controller
 
 
 //expirations
-        if ($request->has('expiration_date')) {
+        if ($request->has('expiration')) {
 //            $quest->expires_at
         }
 //file attachments
@@ -116,14 +116,14 @@ class QuestController extends Controller
             case '1':
                 $quest->quest_type_id = 1;
                 //feedback
-                if ($request->has('feedback_option')) {
+                if ($request->has('feedback')) {
                     $quest->peer_feedback = true;
                 }
                 else {
                     $quest->peer_feedback = false;
                 }
                 //revisions
-                if($request->has('revisions_option')) {
+                if($request->has('revisions')) {
                     $quest->revisions = true;
                 }
                 else {
@@ -151,7 +151,7 @@ class QuestController extends Controller
             case '2':
                 $quest->quest_type_id = 2;
 
-                if($request->instant_option == 1) {
+                if($request->has('instant') {
                     $quest->instant = true;
                 }
                 else {

@@ -272,8 +272,8 @@
 
     $( "#instant_disallowed" ).click(function() {
         $("#inclass_instant").hide();
-        ("#instant_option").val(0);
-        qf.append($("#instant_option")); 
+//        ("#instant_option").val(0);
+//        qf.append($("#instant_option")); 
         $("#expiration").show();
     });
 
@@ -330,15 +330,15 @@
 
     $( "#revisions_disallowed" ).click(function() {
         $("#submission_revisions").hide();
-        $("#revisions_option").val(0);
-        qf.append($("#revisions_option"));
+//        $("#revisions_option").val(0);
+//        qf.append($("#revisions_option"));
         $("#peer_feedback").show();
     });
 
     $( "#feedback_disallowed" ).click(function() {
         $("#peer_feedback").hide();
-        $("#feedback_option").val(0);        
-        qf.append($("#feedback_option")); 
+//        $("#feedback_option").val(0);        
+//        qf.append($("#feedback_option")); 
 
         $("#expiration").show();
     });
