@@ -118,14 +118,14 @@ class QuestController extends Controller
         $quest->visible = true;
 //category?
 //color?        
-/*
+
 
 //expirations
         if ($request->has('expiration_date')) {
 //            $quest->expires_at
         }
 //file attachments
-
+/*
 //type specific options
         switch($request->quest_type_id) {
             //SUBMISSION
