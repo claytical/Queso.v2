@@ -30,7 +30,9 @@
         @endforeach
         </div>
         <div role="tabpanel" class="tab-pane" id="thresholds">
-            THRESHOLDS
+        @foreach($thresholds as $threshold)
+        {!! var_dump($threshold) !!}
+        @endforeach
         </div>
         <div role="files" class="tab-pane" id="files">
                     {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
