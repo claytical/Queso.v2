@@ -12,9 +12,10 @@ class AddQuestSkillPivotAmount extends Migration
      */
     public function up()
     {
-        Schema::table('quest_skill'), function ($table) {
+        Schema::table('quest_skill', function ($table) {
             $table->integer('amount')->default(0);
         });
+
     }
 
     /**
