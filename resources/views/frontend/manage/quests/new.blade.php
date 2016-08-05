@@ -376,8 +376,8 @@
     $( "#expiration_set").click(function() {
         $("#set_expiration").hide();
         $("#expiration_date").hide();
-        $("#expiration_selection").show();
-        $("#expiration_selection").html($("#expiration_date").val());
+        $("#expires_selection").show();
+        $("#expires_selection").html($("#expiration_date").val());
 
         qf.append($("#expiration_date"));
         $("#skills").show();
