@@ -99,10 +99,11 @@
 
     {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
  {!! Form::close() !!}
+    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
+                    {!! Form::close() !!}
 </div>
         <div role="files" class="tab-pane" id="files">
-                    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
-                    {!! Form::close() !!}
+                 
         </div>
  
 
