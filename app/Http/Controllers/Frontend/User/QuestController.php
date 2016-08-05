@@ -110,7 +110,7 @@ class QuestController extends Controller
 
 //expirations
         if ($request->has('expiration')) {
-//            $quest->expires_at
+            $quest->expires_at = $request->expiration;
         }
 //file attachments
 
@@ -181,6 +181,7 @@ class QuestController extends Controller
                 }
 
                 break;
+            
             default:
                 break;
 

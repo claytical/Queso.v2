@@ -231,11 +231,22 @@
     <div id="instant_selection" style="display:none;">Instant Credit</div>
     <div id="upload_selection" style="display:none;">Uploads Enabled</div>
     <div id="revision_selection" style="display:none;">Revisions Enabled</div>
-    <div id="expires_selection" style="display:none;">Expires 00/00/0000</div>
     <div id="feedback_selection" style="display:none;">Peer Feedback Enabled</div>
+    <div id="expires_selection" style="display:none;">Expires 00/00/0000</div>
     <div id="file_selection" style="display:none;">Files Attached</div>
-    <div id="skills_selection" style="display:none;">Skill #1 - 50</div>
-    <div id="thresholds_selection" style="display:none;">40 Skill #1</div>
+    <div id="skills_selection" style="display:none;">
+        <h5>Skills</h5>
+        <ul id="skill-list" class="unstyled-list">
+            <li></li>
+        </ul>
+    </div>
+    <div id="thresholds_selection" style="display:none;">
+        <h5>Thresholds</h5>
+       <ul id="threshold-list" class="unstyled-list">
+            <li></li>
+        </ul>
+ 
+    </div>
     {!! Form::submit('Create', ['class' => 'btn btn-primary btn-lg btn-block', 'style' => 'display:none;', 'id' => 'create-button']) !!}
     {!! Form::close() !!}
 </div>
