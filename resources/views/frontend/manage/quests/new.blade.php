@@ -43,6 +43,9 @@
                     <button type="button" class="btn btn-default" id="upload_next">Upload Files</button>
                     <button type="button" class="btn btn-default" id="either_next">Either</button>
                     {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
+                    {{ Form::hidden('uploads_allowed', true, ['id' => 'submissions_allowed']) }}
+                    {{ Form::hidden('submissions_allowed', true, ['id' => 'uploads_allowed']) }}
+
             </div>
         </div>
     </div>
@@ -207,8 +210,11 @@
     <div id="finished" style="display:none;">
         <div class="row">
             <div class="col-lg-12">
-                <h3>You're all set, ready to create this quest?</h3>
+                <h3>Almost there!</h3>
                     {!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form']) !!}
+                <p class="lead">Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</p>
+                   {!! Form::textarea('description', null, ['class' => 'field', 'files' => false, 'id' => 'description']) !!}
+
                     {!! Form::submit('Create', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
                     {!! Form::close() !!}
 
@@ -223,8 +229,8 @@
     <h5 id="url_selection"></h5>
     <p id="description_selection"></p>
     <div id="instant_selection" style="display:none;">Instant Credit</div>
-    <div id="upload_selection" style="display:none;">Uploads</div>
-    <div id="revision_selection" style="display:none;">Revisions</div>
+    <div id="upload_selection" style="display:none;">Uploads Enabled</div>
+    <div id="revision_selection" style="display:none;">Revisions Enabled</div>
     <div id="expires_selection" style="display:none;">Expires 00/00/0000</div>
     <div id="feedback_selection" style="display:none;">Expires 00/00/0000</div>
     <div id="file_selection" style="display:none;">Files Attached</div>
@@ -242,6 +248,7 @@
     var skipThresholds = false;
     $( "#name_next" ).click(function() {
         $("#quest_name").hide();
+        $("#quest_title").hide();
         qf.append($("#quest_title"));
         $("#quest_name_selection").html($("#quest_title").val());
         $("#quest_type").show();
@@ -265,6 +272,7 @@
 
     $( "#instant_allowed" ).click(function() {
         $("#inclass_instant").hide();
+        $("#instant_selection").show();
         $("#instant_option").val(1);        
         qf.append($("#instant_option")); 
         $("#expiration").show();
@@ -301,6 +309,7 @@
         $("#submission_selection").hide();
         $("#submission_type_id").val(1);
         qf.append($("#submission_type_id"));
+        qf.append($("#submissions_allowed"));
         //written only
         $("#submission_revisions").show();
     });
@@ -310,6 +319,8 @@
         $("#submission_type_id").val(2);
         //uploads only
         qf.append($("#submission_type_id"));
+        qf.append($("#uploads_allowed"));
+        $("#upload_selection").show();
         $("#submission_revisions").show();
     });
 
@@ -317,6 +328,9 @@
         $("#submission_selection").hide();
         $("#submission_type_id").val(3);
         //both written and upload
+        $("#upload_selection").show();
+        qf.append($("#submissions_allowed"));
+        qf.append($("#uploads_allowed"));
         qf.append($("#submission_type_id"));
         $("#submission_revisions").show();
     });
@@ -324,27 +338,24 @@
     $( "#revisions_allowed" ).click(function() {
         $("#submission_revisions").hide();
         $("#revisions_option").val(1);
+        $("#revision_selection").show();
         qf.append($("#revisions_option"));
         $("#peer_feedback").show();
     });
 
     $( "#revisions_disallowed" ).click(function() {
         $("#submission_revisions").hide();
-//        $("#revisions_option").val(0);
-//        qf.append($("#revisions_option"));
         $("#peer_feedback").show();
     });
 
     $( "#feedback_disallowed" ).click(function() {
         $("#peer_feedback").hide();
-//        $("#feedback_option").val(0);        
-//        qf.append($("#feedback_option")); 
-
         $("#expiration").show();
     });
 
     $( "#feedback_allowed" ).click(function() {
         $("#peer_feedback").hide();
+        $("#feedback_selection").show();
         $("#feedback_option").val(1);        
         qf.append($("#feedback_option")); 
         $("#expiration").show();
@@ -357,23 +368,30 @@
 
     $( "#expiration_disallowed" ).click(function() {
         $("#expiration").hide();
-        $("#quest_description").show();
+        $("#skills").show();
+//        $("#quest_description").show();
     });
 
     $( "#expiration_set").click(function() {
         $("#set_expiration").hide();
-        qf.append($("#expiration_date"));
-        $("#quest_description").show();
-    });
+        $("#expiration_date").hide();
+        $("#expiration_selection").show();
+        $("#expiration_selection").html($("#expiration_date").val());
 
+        qf.append($("#expiration_date"));
+        $("#skills").show();
+//        $("#quest_description").show();
+    });
+/*
     $( "#description_set" ).click(function() {
         $("#quest_description").hide();
         qf.append($("#description"));
-        $("#skills").show();
+//        $("#skills").show();
     });
-
+*/
     $( "#skills_set" ).click(function() {
         $("#skills").hide();
+        $(".skills-input").hide();
         qf.append($(".skills-input"));
         if (skipThresholds) {
             $("#files_allowed").show();
@@ -397,6 +415,7 @@
 
     $( "#thresholds_set" ).click(function() {
         $("#set_thresholds").hide();
+        $(".thresholds-input").hide();
         qf.append($(".thresholds-input"));
         $("#attach_files").show();
     });
