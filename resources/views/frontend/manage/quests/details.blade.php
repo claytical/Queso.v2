@@ -20,18 +20,17 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
             {{ Form::input('text', 'name', $quest->name, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
-
+            {!! Form::hidden('id', $quest->id) !!}
             {!! Form::textarea('description', $quest->instructions, ['class' => 'field']) !!}
 
         </div>
         <div role="tabpanel" class="tab-pane" id="skills">
         @foreach($skills as $skill)
-        {!! var_dump($skill) !!}
             <div class="form-group">
               <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
               <div class="col-sm-10">
-                <input type="number" class="form-control skills-input" id="skill{!! $skill->id!!}" name="skill[]" value={!! $skill->amount!!}>
-                <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
+                <input type="number" class="form-control" id="skill{!! $skill->id!!}" name="skill[]" value={!! $skill->pivot_amount!!}>
+                <input type="hidden" name="skill_id[]" class="" value={!! $skill->id !!}>
               </div>
             </div>
 
@@ -42,7 +41,7 @@
             <div class="form-group">
               <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
               <div class="col-sm-10">
-                <input type="number" class="form-control skills-input" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
+                <input type="number" class="form-control" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
                 <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
               </div>
             </div>
@@ -65,7 +64,7 @@
 
     @if($quest->quest_type_id == 3)
 <!-- VIDEO -->
-    {{ Form::input('text', 'quest_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
+    {{ Form::input('text', 'youtube_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
     @endif
 
 <!-- GENERALIZED -->

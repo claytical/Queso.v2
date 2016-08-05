@@ -73,7 +73,55 @@ class QuestController extends Controller
 
     }
 
-    public function update() {
+    public function update(Request $request) {
+        $quest = Quest::find($request->id);
+        $quest->name = $request->name;
+        $quest->instructions = $request->description;
+        if($request->has('youtube_url')) {
+            $quest->youtube_id = $request->video_url;
+        }
+
+        if($request->has('youtube_url')) {
+            $quest->youtube_id = $request->video_url;
+        }
+
+        if($request->has('instant')) {
+            $quest->instant = $request->instant;
+        }
+       
+        if($request->has('peer_feedback')) {
+            $quest->peer_feedback = $request->peer_feedback;
+        }
+
+        if($request->has('revisions')) {
+            $quest->revisions = $request->revisions;
+        }
+
+//UPDATE SKILLS
+        for($i = 0; $i < count($request->skill); $i++) {
+            $skill_id = $request->skill_id[$i];
+            if (is_numeric($request->skill[$i])) {
+                //INSERT QUEST SKILL
+        //        $quest->skills()->attach($skill_id, ['amount' => $request->skill[$i]]);                
+                $quest->skills()->updateExistingPivot($skill_id, ['amount' => $request->skill[$i]]);
+        //        $skills[] = [$skill_id => $request->skill[$i]];
+            }
+        }
+
+//UPDATE THRESHOLDS
+
+       for($i = 0; $i < count($request->threshold); $i++) {
+            $threshold_id = $request->threshold_id[$i];
+            if (is_numeric($request->threshold[$i])) {
+                //INSERT QUEST SKILL THRESHOLD
+                $threshold = Threshold::find($threshold_id);
+                $threshold->amount = $request->threshold[$i];
+                $threshold->save();
+            }
+        }        
+
+
+
         return view('frontend.manage.quests.updated')
             ->withUser(access()->user());
 
@@ -190,17 +238,14 @@ class QuestController extends Controller
         $quest->save();
 
 //skills
-        $skills = array();
         for($i = 0; $i < count($request->skill); $i++) {
             $skill_id = $request->skill_id[$i];
             if (is_numeric($request->skill[$i])) {
                 //INSERT QUEST SKILL
                 $quest->skills()->attach($skill_id, ['amount' => $request->skill[$i]]);                
-                $skills[] = [$skill_id => $request->skill[$i]];
             }
         }
 //thresholds
-        $thresholds = array();
         for($i = 0; $i < count($request->threshold); $i++) {
             $threshold_skill_id = $request->threshold_skill_id[$i];
             if (is_numeric($request->threshold[$i])) {
@@ -210,12 +255,11 @@ class QuestController extends Controller
                 $threshold->skill_id = $threshold_skill_id;
                 $threshold->amount = $request->threshold[$i];
                 $threshold->save();
-                $thresholds[] = [$threshold_skill_id => $threshold->amount];
             }
         }        
 
 
-        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds])
+        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest])
             ->withUser(access()->user());
     }
     public function attempt_submission($quest_id) {
