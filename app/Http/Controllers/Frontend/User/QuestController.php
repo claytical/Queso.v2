@@ -195,7 +195,7 @@ class QuestController extends Controller
             $skill_id = $request->skill_id[$i];
             if (is_numeric($request->skill[$i])) {
                 //INSERT QUEST SKILL
-                $quest->skills()->attach($skill_id, ['amount' => $request->skill[$skill_id]]);                
+                $quest->skills()->attach($skill_id, ['amount' => $request->skill[$i]]);                
                 $skills[] = [$skill_id => $request->skill[$i]];
             }
         }
@@ -208,7 +208,7 @@ class QuestController extends Controller
                 $threshold = new Threshold;
                 $threshold->quest_id = $quest->id;
                 $threshold->skill_id = $threshold_skill_id;
-                $threshold->amount = $request->threshold[$threshold_skill_id];
+                $threshold->amount = $request->threshold[$i];
                 $threshold->save();
                 $thresholds[] = [$threshold_skill_id => $threshold->amount];
             }
