@@ -38,7 +38,14 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="thresholds">
         @foreach($thresholds as $threshold)
-        {!! var_dump($threshold) !!}
+            <div class="form-group">
+              <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control skills-input" id="threshold{!! $threshold->id!!}" name="threshold[]" value="{!! $threshold->amount!!}">
+                <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
+              </div>
+            </div>
+
         @endforeach
         </div>
         <div role="files" class="tab-pane" id="files">
