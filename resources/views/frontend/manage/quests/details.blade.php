@@ -62,34 +62,42 @@
 <div class="col-lg-3">
     <h4>Options</h4>
 
-
+    @if($quest->quest_type_id == 3)
 <!-- VIDEO -->
     {{ Form::input('text', 'quest_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
+    @endif
+
 <!-- GENERALIZED -->
     {{ Form::input('date', 'expiration', null, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
     
+    @if($quest->quest_type_id == 2)
 <!-- ACTIVITY -->
         <div class="checkbox">
           <label>
-            <input type="checkbox" data-toggle="toggle">
+            {!! Form::checkbox('instant', 1, $quest->instant) !!}
             Instant Credit
           </label>
         </div>
+
+    @endif
 <!-- LINK OR SUBMISSION -->
+    @if($quest->quest_type_id == 4 || $quest->quest_type_id == 1)
         <div class="checkbox">
           <label>
-            <input type="checkbox" data-toggle="toggle">
+            {!! Form::checkbox('peer_feedback', 1, $quest->peer_feedback) !!}
             Peer Feedback
           </label>
         </div>
+    @endif
 <!-- SUBMISSION -->
+    @if($quest->quest_type_id == 1)
         <div class="checkbox">
           <label>
-            <input type="checkbox" data-toggle="toggle">
+            {!! Form::checkbox('revisions', 1, $quest->revisions) !!}
             Revisions
           </label>
         </div>
-
+    @endif
 <!-- GENERALIZED -->
 
     {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
