@@ -210,13 +210,13 @@
     <div id="finished" style="display:none;">
         <div class="row">
             <div class="col-lg-12">
+
                 <h3>Almost there!</h3>
                     {!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form']) !!}
                 <p class="lead">Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</p>
                    {!! Form::textarea('description', null, ['class' => 'field', 'files' => false, 'id' => 'description']) !!}
 
-                    {!! Form::submit('Create', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
-                    {!! Form::close() !!}
+
 
             </div>
         </div>
@@ -232,11 +232,12 @@
     <div id="upload_selection" style="display:none;">Uploads Enabled</div>
     <div id="revision_selection" style="display:none;">Revisions Enabled</div>
     <div id="expires_selection" style="display:none;">Expires 00/00/0000</div>
-    <div id="feedback_selection" style="display:none;">Expires 00/00/0000</div>
+    <div id="feedback_selection" style="display:none;">Peer Feedback Enabled</div>
     <div id="file_selection" style="display:none;">Files Attached</div>
     <div id="skills_selection" style="display:none;">Skill #1 - 50</div>
     <div id="thresholds_selection" style="display:none;">40 Skill #1</div>
-
+    {!! Form::submit('Create', ['class' => 'btn btn-primary btn-lg btn-block', 'style' => 'display:none;', 'id' => 'create-button']) !!}
+    {!! Form::close() !!}
 </div>
     
 
@@ -427,11 +428,13 @@
 
     $( "#set_files").click(function() {
         $("#file_attachments").hide();
+        $("#create-button").show();
         $("#finished").show();
     });
 
     $( "#files_disallowed" ).click(function() {
         $("#attach_files").hide();
+        $("#create-button").show();
         $("#finished").show();
     });
 
