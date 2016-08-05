@@ -26,7 +26,6 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="skills">
         @foreach($skills as $skill)
-        {!! var_dump($skill) !!}
             <div class="form-group">
               <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
               <div class="col-sm-10">
