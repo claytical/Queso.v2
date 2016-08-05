@@ -44,7 +44,7 @@ class QuestController extends Controller
     public function edit_form($id) {
         $quest = Quest::find($id);
         $skills = $quest->skills()->get();
-        $thresholds = $quest->thresholds()->get();
+        $thresholds = $quest->thresholds()->with('skill')->get();get();
  
         return view('frontend.manage.quests.details', ['quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds])
             ->withUser(access()->user());
