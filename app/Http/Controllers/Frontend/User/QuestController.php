@@ -190,14 +190,17 @@ class QuestController extends Controller
         $quest->save();
 
 //skills
+        $skills = array();
         for($i = 0; $i < count($request->skill); $i++) {
             $skill_id = $request->skill_id[$i];
             if ($request->has('skill['.$skill_id.']')) {
                 //INSERT QUEST SKILL
-                $quest->skills()->attach($skill_id, ['amount' => $request->skill[$skill_id]]);                
+                $skills[] = $quest->skills()->attach($skill_id, ['amount' => $request->skill[$skill_id]]);                
+
             }
         }
 //thresholds
+        $thresholds = array();
         for($i = 0; $i < count($request->threshold); $i++) {
             $threshold_skill_id = $request->threshold_skill_id[$i];
             if ($request->has('threshold['.$threshold_skill_id.']')) {
@@ -207,11 +210,12 @@ class QuestController extends Controller
                 $threshold->skill_id = $threshold_skill_id;
                 $threshold->amount = $request->threshold[$threshold_skill_id];
                 $threshold->save();
+                $thresholds[] = $threshold;
             }
         }        
 
 
-        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest])
+        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds])
             ->withUser(access()->user());
     }
     public function attempt_submission($quest_id) {
