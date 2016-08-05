@@ -15,6 +15,7 @@
         <li role="presentation"><a href="#thresholds" aria-controls="thresholsd" role="tab" data-toggle="tab">Thresholds</a></li>
         <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Files</a></li>
       </ul>
+      {!! Form::open(['url' => 'manage/quest/update', 'id'=>'quest-update-form']) !!}
 
       <!-- Tab panes -->
       <div class="tab-content">
@@ -48,11 +49,7 @@
 
         @endforeach
         </div>
-        <div role="files" class="tab-pane" id="files">
-                    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
-                    {!! Form::close() !!}
-        </div>
-      </div>
+     </div>
 
     </div>
 
@@ -101,9 +98,13 @@
 <!-- GENERALIZED -->
 
     {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
-
+ {!! Form::close() !!}
 </div>
-
+        <div role="files" class="tab-pane" id="files">
+                    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
+                    {!! Form::close() !!}
+        </div>
+ 
 
 
 @endsection
