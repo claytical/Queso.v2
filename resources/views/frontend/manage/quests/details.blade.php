@@ -29,7 +29,7 @@
             <div class="form-group">
               <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
               <div class="col-sm-10">
-                <input type="number" class="form-control skills-input" id="skill{!! $skill->id!!}" name="skill[]" value="{!! $skill->amount!!}">
+                <input type="number" class="form-control skills-input" id="skill{!! $skill->id!!}" name="skill[]" value={!! $skill->amount!!}>
                 <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
               </div>
             </div>
@@ -41,7 +41,7 @@
             <div class="form-group">
               <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
               <div class="col-sm-10">
-                <input type="number" class="form-control skills-input" id="threshold{!! $threshold->id!!}" name="threshold[]" value="{!! $threshold->amount!!}">
+                <input type="number" class="form-control skills-input" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
                 <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
               </div>
             </div>
@@ -68,7 +68,7 @@
     @endif
 
 <!-- GENERALIZED -->
-    {{ Form::input('date', 'expiration', null, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
+    {{ Form::input('date', 'expiration', $quest->expires_at, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
     
     @if($quest->quest_type_id == 2)
 <!-- ACTIVITY -->
