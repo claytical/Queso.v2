@@ -195,8 +195,8 @@ class QuestController extends Controller
             $skill_id = $request->skill_id[$i];
             if ($request->has('skill['.$skill_id.']')) {
                 //INSERT QUEST SKILL
-                $skills[] = $quest->skills()->attach($skill_id, ['amount' => $request->skill[$skill_id]]);                
-
+                $quest->skills()->attach($skill_id, ['amount' => $request->skill[$skill_id]]);                
+                $skills[] = [$skill_id => $request->skill[$skill_id]];
             }
         }
 //thresholds
@@ -210,7 +210,7 @@ class QuestController extends Controller
                 $threshold->skill_id = $threshold_skill_id;
                 $threshold->amount = $request->threshold[$threshold_skill_id];
                 $threshold->save();
-                $thresholds[] = $threshold;
+                $thresholds[] = [$threshold_skill_id => $threshold->amount];
             }
         }        
 
