@@ -74,34 +74,36 @@
         @endif
     </div>
     <div class="col-lg-12">
-    @foreach($skills as $skill)
-        <div class="form-group">
-          <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" id="skill{!! $skill->id!!}" name="skill[]" value={!! $skill->pivot->amount!!}>
-            <input type="hidden" name="skill_id[]" class="" value={!! $skill->id !!}>
-          </div>
-        </div>
+    <h5>Skills</h5>
+        @foreach($skills as $skill)
+            <div class="form-group">
+              <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="skill{!! $skill->id!!}" name="skill[]" value={!! $skill->pivot->amount!!}>
+                <input type="hidden" name="skill_id[]" class="" value={!! $skill->id !!}>
+              </div>
+            </div>
 
-    @endforeach
+        @endforeach
     </div>
+    
     <div class="col-lg-12">
-    @foreach($thresholds as $threshold)
-        <div class="form-group">
-          <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
-            <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
-          </div>
-        </div>
+        <h5>Thresholds</h5>
+        @foreach($thresholds as $threshold)
+            <div class="form-group">
+              <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
+                <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
+              </div>
+            </div>
 
-    @endforeach
-
+        @endforeach
+    </div>
 
 
     {!! Form::submit('Clone', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
     {!! Form::close() !!}
-    </div>
 
 </div>
 @endsection
