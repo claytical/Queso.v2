@@ -36,7 +36,9 @@
 <div class="col-lg-4">
     <h4>Options</h4>
     <div class="col-lg-12">
+    {!! Form::hidden('quest_type', $quest->quest_type_id) !!}
         @if($quest->quest_type_id == 3)
+    
     <!-- VIDEO -->
         {{ Form::input('text', 'youtube_url', $quest->youtube_id, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
         @endif
@@ -60,7 +62,7 @@
         @if($quest->quest_type_id == 4 || $quest->quest_type_id == 1)
             <div class="checkbox">
               <label>
-                {!! Form::checkbox('peer_feedback', 1, $quest->peer_feedback) !!}
+                {!! Form::checkbox('feedback', 1, $quest->peer_feedback) !!}
                 Peer Feedback
               </label>
             </div>
@@ -73,6 +75,21 @@
                 Revisions
               </label>
             </div>
+
+            <div class="checkbox">
+              <label>
+                {!! Form::checkbox('submissions_allowed', 1, $quest->submissions) !!}
+                Text Input
+              </label>
+            </div>            
+
+            <div class="checkbox">
+              <label>
+                {!! Form::checkbox('uploads_allowed', 1, $quest->uploads) !!}
+                File Uploads
+              </label>
+            </div>            
+
         @endif
     </div>
     <div class="col-lg-12">
@@ -100,7 +117,7 @@
                 </div>
                 <div class="col-sm-6">
                     <input type="number" class="form-control" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
-                    <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
+                    <input type="hidden" name="threshold_skill_id[]" class="threshold-input" value={!! $threshold->skill_id !!}>
                 </div>
             </div>
 
