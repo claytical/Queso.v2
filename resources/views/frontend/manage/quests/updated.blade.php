@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-lg-12">
         <h2>Quest Name Updated</h2>
-
+{!! var_dump($request) !!}
         {{ link_to('manage/quest/create', 'Create New Quest', ['class' => 'btn btn-default btn-lg']) }}
         {{ link_to('manage/quest/clone', 'Clone This Quest', ['class' => 'btn btn-default btn-lg']) }}
 

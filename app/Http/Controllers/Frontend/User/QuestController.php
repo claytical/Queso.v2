@@ -122,7 +122,7 @@ class QuestController extends Controller
 
         $quest->save();
 
-        return view('frontend.manage.quests.updated')
+        return view('frontend.manage.quests.updated', ['request' => $request->all()])
             ->withUser(access()->user());
 
     }
