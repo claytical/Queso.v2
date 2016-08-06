@@ -11,7 +11,7 @@
     <div id="quest_name">
         <div class="row">
             <div class="col-lg-12">
-                    {!! Form::open(['url' => 'manage/quest/clone', 'id' => 'quest-clone-form']) !!}
+                    {!! Form::open(['url' => 'manage/quest/create', 'id' => 'quest-clone-form']) !!}
 
                 <h3>What's the name of this quest?</h3>
                     {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => $quest->name, 'id' => 'quest_title']) }}
