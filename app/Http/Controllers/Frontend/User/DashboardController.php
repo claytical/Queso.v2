@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Announcement;
 use App\Content;
+use App\Course;
 use DB;
 
 /**
