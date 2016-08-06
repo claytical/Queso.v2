@@ -225,6 +225,7 @@ class CourseController extends Controller
             $user->courses()->attach($joined_course->id);
             $user->attachRole($joined_course->student_role_id);
             $user->save();
+            $request->session()->put('current_course', $joined_course->id);
 
             return redirect()->route('frontend.user.dashboard');
         }
