@@ -119,8 +119,11 @@ class QuestController extends Controller
     public function delete($id) {
         $quest = Quest::find($id);
         $quest->delete();
+        return redirect()->route('quests.manage')->withFlashSuccess($quest->name . " has been removed");
+/*
         return view('frontend.manage.quests.deleted')
             ->withUser(access()->user());
+*/
     }
 
     public function clone_form() {
@@ -248,9 +251,10 @@ class QuestController extends Controller
             }
         }        
 
+        return redirect()->route('quests.manage')->withFlashSuccess($quest->name . " has been successfully created.");
 
-        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest])
-            ->withUser(access()->user());
+//        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest])
+//            ->withUser(access()->user());
     }
     public function attempt_submission($quest_id) {
         return view('frontend.quests.attempt_submission')
