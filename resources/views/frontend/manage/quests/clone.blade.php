@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h2>Cloning Quest Name</h2>
+        <h2>Cloning {!! $quest->name !!}</h2>
     </div>
 </div>
 
@@ -14,10 +14,10 @@
                     {!! Form::open(['url' => 'manage/quest/clone', 'id' => 'quest-clone-form']) !!}
 
                 <h3>What's the name of this quest?</h3>
-                    {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
+                    {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => $quest->name, 'id' => 'quest_title']) }}
 
                 <h3>Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</h3>
-                    {!! Form::textarea('description', null, ['class' => 'field', 'files' => true]) !!}
+                    {!! Form::textarea('description', $quest->instructions, ['class' => 'field']) !!}
 
 
 
@@ -29,20 +29,76 @@
 
 </div>
 
+
+
+
+
 <div class="col-lg-4">
-    <h4 id="quest_name_selection"></h4>
-    <h5 id="quest_type_selection"></h5>
-    <h5 id="url_selection"></h5>
-    <p id="description_selection"></p>
-    <div id="instant_selection" style="display:none;">Instant Credit</div>
-    <div id="upload_selection" style="display:none;">Uploads</div>
-    <div id="revision_selection" style="display:none;">Revisions</div>
-    <div id="expires_selection">Expires {{ Form::input('date', 'expires', null, ['class' => 'form-control', 'id' => 'quest_expiration']) }} <!-- #peer_feedback -->
-</div>
-    <div id="feedback_selection" style="display:none;">Expires 00/00/0000</div>
-    <div id="file_selection" style="display:none;">Files Attached</div>
-    <div id="skills_selection">Skill #1 - 50</div>
-    <div id="thresholds_selection">40 Skill #1</div>
+    <h4>Options</h4>
+
+    @if($quest->quest_type_id == 3)
+<!-- VIDEO -->
+    {{ Form::input('text', 'youtube_url', $quest->youtube_id, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
+    @endif
+
+<!-- GENERALIZED -->
+    {{ Form::input('date', 'expiration', $quest->expires_at, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
+    
+    @if($quest->quest_type_id == 2)
+<!-- ACTIVITY -->
+        <div class="checkbox">
+          <label>
+            {!! Form::checkbox('instant', 1, $quest->instant) !!}
+            Instant Credit
+          </label>
+        </div>
+
+    @endif
+<!-- LINK OR SUBMISSION -->
+    @if($quest->quest_type_id == 4 || $quest->quest_type_id == 1)
+        <div class="checkbox">
+          <label>
+            {!! Form::checkbox('peer_feedback', 1, $quest->peer_feedback) !!}
+            Peer Feedback
+          </label>
+        </div>
+    @endif
+<!-- SUBMISSION -->
+    @if($quest->quest_type_id == 1)
+        <div class="checkbox">
+          <label>
+            {!! Form::checkbox('revisions', 1, $quest->revisions) !!}
+            Revisions
+          </label>
+        </div>
+    @endif
+    
+    @foreach($skills as $skill)
+        <div class="form-group">
+          <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="skill{!! $skill->id!!}" name="skill[]" value={!! $skill->pivot->amount!!}>
+            <input type="hidden" name="skill_id[]" class="" value={!! $skill->id !!}>
+          </div>
+        </div>
+
+    @endforeach
+    </div>
+    <div role="tabpanel" class="tab-pane" id="thresholds">
+    @foreach($thresholds as $threshold)
+        <div class="form-group">
+          <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
+            <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
+          </div>
+        </div>
+
+    @endforeach
+
+
+
+
     {!! Form::submit('Clone', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
     {!! Form::close() !!}
 </div>

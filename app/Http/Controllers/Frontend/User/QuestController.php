@@ -126,8 +126,12 @@ class QuestController extends Controller
 */
     }
 
-    public function clone_form() {
-        return view('frontend.manage.quests.clone')
+    public function clone_form($id) {
+        $quest = Quest::find($id);
+        $skills = $quest->skills()->get();
+        $thresholds = $quest->thresholds()->with('skill')->get();
+
+        return view('frontend.manage.quests.clone', ['quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds])
             ->withUser(access()->user());
 
     }
