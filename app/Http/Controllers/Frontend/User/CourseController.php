@@ -220,13 +220,13 @@ class CourseController extends Controller
             //join course
             $joined_course = $course->first();
             $user = access()->user();
-            $user->default_course_id = $course->id;
+            $user->default_course_id = $joined_course->id;
             //ADD COURSE TO USER'S COURSE LIST
-            $user->courses()->attach($course->id);
-            $user->attachRole($course->student_role_id);
+            $user->courses()->attach($joined_course->id);
+            $user->attachRole($joined_course->student_role_id);
             $user->save();
-
-
+            
+            return redirect()->route('frontend.user.dashboard');
         }
         else if($course->count() > 1) {
             //return list of available courses
@@ -239,7 +239,6 @@ class CourseController extends Controller
             return redirect()->route('course.register')->withFlashDanger("The code provided (". $request->registration_code . ") is not valid.");
 
         }
-    	return redirect()->route('frontend.user.dashboard');
 
     }
 
