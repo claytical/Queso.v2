@@ -85,26 +85,15 @@ class QuestController extends Controller
             $quest->youtube_id = $request->video_url;
         }
 
-        if($request->has('instant')) {
-            $quest->instant = $request->instant;
-        }
-       
-        if($request->has('peer_feedback')) {
-            $quest->peer_feedback = $request->peer_feedback;
-        }
-
-        if($request->has('revisions')) {
-            $quest->revisions = $request->revisions;
-        }
+        $quest->instant = $request->has('instant');
+        $quest->peer_feedback = $request->has('peer_feedback');
+        $quest->revisions = $request->has('revisions');
 
 //UPDATE SKILLS
         for($i = 0; $i < count($request->skill); $i++) {
             $skill_id = $request->skill_id[$i];
             if (is_numeric($request->skill[$i])) {
-                //INSERT QUEST SKILL
-        //        $quest->skills()->attach($skill_id, ['amount' => $request->skill[$i]]);                
                 $quest->skills()->updateExistingPivot($skill_id, ['amount' => $request->skill[$i]]);
-        //        $skills[] = [$skill_id => $request->skill[$i]];
             }
         }
 
@@ -113,7 +102,6 @@ class QuestController extends Controller
        for($i = 0; $i < count($request->threshold); $i++) {
             $threshold_id = $request->threshold_id[$i];
             if (is_numeric($request->threshold[$i])) {
-                //INSERT QUEST SKILL THRESHOLD
                 $threshold = Threshold::find($threshold_id);
                 $threshold->amount = $request->threshold[$i];
                 $threshold->save();
@@ -121,8 +109,8 @@ class QuestController extends Controller
         }        
 
         $quest->save();
-
-        return view('frontend.manage.quests.updated', ['request' => $request->all()])
+        Session::flash('flash_success', $quest->name . " has been successfully updated");
+        return view('frontend.manage.quests.updated')
             ->withUser(access()->user());
 
     }
