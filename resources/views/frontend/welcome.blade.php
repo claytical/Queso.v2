@@ -24,10 +24,10 @@
 
             <div class="col-lg-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Class Name <a href="#" class="btn btn-default btn-xs pull-right">Switch Course</a></div>
+                    <div class="panel-heading">{!! $course->name !!} <a href="#" class="btn btn-default btn-xs pull-right">Switch Course</a></div>
                         <div class="panel-body">
                             <h4>Instructor: John Doe</h4>
-                            <h4>Class Time: Wednesdays at 3pm</h4>
+                            <h4>Class Time: {!! $course->meeting !!}</h4>
                             <h4>Current Level: B+ (89/100)</h4>
                             <h5>Your Peer Group</h5>
                             <p>Edward Sharp, Joan Dawson, Donny Walker, Sally Fields</p>

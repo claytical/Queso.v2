@@ -21,7 +21,8 @@ class DashboardController extends Controller
     public function index() {
 
         $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
-        return view('frontend.welcome', ['announcements' => $announcements])
+        $course = Course::find(session('current_course'));
+        return view('frontend.welcome', ['announcements' => $announcements, 'course' => $course])
                                 ->withUser(access()->user());
     }
     
