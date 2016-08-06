@@ -42,6 +42,8 @@
         @endif
 
     <!-- GENERALIZED -->
+        <label for="expiration" class="control-label">Expiration Date</label>
+
         {{ Form::input('date', 'expiration', $quest->expires_at, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
         
         @if($quest->quest_type_id == 2)
