@@ -225,12 +225,12 @@ class CourseController extends Controller
             $user->courses()->attach($joined_course->id);
             $user->attachRole($joined_course->student_role_id);
             $user->save();
-            
+
             return redirect()->route('frontend.user.dashboard');
         }
         else if($course->count() > 1) {
             //return list of available courses
-            return view('frontend.manage.course.joinlist', 'courses' => $course->get())
+            return view('frontend.manage.course.joinlist', ['courses' => $course->get()])
                          ->withUser(access()->user());
 
         }
