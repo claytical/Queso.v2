@@ -35,44 +35,45 @@
 
 <div class="col-lg-4">
     <h4>Options</h4>
+    <div class="col-lg-12">
+        @if($quest->quest_type_id == 3)
+    <!-- VIDEO -->
+        {{ Form::input('text', 'youtube_url', $quest->youtube_id, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
+        @endif
 
-    @if($quest->quest_type_id == 3)
-<!-- VIDEO -->
-    {{ Form::input('text', 'youtube_url', $quest->youtube_id, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
-    @endif
+    <!-- GENERALIZED -->
+        {{ Form::input('date', 'expiration', $quest->expires_at, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
+        
+        @if($quest->quest_type_id == 2)
+    <!-- ACTIVITY -->
+            <div class="checkbox">
+              <label>
+                {!! Form::checkbox('instant', 1, $quest->instant) !!}
+                Instant Credit
+              </label>
+            </div>
 
-<!-- GENERALIZED -->
-    {{ Form::input('date', 'expiration', $quest->expires_at, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
-    
-    @if($quest->quest_type_id == 2)
-<!-- ACTIVITY -->
-        <div class="checkbox">
-          <label>
-            {!! Form::checkbox('instant', 1, $quest->instant) !!}
-            Instant Credit
-          </label>
-        </div>
-
-    @endif
-<!-- LINK OR SUBMISSION -->
-    @if($quest->quest_type_id == 4 || $quest->quest_type_id == 1)
-        <div class="checkbox">
-          <label>
-            {!! Form::checkbox('peer_feedback', 1, $quest->peer_feedback) !!}
-            Peer Feedback
-          </label>
-        </div>
-    @endif
-<!-- SUBMISSION -->
-    @if($quest->quest_type_id == 1)
-        <div class="checkbox">
-          <label>
-            {!! Form::checkbox('revisions', 1, $quest->revisions) !!}
-            Revisions
-          </label>
-        </div>
-    @endif
-    
+        @endif
+    <!-- LINK OR SUBMISSION -->
+        @if($quest->quest_type_id == 4 || $quest->quest_type_id == 1)
+            <div class="checkbox">
+              <label>
+                {!! Form::checkbox('peer_feedback', 1, $quest->peer_feedback) !!}
+                Peer Feedback
+              </label>
+            </div>
+        @endif
+    <!-- SUBMISSION -->
+        @if($quest->quest_type_id == 1)
+            <div class="checkbox">
+              <label>
+                {!! Form::checkbox('revisions', 1, $quest->revisions) !!}
+                Revisions
+              </label>
+            </div>
+        @endif
+    </div>
+    <div class="col-lg-12">
     @foreach($skills as $skill)
         <div class="form-group">
           <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
@@ -84,7 +85,7 @@
 
     @endforeach
     </div>
-    <div role="tabpanel" class="tab-pane" id="thresholds">
+    <div class="col-lg-12">
     @foreach($thresholds as $threshold)
         <div class="form-group">
           <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
@@ -98,9 +99,10 @@
 
 
 
-
     {!! Form::submit('Clone', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
     {!! Form::close() !!}
+    </div>
+
 </div>
 @endsection
 
