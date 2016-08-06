@@ -80,7 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('manage/quest/{quest_id}', 'QuestController@edit_form')->name('quests.edit');
         Route::post('manage/quest/update', 'QuestController@update')->name('quests.update');
-        Route::get('manage/quest/clone', 'QuestController@clone_form')->name('quests.clone.begin');
+        Route::get('manage/quest/{quest_id}/clone', 'QuestController@clone_form')->name('quests.clone.begin');
         Route::post('manage/quest/clone', 'QuestController@clone')->name('quest.clone');
         Route::get('manage/students', 'StudentController@index')->name('students.manage');
         Route::get('manage/student/{student_id}', 'StudentController@detail')->name('student.detail');
