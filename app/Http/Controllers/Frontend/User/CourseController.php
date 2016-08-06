@@ -86,13 +86,16 @@ class CourseController extends Controller
         $role->all = false;
         $role->save();
         $role->permissions()->sync([$coursePermission->id]);
-
+        $course->student_role_id = $role->id;
 
         $role = new Role;
         $role->name = $course->name . " Instructor";
         $role->all = false;
         $role->save();
         $role->permissions()->sync([$course_instructorPermission->id, $coursePermission->id]);
+        
+        $course->instructor_role_id = $role->id;
+        $course->save();
 
         $user->attachRole($role->id);
 
@@ -210,8 +213,32 @@ class CourseController extends Controller
 
     }
 
-    public function join() {
+    public function join(Request $request) {
     	//redirect to dashboard with message
+        $course = Course::where('code', '=', $request->registration_code);
+        if($course->count() == 1) {
+            //join course
+            $joined_course = $course->first();
+            $user = access()->user();
+            $user->default_course_id = $course->id;
+            //ADD COURSE TO USER'S COURSE LIST
+            $user->courses()->attach($course->id);
+            $user->attachRole($course->student_role_id);
+            $user->save();
+
+
+        }
+        else if($course->count() > 1) {
+            //return list of available courses
+            return view('frontend.manage.course.joinlist', 'courses' => $course->get())
+                         ->withUser(access()->user());
+
+        }
+        else {
+            //return course doesn't exist
+            return redirect()->route('course.register')->withFlashDanger("The code provided (". $request->registration_code . ") is not valid.");
+
+        }
     	return redirect()->route('frontend.user.dashboard');
 
     }
