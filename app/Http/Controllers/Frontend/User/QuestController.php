@@ -109,9 +109,11 @@ class QuestController extends Controller
         }        
 
         $quest->save();
-        Session::flash('flash_success', $quest->name . " has been successfully updated");
-        return view('frontend.manage.quests.updated')
-            ->withUser(access()->user());
+        //session->flash('flash_success', );
+//        return view('frontend.manage.quests.updated')
+        return redirect()->route('quests.manage')->withFlashSuccess($quest->name . " has been successfully updated");
+
+  //          ->withUser(access()->user());
 
     }
     public function delete($id) {
