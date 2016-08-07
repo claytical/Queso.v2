@@ -5,6 +5,12 @@
             <div class="col-lg-6">
                 <h2>{!! $quest->name !!}</h2>
                 {!! $quest->instructions !!}
+                {!! Form::open(array('url' => 'quest/submit')) !!}
+                {!! Form::hidden('quest_type', 'link') !!}        
+                {!! Form::text('link', '', ['class' => 'form-control']); !!}
+                {!! Form::submit('Submit') !!}
+
+                {!! Form::close() !!}
             </div>
             <div class="col-lg-6">
             <ul class="list-unstyled">
@@ -35,12 +41,7 @@
                 @if($quest->expires_at)
                 <h4>Due {!! $quest->expires_at !!}</h4>
                 @endif
-                {!! Form::open(array('url' => 'quest/submit')) !!}
-                {!! Form::hidden('quest_type', 'link') !!}        
-                {!! Form::text('link', ''); !!}
-                {!! Form::submit('Submit') !!}
 
-                {!! Form::close() !!}
 
             </div>
             
