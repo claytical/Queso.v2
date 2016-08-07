@@ -5,10 +5,13 @@
             <div class="col-lg-6">
                 <h2>{!! $quest->name !!}</h2>
                 {!! $quest->instructions !!}
-                {!! Form::open(array('url' => 'quest/submit')) !!}
+                {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
                 {!! Form::hidden('quest_type', 'link') !!}        
-                {!! Form::text('link', '', ['class' => 'form-control']); !!}
-                {!! Form::submit('Submit') !!}
+                <div class="form-group">
+                    {!! Form::text('link', '', ['class' => 'form-control']); !!}
+                </div>
+
+                {!! Form::submit('Submit', ['class' => 'btn btn-default']) !!}
 
                 {!! Form::close() !!}
             </div>
