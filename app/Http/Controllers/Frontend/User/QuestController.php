@@ -240,6 +240,12 @@ class QuestController extends Controller
                 else {
                     $quest->peer_feedback = false;
                 }
+                if($request->has('revisions')) {
+                    $quest->revisions = true;
+                }
+                else {
+                    $quest->revisions = false;
+                }
 
                 break;
             

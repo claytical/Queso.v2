@@ -314,7 +314,9 @@
         $("#quest_type").hide();
         $("#quest_type_id").val(4);        
         qf.append($("#quest_type_id"));
-        $("#peer_feedback").show();
+        $("#submission_revisions").show();
+
+//        $("#peer_feedback").show();
     });
 
     $( "#written_next" ).click(function() {
