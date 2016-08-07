@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services\Access;
+use App\Course;
 
 /**
  * Class Access
@@ -31,6 +32,24 @@ class Access
     public function user()
     {
         return auth()->user();
+    }
+
+    /**
+    *   Is student for current course?
+    *   
+    **/
+
+    public function student() {
+        $course = Course::find(session('current_course'));
+        if ($user = $this->user()) {
+            return $user->hasRole($course->student_role_id);
+        }
+    }
+    public function instructor() {
+        $course = Course::find(session('current_course'));
+        if ($user = $this->user()) {
+            return $user->hasRole($course->instructor_role_id);
+        }
     }
 
     /**
