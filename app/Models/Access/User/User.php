@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function links() {
         return $this->belongsToMany('App\Link');
     }
+
+    public function skills() {
+        return $this->belongsToMany('App\Skill');
+    }
 }
