@@ -34,11 +34,38 @@ class QuestController extends Controller
 //  VIDEO, one time
 //        $quests_attempted->where('quest_type_id', '=', 4)
 
+        $course_skills = Skill::where('course_id', '=', session('current_course'))->get();
+
+//GET CURRENT SKILL LEVELS
+        $user_skill_levels = array();
+        foreach($course_skills as $skill) {
+            $user_skill_levels[$skill_id] = $user->skills->where('id', '=', $skill->id)->sum('amount');
+        }
+
         $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
                     ->whereNotIn('quest_id', $quests_attempted_ids)
                     ->get();
 
-        return view('frontend.quests.available', ['unattempted' => $quests_unattempted])
+        $quests_locked = array();
+        $quests_unlocked = array();
+
+        foreach($quests_unattempted as $quest) {
+            $thresholds = $quest->thresholds()->get();
+            $met = true;
+            foreach($thresholds as $threshold) {
+                if($threshold->amount > $user_skill_levels[$threshold->skill_id]) {
+                    $met = false;
+                }
+            }
+            if($met) {
+                $quests_unlocked[] = $quest;
+            }
+            else {
+                $quests_locked[] = $quest;
+            }
+        }
+
+        return view('frontend.quests.available', ['unlocked' => $quests_unlocked, 'locked' => $quests_locked])
             ->withUser(access()->user());
     }
 
