@@ -9,7 +9,7 @@
             </div>
             <div class="col-lg-6">
             <ul class="unstyled-list">
-                @foreach($quest->skills() as $skill)
+                @foreach($skills as $skill)
                     <li>
                         <div class="col-lg-12">
                             <div class="col-lg-6">
