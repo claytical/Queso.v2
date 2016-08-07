@@ -16,7 +16,7 @@ class CreateUserSkillHistoriesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('skill_id');
-            $table->integer('submission_id');
+            $table->integer('quest_id');
             $table->integer('amount');
             $table->timestamps();
         });

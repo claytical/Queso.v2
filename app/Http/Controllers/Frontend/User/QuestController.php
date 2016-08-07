@@ -24,18 +24,21 @@ class QuestController extends Controller
     {
         $user = access()->user();
         $quests_attempted = $user->quests();
+        $quest_attempted_ids = $quests_attempted->pluck('quest_id');
 //  WRITTEN, could be revisable
 //        $quests_attempted->where('quest_type_id', '=', 1)
 //  ACTIVITY, one time
 //        $quests_attempted->where('quest_type_id', '=', 2)
-//  LINK, one time?
+//  LINK, revisable?
 //        $quests_attempted->where('quest_type_id', '=', 3)
 //  VIDEO, one time
 //        $quests_attempted->where('quest_type_id', '=', 4)
 
-        $quests = Quest::where('course_id', '=', session('current_course'))
-                    ->whereNotIn
-        return view('frontend.quests.available')
+        $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
+                    ->whereNotIn('quest_id', $quests_attempted_ids)
+                    ->get();
+
+        return view('frontend.quests.available', ['unattempted' => $quests_unattempted])
             ->withUser(access()->user());
     }
 
