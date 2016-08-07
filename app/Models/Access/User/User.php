@@ -38,6 +38,17 @@ class User extends Authenticatable
 
     public function courses() {
         return $this->belongsToMany('App\Course');
+    }
 
+    public function quests() {
+        return $this->belongsToMany('App\Quest');
+    }
+
+    public function submissions() {
+        return $this->belongsToMany('App\Submission');        
+    }
+
+    public function links() {
+        return $this->belongsToMany('App\Link');
     }
 }

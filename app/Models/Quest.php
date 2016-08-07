@@ -18,6 +18,10 @@ class Quest extends Model
     	return $this->hasMany('App\Submission');
     }
 
+    public function links() {
+        return $this->hasMany('App\Link');
+    }
+
     public function users() {
     	return $this->belongsToMany('App\Models\Access\User');
     }

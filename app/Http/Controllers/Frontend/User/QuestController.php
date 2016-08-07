@@ -22,6 +22,19 @@ class QuestController extends Controller
      */
     public function available()
     {
+        $user = access()->user();
+        $quests_attempted = $user->quests();
+//  WRITTEN, could be revisable
+//        $quests_attempted->where('quest_type_id', '=', 1)
+//  ACTIVITY, one time
+//        $quests_attempted->where('quest_type_id', '=', 2)
+//  LINK, one time?
+//        $quests_attempted->where('quest_type_id', '=', 3)
+//  VIDEO, one time
+//        $quests_attempted->where('quest_type_id', '=', 4)
+
+        $quests = Quest::where('course_id', '=', session('current_course'))
+                    ->whereNotIn
         return view('frontend.quests.available')
             ->withUser(access()->user());
     }

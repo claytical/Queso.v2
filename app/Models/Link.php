@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Submission extends Model
+class Link extends Model
 {
     public function quest() {
   		return $this->belongsTo('App\Quest');
@@ -13,6 +13,5 @@ class Submission extends Model
     public function user() {
     	return $this->belongsTo('App\Models\Access\User');
     }
-
-
+    
 }

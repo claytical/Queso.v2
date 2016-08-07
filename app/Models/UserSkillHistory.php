@@ -14,9 +14,8 @@ class UserSkillHistory extends Model
     	return $this->hasMany('App\Models\Access\User');    	
     }
 
-    public function submissions() {
-    	return $this->hasMany('App\Submission');    	
-    }
-
+    public function quests() {
+    	return $this->hasManyThrough('App\Quest', 'App\Models\Access\User');
+   	}
 
 }
