@@ -17,7 +17,7 @@
          <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
 
-            @if (access()->student())
+            @if (access()->instructor())
                 <li class="{{ Active::pattern('grade/submissions') }}">
                     {{ link_to('grade/submissions', 'Submissions') }}
                 </li>
@@ -25,7 +25,28 @@
                 <li class="{{ Active::pattern('grade/inclass') }}">
                     {{ link_to('grade/inclass', 'In Class Work') }}
                 </li>
-            @else
+                <li class="header">Manage</li>
+                <li class="{{ Active::pattern('manage/quests') }}">
+                    {{ link_to('manage/quests', 'Quests') }}
+                </li>
+                <li class="{{ Active::pattern('manage/students') }}">
+                    {{ link_to('manage/students', 'Students') }}
+                </li>
+                <li class="{{ Active::pattern('manage/resources') }}">
+                    {{ link_to('manage/resources', 'Resources') }}
+                </li>
+                <li class="{{ Active::pattern('manage/announcements') }}">
+                    {{ link_to('manage/announcements', 'Announcements') }}
+                </li>
+                <li class="{{ Active::pattern('manage/course') }}">
+                    {{ link_to('manage/course', 'Course') }}
+                </li>
+
+
+            @endif
+
+
+            @if(access()->student())
                 <li class="header">Quests</li>
 
                 <!-- Optionally, you can add icons to the links -->
@@ -45,26 +66,6 @@
                 </li>
 
             @endif
-            @if(access()->instructor())
-                <li class="header">Manage</li>
-                <li class="{{ Active::pattern('manage/quests') }}">
-                    {{ link_to('manage/quests', 'Quests') }}
-                </li>
-                <li class="{{ Active::pattern('manage/students') }}">
-                    {{ link_to('manage/students', 'Students') }}
-                </li>
-                <li class="{{ Active::pattern('manage/resources') }}">
-                    {{ link_to('manage/resources', 'Resources') }}
-                </li>
-                <li class="{{ Active::pattern('manage/announcements') }}">
-                    {{ link_to('manage/announcements', 'Announcements') }}
-                </li>
-                <li class="{{ Active::pattern('manage/course') }}">
-                    {{ link_to('manage/course', 'Course') }}
-                </li>
-
-             @endif
-
 
             <li class="header">Resources</li>
                 {!! HTML::decode(Form::singleResourceList()) !!}
