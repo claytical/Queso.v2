@@ -24,7 +24,7 @@ class QuestController extends Controller
     {
         $user = access()->user();
         $quests_attempted = $user->quests();
-        $quest_attempted_ids = $quests_attempted->pluck('quest_id');
+        $quests_attempted_ids = $quests_attempted->pluck('quest_id');
 //  WRITTEN, could be revisable
 //        $quests_attempted->where('quest_type_id', '=', 1)
 //  ACTIVITY, one time
