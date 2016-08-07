@@ -39,7 +39,7 @@ class QuestController extends Controller
 //GET CURRENT SKILL LEVELS
         $user_skill_levels = array();
         foreach($course_skills as $skill) {
-            $user_skill_levels[$skill_id] = $user->skills()->where('id', '=', $skill->id)->sum('amount');
+            $user_skill_levels[$skill_id] = $user->skills()->where('id', $skill->id)->sum('amount');
         }
 
         $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
