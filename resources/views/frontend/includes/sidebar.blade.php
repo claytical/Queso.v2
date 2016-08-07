@@ -17,7 +17,7 @@
          <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
 
-            @if (access()->hasRole('Instructor'))
+            @if (access()->student())
                 <li class="{{ Active::pattern('grade/submissions') }}">
                     {{ link_to('grade/submissions', 'Submissions') }}
                 </li>
@@ -45,9 +45,7 @@
                 </li>
 
             @endif
-            
-             @if (access()->hasRole('Instructor') && access()->hasPermission(4))
-
+            @if(access()->instructor())
                 <li class="header">Manage</li>
                 <li class="{{ Active::pattern('manage/quests') }}">
                     {{ link_to('manage/quests', 'Quests') }}
