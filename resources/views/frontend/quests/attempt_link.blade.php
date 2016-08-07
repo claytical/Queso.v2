@@ -1,28 +1,37 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>{!! $quest->name !!}</h2>
-
         <div class="col-lg-12">
             <div class="col-lg-6">
+                <h2>{!! $quest->name !!}</h2>
                 {!! $quest->instructions !!}
             </div>
             <div class="col-lg-6">
-            <ul class="unstyled-list">
+            <ul class="list-unstyled">
                 @foreach($skills as $skill)
                     <li>
                         <div class="col-lg-12">
-                            <div class="col-lg-6">
+                            <div class="col-lg-9">
                                 {!! $skill->name !!}
                             </div>
-                            <div class="col-lg-6">
-                                {!! $skill->amount !!}
+                            <div class="col-lg-3">
+                                {!! $skill->pivot->amount !!}
                             </div>
                         </div>
                     </li>
                 @endforeach
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <div class="col-lg-12">
+                            <div class="col-lg-9">
+                            Points Total
+                            </div>
+                            <div class="col-lg-3">
+                                {!! $quest->skills()->sum('amount') !!}
+                            </div>
+                        </div>
+                    </li>
             </ul>
-                <h4>{!! $quest->skills()->sum('amount') !!} Points Total</h4>
                 @if($quest->expires_at)
                 <h4>Due {!! $quest->expires_at !!}</h4>
                 @endif
