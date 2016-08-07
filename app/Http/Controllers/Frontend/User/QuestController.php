@@ -44,6 +44,13 @@ class QuestController extends Controller
 
         $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
                     ->whereNotIn('quest_id', $quests_attempted_ids)
+                    ->orderBy('expires_at')
+                    ->get();
+
+        $quests_revisable = Quest::where('course_id', '=', session('current_course'))
+                    ->whereIn('quest_id', $quests_attempted_ids)
+                    ->where('revisions', '=', true)
+                    ->orderBy('expires_at')
                     ->get();
 
         $quests_locked = array();
@@ -65,7 +72,7 @@ class QuestController extends Controller
             }
         }
 
-        return view('frontend.quests.available', ['unlocked' => $quests_unlocked, 'locked' => $quests_locked])
+        return view('frontend.quests.available', ['unlocked' => $quests_unlocked, 'locked' => $quests_locked, 'revisable' => $quests_revisable])
             ->withUser(access()->user());
     }
 
@@ -320,7 +327,8 @@ class QuestController extends Controller
     }
 
     public function attempt_link($quest_id) {
-        return view('frontend.quests.attempt_link')
+        $quest = Quest::find($id);
+        return view('frontend.quests.attempt_link', ['quest' => $quest])
             ->withUser(access()->user());
     }
 
