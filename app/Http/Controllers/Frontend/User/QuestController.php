@@ -46,12 +46,12 @@ class QuestController extends Controller
         }
 
         $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
-                    ->whereNotIn('quest_id', $quests_attempted_ids)
+                    ->whereNotIn('id', $quests_attempted_ids)
                     ->orderBy('expires_at')
                     ->get();
 
         $quests_revisable = Quest::where('course_id', '=', session('current_course'))
-                    ->whereIn('quest_id', $quests_attempted_ids)
+                    ->whereIn('id', $quests_attempted_ids)
                     ->where('revisions', '=', true)
                     ->orderBy('expires_at')
                     ->get();
@@ -354,7 +354,7 @@ class QuestController extends Controller
                 // The given data did not pass validation
                 return redirect()->route('frontend.user.dashboard')->withFlashDanger("Link for . " . $quest->name . " is invalid.");
             }
-            
+
             $attempt = new Link;
             $attempt->url = $request->link;
         }
