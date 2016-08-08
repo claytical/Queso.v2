@@ -33,7 +33,7 @@
                     <li>
                     {!! var_dump($list['attempt']) !!}
                         @if($list['type'] == 1)
-                            <h4 class="submission">{{ link_to('grade/submission/'.$list[, $list['quest']) }}</h4>
+                            <h4 class="submission">{{ link_to('grade/submission/', $list['quest']) }}</h4>
                         @endif
                         <p>Submitted <span class="date"></span> by <span class="student">{!! $list['student'] !!}</span></p>
                     </li>
