@@ -10,6 +10,7 @@ use App\Quest;
 use App\Skill;
 use App\Threshold;
 use App\Link;
+use Validator;
 
 /**
  * Class QuestController
