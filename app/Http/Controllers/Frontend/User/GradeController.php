@@ -25,7 +25,7 @@ class GradeController extends Controller
 //                                ->where('graded', '=', false)
 //                                ->get();
         $submissions = Course::find(session('current_course'))
-                                ->user_quests();
+                                ->user_quests()->get();
         return view('frontend.grade.submissions', ['submissions' => $submissions])
             ->withUser(access()->user());
     }
