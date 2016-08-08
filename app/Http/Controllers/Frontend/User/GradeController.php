@@ -24,7 +24,7 @@ class GradeController extends Controller
 
         $list = [];
         foreach($quests as $quest) {
-            $list[] = $quest->users()->where('graded', false)->get();
+            $list[] = $quest->users()->where('graded', true)->get();
         }
 
 //        $users = $course->users();
