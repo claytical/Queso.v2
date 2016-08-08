@@ -26,9 +26,10 @@ class GradeController extends Controller
         foreach($quests as $quest) {
                 //quest name, quest type, student name, revision number, date submitted
             $users = $quest->users()->where('graded', false)->get();
-            $list[] =  ["quest" => $quest->name, 
+            foreach($users as $user)
+               $list[] =  ["quest" => $quest->name, 
                             "type" => $quest->quest_type_id,
-                            "submissions" => $users];
+                            "submission" => $user];
         }
 
 //        $users = $course->users();
