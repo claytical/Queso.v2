@@ -2,28 +2,50 @@
 
 @section('content')
         <div class="col-lg-12">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Quest Name</h2>
-                    <h4>Points Available</h4>
-                    <h6>Due 00/00/000</h6>
-                </div>
-   
-                <div class="col-lg-10">
-                    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
-                </div>
-                <div class="col-lg-2">
-                    <button type="button" class="btn btn-primary btn-lg pull-right">Submit</button>
+            <div class="col-lg-9">
+                <h2>{!! $quest->name !!}</h2>
+                {!! $quest->instructions !!}
+                {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
+                {!! Form::hidden('quest_id', $quest->id) !!}       
+                <div class="form-group">
+                    {!! Form::textarea('submission', ''); !!}
                 </div>
 
-                <div class="col-lg-12">
-                    {!! Form::open(array('url' => 'quest/submit', 'class' => '', 'id' => 'no-ajax-upload')) !!}
-                    {!! Form::textarea('notes', null, ['class' => 'field', 'files' => true]) !!}
-                    {!! Form::close() !!}
-                </div>
-                <div class="col-lg-12">
-                    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
-                </div>
+                {!! Form::submit('Submit', ['class' => 'btn btn-default']) !!}
+
+                {!! Form::close() !!}
+            </div>
+            <div class="col-lg-3">
+            <ul class="list-unstyled">
+                @foreach($skills as $skill)
+                    <li>
+                        <div class="col-lg-12">
+                            <div class="col-lg-9">
+                                {!! $skill->name !!}
+                            </div>
+                            <div class="col-lg-3">
+                                {!! $skill->pivot->amount !!}
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <div class="col-lg-12">
+                            <div class="col-lg-9">
+                            Points Total
+                            </div>
+                            <div class="col-lg-3">
+                                {!! $quest->skills()->sum('amount') !!}
+                            </div>
+                        </div>
+                    </li>
+            </ul>
+                @if($quest->expires_at)
+                <h4>Due {!! $quest->expires_at !!}</h4>
+                @endif
+
+
             </div>
             
         </div>

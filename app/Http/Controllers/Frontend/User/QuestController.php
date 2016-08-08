@@ -339,30 +339,32 @@ class QuestController extends Controller
     public function submit(Request $request) {
         $quest = Quest::find($request->quest_id);
 
-        if($request->quest_type == "link") {
+        if($quest->quest_type_id == 1) {
+            $attempt = new Submission;
+            $attempt->submission = $request->submission;
+        }
+
+        if($quest->quest_type_id == 4) {
             $validator = Validator::make(
                 ['link' => $request->link],
                 ['link' => 'url']
             );
-
-             if ($validator->fails()) {
+            
+            if ($validator->fails()) {
                 // The given data did not pass validation
                 return redirect()->route('frontend.user.dashboard')->withFlashDanger("Link for . " . $quest->name . " is invalid.");
             }
             
-            $link = new Link;
-            $link->quest_id = $request->quest_id;
-            $link->user_id = access()->user()->id;
-            $link->url = $request->link;
-            $link->graded = false;
-            $link->revision = 0;
-            $link->save();
-            access()->user()->quests()->attach($link->quest_id, ['revision' => 0, 'graded' => false]);
-
+            $attempt = new Link;
+            $attempt->url = $request->link;
         }
 
-//        return view('frontend.quests.submitted', ['data' => $request->all()])
-//                ->withUser(access()->user());
+        $user = access()->user();
+        $attempt->quest_id = $request->quest_id;
+        $attempt->user_id = $user->id;
+        $attempt->save();
+        $user->quests()->attach($attempt->quest_id, ['revision' => 0, 'graded' => false]);
+
         return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted.");
 
     }

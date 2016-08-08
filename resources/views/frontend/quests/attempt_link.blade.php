@@ -2,11 +2,10 @@
 
 @section('content')
         <div class="col-lg-12">
-            <div class="col-lg-6">
+            <div class="col-lg-9">
                 <h2>{!! $quest->name !!}</h2>
                 {!! $quest->instructions !!}
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
-                {!! Form::hidden('quest_type', 'link') !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}       
                 <div class="form-group">
                     {!! Form::text('link', '', ['class' => 'form-control']); !!}
@@ -16,7 +15,7 @@
 
                 {!! Form::close() !!}
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-3">
             <ul class="list-unstyled">
                 @foreach($skills as $skill)
                     <li>
