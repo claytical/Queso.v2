@@ -19,6 +19,8 @@ class UpdateQuestUserTimestamps extends Migration
             $table->integer('revision')->default(0);
             $table->boolean('graded');
             $table->timestamps();
+            $table->dropPrimary('quest_id');
+            $table->dropPrimary('user_id');
             $table->primary(['revision', 'user_id', 'quest_id']);
 
 
