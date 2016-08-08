@@ -23,7 +23,7 @@ class Quest extends Model
     }
 
     public function users() {
-    	return $this->belongsToMany('App\Models\Access\User')->withPivot('revision', 'graded');
+    	return $this->belongsToMany('App\Models\Access\User\User')->withPivot('revision', 'graded');
     }
 
     public function type() {
