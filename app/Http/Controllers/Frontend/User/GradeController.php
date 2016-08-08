@@ -20,7 +20,7 @@ class GradeController extends Controller
      */
     public function submission_list() {
         $course = Course::find(session('current_course'));
-        $quests = $course->quests();
+        $quests = $course->quests()->get();
 
         $list = [];
         foreach($quests as $quest) {
@@ -33,7 +33,7 @@ class GradeController extends Controller
 //                                ->get();
 //        $submissions = Course::find(session('current_course'))
  //                               ->user_quests()->get();
-        return view('frontend.grade.submissions', ['submissions' => $quests])
+        return view('frontend.grade.submissions', ['submissions' => $list])
             ->withUser(access()->user());
     }
 
