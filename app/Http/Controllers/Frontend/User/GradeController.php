@@ -33,13 +33,13 @@ class GradeController extends Controller
 
                 if($quest->quest_type_id == 1) {
                     $attempt = Submission::where('user_id', '=', $user->id)
-                                            ->where('quest_id', '=', $quest_id)
+                                            ->where('quest_id', '=', $quest->id)
                                             ->where('revision', '=', $user->pivot->revision)
                                             ->first();
                 }
                 if($quest->quest_type_id == 4) {
                     $attempt = Link::where('user_id', '=', $user->id)
-                                            ->where('quest_id', '=', $quest_id)
+                                            ->where('quest_id', '=', $quest->id)
                                             ->where('revision', '=', $user->pivot->revision)
                                             ->first();
                 }
