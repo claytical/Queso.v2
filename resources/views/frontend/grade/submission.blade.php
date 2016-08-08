@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="col-lg-9">
-    <h2>{!! $quest->name !!}, {{!! $user->name !!}</h2>
-    <h4>Submitted 00/00/0000</h4>
+    <h2>{!! $quest->name !!}, {!! $user->name !!}</h2>
+    <h4>Submitted {!! $submission->created_at !!}</h4>
 </div>
 <div class="col-lg-3">
 <div class="btn-group pull-right">
@@ -28,14 +28,14 @@
       <div class="modal-body">
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
+            <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">{!! $quest->instructions !!}</a></li>
             <li role="presentation"><a href="#previous_feedback" aria-controls="profile" role="tab" data-toggle="tab">Previous Feedback</a></li>
           </ul>
 
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="description">Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.
-</div>
+            </div>
             <div role="tabpanel" class="tab-pane" id="previous_feedback">
                 <blockquote>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -101,32 +101,23 @@
                 {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}
             </div>
             <div class="col-lg-3">
-                <div class="col-lg-6">
-                    <label>Skill #1</label>
-                </div>
-                <div class="col-lg-6">
-                    <input type="number" class="form-control" id="skill1">
-                </div>
 
-                <div class="col-lg-6">
-                    <label>Skill #2</label>
-                </div>
-                <div class="col-lg-6">
-                    <input type="number" class="form-control" id="skill2">
-                </div>
+                @foreach($skills as $skill)
+                  <div class="col-lg-6">
+                      <label>{!! $skill->name !!}</label>
+                  </div>
+                  <div class="col-lg-6">
+                      <input type="number" class="form-control" id="skill[]" max="{!! $skill->amount !!}">
+                      {!! Form::hidden('skill_id[]', $skill->id) !!}
 
-                <div class="col-lg-6">
-                    <label>Skill #3</label>
-                </div>
-                <div class="col-lg-6">
-                    <input type="number" class="form-control" id="skill3">
-                </div>
+                  </div>                    
+                  @endforeach
 
                 <hr/>
 
                 <div class="col-lg-12">
                     <div class="pull-right">
-                            <span>xx</span> / 50
+                            <span>xx</span> / {!! $quest->skills()->sum('amount') !!}
                     </div>
                 </div>
 
