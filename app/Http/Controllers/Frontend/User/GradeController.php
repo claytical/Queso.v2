@@ -64,11 +64,24 @@ class GradeController extends Controller
 
     public function submission($id) {
         $submission = Submission::find($id);
+        $submissions = Submission::where('quest_id', '=', $submission->quest_id)
+                                        ->where('user_id', '=', $submission->user_id);
+        $revision_count = $submissions->count();
+        $revisions = $submissions->get();
+        if($revision_count > 1) {
+            $revisions = Submission::where('quest_id', '=', $submission->quest_id)
+                                        ->where('user_id', '=', $submission->user_id)
+                                        ->orderBy('revision')
+                                        ->get();
+        }
         $quest = Quest::find($submission->quest_id);
         $skills = $quest->skills()->get();
+
         return view('frontend.grade.submission',   ['submission' => $submission, 
                                                     'quest' => $quest, 
-                                                    'skills' => $skills]
+                                                    'skills' => $skills,
+                                                    'revision_count' => $revision_count,
+                                                    'revisions' => $revisions]
                                                     )->withUser(access()->user());
     }
 

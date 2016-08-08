@@ -9,13 +9,20 @@
 <div class="col-lg-3">
 <div class="btn-group pull-right">
   <button type="button" class="btn btn-default" data-toggle="modal" data-target="#information">More Information</button>
+  @if($revision_count > 1)
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Original <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <li><a href="#">Revision #1</a></li>
-    <li><a href="#">Revision #2</a></li>
+    @foreach($revisions as $revision)
+      @if($revision->revision == 0)
+        <li>{{ link_to('grade/submission/'.$list['attempt']->id, 'Original') }}</li>
+      @else
+        <li>{{ link_to('grade/submission/'.$list['attempt']->id, '#'. $revision->revision . ' ' . $revision->created_at) }}</li>
+      @endif
+    @endforeach
   </ul>
+  @endif
 </div>              
 </div>
 <div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="information">
@@ -28,26 +35,30 @@
       <div class="modal-body">
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">{!! $quest->instructions !!}</a></li>
-            <li role="presentation"><a href="#previous_feedback" aria-controls="profile" role="tab" data-toggle="tab">Previous Feedback</a></li>
+            <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">Instructions</a></li>
+            @if($revision_count > 1)
+              <li role="presentation"><a href="#previous_feedback" aria-controls="profile" role="tab" data-toggle="tab">Previous Feedback</a></li>
+            @endif
           </ul>
 
           <!-- Tab panes -->
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="description">Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.
+            <div role="tabpanel" class="tab-pane active" id="description">{!! $quest->instructions !!}
             </div>
-            <div role="tabpanel" class="tab-pane" id="previous_feedback">
-                <blockquote>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Joan Ridley</cite></footer>
-                </blockquote>
+            @if($revision_count > 1)
+              <div role="tabpanel" class="tab-pane" id="previous_feedback">
+                  <blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer>Someone famous in <cite title="Source Title">Joan Ridley</cite></footer>
+                  </blockquote>
 
-                <blockquote>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Michael Scott</cite></footer>
-                </blockquote>
+                  <blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer>Someone famous in <cite title="Source Title">Michael Scott</cite></footer>
+                  </blockquote>
 
-            </div>
+              </div>
+            @endif
           </div>
 
 
@@ -104,6 +115,7 @@
 
                 @foreach($skills as $skill)
                   <div class="col-lg-6">
+                  {!! var_dump($skill) !!}
                       <label>{!! $skill->name !!}</label>
                   </div>
                   <div class="col-lg-6">
