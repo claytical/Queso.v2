@@ -24,7 +24,11 @@ class GradeController extends Controller
 
         $list = [];
         foreach($quests as $quest) {
-            $list[] = $quest->users()->where('graded', false)->get();
+                //quest name, quest type, student name, revision number, date submitted
+            $users = $quest->users()->where('graded', false)->get();
+            $list[] =  ["quest" => $quest->name, 
+                            "type" => $quest->quest_type_id,
+                            "submissions" => $users];
         }
 
 //        $users = $course->users();
@@ -33,7 +37,7 @@ class GradeController extends Controller
 //                                ->get();
 //        $submissions = Course::find(session('current_course'))
  //                               ->user_quests()->get();
-        return view('frontend.grade.submissions', ['submissions' => $list])
+        return view('frontend.grade.submissions', ['lists' => $list])
             ->withUser(access()->user());
     }
 

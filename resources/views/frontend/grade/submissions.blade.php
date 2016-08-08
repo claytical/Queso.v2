@@ -30,21 +30,12 @@
                   
 
                 <ul class="list-unstyled list">
+                    @foreach($lists as $list)
                     <li>
-                        <h4 class="submission">{{ link_to('grade/submission/1', 'Submission Quest') }}</h4>                  
+                        <h4 class="submission">{{ link_to('grade/submission/1', $list['quest']) }}</h4>                  
                         <p>Submitted <span class="date">01/12/2016</span> by <span class="student">Gloria</span></p>
                     </li>
-
-                    <li>
-                        <h4 class="submission">{{ link_to('grade/link/1', 'Link Quest') }}</h4>                  
-                        <p>Submitted <span class="date">01/12/2015</span> by <span class="student">Sauron</span></p>
-                    </li>
-
-                    <li>
-                        <h4 class="submission">{{ link_to('quest/1/attempt/submission', 'Feedback Quest') }}</h4>                  
-                        <p>Submitted <span class="date">03/01/2016</span> by <span class="student">Adrian</span></p>
-                    </li>
-
+                    @endforeach
                 </ul>
             </div>
             </div>
