@@ -320,7 +320,9 @@ class QuestController extends Controller
 //            ->withUser(access()->user());
     }
     public function attempt_submission($quest_id) {
-        return view('frontend.quests.attempt_submission')
+        $quest = Quest::find($quest_id);
+        $skills = $quest->skills()->get();
+        return view('frontend.quests.attempt_submission', ['quest' => $quest, 'skills' => $skills])
             ->withUser(access()->user());
     }
     
