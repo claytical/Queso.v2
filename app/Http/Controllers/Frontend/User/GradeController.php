@@ -17,12 +17,11 @@ class GradeController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function submission_list()
-    {
+    public function submission_list() {
         $submissions = Course::where('course_id', '=', session('current_course'))
                                 ->users()
                                 ->quests()
-                                ->where('graded', '=' false)
+                                ->where('graded', '=', false)
                                 ->get();
 
         return view('frontend.grade.submissions', ['submissions' => $submissions])

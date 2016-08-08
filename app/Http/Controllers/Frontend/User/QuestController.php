@@ -23,8 +23,7 @@ class QuestController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function available()
-    {
+    public function available() {
 //this only catches graded quests, 
         $user = access()->user();
         $quests_attempted = $user->quests();
