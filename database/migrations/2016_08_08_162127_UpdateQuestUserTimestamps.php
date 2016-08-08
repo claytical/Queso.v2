@@ -14,8 +14,8 @@ class UpdateQuestUserTimestamps extends Migration
     {
         Schema::table('quest_user', function ($table) {
 
-            $table->dropForeign('quest_user_quest_id_foreign');
-            $table->dropForeign('quest_user_user_id_foreign');
+//            $table->dropForeign('quest_user_quest_id_foreign');
+//            $table->dropForeign('quest_user_user_id_foreign');
 /*            $table->integer('revision')->default(0);
             $table->boolean('graded');
             $table->timestamps();
