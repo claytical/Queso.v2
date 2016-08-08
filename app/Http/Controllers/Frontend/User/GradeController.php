@@ -6,6 +6,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Quest;
 use App\Course;
+use App\Submission;
+use App\Link;
 //use Vinelab\Http\Client as HttpClient;
 
 /**
@@ -26,10 +28,28 @@ class GradeController extends Controller
         foreach($quests as $quest) {
                 //quest name, quest type, student name, revision number, date submitted
             $users = $quest->users()->where('graded', false)->get();
-            foreach($users as $user)
+
+            foreach($users as $user) {
+
+                if($quest->quest_type_id == 1) {
+                    $attempt = Submission::where('user_id', '=', $user->id)
+                                            ->where('quest_id', '=', $quest_id)
+                                            ->where('revision', '=', $user->pivot->revision)
+                                            ->first();
+                }
+                if($quest->quest_type_id == 4) {
+                    $attempt = Link::where('user_id', '=', $user->id)
+                                            ->where('quest_id', '=', $quest_id)
+                                            ->where('revision', '=', $user->pivot->revision)
+                                            ->first();
+                }
+
+
                $list[] =  ["quest" => $quest->name, 
                             "type" => $quest->quest_type_id,
-                            "submission" => $user];
+                            "student" => $user->name,
+                            "attempt" => $attempt];
+            }
         }
 
 //        $users = $course->users();
