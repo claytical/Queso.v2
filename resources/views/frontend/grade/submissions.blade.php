@@ -31,11 +31,15 @@
                 <ul class="list-unstyled list">
                     @foreach($lists as $list)
                     <li>
-                    {!! var_dump($list['attempt']) !!}
                         @if($list['type'] == 1)
-                            <h4 class="submission">{{ link_to('grade/submission/', $list['quest']) }}</h4>
+                            <h4 class="submission">{{ link_to('grade/submission/'.$list['attempt']->id, $list['quest']) }}</h4>
                         @endif
-                        <p>Submitted <span class="date"></span> by <span class="student">{!! $list['student'] !!}</span></p>
+
+                        @if($list['type'] == 4)
+                            <h4 class="submission">{{ link_to('grade/link/'.$list['attempt']->id, $list['quest']) }}</h4>
+                        @endif
+
+                        <p>Submitted <span class="date">{!! $list['attempt']->created_at !!}</span> by <span class="student">{!! $list['student'] !!}</span></p>
                     </li>
                     @endforeach
                 </ul>
