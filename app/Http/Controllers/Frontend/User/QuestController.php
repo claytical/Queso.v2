@@ -336,21 +336,28 @@ class QuestController extends Controller
     }
 
     public function submit(Request $request) {
-        if($request->quest_type == "link") {
-            $link = new Link;
+        $quest = Quest::find($request->quest_id);
 
-            $link->quest_id = $request->quest_id;
-            $link->user_id = access()->user()->id;
-            if(preg_match("/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/", $link->url)) {
-               $link->url = $request->link;
-            }
-            else {
+        if($request->quest_type == "link") {
+            $validator = Validator::make(
+                ['link' => $request->link],
+                ['link' => 'url']
+            );
+
+             if ($validator->fails()) {
+                // The given data did not pass validation
                 return redirect()->route('frontend.user.dashboard')->withFlashDanger("Link for . " . $quest->name . " is invalid.");
             }
+            
+            $link = new Link;
+            $link->quest_id = $request->quest_id;
+            $link->user_id = access()->user()->id;
+            $link->url = $request->link;
             $link->graded = false;
             $link->revision = 0;
             $link->save();
         }
+
 //        return view('frontend.quests.submitted', ['data' => $request->all()])
 //                ->withUser(access()->user());
         return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted.");
