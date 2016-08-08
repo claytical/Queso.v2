@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Quest;
 //use Vinelab\Http\Client as HttpClient;
 
 /**
@@ -18,7 +19,13 @@ class GradeController extends Controller
      */
     public function submission_list()
     {
-        return view('frontend.grade.submissions')
+        $submissions = Course::where('course_id', '=', session('current_course'))
+                                ->users()
+                                ->quests()
+                                ->where('graded', '=' false)
+                                ->get();
+
+        return view('frontend.grade.submissions', ['submissions' => $submissions])
             ->withUser(access()->user());
     }
 

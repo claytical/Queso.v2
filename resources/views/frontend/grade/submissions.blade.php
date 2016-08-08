@@ -8,6 +8,7 @@
 </div>
 
         <div class="col-lg-12">
+        {!! var_dump($submissions !!}
             <div id="submission-list">
             <div class="col-lg-9">
               <input class="form-control search" placeholder="Search" />
