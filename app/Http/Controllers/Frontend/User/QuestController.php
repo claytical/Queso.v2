@@ -9,6 +9,7 @@ use Vinelab\Http\Client as HttpClient;
 use App\Quest;
 use App\Skill;
 use App\Threshold;
+use App\Link;
 
 /**
  * Class QuestController
@@ -22,6 +23,7 @@ class QuestController extends Controller
      */
     public function available()
     {
+//this only catches graded quests, 
         $user = access()->user();
         $quests_attempted = $user->quests();
         $quests_attempted_ids = $quests_attempted->pluck('quest_id');
@@ -334,10 +336,24 @@ class QuestController extends Controller
     }
 
     public function submit(Request $request) {
+        if($request->quest_type == "link") {
+            $link = new Link;
+            $link->quest_id = $request->quest_id;
+            $link->user_id = access()->user()->id;
+            if($preg_match("/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/", $link->url)) {
+               $link->url = $request->link;
+            }
+            else {
+                return redirect()->route('frontend.user.dashboard')->withFlashDanger("Link for . " . $quest->name . " is invalid.");
+            }
+            $link->graded = false;
+            $link->revision = 0;
+            $link->save();
+        }
+//        return view('frontend.quests.submitted', ['data' => $request->all()])
+//                ->withUser(access()->user());
+        return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted.");
 
-        return view('frontend.quests.submitted', ['data' => $request->all()])
-                ->withUser(access()->user());
-    
     }
 
     public function redeem() {
