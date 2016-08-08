@@ -19,8 +19,8 @@ class GradeController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function submission_list() {
-        $submissions = Course::where('course_id', '=', session('current_course'))
-                                ->users()
+        $course = = Course::where('course_id', '=', session('current_course'))->first();
+        $submissions = $course->users()
                                 ->quests()
                                 ->where('graded', '=', false)
                                 ->get();
