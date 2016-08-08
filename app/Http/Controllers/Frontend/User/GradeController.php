@@ -62,9 +62,11 @@ class GradeController extends Controller
             ->withUser(access()->user());
     }
 
-    public function submission() {
-        return view('frontend.grade.submission')
-            ->withUser(access()->user());
+    public function submission($id) {
+        return view('frontend.grade.submission',   ['submission' => Submission::find($id), 
+                                                    'quest' => $submission->quest(), 
+                                                    'skills' => $quest->skills()->get()]
+                                                    )->withUser(access()->user());
     }
 
     public function link() {
