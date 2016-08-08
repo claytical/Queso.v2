@@ -41,7 +41,7 @@ class User extends Authenticatable
     }
 
     public function quests() {
-        return $this->belongsToMany('App\Quest')->withPivot('revision', 'graded');
+        return $this->belongsToMany('App\Quest')->withPivot('revision', 'graded')->withTimestamps();
     }
 
     public function submissions() {
