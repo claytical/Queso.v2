@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Submission extends Model
 {
     public function quest() {
-  		return $this->belongsTo('App\Quest');
+  		return $this->hasOne('App\Quest');
     }
 
     public function user() {
