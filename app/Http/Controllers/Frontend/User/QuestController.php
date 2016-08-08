@@ -338,9 +338,10 @@ class QuestController extends Controller
     public function submit(Request $request) {
         if($request->quest_type == "link") {
             $link = new Link;
+
             $link->quest_id = $request->quest_id;
             $link->user_id = access()->user()->id;
-            if($preg_match("/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/", $link->url)) {
+            if(preg_match("/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/", $link->url)) {
                $link->url = $request->link;
             }
             else {
