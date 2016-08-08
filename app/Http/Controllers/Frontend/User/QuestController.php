@@ -357,7 +357,7 @@ class QuestController extends Controller
             $link->graded = false;
             $link->revision = 0;
             $link->save();
-            $quest->users()->attach($link->user_id, ['revision' => 0, 'graded' => false]);  
+            access()->user()->quests()->attach($link->quest_id, ['revision' => 0, 'graded' => false]);
 
         }
 
