@@ -10,6 +10,10 @@ class Course extends Model
     	return $this->belongsToMany('App\Models\Access\User\User');
 
     }
+    
+    public function user_quests() {
+        return $this->hasManyThrough('App\Models\Access\User\User', 'App\Quest');
+    }
 
     public function announcements() {
         return $this->hasMany('App\Announcement');
