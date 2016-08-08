@@ -20,13 +20,20 @@ class GradeController extends Controller
      */
     public function submission_list() {
         $course = Course::find(session('current_course'));
+        $quests = $course->quests();
+
+        $list = [];
+        foreach($quests as $quest) {
+            $list[] = $quest->users()->where('graded', '=', false)->get();
+        }
+
 //        $users = $course->users();
 //        $submissions = $users->quests()
 //                                ->where('graded', '=', false)
 //                                ->get();
-        $submissions = Course::find(session('current_course'))
-                                ->user_quests()->get();
-        return view('frontend.grade.submissions', ['submissions' => $submissions])
+//        $submissions = Course::find(session('current_course'))
+ //                               ->user_quests()->get();
+        return view('frontend.grade.submissions', ['submissions' => $list])
             ->withUser(access()->user());
     }
 
