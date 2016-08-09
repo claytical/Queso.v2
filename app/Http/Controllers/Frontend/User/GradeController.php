@@ -128,14 +128,23 @@ class GradeController extends Controller
     }
 
     public function confirm(Request $request) {
-        $submission = Submission::find($request->submission_id);
-        $user = User::find($submission->user_id);
+        $quest = Quest::find($request->quest_id);
+        if ($quest->quest_type_id == 1) {
+            $attempt = Submission::find($request->attempt_id);
+
+        }
+        if ($quest->quest_type_id == 4) {
+            $attempt = Link::find($request->attempt_id);
+
+        }
+
+        $user = User::find($attempt->user_id);
 
         $feedback = new Feedback;
         $feedback->from_user_id = access()->user()->id;
-        $feedback->to_user_id = $submission->user_id;
-        $feedback->quest_id = $submission->quest_id;
-        $feedback->revision = $submission->revision;
+        $feedback->to_user_id = $attempt->user_id;
+        $feedback->quest_id = $attempt->quest_id;
+        $feedback->revision = $attempt->revision;
         $feedback->subtype = 1;
         $feedback->likes = 0;
         $feedback->note = $request->feedback;
@@ -150,21 +159,19 @@ class GradeController extends Controller
         for($i = 0; $i < count($request->skills); $i++) {
             $skill_id = $request->skill_id[$i];
         //remove existing points for the quest
-            $user->skills()->where('quest_id', $submission->quest_id)->detach($skill_id);
+            $user->skills()->where('quest_id', $attempt->quest_id)->detach($skill_id);
             if (is_numeric($request->skills[$i])) {
-                $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $submission->quest_id]);
+                $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $attempt->quest_id]);
             }
             else {
-                $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $submission->quest_id]);   
+                $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $attempt->quest_id]);   
             }
         }
-        
-        $submission->graded = true;
+        $attempt->graded = true;
+        $attempt->save();
 
-        $submission->save();
-
-        $user->quests()->where('revision', $submission->revision)
-                        ->updateExistingPivot($submission->quest_id, ['graded' => true]);
+        $user->quests()->where('revision', $attempt->revision)
+                        ->updateExistingPivot($attempt->quest_id, ['graded' => true]);
 
         $quest = Quest::find($submission->quest_id);
         return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $user->name . ".");
