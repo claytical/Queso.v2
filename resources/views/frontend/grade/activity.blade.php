@@ -6,6 +6,7 @@
     <h2>{!! $quest->name !!}</h2>
 </div>
 {!! Form::open(array('url' => 'grade/confirm/activity')) !!}
+{!! Form::hidden('quest_id', $quest->id ) !!}
 
 <div class="col-lg-3">
 
@@ -31,7 +32,7 @@
         
         <div class="col-xs-5">
             <b>Selected Students to Receive Grade</b>
-            <select name="to[]" id="multiselect_to_1" class="form-control" size="8" multiple="multiple"></select>
+            <select name="students[]" id="multiselect_to_1" class="form-control" size="8" multiple="multiple"></select>
         </div>
 </div>
 
@@ -67,12 +68,10 @@
 
         <div class="row">
             <div class="col-lg-9">
-                {!! Form::textarea('notes', null, ['class' => 'field', 'files' => false]) !!}
+                {!! Form::textarea('feedback', null, ['class' => 'field', 'files' => false]) !!}
             </div>
             <div class="col-lg-3">
-                <div class="col-lg-12">
                     {!! Form::submit('Submit Grade', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
-                </div>
             </div>
 
 
