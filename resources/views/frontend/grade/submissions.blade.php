@@ -36,7 +36,7 @@
                         @endif
 
                         @if($list['type'] == 4)
-                            <h4 class="submission">{{ link_to('grade/quest/'.$list['quest']->id.'/'.$list['attempt']->id, $list['quest']) }}</h4>
+                            <h4 class="submission">{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</h4>
                         @endif
 
                         <p>Submitted <span class="date">{!! $list['attempt']->created_at !!}</span> by <span class="student">{!! $list['student'] !!}</span></p>

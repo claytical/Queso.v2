@@ -50,7 +50,8 @@ class GradeController extends Controller
                 }
 
 
-               $list[] =  ["quest" => $quest->name, 
+               $list[] =  ["quest" => $quest->name,
+                            "quest_id" => $quest->id,
                             "type" => $quest->quest_type_id,
                             "student" => $user->name,
                             "attempt" => $attempt];
