@@ -147,7 +147,7 @@ class GradeController extends Controller
 
     public function inclass()
     {
-        $quests = Course::find(session('current_course'))->quests()->get();
+        $quests = Course::find(session('current_course'))->quests()->where('quest_type_id', 4)->get();
 
         return view('frontend.grade.inclass', ['quests' => $quests])
             ->withUser(access()->user());

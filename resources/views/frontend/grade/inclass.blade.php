@@ -49,7 +49,7 @@
 
                             <div class="col-lg-3">
                                 <span class="completion pull-right">
-                                    {!! var_dump($quest) !!}
+                                    {!! $quest->users()->count() !!}
                                 </span>
                             </div>
                         </div>
