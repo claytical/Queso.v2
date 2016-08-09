@@ -25,20 +25,10 @@
                 </div>              
             </div>
             <div class="col-lg-12">
-                  
-                  
-
                 <ul class="list-unstyled list">
                     @foreach($lists as $list)
                     <li>
-                        @if($list['type'] == 1)
-                            <h4 class="submission">{{ link_to('grade/submission/'.$list['attempt']->id, $list['quest']) }}</h4>
-                        @endif
-
-                        @if($list['type'] == 4)
-                            <h4 class="submission">{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</h4>
-                        @endif
-
+                        <h4 class="submission">{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</h4>
                         <p>Submitted <span class="date">{!! $list['attempt']->created_at !!}</span> by <span class="student">{!! $list['student'] !!}</span></p>
                     </li>
                     @endforeach
