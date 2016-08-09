@@ -196,6 +196,7 @@ class GradeController extends Controller
         $students =  Course::find(session('current_course'))
                         ->users()
                         ->where('user_id', '!=', access()->user()->id)
+                        ->whereNotIn('user_id', $quest->users()->pluck('user_id'))
                         ->get();
 //        $quest->users()
         $skills = $quest->skills()->get();
