@@ -13,11 +13,11 @@ class ChangeReceiveDateOnNotifications extends Migration
     public function up()
     {
         Schema::table('quest_user', function ($table) {
-            $table->dropColumn('url');
+//            $table->dropColumn('url');
         });
 
         Schema::table('notices', function ($table) {
-            $table->string('url')->nullable();
+  //          $table->string('url')->nullable();
             $table->dateTime('received')->nullable()->change();
         });
 
