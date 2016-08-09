@@ -131,12 +131,8 @@ class GradeController extends Controller
 
         $submission->save();
 
-        $user_quest = $user->quests()
-                            ->where('quest_id', $submission->quest_id)
-                            ->where('revision', $submission->revision)
-                            ->first();
-        $user_quest->graded = true;
-        $user_quest->save();
+        $user->quests()->where('revision', $submission->revision)
+                        ->updateExistingPivot($submission->quest_id, ['graded' => true]);
 
         $quest = Quest::find($submission->quest_id);
         return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $user->name . ".");
