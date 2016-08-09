@@ -405,7 +405,7 @@ class QuestController extends Controller
             //submission
             $previous_attempt = Submission::where('quest_id', '=', $quest_id)
                                             ->where('user_id', '=', $user->id)
-//                                            ->where('graded', '=', true)
+                                            ->where('graded', '=', true)
                                             ->orderBy('revision')
                                             ->first();
         }
@@ -413,14 +413,14 @@ class QuestController extends Controller
             //link
             $previous_attempt = Link::where('quest_id', '=', $quest_id)
                                             ->where('user_id', '=', $user->id)
-  //                                          ->where('graded', '=', true)
+                                            ->where('graded', '=', true)
                                             ->orderBy('revision')
                                             ->first();
         }
 //
         $existing_skills = $user->skills()->where('quest_id', $quest_id)->get();
 
-        return view('frontend.quests.attempt_revision', ['previous' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills])
+        return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills])
             ->withUser(access()->user());
     }
 
