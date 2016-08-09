@@ -31,7 +31,7 @@
                                 {!! $skill->name !!}
                             </div>
                             <div class="col-lg-3">
-                            {!! var_dump($existing_skills[0]) !!}
+                            {!! var_dump($existing_skills[0]->amount) !!}
                                 
                                 {!! $skill->pivot->amount !!}
                             </div>
