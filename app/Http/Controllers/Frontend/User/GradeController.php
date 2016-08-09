@@ -176,7 +176,7 @@ class GradeController extends Controller
         $notice->user_id = $attempt->user_id;
         $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
         $notice->url = "quest/". $quest->id ."/feedback";
-
+        $notice->course_id = session('current_course');
         $notice->save();
 
         $user->quests()->where('revision', $attempt->revision)
@@ -226,6 +226,7 @@ class GradeController extends Controller
             $notice->user_id = $student;
             $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
             $notice->url = "quest/". $quest->id ."/feedback";
+            $notice->course_id = session('current_course');
             $notice->save();
 
         }

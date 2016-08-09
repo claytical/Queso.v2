@@ -62,9 +62,9 @@
                     <div class="panel-heading">Notifications</div>
                         <div class="panel-body">
                         <ul class="list-unstyled">
-                            <li>Quest was graded</li>
-                            <li>{{ link_to('quest/1/feedback', 'Feedback from Doris on Quest Name') }}</li>
-                            <li>Someone did something</li>
+                            @foreach($notifications as $notice)
+                                <li>{{ link_to($notice->url, $notice->message) }}</li>
+                            @endforeach
                         </ul>                
                         </div>
                 </div>
