@@ -13,7 +13,7 @@
                         {!! Form::textarea('submission', $previous_attempt->submission); !!}
                     @endif
                     @if($quest->quest_type_id == 4)
-                        {!! Form::text('url', null); !!}
+                        {!! Form::text('link', null); !!}
                     @endif
 
                 </div>
