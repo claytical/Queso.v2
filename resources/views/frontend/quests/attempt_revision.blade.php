@@ -6,7 +6,7 @@
                 <h2>{!! $quest->name !!}</h2>
                 {!! $quest->instructions !!}
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
-                {!! Form::hidden('revision', 0) !!}
+                {!! Form::hidden('revision', $previous_attempt->revision + 1) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
                 <div class="form-group">
                     @if($quest->quest_type_id == 1)
@@ -27,10 +27,13 @@
                 @foreach($skills as $index => $skill)
                     <li>
                         <div class="col-lg-12">
-                            <div class="col-lg-9">
+                            <div class="col-lg-12">
+                                <h4>Current Grade</h4>
+                            </div>
+                            <div class="col-lg-6">
                                 {!! $skill->name !!}
                             </div>
-                            <div class="col-lg-3">                                
+                            <div class="col-lg-6">                                
                                 {!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}
                             </div>
                         </div>
@@ -39,11 +42,11 @@
                     <li role="separator" class="divider"></li>
                     <li>
                         <div class="col-lg-12">
-                            <div class="col-lg-9">
+                            <div class="col-lg-6">
                             Points Total
                             </div>
-                            <div class="col-lg-3">
-                                {!! $quest->skills()->sum('amount') !!}
+                            <div class="col-lg-6">
+                               {!! $existing_skills->sum('amount') !!} / {!! $quest->skills()->sum('amount') !!}
                             </div>
                         </div>
                     </li>
