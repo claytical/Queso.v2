@@ -10,6 +10,7 @@ use App\Submission;
 use App\Link;
 use App\Models\Access\User\User;
 use App\Feedback;
+use App\Notice;
 use Illuminate\Http\Request;
 
 
@@ -149,19 +150,20 @@ class GradeController extends Controller
         $feedback->likes = 0;
         $feedback->note = $request->feedback;
         $feedback->save();
-//TODO: notify user of feedback
+
 
 //TODO: Check for revision
 
 //TODO: Add to Skill History
 
-
+        $total_points = 0;
         for($i = 0; $i < count($request->skills); $i++) {
             $skill_id = $request->skill_id[$i];
         //remove existing points for the quest
             $user->skills()->where('quest_id', $attempt->quest_id)->detach($skill_id);
             if (is_numeric($request->skills[$i])) {
                 $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $attempt->quest_id]);
+                $total_points += $request->skills[$i];
             }
             else {
                 $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $attempt->quest_id]);   
@@ -169,6 +171,13 @@ class GradeController extends Controller
         }
         $attempt->graded = true;
         $attempt->save();
+        //send notification to user
+        $notice = new Notice;
+        $notice->user_id = $attempt->user_id;
+        $notice->message = $quest->name . " has been graded. You received " . $total_points . " of . " . $quest->skills()->sum('amount') . " points.";
+        $notice->url = "quest/". $quest->id ."/feedback";
+
+        $notice->save();
 
         $user->quests()->where('revision', $attempt->revision)
                         ->updateExistingPivot($attempt->quest_id, ['graded' => true]);
@@ -179,6 +188,8 @@ class GradeController extends Controller
 
     public function group_confirm(Request $request) {
         $student_list = [];
+        $quest = Quest::find($request->quest_id);
+
         foreach($request->students as $student) {
             $user = User::find($student);
             $student_list[] = $user->name;
@@ -186,12 +197,14 @@ class GradeController extends Controller
             $user->quests()->attach($request->quest_id, ['graded' => true, 'revision' => 0]);
 
             //add to user_skills
+            $total_points = 0;
             for($i = 0; $i < count($request->skills); $i++) {
                 $skill_id = $request->skill_id[$i];
             //remove existing points for the quest
                 $user->skills()->where('quest_id', $request->quest_id)->detach($skill_id);
                 if (is_numeric($request->skills[$i])) {
                     $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $request->quest_id]);
+                    $total_points += $request->skills[$i];
                 }
                 else {
                     $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $request->quest_id]);   
@@ -209,10 +222,13 @@ class GradeController extends Controller
             $feedback->note = $request->feedback;
             $feedback->save();            
             //notify user
+            $notice = new Notice;
+            $notice->user_id = $student;
+            $notice->message = $quest->name . " has been graded. You received " . $total_points . " of . " . $quest->skills()->sum('amount') . " points.";
+            $notice->url = "quest/". $quest->id ."/feedback";
+            $notice->save();
 
         }
-        $quest = Quest::find($request->quest_id);
-
 
         return redirect()->route('grade.inclass')
                             ->withFlashSuccess($quest->name . " graded for " . implode(",", $student_list) . ".");

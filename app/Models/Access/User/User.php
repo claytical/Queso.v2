@@ -40,6 +40,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Course');
     }
 
+    public function notifications() {
+        return $this->hasMany('App\Notice');
+    }
+
     public function quests() {
         return $this->belongsToMany('App\Quest')->withPivot('revision', 'graded')->withTimestamps();
     }
