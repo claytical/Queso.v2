@@ -174,7 +174,7 @@ class GradeController extends Controller
         //send notification to user
         $notice = new Notice;
         $notice->user_id = $attempt->user_id;
-        $notice->message = $quest->name . " has been graded. You received " . $total_points . " of . " . $quest->skills()->sum('amount') . " points.";
+        $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
         $notice->url = "quest/". $quest->id ."/feedback";
 
         $notice->save();
@@ -224,7 +224,7 @@ class GradeController extends Controller
             //notify user
             $notice = new Notice;
             $notice->user_id = $student;
-            $notice->message = $quest->name . " has been graded. You received " . $total_points . " of . " . $quest->skills()->sum('amount') . " points.";
+            $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
             $notice->url = "quest/". $quest->id ."/feedback";
             $notice->save();
 
