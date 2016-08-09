@@ -106,7 +106,7 @@
 
         <h4>Feedback to Student</h4>
             {!! Form::open(array('url' => 'grade/confirm')) !!}
-
+            {!! Form::hidden('submission_id', $submission->id) !!}
         <div class="row">
             <div class="col-lg-9">
                 {!! Form::textarea('feedback', null, ['class' => 'field', 'files' => true]) !!}
@@ -118,7 +118,7 @@
                       <label>{!! $skill->name !!}</label>
                   </div>
                   <div class="col-lg-6">
-                      <input type="number" class="form-control" id="skill[]" max="{!! $skill->pivot->amount !!}">
+                      <input type="number" class="form-control" name="skills[]" max="{!! $skill->pivot->amount !!}">
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
 
                   </div>                    

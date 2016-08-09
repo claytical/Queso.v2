@@ -8,6 +8,9 @@ use App\Quest;
 use App\Course;
 use App\Submission;
 use App\Link;
+use App\Models\Access\User\User;
+use App\Feedback;
+
 //use Vinelab\Http\Client as HttpClient;
 
 /**
@@ -90,9 +93,50 @@ class GradeController extends Controller
             ->withUser(access()->user());
     }
 
-    public function confirm() {
-        return view('frontend.grade.remaining')
-            ->withUser(access()->user());
+    public function confirm(Request $request) {
+        $submission = Submission::find($request->submission_id);
+        $user = User::find($submission->user_id);
+
+        $feedback = new Feedback;
+        $feedback->from_user_id = access()->user()->id;
+        $feedback->to_user_id = $submission->user_id;
+        $feedback->quest_id = $submission->quest_id;
+        $feedback->revision = $submission->revision;
+        $feedback->subtype = 1;
+        $feedback->likes = 0;
+        $feedback->note = $request->feedback;
+        $feedback->save();
+//TODO: notify user of feedback
+
+//TODO: Check for revision
+
+//TODO: Add to Skill History
+
+        //remove existing points for the quest
+        $user->skills()->where('quest_id', '=', $submission->quest_id)->delete();
+        for($i = 0; $i < count($request->skills); $i++) {
+            $skill_id = $request->skill_id[$i];
+            if (is_numeric($request->skills[$i])) {
+                $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $submission->quest_id]);
+            }
+            else {
+                $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $submission->quest_id]);   
+            }
+        }
+        
+        $submission->graded = true;
+
+        $submission->save();
+        $user_quest = $user->quests()
+                            ->where('quest_id', '=', $submission->quest_id)
+                            ->where('revision', '=', $submission->revision)
+                            ->first();
+        $user_quest->graded = true;
+        $user_quest->save();
+
+        $quest = Quest::find($submission->quest_id);
+        return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $user->name . ".");
+
     }
 
     public function group_confirm() {
