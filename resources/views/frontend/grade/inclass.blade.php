@@ -49,7 +49,7 @@
 
                             <div class="col-lg-3">
                                 <span class="completion pull-right">
-                                    {!! $quest->users()->count() !!}
+                                    {!! $quest->users()->count() !!} / {!! $users !!}
                                 </span>
                             </div>
                         </div>
