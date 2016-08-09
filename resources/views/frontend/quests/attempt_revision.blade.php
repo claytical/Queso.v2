@@ -23,18 +23,15 @@
                 {!! Form::close() !!}
             </div>
             <div class="col-lg-3">
-            {!! var_dump($existing_skills) !!}
             <ul class="list-unstyled">
-                @foreach($skills as $skill)
+                @foreach($skills as $index => $skill)
                     <li>
                         <div class="col-lg-12">
                             <div class="col-lg-9">
                                 {!! $skill->name !!}
                             </div>
-                            <div class="col-lg-3">
-                            {!! var_dump($existing_skills[0]->pivot->amount) !!}
-                                
-                                {!! $skill->pivot->amount !!}
+                            <div class="col-lg-3">                                
+                                {!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}
                             </div>
                         </div>
                     </li>
