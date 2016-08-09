@@ -418,7 +418,9 @@ class QuestController extends Controller
                                             ->orderBy('revision')
                                             ->first();
         }
-        $existing_skills = $user->skills()->where('quest_id', '=', $quest_id)->get();
+        $existing_skills = $user->skills()
+                              //  ->where('quest_id', '=', $quest_id)
+                                ->get();
 
         return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills])
             ->withUser(access()->user());
