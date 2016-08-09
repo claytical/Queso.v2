@@ -24,6 +24,7 @@ class NoticeController extends Controller
     public function dismiss($id) {
         $notice = Notice::find($id);
         $notice->received = Carbon::now();
+        $notice->save();
         return redirect()->route('frontend.user.dashboard')->withFlashSuccess("Notification has been dismissed.");
     }
  
