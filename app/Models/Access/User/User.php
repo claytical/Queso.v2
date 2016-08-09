@@ -65,6 +65,6 @@ class User extends Authenticatable
     }
 
     public function skills() {
-        return $this->belongsToMany('App\Skill');
+        return $this->belongsToMany('App\Skill')->withPivot('amount');
     }
 }
