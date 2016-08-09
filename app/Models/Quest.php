@@ -18,6 +18,10 @@ class Quest extends Model
     	return $this->hasMany('App\Submission');
     }
 
+    public function feedback() {
+        return $this->hasMany('App\Feedback');
+    }
+
     public function links() {
         return $this->hasMany('App\Link');
     }

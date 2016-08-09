@@ -71,7 +71,7 @@
 </div>
 
     <div class="col-lg-12">
-<!--            <div><div style="width: 100%; height: 0px; position: relative; padding-bottom: 56.2493%;"><iframe src="//player.vimeo.com/video/176459945?byline=0&badge=0&portrait=0&title=0" frameborder="0" allowfullscreen style="width: 100%; height: 100%; position: absolute;"></iframe></div></div>-->
+
         {!! $submission->submission !!}
         </p>
         <h6>Attached Files</h6>
@@ -109,7 +109,7 @@
 
         <div class="row">
             <div class="col-lg-9">
-                {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}
+                {!! Form::textarea('feedback', null, ['class' => 'field', 'files' => true]) !!}
             </div>
             <div class="col-lg-3">
 

@@ -44,6 +44,14 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Quest')->withPivot('revision', 'graded')->withTimestamps();
     }
 
+    public function feedback_received() {
+        return $this->hasMany('App\Feedback', 'to_user_id');
+    }
+
+    public function feedback_given() {
+        return $this->hasMany('App\Feedback', 'from_user_id');
+    }
+
     public function submissions() {
         return $this->belongsToMany('App\Submission');        
     }
