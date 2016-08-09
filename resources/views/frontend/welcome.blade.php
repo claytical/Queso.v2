@@ -63,7 +63,8 @@
                         <div class="panel-body">
                         <ul class="list-unstyled">
                             @foreach($notifications as $notice)
-                                <li>{{ link_to($notice->url, $notice->message) }}</li>
+                                <li>{{ link_to($notice->url, $notice->message) }}
+                                <span class="pull-right">{!! link_to('notification/dismiss/' . $notice->id) !!}</span></li>
                             @endforeach
                         </ul>                
                         </div>

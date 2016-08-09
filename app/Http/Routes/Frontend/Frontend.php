@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('profile/edit', 'ProfileController@edit')->name('frontend.user.profile.edit');
         Route::patch('profile/update', 'ProfileController@update')->name('frontend.user.profile.update');    
+        Route::get('notification/dismiss/{id}', 'NoticeController@dismiss')->name('frontend.notification.dismiss');
         Route::get('quests/available', 'QuestController@available')->name('quests.available'); 
         Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt');
         Route::get('quest/{quest_id}/attempt/submission', 'QuestController@attempt_submission')->name('submission.attempt');
