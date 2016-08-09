@@ -404,16 +404,16 @@ class QuestController extends Controller
         if ($quest->quest_type_id == 1) {
             //submission
             $previous_attempt = Submission::where('quest_id', '=', $quest_id)
-                                            ->where('user_id', '=', session('current_course'))
-  //                                          ->where('graded', '=', true)
+                                            ->where('user_id', '=', $user->id)
+                                            ->where('graded', '=', true)
                                             ->orderBy('revision')
                                             ->first();
         }
         if ($quest->quest_type_id == 4) {
             //link
             $previous_attempt = Link::where('quest_id', '=', $quest_id)
-                                            ->where('user_id', '=', session('current_course'))
-//                                            ->where('graded', '=', true)
+                                            ->where('user_id', '=', $user->id)
+                                            ->where('graded', '=', true)
                                             ->orderBy('revision')
                                             ->first();
         }
