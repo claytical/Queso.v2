@@ -152,8 +152,9 @@ class GradeController extends Controller
         return view('frontend.grade.inclass', ['quests' => $quests, 'users' => $users])
             ->withUser(access()->user());
     }    
-    public function activity() {
-        return view('frontend.grade.activity')
+    public function activity($quest_id) {
+        $quest = Quest::find($quest_id);
+        return view('frontend.grade.activity', ['quest' => $quest])
             ->withUser(access()->user());
     }
 }
