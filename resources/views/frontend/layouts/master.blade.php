@@ -68,6 +68,7 @@
         {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
         {{ HTML::script('https://cdn.tinymce.com/4/tinymce.min.js')}}
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
+        {{ Html::script('js/vendor/jquery/multiselect.min.js') }}
 
         <script>tinymce.init({ selector:'textarea', plugins: [
     'autolink autoresize link image',

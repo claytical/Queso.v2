@@ -2,17 +2,9 @@
 
 @section('content')
 <div class="col-lg-12">
-        <h2>Quest Name</h2>
+        <h2>{!! $quest->name !!}</h2>
         <p>Graded submission by STUDENT NAME</p>
-        <ul class="list-unstyled">
-            <li>00 Skill name</li>
-            <li>00 Skill name</li>
-            <li>00 Skill name</li>
-            <li>00 Skill name</li>
-            <li></li>
-            <li>00 Points Total</li>
 
-        </ul>
 </div>
 
 <div class="col-lg-12">
