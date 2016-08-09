@@ -67,6 +67,37 @@ class GradeController extends Controller
             ->withUser(access()->user());
     }
 
+
+    public function quest($quest_id, $attempt_id) {
+        $quest = Quest::find($quest_id);
+        if ($quest->quest_type_id == 1) {
+            //SUBMISSION
+            $attempt = Submission::find($attempt_id);
+            $attempts = Submission::where('quest_id', '=', $quest->id)
+                                        ->where('user_id', '=', $attempt->user_id);
+        }
+        if ($quest->quest_type_id == 4) {
+            //LINK
+            $attempt = Link::find($attempt_id);
+            $attempts = Link::where('quest_id', '=', $quest->id)
+                                        ->where('user_id', '=', $attempt->user_id);
+        }
+
+
+        $revision_count = $attempts->count();
+        $revisions = $attempts->get();
+        $skills = $quest->skills()->get();
+
+        return view('frontend.grade.quest',   ['attempt' => $attempt, 
+                                                    'quest' => $quest, 
+                                                    'skills' => $skills,
+                                                    'revision_count' => $revision_count,
+                                                    'revisions' => $revisions]
+                                                    )->withUser(access()->user());
+    }
+
+
+
     public function submission($id) {
         $submission = Submission::find($id);
         $submissions = Submission::where('quest_id', '=', $submission->quest_id)
