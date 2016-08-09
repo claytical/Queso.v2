@@ -364,6 +364,7 @@ class QuestController extends Controller
         $user = access()->user();
         $attempt->quest_id = $request->quest_id;
         $attempt->user_id = $user->id;
+        $attempt->revision = $request->revision;
         $attempt->save();
         $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
         if ($request->revision > 0) {
@@ -417,7 +418,6 @@ class QuestController extends Controller
                                             ->orderBy('revision')
                                             ->first();
         }
-//
         $existing_skills = $user->skills()->get();
 
         return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills])
