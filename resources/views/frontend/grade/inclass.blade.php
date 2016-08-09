@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-lg-12">
-        <h2>In Class Work</h2>
+        <h2>In Class Activities</h2>
 </div>
         <div class="col-lg-12">
             <div id="quest-list">
@@ -36,59 +36,25 @@
                   
 
                 <ul class="list-unstyled list">
+                    @foreach($quests as $quest)
                     <li>
                         <div class="row">
                             <div class="col-lg-6 quest">
-                                {{ link_to('grade/activity/1', 'Activity #1') }}
+                                {{ link_to('grade/activity/'.$quest->id, $quest->name) }}
                             </div>
 
                             <div class="col-lg-3 category">
-                                Prototypes
+                                N/A
                             </div>
 
                             <div class="col-lg-3">
                                 <span class="completion pull-right">
-                                10/15
+                                    {!! var_dump($quest) !!}
                                 </span>
                             </div>
                         </div>
                     </li>
-
-                    <li>
-                        <div class="row">
-                            <div class="col-lg-6 quest">
-                                {{ link_to('grade/activity/2', 'Activity #2') }}
-                            </div>
-
-                            <div class="col-lg-3 category">
-                                Prototypes
-                            </div>
-
-                            <div class="col-lg-3">
-                                <span class="completion pull-right">
-                                6/15
-                                </span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-lg-6 quest">
-                                {{ link_to('grade/activity/{quest_id}', 'Activity #3') }}
-                            </div>
-
-                            <div class="col-lg-3 category">
-                                Research Paper
-                            </div>
-
-                            <div class="col-lg-3">
-                                <span class="completion pull-right">
-                                    2/15
-                                </span>
-                            </div>
-                        </div>
-                    </li>
-
+                    @endforeach
                 </ul>
             </div>
             </div>
