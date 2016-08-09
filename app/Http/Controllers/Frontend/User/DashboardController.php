@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Announcement;
 use App\Content;
 use App\Course;
+use App\Notice;
 use DB;
 
 /**
