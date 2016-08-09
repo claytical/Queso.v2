@@ -408,7 +408,7 @@
         $(".skills-input").hide();
         qf.append($(".skills-input"));
         if (skipThresholds) {
-            $("#files_allowed").show();
+            $("#attach_files").show();
 
         }
         else {
