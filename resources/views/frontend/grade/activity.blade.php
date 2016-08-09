@@ -57,10 +57,6 @@
                     </div>
                 </div>
 
-                  <div class="col-lg-12">
-                    {!! Form::submit('Submit Grade', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
-
-                  </div>
 
 </div>
 
@@ -75,7 +71,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="col-lg-12">
-                  {{ Form::select('students', array('1' => 'Sally Fields', '2' => 'Tom Hanks'), '2') }}
+                    {!! Form::submit('Submit Grade', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
                 </div>
             </div>
 
