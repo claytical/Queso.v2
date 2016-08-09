@@ -9,14 +9,21 @@
                 {!! Form::hidden('revision', 0) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
                 <div class="form-group">
-                    {!! Form::textarea('submission', ''); !!}
+                    @if($quest->quest_type_id == 1)
+                        {!! Form::textarea('submission', $previous_attempt->submission); !!}
+                    @endif
+                    @if($quest->quest_type_id == 4)
+                        {!! Form::text('url', null); !!}
+                    @endif
+
                 </div>
 
-                {!! Form::submit('Submit', ['class' => 'btn btn-default']) !!}
+                {!! Form::submit('Submit Revision', ['class' => 'btn btn-default']) !!}
 
                 {!! Form::close() !!}
             </div>
             <div class="col-lg-3">
+                        {!! var_dump($existing_skills) !!}
             <ul class="list-unstyled">
                 @foreach($skills as $skill)
                     <li>

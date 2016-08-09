@@ -365,9 +365,14 @@ class QuestController extends Controller
         $attempt->quest_id = $request->quest_id;
         $attempt->user_id = $user->id;
         $attempt->save();
-        $user->quests()->attach($attempt->quest_id, ['revision' => 0, 'graded' => false]);
+        $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
+        if ($request->revision > 0) {
+            return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted.");
+        }
+        else {
+            return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully revised and submitted.");
 
-        return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted.");
+        }
 
     }
 
@@ -391,7 +396,31 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
     public function revise_submission($quest_id) {
-        return view('frontend.quests.revise_submission')
+        $quest = Quest::find($quest_id);
+        $user = access()->user();
+
+        $skills = $quest->skills()->get();
+        
+        if ($quest->quest_type_id == 1) {
+            //submission
+            $previous_attempt = Submission::where('quest_id', '=', $quest_id)
+                                            ->where('user_id', '=', session('current_course'))
+                                            ->where('graded', '=', true)
+                                            ->orderBy('revision')
+                                            ->first();
+        }
+        if ($quest->quest_type_id == 4) {
+            //link
+            $previous_attempt = Link::where('quest_id', '=', $quest_id)
+                                            ->where('user_id', '=', session('current_course'))
+                                            ->where('graded', '=', true)
+                                            ->orderBy('revision')
+                                            ->first();
+        }
+
+        $existing_skills = $user->skills()->where('quest_id', $attempt->quest_id)->get();
+
+        return view('frontend.quests.attempt_revision', ['previous' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills])
             ->withUser(access()->user());
     }
 

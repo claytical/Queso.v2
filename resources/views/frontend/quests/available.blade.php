@@ -53,14 +53,8 @@
 
             <div class="row">
                 <div class="col-lg-9">
-                    @if($quest->quest_type_id == 1)
-                    <h4>{{ link_to('quest/'.$quest->id.'/revise/submission', $quest->name) }}</h4>
-                    @endif
-                    @if($quest->quest_type_id == 4)
-                    <h4>{{ link_to('quest/'.$quest->id.'/revise/link', $quest->name) }}</h4>
-                    @endif
-
-                    <h5>00 Points, Due by 00/00/000</h5>
+                    <h4>{{ link_to('quest/'.$quest->id.'/revise', $quest->name) }}</h4>
+                    <h5>{!! $quest->skills()->sum('amount') !!} Points, Due by 00/00/000</h5>
                 </div>
                 <div class="col-lg-12">
                     <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
