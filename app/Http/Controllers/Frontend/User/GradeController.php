@@ -129,9 +129,10 @@ class GradeController extends Controller
         $submission->graded = true;
 
         $submission->save();
+
         $user_quest = $user->quests()
-                            ->where('quest_id', '=', $submission->quest_id)
-                            ->where('revision', '=', $submission->revision)
+                            ->where('quest_id', $submission->quest_id)
+                            ->where('revision', $submission->revision)
                             ->first();
         $user_quest->graded = true;
         $user_quest->save();
