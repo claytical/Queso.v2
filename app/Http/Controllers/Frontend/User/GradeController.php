@@ -154,7 +154,10 @@ class GradeController extends Controller
     }    
     public function activity($quest_id) {
         $quest = Quest::find($quest_id);
-        $students =  Course::find(session('current_course'))->users()->get();
+        $students =  Course::find(session('current_course'))
+                        ->users()
+                        ->whereNot('user_id', access()->user()->id)
+                        ->get();
 //        $quest->users()
         $skills = $quest->skills()->get();
         return view('frontend.grade.activity', ['quest' => $quest, 'skills' => $skills, 'students' => $students])
