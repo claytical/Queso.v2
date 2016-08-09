@@ -146,7 +146,7 @@ class GradeController extends Controller
             $student_list[] = $user->name;
             //Add to quest_user
             $user->quests()->attach($request->quest_id, ['graded' => true, 'revision' => 0]);
-/*
+
             //add to user_skills
             for($i = 0; $i < count($request->skills); $i++) {
                 $skill_id = $request->skill_id[$i];
@@ -159,7 +159,7 @@ class GradeController extends Controller
                     $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $request->quest_id]);   
                 }
             }
-*/
+
             //add feedback
             $feedback = new Feedback;
             $feedback->from_user_id = access()->user()->id;
