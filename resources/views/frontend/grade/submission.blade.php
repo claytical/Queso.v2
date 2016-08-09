@@ -115,11 +115,10 @@
 
                 @foreach($skills as $skill)
                   <div class="col-lg-6">
-                  {!! var_dump($skill) !!}
                       <label>{!! $skill->name !!}</label>
                   </div>
                   <div class="col-lg-6">
-                      <input type="number" class="form-control" id="skill[]" max="{!! $skill->amount !!}">
+                      <input type="number" class="form-control" id="skill[]" max="{!! $skill->pivot->amount !!}">
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
 
                   </div>                    
