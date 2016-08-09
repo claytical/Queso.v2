@@ -72,7 +72,7 @@
 
     <div class="col-lg-12">
         @if($quest->quest_type_id == 1)
-          {!! $submission->submission !!}
+          {!! $attempt->submission !!}
         <h6>Attached Files</h6>
         <a href="#" class="btn btn-default">filename.pdf</a>         
         <a href="#" class="btn btn-default">filename.pdf</a>
