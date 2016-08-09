@@ -62,10 +62,14 @@
                     <div class="panel-heading">Notifications</div>
                         <div class="panel-body">
                         <ul class="list-unstyled">
-                            @foreach($notifications as $notice)
-                                <li>{{ link_to($notice->url, $notice->message) }}
-                                <span class="pull-right">{!! link_to('notification/dismiss/' . $notice->id, 'Dismiss', ['class' => 'btn btn-xs btn-danger']) !!}</span></li>
-                            @endforeach
+                            @if($notifications)
+                                @foreach($notifications as $notice)
+                                    <li>{{ link_to($notice->url, $notice->message) }}
+                                    <span class="pull-right">{!! link_to('notification/dismiss/' . $notice->id, 'Dismiss', ['class' => 'btn btn-xs btn-danger']) !!}</span></li>
+                                @endforeach
+                            @else
+                            <h4>You have no new notifications</h4>
+                            @endif
                         </ul>                
                         </div>
                 </div>
