@@ -145,7 +145,7 @@ class GradeController extends Controller
             $user = User::find($student);
             $student_list[] = $user->name;
             //Add to quest_user
-            $user->quests()->attach($request->quest_id, ['graded' => true, 'revision' => 0])
+            $user->quests()->attach($request->quest_id, ['graded' => true, 'revision' => 0]);
 
             //add to user_skills
             for($i = 0; $i < count($request->skills); $i++) {
