@@ -23,7 +23,7 @@
                 {!! Form::close() !!}
             </div>
             <div class="col-lg-3">
-            @if(!empty($existing_skills))
+            @if(!empty($existing_skills[0]))
 
                 <ul class="list-unstyled">
                     @foreach($skills as $index => $skill)
