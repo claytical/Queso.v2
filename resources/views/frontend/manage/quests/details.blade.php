@@ -61,7 +61,7 @@
 
     @if($quest->quest_type_id == 3)
 <!-- VIDEO -->
-    {{ Form::input('text', 'youtube_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
+    {{ Form::input('text', 'youtube_url', $quest->youtube_id, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAAA', 'id' => 'quest_url']) }}
     @endif
 
 <!-- GENERALIZED -->

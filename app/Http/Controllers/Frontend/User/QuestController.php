@@ -122,11 +122,7 @@ class QuestController extends Controller
         $quest->name = $request->name;
         $quest->instructions = $request->description;
         if($request->has('youtube_url')) {
-            $quest->youtube_id = $request->video_url;
-        }
-
-        if($request->has('youtube_url')) {
-            $quest->youtube_id = $request->video_url;
+            $quest->youtube_id = $request->youtube_url;
         }
 
         $quest->instant = $request->has('instant');
