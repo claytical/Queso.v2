@@ -435,9 +435,9 @@ class QuestController extends Controller
 
         }
         $redeemed = $instant->first();
-        $instant->user_id = $user->id;
-        $instant->save();
-        $quest = Quest::find($instant->quest_id);
+        $redeemed->user_id = $user->id;
+        $redeemed->save();
+        $quest = Quest::find($redeemed->quest_id);
         $skills = $quest->skills()->get();
         $total_points = 0;
         foreach($skills as $skill) {
