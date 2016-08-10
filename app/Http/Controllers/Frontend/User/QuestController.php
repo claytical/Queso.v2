@@ -424,7 +424,32 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
-    public function redeemed() {
+    public function redeemed(Request $request) {
+        $user = access()->user();
+        $instant = Redemption::where('code', '=', $request->code)
+                                ->whereNull('user_id');
+        if ($instant->count() == 0) {
+            //bad code
+            return redirect()->route('quest.redeem')
+                            ->withFlashDanger("Invalid instant code!");
+
+        }
+        $redeemed = $instant->first();
+        $instant->user_id = $user->id;
+        $instant->save();
+        $quest = Quest::find($instant->quest_id);
+        $skills = $quest->skills()->get();
+        $total_points = 0;
+        foreach($skills as $skill) {
+            $user->skills()->attach($skill->id, ['amount' => $skill->pivot->amount, 'quest_id' => $quest->id]);
+            $total_points += $skill->pivot->amount;
+
+        }
+
+        $user->quests()->attach($quest->id, ['graded' => true, 'revision' => 0]);
+        return redirect()->route('frontend.user.dashboard')
+                            ->withFlashSuccess("Received " . $total_points . " for " . $quest->name . ".");
+
         return view('frontend.quests.redeemed')
             ->withUser(access()->user());
     }
