@@ -28,14 +28,6 @@ class QuestController extends Controller
         $user = access()->user();
         $quests_attempted = $user->quests();
         $quests_attempted_ids = $quests_attempted->pluck('quest_id');
-//  WRITTEN, could be revisable
-//        $quests_attempted->where('quest_type_id', '=', 1)
-//  ACTIVITY, one time
-//        $quests_attempted->where('quest_type_id', '=', 2)
-//  LINK, revisable?
-//        $quests_attempted->where('quest_type_id', '=', 3)
-//  VIDEO, one time
-//        $quests_attempted->where('quest_type_id', '=', 4)
 
         $course_skills = Skill::where('course_id', '=', session('current_course'))->get();
 
@@ -49,7 +41,6 @@ class QuestController extends Controller
                     ->whereNotIn('id', $quests_attempted_ids)
                     ->orderBy('expires_at')
                     ->get();
-
         $quests_revisable = Quest::where('course_id', '=', session('current_course'))
                     ->whereIn('id', $quests_attempted_ids)
                     ->where('revisions', '=', true)

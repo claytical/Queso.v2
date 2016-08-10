@@ -23,34 +23,39 @@
                 {!! Form::close() !!}
             </div>
             <div class="col-lg-3">
-            <ul class="list-unstyled">
-                @foreach($skills as $index => $skill)
-                    <li>
-                        <div class="col-lg-12">
+            @if($existing_skills)
+
+                <ul class="list-unstyled">
+                    @foreach($skills as $index => $skill)
+                        <li>
                             <div class="col-lg-12">
-                                <h4>Current Grade</h4>
+                                <div class="col-lg-12">
+                                    <h4>Current Grade</h4>
+                                </div>
+                                <div class="col-lg-6">
+                                    {!! $skill->name !!}
+                                </div>
+                                <div class="col-lg-6">                                
+                                    {!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}
+                                </div>
                             </div>
-                            <div class="col-lg-6">
-                                {!! $skill->name !!}
+                        </li>
+                    @endforeach
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <div class="col-lg-12">
+                                <div class="col-lg-6">
+                                Points Total
+                                </div>
+                                <div class="col-lg-6">
+                                   {!! $existing_skills->sum('amount') !!} / {!! $quest->skills()->sum('amount') !!}
+                                </div>
                             </div>
-                            <div class="col-lg-6">                                
-                                {!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-                    <li role="separator" class="divider"></li>
-                    <li>
-                        <div class="col-lg-12">
-                            <div class="col-lg-6">
-                            Points Total
-                            </div>
-                            <div class="col-lg-6">
-                               {!! $existing_skills->sum('amount') !!} / {!! $quest->skills()->sum('amount') !!}
-                            </div>
-                        </div>
-                    </li>
-            </ul>
+                        </li>
+                </ul>
+            @else
+                <span class="label label-danger">UNGRADED</span>
+            @endif
                 @if($quest->expires_at)
                 <h4>Due {!! $quest->expires_at !!}</h4>
                 @endif
