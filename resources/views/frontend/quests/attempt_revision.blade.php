@@ -48,7 +48,7 @@
                                 Points Total
                                 </div>
                                 <div class="col-lg-6">
-                                   {!! $total_points !!} / {!! $quest->skills()->sum('amount') !!}
+                                   {!! $total !!} / {!! $quest->skills()->sum('amount') !!}
                                 </div>
                             </div>
                         </li>
