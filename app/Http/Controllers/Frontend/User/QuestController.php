@@ -346,7 +346,7 @@ class QuestController extends Controller
                             ->where('user_id', '=', $user->id)
                             ->delete();
                 }
-                $ungraded_quests->delete();
+                $ungraded_quests->detach();
 
             }
 
