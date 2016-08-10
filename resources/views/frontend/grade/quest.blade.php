@@ -16,9 +16,9 @@
   <ul class="dropdown-menu">
     @foreach($revisions as $revision)
       @if($revision->revision == 0)
-        <li>{{ link_to('grade/quest/'.$quest->id . '/'. $attempt->quest_id . '/' . $attempt->id, 'Original') }}</li>
+        <li>{{ link_to('grade/quest/'.$quest->id . '/' . $attempt->id, 'Original') }}</li>
       @else
-        <li>{{ link_to('grade/quest/'.$quest->id . '/'. $revision->quest_id . '/' . $revision->id, '#'. $revision->revision . ' ' . $revision->created_at) }}</li>
+        <li>{{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . $revision->created_at) }}</li>
       @endif
     @endforeach
   </ul>
