@@ -336,7 +336,18 @@ class QuestController extends Controller
             //CHECK IF UNGRADED
             $ungraded_quests = $user->quests()->where('quest_id', $request->quest_id)->where('graded', false);
             if ($ungraded_quests->count() > 0) {
+                if($ungraded_quests->first()->quest_type_id == 1) {
+                    Submission::where('quest_id', '=', $request->quest_id)
+                                ->where('user_id', '=', $user->id)
+                                ->delete();
+                }
+                else {
+                    Link::where('quest_id', '=', $request->quest_id)
+                            ->where('user_id', '=', $user->id)
+                            ->delete();
+                }
                 $ungraded_quests->delete();
+
             }
 
         }
