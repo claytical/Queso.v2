@@ -45,7 +45,7 @@
             {{ Form::input('number', 'new_codes', null, ['class' => 'form-control', 'placeholder' => 'Number of Codes to Create', 'id' => 'redemption_codes']) }}
             <div class="col-md-12">
             @foreach($codes as $code)
-              <div class="col-md-1">
+              <div class="col-md-3">
               <h6>{!! $code->code !!}</h6>
                 @if($code->user_id)
                   <span class="label">Redeemed</span>
