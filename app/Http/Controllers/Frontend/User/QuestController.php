@@ -90,7 +90,7 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         $skills = $quest->skills()->get();
         $thresholds = $quest->thresholds()->with('skill')->get();
-        $codes = $quest->redemption_codes();
+        $codes = Redemption::where('quest_id', '=', $id);
         return view('frontend.manage.quests.details', ['quest' => $quest, 
                                                         'skills' => $skills, 
                                                         'thresholds' => $thresholds,
@@ -139,7 +139,6 @@ class QuestController extends Controller
         $quest->instant = $request->has('instant');
         if($quest->instant) {
             if($request->new_codes > 0) {
-                $re = Redemption::whereNull('user_id')->delete();
                 for ($i = 0; $i < intval($request->new_codes); $i++) {
                     $code = new Redemption;
                     $code->quest_id = $quest->id;
