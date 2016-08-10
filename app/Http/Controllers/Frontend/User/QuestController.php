@@ -331,7 +331,15 @@ class QuestController extends Controller
 
     public function submit(Request $request) {
         $quest = Quest::find($request->quest_id);
+        $user = access()->user();
+        if($request->revision > 0) {
+            //CHECK IF UNGRADED
+            $ungraded_quests = $user->quests()->where('quest_id', $request->quest_id)->where('graded', false);
+            if ($ungraded_quests->count() > 0) {
+                $ungraded_quests->delete();
+            }
 
+        }
         if($quest->quest_type_id == 1) {
             $attempt = new Submission;
             $attempt->submission = $request->submission;
