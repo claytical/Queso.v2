@@ -148,7 +148,7 @@ class QuestController extends Controller
                     for ($i = 0; $i < 10; $i++) {
                         $randomString .= $characters[rand(0, $charactersLength - 1)];
                     }
-                    $code->code = $randstring;
+                    $code->code = $randomString;
                     $code->save();
                 }
             }
