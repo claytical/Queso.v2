@@ -65,6 +65,9 @@
           $('.progress-bar').attr('style', 'width: '+(pct*100)+'%');
           if (pct >= .99) {
             $('.btn-submit').prop('disabled', false);
+            @foreach($skills as $skill)
+                $('#skill-{!! $skill->id !!}').val({!! $skill->pivot->amount !!});
+            @endforeach
           }
       }
 
