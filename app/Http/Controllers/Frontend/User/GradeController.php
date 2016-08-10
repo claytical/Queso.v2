@@ -186,6 +186,25 @@ class GradeController extends Controller
 
     }
 
+    public function watched(Request $request) {
+        $quest = Quest::find($request->quest_id);
+        $user = User::find($request->user_id);
+
+        $total_points = 0;
+        for($i = 0; $i < count($request->skills); $i++) {
+            $skill_id = $request->skill_id[$i];
+            if (is_numeric($request->skills[$i])) {
+                $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $request->quest_id]);
+                $total_points += $request->skills[$i];
+            }
+            else {
+                $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $request->quest_id]);   
+            }
+        }
+        return redirect()->route('frontend.user.dashboard')
+                            ->withFlashSuccess("Received " . $total_points . " for " . $quest->name . ".");
+    }
+
     public function group_confirm(Request $request) {
         $student_list = [];
         $quest = Quest::find($request->quest_id);

@@ -400,10 +400,7 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
     
-    public function watched() {
-        return view('frontend.quests.watched')
-            ->withUser(access()->user());
-    }
+
     public function revise_submission($quest_id) {
         $quest = Quest::find($quest_id);
         $user = access()->user();

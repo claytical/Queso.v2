@@ -3,10 +3,18 @@
 @section('content')
 <h2>{!! $quest->name !!}</h2>
         <div class="col-lg-12">
+            <div class="col-md-9">
+            {!! $quest->instructions !!}
+            </div>
+            <div class="col-md-3">
+            </div>
             <div id="player" class="col-md-9"></div>
             <div id="player" class="col-md-3">
                 {!! Form::open(array('url' => 'quest/watched')) !!}
+                {!! Form::hidden('quest_id', $quest->id) !!}
+                {!! Form::hidden('user_id', access()->user()->id) !!}
                 @foreach($skills as $skill)
+                <h4>{!! $skill->name !!}</h4>
                 <div class="progress skill-{!! $skill->id !!}">
                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="{!! $skill->pivot->amount !!}" style="width:0%;"></div>
                 </div>
@@ -14,7 +22,7 @@
                 {!! Form::hidden('skill_id[]', $skill->id, ['id' => 'v-skill-'.$skill->id]) !!}
 
                 @endforeach
-                {!! Form::submit('Get Points', ['class' => 'btn btn-primary btn-submit', 'disabled' => '']) !!}
+                {!! Form::submit('Get Points', ['class' => 'btn btn-primary btn-submit btn-block', 'disabled' => '']) !!}
                 {!! Form::close() !!}
             </div>
         </div>
