@@ -7,6 +7,7 @@
                 {!! $quest->instructions !!}
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}       
+                {!! Form::hidden('revision', 0) !!}
                 <div class="form-group">
                     {!! Form::text('link', '', ['class' => 'form-control']); !!}
                 </div>
