@@ -139,7 +139,7 @@ class QuestController extends Controller
         $quest->instant = $request->has('instant');
         if($quest->instant) {
             if($request->new_codes > 0) {
-                for ($i = 0; $i < intval($request->new_codes); $i++) {
+                for ($i = 0; $i < $request->new_codes; $i++) {
                     $code = new Redemption;
                     $code->quest_id = $quest->id;
                     $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
