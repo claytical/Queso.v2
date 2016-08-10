@@ -201,6 +201,8 @@ class GradeController extends Controller
                 $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $request->quest_id]);   
             }
         }
+        $user->quests()->attach($request->quest_id, ['graded' => true, 'revision' => 0]);
+
         return redirect()->route('frontend.user.dashboard')
                             ->withFlashSuccess("Received " . $total_points . " for " . $quest->name . ".");
     }
