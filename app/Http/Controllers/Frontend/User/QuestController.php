@@ -90,7 +90,7 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         $skills = $quest->skills()->get();
         $thresholds = $quest->thresholds()->with('skill')->get();
-        $codes = Redemption::all();//$quest->redemption_codes();
+        $codes = Redemption::take(10)->get();//$quest->redemption_codes();
         return view('frontend.manage.quests.details', ['quest' => $quest, 
                                                         'skills' => $skills, 
                                                         'thresholds' => $thresholds,
