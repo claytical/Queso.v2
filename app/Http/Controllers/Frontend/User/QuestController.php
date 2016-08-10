@@ -410,10 +410,12 @@ class QuestController extends Controller
                                             ->first();
         }
         $existing_skills = $user->skills()
-                                ->where('quest_id', $quest_id)
-                                ->get();
+                                ->where('quest_id', $quest_id);
+        $total_points = $existing_skills->sum('amount');
 
-        return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills])
+        $existing_skills = $existing_skills->get();
+
+        return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills, 'total' => $total_points])
             ->withUser(access()->user());
     }
 
