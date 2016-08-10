@@ -122,7 +122,14 @@ class QuestController extends Controller
         $quest->name = $request->name;
         $quest->instructions = $request->description;
         if($request->has('youtube_url')) {
-            $quest->youtube_id = $request->youtube_url;
+                if (strpos($request->youtube_url, 'youtube.com') !== false) {
+                    $youtube_url = [];
+                    $yid = parse_str( parse_url( $request->video_url, PHP_URL_QUERY ), $youtube_url );
+                    $quest->youtube_id = $youtube_url['v'];
+                }
+                else {
+                    $quest->youtube_id = $request->youtube_url;
+                }
         }
 
         $quest->instant = $request->has('instant');
@@ -252,6 +259,7 @@ class QuestController extends Controller
             case '3':
                 $quest->quest_type_id = 3;
                 if (strpos($request->video_url, 'youtube.com') !== false) {
+                    $youtube_url = [];
                     $yid = parse_str( parse_url( $request->video_url, PHP_URL_QUERY ), $youtube_url );
                     $quest->youtube_id = $youtube_url['v'];
                 }
