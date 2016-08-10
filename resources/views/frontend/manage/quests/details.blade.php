@@ -13,6 +13,9 @@
         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">General</a></li>
         <li role="presentation"><a href="#skills" aria-controls="skills" role="tab" data-toggle="tab">Skills</a></li>
         <li role="presentation"><a href="#thresholds" aria-controls="thresholsd" role="tab" data-toggle="tab">Thresholds</a></li>
+        @if($quest->instant)
+          <li role="presentation"><a href="#codes" aria-controls="codes" role="tab" data-toggle="tab">Redemption Codes</a></li>
+        @endif
         <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Files</a></li>
       </ul>
       {!! Form::open(['url' => 'manage/quest/update', 'id'=>'quest-update-form']) !!}
@@ -37,6 +40,19 @@
 
         @endforeach
         </div>
+        @if($quest->instant)
+          <div role="tabpanel" class="tab-pane" id="codes">
+            {{ Form::input('number', 'new_codes', null, ['class' => 'form-control', 'placeholder' => 'Number of Codes to Create', 'id' => 'redemption_codes']) }}
+            @foreach($codes as $code)
+              <div class="col-md-1">
+              <h6>{!! $code->code !!}</h6>
+              @if($code->user_id)
+                <span class="label">Redeemed</span>
+              @endif
+              </div>
+            @endforeach
+          </div>
+        @endif
         <div role="tabpanel" class="tab-pane" id="thresholds">
         @foreach($thresholds as $threshold)
             <div class="form-group">

@@ -12,6 +12,7 @@ use App\Threshold;
 use App\Link;
 use App\Submission;
 use Validator;
+use App\Redemption;
 
 /**
  * Class QuestController
@@ -89,8 +90,11 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         $skills = $quest->skills()->get();
         $thresholds = $quest->thresholds()->with('skill')->get();
- 
-        return view('frontend.manage.quests.details', ['quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds])
+        $codes = $quest->redemption_codes();
+        return view('frontend.manage.quests.details', ['quest' => $quest, 
+                                                        'skills' => $skills, 
+                                                        'thresholds' => $thresholds,
+                                                        'codes' => $codes])
             ->withUser(access()->user());
 
     }
@@ -133,6 +137,21 @@ class QuestController extends Controller
         }
 
         $quest->instant = $request->has('instant');
+        if($quest->instant) {
+            if($request->new_codes > 0) {
+                for ($i = 0; $i < $request->new_codes; $i++) {
+                    $code = new Redemption;
+                    $code->quest_id = $quest->id;
+                    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $randstring = '';
+                    for ($i = 0; $i < 10; $i++) {
+                        $randstring = $characters[rand(0, strlen($characters))];
+                    }
+                    $code->code = $randstring;
+                    $code->save();
+                }
+            }
+        }
         $quest->peer_feedback = $request->has('peer_feedback');
         $quest->revisions = $request->has('revisions');
 
