@@ -11,7 +11,7 @@ class Quest extends Model
 	}
 
     public function redemption_codes() {
-  		return $this->hasMany('App\Redemption');
+  		return $this->belongsTo('App\Redemption');
     }
 
     public function submissions() {

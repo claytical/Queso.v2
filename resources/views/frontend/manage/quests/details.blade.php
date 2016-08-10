@@ -43,7 +43,6 @@
         @if($quest->instant)
           <div role="tabpanel" class="tab-pane" id="codes">
             {{ Form::input('number', 'new_codes', null, ['class' => 'form-control', 'placeholder' => 'Number of Codes to Create', 'id' => 'redemption_codes']) }}
-            {!! var_dump($codes) !!}
             @foreach($codes as $code)
               <div class="col-md-1">
               <h6>{!! $code->code !!}</h6>
