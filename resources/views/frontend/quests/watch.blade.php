@@ -46,5 +46,31 @@
         });
       }
 
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+//        event.target.playVideo();
+        var checkinTime = player.getDuration();
+        setInterval(checkin, checkinTime);
+
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      function checkin() {
+          var pct = (player.getCurrentTime()/player.getDuration());
+
+
+      }
+
+      var done = false;
+
+      function onPlayerStateChange(event) {
+
+      }
+
+      function stopVideo() {
+        player.stopVideo();
+      }    
     </script>
 @stop
