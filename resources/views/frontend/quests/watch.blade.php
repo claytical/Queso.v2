@@ -18,7 +18,7 @@
                 <div class="progress skill-{!! $skill->id !!}">
                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="{!! $skill->pivot->amount !!}" style="width:0%;"></div>
                 </div>
-                {!! Form::hidden('skill[]', 0, ['id' => 'skill-'.$skill->id]) !!}
+                {!! Form::hidden('skills[]', 0, ['id' => 'skill-'.$skill->id]) !!}
                 {!! Form::hidden('skill_id[]', $skill->id, ['id' => 'v-skill-'.$skill->id]) !!}
 
                 @endforeach
