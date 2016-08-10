@@ -143,9 +143,10 @@ class QuestController extends Controller
                     $code = new Redemption;
                     $code->quest_id = $quest->id;
                     $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                    $randstring = '';
-                    for ($i = 0; $i < 10; $i++) {
-                        $randstring = $characters[rand(0, strlen($characters))];
+                    $charactersLength = strlen($characters);
+                    $randomString = '';
+                    for ($i = 0; $i < $length; $i++) {
+                        $randomString .= $characters[rand(0, $charactersLength - 1)];
                     }
                     $code->code = $randstring;
                     $code->save();
