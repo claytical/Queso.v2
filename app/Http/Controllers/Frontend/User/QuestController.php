@@ -251,8 +251,14 @@ class QuestController extends Controller
             //WATCH VIDEO
             case '3':
                 $quest->quest_type_id = 3;
-
-                $quest->youtube_id = $request->video_url;
+                if (strpos($request->video_url, 'youtube.com') !== false) {
+                    $yid = parse_str( parse_url( $request->video_url, PHP_URL_QUERY ), $youtube_url );
+                    $quest->youtube_id = $youtube_url['v'];
+                }
+                else {
+                    //give error
+                    return redirect()->route('quests.manage')->withFlashDanger("This feature requires a YouTube URL.");
+                }
                 break;
             //LINK
             case '4':

@@ -90,7 +90,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>What's the URL for the video?</h3>
-                    {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?q=AAAAAAA', 'id' => 'video_url']) }}
+                    {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?v=AAAAAAA', 'id' => 'video_url']) }}
                 <button type="button" class="btn btn-default" id="video_next">Next</button>
             </div>
         </div>
