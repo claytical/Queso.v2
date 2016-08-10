@@ -139,7 +139,7 @@ class QuestController extends Controller
         $quest->instant = $request->has('instant');
         if($quest->instant) {
             if($request->new_codes > 0) {
-                $re = Redemption::all()->delete();
+                $re = Redemption::whereNull('user_id')->delete();
                 for ($i = 0; $i < intval($request->new_codes); $i++) {
                     $code = new Redemption;
                     $code->quest_id = $quest->id;
