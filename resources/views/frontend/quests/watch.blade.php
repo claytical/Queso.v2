@@ -1,12 +1,10 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Quest Name</h2>
+<h2>{!! $quest->name !!}</h2>
         <div class="col-lg-12">
-            <div class="row">
-                <iframe src="https://player.vimeo.com/video/171365895?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            </div>
-            <div class="row">
+            <div id="player" class="col-md-9"></div>
+            <div id="player" class="col-md-3">
                 {!! Form::open(array('url' => 'quest/watched')) !!}
                 @foreach($skills as $skill)
                 <div class="progress skill-{!! $skill->id !!}">
@@ -60,7 +58,14 @@
       function checkin() {
           var pct = (player.getCurrentTime()/player.getDuration());
 
-
+          @foreach($skills as $skill)
+            var amount = pct * {!! $skill->pivot->amount !!};
+            $('#skill-{!! $skill->id !!}').val(amount);
+          @endforeach
+          $('.progress-bar').attr('style', 'width: '+(pct*100)+'%');
+          if (pct >= .99) {
+            $('.btn-submit').prop('disabled', false);
+          }
       }
 
       var done = false;
