@@ -314,7 +314,9 @@ class QuestController extends Controller
     }
     
     public function watch_video($quest_id) {
-        return view('frontend.quests.watch')
+        $quest = Quest::find($quest_id);
+        $skills = $quest->skills()->get();
+        return view('frontend.quests.watch', ['quest' => $quest, 'skills' => $skills])
             ->withUser(access()->user());
     }
 

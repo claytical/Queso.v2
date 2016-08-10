@@ -16,7 +16,7 @@
                 {!! Form::hidden('skill_id[]', $skill->id, ['id' => 'v-skill-'.$skill->id]) !!}
 
                 @endforeach
-                {!! Form::submit('Get Points', ['class' => btn btn-primary btn-submit', 'disabled' => '']) !!}
+                {!! Form::submit('Get Points', ['class' => 'btn btn-primary btn-submit', 'disabled' => '']) !!}
                 {!! Form::close() !!}
             </div>
         </div>
