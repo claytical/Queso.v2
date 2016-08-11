@@ -493,9 +493,23 @@ class QuestController extends Controller
     }
 
     public function history() {
-        $quest_ids = access()->user()->quests()->distinct()->select('quest_id')->pluck('quest_id');
+        $user = access()->user();
+        $quest_ids = $user->quests()->distinct()->select('quest_id')->pluck('quest_id');
+        $quests = [];
+        foreach($quest_ids as $id) {
+            $quests = $user->quests()->where('quest_id', $id)->orderBy('created_at');
+            if ($quests->count() > 1) {
+                $revisions = $quests->get();
+            }
+            else {
+                $revisions = false;
+            }
 
-        return view('frontend.quests.history', ['ids' => $quest_ids])
+            $skills = $user->skills()->where('quest_id', $id);
+            $quests[] = ['quest' => $quests->first(), 'revisions' => $revisions, 'skills' => $skills];
+        }
+
+        return view('frontend.quests.history', ['quests' => $quests])
             ->withUser(access()->user());
     }
 

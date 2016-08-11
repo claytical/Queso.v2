@@ -5,7 +5,7 @@
 
         <div class="col-lg-12">
 
-{!! var_dump($ids) !!} 
+{!! var_dump($quests) !!} 
          </div>
 
 @endsection
