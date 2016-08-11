@@ -9,16 +9,23 @@
           <div class="progress-bar" role="progressbar" aria-valuenow="{!! $total_points !!}" aria-valuemin="{!! $current_level->amount !!}" aria-valuemax="{!! $next_level->amount !!}" style="width: {!! $percentage !!}%;">
 
 
-            <span class="sr-only">60% Complete</span>
+            <span class="sr-only"></span>
           </div>
         </div>
-    <h6>Total Points Earned {!! $total_points !!}</h6>
-    <h6>Current Level {!! $current_level !!}</h6>
-    <h6>Next Level {!! $next_level !!}</h6>
+    <h4>{!! $total_points !!}, {!! $current_level !!}</h4>
     </div>
 
     <div class="col-lg-6">
-
+        <div class="col-lg-12">
+        @foreach($skills as $skill)
+            <div class="col-lg-6">
+                {!! $skill->name !!}
+            </div>
+            <div class="col-lg-6">
+                {!! $skill->pivot->amount !!}
+            </div>
+        @endforeach
+        </div>
     </div>
 
 </div>
