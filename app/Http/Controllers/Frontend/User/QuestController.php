@@ -497,8 +497,8 @@ class QuestController extends Controller
         $quest_ids = $user->quests()->distinct()->select('quest_id')->pluck('quest_id');
         $quests = [];
         foreach($quest_ids as $id) {
-            $quests = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
-            if ($quests->count() > 1) {
+            $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
+            if ($quest->count() > 1) {
                 $revisions = $quests->get();
             }
             else {
@@ -506,7 +506,7 @@ class QuestController extends Controller
             }
 
             $skills = $user->skills()->where('quest_id', $id)->get();
-            $quests[] = ['quest' => $quests->first(), 'revisions' => $revisions, 'skills' => $skills];
+            $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills];
         }
 
         return view('frontend.quests.history', ['quests' => $quests])
