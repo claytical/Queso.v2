@@ -500,8 +500,8 @@ class QuestController extends Controller
         $course = Course::find(session('current_course'));
         $total_points_earned = $acquired_skills->sum('amount');
         $skill_breakdown = $acquired_skills->get();
-        $current_level = $course->level()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'asc')->first();
-        $next_level = $course->level()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
+        $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'asc')->first();
+        $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
 
         $skills_available = $course->quests()->skills();
         $course_sum_points = $skills->available->sum('amount');
