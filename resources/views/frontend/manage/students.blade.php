@@ -22,53 +22,22 @@
         <div class="col-lg-12">
              <ul class="list-unstyled list">
                 <li>
+                @foreach($students as $student)
                     <div class="row">
                         <div class="col-lg-6 student">
-                            {{ link_to('manage/student/1', 'Sally Fields') }}
+                            {{ link_to('manage/student/'.$student->id, $student->name) }}
                         </div>
 
                         <div class="col-lg-3 grade">
-                            96 / 100
+                            skills
                         </div>
                         <div class="col-lg-3 team">
-                            Red Team
+                            team
                         </div>
 
                     </div>
+                @endforeach
                 </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-lg-6 student">
-                            {{ link_to('manage/student/1', 'Joan Rivers') }}
-                        </div>
-
-                        <div class="col-lg-3 grade">
-                            26 / 100
-                        </div>
-                        <div class="col-lg-3 team">
-                            Blue Team
-                        </div>
-
-                    </div>
-                </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-lg-6 student">
-                            {{ link_to('manage/student/1', 'Dwayne Johnson') }}
-                        </div>
-
-                        <div class="col-lg-3 grade">
-                            88 / 100
-                        </div>
-                        <div class="col-lg-3 team">
-                            Green Team
-                        </div>
-
-                    </div>
-                </li>
-
             </ul>
     </div>
 </div>

@@ -19,7 +19,10 @@ class StudentController extends Controller
 
     public function index()
     {
-        return view('frontend.manage.students')
+        $course = Course::find(session('current_course'));
+        $students = $course->users()->get();
+
+        return view('frontend.manage.students', ['students' => $students])
             ->withUser(access()->user());
     }    
     public function detail($id) {
