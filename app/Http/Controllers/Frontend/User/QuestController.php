@@ -503,13 +503,14 @@ class QuestController extends Controller
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'asc')->first();
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
 
+       /*
         $course_quests = $course->quests();
         $skills_available = $course_quests->skills();
 
 
         $course_sum_points = $skills->available->sum('amount');
         $course_skills = $skills_available->get();
-
+*/
         $quest_ids = $user->quests()->distinct()->select('quest_id')->pluck('quest_id');
         $quests = [];
         foreach($quest_ids as $id) {
@@ -524,7 +525,7 @@ class QuestController extends Controller
             $skills = $user->skills()->where('quest_id', $id)->get();
             $earned = $user->skills()->where('quest_id', $id)->sum('amount');
             $available = Quest::find($id)->skills()->sum('amount');
-            $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills, 'earned' => $earned, 'available' => $available, 'current_level' => $current_level, 'next_level' => $next_level, 'course_skills' => $course_skills, 'course_points' => $course_sum_points, 'total_skills' => $skill_breakdown, 'total_points' => $total_points_earned];
+            $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills, 'earned' => $earned, 'available' => $available, 'current_level' => $current_level, 'next_level' => $next_level];
         }
 
         return view('frontend.quests.history', ['quests' => $quests])
