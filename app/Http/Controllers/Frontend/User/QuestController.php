@@ -505,7 +505,7 @@ class QuestController extends Controller
                 $revisions = false;
             }
 
-            $skills = $user->skills()->where('quest_id', $id);
+            $skills = $user->skills()->where('quest_id', $id)->get();
             $quests[] = ['quest' => $quests->first(), 'revisions' => $revisions, 'skills' => $skills];
         }
 
