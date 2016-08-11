@@ -499,7 +499,7 @@ class QuestController extends Controller
         foreach($quest_ids as $id) {
             $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
             if ($quest->count() > 1) {
-                $revisions = $quests->get();
+                $revisions = $quest->get();
             }
             else {
                 $revisions = false;
