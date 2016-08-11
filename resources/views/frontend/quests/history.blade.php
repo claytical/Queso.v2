@@ -12,7 +12,7 @@
             <span class="sr-only"></span>
           </div>
         </div>
-    <h4>{!! $total_points !!}, {!! $current_level !!}</h4>
+    <h4>{!! $total_points !!}, {!! $current_level->name !!}</h4>
     </div>
 
     <div class="col-lg-6">
@@ -22,7 +22,7 @@
                 {!! $skill->name !!}
             </div>
             <div class="col-lg-6">
-                {!! $skill->pivot->amount !!}
+                {!! $skill->amount !!}
             </div>
         @endforeach
         </div>
