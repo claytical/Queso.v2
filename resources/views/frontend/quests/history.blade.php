@@ -5,6 +5,7 @@
 
 <div class="col-lg-12">
     <div class="col-lg-6">
+    <h4>{!! $current_level->name !!}</h4>
         <div class="progress">
           <div class="progress-bar" role="progressbar" aria-valuenow="{!! $total_points !!}" aria-valuemin="{!! $current_level->amount !!}" aria-valuemax="{!! $next_level->amount !!}" style="width: {!! $percentage !!}%;">
 
@@ -12,7 +13,6 @@
             <span class="sr-only"></span>
           </div>
         </div>
-    <h4>{!! $total_points !!}, {!! $current_level->name !!}</h4>
     </div>
 
     <div class="col-lg-6">
@@ -25,6 +25,12 @@
                 {!! $skill['amount'] !!}
             </div>
         @endforeach
+            <div class="col-lg-6">
+                Total
+            </div>
+            <div class="col-lg-6">
+                {!! $total_points !!}
+            </div>
         </div>
     </div>
 
@@ -61,7 +67,7 @@
                         @endforeach
                             <hr/>
                             <div class="col-lg-6">
-                                Total Points
+                                Total
                             </div>
 
                             <div class="col-lg-6">
