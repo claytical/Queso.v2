@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="col-lg-3 grade">
-                                {!! var_dump($student->skills()->amount('sum')) !!}
+                                {!! var_dump($student) !!}
                             </div>
                             <div class="col-lg-3 team">
                                 team
