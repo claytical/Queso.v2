@@ -130,7 +130,6 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="pull-right">
-                                {!! $level->name !!}
                                 {!! Form::open(['url' => 'manage/course/remove/team', 'class' => 'remove-team']) !!}
                                 {!! Form::hidden('team_id', $team->id) !!}
                                 {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           

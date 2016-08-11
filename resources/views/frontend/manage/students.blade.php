@@ -13,7 +13,7 @@
             <h5>Student Name</h5>
         </div>
         <div class="col-lg-3">
-            <h5>Current Grade</h5>
+            <h5>Points</h5>
         </div>
         <div class="col-lg-3">
             <h5>Team</h5>
