@@ -503,6 +503,8 @@ class QuestController extends Controller
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
 
+        $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
+
         $quest_ids = $user->quests()->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
         $quests = [];
         foreach($quest_ids as $id) {
@@ -520,7 +522,7 @@ class QuestController extends Controller
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level])
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage])
             ->withUser(access()->user());
     }
 
