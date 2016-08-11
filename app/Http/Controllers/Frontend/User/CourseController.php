@@ -135,6 +135,7 @@ class CourseController extends Controller
     public function add_team(Request $request) {
     	$team = new Team;
     	$team->name = $request->team;
+        $team->course_id = session('current_course');
     	$team->save();
 		return redirect(route('course.manage'));
     }
