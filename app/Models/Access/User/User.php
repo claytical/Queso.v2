@@ -64,6 +64,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Link');
     }
 
+    public function teams() {
+        return $this->belongsToMany('App\Team');
+    }
+
     public function skills() {
         return $this->belongsToMany('App\Skill')->withPivot('amount', 'quest_id');
     }
