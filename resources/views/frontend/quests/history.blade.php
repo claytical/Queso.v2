@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <h4>Points</h4>
+                    <h5></h5>
                         @foreach($quest['skills'] as $skill)
                             <div class="col-lg-6">
                                 {!! $skill->name!!}

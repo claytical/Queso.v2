@@ -503,7 +503,7 @@ class QuestController extends Controller
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
 
-        $quest_ids = $user->quests()->distinct()->select('quest_id')->pluck('quest_id');
+        $quest_ids = $user->quests()->distinct()->select('quest_id')->orderBy('created_at', 'asc')->pluck('quest_id');
         $quests = [];
         foreach($quest_ids as $id) {
             $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
