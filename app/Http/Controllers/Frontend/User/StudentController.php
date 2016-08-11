@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Course;
+
 //use Vinelab\Http\Client as HttpClient;
 
 /**
