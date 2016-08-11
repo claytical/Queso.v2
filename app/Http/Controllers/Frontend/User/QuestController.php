@@ -496,7 +496,7 @@ class QuestController extends Controller
     public function history() {
         $user = access()->user();
         $acquired_skills = $user->skills();
-        $course = Course::find('current_course');
+        $course = Course::find(session('current_course'));
         $total_points_earned = $acquired_skills->sum('amount');
         $skill_breakdown = $acquired_skills->get();
         $current_level = $course->level()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'asc')->first();
