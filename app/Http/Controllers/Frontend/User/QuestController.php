@@ -496,13 +496,15 @@ class QuestController extends Controller
 
     public function history() {
         $user = access()->user();
-        $acquired_skills = $user->skills();
-
-
-        $grouped_skills = $acquired_skills->groupBy('skill_id')
-                        ->selectRaw('sum(amount) as sum, name')->get();
-
+        
         $course = Course::find(session('current_course'));
+        $course_skills = $course->skills()->get();
+        $acquired_skills = [];
+        foreach($course_skills as $skill) {
+            $acquired_skills[] = ["amount" => $user->skills()->where('skill_id', $skill->id)->sum('amount'),
+                                    "name" => $skill->name];
+        }
+
         $total_points_earned = $acquired_skills->sum('amount');
         $skill_breakdown = $acquired_skills->get();
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
@@ -527,7 +529,7 @@ class QuestController extends Controller
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $grouped_skills])
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills])
             ->withUser(access()->user());
     }
 

@@ -18,10 +18,11 @@
     <div class="col-lg-6">
         <div class="col-lg-12">
         @foreach($skills as $skill)
-            {!! var_dump($skill) !!}
             <div class="col-lg-6">
+                {!! $skill['name'] !!}
             </div>
             <div class="col-lg-6">
+                {!! $skill['amount'] !!}
             </div>
         @endforeach
         </div>
