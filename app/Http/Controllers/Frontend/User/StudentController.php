@@ -22,7 +22,7 @@ class StudentController extends Controller
     public function index()
     {
         $course = Course::find(session('current_course'));
-        $students = $course->users()->with('skills')->get();
+        $students = $course->users()->with('skills', 'teams')->where('course_id', $course->id)->get();
 
         return view('frontend.manage.students', ['students' => $students])
             ->withUser(access()->user());
