@@ -20,6 +20,7 @@
         <div class="col-lg-12">
 
             @foreach($quests as $quest)
+            <div class="col-lg-12">
                 <div class="col-lg-6">
                     <h4>{!! $quest['quest']->name !!} </h4>
                     {!! $quest['quest']->instructions !!}
@@ -54,6 +55,7 @@
                                 {!! $quest['earned'] !!} / {!! $quest['available'] !!}
                             </div>
                 </div>
+            </div>
             @endforeach
  
          </div>
