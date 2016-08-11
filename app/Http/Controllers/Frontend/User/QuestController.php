@@ -14,6 +14,7 @@ use App\Submission;
 use Validator;
 use App\Redemption;
 use App\Level;
+use App\Course;
 
 /**
  * Class QuestController
