@@ -504,7 +504,7 @@ class QuestController extends Controller
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
 
         $course_quests = $course->quests();
-        $skills_available = $course_quests()->skills();
+        $skills_available = $course_quests->skills();
 
 
         $course_sum_points = $skills->available->sum('amount');
