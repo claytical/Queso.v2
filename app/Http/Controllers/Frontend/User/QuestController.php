@@ -525,10 +525,10 @@ class QuestController extends Controller
             $skills = $user->skills()->where('quest_id', $id)->get();
             $earned = $user->skills()->where('quest_id', $id)->sum('amount');
             $available = Quest::find($id)->skills()->sum('amount');
-            $quests[] = ['quest' => $quest->first(), ['revisions' => $revisions, 'skills' => $skills, 'earned' => $earned, 'available' => $available, 'current_level' => $current_level, 'next_level' => $next_level, 'total_points' => $total_points_earned]];
+            $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills];
         }
 
-        return view('frontend.quests.history', ['quests' => $quests])
+        return view('frontend.quests.history', ['quests' => $quests, 'earned' => $earned, 'available' => $available, 'current_level' => $current_level, 'next_level' => $next_level, 'total_points' => $total_points_earned])
             ->withUser(access()->user());
     }
 
