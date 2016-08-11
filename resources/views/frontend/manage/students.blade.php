@@ -23,19 +23,20 @@
              <ul class="list-unstyled list">
                 <li>
                 @foreach($students as $student)
-                    <div class="row">
-                        <div class="col-lg-6 student">
-                            {{ link_to('manage/student/'.$student->id, $student->name) }}
-                        </div>
+                    @if($student->id != $user->id)
+                        <div class="row">
+                            <div class="col-lg-6 student">
+                                {{ link_to('manage/student/'.$student->id, $student->name) }}
+                            </div>
 
-                        <div class="col-lg-3 grade">
-                            skills
+                            <div class="col-lg-3 grade">
+                                skills
+                            </div>
+                            <div class="col-lg-3 team">
+                                team
+                            </div>
                         </div>
-                        <div class="col-lg-3 team">
-                            team
-                        </div>
-
-                    </div>
+                    @endif
                 @endforeach
                 </li>
             </ul>
