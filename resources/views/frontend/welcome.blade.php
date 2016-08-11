@@ -16,7 +16,7 @@
 
                         @endforeach
                     @else
-                        <p>No Announcements!</p>
+                        <p>No Announcements</p>
                     @endif
                   </div>
                 </div>            
@@ -28,7 +28,7 @@
                         <div class="panel-body">
                             <h4>Instructor: John Doe</h4>
                             <h4>Class Time: {!! $course->meeting !!}</h4>
-                            <h4>Current Level: B+ (89/100)</h4>
+                            <h4>Current Level: {!! $current_level->name !!}</h4>
                             <h5>Your Peer Group</h5>
                             <p>Edward Sharp, Joan Dawson, Donny Walker, Sally Fields</p>
                         </div>

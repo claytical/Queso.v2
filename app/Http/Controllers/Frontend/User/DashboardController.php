@@ -21,13 +21,18 @@ class DashboardController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $notifications = Notice::where('user_id', '=', access()->user()->id)
+        $user = access()->user()->id;
+        $notifications = Notice::where('user_id', '=', $user->id)
                         ->whereNull('received')
 //                      ->where('course_id', '=', session('current_course'))
                         ->get();
         $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
         $course = Course::find(session('current_course'));
+        $total_points_earned = $user->skills()->sum('amount');
+        $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
         return view('frontend.welcome', ['announcements' => $announcements,
+                                          'current_level' => $current_level,
+                                          'total_points' => $total_points_earned,
                                             'course' => $course,
                                             'notifications' => $notifications])
                                             ->withUser(access()->user());
