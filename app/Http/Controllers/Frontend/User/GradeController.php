@@ -204,7 +204,7 @@ class GradeController extends Controller
         $user->quests()->attach($request->quest_id, ['graded' => true, 'revision' => 0]);
 
         return redirect()->route('frontend.user.dashboard')
-                            ->withFlashSuccess("Received " . $total_points . " for " . $quest->name . ".");
+                            ->withFlashSuccess("Received " . $total_points . " points for " . $quest->name . ".");
     }
 
     public function group_confirm(Request $request) {

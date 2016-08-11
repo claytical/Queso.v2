@@ -448,7 +448,7 @@ class QuestController extends Controller
 
         $user->quests()->attach($quest->id, ['graded' => true, 'revision' => 0]);
         return redirect()->route('frontend.user.dashboard')
-                            ->withFlashSuccess("Received " . $total_points . " for " . $quest->name . ".");
+                            ->withFlashSuccess("Received " . $total_points . " points for " . $quest->name . ".");
 
         return view('frontend.quests.redeemed')
             ->withUser(access()->user());
@@ -493,7 +493,9 @@ class QuestController extends Controller
     }
 
     public function history() {
-        return view('frontend.quests.history')
+        $quest_ids = access()->user()->quests()->distinct()->select('quest_id')->pluck('quest_id');
+
+        return view('frontend.quests.history', ['ids' => $quest_ids])
             ->withUser(access()->user());
     }
 

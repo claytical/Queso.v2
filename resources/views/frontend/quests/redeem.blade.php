@@ -8,8 +8,8 @@
                 <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
                 {!! Form::open(array('url' => 'quest/redeem', 'class' => 'form form-inline')) !!}
         
-                {!! Form::text('code', ''); !!}
-                {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+                {!! Form::text('code', '', ['class' => 'form-control']); !!}
+                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 
                 {!! Form::close() !!}
             </div>
