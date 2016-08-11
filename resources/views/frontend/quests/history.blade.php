@@ -3,6 +3,20 @@
 @section('content')
 <h2>Progress</h2>
 
+<div class="col-lg-12">
+    <div class="col-lg-6">
+    Quests Completed # / #
+    <h6>Total Points Earned {!! $total_points !!}</h6>
+    <h6>Current Level {!! $current_level !!}</h6>
+    <h6>Next Level {!! $next_level !!}</h6>
+    </div>
+
+    <div class="col-lg-6">
+
+    </div>
+
+</div>
+<h3>Quests Completed</h3>
         <div class="col-lg-12">
 
             @foreach($quests as $quest)
@@ -12,7 +26,7 @@
                     <h5>Submitted {!! $quest['quest']->created_at !!}</h5>
 
                     @if($quest['revisions'])
-                    <h6>Revisions</h6>
+                    <h6>Revision History</h6>
                         <ul>
                         @foreach($quest['revisions'] as $revision)
                             <li>{!! $revision->created_at !!}</li>
@@ -20,24 +34,25 @@
                         </ul>
                     @endif
                 </div>
-                <div class="col-lg-6">
-                <h4>Points</h4>
-                    @foreach($quest['skills'] as $skill)
-                        <div class="col-lg-6">
-                            {!! $skill->name!!}
-                        </div>
-                        <div class="col-lg-6">
-                            {!! $skill->pivot->amount !!}
-                        </div>
-                    @endforeach
-                        <div class="col-lg-6">
-                            Total Points
-                        </div>
 
-                        <div class="col-lg-6">
-                            {!! $quest['earned'] !!} / {!! $quest['available'] !!}
-                        </div>
-                    </div>
+                <div class="col-lg-6">
+                    <h4>Points</h4>
+                        @foreach($quest['skills'] as $skill)
+                            <div class="col-lg-6">
+                                {!! $skill->name!!}
+                            </div>
+                            <div class="col-lg-6">
+                                {!! $skill->pivot->amount !!}
+                            </div>
+                        @endforeach
+                            <hr/>
+                            <div class="col-lg-6">
+                                Total Points
+                            </div>
+
+                            <div class="col-lg-6">
+                                {!! $quest['earned'] !!} / {!! $quest['available'] !!}
+                            </div>
                 </div>
             @endforeach
  
