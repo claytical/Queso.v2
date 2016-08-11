@@ -499,7 +499,7 @@ class QuestController extends Controller
         $acquired_skills = $user->skills();
 
 
-        $grouped_skills = $acquired_skills->groupBy('quest_id')
+        $grouped_skills = $acquired_skills->groupBy('skill_id')
                         ->selectRaw('sum(amount) as sum, name')->get();
 
         $course = Course::find(session('current_course'));
