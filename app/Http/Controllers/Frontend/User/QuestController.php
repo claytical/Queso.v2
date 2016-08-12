@@ -422,7 +422,7 @@ class QuestController extends Controller
         }
 
         if ($request->revision > 0) {
-            return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted.");
+            return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted." . intval("17"));
         }
         else {
             return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully revised and submitted.");
