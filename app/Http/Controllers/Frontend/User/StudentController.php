@@ -125,6 +125,7 @@ class StudentController extends Controller
 
     public function assign_team($student_id, $team_id) {
         $student = User::find($student_id);
+        $student->teams()->where('course_id', session('current_course'))->detach();
         $student->teams()->attach($team_id, ['course_id' => session('current_course')]);
         $team = Team::find($team_id);
         return redirect()->route('student.detail',  ['student_id' => $student_id])->withFlashSuccess($student->name . " has been successfully assigned to " . $team->name);

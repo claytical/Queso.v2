@@ -3,12 +3,8 @@
 @section('content')
 
     <div class="col-lg-12">
-        <div class="col-lg-6">
         <h2>{!! $student->name !!}</h2>
-        </div>
-        <div class="col-lg-6">
-            <div class="pull-right">
-                <div class="btn-group">
+            <div class="btn-group pull-right">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {!! $team->name !!} <span class="caret"></span>
                   </button>
@@ -16,12 +12,10 @@
                     @foreach($teams as $team)
                         <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id, $team->name) !!}</li>
                     @endforeach
-                        <li class="seperator"></li>
+                        <li role="separator" class="divider"></li>
                         <li>{!! link_to('manage/student/'.$student->id.'/team/remove', 'Remove Team Assignment') !!}</li>
                   </ul>
-                </div>
             </div>
-        </div>
     </div>
     <div class="col-lg-6">
         <h4>{!! $total_points !!} points</h4>
