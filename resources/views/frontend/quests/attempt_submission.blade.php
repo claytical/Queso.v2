@@ -68,13 +68,15 @@
 
 
     submission_upload.on("successmultiple", function(event, response) {
+        console.log("MULTIPLE");
         console.log(event);
         console.log(response);
     });
 
     submission_upload.on("success", function(event, response) {
-        console.log("SUCCESS MULTIPLE, event: " + event);
-        console.log("SUCCESS MULTIPLE, response: " + response);
+        console.log("SINGLE");
+        console.log(event);
+        console.log(response);
     });
 
     </script>
