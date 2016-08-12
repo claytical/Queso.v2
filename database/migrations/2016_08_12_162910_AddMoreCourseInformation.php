@@ -19,7 +19,6 @@ class AddMoreCourseInformation extends Migration
             $table->string('instructor_office_location')->nullable();
             $table->string('instructor_contact')->nullable();
         });
-    }
         
     }
 
