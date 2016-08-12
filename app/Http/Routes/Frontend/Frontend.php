@@ -109,5 +109,7 @@ Route::group(['middleware' => 'auth'], function () {
 // FILE HANDLING
 
         Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
+        Route::get('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
+
     });
 });
