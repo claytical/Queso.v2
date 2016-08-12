@@ -421,6 +421,7 @@ class QuestController extends Controller
                     $fid = $request->files[$i];
                     $attempt->files()->attach($fid);
                 }                    
+                    return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted. Files " . implode(",", $request->files));
             }
         }
 
