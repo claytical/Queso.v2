@@ -28,7 +28,7 @@ class DashboardController extends Controller
                         ->get();
         $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
         $course = Course::find(session('current_course'));
-        $team = $user->teams()->where('course_id', session('current_course'))->first();
+        $team = $user->teams()->where('team_user.course_id', session('current_course'))->first();
         $team_users = $team->users();
         $total_points_earned = $user->skills()->sum('amount');
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
