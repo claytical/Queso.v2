@@ -92,7 +92,7 @@
             $('<input>').attr({
                 type: 'hidden',
                 id: 'files',
-                value: response.files[i].id,
+                value: parseInt(response.files[i].id),
                 name: 'files[]'
             }).appendTo('form');
         }
