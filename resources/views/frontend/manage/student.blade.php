@@ -3,11 +3,12 @@
 @section('content')
 
     <div class="col-lg-12">
-        <h2>Student Name</h2>
+        <h2>{!! $student->name !!}</h2>
     </div>
     <div class="col-lg-6">
-        <h4>Blue Team</h4>
-        <h4>50 / 100 points</h4>
+        <h4>{!! $team !!}</h4>
+        <h4>{!! $total_points !!} points</h4>
+        <h4>{!! $current_level !!}
         <h4>5 Loved Feedbacks</h4>
     </div>
     <div class="col-lg-6">
@@ -37,40 +38,23 @@
         <div class="col-lg-12">
             <div id="submission-list">
                  <ul class="list-unstyled list">
+                    @foreach($graded_quests as $quest)
                     <li>
                         <div class="col-lg-4 quest">
-                            Another Quest
+                            {!! $quest['quest']->name !!}
                         </div>
 
                         <div class="col-lg-3 date">
-                            00/00/0000
+                            {!! $quest['quest']->created_at !!}
                         </div>
                         <div class="col-lg-2 revisions">
-                            0
+                            {!! $quest['revisions'] !!}
                         </div>
                         <div class="col-lg-3 points">
-                            25 / 40
+                            {!! $quest['earned'] !!} / {!! $quest['available'] !!}
                         </div>
 
                     </li>
-
-                    <li>
-                        <div class="col-lg-4 quest">
-                            First Quest
-                        </div>
-
-                        <div class="col-lg-3 date">
-                            00/00/0000
-                        </div>
-                        <div class="col-lg-2 revisions">
-                            1
-                        </div>
-                        <div class="col-lg-3 points">
-                            60 / 60
-                        </div>
-
-                    </li>
-
                 </ul>
             </div>
         </div>
@@ -88,7 +72,7 @@
             </div>
             
             <div class="col-lg-3">
-                <h5>Points</h5>
+                <h5>Points Available</h5>
             </div>
 
         </div>
@@ -96,40 +80,24 @@
         <div class="col-lg-12">
             <div id="pending-list">
                  <ul class="list-unstyled list">
+                    @foreach($pending_quests as $quest)
                     <li>
                         <div class="col-lg-4 quest">
-                            Another Quest
+                            {!! $quest['quest']->name !!}
                         </div>
 
                         <div class="col-lg-3 date">
-                            00/00/0000
+                            {!! $quest['quest']->created_at !!}
                         </div>
                         <div class="col-lg-2 revisions">
-                            0
+                            {!! $quest['revisions'] !!}
                         </div>
                         <div class="col-lg-3 points">
-                            25 / 40
+                            {!! $quest['available'] !!}
                         </div>
 
                     </li>
-
-                    <li>
-                        <div class="col-lg-4 quest">
-                            First Quest
-                        </div>
-
-                        <div class="col-lg-3 date">
-                            00/00/0000
-                        </div>
-                        <div class="col-lg-2 revisions">
-                            1
-                        </div>
-                        <div class="col-lg-3 points">
-                            60 / 60
-                        </div>
-
-                    </li>
-
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -150,28 +118,29 @@
         <div class="col-lg-12">
             <div id="available-list">
                  <ul class="list-unstyled list">
+                    @foreach($available_quests as $quest)
                     <li>
                         <div class="col-lg-9 quest">
-                            Life Questions
+                            {!! $quest->name !!}
                         </div>
                         <div class="col-lg-3 points">
-                            40
+                            {!! $quest->skills()->sum('amount') !!}
                         </div>
-
                     </li>
+                    @endforeach
 
+                    @foreach($pending_quests as $quest)
                     <li>
                         <div class="col-lg-9 quest">
-                           Second Quest
+                            {!! $quest->name !!} <span class="label">LOCKED</span>
                         </div>
-
                         <div class="col-lg-3 points">
-                            60
+                            {!! $quest->skills()->sum('amount') !!}
                         </div>
-
                     </li>
-
+                    @endforeach
                 </ul>
+
             </div>
         </div>
 

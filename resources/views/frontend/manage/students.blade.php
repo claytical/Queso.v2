@@ -16,13 +16,15 @@
             <h5>Points</h5>
         </div>
         <div class="col-lg-3">
-            <h5>Team</h5>
+            <h5>Tags</h5>
         </div>
 
         <div class="col-lg-12">
              <ul class="list-unstyled list">
                 <li>
+
                 @foreach($students as $student)
+                    @if($student->id != $user->id)
                         <div class="row">
                             <div class="col-lg-6 student">
                                 {{ link_to('manage/student/'.$student->id, $student->name) }}
@@ -32,9 +34,9 @@
                                 {!! $student->skills()->sum('amount') !!}
                             </div>
                             <div class="col-lg-3 team">
-                                team
                             </div>
                         </div>
+                    @endif
                 @endforeach
                 </li>
             </ul>
