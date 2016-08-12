@@ -32,6 +32,8 @@ public function uploadFiles(Request $request) {
             $random_name = str_random(5).$files->getClientOriginalName();
             $files->move(public_path().'/uploads/',$random_name);
             $files_on_server[] = $random_name;
+            //TODO: Store in database with user id
+
             return response()->json(array("error" => "Success!", "file" => $random_name));
 
         }

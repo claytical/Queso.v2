@@ -4,15 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Content extends Model
+class FileAttachment extends Model
 {
-
+    //
+    public function user() {
+        return $this->hasOne('App\Models\Access\User');
+    }
 
     public function course() {
     	return $this->hasOne('App\Course');
-    }
-
-    public function files() {
-    	return $this->belongsToMany('App\FileAttachment');
     }
 }

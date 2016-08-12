@@ -27,6 +27,10 @@ class Course extends Model
         return $this->hasMany('App\Content');
     }
     
+    public function files() {
+        return $this->hasMany('App\FileAttachment');
+    }
+
     public function teams() {
     	return $this->hasMany('App\Team');
     }

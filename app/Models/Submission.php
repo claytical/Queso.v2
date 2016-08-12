@@ -9,6 +9,9 @@ class Submission extends Model
     public function quest() {
   		return $this->hasOne('App\Quest');
     }
+    public function files() {
+        return $this->hasMany('App\FileAttachment');
+    }
 
     public function user() {
     	return $this->belongsTo('App\Models\Access\User');

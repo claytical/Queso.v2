@@ -60,6 +60,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Submission');        
     }
 
+    public function files() {
+        return $this->hasMany('App\FileAttachment');
+    }
+    
     public function links() {
         return $this->belongsToMany('App\Link');
     }
