@@ -21,7 +21,7 @@ class DashboardController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $user = access()->user()->id;
+        $user = access()->user();
         $notifications = Notice::where('user_id', '=', $user->id)
                         ->whereNull('received')
 //                      ->where('course_id', '=', session('current_course'))

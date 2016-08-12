@@ -14,6 +14,7 @@
     <div class="col-lg-6">
         SKILL DISTRIBUTION CHART
     </div>
+    
 <div class="col-lg-12">
 @if($graded_quests)
     <h3>Graded Quests</h3>
@@ -150,9 +151,7 @@
         </div>
         @else
         @endif
-    <div>
-    PROJECTION CHART
-    </div>
+
 </div>
 @endsection
 
