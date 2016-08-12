@@ -32,10 +32,10 @@
                             <hr/>
                             <h4><a href="mailto:{!! $course->instructor_contact !!}">{!! $course->instructor_display_name !!}</a></h4>
                             <h4>Office: {!! $course->instructor_office_location !!}</h4>
-                            <h4>Hours: {!! $course->instructor_office_hours !!}</h4>
+                            <h4>Hours: {!! $course->office_hours !!}</h4>
                             <hr/>
                             <h5>Your Peer Group</h5>
-                            <p>{!! var_dump($team_members) !!}</p>
+                            <p>{!! $team_members !!}</p>
                         </div>
                 </div>
             </div>
