@@ -5,6 +5,13 @@ namespace App\Http\Controllers\Frontend\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Course;
+use App\Quest;
+use App\Skill;
+use App\Threshold;
+use App\Link;
+use App\Level;
+use App\Models\Access\User\User;
+
 
 //use Vinelab\Http\Client as HttpClient;
 
