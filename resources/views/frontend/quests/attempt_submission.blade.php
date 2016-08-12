@@ -68,7 +68,7 @@
         });
 
     submission_upload.on('sending', function(file, xhr, formData){
-            var tok = $('[name=_token').val();
+            var tok = $('input[name="_token"]').val();
             console.log("Appending Token " + tok)
             formData.append('_token', tok);
         });
