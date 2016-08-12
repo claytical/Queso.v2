@@ -78,7 +78,7 @@ class GradeController extends Controller
             $attempt = Submission::find($attempt_id);
             $attempts = Submission::where('quest_id', '=', $quest->id)
                                         ->where('user_id', '=', $attempt->user_id);
-           $files = $attempt->files();
+           $files = $attempt->files()->get();
         }
         if ($quest->quest_type_id == 4) {
             //LINK
