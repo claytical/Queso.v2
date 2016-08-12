@@ -33,13 +33,15 @@
                             <h4><a href="mailto:{!! $course->instructor_contact !!}">{!! $course->instructor_display_name !!}</a></h4>
                             <h4>Office: {!! $course->instructor_office_location !!}</h4>
                             <h4>Hours: {!! $course->office_hours !!}</h4>
-                            <hr/>
-                            <h5>Your Peer Group</h5>
-                            <ul class="list-unstyled">
-                                @foreach($team_members as $team_member)
-                                    <li><a href="mailto:{!! $team_member->email !!}">{!! $team_member->name !!}</a></li>
-                                @endforeach
-                            </ul>
+                            @if($team_members)
+                                <hr/>
+                                <h5>Your Peer Group</h5>
+                                <ul class="list-unstyled">
+                                    @foreach($team_members as $team_member)
+                                        <li><a href="mailto:{!! $team_member->email !!}">{!! $team_member->name !!}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </div>
                 </div>
             </div>
