@@ -17,7 +17,7 @@ class CreateFileAttachmentQuestPivotTable extends Migration
             $table->foreign('file_attachment_id')->references('id')->on('file_attachments')->onDelete('cascade');
             $table->integer('quest_id')->unsigned()->index();
             $table->foreign('quest_id')->references('id')->on('quests')->onDelete('cascade');
-            $table->primary(['file_attachment_id', 'quest_id']);
+            $table->primary(['file_attachment_id', 'quest_id'], 'file_quest_primary');
         });
     }
 
