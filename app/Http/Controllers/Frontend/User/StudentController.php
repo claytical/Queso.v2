@@ -42,7 +42,7 @@ class StudentController extends Controller
         $course = Course::find(session('current_course'));
         $teams = $course->teams()->get();
 
-        $team = $user->teams()->where('course_id', session('current_course'))->first();
+        $team = $user->teams()->where('user_team.course_id', session('current_course'))->first();
 
         $course_skills = $course->skills()->get();
         $acquired_skills = [];
