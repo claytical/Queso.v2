@@ -15,6 +15,7 @@ use Validator;
 use App\Redemption;
 use App\Level;
 use App\Course;
+use App\Models\Access\User\User;
 
 /**
  * Class QuestController
