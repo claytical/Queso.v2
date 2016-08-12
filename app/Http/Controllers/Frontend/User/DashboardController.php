@@ -32,7 +32,7 @@ class DashboardController extends Controller
         $team = $user->teams()
                         ->where('team_user.course_id', session('current_course'))
                         ->where('team_user.user_id', '!=', $user->id)
-                        ->first();
+                        ->get();
         $team_users = $team->users()->get();
         $total_points_earned = $user->skills()->sum('amount');
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
