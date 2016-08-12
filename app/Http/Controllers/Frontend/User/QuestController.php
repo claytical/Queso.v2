@@ -388,7 +388,10 @@ class QuestController extends Controller
         }
         if($quest->quest_type_id == 1) {
             $attempt = new Submission;
-            $attempt->submission = $request->submission;
+            if($quest->submissions) {
+                $attempt->submission = $request->submission;
+            }
+
         }
 
         if($quest->quest_type_id == 4) {
@@ -412,6 +415,15 @@ class QuestController extends Controller
         $attempt->revision = $request->revision;
         $attempt->save();
         $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
+        if($quest->uploads) {
+            if($request->has('files')) {
+                for($i = 0; $i < count($request->files); $i++) {
+                    $fid = $request->files[$i];
+                    $attempt->files()->attach($fid);
+                }                    
+            }
+        }
+
         if ($request->revision > 0) {
             return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted.");
         }
