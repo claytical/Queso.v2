@@ -9,6 +9,7 @@ use App\Content;
 use App\Course;
 use App\Notice;
 use DB;
+use App\Models\Access\User\User;
 
 /**
  * Class DashboardController
