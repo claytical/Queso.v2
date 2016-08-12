@@ -8,14 +8,14 @@
     <div class="col-lg-6">
         <h4>{!! $team !!}</h4>
         <h4>{!! $total_points !!} points</h4>
-        <h4>{!! $current_level !!}
+        <h4>{!! $current_level->name !!}
         <h4>5 Loved Feedbacks</h4>
     </div>
     <div class="col-lg-6">
         SKILL DISTRIBUTION CHART
     </div>
-
 <div class="col-lg-12">
+@if($graded_quests)
     <h3>Graded Quests</h3>
     <!-- Links should be to view only, not add feedback -->
         <div class="col-lg-12">
@@ -58,6 +58,9 @@
                 </ul>
             </div>
         </div>
+    @else
+    @endif
+    @if($pending_quests)
     <h3>Pending Quests</h3>
     <!-- Links should be to grade submission -->
         <div class="col-lg-12">
@@ -101,7 +104,9 @@
                 </ul>
             </div>
         </div>
-
+    @else
+    @endif
+    @if($available_quests)
     <h3>Available Quests</h3>
     <!-- no links needed, unless on behalf of? -->
         <div class="col-lg-12">
@@ -110,7 +115,7 @@
             </div>
             
             <div class="col-lg-3">
-                <h5>Points</h5>
+                <h5>Points Available</h5>
             </div>
 
         </div>
@@ -143,7 +148,8 @@
 
             </div>
         </div>
-
+        @else
+        @endif
     <div>
     PROJECTION CHART
     </div>
