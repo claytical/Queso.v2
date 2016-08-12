@@ -129,7 +129,7 @@
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="count">{!! $team-users()->count() !!}</div>
+                            <div class="count">{!! $team->users()->count() !!}</div>
                         </div>
                         <div class="col-lg-3">
                             <div class="pull-right">
