@@ -41,7 +41,7 @@ public function uploadFiles(Request $request) {
                 }
             }
         }
-        return response()->json($files_on_server);
+        return response()->json(array("error" => "Success!", "files" => $files_on_server);
     }
 
 }
