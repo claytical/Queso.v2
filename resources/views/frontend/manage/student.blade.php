@@ -7,18 +7,17 @@
         <div class="pull-right">
             <div class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                No Team Assignment <span class="caret"></span>
+                {!! $team !!} <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
                 @foreach($teams as $team)
-                    <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id) !!}"</li>
+                    <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id, $team->name) !!}</li>
                 @endforeach
               </ul>
             </div>
         </div>
     </div>
     <div class="col-lg-6">
-        <h4>{!! $team !!}</h4>
         <h4>{!! $total_points !!} points</h4>
         <h4>{!! $current_level->name !!}
         <h4>5 Loved Feedbacks</h4>

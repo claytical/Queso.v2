@@ -41,7 +41,7 @@ class StudentController extends Controller
 
         $course = Course::find(session('current_course'));
         $teams = $course->teams()->get();
-        $team = "blue";
+        $team = "No Team Assigned";
 
         $course_skills = $course->skills()->get();
         $acquired_skills = [];
