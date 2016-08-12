@@ -75,9 +75,8 @@
           {!! $attempt->submission !!}
           @if($files)
             <h6>Attached Files</h6>
-            {!! var_dump($files) !!}
             @foreach($files as $file)
-              {!! link_to('public/uploads/' . $file->name, $file->name) !!}
+              {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
             @endforeach
           @endif
         @endif
