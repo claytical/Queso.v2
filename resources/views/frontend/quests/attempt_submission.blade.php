@@ -5,7 +5,7 @@
             <div class="col-lg-9">
                 <h2>{!! $quest->name !!}</h2>
                 {!! $quest->instructions !!}
-                {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
+                {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline', 'id' => 'submission-form')) !!}
                 {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
                 {!! Form::hidden('revision', 0) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
@@ -75,14 +75,28 @@
 
     submission_upload.on("successmultiple", function(event, response) {
         console.log("MULTIPLE");
-        console.log(event);
-        console.log(response);
+
+        for (var i = 0, len = response.files.length; i < len; i++) {
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'files',
+                value: response.files[i].id,
+                name: 'files[]'
+            }).appendTo('form');
+        }
+
     });
 
     submission_upload.on("success", function(event, response) {
-        console.log("SINGLE");
-        console.log(event);
-        console.log(response);
+        for (var i = 0, len = response.files.length; i < len; i++) {
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'files',
+                value: response.files[i].id,
+                name: 'files[]'
+            }).appendTo('form');
+        }
+
     });
 
     </script>
