@@ -15,6 +15,10 @@ class DropzoneController extends Controller
      * @return \Illuminate\View\View
      */
 
+public function getJSON() {
+    $array = ["error" => "success", "stuff" => [1,2,3]];
+    return response()->json($array);
+}
 
 public function uploadFiles(Request $request) {
  
