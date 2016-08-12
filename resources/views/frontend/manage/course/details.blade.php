@@ -121,6 +121,18 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="teams">
                 <h4>Current Teams</h4>
+                    <div class="col-lg-9">
+                    {!! Form::open(['url' => 'manage/course/add/team', 'class' => '', 'id' => 'add-team']) !!}
+                    {!! Form::input('text', 'team', null, ['class' => 'form-control', 'placeholder' => 'Team Name', 'id' => 'team_title']) !!}
+
+
+                    </div>
+                    <div class="col-lg-3">
+                        {!! Form::submit('Add This Team', ['class' => 'btn btn-primary btn-lg']) !!}
+                        {!! Form::close() !!}
+
+                    </div>
+                
                 <ul class="list-unstyled list">
                     @foreach($teams as $team)
                     <li>
@@ -139,20 +151,6 @@
                             </div>
                         </div>
                     @endforeach
-
-                    <li>
-                        <div class="col-lg-9">
-                        {!! Form::open(['url' => 'manage/course/add/team', 'class' => '', 'id' => 'add-team']) !!}
-                        {!! Form::input('text', 'team', null, ['class' => 'form-control', 'placeholder' => 'Team Name', 'id' => 'team_title']) !!}
-
-
-                        </div>
-                        <div class="col-lg-3">
-                            {!! Form::submit('Add This Team', ['class' => 'btn btn-primary btn-lg']) !!}
-                            {!! Form::close() !!}
-
-                        </div>
-                    </li>
                 </ul>
 
             </div>
