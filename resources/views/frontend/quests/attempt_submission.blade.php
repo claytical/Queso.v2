@@ -62,7 +62,7 @@
 @section('after-scripts-end')
     <script>
     var submission_upload = new Dropzone('div#submission_upload',
-        {url:'/dropzone/uploadFiles',
+        {url:'dropzone/uploadFiles',
         method: "post",
         });
 
