@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\FileAttachment;
 
 /**
  * Class FrontendController
@@ -21,7 +22,7 @@ public function getJSON() {
 }
 
 public function uploadFiles(Request $request) {
- 
+        $user = access()->user();
         $files = $request->file('file');
         $files_on_server = array();
         $no_of_files = count($files);
@@ -29,12 +30,18 @@ public function uploadFiles(Request $request) {
             return response()->json(array("error" => "No Files"));
         }
         else if ($no_of_files == 1) {
+            $attachment = new FileAttachment;
             $random_name = str_random(5).$files->getClientOriginalName();
             $files->move(public_path().'/uploads/',$random_name);
-            $files_on_server[] = $random_name;
+            $attachment->name = $random_name;
+            $attachment->course_id = session('current_course');
+            $attachment->user_id = $user->id;
+            $attachment->save();
+
+            $files_on_server[] = ["name" => $random_name, "id" => $attachment->id];
             //TODO: Store in database with user id
 
-            return response()->json(array("error" => "Success!", "file" => $random_name));
+            return response()->json(array("error" => "Success!", "files" => $random_name));
 
         }
         else {
@@ -43,8 +50,14 @@ public function uploadFiles(Request $request) {
                 if($file){
                     $random_name=str_random(5).$file->getClientOriginalName();
                     $file->move(public_path().'/uploads/',$random_name);
-                    $files_on_server[] = $random_name;
                     //TODO: Store in database with user id
+                    $attachment = new FileAttachment;
+                    $attachment->name = $random_name;
+                    $attachment->course_id = session('current_course');
+                    $attachment->user_id = $user->id;
+                    $attachment->save();
+
+                    $files_on_server[] = ["name" => $random_name, "id" => $attachment->id];
 
                 }
             }
