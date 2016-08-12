@@ -32,6 +32,8 @@ public function uploadFiles(Request $request) {
             $random_name = str_random(5).$files->getClientOriginalName();
             $files->move(public_path().'/uploads/',$random_name);
             $files_on_server[] = $random_name;
+            return response()->json(array("error" => "Success!", "file" => $random_name));
+
         }
         else {
             for($i=0;$i<$no_of_files;$i++) {
@@ -44,8 +46,9 @@ public function uploadFiles(Request $request) {
 
                 }
             }
+            return response()->json(array("error" => "Success!", "files" => $files_on_server));
         }
-        return response()->json(array("error" => "Success!", "files" => $files_on_server));
+
     }
 
 }
