@@ -8,7 +8,7 @@ class Team extends Model
 {
 
 	public function users() {
-        return $this->belongsToMany('App\Models\Access\User');
+        return $this->belongsToMany('App\Models\Access\User\User');
 	}
 
 }
