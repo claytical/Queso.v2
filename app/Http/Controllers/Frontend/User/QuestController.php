@@ -422,7 +422,7 @@ class QuestController extends Controller
             $attempt->files()->attach($fid);
         }
 
-        if ($request->revision > 0) {
+        if ($request->revision == 0) {
             return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted." . intval("17") . " with " . $counter);
         }
         else {
