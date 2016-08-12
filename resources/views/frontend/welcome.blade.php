@@ -35,7 +35,11 @@
                             <h4>Hours: {!! $course->office_hours !!}</h4>
                             <hr/>
                             <h5>Your Peer Group</h5>
-                            <p>{!! $team_members !!}</p>
+                            <ul class="list-unstyled">
+                                @foreach($team_members as $team_member)
+                                    <li><a href="mailto:{!! $team_member->email !!}">{!! $team_member->name !!}</a></li>
+                                @endforeach
+                            </ul>
                         </div>
                 </div>
             </div>
