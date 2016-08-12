@@ -417,14 +417,10 @@ class QuestController extends Controller
         $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
 
         for($i = 0; $i < count($request->files); $i++) {
-            $fid = $request->files[$i];
+            $fid = intval($request->files[$i]);
             $attempt->files()->attach($fid);
         }
-            return response()->json($request->all());
 
-        if($request->has('files')) {        
-//                    return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted. Files " . count($request->files));
-        }
         if ($request->revision > 0) {
             return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted.");
         }
