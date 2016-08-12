@@ -27,6 +27,7 @@
                     @if($student->id != $user->id)
                         <div class="row">
                             <div class="col-lg-6 student">
+                            
                                 {{ link_to('manage/student/'.$student->id, $student->name) }}
                             </div>
 

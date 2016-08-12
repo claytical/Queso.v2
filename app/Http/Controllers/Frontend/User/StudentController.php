@@ -11,6 +11,7 @@ use App\Threshold;
 use App\Link;
 use App\Level;
 use App\Models\Access\User\User;
+use App\Team;
 
 
 //use Vinelab\Http\Client as HttpClient;
@@ -36,10 +37,12 @@ class StudentController extends Controller
     }    
     public function detail($id) {
         //team, pending
-        $team = "blue";
         $user = User::find($id);
 
         $course = Course::find(session('current_course'));
+        $teams = $course->teams()->get();
+        $team = "blue";
+
         $course_skills = $course->skills()->get();
         $acquired_skills = [];
 
@@ -108,7 +111,22 @@ class StudentController extends Controller
             }
         }
 
-        return view('frontend.manage.student', ['student' => $user, 'total_points' => $total_points_earned, 'current_level' => $current_level, 'graded_quests' => $quests_graded, 'pending_quests' => $quests_ungraded, 'available_quests' => $quests_unlocked, 'locked_quests' => $quests_locked, 'team' => $team])
+        return view('frontend.manage.student', ['student' => $user, 'total_points' => $total_points_earned, 'current_level' => $current_level, 'graded_quests' => $quests_graded, 'pending_quests' => $quests_ungraded, 'available_quests' => $quests_unlocked, 'locked_quests' => $quests_locked, 'team' => $team, 'teams' => $teams])
             ->withUser(access()->user());
+    }
+
+    public function assign_team($student_id, $team_id) {
+        $student = User::find($student_id);
+        $student->teams()->attach($team_id, ['course_id' => session('current_course')]);
+        $team = Team::find($team_id);
+        return redirect()->route('student.detail',  ['student_id' => $student_id])->withFlashSuccess($student->name . " has been successfully assigned to " . $team->name);
+
+    }
+
+    public function remove_team($student_id) {
+        $student = User::find($student_id);
+        $student->teams()->where('course_id', session('current_course'))->detach();
+        return redirect()->route('student.detail',  ['student_id' => $student_id])->withFlashSuccess($student->name . " has been removed from their team");
+
     }
 }

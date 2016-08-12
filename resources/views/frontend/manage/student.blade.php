@@ -4,6 +4,18 @@
 
     <div class="col-lg-12">
         <h2>{!! $student->name !!}</h2>
+        <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                No Team Assignment <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                @foreach($teams as $team)
+                    <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id) !!}"</li>
+                @endforeach
+              </ul>
+            </div>
+        </div>
     </div>
     <div class="col-lg-6">
         <h4>{!! $team !!}</h4>
@@ -14,7 +26,7 @@
     <div class="col-lg-6">
         SKILL DISTRIBUTION CHART
     </div>
-    
+
 <div class="col-lg-12">
 @if($graded_quests)
     <h3>Graded Quests</h3>
