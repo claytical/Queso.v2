@@ -4,6 +4,11 @@
  * Frontend Controllers
  */
 Route::get('/', 'FrontendController@index')->name('frontend.index');
+// FILE HANDLING
+
+Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
+Route::get('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
+Route::get('json', 'DropzoneController@getJSON')->name('dropzone.json');
 
 /**
  * These frontend controllers require the user to be logged in
@@ -106,10 +111,5 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/course', 'CourseController@manage')->name('course.manage');
         Route::post('manage/course/update', 'CourseController@update')->name('course.update');
 
-// FILE HANDLING
-
-        Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
-        Route::get('dropzone/uploadFiles', 'DropzoneController@uploadFiles')->name('dropzone.upload');
-        Route::get('json', 'DropzoneController@getJSON')->name('dropzone.json');
     });
 });
