@@ -14,7 +14,7 @@
                     @endif
 
                     @if($quest->uploads)
-                        <div id="submission_upload"></div>
+                        <div id="submission_upload">Drop Files Here</div>
                     @endif
                 </div>
 
@@ -62,7 +62,10 @@
 @section('after-scripts-end')
     <script>
     var submission_upload = new Dropzone('div#submission_upload',
-        {url:'/dropzone/uploadFiles'});
+        {url:'/dropzone/uploadFiles',
+        method: "post",
+        });
+
 
     submission_upload.on("successmultiple", function(event, response) {
         console.log("SUCCESS MULTIPLE, event: " + event);
