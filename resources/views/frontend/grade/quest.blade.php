@@ -77,6 +77,7 @@
             <h6>Attached Files</h6>
             @foreach($files as $file)
               {!! link_to('public/uploads/' . $file->name, $file->name) !!}
+            @endforeach
           @endif
         @endif
 
