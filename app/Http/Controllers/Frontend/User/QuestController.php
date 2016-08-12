@@ -415,7 +415,7 @@ class QuestController extends Controller
         $attempt->revision = $request->revision;
         $attempt->save();
         $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
-
+        $attempt->files()->attach(17);
         for($i = 0; $i < count($request->files); $i++) {
             $fid = $request->files[$i];
             $attempt->files()->attach($fid);
