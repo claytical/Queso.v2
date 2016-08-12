@@ -41,7 +41,7 @@ public function uploadFiles(Request $request) {
             $files_on_server[] = ["name" => $random_name, "id" => $attachment->id];
             //TODO: Store in database with user id
 
-            return response()->json(array("error" => "Success!", "files" => $random_name));
+            return response()->json(array("error" => "Success!", "files" => $files_on_server));
 
         }
         else {
