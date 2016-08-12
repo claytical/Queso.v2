@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFile_attachmentQuestPivotTable extends Migration
+class CreateFileAttachmentQuestPivotTable extends Migration
 {
     /**
      * Run the migrations.
