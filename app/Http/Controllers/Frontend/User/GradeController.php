@@ -72,11 +72,13 @@ class GradeController extends Controller
 
     public function quest($quest_id, $attempt_id) {
         $quest = Quest::find($quest_id);
+        $files = false;
         if ($quest->quest_type_id == 1) {
             //SUBMISSION
             $attempt = Submission::find($attempt_id);
             $attempts = Submission::where('quest_id', '=', $quest->id)
                                         ->where('user_id', '=', $attempt->user_id);
+           $files = $attempt->files();
         }
         if ($quest->quest_type_id == 4) {
             //LINK
@@ -94,7 +96,8 @@ class GradeController extends Controller
                                                     'quest' => $quest, 
                                                     'skills' => $skills,
                                                     'revision_count' => $revision_count,
-                                                    'revisions' => $revisions]
+                                                    'revisions' => $revisions,
+                                                    'files' => $files]
                                                     )->withUser(access()->user());
     }
 

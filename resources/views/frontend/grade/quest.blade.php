@@ -73,10 +73,11 @@
     <div class="col-lg-12">
         @if($quest->quest_type_id == 1)
           {!! $attempt->submission !!}
-        <h6>Attached Files</h6>
-        <a href="#" class="btn btn-default">filename.pdf</a>         
-        <a href="#" class="btn btn-default">filename.pdf</a>
-        <a href="#" class="btn btn-default">filename.pdf</a>
+          @if($files)
+            <h6>Attached Files</h6>
+            @foreach($files as $file)
+              {!! link_to('public/uploads/' . $file->name, $file->name) !!}
+          @endif
         @endif
 
         @if($quest->quest_type_id == 4)
