@@ -3,17 +3,21 @@
 @section('content')
 
     <div class="col-lg-12">
+        <div class="col-lg-6">
         <h2>{!! $student->name !!}</h2>
-        <div class="pull-right">
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {!! $team !!} <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                @foreach($teams as $team)
-                    <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id, $team->name) !!}</li>
-                @endforeach
-              </ul>
+        </div>
+        <div class="col-lg-6">
+            <div class="pull-right">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {!! $team->name !!} <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    @foreach($teams as $team)
+                        <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id, $team->name) !!}</li>
+                    @endforeach
+                  </ul>
+                </div>
             </div>
         </div>
     </div>
