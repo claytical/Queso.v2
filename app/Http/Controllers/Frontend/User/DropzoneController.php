@@ -26,7 +26,7 @@ public function uploadFiles(Request $request) {
         $files_on_server = array();
         $no_of_files = count($files);
         if($no_of_files==0) {
-            return "ERROR, NO FILES!";
+            return response()->json(array("error" => "No Files"));
         }
         else if ($no_of_files == 1) {
             $random_name = str_random(5).$files->getClientOriginalName();
