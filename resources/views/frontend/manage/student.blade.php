@@ -16,6 +16,8 @@
                     @foreach($teams as $team)
                         <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id, $team->name) !!}</li>
                     @endforeach
+                        <li class="seperator"></li>
+                        <li>{!! link_to('manage/student/'.$student->id.'/team/remove', 'Remove Team Assignment') !!}</li>
                   </ul>
                 </div>
             </div>
