@@ -36,6 +36,12 @@ class CourseController extends Controller
     	$course->name = $request->name;
     	$course->description = $request->description;
     	$course->meeting = $request->meeting_time;
+        $course->meeting_location = $request->meeting_location;
+        $course->office_hours = $request->office_hours;
+        $course->instructor_display_name = $request->instructor_display_name;
+        $course->instructor_office_location = $request->instructor_office_location;
+        $course->instructor_contact = $request->instructor_contact;
+
     	if ($request->reg_code) {
     		$course->code = $request->reg_code;
 		}
@@ -265,6 +271,12 @@ class CourseController extends Controller
     	$course->name = $request->name;
     	$course->code = $request->reg_code;
     	$course->meeting = $request->meeting_time;
+        $course->meeting_location = $request->meeting_location;
+        $course->office_hours = $request->office_hours;
+        $course->instructor_display_name = $request->instructor_display_name;
+        $course->instructor_office_location = $request->instructor_office_location;
+        $course->instructor_contact = $request->instructor_contact;
+        
     	$course->save();
     	return redirect(route('course.manage'));
 
