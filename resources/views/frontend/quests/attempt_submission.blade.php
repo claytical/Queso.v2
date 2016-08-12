@@ -61,7 +61,7 @@
 
 @section('after-scripts-end')
     <script>
-    var submission_upload = $('#submission_upload').dropzone(
+    var submission_upload = new Dropzone('div#submission_upload',
         {url:'/dropzone/uploadFiles'});
 
     submission_upload.on("successmultiple", function(event, response) {
