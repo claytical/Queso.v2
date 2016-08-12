@@ -6,6 +6,7 @@
                 <h2>{!! $quest->name !!}</h2>
                 {!! $quest->instructions !!}
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
+                {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
                 {!! Form::hidden('revision', 0) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
                 <div class="form-group">
@@ -62,7 +63,7 @@
 @section('after-scripts-end')
     <script>
     var submission_upload = new Dropzone('div#submission_upload',
-        {url:'/dropzone/uploadFiles',
+        {url:'http://104.131.109.189/dropzone/uploadFiles/',
         method: "post",
         });
 
