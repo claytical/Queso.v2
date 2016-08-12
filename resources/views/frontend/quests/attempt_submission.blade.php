@@ -65,6 +65,10 @@
     var submission_upload = new Dropzone('div#submission_upload',
         {url:'http://104.131.109.189/dropzone/uploadFiles',
         method: "post",
+        sending: function(file, xhr, formData) {
+        // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
+            formData.append("_token", $('[name=_token').val()); // Laravel expect the token post value to be named _token by default
+        }
         });
 
 
