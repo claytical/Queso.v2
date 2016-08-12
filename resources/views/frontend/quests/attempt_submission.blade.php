@@ -9,7 +9,13 @@
                 {!! Form::hidden('revision', 0) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
                 <div class="form-group">
-                    {!! Form::textarea('submission', ''); !!}
+                    @if($quest->submissions)
+                        {!! Form::textarea('submission', ''); !!}
+                    @endif
+
+                    @if($quest->uploads)
+                        <div id="submission_upload"></div>
+                    @endif
                 </div>
 
                 {!! Form::submit('Submit', ['class' => 'btn btn-default']) !!}
@@ -55,21 +61,18 @@
 
 @section('after-scripts-end')
     <script>
-    Dropzone.options.myAwesomeDropzone = {
-    init: function() {
-        this.on("successmultiple", function(file, response){
-            response.forEach(function(entry) {
-                console.log(entry);
-            });
-        });
-    },
-    parallelUploads: 10000,
-    method: "post",
-    addRemoveLinks: false,
-    uploadMultiple: true,
-    paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
-    url: '/dropzone/uploadFiles'
-};
+    var submission_upload = $('#submission_upload').dropzone(
+        {url:'/dropzone/uploadFiles'});
+
+    submission_upload.on("successmultiple", function(event, response) {
+        console.log("SUCCESS MULTIPLE, event: " + event);
+        console.log("SUCCESS MULTIPLE, response: " + response);
+    });
+
+    submission_upload.on("success", function(event, response) {
+        console.log("SUCCESS MULTIPLE, event: " + event);
+        console.log("SUCCESS MULTIPLE, response: " + response);
+    });
+
     </script>
 @stop

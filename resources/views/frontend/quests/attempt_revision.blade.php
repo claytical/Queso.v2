@@ -8,15 +8,22 @@
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
                 {!! Form::hidden('revision', $previous_attempt->revision + 1) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
-                <div class="form-group">
                     @if($quest->quest_type_id == 1)
-                        {!! Form::textarea('submission', $previous_attempt->submission); !!}
+
+                        <div class="form-group">
+                            @if($quest->submissions)
+                                {!! Form::textarea('submission', $previous_attempt->submission); !!}
+                            @endif
+                        @if($quest->uploads)
+                            <div id="submission_upload"></div>
+                        @endif
+                        </div>
                     @endif
                     @if($quest->quest_type_id == 4)
+                        <div class="form-group">
                         {!! Form::text('link', null); !!}
+                        </div>
                     @endif
-
-                </div>
 
                 {!! Form::submit('Submit Revision', ['class' => 'btn btn-default']) !!}
 
@@ -70,6 +77,21 @@
 
 @section('after-scripts-end')
     <script>
+
+    var submission_upload = $('#submission_upload').dropzone(
+        {url:'/dropzone/uploadFiles'});
+
+    submission_upload.on("successmultiple", function(event, response) {
+        console.log("SUCCESS MULTIPLE, event: " + event);
+        console.log("SUCCESS MULTIPLE, response: " + response);
+    });
+
+    submission_upload.on("success", function(event, response) {
+        console.log("SUCCESS MULTIPLE, event: " + event);
+        console.log("SUCCESS MULTIPLE, response: " + response);
+    });
+
+/*    
     Dropzone.options.myAwesomeDropzone = {
     init: function() {
         this.on("successmultiple", function(file, response){
@@ -85,6 +107,7 @@
     paramName: "file", // The name that will be used to transfer the file
     maxFilesize: 2, // MB
     url: '/dropzone/uploadFiles'
-};
+};*/
+
     </script>
 @stop
