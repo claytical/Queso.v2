@@ -53,7 +53,7 @@
                         <div class="col-lg-3 points">
                             {!! $quest['earned'] !!} / {!! $quest['available'] !!}
                         </div>
-
+                    @endforeach
                     </li>
                 </ul>
             </div>
