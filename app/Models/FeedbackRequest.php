@@ -20,6 +20,6 @@ class FeedbackRequest extends Model
     }
 
     public function sender() {
-    	return $this->hasOne('App\Models\Access\User', 'from_user_id');
+    	return $this->hasOne('App\Models\Access\User\User', 'from_user_id');
     }
 }
