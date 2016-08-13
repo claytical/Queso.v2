@@ -50,23 +50,14 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">Peer Feedback Requests</div>
                   <div class="panel-body">
-                @foreach($feedback_requests as $feedback_request)
-
-                @endforeach
-                  {!! var_dump($feedback_requests) !!}
-                    <h4>Quest Name</h4>
-
-                    <ul class="list-unstyled">
-                        <li>{{ link_to('review/1', 'Edward Sharp') }}</li>
-                        <li>{{ link_to('review/2', 'Joan Dawson') }}</li>
-                    </ul>
-
-                    <h4>Quest Name</h4>
-
-                    <ul class="list-unstyled">
-                        <li>{{ link_to('review/3', 'Donny Walker') }}</li>
-                        <li>{{ link_to('review/4', 'Sally Fields') }}</li>
-                    </ul>
+                        @foreach($feedback_requests as $feedback_request)
+                            <h4>{!! $feedback_request->quest_name !!}</h4>
+                                <ul>
+                                @foreach($feedback_request->requests as $request)
+                                    <li>{{ link_to('review/'.$feedback_request->quest_id.'/'.$request->sender->id, $request->sender->name) }}</li>
+                                @endforeach
+                                </ul>
+                        @endforeach
 
                   </div>
                 </div>            
