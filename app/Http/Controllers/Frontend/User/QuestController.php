@@ -595,7 +595,9 @@ class QuestController extends Controller
             //SUBMISSION
             $attempt = Submission::where('quest_id', '=', $quest->id)
                                         ->where('user_id', '=', $user_id);
-            $files = $attempt->files;
+            if ($attempt->files) {
+                $files = $attempt->files;
+            }
         }
         if ($quest->quest_type_id == 4) {
             //LINK
@@ -603,7 +605,7 @@ class QuestController extends Controller
                                         ->where('user_id', '=', $user_id);
         }
 
-    	return view('frontend.quests.give_feedback', ['quest' => $quest, 'attempt' => $attempt, 'user' => $user]);
+    	return view('frontend.quests.give_feedback', ['quest' => $quest, 'attempt' => $attempt, 'user' => $user, 'files' => $files]);
 
     }
 
