@@ -196,8 +196,7 @@
     <div id="file_attachments" style="display:none;">
         <div class="row">
                 <div class="col-lg-12">
-                    {!! Form::open(['url' => 'dropzone/uploadFiles', 'class' => 'dropzone', 'files'=>true, 'id'=>'my-awesome-dropzone']) !!}
-                    {!! Form::close() !!}
+                    <div id="quest_uploads">Drop Files Here</div>
                 </div>
                       <div class="form-group">
                         <button type="button" class="btn btn-default" id="set_files">Next</button>
@@ -451,6 +450,43 @@
         $("#finished").show();
     });
 
+    var quest_upload = new Dropzone('div#quest_upload',
+        {url:'/dropzone/uploadFiles',
+        method: "post"
+        });
+
+    quest_upload.on('sending', function(file, xhr, formData){
+            var tok = $('input[name="_token"]').val();
+            console.log("Appending Token " + tok)
+            formData.append('_token', tok);
+        });
+
+    quest_upload.on("successmultiple", function(event, response) {
+        console.log("MULTIPLE");
+
+        for (var i = 0, len = response.files.length; i < len; i++) {
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'files',
+                value: response.files[i].id,
+                name: 'files[]'
+            }).appendTo(qf);
+        }
+
+    });
+
+    quest_upload.on("success", function(event, response) {
+        for (var i = 0, len = response.files.length; i < len; i++) {
+            $('<input>').attr({
+                type: 'number',
+                id: 'file' + i,
+                value: parseInt(response.files[i].id),
+                name: 'files[]',
+                style: 'display:none;'
+            }).appendTo(qf);
+        }
+
+    });
 
 
 

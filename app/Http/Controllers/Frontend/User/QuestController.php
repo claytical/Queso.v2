@@ -177,6 +177,14 @@ class QuestController extends Controller
                 $threshold->save();
             }
         }        
+//FILES
+        if($request->has('files')) {
+            $files = $request->input('files');
+            for($i = 0; $i < count($files); $i++) {
+                $quest->files()->attach($files[$i]);
+            }
+        }
+
 
         $quest->save();
         //session->flash('flash_success', );
@@ -336,7 +344,17 @@ class QuestController extends Controller
                 $threshold->amount = $request->threshold[$i];
                 $threshold->save();
             }
-        }        
+        }     
+
+//files
+        if($request->has('files')) {
+            $files = $request->input('files');
+            for($i = 0; $i < count($files); $i++) {
+                $quest->files()->attach($files[$i]);
+            }
+        }
+
+
 
         return redirect()->route('quests.manage')->withFlashSuccess($quest->name . " has been successfully created.");
 
