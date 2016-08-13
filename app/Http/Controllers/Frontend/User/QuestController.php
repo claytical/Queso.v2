@@ -437,7 +437,7 @@ class QuestController extends Controller
         $attempt->save();
         $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
         if ($quest->peer_feedback) {
-            $team = $user->teams()->where('course_id', session('current_course'))->first();
+            $team = $user->teams()->where('team_user.course_id', session('current_course'))->first();
             if ($team) {
                 $members = $team->users()->where('user_id', '!=', $user->id)->get();
                 foreach($members as $member) {
