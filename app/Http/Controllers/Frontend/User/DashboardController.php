@@ -9,7 +9,7 @@ use App\Content;
 use App\Course;
 use App\Notice;
 use DB;
-use App\Models\Access\User\User;
+use App\Models\Access\User;
 use App\FeedbackRequest;
 use App\Quest;
 
