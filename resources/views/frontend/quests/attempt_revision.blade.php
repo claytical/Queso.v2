@@ -68,7 +68,12 @@
                     <h4>Due {!! $quest->expires_at !!}</h4>
                 @endif
 
-
+                @if($files)
+                    <h4>Previously Submitted Files</h4>
+                    @foreach($files as $file)
+                        {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+                    @endforeach
+                @endif
             </div>
             
         </div>

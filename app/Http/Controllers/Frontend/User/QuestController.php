@@ -476,9 +476,8 @@ class QuestController extends Controller
     public function revise_submission($quest_id) {
         $quest = Quest::find($quest_id);
         $user = access()->user();
-
         $skills = $quest->skills()->get();
-        
+        $files = false;
         if ($quest->quest_type_id == 1) {
             //submission
             $previous_attempt = Submission::where('quest_id', '=', $quest_id)
@@ -486,6 +485,7 @@ class QuestController extends Controller
   //                                          ->where('graded', '=', true)
                                             ->orderBy('revision')
                                             ->first();
+            $files = $previous_attempt->files;
         }
         if ($quest->quest_type_id == 4) {
             //link
