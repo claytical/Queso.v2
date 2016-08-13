@@ -90,10 +90,11 @@
     submission_upload.on("success", function(event, response) {
         for (var i = 0, len = response.files.length; i < len; i++) {
             $('<input>').attr({
-                type: 'hidden',
-                id: 'files',
+                type: 'number',
+                id: 'file' + i,
                 value: parseInt(response.files[i].id),
-                name: 'files[]'
+                name: 'files[]',
+                style: 'display:none;'
             }).appendTo('form');
         }
 
