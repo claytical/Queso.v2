@@ -48,7 +48,8 @@ class ResourceController extends Controller
 
     public function details($id) {
         $resource = Content::find($id);
-        return view('frontend.manage.resources.details', ['resource' => $resource])
+        $files = $resource->files;
+        return view('frontend.manage.resources.details', ['resource' => $resource, 'files' => $files])
             ->withUser(access()->user());
 
     }
@@ -64,6 +65,12 @@ class ResourceController extends Controller
         }
         
         $resource->save();
+        if($request->has('files')) {
+            $files = $request->input('files');
+            for($i = 0; $i < count($files); $i++) {
+                $resource->files()->attach($files[$i]);
+            }
+        }        
         return view('frontend.manage.resources.created')
             ->withUser(access()->user());
 
@@ -82,6 +89,12 @@ class ResourceController extends Controller
         }
 
         $resource->save();
+        if($request->has('files')) {
+            $files = $request->input('files');
+            for($i = 0; $i < count($files); $i++) {
+                $quest->files()->attach($files[$i]);
+            }
+        }        
         return view('frontend.manage.resources.updated', ['resource' => $resource])
             ->withUser(access()->user());
 
