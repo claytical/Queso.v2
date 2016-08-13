@@ -56,6 +56,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Feedback', 'from_user_id');
     }
 
+    public function feedback_requests() {
+        return $this->hasMany('App\FeedbackRequest');
+    }
+
+    public function feedback_requests_sent() {
+        return $this->hasMany('App\FeedbackRequest', 'from_user_id');
+    }
+
     public function submissions() {
         return $this->belongsToMany('App\Submission');        
     }

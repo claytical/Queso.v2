@@ -22,6 +22,10 @@ class Quest extends Model
         return $this->hasMany('App\Feedback');
     }
 
+    public function feedback_requests() {
+        return $this->hasMany('App\FeedbackRequest');
+    }
+
     public function files() {
         return $this->belongsToMany('App\FileAttachment');
     }

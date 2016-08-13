@@ -19,6 +19,10 @@ class Course extends Model
         return $this->hasMany('App\Announcement');
     }
 
+    public function feedback_requests() {
+        return $this->hasMany('App\FeedbackRequest');
+    }
+
     public function tags() {
         return $this->hasManyThrough('App\Tag', 'App\Content');
     }
