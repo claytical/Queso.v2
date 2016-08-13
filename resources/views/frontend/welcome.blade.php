@@ -50,6 +50,7 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">Peer Feedback Requests</div>
                   <div class="panel-body">
+                    @if($feedback_requests)
                         @foreach($feedback_requests as $feedback_request)
                             <h5>{!! $feedback_request->quest_name !!}</h5>
                                 <ul class="unstyled-list">
@@ -58,7 +59,9 @@
                                 @endforeach
                                 </ul>
                         @endforeach
-
+                    @else
+                        <p>No current requests for feedback</p>
+                    @endif
                   </div>
                 </div>            
             </div>
