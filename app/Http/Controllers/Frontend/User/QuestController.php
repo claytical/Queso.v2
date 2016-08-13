@@ -615,7 +615,7 @@ class QuestController extends Controller
     }
 
     public function submit_feedback(Request $request) {
-        $user = access()->user;
+        $user = access()->user();
         $feedback_positive = new Feedback;
         $feedback_positive->quest_id = $request->quest_id;
         $feedback_positive->to_user_id = $request->to_user_id;
