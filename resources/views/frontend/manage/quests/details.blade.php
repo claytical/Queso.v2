@@ -122,7 +122,9 @@
 
 </div>
         <div role="files" class="tab-pane" id="files">
-                 
+            @foreach($files as $file)
+              {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+            @endforeach
         </div>
  
 

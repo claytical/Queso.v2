@@ -94,10 +94,12 @@ class QuestController extends Controller
         $skills = $quest->skills()->get();
         $thresholds = $quest->thresholds()->with('skill')->get();
         $codes = $quest->redemption_codes()->get();
+        $files = $quest->files;
         return view('frontend.manage.quests.details', ['quest' => $quest, 
                                                         'skills' => $skills, 
                                                         'thresholds' => $thresholds,
-                                                        'codes' => $codes])
+                                                        'codes' => $codes,
+                                                        'files' => $files])
             ->withUser(access()->user());
 
     }
