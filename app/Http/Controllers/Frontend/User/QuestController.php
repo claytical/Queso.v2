@@ -501,7 +501,7 @@ class QuestController extends Controller
 
         $existing_skills = $existing_skills->get();
 
-        return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills, 'total' => $total_points])
+        return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills, 'total' => $total_points, 'files' => $files])
             ->withUser(access()->user());
     }
 
