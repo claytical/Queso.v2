@@ -54,7 +54,7 @@
                             <h5>{!! $feedback_request->quest_name !!}</h5>
                                 <ul class="unstyled-list">
                                 @foreach($feedback_request->requests as $request)
-                                    <li>{{ link_to('review/'.$feedback_request->quest_id.'/'.$request->sender->id, $request->sender->name) }}</li>
+                                    <li>{{ link_to('review/'.$feedback_request->quest_id.'/'.$request->sender->id.'/'.$request->revision, $request->sender->name) }}</li>
                                 @endforeach
                                 </ul>
                         @endforeach

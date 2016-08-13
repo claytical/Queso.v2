@@ -587,14 +587,16 @@ class QuestController extends Controller
     		->withUser(access()->user());
     }
 
-    public function give_feedback($quest_id, $user_id) {
+    public function give_feedback($quest_id, $user_id, $revision) {
         $quest = Quest::find($quest_id);
         $user = User::find($user_id);
         $files = false;
         if ($quest->quest_type_id == 1) {
             //SUBMISSION
             $attempt = Submission::where('quest_id', '=', $quest->id)
-                                        ->where('user_id', '=', $user_id);
+                                        ->where('user_id', '=', $user_id)
+                                        ->where('revision', '=', $revision)
+                                        ->first();
             if ($attempt->files) {
                 $files = $attempt->files;
             }
@@ -602,7 +604,9 @@ class QuestController extends Controller
         if ($quest->quest_type_id == 4) {
             //LINK
             $attempt = Link::where('quest_id', '=', $quest->id)
-                                        ->where('user_id', '=', $user_id);
+                                        ->where('user_id', '=', $user_id)
+                                        ->where('revision', '=', $revision)
+                                        ->first();
         }
 
     	return view('frontend.quests.give_feedback', ['quest' => $quest, 'attempt' => $attempt, 'user' => $user, 'files' => $files]);
