@@ -418,8 +418,9 @@ class QuestController extends Controller
         $files = "";
         if($request->has('files')) {
             for($i = 0; $i < count($request->files); $i++) {
-                $attempt->files()->attach($request->files[$i]);
+//                $attempt->files()->attach($request->files[$i]);
             }
+            $attempt->files()->attach($request->files[0]);
             $files = "HAS FILES!";
         }
  
