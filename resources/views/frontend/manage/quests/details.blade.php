@@ -67,6 +67,11 @@
 
         @endforeach
         </div>
+        <div role="files" class="tab-pane" id="files">
+            @foreach($files as $file)
+              {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+            @endforeach
+        </div>        
      </div>
 
     </div>
@@ -121,11 +126,7 @@
     {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
 </div>
-        <div role="files" class="tab-pane" id="files">
-            @foreach($files as $file)
-              {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
-            @endforeach
-        </div>
+        
  
 
 
