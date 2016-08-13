@@ -39,7 +39,7 @@ class DashboardController extends Controller
 
         $quests_needing_feedback = Quest::whereIn('id', $feedback_request_quest_ids)->get();
         $feedback = [];
-/*
+
         foreach($quests_needing_feedback as $quest) {
             //quest name, quest id, revision, sender name
             $feedback_request = new \stdClass;
@@ -50,6 +50,7 @@ class DashboardController extends Controller
                                                     ->where('fulfilled', '=' false)
                                                     ->get();
             $requests = [];
+            /*
             foreach($feedback_requests as $request) {
                 $freq = new \stdClass;
                 $freq->sender = $request->sender()->name;
@@ -59,8 +60,9 @@ class DashboardController extends Controller
             }
             $feedback_request->requests = $requests;
             $feedback[] = $feedback_request;
+            */
         }
-*/
+
         $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
         $course = Course::find(session('current_course'));
         $team = $user->teams()
