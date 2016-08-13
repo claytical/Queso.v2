@@ -14,7 +14,7 @@
                             @if($quest->submissions)
                                 {!! Form::textarea('submission', $previous_attempt->submission); !!}
                             @endif
-                        @if($quest->uploads)
+                        @if($quest->uploads)                        
                             <div id="submission_upload">Drop Files Here</div>
                         @endif
                         </div>
@@ -78,37 +78,42 @@
 @section('after-scripts-end')
     <script>
     var submission_upload = new Dropzone('div#submission_upload',
-        {url:'/dropzone/uploadFiles',
-        method: "post",
+        {url:'http://104.131.109.189/dropzone/uploadFiles',
+        method: "post"
+        });
+
+    submission_upload.on('sending', function(file, xhr, formData){
+            var tok = $('input[name="_token"]').val();
+            console.log("Appending Token " + tok)
+            formData.append('_token', tok);
         });
 
     submission_upload.on("successmultiple", function(event, response) {
-        console.log("SUCCESS MULTIPLE, event: " + event);
-        console.log("SUCCESS MULTIPLE, response: " + response);
+        console.log("MULTIPLE");
+
+        for (var i = 0, len = response.files.length; i < len; i++) {
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'files',
+                value: response.files[i].id,
+                name: 'files[]'
+            }).appendTo('form');
+        }
+
     });
 
     submission_upload.on("success", function(event, response) {
-        console.log("SUCCESS MULTIPLE, event: " + event);
-        console.log("SUCCESS MULTIPLE, response: " + response);
-    });
+        for (var i = 0, len = response.files.length; i < len; i++) {
+            $('<input>').attr({
+                type: 'number',
+                id: 'file' + i,
+                value: parseInt(response.files[i].id),
+                name: 'files[]',
+                style: 'display:none;'
+            }).appendTo('form');
+        }
 
-/*    
-    Dropzone.options.myAwesomeDropzone = {
-    init: function() {
-        this.on("successmultiple", function(file, response){
-            response.forEach(function(entry) {
-                console.log(entry);
-            });
-        });
-    },
-    parallelUploads: 10000,
-    method: "post",
-    addRemoveLinks: false,
-    uploadMultiple: true,
-    paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
-    url: '/dropzone/uploadFiles'
-};*/
+    });
 
     </script>
 @stop
