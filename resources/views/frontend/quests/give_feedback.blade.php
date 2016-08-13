@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             {!! Form::open(array('url' => 'quest/feedback')) !!}
-            {!! Form::hidden('to_user_id', $user->id) !!}
+            {!! Form::hidden('user_id', $user->id) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}
             {!! Form::hidden('revision', $attempt->revision) !!}
             {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}
