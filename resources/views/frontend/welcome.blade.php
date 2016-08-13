@@ -50,6 +50,11 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">Peer Feedback Requests</div>
                   <div class="panel-body">
+                @foreach($feedback_requests as $feedback_request)
+                    <p>{!! $feedback_request->quest()->name !!}</p>                    
+                    <p>{!! $feedback_request->sender()->name !!}</p>                    
+
+                @endforeach
                   {!! var_dump($feedback_requests) !!}
                     <h4>Quest Name</h4>
 
