@@ -50,6 +50,7 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">Peer Feedback Requests</div>
                   <div class="panel-body">
+                  {!! var_dump($feedback_requests) !!}
                     <h4>Quest Name</h4>
 
                     <ul class="list-unstyled">

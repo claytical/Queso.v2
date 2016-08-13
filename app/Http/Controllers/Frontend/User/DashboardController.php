@@ -10,6 +10,7 @@ use App\Course;
 use App\Notice;
 use DB;
 use App\Models\Access\User\User;
+use App\FeedbackRequest;
 
 /**
  * Class DashboardController
@@ -27,6 +28,9 @@ class DashboardController extends Controller
                         ->whereNull('received')
 //                      ->where('course_id', '=', session('current_course'))
                         ->get();
+        $feedback_requests = FeedbackRequest::where('user_id', '=', $user->id)
+                                                ->where('fulfilled', '=', false)
+                                                ->get();
         $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
         $course = Course::find(session('current_course'));
         $team = $user->teams()
@@ -45,6 +49,7 @@ class DashboardController extends Controller
                                           'total_points' => $total_points_earned,
                                             'course' => $course,
                                             'notifications' => $notifications,
+                                            'feedback_requests' => $feedback_requests,
                                             'team_members' => $team_users])
                                             ->withUser(access()->user());
     }
