@@ -11,6 +11,7 @@ use App\Notice;
 use DB;
 use App\Models\Access\User\User;
 use App\FeedbackRequest;
+use App\Quest;
 
 /**
  * Class DashboardController
