@@ -20,7 +20,8 @@ class ResourceController extends Controller
      */
     public function by_id($id) {
         $resource = Content::find($id);
-        return view('frontend.resources.view', ['resource' => $resource])
+        $files = $resource->files;
+        return view('frontend.resources.view', ['resource' => $resource, 'files' => $files])
             ->withUser(access()->user());
     }
 
@@ -28,6 +29,7 @@ class ResourceController extends Controller
         $category = str_replace(" ", "-", $category);
         $resources = Content::where('course_id', '=', session('current_course'))
                             ->where('tag', '=', $category)
+                            ->with('files')
                             ->get();
         return view('frontend.resources.category', ['resources' => $resources, 'title' => $category])
             ->withUser(access()->user());

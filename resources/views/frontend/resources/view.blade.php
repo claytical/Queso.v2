@@ -11,12 +11,13 @@
             <div>
                 <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>
             </div>
-
-            <h6>Attached Files</h6>
-            <a href="#" class="btn btn-default">filename.pdf</a>         
-            <a href="#" class="btn btn-default">filename.pdf</a>
-            <a href="#" class="btn btn-default">filename.pdf</a>
-        </div>
+            @if($files)
+                <h6>Attached Files</h6>
+                @foreach($files as $file)
+                    {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+                @endforeach 
+            @endif
+           </div>
 </div>
 
 @endsection
