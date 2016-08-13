@@ -17,6 +17,7 @@ use App\Level;
 use App\Course;
 use App\Models\Access\User\User;
 use App\FeedbackRequest;
+use App\Feedback;
 
 /**
  * Class QuestController
@@ -597,9 +598,9 @@ class QuestController extends Controller
                                         ->where('user_id', '=', $user_id)
                                         ->where('revision', '=', $revision)
                                         ->first();
-            if ($attempt->files) {
-                $files = $attempt->files;
-            }
+            
+            $files = $attempt->files;
+            
         }
         if ($quest->quest_type_id == 4) {
             //LINK
@@ -613,7 +614,33 @@ class QuestController extends Controller
 
     }
 
-    public function submit_feedback() {
+    public function submit_feedback(Request $request) {
+        $user = access()->user;
+        $feedback_positive = new Feedback;
+        $feedback_positive->quest_id = $request->quest_id;
+        $feedback_positive->to_user_id = $request->to_user_id;
+        $feedback_positive->from_user_id = $user->id;
+        $feedback_positive->revision = $request->revision;
+        $feedback_positive->subtype = 2;
+        $feedback_positive->note = $request->liked;
+        $feedback_positive->save();
+
+        $feedback_negative = new Feedback;
+        $feedback_negative->quest_id = $request->quest_id;
+        $feedback_negative->to_user_id = $request->to_user_id;
+        $feedback_negative->from_user_id = $user->id;
+        $feedback_negative->revision = $request->revision;
+        $feedback_negative->subtype = 2;
+        $feedback_negative->note = $request->suggestions;
+        $feedback_negative->save();
+        
+        $feedback_request = FeedbackRequest::where('user_id', '=', $request->to_user_id)
+                                            ->where('from_user_id', '=', $user_id)
+                                            ->where('quest_id', '=', $request->quest_id)
+                                            ->where('revision', '=', $request->revision)
+                                            ->first();
+        $feedback_request->fulfilled = true;
+        $feedback_request->save();
     	return view('frontend.quests.feedback_submitted')
     		->withUser(access()->user());
 

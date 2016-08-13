@@ -9,7 +9,7 @@
             @if($quest->quest_type_id == 1)
                 {!! $attempt->submission !!}
                 @if($files)
-                <h6>Attached Files</h6>
+                    <h6>Attached Files</h6>
                     @foreach($files as $file)
                         {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
                     @endforeach
@@ -28,7 +28,9 @@
         </div>
         <div class="row">
             {!! Form::open(array('url' => 'quest/feedback')) !!}
-    
+            {!! Form::hidden('to_user_id', $user->id) !!}
+            {!! Form::hidden('quest_id', $quest->id) !!}
+            {!! Form::hidden('revision', $attempt->revision) !!}
             {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}
 
         </div>
