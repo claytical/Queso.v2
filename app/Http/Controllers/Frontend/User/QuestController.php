@@ -16,6 +16,7 @@ use App\Redemption;
 use App\Level;
 use App\Course;
 use App\Models\Access\User\User;
+use App\FeedbackRequest;
 
 /**
  * Class QuestController
@@ -435,6 +436,24 @@ class QuestController extends Controller
         $attempt->revision = $request->revision;
         $attempt->save();
         $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
+        if ($quest->peer_feedback) {
+            $team = $user->teams()->where('course_id', session('current_course'))->first();
+            if ($team) {
+                $members = $team->users()->where('user_id', '!=', $user->id)->get();
+                foreach($members as $member) {
+                    //SEND FEEDBACK REQUEST
+                    $feedback_request = new FeedbackRequest;
+                    $feedback_request->user_id = $member->id;
+                    $feedback_request->from_user_id = $user->id;
+                    $feedback_request->quest_id = $quest->id;
+                    $feedback_request->revision = $request->revision;
+                    $feedback_request->course_id = session('current_course');
+                    $feedback_request->fulfilled = false;
+                    $feedback_request->save();
+                }
+            }
+        }
+
         if($request->has('files')) {
             $files = $request->input('files');
             for($i = 0; $i < count($files); $i++) {
