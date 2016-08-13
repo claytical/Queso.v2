@@ -635,7 +635,7 @@ class QuestController extends Controller
         $feedback_negative->save();
         
         $feedback_request = FeedbackRequest::where('user_id', '=', $request->to_user_id)
-                                            ->where('from_user_id', '=', $user_id)
+                                            ->where('from_user_id', '=', $user->id)
                                             ->where('quest_id', '=', $request->quest_id)
                                             ->where('revision', '=', $request->revision)
                                             ->first();
