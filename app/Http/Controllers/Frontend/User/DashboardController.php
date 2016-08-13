@@ -53,7 +53,7 @@ class DashboardController extends Controller
             
             foreach($feedback_requests as $request) {
                 $freq = new \stdClass;
-                $freq->sender = $request->sender();
+                $freq->sender = $request->sender()->first();
                 $freq->from_user_id = $request->from_user_id;
                 $freq->revision = $request->revision;
                 $requests[] = $freq;
