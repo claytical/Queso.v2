@@ -2,11 +2,25 @@
 
 @section('content')
 <h2>Peer Feedback</h2>
-<h3>Quest Name, Student Name</h3>
+<h3>{!! $quest->name !!}, {!! $user->name !!}</h3>
     <div class="col-lg-12">
+
         <div class="row">
-            <div><div style="width: 100%; height: 0px; position: relative; padding-bottom: 56.2493%;"><iframe src="//player.vimeo.com/video/176459945?byline=0&badge=0&portrait=0&title=0" frameborder="0" allowfullscreen style="width: 100%; height: 100%; position: absolute;"></iframe></div></div>
+            @if($quest->quest_type_id == 1)
+                {!! $attempt->submission !!}
+                @if($files)
+                <h6>Attached Files</h6>
+                    @foreach($files as $file)
+                        {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+                    @endforeach
+                @endif
+            @endif
+
+            @if($quest->quest_type_id == 4)
+              <a href="{{ $attempt->url }}" data-iframely-url>{{ $attempt->url }}</a>
+            @endif
         </div>
+
         <div class="row">
 
             <h4>What did you like?</h4>

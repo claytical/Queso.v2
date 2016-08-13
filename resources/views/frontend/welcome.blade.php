@@ -51,8 +51,8 @@
                   <div class="panel-heading">Peer Feedback Requests</div>
                   <div class="panel-body">
                         @foreach($feedback_requests as $feedback_request)
-                            <h4>{!! $feedback_request->quest_name !!}</h4>
-                                <ul>
+                            <h5>{!! $feedback_request->quest_name !!}</h5>
+                                <ul class="unstyled-list">
                                 @foreach($feedback_request->requests as $request)
                                     <li>{{ link_to('review/'.$feedback_request->quest_id.'/'.$request->sender->id, $request->sender->name) }}</li>
                                 @endforeach
