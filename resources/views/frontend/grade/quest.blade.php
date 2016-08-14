@@ -70,7 +70,7 @@
     <div class="col-lg-12">
         @if($quest->quest_type_id == 1)
           {!! $attempt->submission !!}
-          @if($files)
+          @if(!$files->isEmpty())
             <h6>Attached Files</h6>
             @foreach($files as $file)
               {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
