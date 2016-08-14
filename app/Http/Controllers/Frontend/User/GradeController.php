@@ -116,7 +116,7 @@ class GradeController extends Controller
                                                     'files' => $files,
                                                     'positive_feedback' => $positive_feedback,
                                                     'negative_feedback' => $negative_feedback,
-                                                    'previous_feedack' => $previous_feedack]
+                                                    'previous_feedback' => $previous_feedback]
                                                     )->withUser(access()->user());
     }
 
