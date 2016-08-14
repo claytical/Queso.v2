@@ -83,7 +83,7 @@
         {{ Html::script('js/vendor/bootstrap/bootstrap-select.min.js')}}
         <script>
         $( document ).ready(function() {
-            $('#course_dropdown').selectpicker();
+            $('select[name=default_course]').selectpicker();
         });
         </script>  
         @yield('before-scripts-end')
