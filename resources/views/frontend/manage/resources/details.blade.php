@@ -10,7 +10,7 @@
     {{ Form::input('text', 'title', $resource->title, ['class' => 'form-control', 'placeholder' => 'Syllabus', 'id' => 'title']) }}
     {{ Form::hidden('id', $resource->id) }}
 
-    {!! Form::textarea('description', $resource->description, ['class' => 'field', 'files' => true]) !!}
+    {!! Form::textarea('description', $resource->description, ['class' => 'field', 'files' => false]) !!}
 
 </div>
 
@@ -21,7 +21,10 @@
    	{{ Form::input('text', 'link', $resource->link, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
 
     @foreach($files as $file)
-      {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+        <div class="input-group-btn">
+            {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+            {!! link_to('file/remove/' . $file->id, "x", ['class' => 'btn btn-danger']) !!}
+        </div>
     @endforeach
 
     <div id="resource_upload">Drop Files Here</div>
