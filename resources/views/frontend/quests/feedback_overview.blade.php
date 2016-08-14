@@ -14,7 +14,7 @@
                             <p>{!! $received->fulfilled !!} peers have submitted feedback!</p>
                         @endif
                     @else
-                        <h4>{!! $received->quest_name) !!}</h4>
+                        <h4>{!! $received->quest_name !!}</h4>
                         <p>No one has submitted feedback yet.</p>
                     @endif
 
