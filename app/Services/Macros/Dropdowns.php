@@ -33,7 +33,7 @@ trait Dropdowns
 
     public function courseList() {
         $user = access()->user();
-        return $user->courses()->lists('course_id', 'course.name');
+        return $user->courses()->lists('id', 'name');
     }
 
     public function categoryResourceList() {
