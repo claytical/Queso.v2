@@ -20,6 +20,7 @@
 
         </div>
         <div class="col-lg-3">
+            @if($graded)
             <div class="col-lg-9">
                 Listening Skill
             </div>
@@ -27,25 +28,11 @@
             <div class="col-lg-3">
                 10/15
             </div>
-
-            <div class="col-lg-9">
-                Speaking Skill
-            </div>
-            
-            <div class="col-lg-3">
-                15/20
-            </div>
+            @else
             <div class="col-lg-12">
-                <hr/>
+                <h3><span class="label label-danger">UNGRADED</span></h3>
             </div>
-            <div class="col-lg-9">
-                Total Points
-            </div>
-            
-            <div class="col-lg-3">
-                25/35
-            </div>
-
+            @endif
 
         </div>  
     </div>
@@ -63,17 +50,18 @@
                 <h4>Suggestions From Your Peers</h4>
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
-                        <h6>{!! $feedback->from_user_id !!}</h6>
+                        <h6>{!! $feedback->user_from->name !!}</h6>
                         {!! $feedback->note !!} <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a>
 
                     </div>    
                 @endforeach
             @endif
+            @if($graded)
             <div class="col-lg-12">
                 <h4>From The Professor</h4>
                 <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a></p>
             </div>
-
+            @endif
 @endsection
 
 @section('after-scripts-end')
