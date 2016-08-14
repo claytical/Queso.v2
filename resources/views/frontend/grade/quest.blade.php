@@ -47,7 +47,7 @@
             </div>
             @if($revision_count > 1)
               <div role="tabpanel" class="tab-pane" id="previous_feedback">
-                  @foreach($instructor_feedback as $feedback)
+                  @foreach($previous_feedback as $feedback)
                   <blockquote>
                     {!! $feedback->note !!}
                     <footer>Revision #{!! $feedback->revision !!} <cite title="Source Title">{!! $feedback->created_at !!}</cite></footer>
