@@ -22,8 +22,15 @@ public function getJSON() {
 }
 
 public function removeFile($id) {
-    
-    return redirect()->back()->withFlashSuccess("File has been removed.");
+    $file = FileAttachment::find($id);
+    if ($file->user_id == access()->user()->id) {
+        $file->delete();
+        return redirect()->back()->withFlashSuccess("File has been removed.");
+
+    }
+    else {
+        return redirect()->back()->withFlashDanger("File could not be removed.");
+    }
 
 }
 
