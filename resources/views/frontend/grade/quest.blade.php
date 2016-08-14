@@ -98,7 +98,7 @@
         @if($negative_feedback)
           <h5>Areas for Improvement</h5>
 
-            @foreach($positive_feedback as $feedback)
+            @foreach($negative_feedback as $feedback)
 
               <blockquote>
                 {!! $feedback->note !!}
