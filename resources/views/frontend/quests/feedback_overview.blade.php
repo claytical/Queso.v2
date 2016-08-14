@@ -1,10 +1,8 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Feedback Received</h2>
-
-        <div class="col-lg-12">
-            <div class="row">
+        <div class="col-lg-6">
+            <h2>Feedback Received</h2>
                 @foreach($feedback_received as $received)
                     @if($received->fulfilled > 0)
                         <h4>{{ link_to('quest/'.$received->quest_id.'/feedback', $received->quest_name) }}</h4>
@@ -20,36 +18,26 @@
 
                     @if($received->pending > 0)
                         <h5>Waiting On</h5>
-                            <ul class="unstyled-list">
+                            <ul class="list-unstyled">
                             @foreach($received->requests as $request)
                                 <li>{!! $request->sender->name!!}</li>                                
                             @endforeach
                             </ul>
                     @endif
                 @endforeach
-            </div>  
+
         </div>
 
-<h2>Feedback Requested</h2>
-        <div class="col-lg-12">
-        {!! var_dump($feedback_requested) !!}
-            <div class="row">
-                <h4>Quest #1</h4>
-                <ul class="list-unstyled">
-                    <li>{{ link_to('review/1', 'Edward Sharp') }}</li>
-                    <li>{{ link_to('review/2', 'Dolly Dawkins') }}</li>
-                </ul>
-                
-                
-            </div>  
-            <div class="row">
-                <h4>Quest #2</h4>
-                <ul class="list-unstyled">
-                    <li>{{ link_to('review/1', 'Edward Sharp') }}</li>
-                    <li>{{ link_to('review/2', 'Dolly Dawkins') }}</li>
-                </ul>
-            </div>  
-
+        <div class="col-lg-6">
+            <h2>Feedback Requested</h2>
+            @foreach($feedback_requested as $request)
+                <div class="row">
+                    <h4>{!! $request->quest_name !!}</h4>
+                    <ul class="list-unstyled">
+                        <li>{{ link_to('review/'.$request->quest_id.'/'.$request->sender->id.'/'.$request->revision, $request->sender->name) }}</li>
+                    </ul>      
+                </div>
+            @endforeach
         </div>
 @endsection
 

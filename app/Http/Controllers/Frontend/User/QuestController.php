@@ -662,7 +662,6 @@ class QuestController extends Controller
 
         $quests_with_feedback = Quest::whereIn('id', $feedback_request_quest_ids)->get();
 
-        $feedback_requested = [];
         $feedback_received = [];
 
         foreach($quests_with_feedback as $quest) {
@@ -689,16 +688,40 @@ class QuestController extends Controller
         }
 
 
-
-        $feedback_received_quest_ids = FeedbackRequest::distinct()
+        $feedback_request_quest_ids = FeedbackRequest::distinct()
                                                 ->select('quest_id')
                                                 ->where('user_id', '=', $user->id)
                                                 ->where('course_id', '=', session('current_course'))
+                                                ->where('fulfilled', '=', false)
                                                 ->pluck('quest_id');
-//        $quests = Quest::whereIn('id', $feedback_request_quest_ids)
-//                    ->get();
 
-        $feedback_requested = "need to populate";
+        $quests_needing_feedback = Quest::whereIn('id', $feedback_request_quest_ids)->get();
+       
+        $feedback_requested = [];
+
+        foreach($quests_needing_feedback as $quest) {
+            //quest name, quest id, revision, sender name
+            $feedback_request = new \stdClass;
+            $feedback_request->quest_id = $quest->id;
+            $feedback_request->quest_name = $quest->name;
+            $feedback_requests = FeedbackRequest::where('quest_id', '=', $quest->id)
+                                                    ->where('user_id', '=', $user->id)
+                                                    ->where('fulfilled', '=', false)
+                                                    ->get();
+            $requests = [];
+            
+            foreach($feedback_requests as $request) {
+                $freq = new \stdClass;
+                $freq->sender = $request->sender()->first();
+                $freq->from_user_id = $request->from_user_id;
+                $freq->revision = $request->revision;
+                $requests[] = $freq;
+            }
+            $feedback_request->requests = $requests;
+            $feedback_requested[] = $feedback_request;
+            
+        }
+
 
     	return view('frontend.quests.feedback_overview', ["feedback_requested" => $feedback_requested, "feedback_received" => $feedback_received])
     		->withUser(access()->user());
