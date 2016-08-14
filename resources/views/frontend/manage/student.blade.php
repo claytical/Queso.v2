@@ -26,6 +26,53 @@
         SKILL DISTRIBUTION CHART
     </div>
 
+<div class="col-lg-12">
+
+    @if($available_quests)
+    <h3>Available Quests</h3>
+    <!-- no links needed, unless on behalf of? -->
+        <div class="col-lg-12">
+            <div class="col-lg-9">
+                <h5>Quest Name</h5>
+            </div>
+            
+            <div class="col-lg-3">
+                <h5>Points Available</h5>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12">
+            <div id="available-list">
+                 <ul class="list-unstyled list">
+                    @foreach($available_quests as $quest)
+                    <li>
+                        <div class="col-lg-9 quest">
+                            {!! $quest->name !!}
+                        </div>
+                        <div class="col-lg-3 points">
+                            {!! $quest->skills()->sum('amount') !!}
+                        </div>
+                    </li>
+                    @endforeach
+
+                    @foreach($pending_quests as $quest)
+                    <li>
+                        <div class="col-lg-9 quest">
+                            {!! $quest->name !!} <span class="label">LOCKED</span>
+                        </div>
+                        <div class="col-lg-3 points">
+                            {!! $quest->skills()->sum('amount') !!}
+                        </div>
+                    </li>
+                    @endforeach
+                </ul>
+
+            </div>
+        </div>
+        @else
+        @endif
+
 </div>
 @endsection
 
