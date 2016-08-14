@@ -9,11 +9,11 @@ class Feedback extends Model
     //
 
     public function user_from() {
-    	return $this->hasOne('App\Models\Access\User\User', 'from_user_id');
+    	return $this->hasOne('App\Models\Access\User\User', 'id', 'from_user_id');
     }
 
     public function user_to() {
-    	return $this->hasOne('App\Models\Access\User\User', 'to_user_id');
+    	return $this->hasOne('App\Models\Access\User\User', 'id', 'to_user_id');
     }
 
     public function quest() {
