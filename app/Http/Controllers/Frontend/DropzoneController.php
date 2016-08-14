@@ -22,7 +22,8 @@ public function getJSON() {
 }
 
 public function removeFile($id) {
-    return Redirect::back()->withFlashSuccess("File has been removed.");
+    
+    return redirect()->back()->withFlashSuccess("File has been removed.");
 
 }
 
