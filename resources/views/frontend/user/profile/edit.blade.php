@@ -30,6 +30,8 @@
         </div>
     </div>
 <script>
+$( document ).ready(function() {
     $('.selectpicker').selectpicker();
+});
 </script>
 @endsection
