@@ -31,14 +31,12 @@
         <div class="col-lg-6">
             <h2>Feedback Requested</h2>
             @foreach($feedback_requested as $request)
-                <div class="row">
-                    <h4>{!! $request->quest_name !!}</h4>
-                    <ul class="list-unstyled">
-                        @foreach($request->requests as $req)
-                            <li>{{ link_to('review/'.$request->quest_id.'/'.$req->sender->id.'/'.$req->revision, $req->sender->name) }}</li>
-                        @endforeach
-                    </ul>      
-                </div>
+                <h4>{!! $request->quest_name !!}</h4>
+                <ul class="list-unstyled">
+                    @foreach($request->requests as $req)
+                        <li>{{ link_to('review/'.$request->quest_id.'/'.$req->sender->id.'/'.$req->revision, $req->sender->name) }}</li>
+                    @endforeach
+                </ul>      
             @endforeach
         </div>
 @endsection
