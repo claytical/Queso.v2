@@ -54,7 +54,7 @@
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
 
-                        <h6>{!! $feedback->user_from()->name !!}</h6>
+                        <h6>{!! $feedback->user_from->name !!}</h6>
                         {!! $feedback->note !!} <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a>
                     </div>
                 @endforeach
