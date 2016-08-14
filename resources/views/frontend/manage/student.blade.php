@@ -28,6 +28,52 @@
 
 <div class="col-lg-12">
 
+    @if($pending_quests)
+    <h3>Pending Quests</h3>
+    <!-- Links should be to grade submission -->
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <h5>Quest Name</h5>
+            </div>
+            <div class="col-lg-3">
+                <h5>Submitted</h5>
+            </div>
+            <div class="col-lg-2">
+                <h5>Revisions</h5>
+            </div>
+            
+            <div class="col-lg-3">
+                <h5>Points Available</h5>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12">
+            <div id="pending-list">
+                 <ul class="list-unstyled list">
+                    @foreach($pending_quests as $quest)
+                    <li>
+                        <div class="col-lg-4 quest">
+                            {!! $quest['quest']->name !!}
+                        </div>
+
+                        <div class="col-lg-3 date">
+                            {!! $quest['quest']->created_at !!}
+                        </div>
+                        <div class="col-lg-2 revisions">
+                            {!! $quest['revisions'] !!}
+                        </div>
+                        <div class="col-lg-3 points">
+                            {!! $quest['available'] !!}
+                        </div>
+
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @else
+    @endif
     @if($available_quests)
     <h3>Available Quests</h3>
     <!-- no links needed, unless on behalf of? -->
