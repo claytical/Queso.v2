@@ -28,9 +28,4 @@
             {{ Form::close() }}
         </div>
     </div>
-<script>
-$( document ).ready(function() {
-    $('#course_dropdown').selectpicker();
-});
-</script>
 @endsection

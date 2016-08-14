@@ -81,8 +81,13 @@
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
         {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
         {{ Html::script('js/vendor/bootstrap/bootstrap-select.min.js')}}
-
+        <script>
+        $( document ).ready(function() {
+            $('#course_dropdown').selectpicker();
+        });
+        </script>  
         @yield('before-scripts-end')
+      
         {{ HTML::script(elixir('js/backend.js')) }}
         @yield('after-scripts-end')
     </body>
