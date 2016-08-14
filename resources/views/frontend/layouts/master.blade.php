@@ -33,6 +33,7 @@
         {{ HTML::script('js/vendor/list.min.js')}}
         <script async charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=a705fe8012d914a446d7e4" ></script>
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
+        {{ Html::style('css/bootstrap-select.min.css') !!}}
 
 <script>
 </script>
@@ -79,6 +80,7 @@
 
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
         {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
+        {{ Html::script('js/vendor/bootstrap/bootstrap-select.min.js')}}
 
         @yield('before-scripts-end')
         {{ HTML::script(elixir('js/backend.js')) }}

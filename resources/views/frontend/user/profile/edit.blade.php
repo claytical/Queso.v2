@@ -5,7 +5,7 @@
 <h2>Settings</h2>
 
     <div class="col-lg-12">
-        <div class="row">
+        <div class="col-lg-6">
             {{ Form::model($user, ['route' => 'frontend.user.profile.update', 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
 
             {{ Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'col-md-4 control-label']) }}
@@ -18,12 +18,13 @@
                 {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
 
             @endif
-            
-            Email Notifications
+        </div>
+        <div class="col-lg-6">           
+            {{ Form::label('email_notifications', "Email Notifications"), ['class' => 'col-md-4 control-label']) }}
 
             {{ Form::checkbox('email_notifications', 1) }}
 
-            {{ Form::select('default_course', array('1' => 'Psychology', '2' => 'Game Design'), '2') }}
+            {{ Form::select('default_course', Form::courseList(), session('current_course')) }}
             
             {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary']) }}
             {{ Form::close() }}

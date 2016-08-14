@@ -31,6 +31,11 @@ trait Dropdowns
         return $html;
     }
 
+    public function courseList() {
+        $user = access()->user();
+        return $user->courses()->list('course_id', 'course.name');
+    }
+
     public function categoryResourceList() {
 
         $resource_categories = DB::table('contents')
@@ -47,19 +52,7 @@ trait Dropdowns
             $tag = str_replace(" ", "-", $category->tag);
             $html = $html . "<li class=''><a href='" . url('resource/category/'.$tag)."'>".$tag."</a></li>";
         }
-/*
-        foreach($resource_categories as $tag) {
-            $html += "<li class='header'>".$tag."</li>";
-            $multi_resources = Content::where('tag', '=', $tag)
-                                    ->where('course_id', '=', session('current_course'))
-                                    ->get();
-            foreach($multi_resources as $resource) {
-               $html += "<li class=''><a href='".url('resource/'.$resource->id)."'>".$resource->name."</a></li>";
-            }
-        }
-*/
         return $html;
-//        return $resource_categories;
 
     }
 
