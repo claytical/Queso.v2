@@ -616,6 +616,10 @@ class QuestController extends Controller
 
         }
 
+        $instructor_feedback = Feedback::where('quest_id', '=', $quest->id)
+                                        ->where('to_user_id', '=', $user->id)
+                                        ->where('subtype', '=', 1)
+                                        ->get();
         $positive_feedback = Feedback::where('quest_id', '=', $quest->id)
                                         ->where('to_user_id', '=', $user->id)
                                         ->where('subtype', '=', 2)
@@ -627,7 +631,7 @@ class QuestController extends Controller
                                         ->get();
 
 
-    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills])
+    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback])
     		->withUser(access()->user());
     }
 
