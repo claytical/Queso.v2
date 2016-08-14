@@ -695,8 +695,8 @@ class QuestController extends Controller
                                                 ->where('user_id', '=', $user->id)
                                                 ->where('course_id', '=', session('current_course'))
                                                 ->pluck('quest_id');
-        $quests = Quest::whereIn('quest_id', $feedback_request_quest_ids)
-                    ->get();
+//        $quests = Quest::whereIn('id', $feedback_request_quest_ids)
+//                    ->get();
 
         $feedback_requested = "need to populate";
 
