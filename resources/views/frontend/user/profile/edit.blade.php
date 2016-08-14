@@ -17,17 +17,22 @@
                     {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
                 </div>
             @endif
+        <div class="col-lg-6">
+
             <div class="checkbox">
                 <label>
                 {{ Form::checkbox('email_notifications', 1) }}
                 Email Notifications</label>
             </div>
+        </div>
+        <div class="col-lg-6">
             <div class="form-group">
                 {{ Form::label('default_course', "Default Course", ['class' => 'control-label']) }}                      
 
                 {{ Form::select('default_course', Form::courseList(), $user->default_course_id, ['class' => 'selectpicker', 'id' => 'course_dropdown']) }}
             </div>
-            {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary']) }}
+        </div>
+            {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary pull-right']) }}
             {{ Form::close() }}
     </div>
 @endsection
