@@ -67,7 +67,7 @@
 
                     </div>    
                 @endforeach
-
+            @endif
             <div class="col-lg-12">
                 <h4>From The Professor</h4>
                 <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a></p>
