@@ -608,13 +608,11 @@ class QuestController extends Controller
         $positive_feedback = Feedback::where('quest_id', '=', $quest->id)
                                         ->where('to_user_id', '=', $user->id)
                                         ->where('subtype', '=', 2)
-                                        ->with('user_from')
                                         ->get();
 
         $negative_feedback = Feedback::where('quest_id', '=', $quest->id)
                                         ->where('to_user_id', '=', $user->id)
                                         ->where('subtype', '=', 3)
-                                        ->with('user_from')
                                         ->get();
 
 
