@@ -35,7 +35,8 @@
                     <h4>{!! $request->quest_name !!}</h4>
                     <ul class="list-unstyled">
                         @foreach($request->requests as $req)
-                        <li>{{ link_to('review/'.$request->quest_id.'/'.$req->sender->id.'/'.$req->revision, $req->sender->name) }}</li>
+                            <li>{{ link_to('review/'.$request->quest_id.'/'.$req->sender->id.'/'.$req->revision, $req->sender->name) }}</li>
+                        @endforeach
                     </ul>      
                 </div>
             @endforeach
