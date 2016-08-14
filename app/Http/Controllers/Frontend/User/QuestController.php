@@ -584,7 +584,41 @@ class QuestController extends Controller
     }
 
     public function view_feedback($quest_id) {
-    	return view('frontend.quests.view_feedback')
+        $quest = Quest::find($quest_id);
+        $user = access()->user();
+        if($quest->quest_type_id == 1) {
+            $attempt = Submission::where('quest_id', '=', $quest_id)
+                                        ->where('user_id', '=', $user->id)
+                                        ->orderBy('revision')
+                                    //    ->where('revision', '=', $revision)
+                                        ->first();
+            
+            $files = $attempt->files;
+
+        }
+        if($quest->quest_type_id == 4) {
+            $attempt = Link::where('quest_id', '=', $quest->id)
+                            ->where('user_id', '=', $user_id)
+                            ->orderBy('revision')
+                        //    ->where('revision', '=', $revision)
+                            ->first();
+
+        }
+
+        $positive_feedback = Feedback::where('quest_id', '=', $quest->id)
+                                        ->where('to_user_id', '=', $user->id)
+                                        ->where('subtype', '=', 2)
+                                        ->with('user_from')
+                                        ->get();
+
+        $negative_feedback = Feedback::where('quest_id', '=', $quest->id)
+                                        ->where('to_user_id', '=', $user->id)
+                                        ->where('subtype', '=', 3)
+                                        ->with('user_from')
+                                        ->get();
+
+
+    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positve' => $positive_feedback, 'negative' => $negative_feedback])
     		->withUser(access()->user());
     }
 
