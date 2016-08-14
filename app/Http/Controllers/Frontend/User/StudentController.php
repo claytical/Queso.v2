@@ -75,7 +75,7 @@ class StudentController extends Controller
             $earned = $user->skills()->where('quest_id', $id)->sum('amount');
             $available = Quest::find($id)->skills()->sum('amount');
             $quest = $quest->first();
-            if($quest->graded) {
+            if($earned > 0) {
                 $quests_graded[] = ['quest' => $quest, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
 
             }
