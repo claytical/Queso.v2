@@ -586,6 +586,7 @@ class QuestController extends Controller
     public function view_feedback($quest_id) {
         $quest = Quest::find($quest_id);
         $user = access()->user();
+        $files = false;
         if($quest->quest_type_id == 1) {
             $attempt = Submission::where('quest_id', '=', $quest_id)
                                         ->where('user_id', '=', $user->id)
@@ -616,7 +617,7 @@ class QuestController extends Controller
                                         ->get();
 
 
-    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positve' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt])
+    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positve' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files])
     		->withUser(access()->user());
     }
 
