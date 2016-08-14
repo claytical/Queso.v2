@@ -21,12 +21,13 @@
         </div>
         <div class="col-lg-3">
             @if($graded)
+                <div class="col-lg-12">
+                    <h4>Current Grade</h4>
+                </div>
+                    <ul class="list-unstyled">
                     @foreach($quest_skills as $index => $quest_skill)
                         <li>
                             <div class="col-lg-12">
-                                <div class="col-lg-12">
-                                    <h4>Current Grade</h4>
-                                </div>
                                 <div class="col-lg-6">
                                     {!! $quest_skill->name !!}
                                 </div>
@@ -36,6 +37,7 @@
                             </div>
                         </li>
                     @endforeach
+                    </ul>
             @else
             <div class="col-lg-12">
                 <h3><span class="label label-danger pull-right">UNGRADED</span></h3>
