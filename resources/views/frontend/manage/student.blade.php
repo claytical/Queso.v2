@@ -27,10 +27,9 @@
     </div>
 
 <div class="col-lg-12">
-
-    @if($pending_quests)
-    <h3>Pending Quests</h3>
-    <!-- Links should be to grade submission -->
+@if($graded_quests)
+    <h3>Graded Quests</h3>
+    <!-- Links should be to view only, not add feedback -->
         <div class="col-lg-12">
             <div class="col-lg-4">
                 <h5>Quest Name</h5>
@@ -43,15 +42,15 @@
             </div>
             
             <div class="col-lg-3">
-                <h5>Points Available</h5>
+                <h5>Points</h5>
             </div>
 
         </div>
 
         <div class="col-lg-12">
-            <div id="pending-list">
+            <div id="submission-list">
                  <ul class="list-unstyled list">
-                    @foreach($pending_quests as $quest)
+                    @foreach($graded_quests as $quest)
                     <li>
                         <div class="col-lg-4 quest">
                             {!! $quest['quest']->name !!}
@@ -64,11 +63,10 @@
                             {!! $quest['revisions'] !!}
                         </div>
                         <div class="col-lg-3 points">
-                            {!! $quest['available'] !!}
+                            {!! $quest['earned'] !!} / {!! $quest['available'] !!}
                         </div>
-
-                    </li>
                     @endforeach
+                    </li>
                 </ul>
             </div>
         </div>
