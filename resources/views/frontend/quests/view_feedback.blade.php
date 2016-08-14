@@ -53,6 +53,8 @@
                 <h4>What Your Peers Liked</h4>
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
+                                        {!! var_dump($feedback->user_from()->get()) !!}
+
                         <h6>{!! $feedback->from_user_id !!}</h6>
                         {!! $feedback->note !!} <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a>
                     </div>
