@@ -616,7 +616,7 @@ class QuestController extends Controller
                                         ->get();
 
 
-    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positve' => $positive_feedback, 'negative' => $negative_feedback])
+    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positve' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt])
     		->withUser(access()->user());
     }
 
