@@ -50,7 +50,22 @@
         <div class="col-lg-12">
             <div id="submission-list">
                  <ul class="list-unstyled list">
+                    @foreach($graded_quests as $quest)
+                    <li>
+                        <div class="col-lg-4 quest">
+                            {!! $quest['quest']->name !!}
+                        </div>
 
+                        <div class="col-lg-3 date">
+                            {!! $quest['quest']->created_at !!}
+                        </div>
+                        <div class="col-lg-2 revisions">
+                            {!! $quest['revisions'] !!}
+                        </div>
+                        <div class="col-lg-3 points">
+                            {!! $quest['earned'] !!} / {!! $quest['available'] !!}
+                        </div>
+                    @endforeach
                     </li>
                 </ul>
             </div>
