@@ -47,16 +47,13 @@
             </div>
             @if($revision_count > 1)
               <div role="tabpanel" class="tab-pane" id="previous_feedback">
+                  @foreach($instructor_feedback as $feedback)
                   <blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer>Someone famous in <cite title="Source Title">Joan Ridley</cite></footer>
+                    {!! $feedback->note !!}
+                    <footer>Revision #{!! $feedback->revision !!} <cite title="Source Title">{!! $feedback->created_at !!}</cite></footer>
+                    }
                   </blockquote>
-
-                  <blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer>Someone famous in <cite title="Source Title">Michael Scott</cite></footer>
-                  </blockquote>
-
+                  @endforeach
               </div>
             @endif
           </div>
@@ -84,32 +81,32 @@
         @if($quest->quest_type_id == 4)
           <a href="{{ $attempt->url }}" data-iframely-url>{{ $attempt->url }}</a>
         @endif
-        
+          @if($positive_feedback || $negative_feedback)
+            <h4>Peer Feedback</h4>
+          @endif
+          @if($positive_feedback)
+            <h5>Positives</h5>    
+            @foreach($positive_feedback as $feedback)
 
-        <h4>Peer Feedback</h4>
-        <h5>Positives</h5>
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer>Someone famous in <cite title="Source Title">Joan Ridley</cite></footer>
-        </blockquote>
+              <blockquote>
+                {!! $feedback->note !!}
+                <footer><cite title="Source Title">{!! $feedback->user_from->name !!}</cite></footer>
+              </blockquote>
+            @endforeach
+        @endif
 
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer>Someone famous in <cite title="Source Title">Michael Scott</cite></footer>
-        </blockquote>
+        @if($negative_feedback)
+          <h5>Areas for Improvement</h5>
 
-        <h5>Areas for Improvement</h5>
+            @foreach($positive_feedback as $feedback)
 
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer>Someone famous in <cite title="Source Title">Joan Ridley</cite></footer>
-        </blockquote>
-
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer>Someone famous in <cite title="Source Title">Michael Scott</cite></footer>
-        </blockquote>
-
+              <blockquote>
+                {!! $feedback->note !!}
+                <footer><cite title="Source Title">{!! $feedback->user_from->name !!}</cite></footer>
+              </blockquote>
+            @endforeach
+        @endif
+  
         <h4>Feedback to Student</h4>
             {!! Form::open(array('url' => 'grade/confirm')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}

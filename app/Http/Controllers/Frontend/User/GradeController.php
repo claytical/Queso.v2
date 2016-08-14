@@ -87,6 +87,22 @@ class GradeController extends Controller
                                         ->where('user_id', '=', $attempt->user_id);
         }
 
+        $positive_feedback = Feedback::where('to_user_id', '=', $attempt->user_id)
+                                ->where('quest_id', '=', $quest_id)
+                                ->where('revision', '=', $attempt->revision)
+                                ->where('subtype', '=', 2)
+                                ->get();
+
+        $negative_feedback = Feedback::where('to_user_id', '=', $attempt->user_id)
+                                ->where('quest_id', '=', $quest_id)
+                                ->where('revision', '=', $attempt->revision)
+                                ->where('subtype', '=', 3)
+                                ->get();
+        $previous_feedback = Feedback::where('to_user_id', '=', $attempt->user_id)
+                                        ->where('quest_id', '=', $quest_id)
+                                        ->where('subtype', '=', 1)
+                                        ->orderBy('revision')
+                                        ->get();
 
         $revision_count = $attempts->count();
         $revisions = $attempts->get();
@@ -97,7 +113,10 @@ class GradeController extends Controller
                                                     'skills' => $skills,
                                                     'revision_count' => $revision_count,
                                                     'revisions' => $revisions,
-                                                    'files' => $files]
+                                                    'files' => $files,
+                                                    'positive_feedback' => $positive_feedback,
+                                                    'negative_feedback' => $negative_feedback,
+                                                    'instructor_feedack' => $instructor_feedack]
                                                     )->withUser(access()->user());
     }
 
