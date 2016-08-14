@@ -4,11 +4,29 @@
 <h2>Feedback Received</h2>
 
         <div class="col-lg-12">
-        {!! var_dump($feedback_received) !!}
             <div class="row">
-                <h4>{{ link_to('quest/1/feedback', 'Quest Name') }}</h4>
-                <p>2 peers have submitted feedback!</p>
-                <p>Still waiting on x and y</p>
+                @foreach($feedback_received as $received)
+                    @if($received->fulfilled > 0)
+                        <h4>{{ link_to('quest/'.$received->quest_id.'/feedback', $received->quest_name) }}</h4>
+                        @if($received->fulfilled == 1)
+                            <p>{!! $received->fulfilled !!} peer has submitted feedback!</p>
+                        @else
+                            <p>{!! $received->fulfilled !!} peers have submitted feedback!</p>
+                        @endif
+                    @else
+                        <h4>{!! $received->quest_name) !!}</h4>
+                        <p>No one has submitted feedback yet.</p>
+                    @endif
+
+                    @if($received->pending > 0)
+                        <h5>Waiting On</h5>
+                            <ul class="unstyled-list">
+                            @foreach($received->requests as $request)
+                                <li>{!! $request->sender->name</li>                                
+                            @endforeach
+                            </ul>
+                    @endif
+                @endforeach
             </div>  
         </div>
 
