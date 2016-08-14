@@ -20,10 +20,11 @@
             @endif
         </div>
         <div class="col-lg-6">           
-            {{ Form::label('email_notifications', "Email Notifications"), ['class' => 'col-md-4 control-label']) }}
+            {{ Form::label('email_notifications', "Email Notifications", ['class' => 'col-md-4 control-label']) }}
 
             {{ Form::checkbox('email_notifications', 1) }}
-            
+            {{ Form::select('default_course', Form::courseList(), session('current_course')) }}
+
             {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary']) }}
             {{ Form::close() }}
         </div>
