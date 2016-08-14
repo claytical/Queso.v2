@@ -687,7 +687,7 @@ class QuestController extends Controller
             
         }
 
-        $feedback_received = $user->feedback_received()->get();
+        $feedback_received = $user->feedback_received()->groupBy('quest_id')->get();
 
     	return view('frontend.quests.feedback_overview', ["feedback_requested" => $feedback, "feedback_received" => $feedback_received])
     		->withUser(access()->user());
