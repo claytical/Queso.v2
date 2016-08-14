@@ -23,15 +23,14 @@
             {{ Form::label('email_notifications', "Email Notifications", ['class' => 'col-md-4 control-label']) }}
 
             {{ Form::checkbox('email_notifications', 1) }}
-            {{ Form::select('default_course', Form::courseList(), session('current_course', ['class' => 'selectpicker'])) }}
-
+            {{ Form::select('default_course', Form::courseList(), session('current_course', ['class' => 'selectpicker', 'id' => 'course_dropdown'])) }}
             {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary']) }}
             {{ Form::close() }}
         </div>
     </div>
 <script>
 $( document ).ready(function() {
-    $('.selectpicker').selectpicker();
+    $('#course_dropdown').selectpicker();
 });
 </script>
 @endsection
