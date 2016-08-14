@@ -21,6 +21,11 @@ public function getJSON() {
     return response()->json($array);
 }
 
+public function removeFile($id) {
+    return Redirect::back()->withFlashSuccess("File has been removed.");
+
+}
+
 public function uploadFiles(Request $request) {
         $user = access()->user();
         $files = $request->file('file');

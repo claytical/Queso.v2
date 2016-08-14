@@ -111,5 +111,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/course', 'CourseController@manage')->name('course.manage');
         Route::post('manage/course/update', 'CourseController@update')->name('course.update');
 
+
+        Route::get('file/remove/{file_id', 'DropzoneController@removeFile')->name('remove.file');
     });
 });
