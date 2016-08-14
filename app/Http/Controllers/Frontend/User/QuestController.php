@@ -586,6 +586,9 @@ class QuestController extends Controller
     public function view_feedback($quest_id) {
         $quest = Quest::find($quest_id);
         $user = access()->user();
+        $skills = $user->skills()->where('quest_id', $quest_id)->get();
+        $quest_skills = $quest->skills()->get();
+
         $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
         if ($user_quest->pivot->graded) {
             $graded = true;
@@ -624,7 +627,7 @@ class QuestController extends Controller
                                         ->get();
 
 
-    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded])
+    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills])
     		->withUser(access()->user());
     }
 

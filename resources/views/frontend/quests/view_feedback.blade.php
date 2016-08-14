@@ -21,16 +21,24 @@
         </div>
         <div class="col-lg-3">
             @if($graded)
-            <div class="col-lg-9">
-                Listening Skill
-            </div>
-            
-            <div class="col-lg-3">
-                10/15
-            </div>
+                    @foreach($quest_skills as $index => $quest_skill)
+                        <li>
+                            <div class="col-lg-12">
+                                <div class="col-lg-12">
+                                    <h4>Current Grade</h4>
+                                </div>
+                                <div class="col-lg-6">
+                                    {!! $quest_skill->name !!}
+                                </div>
+                                <div class="col-lg-6">                                
+                                    {!! $skills[$index]->pivot->amount !!} / {!! $quest_skill->pivot->amount !!}
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
             @else
             <div class="col-lg-12">
-                <h3><span class="label label-danger">UNGRADED</span></h3>
+                <h3><span class="label label-danger pull-right">UNGRADED</span></h3>
             </div>
             @endif
 
