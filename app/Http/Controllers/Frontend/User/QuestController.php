@@ -656,45 +656,49 @@ class QuestController extends Controller
         $user = access()->user();
         $feedback_request_quest_ids = FeedbackRequest::distinct()
                                                 ->select('quest_id')
-                                                ->where('user_id', '=', $user->id)
+                                                ->where('from_user_id', '=', $user->id)
                                                 ->where('course_id', '=', session('current_course'))
-                                                ->where('fulfilled', '=', false)
                                                 ->pluck('quest_id');
 
-        $quests_needing_feedback = Quest::whereIn('id', $feedback_request_quest_ids)->get();
-        $feedback = [];
+        $quests_with_feedback = Quest::whereIn('id', $feedback_request_quest_ids)->get();
 
-        foreach($quests_needing_feedback as $quest) {
+        $feedback_requested = [];
+        $feedback_received = [];
+
+        foreach($quests_with_feedback as $quest) {
             //quest name, quest id, revision, sender name
             $feedback_request = new \stdClass;
             $feedback_request->quest_id = $quest->id;
             $feedback_request->quest_name = $quest->name;
-            $feedback_requests = FeedbackRequest::where('quest_id', '=', $quest->id)
-                                                    ->where('user_id', '=', $user->id)
-                                                    ->where('fulfilled', '=', false)
-                                                    ->get();
+            $request = FeedbackRequest::where('quest_id', '=', $quest->id)
+                                        ->where('from_user_id', '=', $user->id);
+            $feedback_request->fulfilled = $request->where('fulfilled', '=', true)->count();
+            $feedback_request->pending = $request->where('fulfilled', '=', false)->count();
+            $pending = $request->where('fulfilled', '=', false)->get();
             $requests = [];
             
-            foreach($feedback_requests as $request) {
+            foreach($pending as $request) {
                 $freq = new \stdClass;
                 $freq->sender = $request->sender()->first();
-                $freq->from_user_id = $request->from_user_id;
+            //    $freq->from_user_id = $request->from_user_id;
                 $freq->revision = $request->revision;
                 $requests[] = $freq;
             }
             $feedback_request->requests = $requests;
-            $feedback[] = $feedback_request;
-            
+            $feedback_received[] = $feedback_request;
         }
 
-        $feedback_received_quest_ids = $user->feedback_received()
-                                            ->distinct()
-                                            ->select('quest_id')
-                                            ->where('course_id', '=', session('current_course'))
-                                            ->pluck('quest_id');
 
 
-        $feedback_received = $feedback_received_quest_ids;
+        $feedback_received_quest_ids = FeedbackRequest::distinct()
+                                                ->select('quest_id')
+                                                ->where('user_id', '=', $user->id)
+                                                ->where('course_id', '=', session('current_course'))
+                                                ->pluck('quest_id');
+        $quests = Quest::whereIn('quest_id', $feedback_request_quest_ids)
+                    ->get();
+
+        $feedback_requested = "need to populate";
 
     	return view('frontend.quests.feedback_overview', ["feedback_requested" => $feedback, "feedback_received" => $feedback_received])
     		->withUser(access()->user());
