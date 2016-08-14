@@ -700,7 +700,7 @@ class QuestController extends Controller
 
         $feedback_requested = "need to populate";
 
-    	return view('frontend.quests.feedback_overview', ["feedback_requested" => $feedback, "feedback_received" => $feedback_received])
+    	return view('frontend.quests.feedback_overview', ["feedback_requested" => $feedback_requested, "feedback_received" => $feedback_received])
     		->withUser(access()->user());
     }
 
