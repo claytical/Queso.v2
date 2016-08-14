@@ -586,7 +586,7 @@ class QuestController extends Controller
     public function view_feedback($quest_id) {
         $quest = Quest::find($quest_id);
         $user = access()->user();
-        $user_quest = $user->quests()->where('quest_id', $quest_id);
+        $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
         if ($user_quest->pivot->graded) {
             $graded = false;
         }
