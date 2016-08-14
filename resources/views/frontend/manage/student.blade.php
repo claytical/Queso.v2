@@ -27,7 +27,7 @@
     </div>
 
 <div class="col-lg-12">
-@if($graded_quests)
+@if(!$graded_quests->isEmpty())
     <h3>Graded Quests</h3>
     <!-- Links should be to view only, not add feedback -->
         <div class="col-lg-12">
@@ -72,7 +72,7 @@
         </div>
     @else
     @endif
-    @if($pending_quests)
+    @if(!$pending_quests->isEmpty())
     <h3>Pending Quests</h3>
     <!-- Links should be to grade submission -->
         <div class="col-lg-12">
@@ -118,7 +118,7 @@
         </div>
     @else
     @endif
-    @if($available_quests)
+    @if(!$available_quests->isEmpty())
     <h3>Available Quests</h3>
     <!-- no links needed, unless on behalf of? -->
         <div class="col-lg-12">
