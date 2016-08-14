@@ -588,10 +588,10 @@ class QuestController extends Controller
         $user = access()->user();
         $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
         if ($user_quest->pivot->graded) {
-            $graded = false;
+            $graded = true;
         }
         else {
-            $graded = true;
+            $graded = false;
         }
         $files = false;
         if($quest->quest_type_id == 1) {
