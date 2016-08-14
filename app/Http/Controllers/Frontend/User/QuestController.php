@@ -653,7 +653,43 @@ class QuestController extends Controller
     }
 
     public function feedback_overview() {
-    	return view('frontend.quests.feedback_overview')
+        $user = access()->user();
+        $feedback_request_quest_ids = FeedbackRequest::distinct()
+                                                ->select('quest_id')
+                                                ->where('user_id', '=', $user->id)
+                                                ->where('course_id', '=', session('current_course'))
+                                                ->where('fulfilled', '=', false)
+                                                ->pluck('quest_id');
+
+        $quests_needing_feedback = Quest::whereIn('id', $feedback_request_quest_ids)->get();
+        $feedback = [];
+
+        foreach($quests_needing_feedback as $quest) {
+            //quest name, quest id, revision, sender name
+            $feedback_request = new \stdClass;
+            $feedback_request->quest_id = $quest->id;
+            $feedback_request->quest_name = $quest->name;
+            $feedback_requests = FeedbackRequest::where('quest_id', '=', $quest->id)
+                                                    ->where('user_id', '=', $user->id)
+                                                    ->where('fulfilled', '=', false)
+                                                    ->get();
+            $requests = [];
+            
+            foreach($feedback_requests as $request) {
+                $freq = new \stdClass;
+                $freq->sender = $request->sender()->first();
+                $freq->from_user_id = $request->from_user_id;
+                $freq->revision = $request->revision;
+                $requests[] = $freq;
+            }
+            $feedback_request->requests = $requests;
+            $feedback[] = $feedback_request;
+            
+        }
+
+        $feedback_received = $user->feedback_received()->get();
+
+    	return view('frontend.quests.feedback_overview', ["feedback_requested" => $feedback, "feedback_received" => $feedback_received])
     		->withUser(access()->user());
     }
 

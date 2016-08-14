@@ -4,6 +4,7 @@
 <h2>Feedback Received</h2>
 
         <div class="col-lg-12">
+        {!! var_dump($feedback_received) !!}
             <div class="row">
                 <h4>{{ link_to('quest/1/feedback', 'Quest Name') }}</h4>
                 <p>2 peers have submitted feedback!</p>
@@ -13,6 +14,7 @@
 
 <h2>Feedback Requested</h2>
         <div class="col-lg-12">
+        {!! var_dump($feedback_requested) !!}
             <div class="row">
                 <h4>Quest #1</h4>
                 <ul class="list-unstyled">
