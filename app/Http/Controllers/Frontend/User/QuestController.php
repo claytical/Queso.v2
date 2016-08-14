@@ -663,7 +663,7 @@ class QuestController extends Controller
         $feedback_negative->to_user_id = $request->user_id;
         $feedback_negative->from_user_id = $user->id;
         $feedback_negative->revision = $request->revision;
-        $feedback_negative->subtype = 2;
+        $feedback_negative->subtype = 3;
         $feedback_negative->note = $request->suggestions;
         $feedback_negative->save();
         
