@@ -22,7 +22,7 @@
                         <h5>Waiting On</h5>
                             <ul class="unstyled-list">
                             @foreach($received->requests as $request)
-                                <li>{!! $request->sender->name</li>                                
+                                <li>{!! $request->sender->name!!}</li>                                
                             @endforeach
                             </ul>
                     @endif
