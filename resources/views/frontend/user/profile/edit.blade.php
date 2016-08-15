@@ -27,9 +27,9 @@
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {{ Form::label('default_course', "Default Course", ['class' => 'control-label']) }}                      
+                {{ Form::label('default_course_id', "Default Course", ['class' => 'control-label']) }}                      
 
-                {{ Form::select('default_course', Form::courseList(), $user->default_course_id, ['class' => 'selectpicker', 'id' => 'course_dropdown']) }}
+                {{ Form::select('default_course_id', Form::courseList(), $user->default_course_id, ['class' => 'selectpicker', 'id' => 'course_dropdown']) }}
             </div>
         </div>
             {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary pull-right']) }}

@@ -7,7 +7,7 @@
     </div>
 </div>
 
-
+@if(!$quests->isEmpty())
 <div class="row">
         <div class="col-lg-9">
             <h5>Quest Name</h5>
@@ -41,6 +41,9 @@
             </ul>
     </div>
 </div>
+@else
+<p class="lead">There are currently no quests.</p>
+@endif
 
 
 @endsection
