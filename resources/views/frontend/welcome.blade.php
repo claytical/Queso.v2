@@ -23,6 +23,7 @@
             </div>
 
             <div class="col-lg-6">
+            {!! var_dump($courses) !!}
                 <div class="panel panel-default">
                     <div class="panel-heading">{!! $course->name !!} <a href="#" class="btn btn-default btn-xs pull-right">Switch Course</a></div>
                         <div class="panel-body">

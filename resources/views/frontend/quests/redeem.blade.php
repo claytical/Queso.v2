@@ -5,7 +5,7 @@
 
         <div class="col-lg-12">
             <div class="row">
-                <p id="instructions">You can hold the QR code up to your webcam to scan it, or enter the redemption code manually if you prefer.</p>
+                <p id="instructions">Enter the redemption code to get points.</p>
                 {!! Form::open(array('url' => 'quest/redeem', 'class' => 'form form-inline', 'id' => 'redeem-form')) !!}
         
                 <div id="reader" style="width:250px;height:250px">
