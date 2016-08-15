@@ -43,17 +43,23 @@ class QuestController extends Controller
         foreach($course_skills as $skill) {
             $user_skill_levels[$skill->id] = $user->skills()->where('skill_id', $skill->id)->sum('amount');
         }
-        $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
+        $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
                     ->whereNotIn('id', $quests_attempted_ids)
                     ->where('expires_at', '>=', Carbon::now())
-                    ->orWhereNotNull('expires_at')
                     ->orderBy('expires_at')
                     ->get();
+
+        $quests_unattempted_not_expiring = Quest::where('course_id', '=', session('current_course'))
+                    ->whereNotIn('id', $quests_attempted_ids)
+                    ->whereNull('expires_at')
+                    ->orderBy('name')
+                    ->get();
+
+        $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
+
         $quests_revisable = Quest::where('course_id', '=', session('current_course'))
                     ->whereIn('id', $quests_attempted_ids)
                     ->where('revisions', '=', true)
-                    ->where('expires_at', '>=', Carbon::now())
-                    ->orWhereNotNull('expires_at')
                     ->orderBy('expires_at')
                     ->get();
 
