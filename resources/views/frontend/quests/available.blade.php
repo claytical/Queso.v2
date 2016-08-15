@@ -1,9 +1,9 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-@if($unlocked)
-    <h2>Available Quests</h2>
 
+<h2>Available Quests</h2>
+@if($unlocked)
             <div class="col-lg-12">
 
             @foreach($unlocked as $quest)
@@ -30,8 +30,12 @@
                 </div>
             @endforeach
             </div>
+@else
+<p>There are no available quests.</p>
 @endif
-<h2>Locked Quests</h2>
+
+@if($locked)
+<h2>Quests Requiring Higher Skill Levels</h2>
         <div class="col-lg-12">
 
             @foreach($locked as $quest)
@@ -47,7 +51,9 @@
                 </div>
             @endforeach
         </div>
+@endif
 
+if($revisable)
 <h2>Quests That Can Be Revised for More Points</h2>
     
     <div class="col-lg-12">
@@ -64,6 +70,7 @@
             </div>
         @endforeach
     </div>
+@endif
 @endsection
 
 @section('after-scripts-end')
