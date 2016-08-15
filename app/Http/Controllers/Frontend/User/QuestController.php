@@ -451,6 +451,7 @@ class QuestController extends Controller
                     $feedback_request->course_id = session('current_course');
                     $feedback_request->fulfilled = false;
                     $feedback_request->save();
+
                 }
             }
         }
@@ -689,6 +690,14 @@ class QuestController extends Controller
         if($feedback_request) {
             $feedback_request->fulfilled = true;
             $feedback_request->save();
+            //send notification to user
+            $notice = new Notice;
+            $notice->user_id = $request->user_id;
+            $notice->message = $user->name . " has sent you feedback for " . $quest->name;
+            $notice->url = "quest/". $quest->id ."/feedback";
+            $notice->course_id = session('current_course');
+            $notice->save();
+
             return redirect()->route('frontend.user.dashboard')->withFlashSuccess("Feedback has been sent.");
 
         }
