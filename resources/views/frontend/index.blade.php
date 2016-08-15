@@ -7,15 +7,14 @@
 
 @section('content')
 
-<h2>Queso</h2>
+
 <div class="col-lg-12">
-    <div class="col-lg-9">
-    <p>
-Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Etiam porta sem malesuada magna mollis euismod.        
-    </p>
+    <div class="col-lg-6">  
+        <h2>Queso</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Etiam porta sem malesuada magna mollis euismod. </p>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-6">
         {{ Form::open(['route' => 'auth.login', 'class' => 'form-horizontal']) }}
             <div class="form-group">
                 {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
