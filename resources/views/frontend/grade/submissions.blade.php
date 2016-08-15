@@ -6,7 +6,7 @@
         <h2>Ungraded Submissions</h2>
     </div>
 </div>
-
+@if($list)
         <div class="col-lg-12">
             <div id="submission-list">
             <div class="col-lg-9">
@@ -36,7 +36,9 @@
             </div>
             </div>
         </div>
-
+@else
+<p class="lead">There are no submissions to grade!</p>
+@endif
 @endsection
 
 @section('after-scripts-end')
