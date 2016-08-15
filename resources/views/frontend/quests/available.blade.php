@@ -1,34 +1,36 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Available Quests</h2>
+@if($unlocked)
+    <h2>Available Quests</h2>
 
-        <div class="col-lg-12">
+            <div class="col-lg-12">
 
-        @foreach($unlocked as $quest)
-            <div class="row">
-                <div class="col-lg-12">
-                    @if($quest->quest_type_id == 1)
-                        <h4>{{ link_to('quest/'.$quest->id.'/attempt/submission', $quest->name) }}</h4>
-                    @endif
-                    @if($quest->quest_type_id == 2)
-                        <h4>{{ $quest->name }}</h4>
-                    @endif
-                    @if($quest->quest_type_id == 3)
-                        <h4>{{ link_to('quest/'.$quest->id.'/watch', $quest->name) }}</h4>
-                    @endif
+            @foreach($unlocked as $quest)
+                <div class="row">
+                    <div class="col-lg-12">
+                        @if($quest->quest_type_id == 1)
+                            <h4>{{ link_to('quest/'.$quest->id.'/attempt/submission', $quest->name) }}</h4>
+                        @endif
+                        @if($quest->quest_type_id == 2)
+                            <h4>{{ $quest->name }}</h4>
+                        @endif
+                        @if($quest->quest_type_id == 3)
+                            <h4>{{ link_to('quest/'.$quest->id.'/watch', $quest->name) }}</h4>
+                        @endif
 
-                    @if($quest->quest_type_id == 4)
-                        <h4>{{ link_to('quest/'.$quest->id.'/attempt/link', $quest->name) }}</h4>
-                    @endif
-                    <h5>{!! $quest->skills()->sum('amount') !!} Points, Due by ....</h5>
+                        @if($quest->quest_type_id == 4)
+                            <h4>{{ link_to('quest/'.$quest->id.'/attempt/link', $quest->name) }}</h4>
+                        @endif
+                        <h5>{!! $quest->skills()->sum('amount') !!} Points, Due by ....</h5>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>{!! $quest->instructions !!}</p>
+                    </div>
                 </div>
-                <div class="col-lg-12">
-                    <p>{!! $quest->instructions !!}</p>
-                </div>
+            @endforeach
             </div>
-        @endforeach
-        </div>
+@endif
 <h2>Locked Quests</h2>
         <div class="col-lg-12">
 

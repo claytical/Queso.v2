@@ -6,7 +6,7 @@
 
 
 @section('content')
-
+<h1></h1>
 
 <div class="col-lg-12">
     <div class="col-lg-6">  
