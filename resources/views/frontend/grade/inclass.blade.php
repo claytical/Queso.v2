@@ -4,6 +4,7 @@
 <div class="col-lg-12">
         <h2>In Class Activities</h2>
 </div>
+@if(!$quests->isEmpty())
         <div class="col-lg-12">
             <div id="quest-list">
             <div class="col-lg-9">
@@ -59,7 +60,9 @@
             </div>
             </div>
         </div>
-
+@else
+    <p class="lead">There are no in class quests available.</p>
+@endif
 @endsection
 
 @section('after-scripts-end')
