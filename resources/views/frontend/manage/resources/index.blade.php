@@ -7,7 +7,7 @@
     </div>
 </div>
 
-
+@if(!$resources->isEmpty())
 <div class="row">
         <div class="col-lg-9">
             <h5>Name</h5>
@@ -41,7 +41,9 @@
             </ul>
     </div>
 </div>
-
+@else
+<p class="lead">There are currently no resources.</p>
+@endif
 
 @endsection
 

@@ -6,8 +6,10 @@
         <h2>Manage Announcements {{ link_to('manage/announcement/create', 'New Announcement', ['class' => 'btn btn-primary btn-lg pull-right']) }}</h2>
     </div>
 </div>
-<div class="row">
-        @if(!$announcements->isEmpty())
+
+@if(!$announcements->isEmpty())
+
+    <div class="row">
             <div class="col-lg-9">
                 <h5>Headline</h5>
             </div>
@@ -16,7 +18,6 @@
             </div>
             <div class="col-lg-3">
             </div>
-        @endif
         <div class="col-lg-12">
              <ul class="list-unstyled list">
                 @foreach($announcements as $announcement)
@@ -40,6 +41,9 @@
             </ul>
     </div>
 </div>
+@else
+<p class="lead">There are currently no announcements.</p>
+@endif
 
 
 @endsection

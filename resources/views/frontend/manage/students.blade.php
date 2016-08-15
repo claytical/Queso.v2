@@ -7,7 +7,7 @@
     </div>
 </div>
 
-
+@if(!$students->isEmpty())
 <div class="row">
         <div class="col-lg-6">
             <h5>Student Name</h5>
@@ -24,7 +24,6 @@
                 <li>
 
                 @foreach($students as $student)
-                    @if($student->id != $user->id)
                         <div class="row">
                             <div class="col-lg-6 student">
                             
@@ -37,13 +36,14 @@
                             <div class="col-lg-3 team">
                             </div>
                         </div>
-                    @endif
                 @endforeach
                 </li>
             </ul>
     </div>
 </div>
-
+@else
+    <p class="lead">There are currently no students in this course.</p>
+@endif
 
 @endsection
 
