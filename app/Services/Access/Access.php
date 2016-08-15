@@ -39,6 +39,11 @@ class Access
     *   
     **/
 
+    public function course() {
+        $course = Course::find(session('current_course'));
+        return $course;        
+    }
+
     public function student() {
         $course = Course::find(session('current_course'));
         if ($user = $this->user()) {

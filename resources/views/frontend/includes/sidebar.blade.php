@@ -10,7 +10,7 @@
             <div class="pull-left info">
                 <p>{{ access()->user()->name }}</p>
                 <!-- Status -->
-                <a href="#">Course Name</a>
+                {!! access()->course()->name !!}
             </div><!--pull-left-->
         </div><!--user-panel-->
 

@@ -224,7 +224,7 @@ class CourseController extends Controller
         if ($user->courses()->where('id', '=', $course_id)->count() == 1) {
             $course = Course::find($course_id);
             session()->put('current_course', $course_id);
-            return redirect()->route('frontend.user.dashboard')->withFlashSuccess("Switched to " . $course->id);
+            return redirect()->route('frontend.user.dashboard')->withFlashSuccess("Switched to " . $course->name);
 
         }
         else {
