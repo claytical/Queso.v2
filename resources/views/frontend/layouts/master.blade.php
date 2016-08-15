@@ -71,12 +71,14 @@
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/jquery/multiselect.min.js') }}
 
-        <script>tinymce.init({ selector:'textarea', plugins: [
-    'autolink autoresize link image',
-    'searchreplace wordcount visualblocks fullscreen',
-    'media contextmenu',
-    'paste textpattern'
-  ] });</script>
+        <script>tinymce.init({  selector:'textarea', 
+                                plugins: [
+                                            'autolink autoresize link image',
+                                            'searchreplace wordcount visualblocks fullscreen',
+                                            'media contextmenu',
+                                            'paste textpattern'],
+                                toolbar: 'insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'                                            
+                                });</script>
 
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
         {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
