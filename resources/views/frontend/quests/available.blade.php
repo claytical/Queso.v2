@@ -53,7 +53,7 @@
         </div>
 @endif
 
-if($revisable)
+@if($revisable)
 <h2>Quests That Can Be Revised for More Points</h2>
     
     <div class="col-lg-12">
