@@ -20,21 +20,8 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li class="user-header">
-                            <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Avatar" />
-                            <p>
-                                {{ access()->user()->name }}
-                            </p>
-                        </li>
-
-                        <li class="user-body">
-                            <div class="col-xs-6 text-center">
-                                {{ link_to('profile/edit', 'Settings') }}
-                            </div>
-                            <div class="col-xs-6 text-center">
-                                {{ link_to('password/change', 'Change Password') }}
-                            </div>
-                        </li>
+                        <li>{{ link_to('profile/edit', 'Settings') }}</li>
+                        <li>{{ link_to('password/change', 'Change Password') }}</li>
 
                         <!--
 
@@ -47,14 +34,7 @@
                             @endauth
                         -->
 
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                {{ link_to_route('frontend.user.dashboard', trans('navs.general.home'), [], ['class' => 'btn btn-default btn-flat']) }}
-                            </div>
-                            <div class="pull-right">
-                                {{ link_to_route('auth.logout', trans('navs.general.logout'), [], ['class' => 'btn btn-default btn-flat']) }}
-                            </div>
-                        </li>
+                        <li>{{ link_to_route('auth.logout', trans('navs.general.logout'), []) }}</li>
                     </ul>
                 </li>
 
