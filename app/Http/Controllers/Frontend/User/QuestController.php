@@ -45,11 +45,13 @@ class QuestController extends Controller
 
         $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
                     ->whereNotIn('id', $quests_attempted_ids)
+                    ->where('expires_at', '>=', Carbon::now())
                     ->orderBy('expires_at')
                     ->get();
         $quests_revisable = Quest::where('course_id', '=', session('current_course'))
                     ->whereIn('id', $quests_attempted_ids)
                     ->where('revisions', '=', true)
+                    ->where('expires_at', '>=', Carbon::now())
                     ->orderBy('expires_at')
                     ->get();
 

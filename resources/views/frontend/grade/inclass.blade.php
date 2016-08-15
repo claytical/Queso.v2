@@ -1,9 +1,8 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<div class="col-lg-12">
-        <h2>In Class Activities</h2>
-</div>
+
+<h2>In Class Activities</h2>
 @if(!$quests->isEmpty())
         <div class="col-lg-12">
             <div id="quest-list">
