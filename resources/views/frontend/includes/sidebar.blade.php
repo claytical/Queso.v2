@@ -66,12 +66,12 @@
                 </li>
 
             @endif
-
+            @if(access()->contentCount() > 0)
             <li class="header">Resources</li>
                 {!! HTML::decode(Form::singleResourceList()) !!}
 
                 {!! HTML::decode(Form::categoryResourceList()) !!}
-
+            @endif
 
         </ul><!-- /.sidebar-menu -->
     </section><!-- /.sidebar -->

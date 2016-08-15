@@ -44,6 +44,11 @@ class Access
         return $course;        
     }
 
+    public function contentCount() {
+       $content = Course::find(session('current_course'))->content()->count();
+       return $content;
+    }
+
     public function student() {
         $course = Course::find(session('current_course'));
         if ($user = $this->user()) {

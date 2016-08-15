@@ -94,7 +94,7 @@
         <h4 class="modal-title" id="courseListLabel">Switch Course</h4>
       </div>
       <div class="modal-body">
-        <ul class="unstyled-list">
+        <ul class="list-unstyled">
         @foreach($courses as $class)
             <li> {!! link_to('course/switch/'.$class->id, $class->name) !!}
         @endforeach

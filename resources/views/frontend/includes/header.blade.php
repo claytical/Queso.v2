@@ -14,52 +14,8 @@
                     <li>{{ link_to('register', trans('navs.frontend.register')) }}</li>
                 @else
 
-              <li class="dropdown messages-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="label label-default">0</span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.messages', 0, ['number' => 0]) }}</li>
-                        <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.messages')) }}
-                        </li>
-                    </ul>
-                </li><!-- /.messages-menu -->
-
-                <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-default">0</span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.notifications', 0) }}</li>
-                        <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.notifications')) }}
-                        </li>
-                    </ul>
-                </li><!-- /.notifications-menu -->
-
-                <li class="dropdown tasks-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
-                        <span class="label label-default">0</span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.tasks', 0, ['number' => 0]) }}</li>
-                        <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.tasks')) }}
-                        </li>
-                    </ul>
-                </li><!-- /.tasks-menu -->
-
-
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ access()->user()->picture }}" class="user-image" alt="User Avatar"/>
                         <span class="hidden-xs">{{ access()->user()->name }}</span>
                     </a>
 
