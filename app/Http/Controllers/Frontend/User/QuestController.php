@@ -142,6 +142,12 @@ class QuestController extends Controller
         $quest = Quest::find($request->id);
         $quest->name = $request->name;
         $quest->instructions = $request->description;
+        if($request->has('expiration')) {
+            $quest->expires_at = $request->expiration;
+        }
+        else {
+            $quest->expires_at = null;
+        }
         if($request->has('youtube_url')) {
                 if (strpos($request->youtube_url, 'youtube.com') !== false) {
                     $youtube_url = [];
