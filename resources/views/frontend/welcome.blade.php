@@ -23,9 +23,8 @@
             </div>
 
             <div class="col-lg-6">
-            {!! var_dump($courses) !!}
                 <div class="panel panel-default">
-                    <div class="panel-heading">{!! $course->name !!} <a href="#" class="btn btn-default btn-xs pull-right">Switch Course</a></div>
+                    <div class="panel-heading">{!! $course->name !!} <a href="#" data-toggle="modal" data-target="#course_list" class="btn btn-default btn-xs pull-right">Switch Course</a></div>
                         <div class="panel-body">
                             <h4>Current Level: {!! $current_level->name !!}</h4>
                             <h4>Time: {!! $course->meeting !!}</h4>
@@ -86,6 +85,28 @@
 
         </div>
     </div>
+
+<div class="modal fade" id="course_list" tabindex="-1" role="dialog" aria-labelledby="courseListLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="courseListLabel">Switch Course</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="unstyled-list">
+        @foreach($courses as $class)
+            <li> {!! link_to('course/switch/'.$class->id, $class->name) !!}
+        @endforeach
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 @section('after-scripts-end')
