@@ -219,7 +219,20 @@ class CourseController extends Controller
             ->withUser(access()->user());
 
     }
+    public function change($course_id) {
+        $user = access()->user();
+        if ($user->courses()->where('id', '=', $course_id)->count() == 1) {
+            $course = Course::find($course_id);
+            session()->put('current_course', $course_id);
+            return redirect()->route('frontend.user.dashboard')->withFlashSuccess("Switched to " . $course->id);
 
+        }
+        else {
+            return redirect()->route('frontend.user.dashboard')->withFlashDanger("Can't switch to that course.");
+
+        }
+    
+    }
     public function join(Request $request) {
     	//redirect to dashboard with message
         $course = Course::where('code', '=', $request->registration_code);
