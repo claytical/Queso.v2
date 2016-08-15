@@ -92,7 +92,7 @@
     @endif
 
 <!-- GENERALIZED -->
-    {{ Form::input('date', 'expiration', date('m-d-Y', strtotime($quest->expires_at)), ['class' => 'form-control', 'id' => 'quest_expiration']) }}
+    {{ Form::input('date', 'expiration', $quest->expires_at, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
     
     @if($quest->quest_type_id == 2)
 <!-- ACTIVITY -->
