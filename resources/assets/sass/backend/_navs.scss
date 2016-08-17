@@ -27,7 +27,7 @@
   > li.active > a,
   > li.active > a:hover,
     > li.active > a:focus {
-    border-top-color: $light-blue;
+    border-top-color: $other-blue;
   }
   > li.active > a {
     font-weight: 600;
@@ -44,7 +44,7 @@
   > li.active > a,
   > li.active > a:hover {
     border-top: 0;
-    border-left-color: $light-blue;
+    border-left-color: $other-blue;
   }
 
   > li.header {
@@ -92,7 +92,7 @@
     }
 
     > li.active {
-      border-top-color: $light-blue;
+      border-top-color: $other-blue;
       & > a,
       &:hover > a {
         background-color: #fff;

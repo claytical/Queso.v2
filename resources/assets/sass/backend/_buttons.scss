@@ -63,10 +63,10 @@
   }
 }
 .btn-primary {
-  background-color: $light-blue;
-  border-color: darken($light-blue, 5%);
+  background-color: $other-blue;
+  border-color: darken($other-blue, 5%);
   &:hover, &:active, &.hover {
-    background-color: darken($light-blue, 5%);
+    background-color: darken($other-blue, 5%);
   }
 }
 .btn-success {

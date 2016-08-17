@@ -87,7 +87,7 @@
       @include box-solid-variant($gray, #444);
     }
     &.box-primary {
-      @include box-solid-variant($light-blue);
+      @include box-solid-variant($other-blue);
     }
     &.box-info {
       @include box-solid-variant($aqua);
@@ -321,7 +321,7 @@
       border-left-color: $green;
     }
     &.primary {
-      border-left-color: $light-blue;
+      border-left-color: $other-blue;
     }
 
     > input[type='checkbox']  {
