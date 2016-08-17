@@ -80,7 +80,7 @@
 }
 
 //Gradient background
-@mixin gradient($color: #F5F5F5, $start: #EEE, $stop: #FFF) {
+@mixin gradient($color: #31353D, $start: #EEE, $stop: #FFF) {
   background: $color;
   background: -webkit-gradient(linear,
     left bottom,
