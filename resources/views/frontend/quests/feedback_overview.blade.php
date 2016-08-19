@@ -27,7 +27,7 @@
                             @endif
                         @endforeach
                     @else
-                        <p>You haven't received any feedback...</p>                        
+                        <p>You have not received any feedback.</p>                        
                     @endif
             </div>
 
@@ -43,7 +43,7 @@
                         </ul>      
                     @endforeach
                 @else
-                    <p>You haven't requested any feedback yet</p>
+                    <p>You have not requested any feedback.</p>
                 @endif
                 </div>
 @endsection
