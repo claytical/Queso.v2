@@ -55,6 +55,7 @@
 
 @section('after-scripts-end')
     <script>
+    Dropzone.autoDiscover = false;
     var submission_upload = new Dropzone('div#submission_upload',
         {url:'/dropzone/uploadFiles',
         method: "post"
