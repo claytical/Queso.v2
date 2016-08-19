@@ -13,11 +13,15 @@
                 {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
                 {!! Form::hidden('revision', 0) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
+            </div>
+            <div class="col-lg-3">
+            </div>
+<div class="col-lg-12">
+    <div class="col-lg-9">
                 @if($quest->submissions)
                     {!! Form::textarea('submission', ''); !!}
                 @endif
-
-            </div>
+    </div>
             <div class="col-lg-3">
                 <div class="panel panel-default">
                   <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
@@ -38,17 +42,14 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
-                    @if($quest->uploads)
+                </div>
+                @if($quest->uploads)
                     <div id="submission_upload" class="dropzone"></div>
-                    @endif
+                @endif
                 
                 <hr/>
-
                 {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
-
-
-        </div>
+            </div>
 </div>
                 {!! Form::close() !!}
 @endsection
