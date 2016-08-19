@@ -13,12 +13,9 @@
                 {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
                 {!! Form::hidden('revision', 0) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
-                <div class="form-group">
-                    @if($quest->submissions)
-                        {!! Form::textarea('submission', ''); !!}
-                    @endif
-
-                </div>
+                @if($quest->submissions)
+                    {!! Form::textarea('submission', ''); !!}
+                @endif
 
             </div>
             <div class="col-lg-3">
@@ -43,10 +40,12 @@
                 </div>
             </div>
                     @if($quest->uploads)
-                        <div id="submission_upload" class="dropzone">Drop Files Here</div>
+                        <div id="submission_upload" class="dropzone"></div>
                     @endif
                 
-                {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}
+                <hr/>
+
+                {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
 
                 {!! Form::close() !!}
 
