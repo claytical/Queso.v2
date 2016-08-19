@@ -24,7 +24,7 @@
                         @endif
                         <h5>{!! $quest->skills()->sum('amount') !!} Points</h5>
                         @if($quest->expires_at)
-                        <h6>Due by {!! date('m-d-Y', strtotime($quest->expires_at) !!}</h6>
+                        <h6>Due by {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h6>
                         @endif
                     </div>
                     <div class="col-lg-12">
@@ -67,7 +67,7 @@
                     <h4>{{ link_to('quest/'.$quest->id.'/revise', $quest->name) }}</h4>
                     <h5>{!! $quest->skills()->sum('amount') !!} Points</h5>
                     @if($quest->expires_at)
-                    <h6>Due by {!! date('m-d-Y', strtotime($quest->expires_at) !!}</h6>
+                    <h6>Due by {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h6>
                     @endif
                 </div>
                 <div class="col-lg-12">

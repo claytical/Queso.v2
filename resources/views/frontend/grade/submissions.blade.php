@@ -29,7 +29,7 @@
                     @foreach($lists as $list)
                     <li>
                         <h4 class="submission">{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</h4>
-                        <p>Submitted <span class="date">{!! date('m-d-Y', strtotime($list['attempt']->created_at) !!}</span> by <span class="student">{!! $list['student'] !!}</span></p>
+                        <p>Submitted <span class="date">{!! date('m-d-Y', strtotime($list['attempt']->created_at)) !!}</span> by <span class="student">{!! $list['student'] !!}</span></p>
                     </li>
                     @endforeach
                 </ul>

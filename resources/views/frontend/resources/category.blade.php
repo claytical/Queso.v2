@@ -11,7 +11,7 @@
                 @foreach($resources as $resource)
                 <div class="col-lg-12">
                     <h4>{!! $resource->title !!}</h4>
-                    <h5>{!! date('m-d-Y', strtotime($resource->created_at) !!}</h5>
+                    <h5>{!! date('m-d-Y', strtotime($resource->created_at)) !!}</h5>
                     {!! $resource->description !!}
                     <div>
                      <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>

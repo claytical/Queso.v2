@@ -46,7 +46,7 @@
     <!-- GENERALIZED -->
         <label for="expiration" class="control-label">Expiration Date</label>
 
-        {{ Form::input('date', 'expiration', date('Y-m-d', strtotime($quest->expires_at), ['class' => 'form-control', 'id' => 'quest_expiration']) }}
+        {{ Form::input('date', 'expiration', date('Y-m-d', strtotime($quest->expires_at)), ['class' => 'form-control', 'id' => 'quest_expiration']) }}
         
         @if($quest->quest_type_id == 2)
     <!-- ACTIVITY -->

@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="col-lg-3 date">
-                            {!! date('m-d-Y', strtotime($quest['quest']->created_at) !!}
+                            {!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}
                         </div>
                         <div class="col-lg-2 revisions">
                             {!! $quest['revisions'] !!}
@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="col-lg-3 date">
-                            {!! date('m-d-Y', strtotime($quest['quest']->created_at) !!}
+                            {!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}
                         </div>
                         <div class="col-lg-2 revisions">
                             {!! $quest['revisions'] !!}

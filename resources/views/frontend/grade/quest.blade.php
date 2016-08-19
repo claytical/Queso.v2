@@ -4,7 +4,7 @@
 
 <div class="col-lg-9">
     <h2>{!! $quest->name !!}, {!! $user->name !!}</h2>
-    <h4>Submitted {!! date('m-d-Y', strtotime($attempt->created_at) !!}</h4>
+    <h4>Submitted {!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h4>
 </div>
 <div class="col-lg-3">
 <div class="btn-group pull-right">
@@ -50,7 +50,7 @@
                   @foreach($previous_feedback as $feedback)
                   <blockquote>
                     {!! $feedback->note !!}
-                    <footer>Revision #{!! $feedback->revision !!} <cite title="Source Title">{!! date('m-d-Y', strtotime($feedback->created_at) !!}</cite></footer>
+                    <footer>Revision #{!! $feedback->revision !!} <cite title="Source Title">{!! date('m-d-Y', strtotime($feedback->created_at)) !!}</cite></footer>
                     }
                   </blockquote>
                   @endforeach
