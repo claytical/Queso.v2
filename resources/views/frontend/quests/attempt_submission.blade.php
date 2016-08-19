@@ -40,7 +40,6 @@
                 </div>
             </div>
                     @if($quest->uploads)
-                        <div id="submission_upload" class="dropzone"></div>
                     @endif
                 
                 <hr/>
