@@ -47,10 +47,10 @@
 
                 {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
 
-                {!! Form::close() !!}
 
         </div>
 </div>
+                {!! Form::close() !!}
 @endsection
 
 @section('after-scripts-end')
