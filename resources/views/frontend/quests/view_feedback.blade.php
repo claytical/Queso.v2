@@ -93,20 +93,16 @@
 						type: "get",
 						dataType: "json",
 						error: function(){
-							console.log( "AJAX - error()" );
 							},
 						
 						beforeSend: function(){
-							console.log( "AJAX - beforeSend()" );
 						},
 						
 						complete: function(){
-							console.log( "AJAX - complete()" );
 						},
 						
 						success: function( data ){
-							console.log( "AJAX - success()" );
-							console.log(data);
+							jLink.hide();
 						}
 					}							
 					);
