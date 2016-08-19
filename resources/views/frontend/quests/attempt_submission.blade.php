@@ -14,7 +14,6 @@
                 {!! Form::hidden('revision', 0) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
                 @if($quest->submissions)
-                    {!! Form::textarea('submission', ''); !!}
                 @endif
 
             </div>
@@ -40,6 +39,7 @@
                 </div>
             </div>
                     @if($quest->uploads)
+                    <div id="submission_upload" class="dropzone"></div>
                     @endif
                 
                 <hr/>
