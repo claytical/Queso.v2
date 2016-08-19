@@ -66,7 +66,7 @@
                             </div>
                         @endforeach
                         @if(!$quest['earned'])
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 col-lg-offset-6">
                                 <span class="label label-warning">Grade Pending</span>
                             </div>
                         @else
