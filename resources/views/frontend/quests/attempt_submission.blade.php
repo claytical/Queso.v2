@@ -23,6 +23,10 @@
                 @endif
     </div>
             <div class="col-lg-3">
+                @if($quest->uploads)
+                    <div id="submission_upload" class="dropzone"></div>
+                @endif
+                           
                 <div class="panel panel-default">
                   <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
                   <div class="panel-body">            
@@ -43,11 +47,7 @@
                     </ul>
                 </div>
                 </div>
-                @if($quest->uploads)
-                    <div id="submission_upload" class="dropzone"></div>
-                @endif
-                
-                <hr/>
+ 
                 {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
             </div>
 </div>
