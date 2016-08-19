@@ -3,6 +3,15 @@
   border-radius:0;
 }
 
+.dz-clickable {
+    width: 100%;
+    border: 1px dotted black;
+    min-height: 105px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
 // Margin/Padding Helpers
 $margin-padding: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
 @each $mp in $margin-padding {

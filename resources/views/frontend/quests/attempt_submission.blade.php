@@ -7,7 +7,7 @@
                 @if($quest->expires_at)
                 <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                 @endif
-                
+
                 {!! $quest->instructions !!}
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline', 'id' => 'submission-form')) !!}
                 {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
@@ -18,14 +18,8 @@
                         {!! Form::textarea('submission', ''); !!}
                     @endif
 
-                    @if($quest->uploads)
-                        <div id="submission_upload">Drop Files Here</div>
-                    @endif
                 </div>
 
-                {!! Form::submit('Submit', ['class' => 'btn btn-default']) !!}
-
-                {!! Form::close() !!}
             </div>
             <div class="col-lg-3">
                 <div class="panel panel-default">
@@ -48,7 +42,14 @@
                     </ul>
                 </div>
             </div>
-            
+                    @if($quest->uploads)
+                        <div id="submission_upload" class="dropzone">Drop Files Here</div>
+                    @endif
+                
+                {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}
+
+                {!! Form::close() !!}
+
         </div>
 </div>
 @endsection
