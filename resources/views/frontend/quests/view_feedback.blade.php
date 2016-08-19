@@ -54,7 +54,7 @@
                         <h6>{!! $feedback->user_from->name !!}</h6>
                         {!! $feedback->note !!}
 
-                        <a class="pull-right" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
+                        <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
                     </div>
                 @endforeach
             @endif
@@ -64,7 +64,7 @@
                     <div class="col-lg-12">
                         <h6>{!! $feedback->user_from->name !!}</h6>
                         {!! $feedback->note !!}
-                          <a class="pull-right" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
+                          <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
 
                     </div>    
                 @endforeach
@@ -80,6 +80,38 @@
 @endsection
 
 @section('after-scripts-end')
-    <script>
+<script>
+	$(function(){
+						
+		// Hook up link click events to load content.
+		$( ".give-feedback" ).click(
+			function( objEvent ){
+				var jLink = $( this );
+				$.ajax(
+					{
+						url: jLink.attr( "href" ),
+						type: "get",
+						dataType: "json",
+						error: function(){
+							console.log( "AJAX - error()" );
+							},
+						
+						beforeSend: function(){
+							console.log( "AJAX - beforeSend()" );
+						},
+						
+						complete: function(){
+							console.log( "AJAX - complete()" );
+						},
+						
+						success: function( data ){
+							console.log( "AJAX - success()" );
+							console.log(data);
+						}
+					}							
+					);
+				return( false );					
+			});
+	});    
     </script>
 @stop
