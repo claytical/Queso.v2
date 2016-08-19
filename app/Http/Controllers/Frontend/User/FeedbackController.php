@@ -25,7 +25,7 @@ class FeedbackController extends Controller
         $feedback = Feedback::find($id);
         $feedback->likes = $feedback->likes + 1;
         $feedback->save();
-        return response()->json(['likes' => $feedback->likes);
+        return response()->json(['likes' => $feedback->likes]);
     }
 
 }
