@@ -25,8 +25,9 @@
             <div class="col-lg-3">
                 @if($quest->uploads)
                     <div id="submission_upload" class="dropzone"></div>
+                    <hr/>
                 @endif
-                           
+
                 <div class="panel panel-default">
                   <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
                   <div class="panel-body">            
