@@ -3,7 +3,7 @@
 @section('content')
             <div class="col-lg-6">
                 <h2>Feedback Received</h2>
-                    @if(!$feedback_received->isEmpty())
+                    @if($feedback_received)
                         <p>You haven't received any feedback...</p>
                     @else
 
@@ -34,7 +34,7 @@
 
             <div class="col-lg-6">
                 <h2>Feedback Requested</h2>
-                @if(!$feedback_requested->isEmpty())
+                @if($feedback_requested)
                     @foreach($feedback_requested as $request)
                         <h4>{!! $request->quest_name !!}</h4>
                         <ul class="list-unstyled">
