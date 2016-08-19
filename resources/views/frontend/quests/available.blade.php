@@ -22,9 +22,8 @@
                         @if($quest->quest_type_id == 4)
                             <h4>{{ link_to('quest/'.$quest->id.'/attempt/link', $quest->name) }}</h4>
                         @endif
-                        <h5>{!! $quest->skills()->sum('amount') !!}
-                            @if($quest->expires_at)
-                                , Due by {!! $quest->expires_at !!}
+                        <h5>{!! $quest->skills()->sum('amount') !!} Points
+                        @if($quest->expires_at), Due by {!! $quest->expires_at !!}
                             @endif
                         </h5>
                     </div>
@@ -67,8 +66,7 @@
                 <div class="col-lg-9">
                     <h4>{{ link_to('quest/'.$quest->id.'/revise', $quest->name) }}</h4>
                     <h5>{!! $quest->skills()->sum('amount') !!} Points
-                    @if($quest->expires_at)
-                        , Due by {!! $quest->expires_at !!}
+                    @if($quest->expires_at), Due by {!! $quest->expires_at !!}
                     @endif
                     </h5>
                 </div>
