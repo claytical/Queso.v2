@@ -1051,7 +1051,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -5118,7 +5118,7 @@ button.close, button.mailbox-attachment-close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5231,7 +5231,7 @@ button.close, button.mailbox-attachment-close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7915,7 +7915,7 @@ body {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   overflow-x: hidden;
   overflow-y: auto; }
@@ -8031,7 +8031,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Yeseva One", cursive; }
+  font-family: "Open Sans", sans-serif; }
 
 /* General Links */
 a {
@@ -8134,7 +8134,7 @@ a:focus {
     line-height: 50px;
     text-align: center;
     width: 230px;
-    font-family: "Yeseva One", cursive;
+    font-family: "Open Sans", sans-serif;
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden; }
@@ -8151,7 +8151,7 @@ a:focus {
   .content-header > h1 {
     margin: 0;
     font-size: 24px;
-    font-family: "Yeseva One", cursive; }
+    font-family: "Open Sans", sans-serif; }
     .content-header > h1 > small {
       font-size: 15px;
       display: inline-block;
