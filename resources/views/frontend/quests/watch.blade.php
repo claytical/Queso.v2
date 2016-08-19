@@ -1,10 +1,10 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>{!! $quest->name !!}</h2>
         <div class="col-lg-12">
             <div class="col-md-9">
-            {!! $quest->instructions !!}
+              <h2>{!! $quest->name !!}</h2>
+                {!! $quest->instructions !!}
             </div>
             <div class="col-md-3">
             </div>
@@ -22,7 +22,7 @@
                 {!! Form::hidden('skill_id[]', $skill->id, ['id' => 'v-skill-'.$skill->id]) !!}
 
                 @endforeach
-                {!! Form::submit('Get Points', ['class' => 'btn btn-primary btn-submit btn-block', 'disabled' => '']) !!}
+                {!! Form::submit('Claim Points', ['class' => 'btn btn-primary btn-submit btn-block', 'disabled' => '']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

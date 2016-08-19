@@ -1,9 +1,13 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-        <div class="col-lg-12">
+<div class="col-lg-12">
             <div class="col-lg-9">
                 <h2>{!! $quest->name !!}</h2>
+                @if($quest->expires_at)
+                <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
+                @endif
+                
                 {!! $quest->instructions !!}
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline', 'id' => 'submission-form')) !!}
                 {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
@@ -24,40 +28,29 @@
                 {!! Form::close() !!}
             </div>
             <div class="col-lg-3">
-            <ul class="list-unstyled">
-                @foreach($skills as $skill)
-                    <li>
-                        <div class="col-lg-12">
-                            <div class="col-lg-9">
-                                {!! $skill->name !!}
-                            </div>
-                            <div class="col-lg-3">
-                                {!! $skill->pivot->amount !!}
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-                    <li role="separator" class="divider"></li>
-                    <li>
-                        <div class="col-lg-12">
-                            <div class="col-lg-9">
-                            Points Total
-                            </div>
-                            <div class="col-lg-3">
-                                {!! $quest->skills()->sum('amount') !!}
-                            </div>
-                        </div>
-                    </li>
-            </ul>
-                @if($quest->expires_at)
-                <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at) !!}</h4>
-                @endif
+                <div class="panel panel-default">
+                  <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
+                  <div class="panel-body">            
 
-
+                    <ul class="list-unstyled">
+                        @foreach($skills as $skill)
+                            <li>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-9">
+                                        {!! $skill->name !!}
+                                    </div>
+                                    <div class="col-lg-3">
+                                        {!! $skill->pivot->amount !!}
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             
         </div>
-
+</div>
 @endsection
 
 @section('after-scripts-end')

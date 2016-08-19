@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="panel panel-default">
-                  <div class="panel-heading">Points Available</div>
+                  <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
                   <div class="panel-body">            
                         <ul class="list-unstyled">
                             @foreach($skills as $skill)
@@ -38,17 +38,6 @@
                                     </div>
                                 </li>
                             @endforeach
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <div class="col-lg-12">
-                                        <div class="col-lg-9">
-                                        Points Total
-                                        </div>
-                                        <div class="col-lg-3">
-                                            {!! $quest->skills()->sum('amount') !!}
-                                        </div>
-                                    </div>
-                                </li>
                         </ul>
                     </div>
                 </div>
