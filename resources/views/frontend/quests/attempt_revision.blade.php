@@ -65,7 +65,7 @@
                 <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
             @endif
                 @if($quest->expires_at)
-                    <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at) !!}</h4>
+                    <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                 @endif
 
                   @if(!$files->isEmpty())

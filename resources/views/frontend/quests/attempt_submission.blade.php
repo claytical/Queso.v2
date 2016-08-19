@@ -4,15 +4,17 @@
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline', 'id' => 'submission-form')) !!}
 <div class="col-lg-12">
             <div class="col-lg-9">
-                <h2>{!! $quest->name !!}</h2>
-                @if($quest->expires_at)
-                <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
-                @endif
+                <div class="col-lg-12">
+                    <h2>{!! $quest->name !!}</h2>
+                    @if($quest->expires_at)
+                    <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
+                    @endif
 
-                {!! $quest->instructions !!}
-                {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
-                {!! Form::hidden('revision', 0) !!}
-                {!! Form::hidden('quest_id', $quest->id) !!}
+                    {!! $quest->instructions !!}
+                    {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
+                    {!! Form::hidden('revision', 0) !!}
+                    {!! Form::hidden('quest_id', $quest->id) !!}
+                </div>
             </div>
             <div class="col-lg-3">
             </div>
