@@ -52,7 +52,9 @@
                     <div class="col-lg-12">
 
                         <h6>{!! $feedback->user_from->name !!}</h6>
-                        {!! $feedback->note !!} <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a>
+                        {!! $feedback->note !!}
+
+                        <a class="pull-right" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
                     </div>
                 @endforeach
             @endif
@@ -61,7 +63,8 @@
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
                         <h6>{!! $feedback->user_from->name !!}</h6>
-                        {!! $feedback->note !!} <a class="btn btn-default pull-right" href="#" role="button"><span class="glyphicon glyphicon-heart"></span></a>
+                        {!! $feedback->note !!}
+                          <a class="pull-right" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
 
                     </div>    
                 @endforeach
