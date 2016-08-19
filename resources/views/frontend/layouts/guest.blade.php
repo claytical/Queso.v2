@@ -26,8 +26,7 @@
         @yield('after-styles-end')
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans|Yeseva+One" rel="stylesheet">
-    </head>
+<link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet">    </head>
     <body>
         <section class="content-header">
             @yield('page-header')

@@ -26,7 +26,7 @@
         @yield('after-styles-end')
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans|Yeseva+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet">
         <!-- front loading scripts -->
         {{ HTML::script('js/vendor/dropzone/dropzone.js')}}
         {{ HTML::script('js/vendor/list.min.js')}}
