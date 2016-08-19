@@ -54,7 +54,7 @@
                     {{ link_to('quests/available', 'Available') }}
                 </li>
 
-                <li class="{{ Active::pattern('quests/redeem') }}">
+                <li class="{{ Active::pattern('quest/redeem') }}">
                     {{ link_to('quest/redeem', 'Instant Credit') }}
                 </li>
 
