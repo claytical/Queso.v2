@@ -26,7 +26,7 @@
         @yield('after-styles-end')
 
         <!-- Fonts -->
-        {{ Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') }}
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans|Yeseva+One" rel="stylesheet">
 
 
 <script>

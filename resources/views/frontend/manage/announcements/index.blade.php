@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="col-lg-3 date">
-                            {!! $announcement->created_at !!}
+                            {!! date('m-d-Y', strtotime($announcement->created_at) !!}
                         </div>
 
                         <div class="col-lg-3">

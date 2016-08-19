@@ -4,7 +4,7 @@
 
 <div class="col-lg-9">
     <h2>{!! $quest->name !!}, {!! $user->name !!}</h2>
-    <h4>Submitted {!! $submission->created_at !!}</h4>
+    <h4>Submitted {!! date('m-d-Y', strtotime($submission->created_at) !!}</h4>
 </div>
 <div class="col-lg-3">
 <div class="btn-group pull-right">
@@ -18,7 +18,7 @@
       @if($revision->revision == 0)
         <li>{{ link_to('grade/submission/'.$list['attempt']->id, 'Original') }}</li>
       @else
-        <li>{{ link_to('grade/submission/'.$list['attempt']->id, '#'. $revision->revision . ' ' . $revision->created_at) }}</li>
+        <li>{{ link_to('grade/submission/'.$list['attempt']->id, '#'. $revision->revision . ' ' . date('m-d-Y', strtotime($revision->created_at)) }}</li>
       @endif
     @endforeach
   </ul>

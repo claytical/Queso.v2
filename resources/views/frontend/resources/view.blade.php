@@ -2,7 +2,7 @@
 
 @section('content')
 <h2>{!! $resource->title !!}</h2>
-<h4>{!! $resource->created_at !!}</h4>
+<h4>{!! date('m-d-Y', strtotime($resource->created_at) !!}</h4>
 <div class="row">
         <div class="col-lg-12">
             {!! $resource->description !!}

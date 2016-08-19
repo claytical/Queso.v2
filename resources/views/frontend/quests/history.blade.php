@@ -43,13 +43,13 @@
                 <div class="col-lg-6">
                     <h4>{!! $quest['quest']->name !!} </h4>
                     {!! $quest['quest']->instructions !!}
-                    <h5>Submitted {!! $quest['quest']->created_at !!}</h5>
+                    <h5>Submitted {!! date('m-d-Y', strtotime($quest['quest']->created_at) !!}</h5>
 
                     @if($quest['revisions'])
                     <h6>Revision History</h6>
                         <ul>
                         @foreach($quest['revisions'] as $revision)
-                            <li>{!! $revision->created_at !!}</li>
+                            <li>{!! date('m-d-Y', strtotime($revision->created_at) !!}</li>
                         @endforeach
                         </ul>
                     @endif

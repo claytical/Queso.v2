@@ -43,7 +43,7 @@
                     </li>
             </ul>
                 @if($quest->expires_at)
-                <h4>Due {!! $quest->expires_at !!}</h4>
+                <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at) !!}</h4>
                 @endif
 
 

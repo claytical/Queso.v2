@@ -114,7 +114,7 @@
     line-height: 50px;
     text-align: center;
     width: $sidebar-width;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: $font-family-cursive;
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden;
@@ -142,6 +142,7 @@
   > h1 {
     margin: 0;
     font-size: 24px;
+    font-family: $font-family-cursive;
     > small {
       font-size: 15px;
       display: inline-block;

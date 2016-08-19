@@ -10,7 +10,7 @@
         @foreach($announcements as $announcement)
             <li>
                 <h4>{!! $announcement->title !!}</h4>
-                <h5>{!! $announcement->created_at !!}</h5>
+                <h5>{!! date('m-d-Y', strtotime($announcement->created_at) !!}</h5>
                 <div>
                 {!! $announcement->body !!}
                 </div>
