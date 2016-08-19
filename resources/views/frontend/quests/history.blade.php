@@ -65,18 +65,21 @@
                                 {!! $skill->pivot->amount !!}
                             </div>
                         @endforeach
+                        @if(!$quest['earned'])
+                            <div class="col-lg-12">
+                                <span class="label label-warning">Grade Pending</span>
+                            </div>
+                        @else
                             <hr/>
                             <div class="col-lg-6">
                                 Total
                             </div>
 
                             <div class="col-lg-6">
-                                @if(!$quest['earned'])
-                                    <span class="label">Grade Pending</span>
-                                @else
-                                    {!! $quest['earned'] !!} / {!! $quest['available'] !!}
-                                @endif
+                                {!! $quest['earned'] !!} / {!! $quest['available'] !!}
                             </div>
+
+                        @endif
                 </div>
             </div>
             @endforeach
