@@ -3,7 +3,7 @@
 @section('content')
             <div class="col-lg-6">
                 <h2>Feedback Received</h2>
-                    @if(!$feedback_received->isEmpty())
+                    @if($feedback_received->isEmpty())
                         <p>You haven't received any feedback...</p>
                     @else
 
