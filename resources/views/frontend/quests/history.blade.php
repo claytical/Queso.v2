@@ -71,7 +71,11 @@
                             </div>
 
                             <div class="col-lg-6">
-                                {!! $quest['earned'] !!} / {!! $quest['available'] !!}
+                                @if(!$earned)
+                                    <span class="label">Grade Pending</span>
+                                @else
+                                    {!! $quest['earned'] !!} / {!! $quest['available'] !!}
+                                @endif
                             </div>
                 </div>
             </div>

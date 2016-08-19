@@ -590,8 +590,16 @@ class QuestController extends Controller
                 $revisions = false;
             }
 
-            $skills = $user->skills()->where('quest_id', $id)->get();
-            $earned = $user->skills()->where('quest_id', $id)->sum('amount');
+            $user_quest_skills = $user->skills()->where('quest_id', $id);
+            if ($user_quest_skills->count() > 0) {
+                $earned = $user_quest_skills->sum('amount');
+            }
+            else {
+                $earned = false;
+
+            }
+            
+            $skills = $user_quest_skills->get();
             $available = Quest::find($id)->skills()->sum('amount');
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
