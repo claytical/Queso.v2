@@ -95,24 +95,32 @@
       <div class="modal-body">
             @if($positive)
                 <h4>What Your Peers Liked</h4>
-                {!! var_dump($positive) !!}
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
 
-                        <h6>{!! $feedback->user_from->name !!}</h6>
-                        <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>                        {!! $feedback->note !!}
+                        <h5>{!! $feedback->user_from->name !!}</h5>
+                        <h6>Sent {!! date('m-d-Y', strtotime($feedback->created_at)) !!}
+                            @if($feedback->revision > 0)
+                            <span class="label pull-right">Revision #{!! $feedback->revision !!}</span>
+                            @endif
+                        </h6>
+                        {!! $feedback->note !!}
 
 
                     </div>
                 @endforeach
             @endif
             @if($negative)
-            {!! var_dump($negative) !!}
                 <h4>Suggestions From Your Peers</h4>
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
-                        <h6>{!! $feedback->user_from->name !!}</h6>
-                          <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
+                        <h5>{!! $feedback->user_from->name !!}</h5>
+                        <h6>Sent {!! date('m-d-Y', strtotime($feedback->created_at)) !!}
+                            @if($feedback->revision > 0)
+                            <span class="label pull-right">Revision #{!! $feedback->revision !!}</span>
+                            @endif
+                        </h6>
+                        
                         {!! $feedback->note !!}
 
                     </div>    
@@ -121,8 +129,13 @@
             
             @if(!empty($existing_skills[0]))
             <div class="col-lg-12">
-                <h4>From The Professor</h4>
+                <h5>From The Professor</h5>
                 @foreach($instructor_feedback as $feedback)
+                    <h6>Sent {!! date('m-d-Y', strtotime($feedback->created_at)) !!}
+                        @if($feedback->revision > 0)
+                        <span class="label pull-right">Revision #{!! $feedback->revision !!}</span>
+                        @endif
+                    </h6>
                     {!! $feedback->note !!}
                 @endforeach
             </div>
