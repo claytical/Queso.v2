@@ -18,7 +18,7 @@
       @if($revision->revision == 0)
         <li>{{ link_to('grade/quest/'.$quest->id . '/' . $attempt->id, 'Original') }}</li>
       @else
-        <li>{{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m-d-Y', strtotime($revision->created_at)) }}</li>
+        <li>{{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m-d-Y', strtotime($revision->created_at))) }}</li>
       @endif
     @endforeach
   </ul>
