@@ -11,12 +11,12 @@
     	{{ Form::input('text', 'title', null, ['class' => 'form-control', 'placeholder' => 'Adventure Awaits!', 'id' => 'headline']) }}
 	</div>
     {!! Form::textarea('body', null, ['class' => 'field', 'files' => true]) !!}
+                    {!! Form::checkbox('sticky', 1) !!} Sticky
 
 </div>
 
 
 <div class="col-lg-3">
-                    {!! Form::checkbox('sticky', 1) !!} Sticky
                     {!! Form::submit('Post', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
 </div>

@@ -10,7 +10,7 @@
 @if(!$announcements->isEmpty())
 
     <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-6">
                 <h5>Headline</h5>
             </div>
             <div class="col-lg-3">
@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="col-lg-3">
-                            {{ link_to('manage/announcement/'.$announcement->id.'/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
+                                <a class="btn btn-danger" href="{!! url('manage/announcement/'.$announcement->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                         </div>
  
                     </div>
