@@ -35,8 +35,8 @@
                                 Action <span class="caret"></span>
                               </button>
                               <ul class="dropdown-menu">
-                                <li><a href="{!! url('manage/quest'.$quest->id.'/clone');!!}"><span class="glyphicon glyphicon-copy"></span> Clone</a></li>
-                                <li><a href="{!! url('manage/quest'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
+                                <li><a href="{!! url('manage/quest/'.$quest->id.'/clone');!!}"><span class="glyphicon glyphicon-copy"></span> Clone</a></li>
+                                <li><a href="{!! url('manage/quest/'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
                               </ul>
                             </div>
                         </div>                         
