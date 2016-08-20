@@ -13,7 +13,7 @@
             <h5>Quest Name</h5>
         </div>
         <div class="col-lg-3">
-            <h5>Category</h5>
+            <h5></h5>
         </div>
         <div class="col-lg-12">
              <ul class="list-unstyled list">
