@@ -17,19 +17,27 @@
 
 
 <div class="col-lg-3">
+<label for="tag">Category</label>
+<div class="form-group">
     {{ Form::input('text', 'tag', null, ['class' => 'form-control', 'placeholder' => 'Category', 'id' => 'tag']) }}
-
+</div>
+<div class="form-group">
+<label for="link">Embedded Link</label>
    	{{ Form::input('text', 'link', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
-    {!! Form::close() !!}
-    <div id="resource_upload">Drop Files Here</div>
+</div>
+    <div id="resource_upload" class="dropzone"></div>
 
     <button class="btn btn-primary btn-lg btn-block" id="create_resource">Create</button>
 
 </div>
+    {!! Form::close() !!}
+
 @endsection
 
 @section('after-scripts-end')
     <script>
+    Dropzone.autoDiscover = false;
+
     $('#create_resource').click(function() {
         $("#resource-create-form").submit();
     });
