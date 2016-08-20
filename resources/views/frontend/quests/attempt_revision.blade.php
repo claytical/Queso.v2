@@ -20,7 +20,7 @@
                     <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
                 @endif
                 @if(!empty($existing_skills[0]))
-                    <h3>Current Grade <a href="#" class="pull-right"><span class="glyphicon glyphicon-info-sign"></span></a></h3>
+                    <h3>Current Grade <a href="#" data-toggle="modal" data-target="#feedbackModal" class="pull-right"><span class="glyphicon glyphicon-info-sign"></span></a></h3>
 
                     <ul class="list-unstyled">
                         @foreach($skills as $index => $skill)
@@ -84,7 +84,54 @@
             {!! Form::submit('Submit Revision', ['class' => 'btn btn-primary btn-block']) !!}
             
 </div>
+<!-- Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Feedback</h4>
+      </div>
+      <div class="modal-body">
+            @if($positive)
+                <h4>What Your Peers Liked</h4>
+                @foreach($positive as $feedback)            
+                    <div class="col-lg-12">
 
+                        <h6>{!! $feedback->user_from->name !!}</h6>
+                        <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>                        {!! $feedback->note !!}
+
+
+                    </div>
+                @endforeach
+            @endif
+            @if($negative)
+                <h4>Suggestions From Your Peers</h4>
+                @foreach($negative as $feedback)
+                    <div class="col-lg-12">
+                        <h6>{!! $feedback->user_from->name !!}</h6>
+                          <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
+                        {!! $feedback->note !!}
+
+                    </div>    
+                @endforeach
+            @endif
+            @if($graded)
+            <div class="col-lg-12">
+                <h4>From The Professor</h4>
+                @foreach($instructor_feedback as $feedback)
+                    {!! $feedback->note !!}
+                @endforeach
+            </div>
+            @endif
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 {!! Form::close() !!}
 
 @endsection

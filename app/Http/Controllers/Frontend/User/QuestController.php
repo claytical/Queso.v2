@@ -535,6 +535,23 @@ class QuestController extends Controller
         $user = access()->user();
         $skills = $quest->skills()->get();
         $files = false;
+        $feedback = Feedback::where('quest_id', '=', $quest_id)
+                                ->where('to_user_id', $user->id);
+
+
+        $instructor_feedback = $feedback->where('subtype', '=', 1)
+                                        ->orderBy('revision')
+                                        ->get();
+
+        $positive_feedback = $feedback->where('subtype', '=', 2)
+                                        ->orderBy('revision')  
+                                        ->get();
+
+        $negative_feedback = $feedback->where('subtype', '=', 3)
+                                        ->orderBy('revision')
+                                        ->get();
+
+
         if ($quest->quest_type_id == 1) {
             //submission
             $previous_attempt = Submission::where('quest_id', '=', $quest_id)
@@ -558,7 +575,7 @@ class QuestController extends Controller
 
         $existing_skills = $existing_skills->get();
 
-        return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills, 'total' => $total_points, 'files' => $files])
+        return view('frontend.quests.attempt_revision', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills, 'total' => $total_points, 'files' => $files, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'instructor_feedback' => $instructor_feedback])
             ->withUser(access()->user());
     }
 
