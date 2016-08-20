@@ -9,8 +9,11 @@
                 <div class="col-lg-12">
                     <h2>{!! $quest->name !!}</h2>
                         {!! $quest->instructions !!}
-                        {!! Form::hidden('revision', $previous_attempt->revision + 1) !!}
-                        {!! Form::hidden('quest_id', $quest->id) !!}
+                        @if($quest->expires_at)
+                            <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
+                        @endif
+                {!! Form::hidden('revision', $previous_attempt->revision + 1) !!}
+                {!! Form::hidden('quest_id', $quest->id) !!}
                 </div>
             </div>
             <div class="col-lg-3">
@@ -32,9 +35,6 @@
 
     <div class="col-lg-3">
 
-        @if($quest->uploads)                        
-            <div id="submission_upload" class="dropzone"></div>
-        @endif
 
         @if(!empty($existing_skills[0]))
            <ul class="list-unstyled">
@@ -69,19 +69,19 @@
                 <h3><span class="label label-danger">UNGRADED</span></h3>
                 <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
             @endif
-
-            @if($quest->expires_at)
-                <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
+    
+            @if($quest->uploads)                        
+                <div id="submission_upload" class="dropzone"></div>
             @endif
 
-              @if(!$files->isEmpty())
+            @if(!$files->isEmpty())
                 <h4>Previously Submitted Files</h4>
                 @foreach($files as $file)
                     {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
                 @endforeach
                 
             @endif
-            
+            <hr/>
             {!! Form::submit('Submit Revision', ['class' => 'btn btn-primary btn-block']) !!}
 
     </div>
