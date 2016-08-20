@@ -111,7 +111,7 @@
 
                             </div>
                             <div class="col-lg-3">
-                                {!! Form::submit('Add Skill', ['class' => 'btn btn-default btn-block']) !!}
+                                {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-block']) !!}
                                 {!! Form::close() !!}
                             </div>
                         </li>
