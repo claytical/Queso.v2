@@ -4,7 +4,7 @@
 
 <div class="col-lg-9">
     <h2>{!! $quest->name !!}, {!! $user->name !!}</h2>
-    <h4>Submitted {!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h4>
+    <h6>Submitted {!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h6>
 </div>
 <div class="col-lg-3">
 <div class="btn-group pull-right">
@@ -84,10 +84,10 @@
         @if($quest->quest_type_id == 4)
           <a href="{{ $attempt->url }}" data-iframely-url>{{ $attempt->url }}</a>
         @endif
-          @if($positive_feedback || $negative_feedback)
+          @if(!$positive_feedback->isEmpty() || !$negative_feedback->isEmpty())
             <h4>Peer Feedback</h4>
           @endif
-          @if($positive_feedback)
+          @if(!$positive_feedback->isEmpty())
             <h5>Positives</h5>    
             @foreach($positive_feedback as $feedback)
 
@@ -98,7 +98,7 @@
             @endforeach
         @endif
 
-        @if($negative_feedback)
+        @if(!$negative_feedback->isEmpty())
           <h5>Areas for Improvement</h5>
 
             @foreach($negative_feedback as $feedback)
