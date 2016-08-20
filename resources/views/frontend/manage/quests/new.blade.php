@@ -16,7 +16,7 @@
                     <div class="input-group">
                         {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
                        <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" id="name_next">Next</button>
+                        <button type="button" class="btn btn-default" id="name_next" style="margin-left: 10px;">Next</button>
                         </span>
                     </div>
             </div>
@@ -233,21 +233,52 @@
 </div>
 
 <div class="col-lg-4">
+    <div id="quest_name_selection" style="display:none;">
     <label>Quest Name</label>
-    <h4 id="quest_name_selection"></h4>
-    <h5 id="quest_type_selection"></h5>
-    <h5 id="url_selection"></h5>
-    <p id="description_selection"></p>
+        <h5></h5>
+    </div>
+    <div id="quest_type_selection" style="display:none;">
+        <label>Quest Type</label>
+        <h5></h5>
+    </div>
+
+    <div id="url_selection">
+        <label>URL</label>
+        <h5></h5>
+    </div>
+
     <div id="instant_selection" style="display:none;">
     <label>Instant Credit</label>
-    Enabled</div>
+        <h5></h5>
+    </div>
+
     <div id="upload_selection" style="display:none;">
     <label>Uploads</label>
-    Enabled</div>
-    <div id="revision_selection" style="display:none;"><label>Revisions</label>Enabled</div>
-    <div id="feedback_selection" style="display:none;"><label>Peer Feedback</label>Enabled</div>
-    <div id="expires_selection" style="display:none;">Expires 00/00/0000</div>
-    <div id="file_selection" style="display:none;">Files Attached</div>
+        <h5></h5>
+    </div>
+
+    <div id="revision_selection" style="display:none;">
+        <label>Revisions</label>
+        <h5></h5>
+    </div>
+    
+    <div id="feedback_selection" style="display:none;">
+        <label>Peer Feedback</label>
+        <h5></h5>
+    </div>
+
+    <div id="expires_selection" style="display:none;">
+        <label>Expires</label>
+        <h5></h5>
+    </div>
+    
+    <div id="file_selection" style="display:none;">
+    <label>Files Attached</label>
+        <ul id="file-list" class="unstyled-list">
+            <li></li>
+        </ul>
+    </div>
+
     <div id="skills_selection" style="display:none;">
         <h5>Skills</h5>
         <ul id="skill-list" class="unstyled-list">
@@ -276,7 +307,8 @@
         $("#quest_name").hide();
         $("#quest_title").hide();
         qf.append($("#quest_title"));
-        $("#quest_name_selection").html($("#quest_title").val());
+        $("#quest_name_selection h5").html($("#quest_title").val());
+        $("#quest_name_selection").show();
         $("#quest_type").show();
     });
 
