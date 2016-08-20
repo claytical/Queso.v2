@@ -63,7 +63,7 @@
   box-shadow: $box-boxshadow;
   border-radius: $box-border-radius;
   > .nav-tabs {
-    margin: 0;
+/*    margin: 0;*/
     border-bottom-color: #f4f4f4;
     @include border-top-radius($box-border-radius);
     > li {
