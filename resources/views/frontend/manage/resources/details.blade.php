@@ -33,16 +33,20 @@
         </div>
     @endforeach
 
-    <div id="resource_upload">Drop Files Here</div>
-    {!! Form::close() !!}
+    <div id="resource_upload" class="dropzone">Drop Files Here</div>
+    <hr/>
     <button class="btn btn-primary btn-lg btn-block" id="update_resource">Update</button>
 
 
 </div>
+    {!! Form::close() !!}
+
 @endsection
 
 @section('after-scripts-end')
     <script>
+        Dropzone.autoDiscover = false;
+
         $('#update_resource').click(function() {
         $("#resource-update-form").submit();
     });
