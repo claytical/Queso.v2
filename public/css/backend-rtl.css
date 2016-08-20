@@ -12007,13 +12007,8 @@ table.text-center, table.text-center td, table.text-center th {
   margin: 0;
   border-radius: 0; }
 
-.dz-clickable {
-  width: 100%;
-  border: 1px dotted black;
-  min-height: 105px;
-  margin-bottom: 20px;
-  padding: 10px;
-  text-align: center; }
+.extra-top-padding {
+  padding-top: 10px !important; }
 
 .mt-0 {
   margin-top: 0px !important; }

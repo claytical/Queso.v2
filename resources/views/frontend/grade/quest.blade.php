@@ -43,7 +43,10 @@
 
           <!-- Tab panes -->
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="description">{!! $quest->instructions !!}
+            <div role="tabpanel" class="tab-pane active" id="description">
+            <div class="extra-top-padding">
+              {!! $quest->instructions !!}
+            </div>
             </div>
             @if($revision_count > 1)
               <div role="tabpanel" class="tab-pane" id="previous_feedback">
