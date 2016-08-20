@@ -34,7 +34,9 @@
                             </li>
                         @endforeach
                             <li>
+                                    <div class="col-lg-12">
                                     <br/>
+                                    </div>
                                     <div class="col-lg-6">
                                         Total
                                     </div>
