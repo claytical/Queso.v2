@@ -26,16 +26,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{!! $course->name !!} <a href="#" data-toggle="modal" data-target="#course_list" class="btn btn-default btn-xs pull-right">Switch Course</a></div>
                         <div class="panel-body">
-                            <h4>Current Level: {!! $current_level->name !!}</h4>
-                            <h4>Time: {!! $course->meeting !!}</h4>
-                            <h4>Location: {!! $course->meeting_location !!}</h4>
+                            <h5>Current Level: {!! $current_level->name !!}</h5>
+                            <h5>Time: {!! $course->meeting !!}</h5>
+                            <h5>Location: {!! $course->meeting_location !!}</h5>
                             <hr/>
-                            <h4><a href="mailto:{!! $course->instructor_contact !!}">{!! $course->instructor_display_name !!}</a></h4>
-                            <h4>Office: {!! $course->instructor_office_location !!}</h4>
-                            <h4>Hours: {!! $course->office_hours !!}</h4>
+                            <h5><a href="mailto:{!! $course->instructor_contact !!}">{!! $course->instructor_display_name !!}</a></h5>
+                            <h5>Office: {!! $course->instructor_office_location !!}</h5>
+                            <h5>Hours: {!! $course->office_hours !!}</h5>
                             @if($team_members)
                                 <hr/>
-                                <h5>Your Peer Group</h5>
+                                <h6>Your Peer Group</h6>
                                 <ul class="list-unstyled">
                                     @foreach($team_members as $team_member)
                                         <li><a href="mailto:{!! $team_member->email !!}">{!! $team_member->name !!}</a></li>

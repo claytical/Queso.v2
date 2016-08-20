@@ -13,9 +13,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>What's the name of this quest?</h3>
-                    {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
-                    <button type="button" class="btn btn-default" id="name_next">Next</button>
-
+                    <div class="input-group">
+                        {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
+                       <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" id="name_next">Next</button>
+                        </span>
+                    </div>
             </div>
         </div>
     </div>
@@ -24,10 +27,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>What kind of quest is this?</h3>
-                    <button type="button" class="btn btn-default" id="submission_next">Submission</button> <!-- #submission_selection -->
-                    <button type="button" class="btn btn-default" id="activity_next">In Class Activity</button> <!-- #inclass_instant -->
-                    <button type="button" class="btn btn-default" id="watch_next">Watch a Video</button> <!-- #video_url -->
-                    <button type="button" class="btn btn-default" id="link_next">Link</button> <!-- #peer_feedback -->
+                    <button type="button" class="btn btn-default btn-lg" id="submission_next">Submission</button> <!-- #submission_selection -->
+                    <button type="button" class="btn btn-default btn-lg" id="activity_next">In Class Activity</button> <!-- #inclass_instant -->
+                    <button type="button" class="btn btn-default btn-lg" id="watch_next">Watch a Video</button> <!-- #video_url -->
+                    <button type="button" class="btn btn-default btn-lg" id="link_next">Link</button> <!-- #peer_feedback -->
                     {{ Form::hidden('quest_type', null, ['id' => 'quest_type_id']) }}
 
             </div>
@@ -39,9 +42,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>How should students submit their work?</h3>
-                    <button type="button" class="btn btn-default" id="written_next">Write in a Textbox</button>
-                    <button type="button" class="btn btn-default" id="upload_next">Upload Files</button>
-                    <button type="button" class="btn btn-default" id="either_next">Either</button>
+                    <button type="button" class="btn btn-default btn-lg" id="written_next">Write in a Textbox</button>
+                    <button type="button" class="btn btn-default btn-lg" id="upload_next">Upload Files</button>
+                    <button type="button" class="btn btn-default btn-lg" id="either_next">Either</button>
                     {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
                     {{ Form::hidden('uploads_allowed', true, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('submissions_allowed', true, ['id' => 'uploads_allowed']) }}
@@ -54,8 +57,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>Should a student be able to revise their submission?</h3>
-                    <button type="button" class="btn btn-default" id="revisions_allowed">Yes</button>
-                    <button type="button" class="btn btn-default" id="revisions_disallowed">No</button>
+                    <button type="button" class="btn btn-default btn-lg" id="revisions_allowed">Yes</button>
+                    <button type="button" class="btn btn-default btn-lg" id="revisions_disallowed">No</button>
                     {{ Form::hidden('revisions', true, ['id' => 'revisions_option']) }}
 
             </div>
@@ -66,8 +69,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>Do you want to allow peer feedback?</h3>
-                    <button type="button" class="btn btn-default" id="feedback_allowed">Yes</button>
-                    <button type="button" class="btn btn-default" id="feedback_disallowed">No</button>
+                    <button type="button" class="btn btn-default btn-lg" id="feedback_allowed">Yes</button>
+                    <button type="button" class="btn btn-default btn-lg" id="feedback_disallowed">No</button>
                     {{ Form::hidden('feedback', false, ['id' => 'feedback_option']) }}
 
             </div>
@@ -78,8 +81,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>Do you want to allow a student to enter unique code for instant credit?</h3>
-                    <button type="button" class="btn btn-default" id="instant_allowed">Yes</button>
-                    <button type="button" class="btn btn-default" id="instant_disallowed">No</button>
+                    <button type="button" class="btn btn-default btn-lg" id="instant_allowed">Yes</button>
+                    <button type="button" class="btn btn-default btn-lg" id="instant_disallowed">No</button>
                     {{ Form::hidden('instant', true, ['id' => 'instant_option']) }}
 
             </div>
@@ -90,8 +93,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>What's the URL for the video?</h3>
+                    <div class="input-group">
                     {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?v=AAAAAAA', 'id' => 'video_url']) }}
-                <button type="button" class="btn btn-default" id="video_next">Next</button>
+                    <span class="input-group-btn">                    
+                    <button type="button" class="btn btn-default btn-lg" id="video_next">Next</button>
+                    </span>
+                    </div>
             </div>
         </div>
     </div>
@@ -100,8 +107,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>Should this quest disappear after a certain date?</h3>
-                    <button type="button" class="btn btn-default" id="expiration_allowed">Yes</button>
-                    <button type="button" class="btn btn-default" id="expiration_disallowed">No</button>
+                    <button type="button" class="btn btn-default btn-lg" id="expiration_allowed">Yes</button>
+                    <button type="button" class="btn btn-default btn-lg" id="expiration_disallowed">No</button>
             </div>
         </div>
     </div>
@@ -110,9 +117,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>When should the quest disappear?</h3>
+                <div class="input-group">                    
                     {{ Form::input('date', 'expiration', null, ['class' => 'form-control', 'id' => 'expiration_date']) }}
+                    <span class="input-group-btn">               
                     <button type="button" class="btn btn-default" id="expiration_set">Next</button>
-
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -122,6 +132,7 @@
             <div class="col-lg-12">
                 <h3>Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</h3>
                 {!! Form::textarea('description', null, ['class' => 'field', 'files' => true, 'id' => 'description']) !!}
+
                 <button type="button" class="btn btn-default" id="description_set">Next</button>
             </div>
         </div>
@@ -152,8 +163,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>Should a student be required to have a minimum skill level in order to see this quest?</h3>
-                    <button type="button" class="btn btn-default" id="thresholds_allowed">Yes</button>
-                    <button type="button" class="btn btn-default" id="thresholds_disallowed">No</button>
+                    <button type="button" class="btn btn-default btn-lg" id="thresholds_allowed">Yes</button>
+                    <button type="button" class="btn btn-default btn-lg" id="thresholds_disallowed">No</button>
             </div>
         </div>
     </div>
@@ -175,7 +186,6 @@
                       </div>
                       <div class="form-group">
                         <button type="button" class="btn btn-default" id="thresholds_set">Next</button>
-
                       </div>
 
                     </form>
@@ -187,8 +197,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>Would you like to attach any supporting files to this quest?</h3>
-                    <button type="button" class="btn btn-default" id="files_allowed">Yes</button>
-                    <button type="button" class="btn btn-default" id="files_disallowed">No</button>
+                    <button type="button" class="btn btn-default btn-lg" id="files_allowed">Yes</button>
+                    <button type="button" class="btn btn-default btn-lg" id="files_disallowed">No</button>
             </div>
         </div>
     </div>
@@ -199,7 +209,7 @@
                     <div id="quest_uploads">Drop Files Here</div>
                 </div>
                       <div class="form-group">
-                        <button type="button" class="btn btn-default" id="set_files">Next</button>
+                        <button type="button" class="btn btn-default btn-lg" id="set_files">Next</button>
 
                       </div>
 
@@ -223,14 +233,19 @@
 </div>
 
 <div class="col-lg-4">
+    <label>Quest Name</label>
     <h4 id="quest_name_selection"></h4>
     <h5 id="quest_type_selection"></h5>
     <h5 id="url_selection"></h5>
     <p id="description_selection"></p>
-    <div id="instant_selection" style="display:none;">Instant Credit</div>
-    <div id="upload_selection" style="display:none;">Uploads Enabled</div>
-    <div id="revision_selection" style="display:none;">Revisions Enabled</div>
-    <div id="feedback_selection" style="display:none;">Peer Feedback Enabled</div>
+    <div id="instant_selection" style="display:none;">
+    <label>Instant Credit</label>
+    Enabled</div>
+    <div id="upload_selection" style="display:none;">
+    <label>Uploads</label>
+    Enabled</div>
+    <div id="revision_selection" style="display:none;"><label>Revisions</label>Enabled</div>
+    <div id="feedback_selection" style="display:none;"><label>Peer Feedback</label>Enabled</div>
     <div id="expires_selection" style="display:none;">Expires 00/00/0000</div>
     <div id="file_selection" style="display:none;">Files Attached</div>
     <div id="skills_selection" style="display:none;">
