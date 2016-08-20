@@ -32,7 +32,7 @@
 
 <header class="main-header">
 
-    <nav class="navbar navbar-static-top" role="navigation">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-left: 0px;">
             <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
         </a>
 
