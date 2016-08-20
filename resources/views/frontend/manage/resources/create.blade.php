@@ -1,13 +1,16 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+    {!! Form::open(['url' => 'manage/resources/create', 'id'=>'resource-create-form']) !!}
 <div class="col-lg-12">
     <h2>Create Resource</h2>
 </div>
 
 <div class="col-lg-9">
-    {!! Form::open(['url' => 'manage/resources/create', 'id'=>'resource-create-form']) !!}
+<div class="form-group">
     {{ Form::input('text', 'title', null, ['class' => 'form-control', 'placeholder' => 'Title of Resource', 'id' => 'title']) }}
+</div>
+
     {!! Form::textarea('description', null, ['class' => 'field', 'files' => true]) !!}
  
 </div>
