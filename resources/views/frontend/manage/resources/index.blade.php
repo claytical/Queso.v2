@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="col-lg-3">
-                                <a href="{!! url('manage/resource/'.$resource->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                                <a class="btn btn-danger" href="{!! url('manage/resource/'.$resource->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                             </div>
                         @endforeach
                     </div>
