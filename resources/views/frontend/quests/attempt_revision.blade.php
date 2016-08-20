@@ -95,6 +95,7 @@
       <div class="modal-body">
             @if($positive)
                 <h4>What Your Peers Liked</h4>
+                {!! var_dump($positive) !!}
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
 
@@ -106,6 +107,7 @@
                 @endforeach
             @endif
             @if($negative)
+            {!! var_dump($negative) !!}
                 <h4>Suggestions From Your Peers</h4>
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
