@@ -26,53 +26,59 @@
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="general">
                 {!! Form::open(['url' => 'manage/course/update', 'class' => '', 'id' => 'update-course']) !!}
-                <div class="form-group">
-                <label for="name">Course Name</label>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="name">Course Name</label>
 
-                    {{ Form::input('text', 'name', $course->name, ['class' => 'form-control', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}
-                </div>
-                <div class="form-group">
-                    <label for="reg_code">Registration Code</label>
+                        {{ Form::input('text', 'name', $course->name, ['class' => 'form-control', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="meeting_location">Meeting Location</label>
 
-                    {{ Form::input('text', 'reg_code', $course->code, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
-                </div>
+                        {{ Form::input('text', 'meeting_location', $course->meeting_location, ['class' => 'form-control', 'placeholder' =>  'Classroom', 'id' => 'classroom']) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meeting_time">Meeting Time</label>
+
+                    {{ Form::input('text', 'meeting_time', $course->meeting, ['class' => 'form-control', 'placeholder' => 'Wednesdays @ 3pm', 'id' => 'meeting_time']) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg_code">Registration Code</label>
+
+                        {{ Form::input('text', 'reg_code', $course->code, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
+                    </div>
         
-                <div class="form-group">
-                    <label for="instructor_display_name">Instructor Display Name</label>
-
-                    {{ Form::input('text', 'instructor_display_name', $course->instructor_display_name, ['class' => 'form-control', 'placeholder' =>  'Mr. Fantastic', 'id' => 'course_name']) }}
                 </div>
 
-                <div class="form-group">
-                    <label for="instructor_contact">Instructor Contact Email Address</label>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="instructor_display_name">Instructor Display Name</label>
 
-                    {{ Form::input('text', 'instructor_contact', $course->instructor_contact, ['class' => 'form-control', 'placeholder' =>  'Contact Email Address', 'id' => 'instructor_contact']) }}
-                </div>
+                        {{ Form::input('text', 'instructor_display_name', $course->instructor_display_name, ['class' => 'form-control', 'placeholder' =>  'Mr. Fantastic', 'id' => 'course_name']) }}
+                    </div>
 
-                <div class="form-group">
-                    <label for="instructor_office_location">Instructor Office Location</label>
+                    <div class="form-group">
+                        <label for="instructor_contact">Contact Email Address</label>
 
-                    {{ Form::input('text', 'instructor_office_location', $course->instructor_office_location, ['class' => 'form-control', 'placeholder' =>  'Office Location', 'id' => 'office_location']) }}
-                </div>
+                        {{ Form::input('text', 'instructor_contact', $course->instructor_contact, ['class' => 'form-control', 'placeholder' =>  'Contact Email Address', 'id' => 'instructor_contact']) }}
+                    </div>
 
-                <div class="form-group">
-                    <label for="office_hours">Office Hours</label>
+                    <div class="form-group">
+                        <label for="instructor_office_location">Office Location</label>
 
-                    {{ Form::input('text', 'office_hours', $course->office_hours, ['class' => 'form-control', 'placeholder' =>  'Office Hours', 'id' => 'office_hours']) }}
-                </div>
+                        {{ Form::input('text', 'instructor_office_location', $course->instructor_office_location, ['class' => 'form-control', 'placeholder' =>  'Office Location', 'id' => 'office_location']) }}
+                    </div>
 
-                <div class="form-group">
-                    <label for="meeting_location">Course Meeting Location</label>
+                    <div class="form-group">
+                        <label for="office_hours">Office Hours</label>
 
-                    {{ Form::input('text', 'meeting_location', $course->meeting_location, ['class' => 'form-control', 'placeholder' =>  'Classroom', 'id' => 'classroom']) }}
-                </div>
+                        {{ Form::input('text', 'office_hours', $course->office_hours, ['class' => 'form-control', 'placeholder' =>  'Office Hours', 'id' => 'office_hours']) }}
+                    </div>
 
-                <div class="form-group">
-                    <label for="meeting_time">Course Meeting Time</label>
-
-                {{ Form::input('text', 'meeting_time', $course->meeting, ['class' => 'form-control', 'placeholder' => 'Wednesdays @ 3pm', 'id' => 'meeting_time']) }}
-                </div>
-
+                    </div>
                 <hr/>
                 {!! Form::submit('Update Course', ['class' => 'btn btn-primary btn-lg pull-right']) !!}
                 {!! Form::close() !!}
@@ -91,7 +97,7 @@
                                 <div class="pull-right">
                                     {!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
                                     {!! Form::hidden('skill', $skill->id) !!}
-                                    {!! Form::submit('<span class="glyphicon glyphicon-trash"></span>', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
+                                    {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
                                     {!! Form::close() !!}
                                 </div>
                             </div>
