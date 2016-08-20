@@ -22,9 +22,8 @@
     </div>
 
     <div class="col-lg-4">
-        <h3>Get Started</h3>
-        <a href="#">Create an Account</a>
-        <p>Queso is a classroom management system for gameful classrooms. We help you take your existing classroom and reshape it using concepts from game design. This is not about points, badges, and leaderboards. This is about increasing student engagement through gameful design. You can use Queso for your class without "gamifying" it. It's simple and intuitive for creating an engaging class in the 21st century.</p>
+        <h3>This Looks Different!</h3>
+        <p>This is a brand new beta version of Queso. If you'd like to access your existing class, <a href="http://class.conque.so">head on over here</a>.</p>
     </div>
     <div class="col-lg-4">
                 <div class="panel panel-default">
