@@ -39,8 +39,8 @@
             @foreach($quests as $quest)
                 <div class="col-lg-6">
                     <h4>{!! $quest['quest']->name !!} </h4>
-                    {!! $quest['quest']->instructions !!}
                     <h5>Submitted {!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</h5>
+                    {!! $quest['quest']->instructions !!}
 
                     @if($quest['revisions'])
                     <h6>Revision History</h6>

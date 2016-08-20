@@ -24,7 +24,7 @@
         <div class="row">
 
             <h4>What did you like?</h4>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Etiam porta sem malesuada magna mollis euismod.</p>
+            <p>Share your thoughts on what you liked about this.</p>
         </div>
         <div class="row">
             {!! Form::open(array('url' => 'quest/feedback')) !!}
@@ -37,11 +37,12 @@
 
         <div class="row">
             <h4>What could be improved?</h4>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Etiam porta sem malesuada magna mollis euismod.</p>
+            <p>Share your thoughts on where this could be improved. Is there something you wished they explored? Are there other possibilities to explore?</p>
         </div>
         <div class="row">
             {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}
-            {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-lg']) !!}
+            <hr/>
+            {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-lg pull-right']) !!}
             {!! Form::close() !!}
         </div>
  
