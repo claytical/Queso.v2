@@ -106,16 +106,13 @@
                     @endforeach
                         <li>
                             <div class="col-lg-9">
-                                {!! Form::open(['url' => 'manage/course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
+                                {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
                                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
 
                             </div>
                             <div class="col-lg-3">
-                                <div class="pull-right">
                                 {!! Form::submit('Add Skill', ['class' => 'btn btn-default btn-block']) !!}
                                 {!! Form::close() !!}
-
-                                </div>
                             </div>
                         </li>
                 </ul>
