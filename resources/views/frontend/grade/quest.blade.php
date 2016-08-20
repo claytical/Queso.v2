@@ -23,6 +23,13 @@
     @endforeach
   </ul>
   @endif
+  @if(!$files->isEmpty())
+    <h5>Attached Files</h5>
+    @foreach($files as $file)
+      {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+    @endforeach
+  @endif
+
 </div>              
 </div>
 <div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="information">
@@ -73,12 +80,6 @@
     <div class="col-lg-12">
         @if($quest->quest_type_id == 1)
           {!! $attempt->submission !!}
-          @if(!$files->isEmpty())
-            <h6>Attached Files</h6>
-            @foreach($files as $file)
-              {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
-            @endforeach
-          @endif
         @endif
 
         @if($quest->quest_type_id == 4)
@@ -125,9 +126,11 @@
                       <label>{!! $skill->name !!}</label>
                   </div>
                   <div class="col-lg-6">
-                      <input type="number" class="form-control" name="skills[]" max="{!! $skill->pivot->amount !!}">
+                     <div class="input-group">
+                        <input type="number" class="form-control point-val" name="skills[]" placeholder="Points" max="{!! $skill->pivot->amount !!}">
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
-
+                         <div class="input-group-addon"> / {!! $skill->pivot->amount !!}</div>
+                      </div>
                   </div>                    
                   @endforeach
 
@@ -135,10 +138,10 @@
 
                 <div class="col-lg-12">
                     <div class="pull-right">
-                            <span>xx</span> / {!! $quest->skills()->sum('amount') !!}
+                            <span id="total">0</span> / {!! $quest->skills()->sum('amount') !!}
                     </div>
                 </div>
-
+                <hr/>
                   <div class="col-lg-12">
                     {!! Form::submit('Grade', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
@@ -154,5 +157,12 @@
 
 @section('after-scripts-end')
     <script>
+    $('.point-val').change(function() {
+        var totz = 0;
+        $( ".point-val" ).each(function( index ) {
+          totz = totz + $(this).val();
+          });
+        $("span#total").html(totz);
+    });
     </script>
 @stop
