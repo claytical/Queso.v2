@@ -8931,8 +8931,7 @@ $-webkit-keyframes flipInX {
 /* Input group */
 .input-group .input-group-addon {
   border-radius: 0px;
-  border-color: #d2d6de;
-  background-color: #fff; }
+  border-color: #d2d6de; }
 
 /* button groups */
 .btn-group-vertical .btn.btn-flat:first-of-type, .btn-group-vertical .btn.btn-flat:last-of-type {

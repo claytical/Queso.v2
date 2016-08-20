@@ -65,7 +65,6 @@
   .input-group-addon {
     @include border-radius-same($input-radius);
     border-color: $gray;
-    background-color: #fff;
   }
 }
 /* button groups */

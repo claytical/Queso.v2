@@ -122,12 +122,12 @@
             <div class="col-lg-3">
 
                 @foreach($skills as $skill)
-                  <div class="col-lg-6">
+                  <div class="col-lg-5">
                       <label>{!! $skill->name !!}</label>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-7">
                      <div class="input-group">
-                        <input type="number" class="form-control point-val" name="skills[]" placeholder="Points" max="{!! $skill->pivot->amount !!}">
+                        <input type="number" class="form-control point-val" name="skills[]" max="{!! $skill->pivot->amount !!}">
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
                          <div class="input-group-addon"> / {!! $skill->pivot->amount !!}</div>
                       </div>
