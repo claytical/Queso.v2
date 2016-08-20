@@ -206,7 +206,7 @@
     <div id="file_attachments" style="display:none;">
         <div class="row">
                 <div class="col-lg-12">
-                    <div id="quest_uploads">Drop Files Here</div>
+                    <div id="quest_uploads" class="dropzone"></div>
                 </div>
                       <div class="form-group">
                         <button type="button" class="btn btn-default btn-lg" id="set_files">Next</button>
@@ -464,8 +464,8 @@
         $("#create-button").show();
         $("#finished").show();
     });
-
-    var quest_upload = new Dropzone('div#quest_upload',
+    Dropzone.autoDiscover = false;
+    var quest_upload = new Dropzone('div#quest_uploads',
         {url:'/dropzone/uploadFiles',
         method: "post"
         });
