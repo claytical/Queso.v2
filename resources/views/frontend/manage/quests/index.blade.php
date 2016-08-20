@@ -29,12 +29,16 @@
                             
                         </div>
                         <div class="col-lg-3">
-                            <div class="btn-group" role="group" aria-label="...">
-                                <a href="{!! url('manage/quest'.$quest->id.'/clone');!!}"><span class="glyphicon glyphicon-copy btn btn-default btn-xs"></span></a>
 
-                                <a href="{!! url('manage/quest'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash btn btn-danger btn-xs"></span></a>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li><a href="{!! url('manage/quest'.$quest->id.'/clone');!!}"><span class="glyphicon glyphicon-copy"></span> Clone</a></li>
+                                <li><a href="{!! url('manage/quest'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
+                              </ul>
                             </div>
-
                         </div>                         
                     </div>
                 </li>
