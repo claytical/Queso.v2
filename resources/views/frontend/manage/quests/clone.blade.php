@@ -124,8 +124,10 @@
         @endforeach
     </div>
 
-
+    <div class="col-lg-12">
+    <hr/>
     {!! Form::submit('Clone', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+    </div>
     {!! Form::close() !!}
 
 </div>
