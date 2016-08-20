@@ -27,7 +27,7 @@
 
         <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet">    </head>
-    <body class="skin-{{ config('backend.theme') }}">
+    <body class="skin-{{ config('backend.theme') }} sidebar-collapse">
         <div class="wrapper">
 
 <header class="main-header">
