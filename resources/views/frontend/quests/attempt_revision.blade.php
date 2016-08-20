@@ -21,6 +21,35 @@
                     <h3><span class="label label-danger">UNGRADED</span></h3>
                     <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
                 @endif
+                @if(!empty($existing_skills[0]))
+                    <h4>Current Grade</h4>
+                    <ul class="list-unstyled">
+                        @foreach($skills as $index => $skill)
+                            <li>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        {!! $skill->name !!}
+                                    </div>
+                                    <div class="col-lg-6">                                
+                                        {!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        Total
+                                    </div>
+                                    <div class="col-lg-6">
+                                        {!! $total !!} / {!! $quest->skills()->sum('amount') !!}
+                                    </div>
+                                </div>
+                            </li>
+                    </ul>
+                    @endif
+
             </div> 
 <div class="col-lg-12">
     <div class="col-lg-9">
@@ -51,26 +80,6 @@
             @endif
 
 
-        @if(!empty($existing_skills[0]))
-            <h4>Current Grade {!! $total !!} / {!! $quest->skills()->sum('amount') !!}</h4>
-            <ul class="list-unstyled">
-                @foreach($skills as $index => $skill)
-                    <li>
-                        <div class="col-lg-12">
-                            <div class="col-lg-6">
-                                {!! $skill->name !!}
-                            </div>
-                            <div class="col-lg-6">                                
-                                {!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-                    <li role="separator" class="divider"></li>
-                    <li>
-                    </li>
-            </ul>
-            @endif
     
             <hr/>
             {!! Form::submit('Submit Revision', ['class' => 'btn btn-primary btn-block']) !!}
