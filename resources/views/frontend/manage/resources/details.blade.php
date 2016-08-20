@@ -1,25 +1,31 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+    {!! Form::open(['url' => 'manage/resource/update', 'id'=> 'resource-update-form']) !!}
 <div class="col-lg-12">
     <h2>Update Resource</h2>
 </div>
 
 <div class="col-lg-9">
-    {!! Form::open(['url' => 'manage/resource/update', 'id'=> 'resource-update-form']) !!}
+<div class="form-group">
     {{ Form::input('text', 'title', $resource->title, ['class' => 'form-control', 'placeholder' => 'Syllabus', 'id' => 'title']) }}
     {{ Form::hidden('id', $resource->id) }}
-
+</div>
     {!! Form::textarea('description', $resource->description, ['class' => 'field', 'files' => false]) !!}
 
 </div>
 
 
 <div class="col-lg-3">
+<div class="form-group">
+<label for="tag">Category</label>
     {{ Form::input('text', 'tag', $resource->tag, ['class' => 'form-control', 'placeholder' => 'Category', 'id' => 'tag']) }}
+</div>
+<div class="form-group">
+<label for="link">Embedded Link</label>
 
    	{{ Form::input('text', 'link', $resource->link, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
-
+</div>
     @foreach($files as $file)
         <div class="input-group-btn">
             {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
