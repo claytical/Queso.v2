@@ -134,14 +134,11 @@
                   </div>                    
                   @endforeach
 
-                <hr/>
-
                 <div class="col-lg-12">
                     <div class="pull-right">
-                            <span id="total">0</span> / {!! $quest->skills()->sum('amount') !!}
+                        <h3><span id="total">0</span> / {!! $quest->skills()->sum('amount') !!}</h3>
                     </div>
                 </div>
-                <hr/>
                   <div class="col-lg-12">
                     {!! Form::submit('Grade', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
