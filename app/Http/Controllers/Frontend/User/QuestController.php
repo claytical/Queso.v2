@@ -535,19 +535,22 @@ class QuestController extends Controller
         $user = access()->user();
         $skills = $quest->skills()->get();
         $files = false;
-        $feedback = Feedback::where('quest_id', '=', $quest_id)
-                                ->where('to_user_id', $user->id);
 
-
-        $instructor_feedback = $feedback->where('subtype', '=', 1)
+        $instructor_feedback = Feedback::where('quest_id', '=', $quest_id)
+                                        ->where('to_user_id', $user->id)
+                                        ->where('subtype', '=', 1)
                                         ->orderBy('revision')
                                         ->get();
 
-        $positive_feedback = $feedback->where('subtype', '=', 2)
+        $positive_feedback = Feedback::where('quest_id', '=', $quest_id)
+                                        ->where('to_user_id', $user->id)
+                                        ->where('subtype', '=', 2)
                                         ->orderBy('revision')  
                                         ->get();
 
-        $negative_feedback = $feedback->where('subtype', '=', 3)
+        $negative_feedback = Feedback::where('quest_id', '=', $quest_id)
+                                        ->where('to_user_id', $user->id)
+                                        ->where('subtype', '=', 3)
                                         ->orderBy('revision')
                                         ->get();
 
