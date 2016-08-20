@@ -6,7 +6,6 @@
 
 <div class="col-lg-12">
             <div class="col-lg-9">
-                <div class="col-lg-12">
                     <h2>{!! $quest->name !!}</h2>
                         {!! $quest->instructions !!}
                         @if($quest->expires_at)
@@ -14,7 +13,6 @@
                         @endif
                 {!! Form::hidden('revision', $previous_attempt->revision + 1) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}
-                </div>
             </div>
             <div class="col-lg-3">
                 @if(empty($existing_skills[0]))
@@ -38,7 +36,7 @@
                         @endforeach
                             <li>
                                 <div class="col-lg-12">
-                                    <hr/>
+                                    <br/>
                                     <div class="col-lg-6">
                                         Total
                                     </div>
@@ -51,7 +49,9 @@
                     @endif
 
             </div> 
-<div class="col-lg-12">
+    <div class="col-lg-12">
+    <hr/>
+    </div>
     <div class="col-lg-9">
             @if($quest->quest_type_id == 1)           
                 @if($quest->submissions)
@@ -83,8 +83,6 @@
     
             <hr/>
             {!! Form::submit('Submit Revision', ['class' => 'btn btn-primary btn-block']) !!}
-
-    </div>
             
 </div>
 
