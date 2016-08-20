@@ -136,10 +136,8 @@
             @endif
             
             @if(!empty($existing_skills[0]))
+        <h4>From The Professor</h4>
             <div class="col-lg-12">
-                <div class="col-lg-12">
-                    <h4>From The Professor</h4>
-                </div>
                 @foreach($instructor_feedback as $feedback)
                     <div class="col-lg-12">                    
                         <h6>Sent {!! date('m-d-Y', strtotime($feedback->created_at)) !!}
