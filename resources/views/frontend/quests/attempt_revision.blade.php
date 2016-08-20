@@ -20,8 +20,8 @@
                     <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
                 @endif
                 @if(!empty($existing_skills[0]))
-                    <h3>Current Grade</h3>
-                    <a href="#" clas="btn btn-default pull-right"><span class="glyphicon glyphicon-info-sign"></span></a>
+                    <h3>Current Grade <a href="#" clas="btn btn-default pull-right"><span class="glyphicon glyphicon-info-sign"></span></a></h3>
+
                     <ul class="list-unstyled">
                         @foreach($skills as $index => $skill)
                             <li>
