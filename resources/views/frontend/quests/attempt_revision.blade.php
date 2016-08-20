@@ -17,6 +17,10 @@
                 </div>
             </div>
             <div class="col-lg-3">
+                @if(empty($existing_skills[0]))
+                    <h3><span class="label label-danger">UNGRADED</span></h3>
+                    <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
+                @endif
             </div> 
 <div class="col-lg-12">
     <div class="col-lg-9">
@@ -65,9 +69,6 @@
                         </div>
                     </li>
             </ul>
-            @else
-                <h3><span class="label label-danger">UNGRADED</span></h3>
-                <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
             @endif
     
             @if($quest->uploads)                        
@@ -94,6 +95,8 @@
 
 @section('after-scripts-end')
     <script>
+    Dropzone.autoDiscover = false;
+
     var submission_upload = new Dropzone('div#submission_upload',
         {url:'http://104.131.109.189/dropzone/uploadFiles',
         method: "post"
