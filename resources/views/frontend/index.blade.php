@@ -9,12 +9,11 @@
 <h1></h1>
 
 <div class="col-lg-12">
-    <div class="col-lg-6">  
-        <h2>Queso</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Etiam porta sem malesuada magna mollis euismod. </p>
+    <div class="col-lg-8">  
+        <img src="public/img/queso_logo.png" title="Queso">
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">Login</div>
                         <div class="panel-body">
