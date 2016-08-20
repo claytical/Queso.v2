@@ -38,10 +38,21 @@
     </div>
 
     <div class="col-lg-3">
+            @if($quest->uploads)                        
+                <div id="submission_upload" class="dropzone"></div>
+            @endif
+
+            @if(!$files->isEmpty())
+                <h4>Previously Submitted Files</h4>
+                @foreach($files as $file)
+                    {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+                @endforeach
+                
+            @endif
 
 
         @if(!empty($existing_skills[0]))
-            <h4>Current Grade</h4>
+            <h4>Current Grade {!! $total !!} / {!! $quest->skills()->sum('amount') !!}</h4>
             <ul class="list-unstyled">
                 @foreach($skills as $index => $skill)
                     <li>
@@ -57,29 +68,10 @@
                 @endforeach
                     <li role="separator" class="divider"></li>
                     <li>
-                        <div class="col-lg-12">
-                            <div class="col-lg-6">
-                            Points Total
-                            </div>
-                            <div class="col-lg-6">
-                               {!! $total !!} / {!! $quest->skills()->sum('amount') !!}
-                            </div>
-                        </div>
                     </li>
             </ul>
             @endif
     
-            @if($quest->uploads)                        
-                <div id="submission_upload" class="dropzone"></div>
-            @endif
-
-            @if(!$files->isEmpty())
-                <h4>Previously Submitted Files</h4>
-                @foreach($files as $file)
-                    {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
-                @endforeach
-                
-            @endif
             <hr/>
             {!! Form::submit('Submit Revision', ['class' => 'btn btn-primary btn-block']) !!}
 
@@ -96,7 +88,7 @@
     Dropzone.autoDiscover = false;
 
     var submission_upload = new Dropzone('div#submission_upload',
-        {url:'http://104.131.109.189/dropzone/uploadFiles',
+        {url:'dropzone/uploadFiles',
         method: "post"
         });
 
