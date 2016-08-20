@@ -41,13 +41,11 @@
 
 
         @if(!empty($existing_skills[0]))
-           <ul class="list-unstyled">
+            <h4>Current Grade</h4>
+            <ul class="list-unstyled">
                 @foreach($skills as $index => $skill)
                     <li>
                         <div class="col-lg-12">
-                            <div class="col-lg-12">
-                                <h4>Current Grade</h4>
-                            </div>
                             <div class="col-lg-6">
                                 {!! $skill->name !!}
                             </div>
