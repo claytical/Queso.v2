@@ -26,7 +26,7 @@
    	{{ Form::input('text', 'link', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
 </div>
     <div id="resource_upload" class="dropzone"></div>
-
+    <hr/>
     <button class="btn btn-primary btn-lg btn-block" id="create_resource">Create</button>
 
 </div>
