@@ -10,10 +10,10 @@
 @if(!$resources->isEmpty())
 <div class="row">
         <div class="col-lg-6">
-            <h5>Name</h5>
+            <h5><em>Name</em></h5>
         </div>
         <div class="col-lg-3">
-            <h5>Category</h5>
+            <h5><em>Category</em></h5>
         </div>
         <div class="col-lg-3">
 
@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="col-lg-3">
-                                {{ link_to('manage/resource/' . $resource->id . '/delete', 'Delete', ['class'=> 'btn btn-danger']) }}
+                                <a href="{!! url('manage/resource/'.$resource->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                             </div>
                         @endforeach
                     </div>
