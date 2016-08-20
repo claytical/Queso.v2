@@ -90,21 +90,24 @@
                 <ul class="list-unstyled list">
                     @foreach($skills as $skill)
                         <li>
-                            <div class="col-lg-9">
-                                <div class="name">{!! $skill->name !!}
+                            <div class="extra-top-padding">
+                                <div class="col-lg-9">
+                                    <div class="name">{!! $skill->name !!}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="pull-right">
-                                    {!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
-                                    {!! Form::hidden('skill', $skill->id) !!}
-                                    {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
-                                    {!! Form::close() !!}
+                                <div class="col-lg-3">
+                                    <div class="pull-right">
+                                        {!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
+                                        {!! Form::hidden('skill', $skill->id) !!}
+                                        {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
+                                        {!! Form::close() !!}
+                                    </div>
                                 </div>
                             </div>
                         </li>
                     @endforeach
                         <li>
+                            <div class="extra-top-padding">
                             <div class="col-lg-9">
                                 {!! Form::open(['url' => 'manage/course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
                                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
@@ -116,6 +119,7 @@
                                 {!! Form::close() !!}
 
                                 </div>
+                            </div>
                             </div>
                         </li>
                 </ul>
@@ -135,7 +139,6 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="pull-right">
-                                {!! $level->name !!}
                                 {!! Form::open(['url' => 'manage/course/remove/level', 'class' => 'remove-level']) !!}
                                 {!! Form::hidden('level', $level->id) !!}
                                 {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
