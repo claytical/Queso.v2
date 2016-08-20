@@ -110,7 +110,7 @@
               </blockquote>
             @endforeach
         @endif
-  
+        <hr/>
         <h4>Feedback to Student</h4>
             {!! Form::open(array('url' => 'grade/confirm')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}
@@ -157,7 +157,9 @@
     $('.point-val').change(function() {
         var totz = 0;
         $( ".point-val" ).each(function( index ) {
-            totz = totz + parseInt($(this).val());
+            if($(this).val()) {
+              totz = totz + parseInt($(this).val());
+            }
           });
         $("span#total").html(totz);
     });
