@@ -26,13 +26,13 @@
                         </div>
 
                         <div class="col-lg-3 category">
-                            Prototypes
+                            
                         </div>
                         <div class="col-lg-3">
-                        {{ link_to('manage/quest/'.$quest->id.'/delete', 'Delete') }}
-                        {{ link_to('manage/quest/'.$quest->id.'/clone', 'Clone') }}
-                        {{ link_to('manage/quest/'.$quest->id.'/show', 'Show') }}
-                        {{ link_to('manage/quest/'.$quest->id.'/hide', 'Hide') }}
+                        <a href="{!! url('manage/quest'.$quest->id.'/clone');!!}"><span class="glyphicon glyphicon-copy btn btn-danger btn-xs"></span></a>
+
+                        <a href="{!! url('manage/quest'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash btn btn-danger btn-xs"></span></a>
+
 
                         </div>                         
                     </div>
