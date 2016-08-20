@@ -9,7 +9,7 @@
 
 @if(!$resources->isEmpty())
 <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-6">
             <h5>Name</h5>
         </div>
         <div class="col-lg-3">

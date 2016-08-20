@@ -16,7 +16,7 @@
                 <h3>What's the name of this quest?</h3>
                     {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => $quest->name, 'id' => 'quest_title']) }}
 
-                <h3>Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</h3>
+                <h5>Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</h5>
                     {!! Form::textarea('description', $quest->instructions, ['class' => 'field']) !!}
 
 
