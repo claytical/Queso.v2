@@ -242,7 +242,7 @@
         <h5></h5>
     </div>
 
-    <div id="url_selection">
+    <div id="url_selection" style="display:none;">
         <label>URL</label>
         <h5></h5>
     </div>
@@ -253,7 +253,7 @@
     </div>
 
     <div id="upload_selection" style="display:none;">
-    <label>Uploads</label>
+    <label>Method</label>
         <h5></h5>
     </div>
 
@@ -314,6 +314,8 @@
 
     $( "#submission_next" ).click(function() {
         $("#quest_type").hide();
+        $("#quest_type_selection h5").html("Submission");
+        $("#quest_type_selection").show();
         $("#quest_type_id").val(1);
         qf.append($("#quest_type_id"));
         $("#submission_selection").show();
@@ -322,6 +324,9 @@
     $( "#activity_next" ).click(function() {
         //flag to skip minimum thresholds
         skipThresholds = true;
+        $("#quest_type_selection h5").html("In Class Activity");
+        $("#quest_type_selection").show();
+
         $("#quest_type").hide();
         $("#quest_type_id").val(2);
         qf.append($("#quest_type_id"));
@@ -330,6 +335,7 @@
 
     $( "#instant_allowed" ).click(function() {
         $("#inclass_instant").hide();
+        $("#instant_selection h5").html("Enabled");
         $("#instant_selection").show();
         $("#instant_option").val(1);        
         qf.append($("#instant_option")); 
@@ -345,6 +351,9 @@
 
     $( "#watch_next" ).click(function() {
         $("#quest_type").hide();
+        $("#quest_type_selection h5").html("Watch Video");
+        $("#quest_type_selection").show();
+
         $("#quest_type_id").val(3);
         qf.append($("#quest_type_id"));
         $("#video_url").show();
@@ -352,6 +361,8 @@
 
     $( "#video_next" ).click(function() {
         $("#video_url").hide();
+        $("#url_selection h5").html($("#video_url").val())
+        $("#url_selection").show();
         qf.append($("#video_url"));
         $("#expiration").show();
     });
@@ -360,6 +371,9 @@
         $("#quest_type").hide();
         $("#quest_type_id").val(4);        
         qf.append($("#quest_type_id"));
+        $("#quest_type_selection h5").html("Submit Link");
+        $("#quest_type_selection").show();
+
         $("#submission_revisions").show();
 
 //        $("#peer_feedback").show();
@@ -368,6 +382,9 @@
     $( "#written_next" ).click(function() {
         $("#submission_selection").hide();
         $("#submission_type_id").val(1);
+        $("#upload_selection h5").html("Written");
+        $("#upload_selection").show();
+
         qf.append($("#submission_type_id"));
         qf.append($("#submissions_allowed"));
         //written only
@@ -377,6 +394,9 @@
     $( "#upload_next" ).click(function() {
         $("#submission_selection").hide();
         $("#submission_type_id").val(2);
+        $("#upload_selection h5").html("Uploads Only");
+        $("#upload_selection").show();
+
         //uploads only
         qf.append($("#submission_type_id"));
         qf.append($("#uploads_allowed"));
@@ -389,6 +409,9 @@
         $("#submission_type_id").val(3);
         //both written and upload
         $("#upload_selection").show();
+        $("#upload_selection h5").html("Upload or Text Entry");
+        $("#upload_selection").show();
+
         qf.append($("#submissions_allowed"));
         qf.append($("#uploads_allowed"));
         qf.append($("#submission_type_id"));
@@ -398,6 +421,7 @@
     $( "#revisions_allowed" ).click(function() {
         $("#submission_revisions").hide();
         $("#revisions_option").val(1);
+        $("#revision_selection h5").html("Enabled");
         $("#revision_selection").show();
         qf.append($("#revisions_option"));
         $("#peer_feedback").show();
@@ -405,16 +429,21 @@
 
     $( "#revisions_disallowed" ).click(function() {
         $("#submission_revisions").hide();
+        $("#revision_selection h5").html("Disabled");
+        $("#revision_selection").show();        
         $("#peer_feedback").show();
     });
 
     $( "#feedback_disallowed" ).click(function() {
         $("#peer_feedback").hide();
         $("#expiration").show();
+        $("#feedback_selection h5").html("Disabled");
+        $("#feedback_selection").show();
     });
 
     $( "#feedback_allowed" ).click(function() {
         $("#peer_feedback").hide();
+        $("#feedback_selection h5").html("Enabled");
         $("#feedback_selection").show();
         $("#feedback_option").val(1);        
         qf.append($("#feedback_option")); 
@@ -428,6 +457,8 @@
 
     $( "#expiration_disallowed" ).click(function() {
         $("#expiration").hide();
+        $("#expires_selection h5").html("Never");
+        $("#expires_selection").show();
         $("#skills").show();
 //        $("#quest_description").show();
     });
@@ -435,8 +466,9 @@
     $( "#expiration_set").click(function() {
         $("#set_expiration").hide();
         $("#expiration_date").hide();
+        $("#expires_selection h5").html($("#expiration_date").val());
         $("#expires_selection").show();
-        $("#expires_selection").html($("#expiration_date").val());
+
 
         qf.append($("#expiration_date"));
         $("#skills").show();
