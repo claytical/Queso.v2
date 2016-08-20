@@ -16,7 +16,7 @@
         <!-- Styles -->
         @yield('before-styles-end')
 
-        {{ Html::style(elixir('css/frontend.css')) }}
+        {{ Html::style(elixir('css/backend.css')) }}
 
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         @langRTL
@@ -36,7 +36,7 @@
             <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
         </a>
 
-        <div class="navbar-custom-menu">
+        <div class="navbar-custom-menu pull-right">
             <ul class="nav navbar-nav">
 
                     <li>{{ link_to('login', trans('navs.frontend.login')) }}</li>
