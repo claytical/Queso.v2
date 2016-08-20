@@ -33,7 +33,7 @@
         </div>
     @endforeach
 
-    <div id="resource_upload" class="dropzone">Drop Files Here</div>
+    <div id="resource_upload" class="dropzone"></div>
     <hr/>
     <button class="btn btn-primary btn-lg btn-block" id="update_resource">Update</button>
 
