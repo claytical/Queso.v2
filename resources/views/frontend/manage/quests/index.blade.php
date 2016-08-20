@@ -29,10 +29,11 @@
                             
                         </div>
                         <div class="col-lg-3">
-                        <a href="{!! url('manage/quest'.$quest->id.'/clone');!!}"><span class="glyphicon glyphicon-copy btn btn-danger btn-xs"></span></a>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a href="{!! url('manage/quest'.$quest->id.'/clone');!!}"><span class="glyphicon glyphicon-copy btn btn-default btn-xs"></span></a>
 
-                        <a href="{!! url('manage/quest'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash btn btn-danger btn-xs"></span></a>
-
+                                <a href="{!! url('manage/quest'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash btn btn-danger btn-xs"></span></a>
+                            </div>
 
                         </div>                         
                     </div>
