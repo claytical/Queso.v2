@@ -39,22 +39,24 @@
 <div class="col-lg-3">
                 <h5><b>Skills</b></h5>                
                 @foreach($skills as $skill)
-                  <div class="col-lg-6">
+                  <div class="col-lg-5">
                       <label>{!! $skill->name !!}</label>
                   </div>
 
-                  <div class="col-lg-6">
-                      <input type="number" class="form-control" name="skills[]" max="{!! $skill->pivot->amount !!}">
+                  <div class="col-lg-7">
+                    <div class="input-group">
+                        <input type="number" class="form-control point-val" name="skills[]" max="{!! $skill->pivot->amount !!}">
+                        <div class="input-group-addon"> / {!! $skill->pivot->amount !!}</div>
+                    </div>
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
 
                   </div>                    
                 @endforeach
 
-                <hr/>
 
                 <div class="col-lg-12">
                     <div class="pull-right">
-                            <span>xx</span> / {!! $quest->skills()->sum('amount') !!}
+                        <h3><span id="total">0</span> / {!! $quest->skills()->sum('amount') !!}</h3>
                     </div>
                 </div>
 
@@ -85,6 +87,15 @@
     <script>
     jQuery(document).ready(function($) {
         $('.multiselect').multiselect();
+    });
+    $('.point-val').change(function() {
+        var totz = 0;
+        $( ".point-val" ).each(function( index ) {
+            if($(this).val()) {
+              totz = totz + parseInt($(this).val());
+            }
+          });
+        $("span#total").html(totz);
     });    
     </script>
 @stop

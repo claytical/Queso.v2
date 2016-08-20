@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="col-lg-12">
-    <div class="row">
-        <h2>Ungraded Submissions</h2>
-    </div>
+    <h2>Ungraded Submissions</h2>
 </div>
 @if($lists)
         <div class="col-lg-12">

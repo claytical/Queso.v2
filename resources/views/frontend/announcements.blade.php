@@ -1,8 +1,8 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Announcements</h2>
     <div class="col-lg-12">
+        <h2>Announcements</h2>
         @if($announcements->isEmpty())
             <p class="lead">There are no announcements!</p>
         @endif
