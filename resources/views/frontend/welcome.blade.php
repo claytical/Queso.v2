@@ -71,7 +71,8 @@
                         @if(!$notifications->isEmpty())
                                 @foreach($notifications as $notice)
                                     <li>{{ link_to($notice->url, $notice->message) }}
-                                    <span class="pull-right">{!! link_to('notification/dismiss/' . $notice->id, 'Dismiss', ['class' => 'btn btn-xs btn-danger']) !!}</span></li>
+                                        <a href="{!! url('notification/dismiss', [$notice->id]);!!}"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </li>
                                 @endforeach
                             @else
                                 <p>You have no new notifications</p>

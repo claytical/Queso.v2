@@ -17,15 +17,17 @@
                     {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
                 </div>
             @endif
+<!--
         <div class="col-lg-6">
-
             <div class="checkbox">
                 <label>
                 {{ Form::checkbox('email_notifications', 1) }}
                 Email Notifications</label>
             </div>
+
         </div>
-        <div class="col-lg-6">
+-->
+        <div class="col-lg-12">
             <div class="form-group">
                 {{ Form::label('default_course_id', "Default Course", ['class' => 'control-label']) }}                      
 
