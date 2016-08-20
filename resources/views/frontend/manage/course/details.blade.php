@@ -90,7 +90,6 @@
                 <ul class="list-unstyled list">
                     @foreach($skills as $skill)
                         <li>
-                            <div class="extra-top-padding">
                                 <div class="col-lg-9">
                                     <div class="name">{!! $skill->name !!}
                                     </div>
@@ -103,11 +102,9 @@
                                         {!! Form::close() !!}
                                     </div>
                                 </div>
-                            </div>
                         </li>
                     @endforeach
                         <li>
-                            <div class="extra-top-padding">
                             <div class="col-lg-9">
                                 {!! Form::open(['url' => 'manage/course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
                                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
@@ -115,11 +112,10 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="pull-right">
-                                {!! Form::submit('Add Skill', ['class' => 'btn btn-default btn-lg']) !!}
+                                {!! Form::submit('Add Skill', ['class' => 'btn btn-default btn-block']) !!}
                                 {!! Form::close() !!}
 
                                 </div>
-                            </div>
                             </div>
                         </li>
                 </ul>
@@ -161,7 +157,7 @@
 
                         </div>
                         <div class="col-lg-4">
-                            {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
+                            {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-block']) !!}
                             {!! Form::close() !!}
 
                         </div>
