@@ -117,7 +117,7 @@
                 @endforeach
             @endif
             
-            @if(empty($existing_skills[0]))
+            @if(!empty($existing_skills[0]))
             <div class="col-lg-12">
                 <h4>From The Professor</h4>
                 @foreach($instructor_feedback as $feedback)
