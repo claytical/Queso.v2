@@ -25,18 +25,15 @@
                     <ul class="list-unstyled">
                         @foreach($skills as $index => $skill)
                             <li>
-                                <div class="col-lg-12">
                                     <div class="col-lg-6">
                                         {!! $skill->name !!}
                                     </div>
                                     <div class="col-lg-6">                                
                                         {!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}
                                     </div>
-                                </div>
                             </li>
                         @endforeach
                             <li>
-                                <div class="col-lg-12">
                                     <br/>
                                     <div class="col-lg-6">
                                         Total
@@ -44,7 +41,6 @@
                                     <div class="col-lg-6">
                                         {!! $total !!} / {!! $quest->skills()->sum('amount') !!}
                                     </div>
-                                </div>
                             </li>
                     </ul>
                     @endif
