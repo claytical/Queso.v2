@@ -23,12 +23,6 @@
     @endforeach
   </ul>
   @endif
-  @if(!$files->isEmpty())
-    <h5>Attached Files</h5>
-    @foreach($files as $file)
-      {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
-    @endforeach
-  @endif
 
 </div>              
 </div>
@@ -80,6 +74,12 @@
     <div class="col-lg-12">
         @if($quest->quest_type_id == 1)
           {!! $attempt->submission !!}
+          @if(!$files->isEmpty())
+            <h5>Attached Files</h5>
+            @foreach($files as $file)
+              {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+            @endforeach
+          @endif
         @endif
 
         @if($quest->quest_type_id == 4)
@@ -160,7 +160,7 @@
     $('.point-val').change(function() {
         var totz = 0;
         $( ".point-val" ).each(function( index ) {
-          totz = totz + $(this).val();
+            totz = totz + parseInt($(this).val());
           });
         $("span#total").html(totz);
     });
