@@ -20,7 +20,7 @@
 
                 @foreach($quests as $quest)
                 <li>
-                    <div class="row">
+                    <div class="row extra-top-padding">
                         <div class="col-lg-6 quest">
                             {{ link_to('manage/quest/'.$quest->id, $quest->name) }}
                         </div>
