@@ -27,27 +27,52 @@
 
         <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet">    </head>
-    <body>
-        <section class="content-header">
-            @yield('page-header')
+    <body class="skin-{{ config('backend.theme') }}">
+        <div class="wrapper">
 
-            {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
-            {!! Breadcrumbs::renderIfExists() !!}
-        </section>
+<header class="main-header">
 
-        <!-- Main content -->
-        <section class="content">
-            @include('includes.partials.messages')
-            @yield('content')
-        </section><!-- /.content -->
+    <nav class="navbar navbar-static-top" role="navigation">
+            <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
+        </a>
 
-        <!-- JavaScripts -->
-        {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
-        <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
-        {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
 
-        @yield('before-scripts-end')
-        {{ HTML::script(elixir('js/frontend.js')) }}
-        @yield('after-scripts-end')
+                    <li>{{ link_to('login', trans('navs.frontend.login')) }}</li>
+                    <li>{{ link_to('register', trans('navs.frontend.register')) }}</li>
+
+            </ul>
+        </div><!-- /.navbar-custom-menu -->
+    </nav>
+</header>
+
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <section class="content-header">
+                @yield('page-header')
+
+                {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
+                {!! Breadcrumbs::renderIfExists() !!}
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                @include('includes.partials.messages')
+                @yield('content')
+            </section><!-- /.content -->
+
+            <!-- JavaScripts -->
+            {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
+            <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
+            {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
+
+            @yield('before-scripts-end')
+            {{ HTML::script(elixir('js/frontend.js')) }}
+            @yield('after-scripts-end')
+        </div>
+    </div>
     </body>
 </html>

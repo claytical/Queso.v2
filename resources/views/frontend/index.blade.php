@@ -12,9 +12,6 @@
         <img src="img/queso_logo.png" title="Queso" height=150>
     </div>
     <div class="col-lg-3">
-        {!! link_to('login', 'Login', ['class' => 'btn btn-default btn-lg']) !!}
-        {!! link_to('register', 'Sign Up', ['class' => 'btn btn-primary btn-lg']) !!}
-
     </div>
 </div>
 <div class="col-lg-12">
