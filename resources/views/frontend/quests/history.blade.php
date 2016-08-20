@@ -16,7 +16,6 @@
     </div>
 
     <div class="col-lg-6">
-        <div class="col-lg-12">
         @foreach($skills as $skill)
             <div class="col-lg-6">
                 {!! $skill['name'] !!}
@@ -31,7 +30,6 @@
             <div class="col-lg-6">
                 {!! $total_points !!}
             </div>
-        </div>
     </div>
 
 </div>
