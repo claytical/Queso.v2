@@ -93,7 +93,7 @@
         <h4 class="modal-title" id="myModalLabel">Feedback</h4>
       </div>
       <div class="modal-body">
-            @if($positive)
+            @if(!$positive->isEmpty())
                 <h4>What Your Peers Liked</h4>
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
@@ -114,7 +114,7 @@
                     </div>
                 @endforeach
             @endif
-            @if($negative)
+            @if(!$negative->isEmpty())
                 <h4>Suggestions From Your Peers</h4>
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
@@ -138,7 +138,7 @@
             @if(!empty($existing_skills[0]))
             <div class="col-lg-12">
                 <div class="col-lg-12">
-                    <h5>From The Professor</h5>
+                    <h4>From The Professor</h4>
                 </div>
                 @foreach($instructor_feedback as $feedback)
                     <div class="col-lg-12">                    
