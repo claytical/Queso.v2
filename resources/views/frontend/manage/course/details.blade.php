@@ -80,9 +80,10 @@
 
                     </div>
                 <hr/>
+                <div class="col-lg-12">
                 {!! Form::submit('Update Course', ['class' => 'btn btn-primary btn-lg pull-right']) !!}
                 {!! Form::close() !!}
-
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="skills">
                 <h4>Current Skills</h4>
