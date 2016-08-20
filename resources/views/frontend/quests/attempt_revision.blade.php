@@ -22,7 +22,7 @@
                     <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
                 @endif
                 @if(!empty($existing_skills[0]))
-                    <h4>Current Grade</h4>
+                    <h3>Current Grade</h3>
                     <ul class="list-unstyled">
                         @foreach($skills as $index => $skill)
                             <li>
@@ -36,9 +36,9 @@
                                 </div>
                             </li>
                         @endforeach
-                            <li role="separator" class="divider"></li>
                             <li>
                                 <div class="col-lg-12">
+                                    <hr/>
                                     <div class="col-lg-6">
                                         Total
                                     </div>
