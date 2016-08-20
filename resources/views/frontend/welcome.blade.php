@@ -71,7 +71,7 @@
                         @if(!$notifications->isEmpty())
                                 @foreach($notifications as $notice)
                                     <li>{{ link_to($notice->url, $notice->message) }}
-                                        <a href="{!! url('notification/dismiss', [$notice->id]);!!}"><span class="glyphicon glyphicon-remove"></span></a>
+                                        <a href="{!! url('notification/dismiss', [$notice->id]);!!}"><span class="glyphicon glyphicon-remove pull-right"></span></a>
                                     </li>
                                 @endforeach
                             @else
