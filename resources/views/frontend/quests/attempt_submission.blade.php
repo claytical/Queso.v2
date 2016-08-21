@@ -6,10 +6,6 @@
             <div class="col-lg-9">
                 <div class="col-lg-12">
                     <h2>{!! $quest->name !!}</h2>
-                    @if($quest->expires_at)
-                    <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
-                    @endif
-
                     {!! $quest->instructions !!}
                     @if($files)
                     <h6>Attached Files</h6>
@@ -20,9 +16,13 @@
                     {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
                     {!! Form::hidden('revision', 0) !!}
                     {!! Form::hidden('quest_id', $quest->id) !!}
+                    <hr/>
                 </div>
             </div>
             <div class="col-lg-3">
+                    @if($quest->expires_at)
+                    <h4>Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
+                    @endif
             </div>
 <div class="col-lg-12">
     <div class="col-lg-9">
