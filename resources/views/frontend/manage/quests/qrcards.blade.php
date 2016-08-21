@@ -28,7 +28,7 @@
 
 			div {
 				width: 30%;
-				min-height: 180px;
+				min-height: 302px;
 				float: left;
 				font-family: Gentium Basic;
 				padding: 5px; 
@@ -49,7 +49,7 @@
 			@foreach($codes as $code)
 				<div>
 					<h4>{!! $quest->name !!}</h4>
-					<img src=" https://api.qrserver.com/v1/create-qr-code/?size=120x120&amp;data={!! $code->code !!}">
+					<img src=" https://api.qrserver.com/v1/create-qr-code/?size=130x130&amp;data={!! $code->code !!}">
 					<h5>{!! $code->code !!}</h5>
 				</div>
 			@endforeach
