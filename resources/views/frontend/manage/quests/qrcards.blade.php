@@ -22,7 +22,7 @@
 			<h2 style="font-family: Open Sans, sans;">{!! $quest->name !!} Redemption Codes</h2>
 
 			@foreach($codes as $code)
-				<div style="width: 30%; min-height: 200px; float: left;font-family: Gentium Basic; padding:20px;">
+				<div style="width: 30%; min-height: 200px; float: left;font-family: Gentium Basic; padding: 10px; border: 1px dotted;text-align: center;">
 					<h4 style="font-family: Open Sans, sans;">{!! $quest->name !!}</h4>
 					<img src=" https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=UMCCONBGUCQNR">
 					<h5 style="font-family: Open Sans, sans;">{!! $code->code !!}</h5>
