@@ -19,9 +19,6 @@
         <!-- front loading scripts -->
     </head>
     <body>
-
-		@section('content')
-		
 			<h2>{!! $quest->name !!} Redemption Codes</h2>
 
 			@foreach($codes as $code)
@@ -31,10 +28,5 @@
 					<h5>{!! $code->code !!}</h5>
 				</div>
 			@endforeach
-
-		@endsection
-
-@section('after-scripts-end')
     </body>
 </html>
-@stop
