@@ -23,10 +23,13 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="extra-top-padding">
+          <div class="form-group">
             {{ Form::input('text', 'name', $quest->name, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
+            </div>
             {!! Form::hidden('id', $quest->id) !!}
             {!! Form::textarea('description', $quest->instructions, ['class' => 'field']) !!}
-
+          </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="skills">
         @foreach($skills as $skill)
@@ -56,18 +59,29 @@
           </div>
         @endif
         <div role="tabpanel" class="tab-pane" id="thresholds">
-        @foreach($thresholds as $threshold)
-            <div class="form-group">
-              <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
-                <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
-              </div>
-            </div>
+          <div class="extra-top-padding">
+          @if($thresholds->isEmpty())
+            <p>This quest has no thresholds.</p>
+          @else
 
-        @endforeach
+            @foreach($thresholds as $threshold)
+                <div class="form-group">
+                  <label for="threshold{!! $threshold->id!!}" class="col-sm-2 control-label">{!! $threshold->skill->name !!}</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="threshold{!! $threshold->id!!}" name="threshold[]" value={!! $threshold->amount!!}>
+                    <input type="hidden" name="threshold_id[]" class="threshold-input" value={!! $threshold->id !!}>
+                  </div>
+                </div>
+
+            @endforeach
+          @endif
+          </div>
         </div>
         <div role="files" class="tab-pane" id="files">
+          <div class="extra-top-padding">
+          @if($files->isEmpty())
+            <p>This quest has no files.</p>
+          @else
             @foreach($files as $file)
               <div class="input-group-btn">
               {!! link_to('uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
@@ -75,6 +89,8 @@
 
               </div>
             @endforeach
+          @endif
+          </div>
         </div>        
      </div>
 
