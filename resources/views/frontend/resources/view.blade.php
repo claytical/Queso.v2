@@ -14,7 +14,7 @@
             @if($files)
                 <h6>Attached Files</h6>
                 @foreach($files as $file)
-                    {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+                    {!! link_to('uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
                 @endforeach 
             @endif
            </div>

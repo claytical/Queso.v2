@@ -70,7 +70,7 @@
         <div role="files" class="tab-pane" id="files">
             @foreach($files as $file)
               <div class="input-group-btn">
-              {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+              {!! link_to('uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
               {!! link_to('file/remove/' . $file->id, "x", ['class' => 'btn btn-danger']) !!}
 
               </div>
