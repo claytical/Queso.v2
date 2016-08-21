@@ -45,16 +45,22 @@
         </div>
         @if($quest->instant)
           <div role="tabpanel" class="tab-pane" id="codes">
-            {{ Form::input('number', 'new_codes', null, ['class' => 'form-control', 'placeholder' => 'Number of Codes to Create', 'id' => 'redemption_codes']) }}
+            <div class="extra-top-padding">
+                {!! link_to('manage/quest/'.$quest->id.'/qrcodes', 'Manage Codes') !!}
+              @if($codes)
+                @foreach($codes as $code)
+                  <div class="col-md-3">
+                  <h6>{!! $code->code !!}</h6>
+                    @if($code->user_id)
+                      <span class="label">Redeemed</span>
+                    @endif
+                  </div>
+                @endforeach
+              @else
+                <p>There are no redemption codes currently.
+              @endif
+            </div>
             <div class="col-md-12">
-            @foreach($codes as $code)
-              <div class="col-md-3">
-              <h6>{!! $code->code !!}</h6>
-                @if($code->user_id)
-                  <span class="label">Redeemed</span>
-                @endif
-              </div>
-            @endforeach
             </div>
           </div>
         @endif
@@ -142,9 +148,10 @@
 <!-- GENERALIZED -->
     <div id="quest_upload" class="dropzone"></div>
 
-
-    {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
-
+    <div>
+      <hr/>
+      {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+    </div>
 </div>
         
  

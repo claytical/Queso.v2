@@ -115,9 +115,36 @@ class QuestController extends Controller
             ->withUser(access()->user());
 
     }
-    public function qrcodes() {
-        return view('frontend.manage.quests.qrcodes')
-            ->withUser(access()->user());
+    public function generate_qrcodes(Request $request) {
+            if($request->new_codes > 0) {
+                for ($i = 0; $i < $request->new_codes; $i++) {
+                    $code = new Redemption;
+                    $code->quest_id = $request->quest_id;
+                    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $charactersLength = strlen($characters);
+                    $randomString = '';
+                    for ($j = 0; $j < 10; $j++) {
+                        $randomString .= $characters[rand(0, $charactersLength - 1)];
+                    }
+                    $code->code = $randomString;
+                    $code->save();
+                }
+            }
+            return redirect()->route('quests.qrcards', [$request->quest_id])->withFlashSuccess("Added " . $request->new_codes . " new redemption codes.");
+
+    }
+
+    public function qrcodes($quest_id) {
+        $quest = Quest::find($quest_id);
+        $used_codes = Redemption::where('quest_id', '=', $quest_id)
+                                    ->whereNotNull('user_id')
+                                    ->get();
+
+        $unused_codes = Redemption::where('quest_id', '=', $quest_id)
+                                    ->whereNull('user_id')
+                                    ->get();
+
+        return view('frontend.manage.quests.qrcodes', ['quest' => $quest, 'unused_codes' => $unused_codes, 'used_codes' => $used_codes]);
 
     }
     
@@ -125,8 +152,13 @@ class QuestController extends Controller
         $quest = Quest::find($quest_id);
         $codes = Redemption::where('quest_id', '=', $quest_id)
                                 ->get();
+        if($codes) {
+            return view('frontend.manage.quests.qrcards', ['quest' => $quest, 'codes' => $codes]);
+        }
+        else {
+            return redirect()->route('quests.manage')->withFlashSuccess($quest->name . " has been successfully updated");
 
-        return view('frontend.manage.quests.qrcards', ['quest' => $quest, 'codes' => $codes]);
+        }
 
     }
 

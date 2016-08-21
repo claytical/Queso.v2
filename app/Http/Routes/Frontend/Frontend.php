@@ -87,7 +87,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/quest/{quest_id}/hide', 'QuestController@hide')->name('quests.hide');
         Route::get('manage/quest/{quest_id}/qrcodes', 'QuestController@qrcodes')->name('quests.qrcodes');
         Route::get('manage/quest/{quest_id}/qrcards', 'QuestController@qrcards')->name('quests.qrcards');
-
+        Route::post('manage/quest/qrcodes', 'QuestController@generate_qrcodes')->name('quests.qrcodes.generate');
+        
         Route::get('manage/quest/{quest_id}', 'QuestController@edit_form')->name('quests.edit');
         Route::post('manage/quest/update', 'QuestController@update')->name('quests.update');
         Route::get('manage/quest/{quest_id}/clone', 'QuestController@clone_form')->name('quests.clone.begin');
