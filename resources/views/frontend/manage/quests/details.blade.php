@@ -59,7 +59,7 @@
           </div>
         @endif
         <div role="tabpanel" class="tab-pane" id="thresholds">
-          <div class="extra-top-padding">
+          <div class="extra-top-padding col-md-12">
           @if($thresholds->isEmpty())
             <p>This quest has no thresholds.</p>
           @else
@@ -78,7 +78,7 @@
           </div>
         </div>
         <div role="files" class="tab-pane" id="files">
-          <div class="extra-top-padding">
+          <div class="extra-top-padding col-md-12">
           @if($files->isEmpty())
             <p>This quest has no files.</p>
           @else
@@ -140,7 +140,7 @@
     @endif
 
 <!-- GENERALIZED -->
-    <div id="quest_upload">Drop Files Here</div>
+    <div id="quest_upload" class="dropzone"></div>
 
 
     {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
@@ -154,6 +154,8 @@
 
 @section('after-scripts-end')
     <script>
+      Dropzone.autoDiscover = false;
+
     var quest_upload = new Dropzone('div#quest_upload',
         {url:'/dropzone/uploadFiles',
         method: "post"
