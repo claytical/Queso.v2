@@ -9,7 +9,7 @@
 
         <div id="skills">
             @foreach($skills as $skill)
-                <div class="row">
+                <div>
                     {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
                     {!! Form::hidden('skill', $skill->id) !!}
                     {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
