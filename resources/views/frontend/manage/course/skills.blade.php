@@ -22,17 +22,16 @@
 
     <div class="col-lg-12">
         {!! Form::open(['url' => 'course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
-          <div class="form-group">
-            <label for="skill">Skill Name</label>
+          <div class="input-group">
                 {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
+                <span class="input-group-btn">
+                {!! Form::submit('Add Skill', ['class' => 'btn btn-primary']) !!}
+                {!! Form::close() !!}
+                </span>
           </div>
-          <div class="form-group">
-          </div>
-            {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-lg']) !!}
-            {!! Form::close() !!}
-
-
     </div>
+
+
     
     <div class="col-lg-12">
         {{ link_to('course/add/levels', 'Continue to Levels', ['class' => 'btn btn-default btn-block pull-right']) }}

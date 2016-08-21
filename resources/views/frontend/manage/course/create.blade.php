@@ -11,27 +11,25 @@
     <div class="col-lg-12">
         <div class="col-lg-6">
 
-                <div class="form-group">
-                    <label for="name">Course Name</label>
-
+            <div class="form-group">
+                <label for="name">Course Name</label>
                     {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' =>  'Course Name', 'id' => 'course_name']) }}
-                </div>
-                    
-                    <div class="form-group">
-                        <label for="meeting_location">Location</label>
-                        {{ Form::input('text', 'meeting_location', null, ['class' => 'form-control', 'placeholder' =>  'Fantastic HQ, Room 100', 'id' => 'classroom']) }}
-                    </div>
+            </div>
+                
+            <div class="form-group">
+                <label for="meeting_location">Location</label>
+                    {{ Form::input('text', 'meeting_location', null, ['class' => 'form-control', 'placeholder' =>  'Fantastic HQ, Room 100', 'id' => 'classroom']) }}
+            </div>
 
-                    <div clas="form-group">
-                        <label for="meeting_time">Time</label>
-                            {{ Form::input('text', 'meeting_time', null, ['class' => 'form-control', 'placeholder' => 'Tuesdays at Midnight', 'id' => 'meeting_time']) }}
-                    </div>
+            <div class="form-group">
+                <label for="meeting_time">Time</label>
+                    {{ Form::input('text', 'meeting_time', null, ['class' => 'form-control', 'placeholder' => 'Tuesdays at Midnight', 'id' => 'meeting_time']) }}
+            </div>
 
-                    <div class="form-group">
-                        <label for="reg_code">Registration Code</label>
-                        {{ Form::input('text', 'reg_code', null, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
-
-                    </div>
+            <div class="form-group">
+                <label for="reg_code">Registration Code</label>
+                    {{ Form::input('text', 'reg_code', null, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
+            </div>
    
         </div>
 
