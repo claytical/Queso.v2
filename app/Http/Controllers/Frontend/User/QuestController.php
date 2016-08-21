@@ -130,7 +130,7 @@ class QuestController extends Controller
                     $code->save();
                 }
             }
-            return redirect()->route('quests.qrcards', [$request->quest_id])->withFlashSuccess("Added " . $request->new_codes . " new redemption codes.");
+            return redirect()->route('quests.qrcodes', [$request->quest_id])->withFlashSuccess("Added " . $request->new_codes . " new redemption codes.");
 
     }
 
