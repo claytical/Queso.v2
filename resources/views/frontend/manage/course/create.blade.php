@@ -58,9 +58,7 @@
                     </div>
 
 
-        <div class="col-lg-12">
                     {!! Form::submit('Create Course', ['class' => 'btn btn-primary btn-lg pull-right']) !!}  
-        </div>
     </div>
 </div>
 {!! Form::close() !!}  

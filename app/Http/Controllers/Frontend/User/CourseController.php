@@ -34,7 +34,7 @@ class CourseController extends Controller
     	//CREATE COURSE
     	$course = new Course;
     	$course->name = $request->name;
-    	$course->description = $request->description;
+//    	$course->description = $request->description;
     	$course->meeting = $request->meeting_time;
         $course->meeting_location = $request->meeting_location;
         $course->office_hours = $request->office_hours;
