@@ -35,6 +35,10 @@
                                 Action <span class="caret"></span>
                               </button>
                               <ul class="dropdown-menu">
+                              @if($quest->instant)
+                                <li><a href="{!! url('manage/quest/'.$quest->id.'/qrcards');!!}"><span class="glyphicon glyphicon-qrcode"></span> QR Code Sheet</a></li>
+
+                              @endif
                                 <li><a href="{!! url('manage/quest/'.$quest->id.'/clone');!!}"><span class="glyphicon glyphicon-copy"></span> Clone</a></li>
                                 <li><a href="{!! url('manage/quest/'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
                               </ul>
