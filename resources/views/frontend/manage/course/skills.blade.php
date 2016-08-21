@@ -34,6 +34,7 @@
 
     
     <div class="col-lg-12">
+        <hr/>
         {{ link_to('course/add/levels', 'Continue to Levels', ['class' => 'btn btn-default btn-block pull-right']) }}
     </div>
 
