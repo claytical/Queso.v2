@@ -22,14 +22,14 @@
 
     <div class="form-group">
         <label for="level">Level Name</label>
-         {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
+         {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Newbie', 'id' => 'level_name']) }}
     </div>
     <div class="form-group">
         <label for="amount">Lowest Point Value</label>
-        {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Lowest Point Value For This Level', 'id' => 'level_amount']) }}
+        {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => '0', 'id' => 'level_amount']) }}
     </div>
     
-    {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
+    {!! Form::submit('Add Level', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 
