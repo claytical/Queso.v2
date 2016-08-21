@@ -23,9 +23,9 @@
 
 			@foreach($codes as $code)
 				<div style="width: 30%; min-height: 200px; float: left;font-family: Gentium Basic; padding:20px;">
-					<h4>{!! $quest->name !!}</h4>
+					<h4 style="font-family: Open Sans, sans;">{!! $quest->name !!}</h4>
 					<img src=" https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=UMCCONBGUCQNR">
-					<h5>{!! $code->code !!}</h5>
+					<h5 style="font-family: Open Sans, sans;">{!! $code->code !!}</h5>
 				</div>
 			@endforeach
     </body>
