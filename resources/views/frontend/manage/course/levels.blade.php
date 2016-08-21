@@ -8,10 +8,10 @@
 
         <div id="levels">
             @foreach($levels as $level)
-                    {!! $level->name !!}
                     {!! Form::open(['url' => 'course/remove/level', 'class' => 'remove-level']) !!}
                     {!! Form::hidden('level', $level->id) !!}
                     {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
+                    <h5>{!! $level->name !!}, at least {!! $level->amount !!} points</h5>
                     {!! Form::close() !!}
             @endforeach
         </div>
