@@ -46,7 +46,10 @@
         @if($quest->instant)
           <div role="tabpanel" class="tab-pane" id="codes">
             <div class="extra-top-padding">
-                {!! link_to('manage/quest/'.$quest->id.'/qrcodes', 'Manage Codes') !!}
+            </div>
+            <div class="col-md-12">
+                {!! link_to('manage/quest/'.$quest->id.'/qrcodes', 'Manage Codes', ['class' => 'btn btn-default']) !!}
+            </div>
               @if($codes)
                 @foreach($codes as $code)
                   <div class="col-md-3">
@@ -59,9 +62,6 @@
               @else
                 <p>There are no redemption codes currently.
               @endif
-            </div>
-            <div class="col-md-12">
-            </div>
           </div>
         @endif
         <div role="tabpanel" class="tab-pane" id="thresholds">
