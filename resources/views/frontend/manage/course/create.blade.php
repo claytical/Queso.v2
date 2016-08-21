@@ -7,22 +7,15 @@
     </div>
 
             {!! Form::open(['url' => 'course/create', 'class' => '', 'id' => 'create-course']) !!}
+
     <div class="col-lg-12">
+        <div class="col-lg-6">
+
                 <div class="form-group">
                     <label for="name">Course Name</label>
 
                     {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' =>  'Course Name', 'id' => 'course_name']) }}
                 </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-
-                    {!! Form::textarea('description', null, ['class' => 'field', 'files' => true]) !!}
-                </div>
-
-    </div>
-
-    <div class="col-lg-12">
-        <div class="col-lg-6">
                     
                     <div class="form-group">
                         <label for="meeting_location">Location</label>
@@ -40,9 +33,6 @@
 
                     </div>
    
-                    {!! Form::submit('Create Course', ['class' => 'btn btn-primary btn-lg']) !!}
-                    {!! Form::close() !!}
-
         </div>
 
         <div class="col-lg-6">
@@ -68,9 +58,12 @@
                     </div>
 
 
-
+        <div class="col-lg-12">
+                    {!! Form::submit('Create Course', ['class' => 'btn btn-primary btn-lg pull-right']) !!}  
         </div>
+    </div>
 </div>
+{!! Form::close() !!}  
 
 @endsection
 
