@@ -21,7 +21,7 @@
             </div>
             <div class="col-lg-3">
                     @if($quest->expires_at)
-                    <h4>Due in {!! Carbon::parse($quest->expires_at)->diffForHumans() !!}</h4>
+                    <h4>Due in {!! \Carbon\Carbon::parse($quest->expires_at)->diffForHumans() !!}</h4>
                     <h6>On {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h6>
                     @endif
             </div>
