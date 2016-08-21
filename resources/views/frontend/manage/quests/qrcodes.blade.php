@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="col-lg-12">
-    <h2>{!! $quest->name !!} Redemption Codes</h2>
 	{{ link_to('manage/quest/'.$quest->id.'/qrcards', 'Print Cards', ['class' =>'btn btn-default btn-lg pull-right', '_target' => 'blank']) }}    
+    <h2>{!! $quest->name !!} Redemption Codes</h2>
 </div>
 <div class="col-md-12">
 @if(!$unused_codes->isEmpty())	
@@ -17,7 +17,7 @@
 </div>
 
 <div class="col-md-12">
-@if(!$unused_codes->isEmpty())
+@if(!$used_codes->isEmpty())
 	<h3>Used Codes</h3>
 	@foreach($used_codes as $code)
 	  <div class="col-md-3">
