@@ -29,7 +29,7 @@
 </div>
  
 <div class="col-lg-12">
-	 {!! Form::open(array('url' => 'manage/quest/qrcards')) !!}
+	 {!! Form::open(array('url' => 'manage/quest/qrcodes')) !!}
 	 {!! Form::hidden('quest_id', $quest->id) !!}
 <h4>Generate Codes</h4>
 	<div class="input-group">
