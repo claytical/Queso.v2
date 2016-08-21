@@ -19,10 +19,10 @@
         <!-- front loading scripts -->
     </head>
     <body>
-			<h2>{!! $quest->name !!} Redemption Codes</h2>
+			<h2 style="font-family: Open Sans, sans;">{!! $quest->name !!} Redemption Codes</h2>
 
 			@foreach($codes as $code)
-				<div style="width: 30%; min-height: 200px">
+				<div style="width: 30%; min-height: 200px; float: left;font-family: Gentium;">
 					<h4>{!! $quest->name !!}</h4>
 					<img src=" https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=UMCCONBGUCQNR">
 					<h5>{!! $code->code !!}</h5>
