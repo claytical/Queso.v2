@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-lg-12">
-	{{ link_to('manage/quest/'.$quest->id.'/qrcards', 'Print Cards', ['class' =>'btn btn-default btn-lg pull-right', '_target' => 'blank']) }}    
+	{{ link_to('manage/quest/'.$quest->id.'/qrcards', 'Print Cards', ['class' =>'btn btn-default btn-lg pull-right', 'target' => '_blank']) }}    
     <h2>{!! $quest->name !!} Redemption Codes</h2>
 </div>
 <div class="col-md-12">
