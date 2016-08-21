@@ -19,11 +19,17 @@
     </div>
     <div class="col-lg-6">
         <h4>{!! $total_points !!} points</h4>
-        <h4>{!! $current_level->name !!}
-        <h4>5 Loved Feedbacks</h4>
+        <h4>Level: {!! $current_level->name !!}
     </div>
     <div class="col-lg-6">
-        SKILL DISTRIBUTION CHART
+        @foreach($acquired_skills as $skill)
+            <div class="col-lg-6">
+                {!! $skill['name'] !!}
+            </div>
+            <div class="col-lg-6">
+                {!! $skill['amount'] !!}
+            </div>
+        @endforeach
     </div>
 
 <div class="col-lg-12">
