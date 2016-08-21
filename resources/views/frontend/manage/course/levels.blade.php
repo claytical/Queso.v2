@@ -16,32 +16,23 @@
             @endforeach
         </div>
     </div>
+    {!! Form::open(['url' => 'course/add/level', 'class' => 'form-inline', 'id' => 'add-level']) !!}
 
     <div class="col-lg-12">
-        {!! Form::open(['url' => 'course/add/level', 'class' => 'form-inline', 'id' => 'add-level']) !!}
 
-          <div class="input-group">
-                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
-                <span class="input-group-btn">
-                {!! Form::submit('Add Skill', ['class' => 'btn btn-primary']) !!}
-                {!! Form::close() !!}
-                </span>
-          </div>
+    <div class="form-group">
+        <label for="level">Level Name</label>
+         {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
+    </div>
+    <div class="form-group">
+        <label for="amount">Lowest Point Value</label>
+        {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Lowest Point Value For This Level', 'id' => 'level_amount']) }}
+    </div>
+    
+    {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
 
+    {!! Form::close() !!}
 
-
-
-
-
-          <div class="input-group">
-                {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
-                {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Lowest Point Value For This Level', 'id' => 'level_amount']) }}
-                <span class="input-group-btn">
-                    {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-lg']) !!}
-                    {!! Form::close() !!}
-                </span>
-
-          </div>
     </div>
 
 
