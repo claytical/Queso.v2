@@ -121,9 +121,12 @@ class QuestController extends Controller
 
     }
     
-    public function qrcards() {
-        return view('frontend.manage.quests.qrcards')
-            ->withUser(access()->user());
+    public function qrcards($quest_id) {
+        $quest = Quest::find($quest_id);
+        $codes = Redemption::where('quest_id', '=', $quest_id)
+                                ->get();
+
+        return view('frontend.manage.quests.qrcards', ['quest' => $quest, 'codes' => $codes]);
 
     }
 
