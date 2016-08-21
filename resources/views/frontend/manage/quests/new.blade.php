@@ -208,11 +208,13 @@
                 <div class="col-lg-12">
                     <div id="quest_uploads" class="dropzone"></div>
                 </div>
+                <div class="col-lg-12">
+                    <hr/>
                       <div class="form-group">
-                        <button type="button" class="btn btn-default btn-lg" id="set_files">Next</button>
+                        <button type="button" class="btn btn-default btn-lg pull-right" id="set_files">Next</button>
 
                       </div>
-
+                </div>
         </div>
     </div>
 

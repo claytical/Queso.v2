@@ -384,7 +384,8 @@ class QuestController extends Controller
     public function attempt_submission($quest_id) {
         $quest = Quest::find($quest_id);
         $skills = $quest->skills()->get();
-        return view('frontend.quests.attempt_submission', ['quest' => $quest, 'skills' => $skills])
+        $files = $quest->files;
+        return view('frontend.quests.attempt_submission', ['quest' => $quest, 'skills' => $skills, 'files' => $files])
             ->withUser(access()->user());
     }
     

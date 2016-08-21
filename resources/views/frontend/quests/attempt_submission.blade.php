@@ -11,6 +11,12 @@
                     @endif
 
                     {!! $quest->instructions !!}
+                    @if($files)
+                    <h6>Attached Files</h6>
+                        @foreach($files as $file)
+                          {!! link_to('public/uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+                        @endforeach
+                    @endif
                     {!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
                     {!! Form::hidden('revision', 0) !!}
                     {!! Form::hidden('quest_id', $quest->id) !!}
