@@ -105,6 +105,7 @@
                         </li>
                     @endforeach
                 </ul>
+                <div class="col-lg-12">
                 <hr/>
                     <div class="col-lg-9">
                         {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
@@ -115,7 +116,7 @@
                         {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-block']) !!}
                         {!! Form::close() !!}
                     </div>
-                
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="levels">
 
