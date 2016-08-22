@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="skills">
-            <div class='col-md-12'>
+                <div class='col-md-12'>
                     <h4>Current Skills</h4>
                     <ul class="list-unstyled list">
                         @foreach($skills as $skill)
@@ -107,15 +107,17 @@
                         @endforeach
                     </ul>
                 </div>
-                <hr/>
-                <div class="col-lg-9">
-                    {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
-                    {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
+                <div class="col-md-12">
+                    <hr/>
+                    <div class="col-lg-9">
+                        {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
+                        {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
 
-                </div>
-                <div class="col-lg-3">
-                    {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-block']) !!}
-                    {!! Form::close() !!}
+                    </div>
+                    <div class="col-lg-3">
+                        {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-block']) !!}
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="levels">
