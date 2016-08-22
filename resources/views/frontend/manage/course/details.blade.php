@@ -104,19 +104,18 @@
                                 </div>
                         </li>
                     @endforeach
-                        <li>
-                            <div class="col-lg-9">
-                                {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
-                                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
-
-                            </div>
-                            <div class="col-lg-3">
-                                {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-block']) !!}
-                                {!! Form::close() !!}
-                            </div>
-                        </li>
                 </ul>
+                <hr/>
+                    <div class="col-lg-9">
+                        {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
+                        {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
 
+                    </div>
+                    <div class="col-lg-3">
+                        {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-block']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                
             </div>
             <div role="tabpanel" class="tab-pane" id="levels">
 
