@@ -86,36 +86,36 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="skills">
-                <h4>Current Skills</h4>
-                <ul class="list-unstyled list">
-                    @foreach($skills as $skill)
-                        <li>
-                                <div class="col-lg-9">
-                                    <div class="name">{!! $skill->name !!}
+            <div class='col-md-12'>
+                    <h4>Current Skills</h4>
+                    <ul class="list-unstyled list">
+                        @foreach($skills as $skill)
+                            <li>
+                                    <div class="col-lg-9">
+                                        <div class="name">{!! $skill->name !!}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="pull-right">
-                                        {!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
-                                        {!! Form::hidden('skill', $skill->id) !!}
-                                        {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
-                                        {!! Form::close() !!}
+                                    <div class="col-lg-3">
+                                        <div class="pull-right">
+                                            {!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
+                                            {!! Form::hidden('skill', $skill->id) !!}
+                                            {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
+                                            {!! Form::close() !!}
+                                        </div>
                                     </div>
-                                </div>
-                        </li>
-                    @endforeach
-                </ul>
-                <div class="col-lg-12">
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
                 <hr/>
-                    <div class="col-lg-9">
-                        {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
-                        {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
+                <div class="col-lg-9">
+                    {!! Form::open(['url' => 'manage/course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
+                    {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
 
-                    </div>
-                    <div class="col-lg-3">
-                        {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-block']) !!}
-                        {!! Form::close() !!}
-                    </div>
+                </div>
+                <div class="col-lg-3">
+                    {!! Form::submit('Add Skill', ['class' => 'btn btn-primary btn-block']) !!}
+                    {!! Form::close() !!}
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="levels">
