@@ -121,30 +121,32 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="levels">
-
-                <h4>Current Levels</h4>
-                <ul class="list-unstyled list">
-                    @foreach($levels as $level)
-                        <li>
-                            <div class="col-lg-4">
-                                {!! $level->name !!}
-                            </div>
-                            <div class="col-lg-4">
-                                {!! $level->amount !!}
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="pull-right">
-                                {!! Form::open(['url' => 'manage/course/remove/level', 'class' => 'remove-level']) !!}
-                                {!! Form::hidden('level', $level->id) !!}
-                                {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
-                                {!! Form::close() !!}
-
+                <div class="col-md-12">
+                    <h4>Current Levels</h4>
+                    <ul class="list-unstyled list">
+                        @foreach($levels as $level)
+                            <li>
+                                <div class="col-lg-4">
+                                    {!! $level->name !!}
                                 </div>
-                            </div>
-                        </li>
-                    @endforeach
+                                <div class="col-lg-4">
+                                  {!! $level->amount !!}
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="pull-right">
+                                    {!! Form::open(['url' => 'manage/course/remove/level', 'class' => 'remove-level']) !!}
+                                    {!! Form::hidden('level', $level->id) !!}
+                                    {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
+                                    {!! Form::close() !!}
 
-                    <li>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <hr/>
                         <div class="col-lg-4">
                         {!! Form::open(['url' => 'manage/course/add/level', 'class' => 'form-inline', 'id' => 'add-level']) !!}
 
@@ -159,11 +161,8 @@
                             {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-block']) !!}
                             {!! Form::close() !!}
 
-                        </div>
-                    </li>
-                </ul>
-
-
+                        </div>                
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="teams">
                 <h4>Current Teams</h4>
