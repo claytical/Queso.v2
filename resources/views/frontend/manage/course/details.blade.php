@@ -16,9 +16,9 @@
             <li role="presentation"><a href="#skills" aria-controls="skills" role="tab" data-toggle="tab">Skills</a></li>
             <li role="presentation"><a href="#levels" aria-controls="levels" role="tab" data-toggle="tab">Levels</a></li>
             <li role="presentation"><a href="#teams" aria-controls="teams" role="tab" data-toggle="tab">Teams</a></li>
-            <li role="presentation"><a href="#feedback" aria-controls="feedback" role="tab" data-toggle="tab">Peer Feedback</a></li>
+<!--            <li role="presentation"><a href="#feedback" aria-controls="feedback" role="tab" data-toggle="tab">Peer Feedback</a></li>-->
 
-            <li role="presentation"><a href="#share" aria-controls="share" role="tab" data-toggle="tab">Share</a></li>
+<!--            <li role="presentation"><a href="#share" aria-controls="share" role="tab" data-toggle="tab">Share</a></li>-->
 
           </ul>
 
@@ -88,24 +88,22 @@
             <div role="tabpanel" class="tab-pane" id="skills">
                 <div class='col-md-12'>
                     <h4>Current Skills</h4>
-                    <ul class="list-unstyled list">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Skill</th>
+                                <th>Actions</th>
+                            </thead>
                         @foreach($skills as $skill)
-                            <li>
-                                    <div class="col-lg-9">
-                                        <div class="name">{!! $skill->name !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="pull-right">
-                                            {!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
+                            <tr>
+                                <td>{!! $skill->name !!}</td>
+                                <td>{!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
                                             {!! Form::hidden('skill', $skill->id) !!}
                                             {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
                                             {!! Form::close() !!}
-                                        </div>
-                                    </div>
-                            </li>
+                                </td>
+                            </tr>
                         @endforeach
-                    </ul>
+                        </table>
                 </div>
                 <div class="col-md-12">
                     <hr/>
@@ -208,7 +206,7 @@
 
                 {!! Form::close() !!}
             </div>
-
+<!--
             <div role="tabpanel" class="tab-pane" id="feedback">
                 {!! Form::open(['url' => 'manage/peers', 'class' => '', 'id' => 'peer-form']) !!}
                 
@@ -219,7 +217,7 @@
                 {!! Form::close() !!}
 
             </div>
-
+-->
           </div>
 
         </div>
