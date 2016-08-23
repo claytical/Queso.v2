@@ -95,7 +95,7 @@
                             </thead>
                         @foreach($skills as $skill)
                             <tr>
-                                <td><a href="#" data-toggle="modal" data-target="#skill{!! $skill->id!!}">{!! $skill->name !!}</a></td>
+                                <td><a href="#" style="color: #445878;" data-toggle="modal" data-target="#skill{!! $skill->id!!}">{!! $skill->name !!}</a></td>
                                 <td>{!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
                                             {!! Form::hidden('skill', $skill->id) !!}
                                             {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
@@ -104,17 +104,20 @@
 <div class="modal fade" id="skill{!! $skill->id !!}" tabindex="-1" role="dialog" aria-labelledby="skillLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+            {!! Form::open(['url' => 'manage/course/edit/skill', 'class' => 'edit-skill']) !!}
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">{!! $skill->name !!}</h4>
       </div>
       <div class="modal-body">
-        ...
+            {!! Form::hidden('skill', $skill->id) !!}
+            {{ Form::input('text', 'skill', $skill->name, ['class' => 'form-control', 'placeholder' => $skill->name, 'id' => 'skill_name']) }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}                  
       </div>
+            {!! Form::close() !!}
     </div>
   </div>
 </div>
