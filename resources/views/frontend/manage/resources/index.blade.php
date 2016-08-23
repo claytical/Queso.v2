@@ -25,7 +25,7 @@
                 </td>
 
                 <td>
-                <a class="btn btn-danger" href="{!! url('manage/resource/'.$resource->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                <a class="btn btn-danger pull-right" href="{!! url('manage/resource/'.$resource->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                 </td>
         @endforeach
     </table>

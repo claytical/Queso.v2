@@ -224,7 +224,7 @@
                                     <td>
                                         {!! Form::open(['url' => 'manage/course/remove/team', 'class' => 'remove-team']) !!}
                                         {!! Form::hidden('team_id', $team->id) !!}
-                                        {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs']) !!}                           
+                                        {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
