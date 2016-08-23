@@ -27,12 +27,7 @@ class DashboardController extends Controller
         $user = access()->user();
         $course = Course::find(session('current_course'));
 
-        if($course) {
-            $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
-        }
-        else {
-            return redirect(route('frontend.user.choose'));
-        }
+
 
         $notifications = Notice::where('user_id', '=', $user->id)
                         ->whereNull('received')
@@ -84,7 +79,12 @@ class DashboardController extends Controller
         }
         $total_points_earned = $user->skills()->sum('amount');
     
-
+        if($course) {
+            $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
+        }
+        else {
+            return redirect(route('frontend.user.choose'));
+        }
     
         return view('frontend.welcome', ['announcements' => $announcements,
                                           'current_level' => $current_level,
