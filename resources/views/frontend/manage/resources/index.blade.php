@@ -6,7 +6,7 @@
         <h2>Manage Resources {{ link_to('manage/resources/create', 'New Resource', ['class' => 'btn btn-primary btn-lg pull-right']) }}</h2>
     </div>
 </div>
-
+xx
 @if(!$resources->isEmpty())
     <table class="table table-hover">
             <thead>
