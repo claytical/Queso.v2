@@ -110,7 +110,7 @@
         <h4 class="modal-title" id="myModalLabel">Rename Skill</h4>
       </div>
       <div class="modal-body">
-            {!! Form::hidden('skill', $skill->id) !!}
+            {!! Form::hidden('skill_id', $skill->id) !!}
             {{ Form::input('text', 'skill', $skill->name, ['class' => 'form-control', 'placeholder' => $skill->name, 'id' => 'skill_name']) }}
       </div>
       <div class="modal-footer">
@@ -167,7 +167,7 @@
         <h4 class="modal-title" id="myModalLabel">Edit Level</h4>
       </div>
       <div class="modal-body">
-            {!! Form::hidden('level', $level->id) !!}
+            {!! Form::hidden('level_id', $level->id) !!}
             <div class="form-group">
                 <label>Name</label>
                 {{ Form::input('text', 'level', $level->name, ['class' => 'form-control', 'placeholder' => 'Name', 'id' => 'level_name']) }}
