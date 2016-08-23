@@ -25,6 +25,15 @@ class DashboardController extends Controller
      */
     public function index() {
         $user = access()->user();
+        $course = Course::find(session('current_course'));
+
+        if($course) {
+            $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
+        }
+        else {
+            return redirect(route('frontend.user.choose'));
+        }
+
         $notifications = Notice::where('user_id', '=', $user->id)
                         ->whereNull('received')
 //                      ->where('course_id', '=', session('current_course'))
@@ -64,7 +73,6 @@ class DashboardController extends Controller
         }
 
         $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
-        $course = Course::find(session('current_course'));
         $team = $user->teams()
                         ->where('team_user.course_id', session('current_course'))
                         ->first();
@@ -75,13 +83,9 @@ class DashboardController extends Controller
             $team_users = false;
         }
         $total_points_earned = $user->skills()->sum('amount');
-        if($course->levels()) {
-            $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
-        }
-        else {
-            $current_level = new \stdClass;
-            $current_level->name = "None";
-        }
+    
+
+    
         return view('frontend.welcome', ['announcements' => $announcements,
                                           'current_level' => $current_level,
                                           'total_points' => $total_points_earned,
