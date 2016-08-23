@@ -138,6 +138,7 @@
                                         </td>
                                 </tr>
                             @endforeach
+                        </table>
                 </div>
                 <div class="col-md-12">
                     <hr/>
