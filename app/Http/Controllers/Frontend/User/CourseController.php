@@ -138,6 +138,16 @@ class CourseController extends Controller
 
     }
 
+    public function remove_skill_ajax($id) {
+        $skill = Skill::find($id)->delete();
+        if($skill->course()->id == session('currnet_course') && access()->is_instructor()) {
+            return response()->json(["success" => true]);
+        }
+        
+        return response()->json(["success" => false]);
+    }
+
+
     public function edit_skill(Request $request) {
         $skill = Skill::find($request->skill_id);
         $skill->name = $request->skill;

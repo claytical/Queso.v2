@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('course/add/skills', 'CourseController@add_skills')->name('course.add.skills');
         Route::post('course/add/skill', 'CourseController@add_skill')->name('course.add.skill');
         Route::post('course/remove/skill', 'CourseController@remove_skill')->name('course.remove.skill');
+        Route::get('course/remove/skill/{id}', 'CourseController@remove_skill_ajax')->name('course.remove.skill.json');
 
         Route::post('manage/course/add/level', 'CourseController@add_level_m')->name('course.add.level.m');
         Route::post('manage/course/remove/level', 'CourseController@remove_level_m')->name('course.remove.level.m');
