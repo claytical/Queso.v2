@@ -16,11 +16,11 @@
         @foreach($resources as $resource)
             <tr>
                 <td>
-                {{ link_to('manage/resource/' . $resource->id, $resource->title) }}
-                </td>>
+                    {{ link_to('manage/resource/' . $resource->id, $resource->title) }}
+                </td>
 
                 <td>
-                {{ $resource->tag }}
+                    {{ $resource->tag }}
                 </td>
 
                 <td>
