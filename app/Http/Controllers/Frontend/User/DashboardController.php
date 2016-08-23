@@ -75,7 +75,13 @@ class DashboardController extends Controller
             $team_users = false;
         }
         $total_points_earned = $user->skills()->sum('amount');
-        $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
+        if($course->levels()) {
+            $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
+        }
+        else {
+            $current_level = new \stdClass;
+            $current_level->name = "None";
+        }
         return view('frontend.welcome', ['announcements' => $announcements,
                                           'current_level' => $current_level,
                                           'total_points' => $total_points_earned,
