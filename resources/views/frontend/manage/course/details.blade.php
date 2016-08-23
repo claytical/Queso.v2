@@ -107,7 +107,7 @@
             {!! Form::open(['url' => 'manage/course/edit/skill', 'class' => 'edit-skill']) !!}
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{!! $skill->name !!}</h4>
+        <h4 class="modal-title" id="myModalLabel">Rename Skill</h4>
       </div>
       <div class="modal-body">
             {!! Form::hidden('skill', $skill->id) !!}
@@ -157,6 +157,34 @@
                                             {!! Form::hidden('level', $level->id) !!}
                                             {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
                                             {!! Form::close() !!}
+<!-- Modal -->
+<div class="modal fade" id="level{!! $level->id !!}" tabindex="-1" role="dialog" aria-labelledby="levelLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+            {!! Form::open(['url' => 'manage/course/edit/level', 'class' => 'edit-level']) !!}
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Level</h4>
+      </div>
+      <div class="modal-body">
+            {!! Form::hidden('level', $level->id) !!}
+            <div class="form-group">
+                {{ Form::input('text', 'level', $level->name, ['class' => 'form-control', 'placeholder' => 'Name', 'id' => 'level_name']) }}
+            </div>
+            <div class="form-group">
+                {{ Form::input('text', 'amount', $level->amount, ['class' => 'form-control', 'placeholder' => 'Amount', 'id' => 'level_name']) }}
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}                  
+      </div>
+            {!! Form::close() !!}
+    </div>
+  </div>
+</div>
+
                                         </td>
                                 </tr>
                             @endforeach
