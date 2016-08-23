@@ -91,7 +91,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <th>Skill</th>
-                                <th>Actions</th>
+                                <th></th>
                             </thead>
                         @foreach($skills as $skill)
                             <tr>
@@ -121,27 +121,23 @@
             <div role="tabpanel" class="tab-pane" id="levels">
                 <div class="col-md-12">
                     <h4>Current Levels</h4>
-                    <ul class="list-unstyled list">
-                        @foreach($levels as $level)
-                            <li>
-                                <div class="col-lg-4">
-                                    {!! $level->name !!}
-                                </div>
-                                <div class="col-lg-4">
-                                  {!! $level->amount !!}
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="pull-right">
-                                    {!! Form::open(['url' => 'manage/course/remove/level', 'class' => 'remove-level']) !!}
-                                    {!! Form::hidden('level', $level->id) !!}
-                                    {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
-                                    {!! Form::close() !!}
-
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Level</th>
+                                <th>Amount</th>
+                                <th></th>
+                            </thead>
+                            @foreach($levels as $level)
+                                <tr>
+                                    <td>{!! $level->name !!}</td>
+                                    <td>{!! $level->amount !!}</td>
+                                    <td>{!! Form::open(['url' => 'manage/course/remove/level', 'class' => 'remove-level']) !!}
+                                            {!! Form::hidden('level', $level->id) !!}
+                                            {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
+                                            {!! Form::close() !!}
+                                        </td>
+                                </tr>
+                            @endforeach
                 </div>
                 <div class="col-md-12">
                     <hr/>
