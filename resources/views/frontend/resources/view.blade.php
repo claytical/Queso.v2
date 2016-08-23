@@ -11,7 +11,7 @@
             <div>
                 <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>
             </div>
-            @if($files)
+            @if(!$files->isEmpty())
                 <h6>Attached Files</h6>
                 @foreach($files as $file)
                     {!! link_to('uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}

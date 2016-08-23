@@ -1,46 +1,26 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12">
-        <h2>Manage Students</h2>
-    </div>
-</div>
+
+<h2>Manage Students</h2>
 
 @if(!$students->isEmpty())
-<div class="row">
-        <div class="col-lg-6">
-            <h5>Student Name</h5>
-        </div>
-        <div class="col-lg-3">
-            <h5>Points</h5>
-        </div>
-        <div class="col-lg-3">
-            <h5>Tags</h5>
-        </div>
+<table class="table table-hover">
+        <thead>
+            <th>Name</th>
+            <th>Points</th>
+            <th></th>
+        </thead>
 
-        <div class="col-lg-12">
-             <ul class="list-unstyled list">
-                <li>
+        @foreach($students as $student)
+            <tr>
+                <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
+                <td>{!! $student->skills()->sum('amount') !!}</td>
+                <td></td>
+            </tr>
+        @endforeach
+</table>
 
-                @foreach($students as $student)
-                        <div class="row">
-                            <div class="col-lg-6 student">
-                            
-                                {{ link_to('manage/student/'.$student->id, $student->name) }}
-                            </div>
-
-                            <div class="col-lg-3 grade">
-                                {!! $student->skills()->sum('amount') !!}
-                            </div>
-                            <div class="col-lg-3 team">
-                            </div>
-                        </div>
-                @endforeach
-                </li>
-            </ul>
-    </div>
-</div>
 @else
     <p class="lead">There are currently no students in this course.</p>
 @endif
