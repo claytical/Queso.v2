@@ -95,11 +95,30 @@
                             </thead>
                         @foreach($skills as $skill)
                             <tr>
-                                <td>{!! $skill->name !!}</td>
+                                <td><a href="#" data-toggle="modal" data-target="#skill{!! $skill->id!}}">{!! $skill->name !!}</a></td>
                                 <td>{!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
                                             {!! Form::hidden('skill', $skill->id) !!}
                                             {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
                                             {!! Form::close() !!}
+<!-- Modal -->
+<div class="modal fade" id="skill{!! $skill->id !!}" tabindex="-1" role="dialog" aria-labelledby="skillLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{!! $skill->name !!}</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -161,6 +180,11 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="teams">
                 <h4>Current Teams</h4>
+                    @if($teams->isEmpty())
+                        <div class="col-lg-12">
+                            <p>No teams have been created yet.</p>
+                        </div>
+                    @endif
                     <div class="col-lg-9">
                     {!! Form::open(['url' => 'manage/course/add/team', 'class' => '', 'id' => 'add-team']) !!}
                     {!! Form::input('text', 'team', null, ['class' => 'form-control', 'placeholder' => 'Team Name', 'id' => 'team_title']) !!}
