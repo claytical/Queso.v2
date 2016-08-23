@@ -8035,14 +8035,14 @@ h6,
 
 /* General Links */
 a {
-  color: #92CDCF; }
+  color: #445878; }
 
 a:hover,
 a:active,
 a:focus {
   outline: none;
   text-decoration: none;
-  color: #c7e5e6; }
+  color: #627ca6; }
 
 /* Page Header */
 .page-header {
@@ -9781,22 +9781,22 @@ $-webkit-keyframes flipInX {
   background: #f7f7f7; }
 
 /* NAV PILLS */
-.nav-pills > li > a {
-  border-radius: 0;
-  border-top: 3px solid transparent;
-  color: #444; }
-  .nav-pills > li > a > .fa,
-  .nav-pills > li > a > .glyphicon,
-  .nav-pills > li > a > .ion {
-    margin-left: 5px; }
-
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
-  border-top-color: #445878; }
-
-.nav-pills > li.active > a {
-  font-weight: 600; }
+.nav-pills {
+  border-bottom: 1px solid #f4f4f4; }
+  .nav-pills > li > a {
+    border-radius: 0;
+    border-top: 3px solid transparent;
+    color: #444; }
+    .nav-pills > li > a > .fa,
+    .nav-pills > li > a > .glyphicon,
+    .nav-pills > li > a > .ion {
+      margin-left: 5px; }
+  .nav-pills > li.active > a,
+  .nav-pills > li.active > a:hover,
+  .nav-pills > li.active > a:focus {
+    border-top-color: #445878; }
+  .nav-pills > li.active > a {
+    font-weight: 600; }
 
 /* NAV STACKED */
 .nav-stacked > li > a {

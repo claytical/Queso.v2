@@ -36,6 +36,7 @@
                               </button>
                               <ul class="dropdown-menu">
                               <li>{{ link_to('manage/quest/'.$quest->id, 'Edit') }}</li>
+                                <li>{{ link_to('quest/'.$quest->id.'/attempt/submission', 'View as Student')}}</li>
                               @if($quest->instant)
                                 <li><a href="{!! url('manage/quest/'.$quest->id.'/qrcards');!!}" target="_blank"><span class="glyphicon glyphicon-qrcode"></span> QR Code Sheet</a></li>
                               @endif
