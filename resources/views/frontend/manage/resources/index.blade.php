@@ -8,39 +8,27 @@
 </div>
 
 @if(!$resources->isEmpty())
-<div class="row">
-        <div class="col-lg-6">
-            <h5><em>Name</em></h5>
-        </div>
-        <div class="col-lg-3">
-            <h5><em>Category</em></h5>
-        </div>
-        <div class="col-lg-3">
+    <table class="table table-hover">
+            <thead>
+                <th>Name</th>
+                <th>Tag</th>
+                <th></th>
+            </thead>
+        @foreach($resources as $resource)
+            <tr>
+                <td>
+                {{ link_to('manage/resource/' . $resource->id, $resource->title) }}
+                </td>>
 
-        </div>
+                <td>
+                {{ $resource->tag }}
+                </td>
 
-        <div class="col-lg-12">
-             <ul class="list-unstyled list">
-                <li>
-                    <div class="row">
-                        @foreach($resources as $resource)
-                            <div class="col-lg-6 name">
-                                {{ link_to('manage/resource/' . $resource->id, $resource->title) }}
-                            </div>
-
-                            <div class="col-lg-3 category">
-                                {{ $resource->tag }}
-                            </div>
-
-                            <div class="col-lg-3">
-                                <a class="btn btn-danger" href="{!! url('manage/resource/'.$resource->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                            </div>
-                        @endforeach
-                    </div>
-                </li>
-            </ul>
-    </div>
-</div>
+                <td>
+                <a class="btn btn-danger" href="{!! url('manage/resource/'.$resource->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                </td>
+        @endforeach
+    </table>
 @else
 <p class="lead">There are currently no resources.</p>
 @endif

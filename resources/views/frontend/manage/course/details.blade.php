@@ -213,6 +213,24 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="teams">
                 <h4>Current Teams</h4>
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Team</th>
+                                <th></th>
+                            </thead>
+                            @foreach($teams as $team)
+                                <tr>
+                                    <td>{!! $team->name !!}</td>
+                                    <td>
+                                        {!! Form::open(['url' => 'manage/course/remove/team', 'class' => 'remove-team']) !!}
+                                        {!! Form::hidden('team_id', $team->id) !!}
+                                        {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs']) !!}                           
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+
                     @if($teams->isEmpty())
                         <div class="col-lg-12">
                             <p>No teams have been created yet.</p>
@@ -225,30 +243,10 @@
 
                     </div>
                     <div class="col-lg-3">
-                        {!! Form::submit('Add This Team', ['class' => 'btn btn-primary btn-lg']) !!}
+                        {!! Form::submit('Add This Team', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
 
                     </div>
-
-                <ul class="list-unstyled list">
-                    @foreach($teams as $team)
-                    <li>
-                        <div class="col-lg-9">
-                            <div class="name">{!! $team->name !!}
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pull-right">
-                                {!! Form::open(['url' => 'manage/course/remove/team', 'class' => 'remove-team']) !!}
-                                {!! Form::hidden('team_id', $team->id) !!}
-                                {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
-                                {!! Form::close() !!}
-
-
-                            </div>
-                        </div>
-                    @endforeach
-                </ul>
 
             </div>
             <div role="tabpanel" class="tab-pane" id="share">
