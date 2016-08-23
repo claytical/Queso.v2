@@ -45,9 +45,12 @@
 
     <!-- GENERALIZED -->
         <label for="expiration" class="control-label">Expiration Date</label>
-
+        @if($quest->expires_at)
         {{ Form::input('date', 'expiration', date('Y-m-d', strtotime($quest->expires_at)), ['class' => 'form-control', 'id' => 'quest_expiration']) }}
-        
+        @else
+        {{ Form::input('date', 'expiration', null, ['class' => 'form-control', 'id' => 'quest_expiration']) }}
+
+        @endif        
         @if($quest->quest_type_id == 2)
     <!-- ACTIVITY -->
             <div class="checkbox">
