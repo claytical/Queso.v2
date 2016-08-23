@@ -19,7 +19,6 @@
                         <td>{{ link_to('manage/quest/'.$quest->id, $quest->name) }}</td>
                         <td></td>
                         <td>
-                            <div class="pull-right">
                                 <div class="btn-group">
                                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Action <span class="caret"></span>
@@ -34,7 +33,6 @@
                                     <li><a href="{!! url('manage/quest/'.$quest->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
                                   </ul>
                                 </div>
-                            </div>
                         </td>
                     </tr>
                 @endforeach
