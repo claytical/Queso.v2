@@ -151,7 +151,7 @@
                             </thead>
                             @foreach($levels as $level)
                                 <tr>
-                                    <td><a href="#" style="color: #445878;" data-toggle="modal" data-target="#level{!! $level->id!!}"> {!! $level->name !!} !!}</a></td>
+                                    <td><a href="#" style="color: #445878;" data-toggle="modal" data-target="#level{!! $level->id!!}"> {!! $level->name !!}</a></td>
                                     <td>{!! $level->amount !!}</td>
                                     <td>{!! Form::open(['url' => 'manage/course/remove/level', 'class' => 'remove-level']) !!}
                                             {!! Form::hidden('level', $level->id) !!}
@@ -169,9 +169,11 @@
       <div class="modal-body">
             {!! Form::hidden('level', $level->id) !!}
             <div class="form-group">
+                <label>Name</label>
                 {{ Form::input('text', 'level', $level->name, ['class' => 'form-control', 'placeholder' => 'Name', 'id' => 'level_name']) }}
             </div>
             <div class="form-group">
+                <label>Amount</label>
                 {{ Form::input('text', 'amount', $level->amount, ['class' => 'form-control', 'placeholder' => 'Amount', 'id' => 'level_name']) }}
             </div>
 
