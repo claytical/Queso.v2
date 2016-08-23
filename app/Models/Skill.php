@@ -8,7 +8,7 @@ class Skill extends Model
 {
 
 	public function course() {
-		return $this->belongsToOne('App\Course');
+		return $this->belongsTo('App\Course');
 	}
 
     public function quests() {
