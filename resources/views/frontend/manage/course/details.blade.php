@@ -95,7 +95,7 @@
                             </thead>
                         @foreach($skills as $skill)
                             <tr>
-                                <td><a href="#" data-toggle="modal" data-target="#skill{!! $skill->id!}}">{!! $skill->name !!}</a></td>
+                                <td><a href="#" data-toggle="modal" data-target="#skill{!! $skill->id!!}">{!! $skill->name !!}</a></td>
                                 <td>{!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
                                             {!! Form::hidden('skill', $skill->id) !!}
                                             {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
