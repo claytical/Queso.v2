@@ -305,7 +305,7 @@
         var sid = jqForm[0][2].defaultValue;
         console.log(jqForm[0]);
         $("#skill" + sid).modal('hide');
-        $("td [data-target='#skill"+sid+"']").html("changed");
+        $("td [data-target='#skill"+sid+"']").html(jqForm[0][3].value);
         return true; 
     } 
 
