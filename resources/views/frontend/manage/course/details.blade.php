@@ -301,8 +301,10 @@
      function showRequest(formData, jqForm, options) { 
         // formData is an array; here we use $.param to convert it to a string to display it 
         // but the form plugin does this for you automatically when it submits the data 
-        var queryString = $.param(formData); 
-        console.log(jqForm);
+        var queryString = $.param(formData);
+        var sid = jqForm[0][2].defaultValue;
+        console.log(jqForm[0][2].defaultValue);
+        $("#skill" + sid).modal('hide');
         return true; 
     } 
 
