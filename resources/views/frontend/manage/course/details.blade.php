@@ -302,7 +302,7 @@
         // formData is an array; here we use $.param to convert it to a string to display it 
         // but the form plugin does this for you automatically when it submits the data 
         var queryString = $.param(formData); 
-        console.log("sending request...");
+        console.log(jqForm);
         return true; 
     } 
 
