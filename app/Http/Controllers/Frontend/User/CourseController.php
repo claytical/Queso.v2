@@ -140,10 +140,11 @@ class CourseController extends Controller
 
     public function remove_skill_ajax($id) {
         $skill = Skill::find($id);
-        if($skill->course->id == session('current_course') && access()->instructor()) {
-            return response()->json(["success" => true]);
+        if ($skill->course) {
+            if($skill->course->id == session('current_course') && access()->instructor()) {
+                return response()->json(["success" => true]);
+            }
         }
-        
         return response()->json(["success" => false]);
     }
 
