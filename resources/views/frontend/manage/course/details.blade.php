@@ -283,12 +283,18 @@
 @section('after-scripts-end')
     <script>
         var skillOptions = { 
-        target:        '#output1',   // target element(s) to be updated with server response 
-        beforeSubmit:  showRequest,  // pre-submit callback 
-        success:       showSkillResponse,  // post-submit callback 
-        dataType: 'json'
-    }; 
- 
+            target:        '#output1',   // target element(s) to be updated with server response 
+            beforeSubmit:  showRequest,  // pre-submit callback 
+            success:       showSkillResponse,  // post-submit callback 
+            dataType: 'json'
+            }; 
+        var skillRemoveOptions = { 
+            target:        '#output1',   // target element(s) to be updated with server response 
+            beforeSubmit:  showRemoveSkillRequest,  // pre-submit callback 
+            success:       showSkillResponse,  // post-submit callback 
+            dataType: 'json'
+            }; 
+
      function showRequest(formData, jqForm, options) { 
         // formData is an array; here we use $.param to convert it to a string to display it 
         // but the form plugin does this for you automatically when it submits the data 
@@ -297,6 +303,13 @@
         console.log(jqForm[0]);
         $("#skill" + sid).modal('hide');
         $("td [data-target='#skill"+sid+"']").html(jqForm[0][3].value);
+        return true; 
+    } 
+    
+    function showRemoveSkillRequest(formData, jqForm, options) { 
+        // formData is an array; here we use $.param to convert it to a string to display it 
+        // but the form plugin does this for you automatically when it submits the data 
+        jqForm.parentNode.parentNode.remove();        
         return true; 
     } 
 
