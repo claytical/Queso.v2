@@ -153,8 +153,8 @@ class CourseController extends Controller
         $skill = Skill::find($request->skill_id);
         $skill->name = $request->skill;
         $skill->save();
-        return response()->json($skill);
-//        return redirect(route('course.manage'));
+//        return response()->json($skill);
+        return redirect(route('course.manage'));
     }
 
     public function edit_level(Request $request) {

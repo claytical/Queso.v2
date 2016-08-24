@@ -305,7 +305,7 @@
         return true; 
     } 
 
-    function showResponse(responseText, statusText, xhr, $form)  { 
+    function showSkillResponse(responseText, statusText, xhr, $form)  { 
         console.log(responseText);
         console.log($form);
     } 
