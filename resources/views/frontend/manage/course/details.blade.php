@@ -309,9 +309,7 @@
     function showRemoveSkillRequest(formData, jqForm, options) { 
         // formData is an array; here we use $.param to convert it to a string to display it 
         // but the form plugin does this for you automatically when it submits the data 
-        temp_form = jqForm;
-        console.log(jqForm);
-//        jqForm.parentNode.parentNode.remove();        
+        jqForm[0].parentNode.parentNode.remove();        
         return true; 
     } 
 
