@@ -303,8 +303,9 @@
         // but the form plugin does this for you automatically when it submits the data 
         var queryString = $.param(formData);
         var sid = jqForm[0][2].defaultValue;
-        console.log(jqForm[0][2].defaultValue);
+        console.log(jqForm[0]);
         $("#skill" + sid).modal('hide');
+        $("td [data-target='#skill"+sid+"']").html("changed");
         return true; 
     } 
 
