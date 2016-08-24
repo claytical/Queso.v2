@@ -99,7 +99,7 @@
                                 <td>{!! Form::open(['url' => 'manage/course/remove/skill', 'class' => 'remove-skill']) !!}
                                             {!! Form::hidden('skill', $skill->id) !!}
                                             {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                  
-                                            {!! Form::close() !!}
+                                    {!! Form::close() !!}
 <!-- Modal -->
 <div class="modal fade" id="skill{!! $skill->id !!}" tabindex="-1" role="dialog" aria-labelledby="skillLabel">
   <div class="modal-dialog" role="document">
@@ -111,7 +111,7 @@
       </div>
       <div class="modal-body">
             {!! Form::hidden('skill_id', $skill->id) !!}
-            {{ Form::input('text', 'skill', $skill->name, ['class' => 'form-control', 'placeholder' => $skill->name, 'id' => 'skill_name']) }}
+            {{ Form::input('text', 'skill', $skill->name, ['class' => 'form-control edit-skill', 'placeholder' => $skill->name, 'id' => 'skill_name']) }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -282,6 +282,33 @@
 
 @section('after-scripts-end')
     <script>
+        var skillOptions = { 
+        target:        '#output1',   // target element(s) to be updated with server response 
+        beforeSubmit:  showRequest,  // pre-submit callback 
+        success:       showSkillResponse,  // post-submit callback 
+        dataType: 'json'
+        // other available options: 
+        //url:       url         // override for form's 'action' attribute 
+        //type:      type        // 'get' or 'post', override for form's 'method' attribute 
+        //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
+        //clearForm: true        // clear all form fields after successful submit 
+        //resetForm: true        // reset the form after successful submit 
  
+        // $.ajax options can be used here too, for example: 
+        //timeout:   3000 
+    }; 
+ 
+     function showRequest(formData, jqForm, options) { 
+        // formData is an array; here we use $.param to convert it to a string to display it 
+        // but the form plugin does this for you automatically when it submits the data 
+        var queryString = $.param(formData); 
+        return true; 
+    } 
+
+    function showResponse(responseText, statusText, xhr, $form)  { 
+        console.log(responseText);
+        console.log($form);
+    } 
+    $('.edit-skill').ajaxForm(skillOptions); 
     </script>
 @stop
