@@ -94,7 +94,7 @@ class ResourceController extends Controller
         if($request->has('files')) {
             $files = $request->input('files');
             for($i = 0; $i < count($files); $i++) {
-                $quest->files()->attach($files[$i]);
+                $request->files()->attach($files[$i]);
             }
         }        
         return view('frontend.manage.resources.updated', ['resource' => $resource])
