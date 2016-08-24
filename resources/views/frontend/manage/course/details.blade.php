@@ -305,11 +305,13 @@
         $("td [data-target='#skill"+sid+"']").html(jqForm[0][3].value);
         return true; 
     } 
-    
+    var temp_form;
     function showRemoveSkillRequest(formData, jqForm, options) { 
         // formData is an array; here we use $.param to convert it to a string to display it 
         // but the form plugin does this for you automatically when it submits the data 
-        jqForm.parentNode.parentNode.remove();        
+        temp_form = jqForm;
+        console.log(jqForm);
+//        jqForm.parentNode.parentNode.remove();        
         return true; 
     } 
 
