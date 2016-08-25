@@ -12,7 +12,7 @@
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+            <li role="presentation" class=""><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
             <li role="presentation"><a href="#skills" aria-controls="skills" role="tab" data-toggle="tab">Skills</a></li>
             <li role="presentation"><a href="#levels" aria-controls="levels" role="tab" data-toggle="tab">Levels</a></li>
             <li role="presentation"><a href="#teams" aria-controls="teams" role="tab" data-toggle="tab">Teams</a></li>
@@ -24,7 +24,7 @@
 
           <!-- Tab panes -->
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="general">
+            <div role="tabpanel" class="tab-pane" id="general">
                 {!! Form::open(['url' => 'manage/course/update', 'class' => '', 'id' => 'update-course']) !!}
                 <div class="col-lg-6">
                     <div class="form-group">
@@ -335,6 +335,15 @@
     $('.remove-skill').ajaxForm(skillRemoveOptions);
     $('.edit-level').ajaxForm(levelOptions);
     $('.remove-level').ajaxForm(levelRemoveOptions);
-
+    $( document ).ready(function() {
+        if(window.location.hash) {
+            $('a[href='+window.location.hash+']').parent().addClass('active');
+            $(window.location.hash).show();
+        }
+        else {
+            $('a[href=#general]').parent().addClass('active');
+            $('#general').show();            
+        }
+    });
     </script>
 @stop
