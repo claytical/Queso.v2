@@ -284,40 +284,63 @@
     <script>
         var skillOptions = { 
             target:        '#output1',   // target element(s) to be updated with server response 
-            beforeSubmit:  showRequest,  // pre-submit callback 
-            success:       showSkillResponse,  // post-submit callback 
+            beforeSubmit:  hideAndUpdateSkill,  // pre-submit callback 
             dataType: 'json'
             }; 
         var skillRemoveOptions = { 
             target:        '#output1',   // target element(s) to be updated with server response 
             beforeSubmit:  showRemoveSkillRequest,  // pre-submit callback 
-            success:       showSkillResponse,  // post-submit callback 
+            success:       removeParent,  // post-submit callback 
             dataType: 'json'
             }; 
 
-     function showRequest(formData, jqForm, options) { 
+        var levelOptions = { 
+            target:        '#output1',   // target element(s) to be updated with server response 
+            beforeSubmit:  hideAndUpdateLevel,  // pre-submit callback 
+            dataType: 'json'
+            }; 
+
+        var levelRemoveOptions = { 
+            target:        '#output1',   // target element(s) to be updated with server response 
+            beforeSubmit:  showLevelRequest,  // pre-submit callback 
+            success:       removeParent,  // post-submit callback 
+            dataType: 'json'
+            }; 
+
+
+     function hideAndUpdateLevel(formData, jqForm, options) { 
         // formData is an array; here we use $.param to convert it to a string to display it 
         // but the form plugin does this for you automatically when it submits the data 
-        var queryString = $.param(formData);
-        var sid = jqForm[0][2].defaultValue;
+        var lid = jqForm[0][2].defaultValue;
         console.log(jqForm[0]);
+        $("#level" + lid).modal('hide');
+        $("td [data-target='#level"+lid+"']").html(jqForm[0][3].value);
+        return true; 
+    } 
+
+
+     function hideAndUpdateSkill(formData, jqForm, options) { 
+        // formData is an array; here we use $.param to convert it to a string to display it 
+        // but the form plugin does this for you automatically when it submits the data 
+        var sid = jqForm[0][2].defaultValue;
         $("#skill" + sid).modal('hide');
         $("td [data-target='#skill"+sid+"']").html(jqForm[0][3].value);
         return true; 
     } 
-    var temp_form;
-    function showRemoveSkillRequest(formData, jqForm, options) { 
+
+
+    function removeParent(formData, jqForm, options) { 
         // formData is an array; here we use $.param to convert it to a string to display it 
         // but the form plugin does this for you automatically when it submits the data 
         jqForm[0].parentNode.parentNode.remove();        
         return true; 
     } 
 
-    function showSkillResponse(responseText, statusText, xhr, $form)  { 
-        console.log(responseText);
-        console.log($form);
-    } 
+
     $('.edit-skill').ajaxForm(skillOptions);
     $('.remove-skill').ajaxForm(skillRemoveOptions);
+    $('.edit-level').ajaxForm(skillOptions);
+    $('.remove-level').ajaxForm(skillRemoveOptions);
+
     </script>
 @stop
