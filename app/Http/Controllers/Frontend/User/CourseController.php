@@ -165,6 +165,17 @@ class CourseController extends Controller
         return redirect(route('course.manage'));
     }
 
+    public function manage_team($id) {
+        $team = Team::find($id);
+        $students = $team->users;
+        $students_not_on_team = Course::find($team->course_id)
+                                ->users()
+                                ->whereNotIn('user_id', $students->pluck('user_id'))
+                                ->get();
+        return view('frontend.manage.course.team', ['team' => $team, 'students' => $students, 'students_not_on_team' => $students_not_on_team]);
+        
+    }
+
 
     public function edit_level(Request $request) {
         $level = Level::find($request->level_id);
