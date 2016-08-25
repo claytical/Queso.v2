@@ -11,7 +11,7 @@
         <div>
 
           <!-- Nav tabs -->
-          <ul class="nav nav-tabs" role="tablist">
+          <ul class="nav nav-tabs" role="tablist" id="courseTabs">
             <li role="presentation" class=""><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
             <li role="presentation"><a href="#skills" aria-controls="skills" role="tab" data-toggle="tab">Skills</a></li>
             <li role="presentation"><a href="#levels" aria-controls="levels" role="tab" data-toggle="tab">Levels</a></li>
@@ -337,12 +337,16 @@
     $('.remove-level').ajaxForm(levelRemoveOptions);
     $( document ).ready(function() {
         if(window.location.hash) {
-            $('a[href='+window.location.hash+']').parent().addClass('active');
-            $(window.location.hash).show();
+//            $('a[href='+window.location.hash+']').parent().addClass('active');
+//           $(window.location.hash).show();
+            $('#courseTabs a[href="'+window.location.hash+'"]').tab('show');
+
         }
         else {
-            $('a[href=#general]').parent().addClass('active');
-            $('#general').show();            
+            $('#courseTabs a[href="#general"]').tab('show');
+
+//            $('a[href=#general]').parent().addClass('active');
+//            $('#general').show();            
         }
     });
     </script>
