@@ -171,8 +171,8 @@ class CourseController extends Controller
     	$team->name = $request->team;
         $team->course_id = session('current_course');
     	$team->save();
-        $url = URL::route('course.manage') . '#teams';
-        return redirect(route($url));
+        $url = route('course.manage') . '#teams';
+        return redirect($url);
 
     }
 
@@ -196,8 +196,8 @@ class CourseController extends Controller
     	$level->course_id = $request->session()->get('current_course');
     	$level->save();
 //		return redirect(route('course.add.levels'));
-        $url = URL::route('course.manage') . '#levels';
-        return redirect(route($url));
+        $url = route('course.manage') . '#levels';
+        return redirect($url);
 
 //    	return response()->json($level);
     
@@ -227,8 +227,8 @@ class CourseController extends Controller
     	$skill->name = $request->skill;
     	$skill->course_id = $request->session()->get('current_course');
     	$skill->save();
-        $url = URL::route('course.manage') . '#skills';
-        return redirect(route($url));
+        $url = route('course.manage') . '#skills';
+        return redirect($url);
 
 //    	return response()->json($skill);
     
