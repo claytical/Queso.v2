@@ -214,7 +214,7 @@
                             </thead>
                             @foreach($teams as $team)
                                 <tr>
-                                    <td>{!! $team->name !!}</td>
+                                    <td><a href="#" data-toggle="modal" data-target="#team{!! $team->id!!}">{!! $team->name !!}</a></td>
                                     <td>
                                         {!! Form::open(['url' => 'manage/course/remove/team', 'class' => 'remove-team']) !!}
                                         {!! Form::hidden('team_id', $team->id) !!}
