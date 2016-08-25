@@ -2,9 +2,17 @@
 
 @section('content')
     <h2>{!! $team->name !!}</h2>
+            <select name="from[]" class="multiselect form-control" size="8" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
+            @foreach($students as $student)
+                <option value="{!! $student->id !!}">{!! $student->name !!}</option>
+            @endforeach
+            </select>
 
-{!! var_dump($students) !!}
-{!! var_dump($students_not_on_team) !!}
+            <select name="to[]" class="multiselect form-control" size="8" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
+                @foreach($students_not_on_team as $student)
+                <option value="{!! $student->id !!}">{!! $student->name !!}</option>
+                @endforeach
+            </select>
 
 @endsection
 
