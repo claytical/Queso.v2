@@ -289,7 +289,7 @@
             }; 
         var skillRemoveOptions = { 
             target:        '#output1',   // target element(s) to be updated with server response 
-            beforeSubmit:  showRemoveSkillRequest,  // pre-submit callback 
+//            beforeSubmit:  showRemoveSkillRequest,  // pre-submit callback 
             success:       removeParent,  // post-submit callback 
             dataType: 'json'
             }; 
@@ -302,7 +302,7 @@
 
         var levelRemoveOptions = { 
             target:        '#output1',   // target element(s) to be updated with server response 
-            beforeSubmit:  showLevelRequest,  // pre-submit callback 
+//            beforeSubmit:  showLevelRequest,  // pre-submit callback 
             success:       removeParent,  // post-submit callback 
             dataType: 'json'
             }; 
