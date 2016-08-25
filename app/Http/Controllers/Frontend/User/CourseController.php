@@ -171,7 +171,9 @@ class CourseController extends Controller
     	$team->name = $request->team;
         $team->course_id = session('current_course');
     	$team->save();
-		return redirect(route('course.manage'));
+        $url = URL::route('course.manage') . '#teams';
+        return Redirect::to($url);
+
     }
 
     public function remove_team(Request $request) {
@@ -193,7 +195,9 @@ class CourseController extends Controller
     	$level->amount = $request->amount;
     	$level->course_id = $request->session()->get('current_course');
     	$level->save();
-		return redirect(route('course.add.levels'));
+//		return redirect(route('course.add.levels'));
+        $url = URL::route('course.manage') . '#levels';
+        return Redirect::to($url);
 
 //    	return response()->json($level);
     
@@ -223,7 +227,8 @@ class CourseController extends Controller
     	$skill->name = $request->skill;
     	$skill->course_id = $request->session()->get('current_course');
     	$skill->save();
-		return redirect(route('course.manage'));
+        $url = URL::route('course.manage') . '#skills';
+        return Redirect::to($url);
 
 //    	return response()->json($skill);
     
