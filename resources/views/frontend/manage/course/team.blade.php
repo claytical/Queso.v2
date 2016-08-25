@@ -25,7 +25,6 @@
             <div class="col-xs-5">
                 <select name="to[]" class="multiselect form-control" size="8" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
                 @foreach($students as $student)
-                    <option value="{!! $student->id !!}">{!! $student->name !!}</option>
                     @endforeach
                 </select>
             </div>
