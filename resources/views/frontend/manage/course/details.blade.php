@@ -150,7 +150,7 @@
                                 <th></th>
                             </thead>
                             @foreach($levels as $level)
-                                <tr>
+                                <tr class="level">
                                     <td><a href="#" style="color: #445878;" data-toggle="modal" data-target="#level{!! $level->id!!}"> {!! $level->name !!}</a></td>
                                     <td>{!! $level->amount !!}</td>
                                     <td>{!! Form::open(['url' => 'manage/course/remove/level', 'class' => 'remove-level']) !!}
