@@ -171,6 +171,7 @@ class CourseController extends Controller
         $students_not_on_team = Course::find($team->course_id)
                                 ->users()
                                 ->whereNotIn('user_id', $students->pluck('id'))
+                                ->where('user_id', '!=', access()->user()->id)
                                 ->get();
         return view('frontend.manage.course.team', ['team' => $team, 'students' => $students, 'students_not_on_team' => $students_not_on_team]);
         
