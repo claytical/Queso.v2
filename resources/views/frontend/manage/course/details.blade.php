@@ -339,8 +339,8 @@
 
     $('.edit-skill').ajaxForm(skillOptions);
     $('.remove-skill').ajaxForm(skillRemoveOptions);
-    $('.edit-level').ajaxForm(skillOptions);
-    $('.remove-level').ajaxForm(skillRemoveOptions);
+    $('.edit-level').ajaxForm(levelOptions);
+    $('.remove-level').ajaxForm(levelRemoveOptions);
 
     </script>
 @stop
