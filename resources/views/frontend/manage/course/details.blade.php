@@ -194,8 +194,8 @@
                 </div>
                 <div class="col-md-12">
                     <hr/>
-                        <div class="col-lg-4">
                         {!! Form::open(['url' => 'manage/course/add/level', 'class' => 'form-inline', 'id' => 'add-level']) !!}
+                        <div class="col-lg-4">
 
                         {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
 
@@ -206,9 +206,9 @@
                         </div>
                         <div class="col-lg-4">
                             {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-block']) !!}
-                            {!! Form::close() !!}
 
                         </div>                
+                            {!! Form::close() !!}
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="teams">
