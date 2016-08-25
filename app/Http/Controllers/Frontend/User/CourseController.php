@@ -157,6 +157,15 @@ class CourseController extends Controller
         return redirect(route('course.manage'));
     }
 
+    public function edit_team(Request $request) {
+        $team = Team::find($request->team_id);
+        $team->name = $request->team;
+        $team->save();
+//        return response()->json($skill);
+        return redirect(route('course.manage'));
+    }
+
+
     public function edit_level(Request $request) {
         $level = Level::find($request->level_id);
         $level->name = $request->level;

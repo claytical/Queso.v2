@@ -220,6 +220,29 @@
                                         {!! Form::hidden('team_id', $team->id) !!}
                                         {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
                                         {!! Form::close() !!}
+
+<div class="modal fade" id="team{!! $team->id !!}" tabindex="-1" role="dialog" aria-labelledby="teamLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+            {!! Form::open(['url' => 'manage/course/edit/team', 'class' => 'edit-team']) !!}
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Rename Team</h4>
+              </div>
+              <div class="modal-body">
+                    {!! Form::hidden('team_id', $team->id) !!}
+                    {{ Form::input('text', 'team', $team->name, ['class' => 'form-control edit-team', 'placeholder' => $team->name, 'id' => 'team_name']) }}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}                  
+              </div>
+            {!! Form::close() !!}
+    </div>
+  </div>
+</div>
+
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -281,7 +304,14 @@
             beforeSubmit:  hideAndUpdateSkill,  // pre-submit callback 
             dataType: 'json'
             }; 
-        var skillRemoveOptions = { 
+
+         var teamOptions = { 
+            target:        '#output1',   // target element(s) to be updated with server response 
+            beforeSubmit:  hideAndUpdateTeam,  // pre-submit callback 
+            dataType: 'json'
+            };            
+
+        var removeOptions = { 
             target:        '#output1',   // target element(s) to be updated with server response 
             beforeSubmit:  removeParent,  // pre-submit callback 
 //            success:       removeParent,  // post-submit callback 
@@ -291,13 +321,6 @@
         var levelOptions = { 
             target:        '#output1',   // target element(s) to be updated with server response 
             beforeSubmit:  hideAndUpdateLevel,  // pre-submit callback 
-            dataType: 'json'
-            }; 
-
-        var levelRemoveOptions = { 
-            target:        '#output1',   // target element(s) to be updated with server response 
-            beforeSubmit:  removeParent,  // pre-submit callback 
-//            success:       removeParent,  // post-submit callback 
             dataType: 'json'
             }; 
 
@@ -322,6 +345,15 @@
         return true; 
     } 
 
+     function hideAndUpdateTeam(formData, jqForm, options) { 
+        // formData is an array; here we use $.param to convert it to a string to display it 
+        // but the form plugin does this for you automatically when it submits the data 
+        var tid = jqForm[0][2].defaultValue;
+        $("#team" + tid).modal('hide');
+        $("td [data-target='#team"+tid+"']").html(jqForm[0][3].value);
+        return true; 
+    } 
+
 
     function removeParent(formData, jqForm, options) { 
         // formData is an array; here we use $.param to convert it to a string to display it 
@@ -332,9 +364,12 @@
 
 
     $('.edit-skill').ajaxForm(skillOptions);
-    $('.remove-skill').ajaxForm(skillRemoveOptions);
+    $('.remove-skill').ajaxForm(removeOptions);
     $('.edit-level').ajaxForm(levelOptions);
-    $('.remove-level').ajaxForm(levelRemoveOptions);
+    $('.remove-level').ajaxForm(removeOptions);
+    $('.edit-team').ajaxForm(teamOptions);
+    $('.remove-team').ajaxForm(removeOptions);
+
     $( document ).ready(function() {
         if(window.location.hash) {
 //            $('a[href='+window.location.hash+']').parent().addClass('active');
