@@ -192,22 +192,16 @@
                             @endforeach
                         </table>
                 </div>
-                <div class="col-md-12">
+                <div class="">
                     <hr/>
                         {!! Form::open(['url' => 'manage/course/add/level', 'class' => 'form-inline', 'id' => 'add-level']) !!}
-                        <div class="col-lg-4">
 
                         {{ Form::input('text', 'level', null, ['class' => 'form-control', 'placeholder' => 'Level Name', 'id' => 'level_name']) }}
 
-                        </div>
-                        <div class="col-lg-4">
                         {{ Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => 'Amount', 'id' => 'level_amount']) }}
 
-                        </div>
-                        <div class="col-lg-4">
-                            {!! Form::submit('Add Level', ['class' => 'btn btn-primary btn-block']) !!}
+                            {!! Form::submit('Add Level', ['class' => 'btn btn-primary pull-right']) !!}
 
-                        </div>                
                             {!! Form::close() !!}
                 </div>
             </div>
