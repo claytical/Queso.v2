@@ -5,11 +5,9 @@
 <div class="row">
     <div class="col-xs-5">
         <select name="from[]" id="multiselect" class="form-control" size="8" multiple="multiple">
-            <option value="1">Item 1</option>
-            <option value="2">Item 5</option>
-            <option value="2">Item 2</option>
-            <option value="2">Item 4</option>
-            <option value="3">Item 3</option>
+        @foreach($students_not_on_team as $student)
+            <option value="{!! $student->id !!}">{!! $student->name !!}</option>
+        @endforeach
         </select>
     </div>
     
@@ -21,7 +19,12 @@
     </div>
     
     <div class="col-xs-5">
-        <select name="to[]" id="multiselect_to" class="form-control" size="8" multiple="multiple"></select>
+        <select name="to[]" id="multiselect_to" class="form-control" size="8" multiple="multiple">
+            @foreach($students as $student)
+                <option value="{!! $student->id !!}">{!! $student->name !!}</option>
+            @endforeach
+            
+        </select>
     </div>
 </div>
 @endsection
