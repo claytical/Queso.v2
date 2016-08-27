@@ -181,9 +181,15 @@ class CourseController extends Controller
         $team = Team::find($request->team_id);
         //remove everyone from the team
         $team->users()->detach();
+
         for($i = 0; $i < count($request->to); $i++) {
             $user_id = $request->to[$i];
-                $team->users()->attach($user_id, ['course_id' => session('current_course')]);
+            $user = User::find($user_id);
+            //remove from existing team if they have one
+            $existing_user_team = $user->teams()->where('course_id', '=', session('current_course'))->get();
+            $existing_user_team->detach();
+            //add user to team
+            $team->users()->attach($user_id, ['course_id' => session('current_course')]);
         }
 
         return redirect()->route('course.manage.team', [$team->id])->withFlashSuccess($team->name . " has been successfully updated.");
