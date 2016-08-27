@@ -27,6 +27,9 @@
         </select>
     </div>
 </div>
+<div class="row">
+    {!! Form::submit('Set Team', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+</div>
 @endsection
 
 @section('after-scripts-end')

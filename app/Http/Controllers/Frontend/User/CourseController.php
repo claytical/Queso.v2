@@ -177,6 +177,18 @@ class CourseController extends Controller
         
     }
 
+    public function set_team(Request $request) {
+        $team = Team::find($request->team_id);
+        //remove everyone from the team
+        $team->users()->detach();
+        for($i = 0; $i < count($request->to); $i++) {
+            $user_id = $request->to[$i];
+                $team->users()->attach($user_id, ['course_id', session('current_course')]);
+        }
+
+        return redirect()->route('course.manage.team', [$team->id])->withFlashSuccess($team->name . " has been successfully updated.");
+    }
+
 
     public function edit_level(Request $request) {
         $level = Level::find($request->level_id);
