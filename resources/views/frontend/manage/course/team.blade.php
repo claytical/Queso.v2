@@ -3,7 +3,7 @@
 @section('content')
     <h2>{!! $team->name !!}</h2>
 {!! Form::open(array('url' => 'manage/course/team')) !!}
-{!! Form::hidden('quest_id', $quest->id ) !!}
+{!! Form::hidden('team_id', $team->id ) !!}
 
 <div class="row">
     <div class="col-xs-5">
