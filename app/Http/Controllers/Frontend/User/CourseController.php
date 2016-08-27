@@ -187,7 +187,7 @@ class CourseController extends Controller
             $user_id = $request->to[$i];
             $user = User::find($user_id);
             //remove from existing team if they have one
-            $existing_user_team = $user->teams()->where('team_user.course_id', '=', session('current_course'))->get();
+            $existing_user_team = $user->teams()->where('team_user.course_id', '=', session('current_course'));
             $existing_user_team->detach();
             //add user to team
             $team->users()->attach($user_id, ['course_id' => session('current_course')]);
