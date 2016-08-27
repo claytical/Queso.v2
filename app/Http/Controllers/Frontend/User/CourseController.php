@@ -183,7 +183,7 @@ class CourseController extends Controller
         $team->users()->detach();
         for($i = 0; $i < count($request->to); $i++) {
             $user_id = $request->to[$i];
-                $team->users()->attach($user_id, ['course_id', session('current_course')]);
+                $team->users()->attach($user_id, ['course_id' => session('current_course')]);
         }
 
         return redirect()->route('course.manage.team', [$team->id])->withFlashSuccess($team->name . " has been successfully updated.");
