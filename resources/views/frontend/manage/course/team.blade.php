@@ -5,7 +5,6 @@
 {!! Form::open(array('url' => 'manage/course/team')) !!}
 {!! Form::hidden('team_id', $team->id ) !!}
 
-<div class="row">
     <div class="col-xs-5">
         <select name="from[]" id="multiselect" class="form-control" size="8" multiple="multiple">
         @foreach($students_not_on_team as $student)
@@ -29,8 +28,9 @@
             
         </select>
     </div>
-</div>
-<div class="row">
+
+<div class="col-lg-12">
+    <hr/>
     {!! Form::submit('Set Team', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 </div>
     

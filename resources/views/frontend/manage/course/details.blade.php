@@ -220,7 +220,7 @@
                                         {!! Form::hidden('team_id', $team->id) !!}
                                         {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
                                         {!! Form::close() !!}
-
+                                        {!! link_to('course/manage/team' . $team->id, 'Manage', ['class' => 'btn btn-default btn-xs pull-right']) !!}
 <div class="modal fade" id="team{!! $team->id !!}" tabindex="-1" role="dialog" aria-labelledby="teamLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
