@@ -12,6 +12,7 @@ use App\Skill;
 use App\Level;
 use App\Team;
 use App\Models\Access\Role\Role;
+use App\Models\Access\User\User;
 
 /**
  * Class DashboardController
