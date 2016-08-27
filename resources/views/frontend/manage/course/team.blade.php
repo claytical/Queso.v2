@@ -2,6 +2,9 @@
 
 @section('content')
     <h2>{!! $team->name !!}</h2>
+{!! Form::open(array('url' => 'manage/course/team')) !!}
+{!! Form::hidden('quest_id', $quest->id ) !!}
+
 <div class="row">
     <div class="col-xs-5">
         <select name="from[]" id="multiselect" class="form-control" size="8" multiple="multiple">
@@ -30,6 +33,9 @@
 <div class="row">
     {!! Form::submit('Set Team', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 </div>
+    
+    {!! Form::close() !!}
+
 @endsection
 
 @section('after-scripts-end')
