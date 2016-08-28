@@ -38,11 +38,10 @@
         </a>
         <hr/>
         <div class="collapse" id="availableQuests">
-            <div class="col-lg-6 col-lg-offset-6">
-                <div class="col-lg-6">Potential Total</div>
-                <div class="col-lg-6">
-                    <span id="potential-total">{!! $total_points !!}</span> / <span id="all-points">{!! $total_potential !!}</span>
-                 </div>
+            <div class="col-lg-12">
+            <h4>Predicted Level</h4>
+            <h5 id="predicted-level">{!! $current_level->name !!}</h5>
+            <span id="potential-total">{!! $total_points !!}</span> / <span id="all-points">{!! $total_potential !!}</span>
             </div>
             <table class="table table-hover">
                 <th>Quest</th>
@@ -53,7 +52,7 @@
                     <tr>
                         <td>{!! $quest->name !!} </td>
                         <td class="amount">{!! $quest->skills()->sum('amount') !!}</td>
-                        <td><button class="btn btn-success predictive">Add</button></td>
+                        <td><button class="btn btn-success predictive pull-right btn-xs">Add</button></td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -121,6 +120,7 @@
     });
 
     function addToPrediction(o) {
+        o.unbind();
         o.removeClass( "btn-success predictive");
         o.addClass("btn-danger");
         o.text("Remove");
@@ -132,6 +132,7 @@
     }
 
     function removeFromPrediction(o) {
+        o.unbind();
         o.removeClass("btn-danger");
         o.addClass("btn-success");
         o.text("Add");
@@ -159,7 +160,7 @@
      
         for(var i = 0; i < levels.length; i++) {
             if(earned >= levels[i].amount) {
-                console.log("HAS ACHIEVED: " + levels[i].name);
+                $("#predicted-level").text(levels[i].name);
             }
         }
     }
