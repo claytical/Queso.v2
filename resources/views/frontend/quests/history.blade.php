@@ -45,7 +45,7 @@
                 <tbody>
                 @foreach($available_quests as $quest)
                     <tr>
-                        <td>{!! $quest->name</td>
+                        <td>{!! $quest->name !!} </td>
                         <td>{!! $quest->skills()->sum('amount') !!}</td>
                         <td><a href="#" class="btn btn-success">Add</a></td>
                     </tr>
