@@ -229,7 +229,7 @@ class CourseController extends Controller
 
     }
     public function add_level(Request $request) {
-
+//not in use?
     	$level = new Level;
     	$level->name = $request->level;
     	$level->amount = $request->amount;
@@ -255,8 +255,8 @@ class CourseController extends Controller
     	$level->amount = $request->amount;
     	$level->course_id = $request->session()->get('current_course');
     	$level->save();
-		return redirect(route('course.manage'));
-
+        $url = route('course.manage') . '#levels';
+        return redirect($url);
 //    	return response()->json($level);
     
     }
@@ -344,8 +344,8 @@ class CourseController extends Controller
 
     public function manage() {
     	$course = Course::find(session('current_course'));
-    	$skills = $course->skills;
-    	$levels = $course->levels;
+    	$skills = $course->skills()->orderBy('name')->get();
+    	$levels = $course->levels()->orderBy('amount')->get();
     	$teams = $course->teams;
         return view('frontend.manage.course.details', ['course' => $course, 'skills' => $skills, 'levels' => $levels, 'teams' => $teams])
             ->withUser(access()->user());
