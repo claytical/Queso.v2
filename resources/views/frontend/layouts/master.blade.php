@@ -33,6 +33,7 @@
         <script async charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=a705fe8012d914a446d7e4" ></script>
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
         {{ Html::style('css/bootstrap-select.min.css') }}
+        {{ Html::style('css/vendor/jquery.minipreview.css') }}
 
 <script>
 </script>
@@ -69,6 +70,7 @@
         {{ HTML::script('https://cdn.tinymce.com/4/tinymce.min.js')}}
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/jquery/multiselect.min.js') }}
+        {{ Html::script('js/vendor/jquery/jquery.minipreview.js') }}
 
         <script>tinymce.init({  selector:'textarea', 
                                 plugins: [
@@ -85,6 +87,7 @@
         <script>
         $( document ).ready(function() {
             $('select[name=default_course]').selectpicker();
+            $('a.preview').miniPreview();
         });
         </script>  
         @yield('before-scripts-end')
