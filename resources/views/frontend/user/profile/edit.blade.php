@@ -32,7 +32,8 @@
 -->
         <div class="col-lg-6">
             <div class="form-group">
-                <label>Default Course</label>
+                {{ Form::label('default_course_id', 'Default Course', ['class' => 'control-label']) }}                      
+
                 {{ Form::select('default_course_id', Form::courseList(), $user->default_course_id, ['class' => 'selectpicker', 'id' => 'course_dropdown']) }}
             </div>
 
