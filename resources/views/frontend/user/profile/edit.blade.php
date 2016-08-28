@@ -33,7 +33,7 @@
         <div class="col-lg-6">
             <div class="form-group">
                 {{ Form::label('default_course_id', 'Default Course', ['class' => 'control-label']) }}                      
-
+                <br/>
                 {{ Form::select('default_course_id', Form::courseList(), $user->default_course_id, ['class' => 'selectpicker', 'id' => 'course_dropdown']) }}
             </div>
 
@@ -41,7 +41,7 @@
 
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <h5>Gravatar</h5>
             <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Image" />
             <p>Gravatars are used across the internet. To update or create yours, go to <a href="https://en.gravatar.com/" target="_blank">Gravatar.com</a></p>
