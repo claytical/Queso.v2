@@ -639,8 +639,8 @@ class QuestController extends Controller
 
         $quest_ids = $user->quests()->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
 
-        $sum_quests = Quest::whereIn('id', $quest_ids)
-                                ->skills->sum('amount');
+        $sum_quests = 0;//Quest::whereIn('id', $quest_ids)
+                      //          ->skills->sum('amount');
 
             $available = Quest::find($id)->skills()->sum('amount');
 
