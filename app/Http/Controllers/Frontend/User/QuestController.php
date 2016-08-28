@@ -625,7 +625,9 @@ class QuestController extends Controller
         $course_skills = $course->skills()->get();
         $acquired_skills = [];
         foreach($course_skills as $skill) {
-            $acquired_skills[] = ["amount" => $user->skills()->where('skill_id', $skill->id)->sum('amount'),
+            $acquired_skills[] = ["amount" => $user->skills()
+                                                    ->where('skill_id', $skill->id)
+                                                    ->sum('amount'),
                                     "name" => $skill->name];
         }
 
@@ -636,6 +638,11 @@ class QuestController extends Controller
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
 
         $quest_ids = $user->quests()->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
+
+        $sum_quests = Quest::whereIn('id', $quest_ids)
+                                ->skills()
+                                ->sum('amount');
+
         $quests = [];
         foreach($quest_ids as $id) {
             $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
@@ -660,7 +667,7 @@ class QuestController extends Controller
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills])
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'out_of' => $sum_quests, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills])
             ->withUser(access()->user());
     }
 
