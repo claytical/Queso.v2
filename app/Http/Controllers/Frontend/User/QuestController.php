@@ -634,6 +634,8 @@ class QuestController extends Controller
         $total_points_earned = $user->skills()->sum('amount');
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
+        $levels = $course->levels->pluck('name', 'amount');
+        javascript()->put(['levels' => $levels]);
 
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
 

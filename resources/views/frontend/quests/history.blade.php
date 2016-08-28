@@ -33,10 +33,10 @@
     </div>
 
     <div class="col-lg-12">
-        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">
+        <a class="btn btn-primary pull-right" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">
           Grade Predictor
         </a>
-        </button>
+        <hr/>
         <div class="collapse" id="availableQuests">
             <div class="col-lg-6 col-lg-offset-6">
                 <div class="col-lg-6">Potential Total</div>
