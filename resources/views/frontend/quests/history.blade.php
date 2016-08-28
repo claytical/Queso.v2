@@ -125,6 +125,7 @@
         o.addClass("btn-danger");
         o.text("Remove");
         o.parent().parent().children().eq(1).addClass('add-to-total');
+        o.parent().parent().addClass("success");
         o.click(function() {
             removeFromPrediction(o);
         });
@@ -137,6 +138,7 @@
         o.addClass("btn-success");
         o.text("Add");
         o.parent().parent().children().eq(1).removeClass('add-to-total');
+        o.parent().parent().removeClass("success");
         o.click(function() {
             addToPrediction(o);
         });
