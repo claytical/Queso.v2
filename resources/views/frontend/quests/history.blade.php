@@ -156,7 +156,13 @@
 
         $("#potential-total").text(earned);
         $("#all-points").text(used);
-        
+     
+        for(var i = 0; i < levels.length; i++) {
+            if(earned >= levels[i].amount) {
+                console.log("HAS ACHIEVED: " + levels[i].name);
+            }
+        }
     }
+
     </script>
 @stop
