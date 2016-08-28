@@ -6,16 +6,19 @@
 
     <div class="col-lg-12">
             {{ Form::model($user, ['route' => 'frontend.user.profile.update', 'class' => 'form', 'method' => 'PATCH']) }}
-            <div class="form-group">
-            {{ Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'control-label']) }}                      
-            {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
+            <div class="col-lg-6">
+                <div class="form-group">
+                {{ Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'control-label']) }}                      
+                {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
+                </div>
             </div>
-
             @if ($user->canChangeEmail())
+            <div class="col-lg-6">
                 <div class="form-group">
                     {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
                     {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
                 </div>
+            </div>
             @endif
 <!--
         <div class="col-lg-6">
