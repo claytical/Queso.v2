@@ -28,7 +28,7 @@
                 Total
             </div>
             <div class="col-lg-6">
-                {!! $total_points !!} / {!! $out_of !!}
+                {!! $total_points !!}
             </div>
     </div>
 
