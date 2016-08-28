@@ -116,9 +116,33 @@
 @section('after-scripts-end')
     <script>
     $('.predictive').click(function() {
-        $(this).removeClass( "btn-success predictive");
-        $(this).addClass("btn-danger");
-        $(this).parent().parent().children().eq(1).addClass('add-to-total');
+        addToPrediction($(this));
+
+    });
+
+    function addToPrediction(o) {
+        o.removeClass( "btn-success predictive");
+        o.addClass("btn-danger");
+        o.text("Remove");
+        o.parent().parent().children().eq(1).addClass('add-to-total');
+        o.click(function() {
+            removeFromPrediction(o);
+        });
+        calculatePrediction();
+    }
+
+    function removeFromPrediction(o) {
+        o.removeClass("btn-danger");
+        o.addClass("btn-success");
+        o.text("Add");
+        o.parent().parent().children().eq(1).removeClass('add-to-total');
+        o.click(function() {
+            addToPrediction(o);
+        });
+        calculatePrediction();
+    }
+
+    function calculatePrediction() {
 
         var earned = parseInt($("#earned-points").text());
         var used = parseInt($("#used-points").text());
@@ -132,9 +156,7 @@
 
         $("#potential-total").text(earned);
         $("#all-points").text(used);
-    });
-
-
-
+        
+    }
     </script>
 @stop
