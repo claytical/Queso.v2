@@ -639,10 +639,6 @@ class QuestController extends Controller
 
         $quest_ids = $user->quests()->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
 
-        $sum_quests = 0;//Quest::whereIn('id', $quest_ids)
-                      //          ->skills->sum('amount');
-
-            $available = Quest::find($id)->skills()->sum('amount');
 
         $quests = [];
         foreach($quest_ids as $id) {
@@ -668,7 +664,7 @@ class QuestController extends Controller
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'out_of' => $sum_quests, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills])
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills])
             ->withUser(access()->user());
     }
 
