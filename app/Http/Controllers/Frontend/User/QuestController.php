@@ -667,7 +667,7 @@ class QuestController extends Controller
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills])
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills])
             ->withUser(access()->user());
     }
 

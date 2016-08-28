@@ -28,7 +28,7 @@
                 Total
             </div>
             <div class="col-lg-6">
-                {!! $total_points !!}
+                {!! $total_points !!} / {!! $total_potential !!}
             </div>
     </div>
 
