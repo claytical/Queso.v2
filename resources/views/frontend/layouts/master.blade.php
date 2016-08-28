@@ -87,7 +87,7 @@
         <script>
         $( document ).ready(function() {
             $('select[name=default_course]').selectpicker();
-            $('a.preview').miniPreview();
+//            $('a.preview').miniPreview();
         });
         </script>  
         @yield('before-scripts-end')
