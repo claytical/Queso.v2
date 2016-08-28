@@ -345,7 +345,7 @@ class CourseController extends Controller
     public function manage() {
     	$course = Course::find(session('current_course'));
     	$skills = $course->skills()->orderBy('name')->get();
-    	$levels = $course->levels()->orderBy('amount')->get();
+    	$levels = $course->levels()->orderBy('amount', 'desc')->get();
     	$teams = $course->teams;
         return view('frontend.manage.course.details', ['course' => $course, 'skills' => $skills, 'levels' => $levels, 'teams' => $teams])
             ->withUser(access()->user());
