@@ -666,7 +666,21 @@ class QuestController extends Controller
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills])
+        $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
+                    ->whereNotIn('id', $quest_ids)
+                    ->where('expires_at', '>=', Carbon::now())
+                    ->orderBy('expires_at')
+                    ->get();
+
+        $quests_unattempted_not_expiring = Quest::where('course_id', '=', session('current_course'))
+                    ->whereNotIn('id', $quest_ids)
+                    ->whereNull('expires_at')
+                    ->orderBy('name')
+                    ->get();
+
+        $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
+
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'available_quests' => $quests_unattempted])
             ->withUser(access()->user());
     }
 

@@ -32,6 +32,29 @@
             </div>
     </div>
 
+    <div class="col-lg-12">
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">
+          Grade Predictor
+        </a>
+        </button>
+        <div class="collapse" id="availableQuests">
+            <table class="table table-hover">
+                <th>Quest</th>
+                <th>Points Available</th>
+                <th></th>
+                <tbody>
+                @foreach($available_quests as $quest)
+                    <tr>
+                        <td>{!! $quest->name</td>
+                        <td>{!! $quest->skills()->sum('amount') !!}</td>
+                        <td><a href="#" class="btn btn-success">Add</a></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
 <h3>Quests Completed</h3>
         <div class="col-lg-12">
