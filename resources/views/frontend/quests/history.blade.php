@@ -28,7 +28,7 @@
                 Total
             </div>
             <div class="col-lg-6">
-                {!! $total_points !!} / {!! $total_potential !!}
+                <span id="earned-points">{!! $total_points !!}</span> / <span id="used-points">{!! $total_potential !!}</span>
             </div>
     </div>
 
@@ -38,6 +38,12 @@
         </a>
         </button>
         <div class="collapse" id="availableQuests">
+            <div class="col-lg-6 col-lg-offset-6">
+                <div class="col-lg-6">Potential Total</div>
+                <div class="col-lg-6">
+                    <span id="potential-total">{!! $total_points !!}/span> / <span id="all-points">{!! $total_potential !!}</span>
+                 </div>
+            </div>
             <table class="table table-hover">
                 <th>Quest</th>
                 <th>Points Available</th>
@@ -46,8 +52,8 @@
                 @foreach($available_quests as $quest)
                     <tr>
                         <td>{!! $quest->name !!} </td>
-                        <td>{!! $quest->skills()->sum('amount') !!}</td>
-                        <td><a href="#" class="btn btn-success">Add</a></td>
+                        <td class="amount">{!! $quest->skills()->sum('amount') !!}</td>
+                        <td><button class="btn btn-success predictive">Add</button></td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -109,5 +115,26 @@
 
 @section('after-scripts-end')
     <script>
+    $('.predictive').click(function() {
+        $(this).removeClass( "btn-success predictive");
+        $(this).addClass("btn-danger");
+        $(this).parent().parent().children().eq(1).addClass('add-to-total');
+
+        var earned = parseInt($("#earned-points").text());
+        var used = parseInt($("#used-points").text());
+
+        $(".add-to-total").each(function( index ) {
+            earned += parseInt($(this).text());
+        });
+        $(".add-to-total").each(function( index ) {
+            used += parseInt($(this).text());
+        });
+
+        $("#potential-total").text(earned);
+        $("#all-points").text(used);
+    });
+
+
+
     </script>
 @stop
