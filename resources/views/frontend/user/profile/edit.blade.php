@@ -32,7 +32,7 @@
 -->
         <div class="col-lg-6">
             <div class="form-group">
-                <h5>Default Course</h5>
+                <label>Default Course</label>
                 {{ Form::select('default_course_id', Form::courseList(), $user->default_course_id, ['class' => 'selectpicker', 'id' => 'course_dropdown']) }}
             </div>
 
