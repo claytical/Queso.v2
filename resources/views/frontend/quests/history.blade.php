@@ -41,7 +41,7 @@
             <div class="col-lg-6 col-lg-offset-6">
                 <div class="col-lg-6">Potential Total</div>
                 <div class="col-lg-6">
-                    <span id="potential-total">{!! $total_points !!}/span> / <span id="all-points">{!! $total_potential !!}</span>
+                    <span id="potential-total">{!! $total_points !!}</span> / <span id="all-points">{!! $total_potential !!}</span>
                  </div>
             </div>
             <table class="table table-hover">
