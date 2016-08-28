@@ -26,7 +26,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{!! $course->name !!} <a href="#" data-toggle="modal" data-target="#course_list" class="btn btn-default btn-xs pull-right">Switch Course</a></div>
                         <div class="panel-body">
+                            @if (access()->instructor())
+                            <h5>You are the instructor for this course</h5>
+                            @else
                             <h5>Current Level: {!! $current_level->name !!}</h5>
+                            @endif
                             <h5>Time: {!! $course->meeting !!}</h5>
                             <h5>Location: {!! $course->meeting_location !!}</h5>
                             <hr/>
