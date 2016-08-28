@@ -90,7 +90,7 @@
           @else
             @foreach($files as $file)
               <div class="input-group-btn">
-              {!! link_to('uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+              {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => 'btn btn-default preview', 'download' => substr($file->name,5)]) !!}
               {!! link_to('file/remove/' . $file->id, "x", ['class' => 'btn btn-danger']) !!}
 
               </div>

@@ -73,7 +73,7 @@
             @if(!$files->isEmpty())
                 <h4>Previously Submitted Files</h4>
                 @foreach($files as $file)
-                    {!! link_to('uploads/' . $file->name, $file->name, ['class' => 'btn btn-default']) !!}
+                    {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => 'btn btn-default preview', 'download' => substr($file->name,5)]) !!}
                 @endforeach
                 
             @endif
