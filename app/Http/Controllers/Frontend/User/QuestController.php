@@ -638,7 +638,7 @@ class QuestController extends Controller
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
 
         $quest_ids = $user->quests()->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
-        $quest_skills_total = Quest::whereIn('id', $quest_ids)
+        $quest_skills_total = Quest::whereIn('id', $quest_ids)->get()
                                 ->sum(function($q) {
                                     return $q->skills->sum('amount'); 
                                 });
