@@ -34,6 +34,7 @@
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
         {{ Html::style('css/bootstrap-select.min.css') }}
         {{ Html::style('css/vendor/jquery.minipreview.css') }}
+        {{ Html::style('css/vendor/select2.min.css') }}
 
 <script>
 </script>
@@ -71,6 +72,7 @@
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/jquery/multiselect.min.js') }}
         {{ Html::script('js/vendor/jquery/jquery.minipreview.js') }}
+        {{ Html::script('js/vendor/jquery/select2.full.min.js') }}
 
         <script>tinymce.init({  selector:'textarea', 
                                 plugins: [

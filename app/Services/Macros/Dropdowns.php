@@ -3,6 +3,9 @@
 namespace App\Services\Macros;
 use App\Content;
 use DB;
+use App\Course;
+use App\Models\Access\Role\Role;
+
 /**
  * Class Dropdowns
  * @package App\Services\Macros
@@ -34,6 +37,14 @@ trait Dropdowns
     public function courseList() {
         $user = access()->user();
         return $user->courses()->lists('name', 'id');
+    }
+
+    public function studentList($name, $selected = null, $options = array()) {
+        $user = access()->user();
+        $course = Course::find(session('current_course'));
+        $students = Role::where('id', '=', $course->student_role_id)->users()->lists('name', 'id');
+        return $this->select($name, $students, $selected, $options);
+
     }
 
     public function categoryResourceList() {
