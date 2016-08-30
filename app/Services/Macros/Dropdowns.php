@@ -42,11 +42,9 @@ trait Dropdowns
     public function studentList($name, $selected = null, $options = array()) {
         $user = access()->user();
         $course = Course::find(session('current_course'));
-        $students = Role::find($course->student_role_id)->users();
+        $students = Role::find($course->student_role_id)->users()->lists('name', 'id');
 
-        //->users()->lists('name', 'id');
-        return $students;
-//        return $this->select($name, $students, $selected, $options);
+        return $this->select($name, $students, $selected, $options);
 
     }
 
