@@ -57,6 +57,9 @@
                     </ul>
                 </div>
                 </div>
+                @if(!$quest->groups)
+                    {!! Form::studentList('students', null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
+                @endif
                 {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
             </div>
 </div>
@@ -103,6 +106,8 @@
         }
 
     });
-
+    
+    $(".multiselect").select2();
+    
     </script>
 @stop
