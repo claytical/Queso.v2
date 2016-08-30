@@ -57,7 +57,7 @@
                     </ul>
                 </div>
                 </div>
-                @if(!$quest->groups)
+                @if($quest->groups)
                     {!! Form::studentList('students', null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
                 @endif
                 {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
@@ -70,6 +70,7 @@
     <script>
     Dropzone.autoDiscover = false;
     $(".multiselect").select2();
+
     var submission_upload = new Dropzone('div#submission_upload',
         {url:'/dropzone/uploadFiles',
         method: "post"
