@@ -69,6 +69,7 @@
 @section('after-scripts-end')
     <script>
     Dropzone.autoDiscover = false;
+    $(".multiselect").select2();
     var submission_upload = new Dropzone('div#submission_upload',
         {url:'/dropzone/uploadFiles',
         method: "post"
@@ -107,7 +108,7 @@
 
     });
     
-    $(".multiselect").select2();
+    
     
     </script>
 @stop
