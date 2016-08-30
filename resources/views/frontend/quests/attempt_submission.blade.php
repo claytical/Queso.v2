@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <h2>{!! $quest->name !!}</h2>
                     {!! $quest->instructions !!}
-                    @if($files)
+                    @if(!$files->isEmpty())
                     <h6>Attached Files</h6>
                         @foreach($files as $file)
                           {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => 'btn btn-default preview', 'download' => substr($file->name,5)]) !!}
