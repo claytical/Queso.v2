@@ -70,45 +70,45 @@
     <script>
     Dropzone.autoDiscover = false;
     $(".multiselect").select2();
+    if ( $( "div#submission_upload" ).length ) {
+        var submission_upload = new Dropzone('div#submission_upload',
+            {url:'/dropzone/uploadFiles',
+            method: "post"
+            });
 
-    var submission_upload = new Dropzone('div#submission_upload',
-        {url:'/dropzone/uploadFiles',
-        method: "post"
+        submission_upload.on('sending', function(file, xhr, formData){
+                var tok = $('input[name="_token"]').val();
+                console.log("Appending Token " + tok)
+                formData.append('_token', tok);
+            });
+
+        submission_upload.on("successmultiple", function(event, response) {
+            console.log("MULTIPLE");
+
+            for (var i = 0, len = response.files.length; i < len; i++) {
+                $('<input>').attr({
+                    type: 'hidden',
+                    id: 'files',
+                    value: response.files[i].id,
+                    name: 'files[]'
+                }).appendTo('form');
+            }
+
         });
 
-    submission_upload.on('sending', function(file, xhr, formData){
-            var tok = $('input[name="_token"]').val();
-            console.log("Appending Token " + tok)
-            formData.append('_token', tok);
+        submission_upload.on("success", function(event, response) {
+            for (var i = 0, len = response.files.length; i < len; i++) {
+                $('<input>').attr({
+                    type: 'number',
+                    id: 'file' + i,
+                    value: parseInt(response.files[i].id),
+                    name: 'files[]',
+                    style: 'display:none;'
+                }).appendTo('form');
+            }
+
         });
-
-    submission_upload.on("successmultiple", function(event, response) {
-        console.log("MULTIPLE");
-
-        for (var i = 0, len = response.files.length; i < len; i++) {
-            $('<input>').attr({
-                type: 'hidden',
-                id: 'files',
-                value: response.files[i].id,
-                name: 'files[]'
-            }).appendTo('form');
-        }
-
-    });
-
-    submission_upload.on("success", function(event, response) {
-        for (var i = 0, len = response.files.length; i < len; i++) {
-            $('<input>').attr({
-                type: 'number',
-                id: 'file' + i,
-                value: parseInt(response.files[i].id),
-                name: 'files[]',
-                style: 'display:none;'
-            }).appendTo('form');
-        }
-
-    });
-    
+    }    
     
     
     </script>
