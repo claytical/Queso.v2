@@ -42,7 +42,7 @@ trait Dropdowns
     public function studentList($name, $selected = null, $options = array()) {
         $user = access()->user();
         $course = Course::find(session('current_course'));
-        $students = Role::where('id', '=', $course->student_role_id)->get();
+        $students = Role::find($course->student_role_id)->users();
 
         //->users()->lists('name', 'id');
         return $students;

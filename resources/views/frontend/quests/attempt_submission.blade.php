@@ -57,6 +57,7 @@
                     </ul>
                 </div>
                 </div>
+                {!! Form::studentList('students', null, ['class' => 'form-control']) !!}
                 {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
             </div>
 </div>
