@@ -40,10 +40,10 @@ trait Dropdowns
         return $user->courses()->lists('name', 'id');
     }
 
-    public function teamList($id) {
+    public function teamEmailList($id) {
         $team = Team::find($id);
         $students = $team->users;
-        return $students->implode('email', ';');  
+        return $students->implode('email', ',');  
     }
     public function studentList($name, $selected = null, $options = array()) {
         $user = access()->user();
