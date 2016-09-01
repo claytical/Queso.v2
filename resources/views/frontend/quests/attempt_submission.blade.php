@@ -58,8 +58,11 @@
                 </div>
                 </div>
                 @if($quest->groups)
+                    <h5>Group Members</h5>
                     {!! Form::studentList('students', null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
+                    <hr>
                 @endif
+                
                 {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
             </div>
 </div>

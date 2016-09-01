@@ -4,6 +4,7 @@ namespace App\Services\Macros;
 use App\Content;
 use DB;
 use App\Course;
+use App\Team;
 use App\Models\Access\Role\Role;
 
 /**
@@ -39,6 +40,11 @@ trait Dropdowns
         return $user->courses()->lists('name', 'id');
     }
 
+    public function teamList($id) {
+        $team = Team::find($id);
+        $students = $team->users;
+        return $students->implode('email', ';');  
+    }
     public function studentList($name, $selected = null, $options = array()) {
         $user = access()->user();
         $course = Course::find(session('current_course'));
