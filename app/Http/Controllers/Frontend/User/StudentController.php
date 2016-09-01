@@ -63,7 +63,7 @@ class StudentController extends Controller
                                     "name" => $skill->name];
         }
 
-        $total_points_earned = $user->skills()->sum('amount');
+        $total_points_earned = $user->skills()->where('course_id', '=', session('current_course'))->sum('amount');
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
 
