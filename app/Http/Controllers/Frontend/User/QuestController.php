@@ -631,7 +631,7 @@ class QuestController extends Controller
                                     "name" => $skill->name];
         }
 
-        $total_points_earned = $user->skills()->sum('amount');
+        $total_points_earned = $user->skills()->where('course_id', '=', session('current_course'))->sum('amount');
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
         $levels = $course->levels()->orderBy('amount')->get();
@@ -639,7 +639,7 @@ class QuestController extends Controller
 
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
 
-        $quest_ids = $user->quests()->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
+        $quest_ids = $user->quests()->where('course_id', '=', session('current_course'))->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
 
         $quest_skills_total = 0;
 

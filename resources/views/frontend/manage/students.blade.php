@@ -15,7 +15,7 @@
         @foreach($students as $student)
             <tr>
                 <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
-                <td>{!! $student->skills()->sum('amount') !!}</td>
+                <td>{!! $student->skills()->where('course_id', '=', session('current_course'))->sum('amount') !!}</td>
                 <td></td>
             </tr>
         @endforeach
