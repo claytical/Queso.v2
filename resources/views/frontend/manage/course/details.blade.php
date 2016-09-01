@@ -221,6 +221,8 @@
                                         {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
                                         {!! Form::close() !!}
                                         {!! link_to('manage/course/team/' . $team->id, 'Manage', ['class' => 'btn btn-default btn-xs pull-right']) !!}
+                                        <a class="btn btn-default btn-xs pull-right" href="mailto:{!! Form::teamList($team->id) !!}">Mail</a>
+                                     
 <div class="modal fade" id="team{!! $team->id !!}" tabindex="-1" role="dialog" aria-labelledby="teamLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
