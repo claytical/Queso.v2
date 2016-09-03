@@ -57,9 +57,13 @@ class Access
     }
     public function instructor() {
         $course = Course::find(session('current_course'));
-        if ($user = $this->user()) {
-            return $user->hasRole($course->instructor_role_id);
-        }
+        if ($course) {
+            if ($user = $this->user()) {
+                return $user->hasRole($course->instructor_role_id);
+            }
+            else {
+                return false;
+            }
     }
 
     /**
