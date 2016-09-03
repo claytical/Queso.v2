@@ -51,7 +51,14 @@ class Access
     }
 
     public function contentCount() {
-       $content = Course::find(session('current_course'))->content()->count();
+        if(session('current_course') == 0) {
+            $course = Course::find($this->user()->default_course_id);
+        }
+        else {
+            $course = Course::find(session('current_course'));
+        }
+
+       $content = $course->content()->count();
        return $content;
     }
 
