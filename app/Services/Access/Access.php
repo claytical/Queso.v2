@@ -61,11 +61,9 @@ class Access
             if ($user = $this->user()) {
                 return $user->hasRole($course->instructor_role_id);
             }
-            else {
-                return false;
-            }
+        }
+        return false;
     }
-
     /**
      * Return if the current session user is a guest or not
      * @return mixed
