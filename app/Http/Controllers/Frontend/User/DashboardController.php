@@ -25,11 +25,11 @@ class DashboardController extends Controller
      */
     public function index() {
         $user = access()->user();
-        $course = Course::find(session('current_course'));
-
-        if(!$course) {
+        if (session('current_course')) {
+            $course = Course::find(session('current_course'));
+        }
+        else {
             $course = Course::find($user->default_course_id);
-
         }
 
         $notifications = Notice::where('user_id', '=', $user->id)
