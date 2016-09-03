@@ -27,7 +27,10 @@ class DashboardController extends Controller
         $user = access()->user();
         $course = Course::find(session('current_course'));
 
+        if(!$course) {
+            $course = Course::find($user->default_course_id);
 
+        }
 
         $notifications = Notice::where('user_id', '=', $user->id)
                         ->whereNull('received')
