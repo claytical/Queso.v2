@@ -41,12 +41,12 @@ class Access
 
     public function course() {
         if(session('current_course') == 0) {
-            $course = Course::find(session('current_course'));
-        }
-        else {
             $course = Course::find($this->user()->default_course_id);            
         }
-        
+        else {
+            $course = Course::find(session('current_course'));
+        }
+
         return $course;        
     }
 
