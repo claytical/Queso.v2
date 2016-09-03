@@ -26,7 +26,12 @@ class DashboardController extends Controller
     public function index() {
         $user = access()->user();
         if (session('current_course')) {
-            $course = Course::find(session('current_course'));
+            if(session('current_course') != 0) {
+                $course = Course::find(session('current_course'));
+            }
+            else {
+                $course = Course::find($user->default_course_id);
+            }
         }
         else {
             $course = Course::find($user->default_course_id);
