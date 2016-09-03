@@ -56,13 +56,24 @@ class Access
     }
 
     public function student() {
-        $course = Course::find(session('current_course'));
+        if(session('current_course') == 0) {
+            $course = Course::find($this->user()->default_course_id);
+        }
+        else {
+            $course = Course::find(session('current_course'));
+        }
+
         if ($user = $this->user()) {
             return $user->hasRole($course->student_role_id);
         }
     }
     public function instructor() {
-        $course = Course::find(session('current_course'));
+        if(session('current_course') == 0) {
+            $course = Course::find($this->user()->default_course_id);
+        }
+        else {
+            $course = Course::find(session('current_course'));
+        }
         if ($course) {
             if ($user = $this->user()) {
                 return $user->hasRole($course->instructor_role_id);
