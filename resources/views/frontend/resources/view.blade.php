@@ -15,6 +15,7 @@
                         <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>
                     @endif
             </div>
+            <span style="display:none;">{!! $resource->slug !!}</span>
             @if(!$files->isEmpty())
                 <h6>Attached Files</h6>
                 @foreach($files as $file)
