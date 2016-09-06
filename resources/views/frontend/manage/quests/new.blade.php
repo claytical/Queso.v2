@@ -53,6 +53,19 @@
         </div>
     </div>
 
+    <div id="submission_group" style="display:none;">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Should students submit their assignment individually or in groups?</h3>
+                    <button type="button" class="btn btn-default btn-lg" id="individual_next">Individual</button>
+                    <button type="button" class="btn btn-default btn-lg" id="groups_next">Groups</button>
+                    {{ Form::hidden('groups_allowed', true, ['id' => 'groups_allowed']) }}
+
+            </div>
+        </div>
+    </div>
+
+
     <div id="submission_revisions" style="display:none;">
         <div class="row">
             <div class="col-lg-12">
@@ -258,6 +271,10 @@
     <label>Method</label>
         <h5></h5>
     </div>
+    <div id="group_selection" style="display:none;">
+    <label>Submitted</label>
+        <h5></h5>
+    </div>
 
     <div id="revision_selection" style="display:none;">
         <label>Revisions</label>
@@ -375,8 +392,8 @@
         qf.append($("#quest_type_id"));
         $("#quest_type_selection h5").html("Submit Link");
         $("#quest_type_selection").show();
-
-        $("#submission_revisions").show();
+        $("#submission_group").show();
+//        $("#submission_revisions").show();
 
 //        $("#peer_feedback").show();
     });
@@ -390,7 +407,9 @@
         qf.append($("#submission_type_id"));
         qf.append($("#submissions_allowed"));
         //written only
-        $("#submission_revisions").show();
+//        $("#submission_revisions").show();
+        $("#submission_group").show();
+
     });
 
     $( "#upload_next" ).click(function() {
@@ -403,7 +422,9 @@
         qf.append($("#submission_type_id"));
         qf.append($("#uploads_allowed"));
         $("#upload_selection").show();
-        $("#submission_revisions").show();
+//        $("#submission_revisions").show();
+        $("#submission_group").show();
+
     });
 
     $( "#either_next" ).click(function() {
@@ -417,7 +438,23 @@
         qf.append($("#submissions_allowed"));
         qf.append($("#uploads_allowed"));
         qf.append($("#submission_type_id"));
+//        $("#submission_revisions").show();
+        $("#submission_group").show();
+
+    });
+
+    $("#individual_next").click(function()) {
+        $('#submission_group').hide();
+        $("#group_selection h5").html("Individually");
         $("#submission_revisions").show();
+    });
+
+    $("#group_next").click(function()) {
+        $('#submission_group').hide();
+        $("#submission_revisions").show();        
+        $("#group_selection h5").html("In Groups");
+        qf.append($("#groups_allowed"));
+
     });
 
     $( "#revisions_allowed" ).click(function() {

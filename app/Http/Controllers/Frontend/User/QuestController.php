@@ -290,6 +290,9 @@ class QuestController extends Controller
         if ($request->has('expiration')) {
             $quest->expires_at = $request->expiration;
         }
+        if ($request->has('groups_allowed')) {
+            $quest->groups = true;
+        }
 //file attachments
 
 //type specific options
