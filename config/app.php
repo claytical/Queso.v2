@@ -203,6 +203,7 @@ return [
          * Has to override the Collective\Html\HtmlServiceProvider form singleton
          */
         App\Providers\MacroServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,       
     ],
 
     /*
