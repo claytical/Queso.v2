@@ -32,6 +32,13 @@
                         </div>
 
                         <div class="col-lg-3">
+                            @if($announcement->sticky)
+                                <a class="btn btn-danger" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"><span class="glyphicon glyphicon-eye-close"></span> Hide</a>
+
+                            @else
+                                <a class="btn btn-danger" href="{!! url('manage/announcement/'.$announcement->id.'/show');!!}"><span class="glyphicon glyphicon-eye-open"></span> Show</a>
+
+                            @endif
                                 <a class="btn btn-danger" href="{!! url('manage/announcement/'.$announcement->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                         </div>
  

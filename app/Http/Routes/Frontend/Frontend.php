@@ -108,6 +108,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/announcements', 'AnnouncementController@manage')->name('announcements.manage');
         Route::get('manage/announcement/create', 'AnnouncementController@create')->name('announcements.create');
         Route::get('manage/announcement/{announcement_id}', 'AnnouncementController@details')->name('announcements.details');
+        Route::get('manage/announcement/{announcement_id}/show', 'AnnouncementController@show')->name('announcements.show');
+        Route::get('manage/announcement/{announcement_id}/hide', 'AnnouncementController@hide')->name('announcements.hide');
+
         Route::post('manage/announcements/create', 'AnnouncementController@save')->name('announcements.created'); 
         Route::post('manage/announcement/update', 'AnnouncementController@update')->name('announcement.update');
         Route::get('manage/announcement/{announcement_id}/delete', 'AnnouncementController@delete')->name('announcement.delete');
