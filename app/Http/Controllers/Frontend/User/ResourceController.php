@@ -76,7 +76,7 @@ class ResourceController extends Controller
                 $resource->files()->attach($files[$i]);
             }
         }        
-        return redirect()->route('announcements.manage')->withFlashSuccess($resource->title . " has been created");
+        return redirect()->route('resources.manage')->withFlashSuccess($resource->title . " has been created");
     }
 
     public function update(Request $request) {
@@ -104,14 +104,14 @@ class ResourceController extends Controller
                 $resource->files()->attach($files[$i]);
             }
         }
-        return redirect()->route('announcements.manage')->withFlashSuccess($resource->title . " has been updated");
+        return redirect()->route('resources.manage')->withFlashSuccess($resource->title . " has been updated");
 
     }    
 
     public function delete($id) {
         $resource = Content::find($id);
         $resource->delete();
-        return redirect()->route('announcements.manage')->withFlashSuccess($resource->title . " has been removed");
+        return redirect()->route('resources.manage')->withFlashSuccess($resource->title . " has been removed");
 
     }
 
