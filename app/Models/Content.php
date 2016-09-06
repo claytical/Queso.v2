@@ -7,7 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Content extends Model
 {
-    
+    use Sluggable;
     public function sluggable()
     {
         return [
