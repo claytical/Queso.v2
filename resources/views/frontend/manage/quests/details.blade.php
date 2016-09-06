@@ -138,7 +138,7 @@
         <div class="checkbox">
           <label>
             {!! Form::checkbox('group_submission', 1, $quest->groups) !!}
-            Peer Feedback
+            Group Submissions
           </label>
         </div>
 
