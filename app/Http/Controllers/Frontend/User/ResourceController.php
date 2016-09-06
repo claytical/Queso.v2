@@ -25,6 +25,13 @@ class ResourceController extends Controller
             ->withUser(access()->user());
     }
 
+    public function by_slug($slug) {
+        $resource = Content::findBySlug($slug);
+        $files = $resource->files;
+        return view('frontend.resources.view', ['resource' => $resource, 'files' => $files])
+            ->withUser(access()->user());
+    }
+
     public function by_category($category) {
         $category = str_replace(" ", "-", $category);
         $resources = Content::where('course_id', '=', session('current_course'))
