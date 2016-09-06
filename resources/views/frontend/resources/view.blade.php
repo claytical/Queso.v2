@@ -9,7 +9,11 @@
         </div>
         <div class="col-lg-12">
             <div>
-                <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>
+                    @if($resource->link_label)
+                         <a href="{{ $resource->link }}"l>{{ $resource->link_label }}</a>
+                    @else
+                        <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>
+                    @endif
             </div>
             @if(!$files->isEmpty())
                 <h6>Attached Files</h6>

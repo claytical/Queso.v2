@@ -14,7 +14,11 @@
                     <h5>{!! date('m-d-Y', strtotime($resource->created_at)) !!}</h5>
                     {!! $resource->description !!}
                     <div>
+                    @if($resource->link_label)
+                     <a href="{{ $resource->link }}"l>{{ $resource->link_label }}</a>
+                    @else
                      <a href="{{ $resource->link }}" data-iframely-url>{{ $resource->link }}</a>
+                    @endif
                     </div>
                     @if(!$resource->files->isEmpty())
                         <h6>Attached Files</h6>

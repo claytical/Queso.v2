@@ -25,6 +25,12 @@
 <label for="link">Embedded Link</label>
    	{{ Form::input('text', 'link', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
 </div>
+<div class="form-group">
+<label for="link_label">Link Label</label>
+    {{ Form::input('text', 'link_label', null, ['class' => 'form-control', 'placeholder' => 'Optional Label', 'id' => 'link_label']) }}
+</div>
+
+
     <div id="resource_upload" class="dropzone"></div>
     <hr/>
     <button class="btn btn-primary btn-lg btn-block" id="create_resource">Create</button>

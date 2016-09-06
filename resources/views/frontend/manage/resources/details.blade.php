@@ -26,6 +26,11 @@
 
    	{{ Form::input('text', 'link', $resource->link, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch?q=AAAAAAA', 'id' => 'link']) }}
 </div>
+<div class="form-group">
+<label for="link_label">Link Label</label>
+    {{ Form::input('text', 'link_label', $resource->link_label, ['class' => 'form-control', 'placeholder' => 'Optional Label', 'id' => 'link_label']) }}
+</div>
+
     @foreach($files as $file)
         <div class="input-group-btn">
             {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => 'btn btn-default preview', 'download' => substr($file->name,5)]) !!}

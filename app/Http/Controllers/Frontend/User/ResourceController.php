@@ -62,6 +62,9 @@ class ResourceController extends Controller
         $resource->title = $request->title;
         $resource->description = $request->description;
         $resource->link = $request->link;
+        if($request->has('link_label')) {
+            $resource->link_label = $request->link_label;
+        }
         if(strlen($request->tag) > 0) {
             $resource->tag = $request->tag;
         }
@@ -88,6 +91,12 @@ class ResourceController extends Controller
         }
         else {
             $resource->tag = null;
+        }
+        if($request->has('link_label')) {
+            $resource->link_label = $request->link_label;
+        }
+        else {
+            $resource->link_label = null;
         }
 
         $resource->save();
