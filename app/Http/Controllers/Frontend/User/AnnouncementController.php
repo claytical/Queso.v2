@@ -45,6 +45,7 @@ class AnnouncementController extends Controller
         $announcement = Announcement::find($request->announcement_id);
         $announcement->title = $request->title;
         $announcement->body = $request->body;
+        $announcement->sticky = $request->has('sticky');
         $announcement->course_id = session('current_course');
         $announcement->save();
 
@@ -57,7 +58,7 @@ class AnnouncementController extends Controller
         $announcement->title = $request->title;
         $announcement->body = $request->body;
         $announcement->course_id = session('current_course');
-        $announcement->sticky = false;
+        $announcement->sticky = $request->has('sticky');
         $announcement->save();
         return view('frontend.manage.announcements.created', ['announcement' => $announcement])
             ->withUser(access()->user());

@@ -75,7 +75,10 @@ class DashboardController extends Controller
             
         }
 
-        $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
+        $announcements = Announcement::where('course_id', '=', session('current_course'))
+                                    ->where('sticky', '=', true)
+                                    ->orderBy('created_at', 'desc');
+                                    ->get();
         $team = $user->teams()
                         ->where('team_user.course_id', session('current_course'))
                         ->first();

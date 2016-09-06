@@ -17,10 +17,13 @@
 
 
 <div class="col-lg-3">
-                    {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+    {!! Form::checkbox('sticky', 1) !!} Show on Dashboard
+    <hr>
+
+    {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
 </div>
-                    {!! Form::close() !!}
+    {!! Form::close() !!}
 @endsection
 
 @section('after-scripts-end')
