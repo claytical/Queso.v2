@@ -37,6 +37,14 @@
                     <hr/>
                 @endif
 
+                @if($quest->groups)
+                    <h5>Group Members</h5>
+                    <div class="form-control">
+                        {!! Form::studentList('students', null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
+                    </div>
+                    <hr/>
+                @endif
+
                 <div class="panel panel-default">
                   <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
                   <div class="panel-body">            
@@ -57,11 +65,6 @@
                     </ul>
                 </div>
                 </div>
-                @if($quest->groups)
-                    <h5>Group Members</h5>
-                    {!! Form::studentList('students', null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
-                    <hr>
-                @endif
                 
                 {!! Form::submit('Submit Quest', ['class' => 'btn btn-primary btn-block']) !!}
             </div>
