@@ -449,7 +449,7 @@
         $("#submission_revisions").show();
     });
 
-    $("#group_next").click(function()  {
+    $("#groups_next").click(function()  {
         $('#submission_group').hide();
         $("#submission_revisions").show();        
         $("#group_selection h5").html("In Groups");
