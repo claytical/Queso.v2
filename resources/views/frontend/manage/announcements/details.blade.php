@@ -17,7 +17,8 @@
 
 
 <div class="col-lg-3">
-    {!! Form::checkbox('sticky', 1) !!} Show on Dashboard
+
+    {!! Form::checkbox('sticky', 1, $announcement->sticky) !!} Show on Dashboard
     <hr>
 
     {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
