@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
+
 class Content extends Model
 {
     use Sluggable;
+    use SluggableScopeHelpers;
+    
     public function sluggable()
     {
         return [

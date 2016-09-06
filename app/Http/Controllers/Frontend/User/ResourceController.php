@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Vinelab\Http\Client as HttpClient;
 use App\Content;
 use Illuminate\Http\Request;
-
 /**
  * Class DashboardController
  * @package App\Http\Controllers\Frontend
