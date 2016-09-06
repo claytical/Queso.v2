@@ -7,7 +7,15 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Content extends Model
 {
-
+    
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function course() {
     	return $this->hasOne('App\Course');
