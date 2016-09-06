@@ -443,13 +443,13 @@
 
     });
 
-    $("#individual_next").click(function()) {
+    $("#individual_next").click(function() {
         $('#submission_group').hide();
         $("#group_selection h5").html("Individually");
         $("#submission_revisions").show();
     });
 
-    $("#group_next").click(function()) {
+    $("#group_next").click(function()  {
         $('#submission_group').hide();
         $("#submission_revisions").show();        
         $("#group_selection h5").html("In Groups");
