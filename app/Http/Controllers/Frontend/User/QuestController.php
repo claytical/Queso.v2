@@ -195,6 +195,8 @@ class QuestController extends Controller
         }
 
         $quest->instant = $request->has('instant');
+        $quest->groups = $request->has('group_submission');
+        
         if($quest->instant) {
             if($request->new_codes > 0) {
                 for ($i = 0; $i < $request->new_codes; $i++) {

@@ -446,6 +446,7 @@
     $("#individual_next").click(function() {
         $('#submission_group').hide();
         $("#group_selection h5").html("Individually");
+        $("#group_selection").show();
         $("#submission_revisions").show();
     });
 
@@ -453,6 +454,7 @@
         $('#submission_group').hide();
         $("#submission_revisions").show();        
         $("#group_selection h5").html("In Groups");
+        $("#group_selection").show();
         qf.append($("#groups_allowed"));
 
     });
