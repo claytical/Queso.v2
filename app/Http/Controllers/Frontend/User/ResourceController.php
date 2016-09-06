@@ -76,9 +76,7 @@ class ResourceController extends Controller
                 $resource->files()->attach($files[$i]);
             }
         }        
-        return view('frontend.manage.resources.created')
-            ->withUser(access()->user());
-
+        return redirect()->route('announcements.manage')->withFlashSuccess($resource->title . " has been created");
     }
 
     public function update(Request $request) {
@@ -105,17 +103,15 @@ class ResourceController extends Controller
             for($i = 0; $i < count($files); $i++) {
                 $resource->files()->attach($files[$i]);
             }
-        }        
-        return view('frontend.manage.resources.updated', ['resource' => $resource])
-            ->withUser(access()->user());
+        }
+        return redirect()->route('announcements.manage')->withFlashSuccess($resource->title . " has been updated");
 
     }    
 
     public function delete($id) {
         $resource = Content::find($id);
         $resource->delete();
-        return view('frontend.manage.resources.deleted')
-            ->withUser(access()->user());
+        return redirect()->route('announcements.manage')->withFlashSuccess($resource->title . " has been removed");
 
     }
 

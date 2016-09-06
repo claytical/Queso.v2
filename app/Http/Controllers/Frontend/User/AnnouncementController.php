@@ -48,7 +48,7 @@ class AnnouncementController extends Controller
         $announcement->sticky = $request->has('sticky');
         $announcement->course_id = session('current_course');
         $announcement->save();
-        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been updated!");
+        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been updated");
     }
 
     public function save(Request $request) {
@@ -58,21 +58,21 @@ class AnnouncementController extends Controller
         $announcement->course_id = session('current_course');
         $announcement->sticky = $request->has('sticky');
         $announcement->save();
-        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been created!");
+        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been created");
     }
 
     public function show($id) {
         $announcement = Announcement::find($id);
         $announcement->sticky = true;
         $announcement->save();
-        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " now shown on dashboard!");
+        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " now shown on dashboard");
     }
 
     public function hide($id) {
         $announcement = Announcement::find($id);
         $announcement->sticky = false;
         $announcement->save();
-        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " now hidden from dashboard!");
+        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " now hidden from dashboard");
 
     }
 
@@ -80,7 +80,7 @@ class AnnouncementController extends Controller
         $announcement = Announcement::find($request->announcement_id);
         $title = $announcement->title;
         $announcement->delete();
-        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been removed!");
+        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been removed");
     }
 
     public function manage()
