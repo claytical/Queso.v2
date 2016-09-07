@@ -46,11 +46,13 @@ class QuestController extends Controller
         $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
                     ->whereNotIn('id', $quests_attempted_ids)
                     ->where('expires_at', '>=', Carbon::now())
+                    ->where('groups', '=', false)
                     ->orderBy('expires_at')
                     ->get();
 
         $quests_unattempted_not_expiring = Quest::where('course_id', '=', session('current_course'))
                     ->whereNotIn('id', $quests_attempted_ids)
+                    ->where('groups', '=', false)
                     ->whereNull('expires_at')
                     ->orderBy('name')
                     ->get();
@@ -60,6 +62,7 @@ class QuestController extends Controller
         $quests_revisable = Quest::where('course_id', '=', session('current_course'))
                     ->whereIn('id', $quests_attempted_ids)
                     ->where('revisions', '=', true)
+                    ->where('groups', '=', false)                    
                     ->orderBy('expires_at')
                     ->get();
 
@@ -630,9 +633,13 @@ class QuestController extends Controller
         $course_skills = $course->skills()->get();
         $acquired_skills = [];
         foreach($course_skills as $skill) {
-            $acquired_skills[] = ["amount" => $user->skills()
-                                                    ->where('skill_id', $skill->id)
-                                                    ->sum('amount'),
+            $amount = $user->skills()
+                            ->where('skill_id', $skill->id)
+                            ->sum('amount');
+            if(!$amount) {
+                $amount = 0;
+            }
+            $acquired_skills[] = ["amount" => $amount,
                                     "name" => $skill->name];
         }
 
