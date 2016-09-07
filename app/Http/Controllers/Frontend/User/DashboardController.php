@@ -88,10 +88,17 @@ class DashboardController extends Controller
         else {
             $team_users = false;
         }
+
         $total_points_earned = $user->skills()->sum('amount');
-    
-        if($course) {
+        if($total_points_earned) {
             $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
+
+        }
+        else {
+        if($course) {
+            $current_level = $course->levels()->where('amount', '<=', 0)->orderBy('amount', 'desc')->first();
+        }
+
         }
         else {
             return redirect(route('frontend.user.choose'));
