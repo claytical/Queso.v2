@@ -136,13 +136,14 @@ class GradeController extends Controller
         }
         $quest = Quest::find($submission->quest_id);
         $skills = $quest->skills()->get();
-
+        $user = User::find($submission->user_id);
         return view('frontend.grade.submission',   ['submission' => $submission, 
                                                     'quest' => $quest, 
                                                     'skills' => $skills,
                                                     'revision_count' => $revision_count,
-                                                    'revisions' => $revisions]
-                                                    )->withUser(access()->user());
+                                                    'revisions' => $revisions,
+                                                    'user' => $user]
+                                                    );
     }
 
     public function link() {
