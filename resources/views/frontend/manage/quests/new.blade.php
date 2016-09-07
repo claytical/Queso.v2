@@ -26,8 +26,18 @@
     <div id="quest_type" style="display:none;">
         <div class="row">
             <div class="col-lg-12">
-                <h3>What kind of quest is this?</h3>
-                    <button type="button" class="btn btn-default btn-lg" id="submission_next">Submission</button> <!-- #submission_selection -->
+                <h3>Do students need to submit something to complete this quest?</h3>
+                    <button type="button" class="btn btn-default btn-lg" id="submit_something_next">Yes</button>
+                    <button type="button" class="btn btn-default btn-lg" id="no_submission_next">No</button>
+                Yes/No
+
+                If yes,
+                    Send a link, upload a file, write into a textbox, either upload a file or write in a textbox
+
+                If no,
+                    "How do they get points?"
+                    Watching a video online, In class activity/I assign points
+                    <button type="button" class="btn btn-default btn-lg" id="submission_next">Online Submission</button> <!-- #submission_selection -->
                     <button type="button" class="btn btn-default btn-lg" id="activity_next">In Class Activity</button> <!-- #inclass_instant -->
                     <button type="button" class="btn btn-default btn-lg" id="watch_next">Watch a Video</button> <!-- #video_url -->
                     <button type="button" class="btn btn-default btn-lg" id="link_next">Link</button> <!-- #peer_feedback -->
