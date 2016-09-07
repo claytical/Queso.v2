@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div id="quest_type_submission" style="display:none;">
+    <div id="quest_type_activity" style="display:none;">
         <div class="row">
             <div class="col-lg-12">
                 <h3>How will students get points?</h3>
@@ -345,8 +345,23 @@
         qf.append($("#quest_title"));
         $("#quest_name_selection h5").html($("#quest_title").val());
         $("#quest_name_selection").show();
-        $("#quest_type").show();
+        $("#quest_type_style").show();
     });
+
+    //
+    $("#submit_something_next").click(function() {
+        //what kind of submission?
+        $("#quest_type_style").hide();
+        $("#quest_type_submission").show();
+    });
+
+    $("#no_submission_next").click(function() {
+        //what kind of activity?
+        $("#quest_type_style").hide();
+        $("#quest_type_activity").show();
+
+    });
+
 
     $( "#submission_next" ).click(function() {
         $("#quest_type").hide();
