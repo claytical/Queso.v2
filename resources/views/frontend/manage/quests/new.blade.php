@@ -362,26 +362,71 @@
 
     });
 
+    $("#submission_link").click(function() {
+        $("#quest_type_id").val(4);        
+        qf.append($("#quest_type_id"));
+        $("#quest_type_selection h5").html("Send a Link");
+        $("#quest_type_selection").show();
+        $("#submission_group").show();
+        $("#quest_type_submission").hide();        
+
+    });
+
+    $("#submission_upload").click(function() {
+       $("#quest_type_id").val(1);        
+        $("#upload_selection h5").html("Upload File");
+        $("#upload_selection").show();
+        qf.append($("#quest_type_id"));
+        qf.append($("#uploads_allowed"));
+        $("#upload_selection").show();        
+        $("#quest_type_submission").hide();        
+        $("#submission_group").show();
+    });
+
+    $("#submission_write").click(function() {
+        $("#quest_type_id").val(1);        
+        $("#upload_selection h5").html("Text Entry");
+        $("#upload_selection").show();
+        qf.append($("#quest_type_id"));
+        qf.append($("#submissions_allowed"));
+        $("#quest_type_submission").hide();        
+        $("#submission_group").show();
+
+    });
+
+    $("#submission_either").click(function() {
+        $("#quest_type_id").val(1);
+        $("#upload_selection").show();
+        $("#upload_selection h5").html("Upload File or Text Entry");
+        $("#upload_selection").show();
+        $("#quest_type_submission").hide();        
+
+        qf.append($("#quest_type_id"));
+        qf.append($("#submissions_allowed"));
+        qf.append($("#uploads_allowed"));
+        $("#submission_group").show();
+
+    });
 
     $( "#submission_next" ).click(function() {
         $("#quest_type").hide();
         $("#quest_type_selection h5").html("Submission");
         $("#quest_type_selection").show();
         $("#quest_type_id").val(1);
-        qf.append($("#quest_type_id"));
         $("#submission_selection").show();
+        qf.append($("#quest_type_id"));
     });
 
     $( "#activity_next" ).click(function() {
+        $("#quest_type_activity").hide();
         //flag to skip minimum thresholds
         skipThresholds = true;
         $("#quest_type_selection h5").html("In Class Activity");
         $("#quest_type_selection").show();
-
         $("#quest_type").hide();
         $("#quest_type_id").val(2);
-        qf.append($("#quest_type_id"));
         $("#inclass_instant").show();
+        qf.append($("#quest_type_id"));
     });
 
     $( "#instant_allowed" ).click(function() {
@@ -401,7 +446,8 @@
     });
 
     $( "#watch_next" ).click(function() {
-        $("#quest_type").hide();
+
+        $("#quest_type_activity").hide();
         $("#quest_type_selection h5").html("Watch Video");
         $("#quest_type_selection").show();
 
@@ -417,7 +463,7 @@
         qf.append($("#video_url"));
         $("#expiration").show();
     });
-
+/*
     $( "#link_next" ).click(function() {
         $("#quest_type").hide();
         $("#quest_type_id").val(4);        
@@ -429,7 +475,8 @@
 
 //        $("#peer_feedback").show();
     });
-
+*/
+/*
     $( "#written_next" ).click(function() {
         $("#submission_selection").hide();
         $("#submission_type_id").val(1);
@@ -443,7 +490,9 @@
         $("#submission_group").show();
 
     });
+*/
 
+/*
     $( "#upload_next" ).click(function() {
         $("#submission_selection").hide();
         $("#submission_type_id").val(2);
@@ -458,7 +507,7 @@
         $("#submission_group").show();
 
     });
-
+*/
     $( "#either_next" ).click(function() {
         $("#submission_selection").hide();
         $("#submission_type_id").val(3);
