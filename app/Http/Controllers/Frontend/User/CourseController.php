@@ -363,6 +363,7 @@ class CourseController extends Controller
         $course->instructor_display_name = $request->instructor_display_name;
         $course->instructor_office_location = $request->instructor_office_location;
         $course->instructor_contact = $request->instructor_contact;
+        $course->timezone = $request->timezone;
         
     	$course->save();
     	return redirect(route('course.manage'));
