@@ -65,7 +65,8 @@
                     @foreach($graded_quests as $quest)
                     <li>
                         <div class="col-lg-4 quest">
-                            {!! $quest['quest']->name !!}
+                            {!! link_to('quest/feedback/'.$quest['quest']->id.'/feedback/'.$student->id,  $quest['quest']->name) !!}
+                            
                         </div>
 
                         <div class="col-lg-3 date">
