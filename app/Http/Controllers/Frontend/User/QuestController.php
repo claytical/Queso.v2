@@ -695,10 +695,20 @@ class QuestController extends Controller
 
         $quest_ids = $user->quests()->where('course_id', '=', session('current_course'))->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
 
+        $group_quest_ids = $user->group_quests()->pluck('quest_id');
+
+        $more_ids = $course->quests()
+                            ->where('course_id', '=', session('current_course'))
+                            ->whereIn('id', $group_quest_ids)
+                            ->distinct()
+                            ->select('quest_id')
+                            ->pluck('quest_id');
+        $all_quest_ids = $quest_ids + $more_ids;
+
         $quest_skills_total = 0;
 
         $quests = [];
-        foreach($quest_ids as $id) {
+        foreach($all_quest_ids as $id) {
             $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
             if ($quest->count() > 1) {
                 $revisions = $quest->get();
@@ -740,9 +750,14 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
-    public function view_feedback($quest_id) {
+    public function view_feedback($quest_id, $user_id = null) {
         $quest = Quest::find($quest_id);
-        $user = access()->user();
+        if($user_id) {
+            $user = User::find($user_id);
+        }
+        else {
+            $user = access()->user();
+        }
         $skills = $user->skills()->where('quest_id', $quest_id)->get();
         $quest_skills = $quest->skills()->get();
 

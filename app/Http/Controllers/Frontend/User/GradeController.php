@@ -237,7 +237,7 @@ class GradeController extends Controller
            return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $users->implode('name', ',') . ".");
         }
         else {
-            return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $user[0]->name . ".");
+            return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $users[0]->name . ".");
  
         }
     }
