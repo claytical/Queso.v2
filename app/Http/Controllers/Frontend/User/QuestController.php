@@ -508,11 +508,33 @@ class QuestController extends Controller
         }
 
         $user = access()->user();
+
+
+
         $attempt->quest_id = $request->quest_id;
         $attempt->user_id = $user->id;
         $attempt->revision = $request->revision;
         $attempt->save();
-        $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
+
+        if($quest->groups) {
+            //GROUP QUEST
+            $gq = new GroupQuest;
+            $gq->quest_id = $attempt->quest_id;
+            $gq->attempt_id = $attempt->id;
+            $gq->save();
+            $gq->users()->attach($user->id);
+            for($i = 0; $i < count($request->students); $i++) {
+                if (is_numeric($request->students[$i])) {
+                    //add to group quest user
+                    $gq->users()->attach($students[$i]);
+//                        $user->skills()->attach($skill->id, ['amount' => $skill->pivot->amount, 'quest_id' => $quest->id]);
+              }
+            }
+
+        } else {
+            $user->quests()->attach($attempt->quest_id, ['revision' => $request->revision, 'graded' => false]);
+        }
+
         if ($quest->peer_feedback) {
             $team = $user->teams()->where('team_user.course_id', session('current_course'))->first();
             if ($team) {
