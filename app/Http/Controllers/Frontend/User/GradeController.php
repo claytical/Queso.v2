@@ -60,7 +60,9 @@ class GradeController extends Controller
             }
         }
         foreach($group_quests as $quest) {
-            $groups = GroupQuest::where('quest_id', '=', $quest->id)->get();
+            $groups = GroupQuest::where('quest_id', '=', $quest->id)
+                                    ->where('graded', '=', false)
+                                    ->get();
             foreach($groups as $group) {
                 if($quest->quest_type_id == 1) {
                     $attempt = Submission::find($group->attempt_id);
