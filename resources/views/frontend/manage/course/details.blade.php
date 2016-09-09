@@ -56,7 +56,7 @@
                         <br/>
                         <select class="form-control">
                         @foreach($zones as $zone)
-                            <option>$zone</option>
+                            <option>{!! $zone !!}</option>
                         @endforeach
                         </select>
                     </div>
