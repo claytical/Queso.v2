@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label for="timezone">Time Zone</label>
                         <br/>
-                        <select class="form-control">
+                        <select class="form-control" name="timezone">
                         @foreach($zones as $zone)
                             @if($zone == $course->timezone)
                                 <option value="{!! $zone !!}" selected>{!! $zone !!}</option>
