@@ -526,7 +526,7 @@ class QuestController extends Controller
             for($i = 0; $i < count($request->students); $i++) {
                 if (is_numeric($request->students[$i])) {
                     //add to group quest user
-                    $gq->users()->attach($students[$i]);
+                    $gq->users()->attach($request->students[$i]);
 //                        $user->skills()->attach($skill->id, ['amount' => $skill->pivot->amount, 'quest_id' => $quest->id]);
               }
             }
