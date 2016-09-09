@@ -752,12 +752,12 @@ class QuestController extends Controller
 
     public function view_feedback($quest_id, $user_id = null) {
         $quest = Quest::find($quest_id);
-        if($user_id) {
-            $user = User::find($user_id);
-        }
-        else {
+ //       if($user_id) {
+ //           $user = User::find($user_id);
+ //       }
+//        else {
             $user = access()->user();
-        }
+//        }
         $skills = $user->skills()->where('quest_id', $quest_id)->get();
         $quest_skills = $quest->skills()->get();
 
