@@ -173,52 +173,71 @@ class GradeController extends Controller
             $attempt = Link::find($request->attempt_id);
 
         }
+        $users = [];
 
-        $user = User::find($attempt->user_id);
-
-        $feedback = new Feedback;
-        $feedback->from_user_id = access()->user()->id;
-        $feedback->to_user_id = $attempt->user_id;
-        $feedback->quest_id = $attempt->quest_id;
-        $feedback->revision = $attempt->revision;
-        $feedback->subtype = 1;
-        $feedback->likes = 0;
-        $feedback->note = $request->feedback;
-        $feedback->save();
-
-
-//TODO: Check for revision
-
-//TODO: Add to Skill History
-
-        $total_points = 0;
-        for($i = 0; $i < count($request->skills); $i++) {
-            $skill_id = $request->skill_id[$i];
-        //remove existing points for the quest
-            $user->skills()->where('quest_id', $attempt->quest_id)->detach($skill_id);
-            if (is_numeric($request->skills[$i])) {
-                $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $attempt->quest_id]);
-                $total_points += $request->skills[$i];
-            }
-            else {
-                $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $attempt->quest_id]);   
-            }
+        if($quest->groups) {
+            //figure out group users and send feedback
+            $group = GroupQuest::where('quest_id', '=', $quest->id)
+                                ->where('attempt_id', '=', $request->attempt_id)
+                                ->first();
+            $users = $group->users;
         }
-        $attempt->graded = true;
-        $attempt->save();
-        //send notification to user
-        $notice = new Notice;
-        $notice->user_id = $attempt->user_id;
-        $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
-        $notice->url = "quest/". $quest->id ."/feedback";
-        $notice->course_id = session('current_course');
-        $notice->save();
+        else {
+            $users[] = User::find($attempt->user_id);
+        }
+        foreach($users as $user) {
+ 
+            $feedback = new Feedback;
+            $feedback->from_user_id = access()->user()->id;
+            $feedback->to_user_id = $user->id;
+            $feedback->quest_id = $attempt->quest_id;
+            $feedback->revision = $attempt->revision;
+            $feedback->subtype = 1;
+            $feedback->likes = 0;
+            $feedback->note = $request->feedback;
+            $feedback->save();
+        
 
-        $user->quests()->where('revision', $attempt->revision)
+    //TODO: Check for revision
+
+    //TODO: Add to Skill History
+
+            $total_points = 0;
+            for($i = 0; $i < count($request->skills); $i++) {
+                $skill_id = $request->skill_id[$i];
+            //remove existing points for the quest
+                    $user->skills()->where('quest_id', $attempt->quest_id)->detach($skill_id);
+                    if (is_numeric($request->skills[$i])) {
+                        $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $attempt->quest_id]);
+                        $total_points += $request->skills[$i];
+                    }
+                    else {
+                        $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $attempt->quest_id]);   
+                }
+            }
+            
+            $attempt->graded = true;
+            $attempt->save();
+            //send notification to user
+            $notice = new Notice;
+            $notice->user_id = $attempt->user_id;
+            $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
+            $notice->url = "quest/". $quest->id ."/feedback";
+            $notice->course_id = session('current_course');
+            $notice->save();
+
+            $user->quests()->where('revision', $attempt->revision)
                         ->updateExistingPivot($attempt->quest_id, ['graded' => true]);
-
-        return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $user->name . ".");
-
+        }
+        if($quest->groups) {
+            $group->graded = true;
+            $group->save();
+            return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $user[0]->name . ".");
+        }
+        else {
+           return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $users->implode('name', ',') . ".");
+ 
+        }
     }
 
     public function watched(Request $request) {
