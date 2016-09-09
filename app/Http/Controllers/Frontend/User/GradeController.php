@@ -232,10 +232,10 @@ class GradeController extends Controller
         if($quest->groups) {
             $group->graded = true;
             $group->save();
-            return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $user[0]->name . ".");
+           return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $users->implode('name', ',') . ".");
         }
         else {
-           return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $users->implode('name', ',') . ".");
+            return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $user[0]->name . ".");
  
         }
     }
