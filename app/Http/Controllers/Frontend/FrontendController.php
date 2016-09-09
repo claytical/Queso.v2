@@ -16,6 +16,10 @@ class FrontendController extends Controller
 
 
     public function index() {
+        if(access()->user()) {
+            return redirect()->route('frontend.user.dashboard');
+        }
+            
         return view('frontend.index');
     }
 
