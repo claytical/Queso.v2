@@ -56,7 +56,11 @@
                         <br/>
                         <select class="form-control">
                         @foreach($zones as $zone)
-                            <option>{!! $zone !!}</option>
+                            @if($zone == $course->timezone)
+                                <option selected>{!! $zone !!}</option>
+                            @else
+                                <option>{!! $zone !!}</option>
+                            @endif
                         @endforeach
                         </select>
                     </div>
