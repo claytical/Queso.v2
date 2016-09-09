@@ -102,7 +102,7 @@ class QuestController extends Controller
             }
         }
 
-        return view('frontend.quests.available', ['unlocked' => $quests_unlocked, 'locked' => $quests_locked, 'revisable' => $quests_revisable, 'gq' => $group_quests_attempted])
+        return view('frontend.quests.available', ['unlocked' => $quests_unlocked, 'locked' => $quests_locked, 'revisable' => $quests_revisable])
             ->withUser(access()->user());
     }
 
