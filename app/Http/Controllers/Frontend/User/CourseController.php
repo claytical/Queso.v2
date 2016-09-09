@@ -347,7 +347,8 @@ class CourseController extends Controller
     	$skills = $course->skills()->orderBy('name')->get();
     	$levels = $course->levels()->orderBy('amount', 'desc')->get();
     	$teams = $course->teams;
-        return view('frontend.manage.course.details', ['course' => $course, 'skills' => $skills, 'levels' => $levels, 'teams' => $teams])
+        $tzlist = \DateTimeZone::listIdentifiers(\DateTimeZone::ALL);
+        return view('frontend.manage.course.details', ['course' => $course, 'skills' => $skills, 'levels' => $levels, 'teams' => $teams, 'zones' => $tzlist])
             ->withUser(access()->user());
 
     }

@@ -51,6 +51,10 @@
                         {{ Form::input('text', 'reg_code', $course->code, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'reg_code']) }}
                     </div>
         
+                    <div class="form-group">
+                        <label for="timezone">Time Zone</label>
+                        {{ Form::select('timezone', $zones, ['class' => 'form-control']) }}
+                    </div>
                 </div>
 
                 <div class="col-lg-6">
