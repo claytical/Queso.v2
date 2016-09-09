@@ -53,7 +53,12 @@
         
                     <div class="form-group">
                         <label for="timezone">Time Zone</label>
-                        {{ Form::select('timezone', $zones, ['class' => 'form-control']) }}
+                        <br/>
+                        <select class="form-control">
+                        @foreach($zones as $zone)
+                            <option>$zone</option>
+                        @endforeach
+                        </select>
                     </div>
                 </div>
 

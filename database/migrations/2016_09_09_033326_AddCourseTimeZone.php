@@ -12,7 +12,12 @@ class AddCourseTimeZone extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('courses', function ($table) {
+
+            $table->string('timezone')->default('America/New_York');
+
+        });
+
     }
 
     /**
