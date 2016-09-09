@@ -43,8 +43,8 @@
                     <button type="button" class="btn btn-default btn-block" id="submission_write">Write in a Textbox</button> 
                     <button type="button" class="btn btn-default btn-block" id="submission_either">Write in a Textbox or Upload a File</button>
                     {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
-                    {{ Form::hidden('uploads_allowed', true, ['id' => 'submissions_allowed']) }}
-                    {{ Form::hidden('submissions_allowed', true, ['id' => 'uploads_allowed']) }}
+                    {{ Form::hidden('submissions_allowed', true, ['id' => 'submissions_allowed']) }}
+                    {{ Form::hidden('uploads_allowed', true, ['id' => 'uploads_allowed']) }}
 
             </div>
         </div>
