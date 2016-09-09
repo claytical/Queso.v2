@@ -72,7 +72,7 @@ class GradeController extends Controller
                $list[] =  ["quest" => $quest->name,
                             "quest_id" => $quest->id,
                             "type" => $quest->quest_type_id,
-                            "student" => $group->users()->implode('name', ','),
+                            "student" => $group->users->implode('name', ','),
                             "attempt" => $attempt];
             }
         }
