@@ -3,6 +3,9 @@
 @section('content')
 
 <h2>Available Quests</h2>
+<div style="display:none;">
+{!! var_dump($gq) !!}
+</div>
 @if($unlocked)
             <div class="col-lg-12">
 
