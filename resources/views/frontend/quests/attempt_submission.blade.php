@@ -39,7 +39,7 @@
 
                 @if($quest->groups)
                     <h5>Group Members</h5>
-                        {!! Form::studentList('students', null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
+                        {!! Form::studentList('students[]', null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
                     <hr/>
                 @endif
 

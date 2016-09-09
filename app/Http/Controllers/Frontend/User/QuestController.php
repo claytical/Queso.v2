@@ -47,8 +47,9 @@ class QuestController extends Controller
             $user_skill_levels[$skill->id] = $user->skills()->where('skill_id', $skill->id)->sum('amount');
         }
 
-        $group_quests_attempted = $user->group_quests();
-        $group_quests_attempted_ids = $group_quests_attempted->pluck('group_quest_id');
+        $group_quests_attempted = $user->group_quests()->with('quest')->get();
+
+        $group_quests_attempted_ids = $group_quests_attempted->pluck('quest_id');
 
         $group_quests = Quest::where('course_id', '=', session('current_course'))
                             ->where('groups', '=', true)
