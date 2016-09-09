@@ -48,6 +48,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Quest')->withPivot('revision', 'graded')->withTimestamps();
     }
 
+    public function group_quests() {
+        return $this->belongsToMany('App\GroupQuest', 'group_quest_id', 'user_id');
+    }
+
     public function feedback_received() {
         return $this->hasMany('App\Feedback', 'to_user_id');
     }
