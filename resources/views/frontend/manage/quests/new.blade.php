@@ -134,8 +134,8 @@
                 <p>Please note, for the automatic point assignment to happen, the video needs to be hosted by YouTube.</p>
                     <div class="input-group">
                     {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?v=AAAAAAA', 'id' => 'video_url']) }}
-                    <span class="input-group-btn">                    
-                    <button type="button" class="btn btn-default btn-lg" id="video_next">Next</button>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" id="video_next">Next</button>
                     </span>
                     </div>
             </div>
@@ -270,7 +270,7 @@
         <h5></h5>
     </div>
     <div id="quest_type_selection" style="display:none;">
-        <label>Quest Type</label>
+        <label>Type</label>
         <h5></h5>
     </div>
 
