@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
 
     public function group_quests() {
-        return $this->belongsToMany('App\GroupQuest', 'group_quest_users', 'group_quest_id', 'user_id');
+        return $this->belongsToMany('App\GroupQuest', 'group_quest_users', 'user_id', 'group_quest_id');
     }
 
     public function feedback_received() {
