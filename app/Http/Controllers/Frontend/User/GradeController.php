@@ -28,7 +28,8 @@ class GradeController extends Controller
      */
     public function submission_list() {
         $course = Course::find(session('current_course'));
-        $quests = $course->quests()->get();
+        $quests = $course->quests()->where('groups', '=', false)->get();
+        $group_quests = $course->quests()->where('groups', '=', true)->get();
 
         $list = [];
         foreach($quests as $quest) {
@@ -58,13 +59,24 @@ class GradeController extends Controller
                             "attempt" => $attempt];
             }
         }
+        foreach($group_quests as $quest) {
+            $groups = GroupQuest::where('quest_id', '=', $quest->id)->get();
+            foreach($groups as $group) {
+                if($quest->quest_type_id == 1) {
+                    $attempt = Submission::find($group->attempt_id);
+                }
+                if($quest->quest_type_id == 4) {
+                    $attempt = Link::find($group->attempt_id);
+                }
 
-//        $users = $course->users();
-//        $submissions = $users->quests()
-//                                ->where('graded', '=', false)
-//                                ->get();
-//        $submissions = Course::find(session('current_course'))
- //                               ->user_quests()->get();
+               $list[] =  ["quest" => $quest->name,
+                            "quest_id" => $quest->id,
+                            "type" => $quest->quest_type_id,
+                            "student" => $group->users()->implode('name', ','),
+                            "attempt" => $attempt];
+            }
+        }
+
         return view('frontend.grade.submissions', ['lists' => $list])
             ->withUser(access()->user());
     }
