@@ -12,5 +12,8 @@ class GroupQuest extends Model
 		return $this->belongsTo('App\Quest');
 	}
 
-	
+	public function users() {
+		return $this->belongsToMany('App\Models\Access\User\User', 'group_quest_users', 'user_id', 'group_quest_id');
+
+	}
 }
