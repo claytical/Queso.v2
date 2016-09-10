@@ -793,12 +793,13 @@ class QuestController extends Controller
             $user_quest = DB::table('group_quest_users')
                                 ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
                                 ->join('quests', 'group_quest.quest_id', '=', 'quests.id')
-                                ->select('quests.name', 'quests.created_at', 'group_quest.graded')
+                                ->select('quests.name', 'quests.created_at', 'group_quest.graded', 'group_quest.attempt_id')
                                 ->where('user_id', '=', $user->id)
                                 ->where('quest_id', '=', $quest_id)
                                 ->orderBy('group_quest.created_at')
                                 ->first();
             $graded = $user_quest->graded;
+
         }
         else {
             $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
@@ -813,22 +814,30 @@ class QuestController extends Controller
         $files = false;
         $attempt = null;
         if($quest->quest_type_id == 1) {
-            $attempt = Submission::where('quest_id', '=', $quest_id)
-                                        ->where('user_id', '=', $user->id)
-                                        ->orderBy('revision')
-                                    //    ->where('revision', '=', $revision)
-                                        ->first();
-            
+            if($quest->groups) {
+                $attempt = Submission::find($user_quest->attempt_id);
+            }
+            else {
+                $attempt = Submission::where('quest_id', '=', $quest_id)
+                                            ->where('user_id', '=', $user->id)
+                                            ->orderBy('revision')
+                                            ->first();
+
+            }            
             $files = $attempt->files;
 
         }
         if($quest->quest_type_id == 4) {
+            if($quest->groups) {
+                $attempt = Link::find($user_quest->attempt_id);
+            }
+            else {
             $attempt = Link::where('quest_id', '=', $quest->id)
                             ->where('user_id', '=', $user_id)
                             ->orderBy('revision')
                         //    ->where('revision', '=', $revision)
                             ->first();
-
+            }
         }
 
         $instructor_feedback = Feedback::where('quest_id', '=', $quest->id)
