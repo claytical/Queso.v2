@@ -4,20 +4,20 @@
 
     <div class="col-lg-12">
         <h2>{!! $student->name !!}</h2>
-            <div class="btn-group pull-right">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {!! $team->name !!} <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    @foreach($teams as $team)
-                        <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id, $team->name) !!}</li>
-                    @endforeach
-                        <li role="separator" class="divider"></li>
-                        <li>{!! link_to('manage/student/'.$student->id.'/team/remove', 'Remove Team Assignment') !!}</li>
-                  </ul>
-            </div>
     </div>
     <div class="col-lg-6">
+        <div class="btn-group pull-right">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {!! $team->name !!} <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        @foreach($teams as $team)
+                            <li>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id, $team->name) !!}</li>
+                        @endforeach
+                            <li role="separator" class="divider"></li>
+                            <li>{!! link_to('manage/student/'.$student->id.'/team/remove', 'Remove Team Assignment') !!}</li>
+                      </ul>
+        </div>
     <h4>{!! $current_level->name !!}, {!! $total_points !!} points</h4>
         <div class="progress">
           <div class="progress-bar" role="progressbar" aria-valuenow="{!! $total_points !!}" aria-valuemin="{!! $current_level->amount !!}" aria-valuemax="{!! $next_level->amount !!}" style="width: {!! $percentage !!}%;">
@@ -38,49 +38,37 @@
 
 <div class="col-lg-12">
 @if($graded_quests)
+
     <h3>Graded Quests</h3>
-    <!-- Links should be to view only, not add feedback -->
-        <div class="col-lg-12">
-            <div class="col-lg-4">
-                <h5>Quest Name</h5>
-            </div>
-            <div class="col-lg-3">
-                <h5>Submitted</h5>
-            </div>
-            <div class="col-lg-2">
-                <h5>Revisions</h5>
-            </div>
-            
-            <div class="col-lg-3">
-                <h5>Points</h5>
-            </div>
 
-        </div>
-
-        <div class="col-lg-12">
-            <div id="submission-list">
-                 <ul class="list-unstyled list">
-                    @foreach($graded_quests as $quest)
-                    <li>
-                        <div class="col-lg-4 quest">
-                            {!! link_to('quest/'.$quest['quest']->id.'/feedback/'.$student->id,  $quest['quest']->name) !!}
-                            
-                        </div>
-
-                        <div class="col-lg-3 date">
-                            {!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}
-                        </div>
-                        <div class="col-lg-2 revisions">
-                            {!! $quest['revisions'] !!}
-                        </div>
-                        <div class="col-lg-3 points">
-                            {!! $quest['earned'] !!} / {!! $quest['available'] !!}
-                        </div>
-                    @endforeach
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Quest</th>
+                <th>Submitted On</th>
+                <th>Revisions</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($graded_quests as $quest)
+            <tr>
+                <td>
+                    {!! link_to('quest/'.$quest['quest']->id.'/feedback/'.$student->id,  $quest['quest']->name) !!}            
+                </td>
+                <td>
+                    {!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}
+                </td>
+                <td>
+                    {!! $quest['revisions'] !!}
+                </td>
+                <td>
+                    {!! $quest['earned'] !!} / {!! $quest['available'] !!}
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
     @else
     @endif
     @if($pending_quests)
