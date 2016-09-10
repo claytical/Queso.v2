@@ -709,13 +709,8 @@ class QuestController extends Controller
                             ->select('id')
                             ->pluck('id')
                             ->toArray();
- //       if($quest_ids) {
- //           $all_quest_ids = array_merge($quest_ids,$more_ids);
- //       }
- //       else {
-            $all_quest_ids = $quest_ids;
-//        }
-
+        $all_quest_ids = array_merge($quest_ids,$more_ids);
+ 
         $quest_skills_total = 0;
 
         $quests = [];
