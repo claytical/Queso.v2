@@ -722,7 +722,7 @@ class QuestController extends Controller
         $quest_skills_total = 0;
 
         $quests = [];
-        foreach($quest_ids as $id) {
+        foreach($all_quest_ids as $id) {
             $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
             if ($quest->count() > 1) {
                 $revisions = $quest->get();
