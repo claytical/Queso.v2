@@ -722,7 +722,7 @@ class QuestController extends Controller
         $quest_skills_total = 0;
 
         $quests = [];
-        foreach($all_quest_ids as $id) {
+        foreach($quest_ids as $id) {
             $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
             if ($quest->count() > 1) {
                 $revisions = $quest->get();
@@ -760,7 +760,7 @@ class QuestController extends Controller
 
         $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'available_quests' => $quests_unattempted])
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'available_quests' => $quests_unattempted, 'idz' => $all_quest_ids])
             ->withUser(access()->user());
     }
 

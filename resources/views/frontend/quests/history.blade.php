@@ -2,6 +2,7 @@
 
 @section('content')
 <h2>Progress</h2>
+<div style="display:none">{!! var_dump($idz)!!}</div>
 <div class="col-lg-12">
     <div class="col-lg-6">
     <h4>{!! $current_level->name !!}</h4>
