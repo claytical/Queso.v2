@@ -698,7 +698,8 @@ class QuestController extends Controller
                             ->distinct()
                             ->select('quest_id')
                             ->orderBy('quest_user.created_at', 'asc')
-                            ->pluck('quest_id');
+                            ->pluck('quest_id')
+                            ->toArray();
 
         $group_quest_ids = $user->group_quests()->pluck('quest_id');
 
@@ -709,6 +710,7 @@ class QuestController extends Controller
                             ->select('id')
                             ->pluck('id')
                             ->toArray();
+
         $all_quest_ids = array_merge($quest_ids,$more_ids);
  
         $quest_skills_total = 0;
