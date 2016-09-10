@@ -73,92 +73,52 @@
     @endif
     @if($pending_quests)
     <h3>Pending Quests</h3>
-    <!-- Links should be to grade submission -->
-        <div class="col-lg-12">
-            <div class="col-lg-4">
-                <h5>Quest Name</h5>
-            </div>
-            <div class="col-lg-3">
-                <h5>Submitted</h5>
-            </div>
-            <div class="col-lg-2">
-                <h5>Revisions</h5>
-            </div>
-            
-            <div class="col-lg-3">
-                <h5>Points Available</h5>
-            </div>
-
-        </div>
-
-        <div class="col-lg-12">
-            <div id="pending-list">
-                 <ul class="list-unstyled list">
-                    @foreach($pending_quests as $quest)
-                    <li>
-                        <div class="col-lg-4 quest">
-                            {!! $quest['quest']->name !!}
-                        </div>
-
-                        <div class="col-lg-3 date">
-                            {!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}
-                        </div>
-                        <div class="col-lg-2 revisions">
-                            {!! $quest['revisions'] !!}
-                        </div>
-                        <div class="col-lg-3 points">
-                            {!! $quest['available'] !!}
-                        </div>
-
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Quest</th>
+                    <th>Submitted On</th>
+                    <th>Revisions</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($pending_quests as $quest)
+                    <td>{!! $quest['quest']->name !!}</td>
+                    <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
+                    <td>{!! $quest['revisions'] !!}</td>
+                    <td>{!! $quest['available'] !!}</td>
+                @endforeach
+                </tbody>
+        </table>
     @else
     @endif
+
     @if($available_quests)
     <h3>Available Quests</h3>
-    <!-- no links needed, unless on behalf of? -->
-        <div class="col-lg-12">
-            <div class="col-lg-9">
-                <h5>Quest Name</h5>
-            </div>
-            
-            <div class="col-lg-3">
-                <h5>Points Available</h5>
-            </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Quest</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($available_quests as $quest)
+            <tr>
+                <td>{!! $quest->name !!}</td>
+                <td>{!! $quest->skills()->sum('amount') !!}</td>
+            </tr>
+            @endforeach
 
-        </div>
-
-        <div class="col-lg-12">
-            <div id="available-list">
-                 <ul class="list-unstyled list">
-                    @foreach($available_quests as $quest)
-                    <li>
-                        <div class="col-lg-9 quest">
-                            {!! $quest->name !!}
-                        </div>
-                        <div class="col-lg-3 points">
-                            {!! $quest->skills()->sum('amount') !!}
-                        </div>
-                    </li>
-                    @endforeach
-
-                    @foreach($locked_quests as $quest)
-                    <li>
-                        <div class="col-lg-9 quest">
-                            {!! $quest->name !!} <span class="label">LOCKED</span>
-                        </div>
-                        <div class="col-lg-3 points">
-                            {!! $quest->skills()->sum('amount') !!}
-                        </div>
-                    </li>
-                    @endforeach
-                </ul>
-
-            </div>
-        </div>
+            @foreach($locked_quests as $quest)
+            <tr>
+                <td>{!! $quest->name !!} <span class="label">LOCKED</span></td>
+                <td>{!! $quest->skills()->sum('amount') !!}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
         @else
         @endif
 
