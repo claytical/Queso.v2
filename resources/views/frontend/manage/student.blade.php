@@ -41,7 +41,7 @@
 
     <h3>Graded Quests</h3>
 
-    <table class="table table-hover">
+    <table class="table table-hover" data-toggle="table">
         <thead>
             <tr>
                 <th>Quest</th>
@@ -73,7 +73,7 @@
     @endif
     @if($pending_quests)
     <h3>Pending Quests</h3>
-        <table class="table table-hover">
+        <table class="table table-hover" data-toggle="table">
             <thead>
                 <tr>
                     <th>Quest</th>
@@ -96,7 +96,7 @@
 
     @if($available_quests)
     <h3>Available Quests</h3>
-    <table class="table table-hover">
+    <table class="table table-hover" data-toggle="table">
         <thead>
             <tr>
                 <th>Quest</th>

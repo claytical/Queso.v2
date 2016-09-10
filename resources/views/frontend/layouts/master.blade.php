@@ -33,6 +33,7 @@
         <script async charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=a705fe8012d914a446d7e4" ></script>
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
         {{ Html::style('css/bootstrap-select.min.css') }}
+        {{ Html::style('css/bootstrap-table.css') }}
         {{ Html::style('css/vendor/jquery.minipreview.css') }}
         {{ Html::style('css/vendor/select2.min.css') }}
 
@@ -85,6 +86,8 @@
 
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
         {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
+        {{ Html::script('js/vendor/bootstrap/bootstrap-table.js') }}
+        {{ Html::script('js/vendor/bootstrap/bootstrap-table-reorder-columns.min.js') }}
         {{ Html::script('js/vendor/bootstrap/bootstrap-select.min.js')}}
         <script>
         $( document ).ready(function() {
