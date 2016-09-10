@@ -7,10 +7,12 @@
     </div>
 </div>
 @if(!$resources->isEmpty())
-    <table class="table table-hover">
+    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
             <thead>
-                <th>Name</th>
-                <th>Tag</th>
+                <th data-field="name" 
+            data-sortable="true">Name</th>
+                <th data-field="tag" 
+            data-sortable="true">Tag</th>
                 <th></th>
             </thead>
         @foreach($resources as $resource)
