@@ -30,12 +30,12 @@
     <div class="col-lg-6">
         <table class="table table-hover">
             <tbody>
-                <tr>
             @foreach($acquired_skills as $skill)
+                <tr>
                     <td>{!! $skill['name'] !!}</td>
                     <td>{!! $skill['amount'] !!}</td>
-            @endforeach
                 </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
