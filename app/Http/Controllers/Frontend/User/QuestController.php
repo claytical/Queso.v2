@@ -20,6 +20,8 @@ use App\FeedbackRequest;
 use App\Feedback;
 use Carbon\Carbon;
 use App\GroupQuest;
+use DB;
+
 
 /**
  * Class QuestController
@@ -722,8 +724,20 @@ class QuestController extends Controller
         $quest_skills_total = 0;
 
         $quests = [];
-        foreach($quest_ids as $id) {
-            $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
+        foreach($all_quest_ids as $id) {
+            $q = Quest::find($id);
+            if($q->groups) {
+                $quest = DB::table('group_quest_users')
+                                ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
+                                ->select('group_quest_id')
+                                ->where('user_id', '=', $user->id)
+                                ->where('quest_id', '=', $id)
+                                ->orderBy('group_quest.created_at');
+            }
+            else {
+                $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
+            }
+
             if ($quest->count() > 1) {
                 $revisions = $quest->get();
             }
