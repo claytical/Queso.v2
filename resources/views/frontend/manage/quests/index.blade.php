@@ -10,12 +10,9 @@
 @if(!$quests->isEmpty())
     <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
             <thead>
-                <th data-field="name" 
-            data-sortable="true">Quest</th>
-                <th data-field="category" 
-            data-sortable="true"></th>
-                <th data-field="actions" 
-            data-sortable="false"></th>
+                <th data-field="name" data-sortable="true">Quest</th>
+                <th data-field="type" data-sortable="true">Type</th>
+                <th data-field="actions" data-sortable="false"></th>
             </thead>
                 @foreach($quests as $quest)
                     <tr>
