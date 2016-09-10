@@ -789,13 +789,26 @@ class QuestController extends Controller
         }
         $skills = $user->skills()->where('quest_id', $quest_id)->get();
         $quest_skills = $quest->skills()->get();
-
-        $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
-        if ($user_quest->pivot->graded) {
-            $graded = true;
+        if($quest->groups) {
+            $user_quest = DB::table('group_quest_users')
+                                ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
+                                ->join('quests', 'group_quest.quest_id', '=', 'quests.id')
+                                ->select('quests.name', 'quests.created_at', 'group_quest.graded')
+                                ->where('user_id', '=', $user->id)
+                                ->where('quest_id', '=', $quest_id)
+                                ->orderBy('group_quest.created_at')
+                                ->first();
+            $graded = $user_quest->graded;
         }
         else {
-            $graded = false;
+            $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
+            if ($user_quest->pivot->graded) {
+                $graded = true;
+            }
+            else {
+                $graded = false;
+            }
+
         }
         $files = false;
         $attempt = null;
