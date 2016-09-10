@@ -50,12 +50,10 @@ trait Dropdowns
         $user = access()->user();
         $course = Course::find(session('current_course'));
         $quest_ids = GroupQuest::where('quest_id', '=', $quest_id)->pluck('id');
-        if($quest->groups) {
-                $group = DB::table('group_quest_users')
-                                ->select('user_id')
-                                ->whereIn('group_quest_id', $quest_ids)
-                                ->pluck('user_id');
-        }
+        $group = DB::table('group_quest_users')
+                        ->select('user_id')
+                        ->whereIn('group_quest_id', $quest_ids)
+                        ->pluck('user_id');
         $students = Role::find($course->student_role_id)
                             ->users()
                             ->where('users.id', '!=', $user->id)
