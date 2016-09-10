@@ -28,14 +28,16 @@
         </div>
     </div>
     <div class="col-lg-6">
-        @foreach($acquired_skills as $skill)
-            <div class="col-lg-6">
-                {!! $skill['name'] !!}
-            </div>
-            <div class="col-lg-6">
-                {!! $skill['amount'] !!}
-            </div>
-        @endforeach
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+            @foreach($acquired_skills as $skill)
+                    <td>{!! $skill['name'] !!}</td>
+                    <td>{!! $skill['amount'] !!}</td>
+            @endforeach
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 <div class="col-lg-12">
