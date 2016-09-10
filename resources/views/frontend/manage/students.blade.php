@@ -17,7 +17,7 @@
         @foreach($students as $student)
             <tr>
                 <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
-                <td><a href="{!! $student->email !!}">{!! $student->email !!}</td>
+                <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
                 <td>{!! $student->skills()->where('course_id', '=', session('current_course'))->sum('amount') !!}</td>
             </tr>
         @endforeach
