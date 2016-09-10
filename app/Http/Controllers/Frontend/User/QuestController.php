@@ -804,7 +804,7 @@ class QuestController extends Controller
                                         ->get();
 
 
-    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback, 'user' => $user]));
+    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback, 'user' => $user]);
     }
 
     public function give_feedback($quest_id, $user_id, $revision) {
