@@ -1,6 +1,12 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+@if($student->id == access()->user()->id)
+    <h2>Feedback for {!! $quest->name !!}</h2>
+@else
+    {!! link_to('manage/student/' . $student->id, 'Back to Student Overview', ['class' => 'btn btn-default pull-right']) !!}
+    <h2>{!! $student->name !!}, {!! $quest->name !!}</h2>
+@endif
     <div class="row">
         <div class="col-lg-9">
             @if($quest->quest_type_id == 1)
