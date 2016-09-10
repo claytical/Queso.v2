@@ -30,7 +30,7 @@
                 @if($quest->submissions)
                     {!! Form::textarea('submission', ''); !!}
                 @endif
-                @if($quest->quest_type_id != 2)
+                @if($quest->quest_type_id == 2)
                     <p>This quest is assigned as in class work. Students can see it as an available quest, but they can only receive credit if you assign them points manually or they enter a unique code.</p>
                 @endif
     </div>
