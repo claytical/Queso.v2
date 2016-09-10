@@ -6,7 +6,6 @@
 @else
     {!! link_to('manage/student/' . $user->id, 'Back to Student Overview', ['class' => 'btn btn-default pull-right']) !!}
     <h2>{!! $user->name !!}, {!! $quest->name !!}</h2>
-    }
 @endif
     <div class="row">
         <div class="col-lg-9">
