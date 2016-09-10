@@ -100,6 +100,7 @@
         <thead>
             <tr>
                 <th>Quest</th>
+                <th>Type</th>
                 <th>Points</th>
             </tr>
         </thead>
@@ -107,6 +108,19 @@
             @foreach($available_quests as $quest)
             <tr>
                 <td>{!! $quest->name !!}</td>
+                @if($quest->quest_type_id == 1)
+                    <td>Online Submission</td>
+                @endif
+                @if($quest->quest_type_id == 2)
+                    <td>In Class Activity</td>
+                @endif
+                @if($quest->quest_type_id == 3)
+                    <td>Video</td>
+                @endif
+                @if($quest->quest_type_id == 4)
+                    <td>Link</td>
+                @endif
+
                 <td>{!! $quest->skills()->sum('amount') !!}</td>
             </tr>
             @endforeach
@@ -114,6 +128,20 @@
             @foreach($locked_quests as $quest)
             <tr>
                 <td>{!! $quest->name !!} <span class="label">LOCKED</span></td>
+                @if($quest->quest_type_id == 1)
+                    <td>Online Submission</td>
+                @endif
+                @if($quest->quest_type_id == 2)
+                    <td>In Class Activity</td>
+                @endif
+                @if($quest->quest_type_id == 3)
+                    <td>Video</td>
+                @endif
+                @if($quest->quest_type_id == 4)
+                    <td>Link</td>
+                @endif
+
+
                 <td>{!! $quest->skills()->sum('amount') !!}</td>
             </tr>
             @endforeach
