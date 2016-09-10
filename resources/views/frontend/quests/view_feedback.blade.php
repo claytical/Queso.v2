@@ -46,7 +46,7 @@
 
         </div>  
     </div>
-            @if($positive)
+            @if(!$positive->isEmpty())
                 <h4>What Your Peers Liked</h4>
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
@@ -58,7 +58,7 @@
                     </div>
                 @endforeach
             @endif
-            @if($negative)
+            @if(!$negative->isEmpty())
                 <h4>Suggestions From Your Peers</h4>
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
