@@ -702,7 +702,9 @@ class QuestController extends Controller
                             ->whereIn('id', $group_quest_ids)
                             ->distinct()
                             ->select('id')
+                            ->get()
                             ->pluck('id');
+
         $all_quest_ids = array_merge($quest_ids,$more_ids);
 
         $quest_skills_total = 0;
