@@ -701,8 +701,8 @@ class QuestController extends Controller
                             ->where('course_id', '=', session('current_course'))
                             ->whereIn('id', $group_quest_ids)
                             ->distinct()
-                            ->select('quest_id')
-                            ->pluck('quest_id');
+                            ->select('id')
+                            ->pluck('id');
         $all_quest_ids = $quest_ids + $more_ids;
 
         $quest_skills_total = 0;
