@@ -709,12 +709,12 @@ class QuestController extends Controller
                             ->select('id')
                             ->get()
                             ->pluck('id');
-        if($quest_ids) {
-            $all_quest_ids = array_merge($more_ids,$more_ids);
-        }
-        else {
+ //       if($quest_ids) {
+ //           $all_quest_ids = array_merge($quest_ids,$more_ids);
+ //       }
+ //       else {
             $all_quest_ids = $quest_ids;
-        }
+//        }
 
         $quest_skills_total = 0;
 
@@ -757,7 +757,7 @@ class QuestController extends Controller
 
         $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'available_quests' => $quests_unattempted])
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'available_quests' => $quests_unattempted, 'more_ids' => $more_ids])
             ->withUser(access()->user());
     }
 
