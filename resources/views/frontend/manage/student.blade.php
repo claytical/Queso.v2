@@ -28,16 +28,12 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <table class="table table-condensed">
-            <tbody>
+        <dl class="dl-horizontal">
             @foreach($acquired_skills as $skill)
-                <tr>
-                    <td>{!! $skill['name'] !!}</td>
-                    <td>{!! $skill['amount'] !!}</td>
-                </tr>
+                    <dt>{!! $skill['name'] !!}</dt>
+                    <dd>{!! $skill['amount'] !!}</dd>
             @endforeach
-            </tbody>
-        </table>
+        </dl>    
     </div>
 
 <div class="col-lg-12">
