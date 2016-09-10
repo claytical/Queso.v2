@@ -5,35 +5,30 @@
 <div class="col-lg-12">
     <h2>Ungraded Submissions</h2>
 </div>
-        <div class="col-lg-12">
-            <div id="submission-list">
-            <div class="col-lg-9">
-              <input class="form-control search" placeholder="Search" />
-            </div>
-            <div class="col-lg-3">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sort <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#" class="sort" data-sort="submission">Quest Name</a></li>
-                    <li><a href="#" class="sort" data-sort="date">Date</a></li>
-                    <li><a href="#" class="sort" data-sort="student">Student Name</a></li>
-                  </ul>
-                </div>              
-            </div>
-            <div class="col-lg-12">
-                <ul class="list-unstyled list">
-                    @foreach($lists as $list)
-                    <li>
-                        <h4 class="submission">{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</h4>
-                        <p>Submitted <span class="date">{!! date('m-d-Y', strtotime($list['attempt']->created_at)) !!}</span> by <span class="student">{!! $list['student'] !!}</span></p>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            </div>
-        </div>
+
+<div class="col-lg-12">
+    <table class="table table-hover" data-toggle="table">
+        <thead>
+            <tr>
+                <th data-field="name" 
+                data-sortable="true"></th>
+                <th data-field="submitted" 
+                data-sortable="true">Submitted On</th>
+                <th data-field="student" 
+                data-sortable="true">Student</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($lists as $list)
+                <tr>
+                    <td>{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</td>
+                    <td>{!! date('m-d-Y', strtotime($list['attempt']->created_at)) !!}</td>
+                    <td>{!! $list['student'] !!}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 @else
     <h2>Ungraded Submissions</h2>
     <p class="lead">There are no submissions to grade!</p>
