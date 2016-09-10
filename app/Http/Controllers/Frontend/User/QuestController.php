@@ -671,6 +671,7 @@ class QuestController extends Controller
         $course = Course::find(session('current_course'));
         $course_skills = $course->skills()->get();
         $acquired_skills = [];
+
         foreach($course_skills as $skill) {
             $amount = $user->skills()
                             ->where('skill_id', $skill->id)
@@ -683,12 +684,15 @@ class QuestController extends Controller
         }
 
         $total_points_earned = $user->skills()->where('course_id', '=', session('current_course'))->sum('amount');
+
         if(!$total_points_earned) {
             $total_points_earned = 0;
         }
+
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
         $levels = $course->levels()->orderBy('amount')->get();
+
         javascript()->put(['levels' => $levels]);
 
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
@@ -702,16 +706,19 @@ class QuestController extends Controller
 
         $group_quest_ids = $user->group_quests()->pluck('quest_id');
 
-        $more_ids = $course->quests()
+        $all_quest_ids = $course->quests()
                             ->where('course_id', '=', session('current_course'))
                             ->whereIn('id', $group_quest_ids)
+                            ->orWhereIn('id', $quest_ids)
                             ->distinct()
                             ->select('id')
                             ->pluck('id');
 
+
+
+
 //        $all_quest_ids = array_merge($quest_ids,$more_ids);
  
-        $all_quest_ids = $quest_ids;
         $quest_skills_total = 0;
 
         $quests = [];
