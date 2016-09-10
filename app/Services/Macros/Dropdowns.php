@@ -6,7 +6,7 @@ use DB;
 use App\Course;
 use App\Team;
 use App\Models\Access\Role\Role;
-
+use App\GroupQuest;
 /**
  * Class Dropdowns
  * @package App\Services\Macros
@@ -44,6 +44,26 @@ trait Dropdowns
         $team = Team::find($id);
         $students = $team->users;
         return $students->implode('email', ',');  
+    }
+
+    public function remainingStudentList($name, $quest_id, $selected = null, $options = array()) {
+        $user = access()->user();
+        $course = Course::find(session('current_course'));
+        $quest_ids = GroupQuest::where('quest_id', '=', $quest_id)->pluck('id');
+        if($quest->groups) {
+                $group = DB::table('group_quest_users')
+                                ->select('user_id')
+                                ->whereIn('group_quest_id', $quest_ids)
+                                ->pluck('user_id');
+        }
+        $students = Role::find($course->student_role_id)
+                            ->users()
+                            ->where('users.id', '!=', $user->id)
+                            ->whereNotIn('users.id', $group)
+                            ->lists('users.name', 'users.id');
+
+        return $this->select($name, $students, $selected, $options);
+
     }
     public function studentList($name, $selected = null, $options = array()) {
         $user = access()->user();
