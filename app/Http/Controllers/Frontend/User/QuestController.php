@@ -710,7 +710,7 @@ class QuestController extends Controller
                             ->get()
                             ->pluck('id');
         if($quest_ids) {
-            $all_quest_ids = array_merge($quest_ids,$more_ids);
+            $all_quest_ids = array_merge($more_ids,$more_ids);
         }
         else {
             $all_quest_ids = $quest_ids;
