@@ -59,7 +59,11 @@ class StudentController extends Controller
         $acquired_skills = [];
 
         foreach($course_skills as $skill) {
-            $acquired_skills[] = ["amount" => $user->skills()->where('skill_id', $skill->id)->sum('amount'),
+            $amount = $user->skills()->where('skill_id', $skill->id)->sum('amount');
+            if(!$amount) {
+                $amount = 0;
+            }
+            $acquired_skills[] = ["amount" => $amount,
                                     "name" => $skill->name];
         }
 
