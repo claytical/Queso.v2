@@ -101,6 +101,7 @@
             <tr>
                 <th>Quest</th>
                 <th>Type</th>
+                <th>Expires</th>
                 <th>Points</th>
             </tr>
         </thead>
@@ -119,6 +120,11 @@
                 @endif
                 @if($quest->quest_type_id == 4)
                     <td>Link</td>
+                @endif
+                @if($quest->expires_at)
+                    <td>{!! date('m-d-Y', strtotime($quest->expires_at)) !!}</td>
+                @else
+                    <td>Never</td>
                 @endif
 
                 <td>{!! $quest->skills()->sum('amount') !!}</td>
