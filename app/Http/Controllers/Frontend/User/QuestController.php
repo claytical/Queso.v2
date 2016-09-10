@@ -760,7 +760,7 @@ class QuestController extends Controller
 
         $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'available_quests' => $quests_unattempted, 'more_ids' => $more_ids])
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'available_quests' => $quests_unattempted])
             ->withUser(access()->user());
     }
 
