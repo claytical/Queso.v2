@@ -87,7 +87,7 @@
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
         {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
         {{ Html::script('js/vendor/bootstrap/bootstrap-table.js') }}
-        {{ Html::script('js/vendor/bootstrap/bootstrap-table-reorder-columns.min.js') }}
+        {{ Html::script('js/vendor/bootstrap/bootstrap-table-multiple-sort.min.js') }}
         {{ Html::script('js/vendor/bootstrap/bootstrap-select.min.js')}}
         <script>
         $( document ).ready(function() {

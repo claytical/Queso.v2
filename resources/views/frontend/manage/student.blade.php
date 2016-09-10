@@ -44,10 +44,14 @@
     <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
         <thead>
             <tr>
-                <th>Quest</th>
-                <th>Submitted On</th>
-                <th>Revisions</th>
-                <th>Points</th>
+                <th data-field="name" 
+            data-sortable="true"></th>
+                <th data-field="submitted" 
+            data-sortable="true">Submitted On</th>
+                <th data-field="revisions" 
+            data-sortable="true">Revisions</th>
+                <th data-field="points" 
+            data-sortable="true">Points</th>
             </tr>
         </thead>
         <tbody>
@@ -73,13 +77,17 @@
     @endif
     @if($pending_quests)
     <h3>Pending Quests</h3>
-        <table class="table table-hover" data-toggle="table">
+        <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
             <thead>
                 <tr>
-                    <th>Quest</th>
-                    <th>Submitted On</th>
-                    <th>Revisions</th>
-                    <th>Points</th>
+                    <th data-field="name" 
+            data-sortable="true"></th>
+                    <th data-field="submitted" 
+            data-sortable="true">Submitted On</th>
+                    <th data-field="revisions" 
+            data-sortable="true">Revisions</th>
+                    <th data-field="points" 
+            data-sortable="true">Points</th>
                 </tr>
             </thead>
             <tbody>
@@ -96,13 +104,17 @@
 
     @if($available_quests)
     <h3>Available Quests</h3>
-    <table class="table table-hover" data-toggle="table">
+    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
         <thead>
             <tr>
-                <th>Quest</th>
-                <th>Type</th>
-                <th>Expires</th>
-                <th>Points</th>
+                <th data-field="name" 
+            data-sortable="true"></th>
+                <th data-field="type" 
+            data-sortable="true">Type</th>
+                <th data-field="expires" 
+            data-sortable="true">Expires</th>
+                <th data-field="points" 
+            data-sortable="true">Points</th>
             </tr>
         </thead>
         <tbody>
