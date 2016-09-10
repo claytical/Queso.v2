@@ -1,7 +1,13 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Feedback for {!! $quest->name !!}</h2>
+@if($user->id == access()->user()->id)
+    <h2>Feedback for {!! $quest->name !!}</h2>
+@else
+    {!! link_to('manage/student/' . $user->id, 'Back to Student Overview', ['class' => 'btn btn-default pull-right']) !!}
+    <h2>{!! $user->name !!}, {!! $quest->name !!}</h2>
+    }
+@endif
     <div class="row">
         <div class="col-lg-9">
             @if($quest->quest_type_id == 1)
@@ -73,6 +79,7 @@
             <div class="col-lg-12">
                 <h4>From The Professor</h4>
                 @foreach($instructor_feedback as $feedback)
+                    <h6>{!! date('m-d-Y', strtotime($feedback->created_at)) !!}</h6>
                     {!! $feedback->note !!}
                 @endforeach
             </div>

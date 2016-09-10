@@ -769,6 +769,7 @@ class QuestController extends Controller
             $graded = false;
         }
         $files = false;
+        $attempt = null;
         if($quest->quest_type_id == 1) {
             $attempt = Submission::where('quest_id', '=', $quest_id)
                                         ->where('user_id', '=', $user->id)
@@ -803,8 +804,7 @@ class QuestController extends Controller
                                         ->get();
 
 
-    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback])
-    		->withUser(access()->user());
+    	return view('frontend.quests.view_feedback', ['quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback, 'user' => $user]));
     }
 
     public function give_feedback($quest_id, $user_id, $revision) {
