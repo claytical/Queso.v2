@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <table class="table table-hover">
+        <table class="table table-condensed">
             <tbody>
             @foreach($acquired_skills as $skill)
                 <tr>
