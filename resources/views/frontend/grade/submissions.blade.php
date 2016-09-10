@@ -1,10 +1,10 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+@if($lists)
 <div class="col-lg-12">
     <h2>Ungraded Submissions</h2>
 </div>
-@if($lists)
         <div class="col-lg-12">
             <div id="submission-list">
             <div class="col-lg-9">
@@ -35,7 +35,8 @@
             </div>
         </div>
 @else
-<p class="lead">There are no submissions to grade!</p>
+    <h2>Ungraded Submissions</h2>
+    <p class="lead">There are no submissions to grade!</p>
 @endif
 @endsection
 
