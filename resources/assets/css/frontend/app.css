@@ -7907,6 +7907,12 @@ button.close {
   margin: 0;
   border-radius: 0; }
 
+.table-no-bordered {
+  border: none !important; }
+
+.select2-container {
+  width: 100% !important; }
+
 body.stop-scrolling {
   height: 100%;
   overflow: hidden; }
