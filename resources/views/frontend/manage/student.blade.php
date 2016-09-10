@@ -91,14 +91,14 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr>
                     @foreach($pending_quests as $quest)
+                    <tr>
                         <td>{!! $quest['quest']->name !!}</td>
                         <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
                         <td>{!! $quest['revisions'] !!}</td>
                         <td>{!! $quest['available'] !!}</td>
-                    @endforeach
                     </tr>
+                    @endforeach
                 </tbody>
         </table>
     @else
