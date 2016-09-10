@@ -8,16 +8,30 @@
 </div>
 
 @if(!$quests->isEmpty())
-    <table class="table table-hover">
+    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
             <thead>
-                <th>Quest</th>
-                <th></th>
-                <th></th>
+                <th data-field="name" 
+            data-sortable="true">Quest</th>
+                <th data-field="category" 
+            data-sortable="false"></th>
+                <th data-field="actions" 
+            data-sortable="false"></th>
             </thead>
                 @foreach($quests as $quest)
                     <tr>
                         <td>{{ link_to('manage/quest/'.$quest->id, $quest->name) }}</td>
-                        <td></td>
+                        @if($quest->quest_type_id == 1)
+                            <td>Online Submission</td>
+                        @endif
+                        @if($quest->quest_type_id == 2)
+                            <td>In Class Activity</td>
+                        @endif
+                        @if($quest->quest_type_id == 3)
+                            <td>Video</td>
+                        @endif
+                        @if($quest->quest_type_id == 4)
+                            <td>Link</td>
+                        @endif
                         <td>
                                 <div class="btn-group">
                                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
