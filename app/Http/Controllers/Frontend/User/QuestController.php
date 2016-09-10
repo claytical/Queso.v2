@@ -762,13 +762,13 @@ class QuestController extends Controller
         }
 
         $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
-                    ->whereNotIn('id', $quest_ids)
+                    ->whereNotIn('id', $all_quest_ids)
                     ->where('expires_at', '>', Carbon::now(new \DateTimeZone($course->timezone))->subDay())
                     ->orderBy('expires_at')
                     ->get();
 
         $quests_unattempted_not_expiring = Quest::where('course_id', '=', session('current_course'))
-                    ->whereNotIn('id', $quest_ids)
+                    ->whereNotIn('id', $all_quest_ids)
                     ->whereNull('expires_at')
                     ->orderBy('name')
                     ->get();
