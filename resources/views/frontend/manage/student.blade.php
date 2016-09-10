@@ -41,7 +41,7 @@
 
     <h3>Graded Quests</h3>
 
-    <table class="table table-hover" data-toggle="table">
+    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
         <thead>
             <tr>
                 <th>Quest</th>
