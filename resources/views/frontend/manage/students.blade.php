@@ -5,18 +5,20 @@
 <h2>Manage Students</h2>
 
 @if(!$students->isEmpty())
-<table class="table table-hover">
+<table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
         <thead>
-            <th>Name</th>
-            <th>Points</th>
-            <th></th>
+            <th data-field="name" 
+            data-sortable="true">Name</th>
+            <th data-field="email" data-sortable="true">Email</th>
+            <th data-field="points" 
+            data-sortable="true">Points</th>
         </thead>
 
         @foreach($students as $student)
             <tr>
                 <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
+                <td><a href="{!! $student->email !!}">{!! $student->email !!}</td>
                 <td>{!! $student->skills()->where('course_id', '=', session('current_course'))->sum('amount') !!}</td>
-                <td></td>
             </tr>
         @endforeach
 </table>

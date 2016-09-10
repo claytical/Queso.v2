@@ -13,7 +13,7 @@
                 <th data-field="name" 
             data-sortable="true">Quest</th>
                 <th data-field="category" 
-            data-sortable="false"></th>
+            data-sortable="true"></th>
                 <th data-field="actions" 
             data-sortable="false"></th>
             </thead>
