@@ -7,11 +7,11 @@
 </div>
 
 <div class="col-lg-12">
-    <table class="table table-hover" data-toggle="table">
+    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
         <thead>
             <tr>
                 <th data-field="name" 
-                data-sortable="true"></th>
+                data-sortable="true">Quest</th>
                 <th data-field="submitted" 
                 data-sortable="true">Submitted On</th>
                 <th data-field="student" 
