@@ -8,30 +8,20 @@
 </div>
 
 @if(!$announcements->isEmpty())
-
-    <div class="row">
-            <div class="col-lg-6">
-                <h5>Headline</h5>
-            </div>
-            <div class="col-lg-3">
-                <h5>Date</h5>
-            </div>
-            <div class="col-lg-3">
-            </div>
-        <div class="col-lg-12">
-             <ul class="list-unstyled list">
+    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
+            <thead>
+                <th data-field="name" 
+            data-sortable="true">Headline</th>
+                <th data-field="date" 
+            data-sortable="true">Date</th>
+                <th></th>
+            </thead>
+            <tbody>
                 @foreach($announcements as $announcement)
-                <li>
-                    <div class="row">
-                        <div class="col-lg-6 announcement">
-                            {{ link_to('manage/announcement/' . $announcement->id, $announcement->title) }}
-                        </div>
-
-                        <div class="col-lg-3 date">
-                            {!! date('m-d-Y', strtotime($announcement->created_at)) !!}
-                        </div>
-
-                        <div class="col-lg-3">
+                    <tr>
+                        <td>{{ link_to('manage/announcement/' . $announcement->id, $announcement->title) }}</td>
+                        <td>{!! date('m-d-Y', strtotime($announcement->created_at)) !!}</td>
+                        <td>
                             @if($announcement->sticky)
                                 <a class="btn btn-default" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"><span class="glyphicon glyphicon-eye-close"></span> Hide</a>
 
@@ -40,14 +30,11 @@
 
                             @endif
                                 <a class="btn btn-danger" href="{!! url('manage/announcement/'.$announcement->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                        </div>
- 
-                    </div>
-                </li>
+                        </td>
+                    </tr>
                 @endforeach
-            </ul>
-    </div>
-</div>
+            </tbody>
+    </table>
 @else
 <p class="lead">There are currently no announcements.</p>
 @endif
