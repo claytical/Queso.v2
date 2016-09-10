@@ -91,12 +91,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($pending_quests as $quest)
-                    <td>{!! $quest['quest']->name !!}</td>
-                    <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
-                    <td>{!! $quest['revisions'] !!}</td>
-                    <td>{!! $quest['available'] !!}</td>
-                @endforeach
+                    <tr>
+                    @foreach($pending_quests as $quest)
+                        <td>{!! $quest['quest']->name !!}</td>
+                        <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
+                        <td>{!! $quest['revisions'] !!}</td>
+                        <td>{!! $quest['available'] !!}</td>
+                    @endforeach
+                    </tr>
                 </tbody>
         </table>
     @else
@@ -158,7 +160,6 @@
                 @if($quest->quest_type_id == 4)
                     <td>Link</td>
                 @endif
-
 
                 <td>{!! $quest->skills()->sum('amount') !!}</td>
             </tr>
