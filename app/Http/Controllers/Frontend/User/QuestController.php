@@ -693,7 +693,12 @@ class QuestController extends Controller
 
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
 
-        $quest_ids = $user->quests()->where('course_id', '=', session('current_course'))->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
+        $quest_ids = $user->quests()
+                            ->where('course_id', '=', session('current_course'))
+                            ->distinct()
+                            ->select('quest_id')
+                            ->orderBy('quest_user.created_at', 'asc')
+                            ->pluck('quest_id');
 
         $group_quest_ids = $user->group_quests()->pluck('quest_id');
 
@@ -704,9 +709,8 @@ class QuestController extends Controller
                             ->select('id')
                             ->get()
                             ->pluck('id');
-        if($more_ids) {
+        if($quest_ids) {
             $all_quest_ids = array_merge($quest_ids,$more_ids);
-
         }
         else {
             $all_quest_ids = $quest_ids;
