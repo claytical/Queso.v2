@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="col-lg-12">
-        <a class="btn btn-default btn-xs pull-right" href="mailto:{!! Form::courseEmailList() !!}">Mail Entire Class</a>
-        <h2>Manage {!! $course->name !!}</h2>
+        
+        <h2>Manage {!! $course->name !!} <a class="btn btn-default pull-right" href="mailto:{!! Form::courseEmailList() !!}">Mail Entire Class</a></h2>
 
     </div>
 
