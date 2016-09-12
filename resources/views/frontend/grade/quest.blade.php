@@ -11,7 +11,7 @@
   <button type="button" class="btn btn-default" data-toggle="modal" data-target="#information">More Information</button>
   @if($revision_count > 1)
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   {!! date('m-d-Y', strtotime($revision->created_at)) !!}<span class="caret"></span>
+   {!! date('m-d-Y', strtotime($attempt->created_at)) !!}<span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
     @foreach($revisions as $revision)
