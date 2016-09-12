@@ -94,6 +94,12 @@
             $('select[name=default_course]').selectpicker();
 //            $('a.preview').miniPreview();
         });
+
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 5000);     
         </script>  
         @yield('before-scripts-end')
       

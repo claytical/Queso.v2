@@ -67,53 +67,50 @@
 
 </div>
 <h3>Quests Completed</h3>
-        <div class="col-lg-12">
 
-            @foreach($quests as $quest)
-                <div class="col-lg-6">
-                    <h4>{!! $quest['quest']->name !!} </h4>
-                    <h5>Submitted {!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</h5>
-                    {!! $quest['quest']->instructions !!}
-
-                    @if($quest['revisions'])
-                    <h6>Revision History</h6>
-                        <ul>
+    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
+        <thead>
+            <tr>
+                <th data-field="name" 
+                data-sortable="true">Quest</th>
+                <th data-field="submitted" 
+                data-sortable="true">Submitted On</th>
+                <th data-field="revisions" 
+                data-sortable="true">Revisions</th>
+                <th data-field="points"
+                data-sortable="true">Points</th>
+            </tr>            
+        </thead>
+        <tbody>
+            <td>{!! $quest['quest']->name !!}<br/>{!! $quest['quest']->instructions !!}</td>
+            <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
+            <td>
+                @if($quest['revisions'])            
+                    <ul>
                         @foreach($quest['revisions'] as $revision)
                             <li>{!! date('m-d-Y', strtotime($revision->created_at)) !!}</li>
                         @endforeach
-                        </ul>
+                    </ul>
+                @endif
+            </td>
+            <td>
+                <dl class="dl-horizontal">
+                    @foreach($quest['skills'] as $skill)
+                      <dt>{!! $skill->name!!}</dt>
+                      <dd>{!! $skill->pivot->amount !!}</dd>
+                    @endforeach
+                    
+                    @if(!$quest['earned'])
+                      <dt>Grade</dt>
+                      <dd>Pending</dd>
+                    @else
+                      <dt>Total</dt>
+                      <dd>{!! $quest['earned'] !!} / {!! $quest['available'] !!}</dd>
                     @endif
-                </div>
-
-                <div class="col-lg-6">
-                    <h5></h5>
-                        @foreach($quest['skills'] as $skill)
-                            <div class="col-lg-6">
-                                {!! $skill->name!!}
-                            </div>
-                            <div class="col-lg-6">
-                                {!! $skill->pivot->amount !!}
-                            </div>
-                        @endforeach
-                        @if(!$quest['earned'])
-                            <div class="col-lg-12 col-lg-offset-6">
-                                <span class="label label-warning">Grade Pending</span>
-                            </div>
-                        @else
-                            <hr/>
-                            <div class="col-lg-6">
-                                Total
-                            </div>
-
-                            <div class="col-lg-6">
-                                {!! $quest['earned'] !!} / {!! $quest['available'] !!}
-                            </div>
-
-                        @endif
-                </div>
-            @endforeach
- 
-         </div>
+                </dl>
+            </td>
+        </tbody>
+    </table>
 
 @endsection
 
