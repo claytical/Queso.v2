@@ -4,37 +4,52 @@
 
 <h2>Available Quests</h2>
 @if($unlocked)
-            <div class="col-lg-12">
+    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
+        <thead>
+            <tr>
+                <th data-field="name" 
+                data-sortable="true">Quest</th>
+                <th data-field="points" 
+                data-sortable="true">Points</th>
+                <th data-field="expiration" 
+                data-sortable="true">Expires</th>
+            </tr>            
+        </thead>
+            <tbody>
 
-            @foreach($unlocked as $quest)
-                <div class="row">
-                    <div class="col-lg-12">
-                        @if($quest->quest_type_id == 1)
-                            <h4>{{ link_to('quest/'.$quest->id.'/attempt/submission', $quest->name) }}</h4>
-                        @endif
-                        @if($quest->quest_type_id == 2)
-                            <h4>{{ $quest->name }}</h4>
-                        @endif
-                        @if($quest->quest_type_id == 3)
-                            <h4>{{ link_to('quest/'.$quest->id.'/watch', $quest->name) }}</h4>
-                        @endif
+                @foreach($unlocked as $quest)
+                    <tr>
+                        <td>
+                            @if($quest->quest_type_id == 1)
+                                <h4>{{ link_to('quest/'.$quest->id.'/attempt/submission', $quest->name) }}</h4>
+                            @endif
+                            @if($quest->quest_type_id == 2)
+                                <h4>{{ $quest->name }}</h4>
+                            @endif
+                            @if($quest->quest_type_id == 3)
+                                <h4>{{ link_to('quest/'.$quest->id.'/watch', $quest->name) }}</h4>
+                            @endif
 
-                        @if($quest->quest_type_id == 4)
-                            <h4>{{ link_to('quest/'.$quest->id.'/attempt/link', $quest->name) }}</h4>
-                        @endif
-                        <h5>{!! $quest->skills()->sum('amount') !!} Points</h5>
-                        @if($quest->expires_at)
-                        <h6>Due by {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h6>
-                        @endif
-                    </div>
-                    <div class="col-lg-12">
-                        <p>{!! $quest->instructions !!}</p>
-                    </div>
-                </div>
-            @endforeach
-            </div>
+                            @if($quest->quest_type_id == 4)
+                                <h4>{{ link_to('quest/'.$quest->id.'/attempt/link', $quest->name) }}</h4>
+                            @endif
+                        </td>
+                        <td>
+                            {!! $quest->skills()->sum('amount') !!}
+                        </td>
+                        <td>
+                            @if($quest->expires_at)
+                            {!! date('m-d-Y', strtotime($quest->expires_at)) !!}
+                            @else
+                            Never
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 @else
-<p>There are no available quests.</p>
+    <p>There are no available quests.</p>
 @endif
 
 @if($locked)
