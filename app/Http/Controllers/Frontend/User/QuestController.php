@@ -572,7 +572,7 @@ class QuestController extends Controller
             }
         }
         $instructors = access()->course_instructors();
-        foreach($instuctors as $instructor) {
+        foreach($instructors as $instructor) {
             $notice = new Notice;
             $notice->user_id = $instructor->id;
             $notice->message = $user->name . " has submitted " . $quest->name;
