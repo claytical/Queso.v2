@@ -48,6 +48,7 @@
         </div>  
     </div>
             @if(!$positive->isEmpty())
+         <div class="col-lg-12">
                 <h4>What Your Peers Liked</h4>
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
@@ -58,8 +59,10 @@
 
                     </div>
                 @endforeach
+            </div>
             @endif
             @if(!$negative->isEmpty())
+             <div class="col-lg-12">
                 <h4>Suggestions From Your Peers</h4>
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
@@ -69,6 +72,7 @@
 
                     </div>    
                 @endforeach
+            </div>
             @endif
             @if($graded)
             <div class="col-lg-12">

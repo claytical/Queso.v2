@@ -730,7 +730,7 @@ class QuestController extends Controller
                 $quest = DB::table('group_quest_users')
                                 ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
                                 ->join('quests', 'group_quest.quest_id', '=', 'quests.id')
-                                ->select('quests.name', 'quests.created_at', 'quests.instructions')
+                                ->select('quests.name', 'quests.created_at', 'quests.instructions', 'quests.id')
                                 ->where('user_id', '=', $user->id)
                                 ->where('quest_id', '=', $id)
                                 ->orderBy('group_quest.created_at');
