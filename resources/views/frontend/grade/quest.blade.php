@@ -15,6 +15,9 @@
   </button>
   <ul class="dropdown-menu">
     @foreach($revisions as $revision)
+      <div class="style:display:none;">
+        {!! var_dump($revision) !!}
+      </div>
       @if($revision->revision == 0)
         <li>{{ link_to('grade/quest/'.$quest->id . '/' . $attempt->id, 'Original') }}</li>
       @else
