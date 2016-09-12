@@ -222,7 +222,7 @@ class GradeController extends Controller
             $attempt->save();
             //send notification to user
             $notice = new Notice;
-            $notice->user_id = $attempt->user_id;
+            $notice->user_id = $user->id;
             $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
             $notice->url = "quest/". $quest->id ."/feedback";
             $notice->course_id = session('current_course');
