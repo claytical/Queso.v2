@@ -31,7 +31,7 @@
                 <dl class="dl-horizontal">
                     @foreach($quest_skills as $index => $quest_skill)
                     <dt>{!! $quest_skill->name !!}</dt>
-                    <dd>{!! $skills[$index]->pivot->amount !!} / {!! $quest_skill->pivot->amount !!}</dd>
+                    <dd></dd>
                     @endforeach
                 </dl>
         </div>

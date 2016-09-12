@@ -84,7 +84,9 @@
         <tbody>
             @foreach($quests as $quest)
             <tr>
-                <td>{!! $quest['quest']->name !!}<br/>{!! $quest['quest']->instructions !!}</td>
+                <td>{!! $quest['quest']->name !!}<br/>
+                        <em>{!! $quest['quest']->instructions !!}</em>
+                    </td>
                 <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
                 <td>
                     @if($quest['revisions'])            
