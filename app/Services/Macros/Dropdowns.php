@@ -48,7 +48,9 @@ trait Dropdowns
 
     public function courseEmailList() {
         $course = Course::find(session('current_course'));
-        $students = $course->users;
+        $students = $course->users()
+                    ->where('users.id', '!=', $user->id)
+                    ->get();
         return $students->implode(('email'), ',');
     }
 
