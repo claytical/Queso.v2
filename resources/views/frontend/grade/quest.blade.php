@@ -15,11 +15,7 @@
   </button>
   <ul class="dropdown-menu">
     @foreach($revisions as $revision)
-      @if($revision->revision == 0)
-        <li>{{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, 'Original') }}</li>
-      @else
         <li>{{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m-d-Y', strtotime($revision->created_at))) }}</li>
-      @endif
     @endforeach
   </ul>
   @endif
