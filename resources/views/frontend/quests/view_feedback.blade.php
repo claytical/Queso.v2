@@ -32,7 +32,6 @@
                     @foreach($quest_skills as $index => $quest_skill)
                         <dt>{!! $quest_skill->name !!}</dt>
                         @if(isset($skills[$index]))
-                            <dd>{!! $skills[$index]->pivot->amount !!} / {!! $quest_skill->pivot->amount !!}</dd>
                         @else
                             <dd>Error</dd>
                         @endif
