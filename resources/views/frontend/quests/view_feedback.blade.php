@@ -30,7 +30,7 @@
                     <h4>Current Grade</h4>
                 <dl class="dl-horizontal">
                     @foreach($quest_skills as $index => $quest_skill)
-                        @if($skills[$index])
+                        @if($skills[$index]->pivot)
                         <dt>{!! $quest_skill->name !!}</dt>
                         <dd>{!! $skills[$index]->pivot->amount !!} / {!! $quest_skill->pivot->amount !!}</dd>
                         @else
