@@ -3,7 +3,9 @@
 @section('content')
 
     <div class="col-lg-12">
-        <h2>Course Settings</h2>
+        <a class="btn btn-default btn-xs pull-right" href="mailto:{!! Form::courseEmailList() !!}">Mail Entire Class</a>
+        <h2>Manage {!! $course->name !}}</h2>
+
     </div>
 
 
