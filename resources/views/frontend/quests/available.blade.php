@@ -20,19 +20,7 @@
                 @foreach($unlocked as $quest)
                     <tr>
                         <td>
-                            @if($quest->quest_type_id == 1)
-                                <h4>{{ link_to('quest/'.$quest->id.'/attempt/submission', $quest->name, ['data-toggle' => 'modal', 'data-target' => '#quest-' . $quest->id]) }}</h4>
-                            @endif
-                            @if($quest->quest_type_id == 2)
-                                <h4>{{ $quest->name }}</h4>
-                            @endif
-                            @if($quest->quest_type_id == 3)
-                                <h4>{{ link_to('quest/'.$quest->id.'/watch', $quest->name) }}</h4>
-                            @endif
-
-                            @if($quest->quest_type_id == 4)
-                                <h4>{{ link_to('quest/'.$quest->id.'/attempt/link', $quest->name) }}</h4>
-                            @endif
+                            {{ link_to('#', $quest->name, ['data-toggle' => 'modal', 'data-target' => '#quest-' . $quest->id]) }}
                         </td>
                         <td>
                             {!! $quest->skills()->sum('amount') !!}
