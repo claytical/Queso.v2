@@ -88,6 +88,17 @@ class Access
         }
         return false;
     }
+
+    public function course_instructors() {
+        $course = Course::find(session('current_course'));
+        $instructors = [];
+        foreach($course->users as $user) {
+            if($user->hasRole($course->instructor_role_id)) {
+                $instructors[] = $user;
+            }
+        }
+        return $instructors;
+    }
     /**
      * Return if the current session user is a guest or not
      * @return mixed

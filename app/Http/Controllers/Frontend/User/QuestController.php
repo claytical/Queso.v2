@@ -19,6 +19,7 @@ use App\Models\Access\User\User;
 use App\FeedbackRequest;
 use App\Feedback;
 use Carbon\Carbon;
+use App\Notice;
 use App\GroupQuest;
 use DB;
 
@@ -531,6 +532,13 @@ class QuestController extends Controller
                     //add to group quest user
                     $gq->users()->attach($request->students[$i]);
 //                        $user->skills()->attach($skill->id, ['amount' => $skill->pivot->amount, 'quest_id' => $quest->id]);
+                    $notice = new Notice;
+                    $notice->user_id = $request->students[$i];
+                    $notice->message = $quest->name . " has been submitted for your group by ". $user->name;
+                    $notice->url = null;
+                    $notice->course_id = session('current_course');
+                    $notice->save();
+
               }
             }
 
@@ -563,7 +571,15 @@ class QuestController extends Controller
                 $attempt->files()->attach($files[$i]);
             }
         }
- 
+        $instructors = access()->course_instructors();
+        foreach($instuctors as $instructor) {
+            $notice = new Notice;
+            $notice->user_id = $instructor->id;
+            $notice->message = $user->name . " has submitted " . $quest->name;
+            $notice->url = "grade/quest/". $quest->id ."/" . $attempt->id;
+            $notice->course_id = session('current_course');
+            $notice->save();
+        }
         if ($request->revision == 0) {
             return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted. ");
         }
