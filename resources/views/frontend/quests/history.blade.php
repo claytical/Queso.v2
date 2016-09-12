@@ -82,33 +82,37 @@
             </tr>            
         </thead>
         <tbody>
-            <td>{!! $quest['quest']->name !!}<br/>{!! $quest['quest']->instructions !!}</td>
-            <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
-            <td>
-                @if($quest['revisions'])            
-                    <ul>
-                        @foreach($quest['revisions'] as $revision)
-                            <li>{!! date('m-d-Y', strtotime($revision->created_at)) !!}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </td>
-            <td>
-                <dl class="dl-horizontal">
-                    @foreach($quest['skills'] as $skill)
-                      <dt>{!! $skill->name!!}</dt>
-                      <dd>{!! $skill->pivot->amount !!}</dd>
-                    @endforeach
-                    
-                    @if(!$quest['earned'])
-                      <dt>Grade</dt>
-                      <dd>Pending</dd>
-                    @else
-                      <dt>Total</dt>
-                      <dd>{!! $quest['earned'] !!} / {!! $quest['available'] !!}</dd>
+            @foreach($quests as $quest)
+            <tr>
+                <td>{!! $quest['quest']->name !!}<br/>{!! $quest['quest']->instructions !!}</td>
+                <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
+                <td>
+                    @if($quest['revisions'])            
+                        <ul>
+                            @foreach($quest['revisions'] as $revision)
+                                <li>{!! date('m-d-Y', strtotime($revision->created_at)) !!}</li>
+                            @endforeach
+                        </ul>
                     @endif
-                </dl>
-            </td>
+                </td>
+                <td>
+                    <dl class="dl-horizontal">
+                        @foreach($quest['skills'] as $skill)
+                          <dt>{!! $skill->name!!}</dt>
+                          <dd>{!! $skill->pivot->amount !!}</dd>
+                        @endforeach
+                        
+                        @if(!$quest['earned'])
+                          <dt>Grade</dt>
+                          <dd>Pending</dd>
+                        @else
+                          <dt>Total</dt>
+                          <dd>{!! $quest['earned'] !!} / {!! $quest['available'] !!}</dd>
+                        @endif
+                    </dl>
+                </td>
+            </tr>
+            @endforeach
         </tbody>
     </table>
 
