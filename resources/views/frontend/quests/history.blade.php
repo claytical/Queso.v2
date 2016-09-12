@@ -87,7 +87,6 @@
                 <td>
                 @if($quest['earned'])
                     {{ link_to('quest/' . $quest['quest']->id . '/feedback', $quest['quest']->name) }}
-                    }
                 @else
                     {!! $quest['quest']->name !!}
                 @endif
