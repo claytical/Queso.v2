@@ -36,8 +36,8 @@
                         @else
                         <dt>{!! $quest_skill->name !!}</dt>
                         <dd>Error</dd>
-
                         @endif
+                    @endforeach
                 </dl>
         </div>
             @else
