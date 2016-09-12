@@ -34,7 +34,7 @@
                         @if(isset($skills[$index]))
                             <dd>{!! $skills[$index]->pivot->amount !!} / {!! $quest_skill->pivot->amount !!}</dd>
                         @else
-                            <dd>Error</dd>
+                            <dd>Pending</dd>
                         @endif
                     @endforeach
                 </dl>
