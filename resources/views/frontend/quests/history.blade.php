@@ -84,17 +84,20 @@
         <tbody>
             @foreach($quests as $quest)
             <tr>
-                <td>{!! $quest['quest']->name !!}<br/>
+                <td>
+                @if($quest['earned'])
+                    {{ link_to('quest/' . $quest['quest']->id . '/feedback', $quest['quest']->name) }}
+                    }
+                @else
+                    {!! $quest['quest']->name !!}
+                @endif
+                <br/>
                         <em>{!! $quest['quest']->instructions !!}</em>
                     </td>
                 <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
                 <td>
-                    @if($quest['revisions'])            
-                        <ul>
-                            @foreach($quest['revisions'] as $revision)
-                                <li>{!! date('m-d-Y', strtotime($revision->created_at)) !!}</li>
-                            @endforeach
-                        </ul>
+                    @if($quest['revisions'])
+                        {!! count($quest['revisions']) !!}
                     @endif
                 </td>
                 <td>
