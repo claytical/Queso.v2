@@ -50,6 +50,7 @@ trait Dropdowns
         $course = Course::find(session('current_course'));
         $students = $course->users()
                     ->where('users.id', '!=', $user->id)
+                    ->get();
         return $students->implode(('email'), ',');
     }
 
