@@ -20,7 +20,6 @@
                 @foreach($unlocked as $quest)
                     <tr>
                         <td>
-                        data-toggle="modal" data-target="#myModal"
                             @if($quest->quest_type_id == 1)
                                 <h4>{{ link_to('quest/'.$quest->id.'/attempt/submission', $quest->name, ['data-toggle' => 'modal', 'data-target' => '#quest-' . $quest->id]) }}</h4>
                             @endif
@@ -61,6 +60,9 @@
               <div class="modal-body">
                 <p>{!! $quest->instructions !!}</p>
                     
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     @if($quest->quest_type_id == 1)
                         {{ link_to('quest/'.$quest->id.'/attempt/submission', 'Attempt', ['class' => 'btn btn-primary']) }}
                     @endif
@@ -68,10 +70,6 @@
                     @if($quest->quest_type_id == 3)
                         {{ link_to('quest/'.$quest->id.'/watch', 'Watch', ['class' => 'btn btn-primary']) }}
                     @endif
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
