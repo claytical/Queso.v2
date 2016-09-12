@@ -74,7 +74,12 @@
                         <ul class="list-unstyled">
                         @if(!$notifications->isEmpty())
                                 @foreach($notifications as $notice)
-                                    <li>{{ link_to($notice->url, $notice->message) }}
+                                    <li>
+                                        @if($notice->url)
+                                        {{ link_to($notice->url, $notice->message) }}
+                                        @else
+                                        {!! $notice->message !!}
+                                        @endif
                                         <a href="{!! url('notification/dismiss', [$notice->id]);!!}"><span class="glyphicon glyphicon-remove pull-right text-danger"></span></a>
                                     </li>
                                 @endforeach
