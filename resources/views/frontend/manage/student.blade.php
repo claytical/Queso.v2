@@ -205,6 +205,11 @@
 
 @section('after-scripts-end')
     <script>
+/*
+    labels = [quest_date, quest_date, quest_date, quest_date]
+    series = [skill1, skill1, skill1, skill1],
+             [skill2, skill2, skill2, skill2],
+             [skill3, skill3, skill3, skill3]
         new Chartist.Bar('.ct-chart', {
           labels: ['Q1', 'Q2', 'Q3', 'Q4'],
           series: [
@@ -214,6 +219,7 @@
           ]
         }, {
           stackBars: true,
+          
           axisY: {
             labelInterpolationFnc: function(value) {
               return (value / 1000) + 'k';
@@ -226,6 +232,20 @@
             });
           }
         });
+*/
 
+new Chartist.Line('.ct-chart', {
+  labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+  series: [
+    [12, 9, 7, 8, 5],
+    [2, 1, 3.5, 7, 3],
+    [1, 3, 4, 5, 6]
+  ]
+}, {
+  fullWidth: true,
+  chartPadding: {
+    right: 40
+  }
+});
     </script>
 @stop
