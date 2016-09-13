@@ -65,7 +65,7 @@
                     {!! link_to('quest/'.$quest['quest']->id.'/feedback/'.$student->id,  $quest['quest']->name) !!}            
                 </td>
                 <td>
-                    {!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}
+                    {!! date('m-d-Y', strtotime($quest['history']->created_at)) !!}
                 </td>
                 <td>
                     {!! $quest['revisions'] !!}
