@@ -124,7 +124,7 @@ class StudentController extends Controller
 
             //CHART SERIES
 //                $skill_dates[] = $skills[0]->created_at;
-//                $skill_dates[] = "01-20-2003";
+                $skill_dates[] = "01-20-2003";
 //                $skill_points = [];
                 /*
                 foreach($course_skills as $skill) {
@@ -135,17 +135,15 @@ class StudentController extends Controller
                     $skill_points[] = $amount;
                 }
                 */
-//                $skill_amounts[] = [2,3];
+                $skill_amounts[] = [2,3];
             //END CHART
-            }
-
             }
             else {
                 $quests_ungraded[] = ['quest' => $quest, 'revisions' => $revisions, 'skills' => $skills, 'available' => $available];
             }
         }
 
-//        javascript()->put(['skillDates' => $skill_dates, 'skillAmounts' => $skill_amounts]);
+        javascript()->put(['skillDates' => $skill_dates, 'skillAmounts' => $skill_amounts]);
 
         $user_skill_levels = array();
         foreach($course_skills as $skill) {
