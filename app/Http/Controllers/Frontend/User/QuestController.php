@@ -608,12 +608,12 @@ class QuestController extends Controller
         else {
             $user->quests()->detach($quest_id);
         }
-        
-        $user_quest_count = $user->quests()->where('quest_id', $quest_id)->where('graded', true)->count();
-        if($user_quest_count > 0) {
-            $acquired_skills = $user->skills()->wherePivot('quest_id', $quest_id)->first();
-            $acquired_skills->pivot->delete();
+        $skills = $quest->skills();
+
+        foreach($skills as $skill) {
+            $user->skills()->where('quest_id', $quest_id)->detach($skill->id);            
         }
+
         return redirect()->route('student.detail', ['student_id' => $student_id])
                             ->withFlashSuccess("Removed " . $quest->name . " from student.");        
     }
