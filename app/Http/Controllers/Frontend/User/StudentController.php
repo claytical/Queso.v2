@@ -125,8 +125,8 @@ class StudentController extends Controller
             //CHART SERIES
                 $skill_dates[] = $skills[0]->created_at;
 //                $skill_dates[] = "01-20-2003";
-//                $skill_points = [];
-                /*
+                $skill_points = [];
+                
                 foreach($course_skills as $skill) {
                     $amount = $user->skills()->where('skill_id', $skill->id)->where('created_at', $skills[0]->created_at)->sum('amount');
                     if(!$amount) {
@@ -134,8 +134,8 @@ class StudentController extends Controller
                     }
                     $skill_points[] = $amount;
                 }
-                */
-                $skill_amounts[] = [2,3];
+                
+                $skill_amounts[] = $skill_points;
             //END CHART
             }
             else {
