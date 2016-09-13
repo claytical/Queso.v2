@@ -36,7 +36,7 @@
         </dl>    
     </div>
 <div class="col-lg-12">
-    <div class="ct-chart ct-golden-section" id="student_progress_chart"></div>
+    <div class="ct-chart ct-major-twelfth" id="student_progress_chart"></div>
 </div>
 
 <div class="col-lg-12">
