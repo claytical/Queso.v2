@@ -164,7 +164,7 @@
                     <td>Never</td>
                 @endif
 
-                <td>{!! var_dump($quest['earned']) !!} {!! $quest->skills()->sum('amount') !!}</td>
+                <td>{!! $quest->skills()->sum('amount') !!}</td>
             </tr>
             @endforeach
 
