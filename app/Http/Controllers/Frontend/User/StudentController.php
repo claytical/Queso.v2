@@ -145,7 +145,7 @@ class StudentController extends Controller
             }
         }
 
-        javascript()->put(['skillDates' => $skill_dates, 'skillAmounts' => $skill_amounts]);
+//        javascript()->put(['skillDates' => $skill_dates, 'skillAmounts' => $skill_amounts]);
 
         $user_skill_levels = array();
         foreach($course_skills as $skill) {
