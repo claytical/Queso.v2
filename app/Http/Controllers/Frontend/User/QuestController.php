@@ -589,6 +589,31 @@ class QuestController extends Controller
         }
 
     }
+    public function remove_student_attempt($student_id, $quest_id) {
+        $quest = Quest::find($quest_id);
+        $user = User::find($student_id);
+        if($quest->groups) {
+            $gq = $user->group_quests();
+            $attempt_id = $gq->attempt_id;
+            if($quest->quest_type_id == 1) {
+                $attempt = Submission::find($attempt_id);
+                $attempt->delete();
+            }
+            if($quest->quest_type_id == 4) {
+                $attempt = Link::find($attempt_id);
+                $attempt->delete();
+            }
+            $gq->detach($quest_id);
+        }
+        else {
+            $user->quests()->detach($quest_id);            
+        }
+
+        $acquired_skills = $user->skills()->wherePivot('quest_id', $quest_id);
+        $acquired_skills->pivot->delete();
+        return redirect()->route('student.detail', ['student_id' => $student_id])
+                            ->withFlashSuccess("Removed " . $quest->name . " from student.");        
+    }
 
     public function redeem() {
         return view('frontend.quests.redeem')

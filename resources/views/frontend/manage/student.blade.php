@@ -45,13 +45,14 @@
         <thead>
             <tr>
                 <th data-field="name" 
-            data-sortable="true"></th>
+            data-sortable="true">Name</th>
                 <th data-field="submitted" 
             data-sortable="true">Submitted On</th>
                 <th data-field="revisions" 
             data-sortable="true">Revisions</th>
                 <th data-field="points" 
             data-sortable="true">Points</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -69,6 +70,17 @@
                 <td>
                     {!! $quest['earned'] !!} / {!! $quest['available'] !!}
                 </td>
+                <td>
+                    <div class="btn-group pull-right">
+                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                        <li>{!! link_to('manage/student/'.$student->id.'/remove/quest/'.$quest['quest']->id, 'Remove') !!}</li>
+                                  </ul>
+                    </div>
+                </td>
+
             </tr>
             @endforeach
         </tbody>
@@ -81,13 +93,14 @@
             <thead>
                 <tr>
                     <th data-field="name" 
-            data-sortable="true"></th>
+            data-sortable="true">Name</th>
                     <th data-field="submitted" 
             data-sortable="true">Submitted On</th>
                     <th data-field="revisions" 
             data-sortable="true">Revisions</th>
                     <th data-field="points" 
             data-sortable="true">Points</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -97,6 +110,16 @@
                         <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
                         <td>{!! $quest['revisions'] !!}</td>
                         <td>{!! $quest['available'] !!}</td>
+                        <td>
+                            <div class="btn-group pull-right">
+                                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Actions <span class="caret"></span>
+                                          </button>
+                                          <ul class="dropdown-menu">
+                                                <li>{!! link_to('manage/student/'.$student->id.'/remove/quest/'.$quest['quest']->id, 'Remove') !!}</li>
+                                          </ul>
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -110,7 +133,7 @@
         <thead>
             <tr>
                 <th data-field="name" 
-            data-sortable="true"></th>
+            data-sortable="true">Name</th>
                 <th data-field="type" 
             data-sortable="true">Type</th>
                 <th data-field="expires" 
@@ -147,7 +170,7 @@
 
             @foreach($locked_quests as $quest)
             <tr>
-                <td>{!! $quest->name !!} <span class="label">LOCKED</span></td>
+                <td>{!! $quest->name !!} <span class="badge pull-right">LOCKED</span></td>
                 @if($quest->quest_type_id == 1)
                     <td>Online Submission</td>
                 @endif
@@ -159,6 +182,11 @@
                 @endif
                 @if($quest->quest_type_id == 4)
                     <td>Link</td>
+                @endif
+                @if($quest->expires_at)
+                    <td>{!! date('m-d-Y', strtotime($quest->expires_at)) !!}</td>
+                @else
+                    <td>Never</td>
                 @endif
 
                 <td>{!! $quest->skills()->sum('amount') !!}</td>

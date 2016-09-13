@@ -98,7 +98,7 @@ class GradeController extends Controller
             //LINK
             $attempt = Link::find($attempt_id);
             $attempts = Link::where('quest_id', '=', $quest->id)
-                                        ->where('user_id', '=', $attempt->user_id);
+                                ->where('user_id', '=', $attempt->user_id);
         }
 
         $positive_feedback = Feedback::where('to_user_id', '=', $attempt->user_id)

@@ -76,7 +76,12 @@ class StudentController extends Controller
 
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
 
-        $quest_ids = $user->quests()->where('course_id', '=', session('current_course'))->distinct()->select('quest_id')->orderBy('quest_user.created_at', 'asc')->pluck('quest_id');
+        $quest_ids = $user->quests()
+                            ->where('course_id', '=', session('current_course'))
+                            ->distinct()
+                            ->select('quest_id')
+                            ->orderBy('quest_user.created_at', 'asc')
+                            ->pluck('quest_id');
         $quests_graded = [];
         $quests_ungraded = [];
         foreach($quest_ids as $id) {
