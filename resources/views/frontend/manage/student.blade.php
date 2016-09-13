@@ -238,12 +238,12 @@ new Chartist.Line('.ct-chart', {
   labels: skillDates,
   series: skillAmounts
     }, {
-  axisY: {
-    onlyInteger: true,
-    }
+        axisY: {
+                onlyInteger: true,
+        },
   fullWidth: true,
   chartPadding: {
-    right: 40
+                right: 40
   }
 });
     </script>
