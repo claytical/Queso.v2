@@ -123,7 +123,7 @@ class StudentController extends Controller
             $quest = $quest->first();
             if($earned > 0) {
                 $quests_graded[] = ['quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
-
+/*
             //CHART SERIES
                 if($quest->groups) {
                     $skill_dates[] = $history->created_at->format('m/d');
@@ -136,17 +136,18 @@ class StudentController extends Controller
 //                $skill_dates[] = "01-20-2003";
                 $skill_points = [];
                 $bar_total = 0;
+*/
                 foreach($course_skills as $skill) {
                     $amount = $user->skills()->where('skill_id', $skill->id)->where('quest_id', '=', $quest->id)->sum('amount');
-                    $bar_total += $amount;
+  //                  $bar_total += $amount;
                     if(!$amount) {
                         $amount = 0;
                     }
 //                    $skill_points[] = $amount;
-                    $skill_points[] = $bar_total;
+//                    $skill_points[] = $bar_total;
                 }
                 
-                $skill_amounts[] = $skill_points;
+ //               $skill_amounts[] = $skill_points;
             //END CHART
             }
             else {
@@ -154,7 +155,7 @@ class StudentController extends Controller
             }
         }
 
-        javascript()->put(['skillDates' => $skill_dates, 'skillAmounts' => $skill_amounts]);
+   //     javascript()->put(['skillDates' => $skill_dates, 'skillAmounts' => $skill_amounts]);
 
         $user_skill_levels = array();
         foreach($course_skills as $skill) {
