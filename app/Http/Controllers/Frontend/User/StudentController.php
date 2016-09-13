@@ -123,7 +123,8 @@ class StudentController extends Controller
                 $quests_graded[] = ['quest' => $quest, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
 
             //CHART SERIES
-                $skill_dates[] = $skills[0]->created_at;
+//                $skill_dates[] = $skills[0]->created_at;
+                $skill_dates[] = "01-20-2003";
                 $skill_points = [];
                 /*
                 foreach($course_skills as $skill) {
@@ -144,6 +145,7 @@ class StudentController extends Controller
             }
         }
 
+        javascript()->put(['skillDates' => $skill_dates, 'skillAmounts' => $skill_amounts]);
 
         $user_skill_levels = array();
         foreach($course_skills as $skill) {
@@ -178,7 +180,6 @@ class StudentController extends Controller
                 $quests_locked[] = $quest;
             }
         }
-        javascript()->put(['skillDates' => $skill_dates, 'skillAmounts' => $skill_amounts]);
 
         return view('frontend.manage.student', ['student' => $user, 'total_points' => $total_points_earned, 'current_level' => $current_level, 'next_level' => $next_level, 'graded_quests' => $quests_graded, 'pending_quests' => $quests_ungraded, 'available_quests' => $quests_unlocked, 'locked_quests' => $quests_locked, 'team' => $team, 'teams' => $teams, 'acquired_skills' => $acquired_skills, 'percentage' => $percentage])
             ->withUser(access()->user());
