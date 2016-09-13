@@ -82,10 +82,36 @@ class StudentController extends Controller
                             ->select('quest_id')
                             ->orderBy('quest_user.created_at', 'asc')
                             ->pluck('quest_id');
+        $group_quest_ids = $user->group_quests()->pluck('quest_id');
+
+        $all_quest_ids = $course->quests()
+                            ->where('course_id', '=', session('current_course'))
+                            ->whereIn('id', $group_quest_ids)
+                            ->orWhereIn('id', $quest_ids)
+                            ->distinct()
+                            ->select('id')
+                            ->pluck('id');
+
+
         $quests_graded = [];
         $quests_ungraded = [];
-        foreach($quest_ids as $id) {
-            $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
+        foreach($all_quest_ids as $id) {
+            $q = Quest::find($id);
+            if($q->groups) {
+                $quest = DB::table('group_quest_users')
+                                ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
+                                ->join('quests', 'group_quest.quest_id', '=', 'quests.id')
+                                ->select('quests.name', 'quests.created_at', 'quests.instructions', 'quests.id')
+                                ->where('user_id', '=', $user->id)
+                                ->where('quest_id', '=', $id)
+                                ->orderBy('group_quest.created_at');
+            }
+            else {
+                $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
+            }
+
+
+            //$quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
             $revisions = $quest->count();
             $skills = $user->skills()->where('quest_id', $id)->get();
             $earned = $user->skills()->where('quest_id', $id)->sum('amount');
