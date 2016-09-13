@@ -123,7 +123,7 @@ class StudentController extends Controller
                 $quests_graded[] = ['quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
 
             //CHART SERIES
-                $skill_dates[] = $history->created_at->format('m/d');
+                $skill_dates[] = $history->pivot->created_at->format('m/d');
 //                $skill_dates[] = $skills[0]->created_at->format('m/d');
 //                $skill_dates[] = "01-20-2003";
                 $skill_points = [];
