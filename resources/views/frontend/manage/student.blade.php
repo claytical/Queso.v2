@@ -66,6 +66,7 @@
                 </td>
                 <td>
                     {!! date('m-d-Y', strtotime($quest['history']->created_at)) !!}
+                    {!! var_dump($quest['history']) !!}
                 </td>
                 <td>
                     {!! $quest['revisions'] !!}
