@@ -36,6 +36,7 @@
         {{ Html::style('css/bootstrap-table.css') }}
         {{ Html::style('css/vendor/jquery.minipreview.css') }}
         {{ Html::style('css/vendor/select2.min.css') }}
+        {{ Html::style('css/vendor/chartist.css') }}
 
 <script>
 </script>
@@ -74,6 +75,7 @@
         {{ Html::script('js/vendor/jquery/multiselect.min.js') }}
         {{ Html::script('js/vendor/jquery/jquery.minipreview.js') }}
         {{ Html::script('js/vendor/jquery/select2.full.min.js') }}
+        {{ Html::script('js/vendor/chartist.js') }}
 
         <script>tinymce.init({  selector:'textarea', 
                                 plugins: [

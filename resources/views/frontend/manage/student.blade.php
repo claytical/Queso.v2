@@ -35,6 +35,9 @@
             @endforeach
         </dl>    
     </div>
+<div class="col-lg-12">
+    <div class="ct-chart" id="student_progress_chart"></div>
+</div>
 
 <div class="col-lg-12">
 @if($graded_quests)
@@ -202,15 +205,27 @@
 
 @section('after-scripts-end')
     <script>
-        var submission_list_options = {
-        valueNames: [ 'quest', 'date', 'revisions', 'points' ]
-            };
-        var available_list_options = {
-        valueNames: [ 'quest', 'points' ]
-    };
-
-    var completedList = new List('submission-list', submission_list_options);
-    var availableList = new List('available-list', available_list_options);
+        new Chartist.Bar('.ct-chart', {
+          labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+          series: [
+            [800000, 1200000, 1400000, 1300000],
+            [200000, 400000, 500000, 300000],
+            [100000, 200000, 400000, 600000]
+          ]
+        }, {
+          stackBars: true,
+          axisY: {
+            labelInterpolationFnc: function(value) {
+              return (value / 1000) + 'k';
+            }
+          }
+        }).on('draw', function(data) {
+          if(data.type === 'bar') {
+            data.element.attr({
+              style: 'stroke-width: 30px'
+            });
+          }
+        });
 
     </script>
 @stop

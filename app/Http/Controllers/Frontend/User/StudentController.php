@@ -73,7 +73,9 @@ class StudentController extends Controller
         }
         $current_level = $course->levels()->where('amount', '<=', $total_points_earned)->orderBy('amount', 'desc')->first();
         $next_level = $course->levels()->where('amount', '>', $total_points_earned)->orderBy('amount', 'desc')->first();
-
+        if(!$next_level) {
+            $next_level = $current_level;            
+        }
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
 
         $quest_ids = $user->quests()
