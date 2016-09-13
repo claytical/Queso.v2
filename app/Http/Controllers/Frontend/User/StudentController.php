@@ -123,12 +123,13 @@ class StudentController extends Controller
                 $quests_graded[] = ['quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
 
             //CHART SERIES
-                $skill_dates[] = $skills[0]->created_at->format('m/d');
+                $skill_dates[] = $history->created_at->format('m/d');
+//                $skill_dates[] = $skills[0]->created_at->format('m/d');
 //                $skill_dates[] = "01-20-2003";
                 $skill_points = [];
                 
                 foreach($course_skills as $skill) {
-                    $amount = $user->skills()->where('skill_id', $skill->id)->where('created_at', '<=', $skill->created_at)->sum('amount');
+                    $amount = $user->skills()->where('skill_id', $skill->id)->where('quest_id', '=', $quest->id)->sum('amount');
                     if(!$amount) {
                         $amount = 0;
                     }
