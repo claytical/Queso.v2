@@ -109,14 +109,16 @@ class StudentController extends Controller
                                 ->where('user_id', '=', $user->id)
                                 ->where('quest_id', '=', $id)
                                 ->orderBy('group_quest.created_at');
+                $history = $user->group_quests()->where('quest_id', $id)->first();
             }
             else {
                 $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
+                $history = $user->quests()->where('quest_id', $id)->first();
+
             }
             $revisions = $quest->count();
             $skills = $user->skills()->where('quest_id', $id)->orderBy('created_at', 'asc')->get();
             $earned = $user->skills()->where('quest_id', $id)->sum('amount');
-            $history = $user->quests()->where('quest_id', $id)->first();
             $available = Quest::find($id)->skills()->sum('amount');
             $quest = $quest->first();
             if($earned > 0) {
