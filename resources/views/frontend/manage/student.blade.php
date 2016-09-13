@@ -234,15 +234,17 @@
         });
 */
 
-new Chartist.Line('.ct-chart', {
-  labels: skillDates,
-  series: skillAmounts
-    }, {
+new Chartist.Bar('.ct-chart', {
+        labels: skillDates,
+        series: skillAmounts
+    },
+    {
         axisY: {
                 onlyInteger: true,
         },
-  fullWidth: true,
-  chartPadding: {
+    stackBars: true,
+    fullWidth: true,
+    chartPadding: {
                 right: 40
   }
 });
