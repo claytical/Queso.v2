@@ -127,13 +127,15 @@ class StudentController extends Controller
 //                $skill_dates[] = $skills[0]->created_at->format('m/d');
 //                $skill_dates[] = "01-20-2003";
                 $skill_points = [];
-                
+                $bar_total = 0;
                 foreach($course_skills as $skill) {
                     $amount = $user->skills()->where('skill_id', $skill->id)->where('quest_id', '=', $quest->id)->sum('amount');
+                    $bar_total += $amount;
                     if(!$amount) {
                         $amount = 0;
                     }
-                    $skill_points[] = $amount;
+//                    $skill_points[] = $amount;
+                    $skill_points[] = $bar_total;
                 }
                 
                 $skill_amounts[] = $skill_points;
