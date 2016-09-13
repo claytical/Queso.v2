@@ -12,7 +12,7 @@ use App\Link;
 use App\Level;
 use App\Models\Access\User\User;
 use App\Team;
-
+use DB;
 
 //use Vinelab\Http\Client as HttpClient;
 
@@ -109,9 +109,6 @@ class StudentController extends Controller
             else {
                 $quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
             }
-
-
-            //$quest = $user->quests()->where('quest_id', $id)->orderBy('quest_user.created_at');
             $revisions = $quest->count();
             $skills = $user->skills()->where('quest_id', $id)->get();
             $earned = $user->skills()->where('quest_id', $id)->sum('amount');
