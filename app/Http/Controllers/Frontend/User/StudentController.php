@@ -128,7 +128,7 @@ class StudentController extends Controller
                 $skill_points = [];
                 
                 foreach($course_skills as $skill) {
-                    $amount = $user->skills()->where('skill_id', $skill->id)->where('created_at', $skill->created_at)->sum('amount');
+                    $amount = $user->skills()->where('skill_id', $skill->id)->where('created_at', '<=', $skill->created_at)->sum('amount');
                     if(!$amount) {
                         $amount = 0;
                     }
