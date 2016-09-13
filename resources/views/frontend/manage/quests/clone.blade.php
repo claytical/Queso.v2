@@ -69,7 +69,15 @@
                 Peer Feedback
               </label>
             </div>
+            <div class="checkbox">
+              <label>
+                {!! Form::checkbox('groups_allowed', 1, $quest->groups) !!}
+                Peer Feedback
+              </label>
+            </div>
+
         @endif
+
     <!-- SUBMISSION -->
         @if($quest->quest_type_id == 1)
             <div class="checkbox">
