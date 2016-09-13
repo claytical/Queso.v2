@@ -121,6 +121,7 @@ class StudentController extends Controller
             $quest = $quest->first();
             if($earned > 0) {
                 $quests_graded[] = ['quest' => $quest, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
+/*
             //CHART SERIES
                 $skill_dates[] = $skills[0]->created_at;
                 $skill_points = [];
@@ -134,7 +135,7 @@ class StudentController extends Controller
                 $skill_amounts[] = $skill_points;
             //END CHART
             }
-
+*/
             }
             else {
                 $quests_ungraded[] = ['quest' => $quest, 'revisions' => $revisions, 'skills' => $skills, 'available' => $available];
