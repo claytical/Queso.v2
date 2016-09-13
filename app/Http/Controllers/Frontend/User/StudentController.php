@@ -135,7 +135,7 @@ class StudentController extends Controller
                     $skill_points[] = $amount;
                 }
                 */
-                $skill_amounts[] = [2,3];
+//                $skill_amounts[] = [2,3];
             //END CHART
             }
 
