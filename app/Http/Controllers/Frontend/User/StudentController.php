@@ -121,10 +121,11 @@ class StudentController extends Controller
             $quest = $quest->first();
             if($earned > 0) {
                 $quests_graded[] = ['quest' => $quest, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
-/*
+
             //CHART SERIES
                 $skill_dates[] = $skills[0]->created_at;
                 $skill_points = [];
+                /*
                 foreach($course_skills as $skill) {
                     $amount = $user->skills()->where('skill_id', $skill->id)->where('created_at', $skills[0]->created_at)->sum('amount');
                     if(!$amount) {
@@ -132,10 +133,11 @@ class StudentController extends Controller
                     }
                     $skill_points[] = $amount;
                 }
-                $skill_amounts[] = $skill_points;
+                */
+                $skill_amounts[] = [2,3];
             //END CHART
             }
-*/
+
             }
             else {
                 $quests_ungraded[] = ['quest' => $quest, 'revisions' => $revisions, 'skills' => $skills, 'available' => $available];
