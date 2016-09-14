@@ -6,18 +6,13 @@
         @if($announcements->isEmpty())
             <p class="lead">There are no announcements!</p>
         @endif
-        <ul class="list-unstyled list">
         @foreach($announcements as $announcement)
-            <li>
+
                 <h4>{!! $announcement->title !!}</h4>
                 <h5>{!! date('m-d-Y', strtotime($announcement->created_at)) !!}</h5>
-                <div>
                 {!! $announcement->body !!}
-                </div>
-            </li>
+                <hr/>
         @endforeach
-
-        </ul>
 
     </div>
 @endsection
