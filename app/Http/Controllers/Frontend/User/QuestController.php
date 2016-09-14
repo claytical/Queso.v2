@@ -593,7 +593,7 @@ class QuestController extends Controller
         $quest = Quest::find($quest_id);
         $user = User::find($student_id);
         if($quest->groups) {
-            $gq = $user->group_quests();
+            $gq = $user->group_quests()->where('quest_id', $quest_id)->first();
             $attempt_id = $gq->attempt_id;
             if($quest->quest_type_id == 1) {
                 $attempt = Submission::find($attempt_id);
