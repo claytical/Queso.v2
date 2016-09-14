@@ -14,16 +14,13 @@
                 {!! Form::hidden('quest_id', $quest->id) !!}       
                 {!! Form::hidden('revision', 0) !!}
                 @if($quest->groups)
-                    <h5>Group Members</h5>
-                        {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
-                    <hr/>
+                <h5>Group Members</h5>
+                    {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
                 @endif
-                <div class="form-group">
-                    <h5>URL</h5>
-                    {!! Form::text('link', '', ['class' => 'form-control', 'placeholder' => 'http://www.example.com']); !!}
-                </div>
+                <h5>URL</h5>
+                {!! Form::text('link', '', ['class' => 'form-control', 'placeholder' => 'http://www.example.com']); !!}
 
-                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Submit', ['class' => 'btn btn-primary pull-right']) !!}
 
                 {!! Form::close() !!}
             </div>
