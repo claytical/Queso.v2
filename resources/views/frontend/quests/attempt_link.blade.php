@@ -19,7 +19,8 @@
                     <hr/>
                 @endif
                 <div class="form-group">
-                    {!! Form::text('link', '', ['class' => 'form-control']); !!}
+                    <label for="link">URL</label>
+                    {!! Form::text('link', '', ['class' => 'form-control', 'placeholder' => 'http://www.example.com']); !!}
                 </div>
 
                 {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
@@ -55,6 +56,6 @@
 @section('after-scripts-end')
     <script>
     $(".multiselect").select2();
-    
+
     </script>
 @stop
