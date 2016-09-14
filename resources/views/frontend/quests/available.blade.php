@@ -59,8 +59,8 @@
                         {{ link_to('quest/'.$quest->id.'/watch', 'Watch', ['class' => 'btn btn-primary']) }}
                     @endif
 
-                    @if($quest->quest_type_id == 1)
-                        {{ link_to('quest/'.$quest->id.'/attempt/submission', 'Attempt', ['class' => 'btn btn-primary']) }}
+                    @if($quest->quest_type_id == 4)
+                        {{ link_to('quest/'.$quest->id.'/attempt/link', 'Attempt', ['class' => 'btn btn-primary']) }}
                     @endif
 
               </div>
