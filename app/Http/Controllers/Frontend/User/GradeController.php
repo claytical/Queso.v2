@@ -278,7 +278,7 @@ class GradeController extends Controller
             for($i = 0; $i < count($request->skills); $i++) {
                 $skill_id = $request->skill_id[$i];
             //remove existing points for the quest
-                $user->skills()->where('quest_id', $request->quest_id)->detach($skill_id);
+//                $user->skills()->where('quest_id', $request->quest_id)->detach($skill_id);
                 if (is_numeric($request->skills[$i])) {
                     $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $request->quest_id]);
                     $total_points += $request->skills[$i];
