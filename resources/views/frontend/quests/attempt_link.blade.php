@@ -27,7 +27,7 @@
                         {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
                     <hr/>
                 @endif
-            
+
                 <div class="panel panel-default">
                   <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
                   <div class="panel-body">            
@@ -54,5 +54,7 @@
 
 @section('after-scripts-end')
     <script>
+    $(".multiselect").select2();
+    
     </script>
 @stop
