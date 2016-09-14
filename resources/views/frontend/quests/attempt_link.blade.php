@@ -19,7 +19,7 @@
                     <hr/>
                 @endif
                 <div class="form-group">
-                    <label for="link">URL</label>
+                    <h5>URL</h5>
                     {!! Form::text('link', '', ['class' => 'form-control', 'placeholder' => 'http://www.example.com']); !!}
                 </div>
 
