@@ -22,6 +22,12 @@
                 {!! Form::close() !!}
             </div>
             <div class="col-lg-3">
+                @if($quest->groups)
+                    <h5>Group Members</h5>
+                        {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
+                    <hr/>
+                @endif
+            
                 <div class="panel panel-default">
                   <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
                   <div class="panel-body">            

@@ -58,6 +58,11 @@
                     @if($quest->quest_type_id == 3)
                         {{ link_to('quest/'.$quest->id.'/watch', 'Watch', ['class' => 'btn btn-primary']) }}
                     @endif
+
+                    @if($quest->quest_type_id == 1)
+                        {{ link_to('quest/'.$quest->id.'/attempt/submission', 'Attempt', ['class' => 'btn btn-primary']) }}
+                    @endif
+
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
