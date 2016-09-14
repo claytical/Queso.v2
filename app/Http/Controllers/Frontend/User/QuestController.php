@@ -598,22 +598,26 @@ class QuestController extends Controller
             $attempt_id = $gq->attempt_id;
             if($quest->quest_type_id == 1) {
                 $attempt = Submission::find($attempt_id);
-                $attempt->delete();
+                if($attempt) {
+                    $attempt->delete();
+                }   
             }
             if($quest->quest_type_id == 4) {
                 $attempt = Link::find($attempt_id);
-                $attempt->delete();
+                if($attempt) {
+                    $attempt->delete();
+                }
             }
             $gq = $user->group_quests()->detach($quest_id);
         }
         else {
             $user->quests()->detach($quest_id);
         }
-        $skills = $quest->skills();
 
-        foreach($skills as $skill) {
-            $user->skills()->where('quest_id', $quest_id)->detach($skill->id);            
-        }
+        DB::table('skill_user')
+            ->where('quest_id', '=', $quest_id)
+            ->where('user_id', '=', $user->id)
+            ->delete();
 
         return redirect()->route('student.detail', ['student_id' => $student_id])
                             ->withFlashSuccess("Removed " . $quest->name . " from student.");        
