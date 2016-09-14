@@ -13,6 +13,11 @@
                 {!! Form::open(array('url' => 'quest/submit', 'class' => 'form-inline')) !!}
                 {!! Form::hidden('quest_id', $quest->id) !!}       
                 {!! Form::hidden('revision', 0) !!}
+                @if($quest->groups)
+                    <h5>Group Members</h5>
+                        {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
+                    <hr/>
+                @endif
                 <div class="form-group">
                     {!! Form::text('link', '', ['class' => 'form-control']); !!}
                 </div>
@@ -22,11 +27,6 @@
                 {!! Form::close() !!}
             </div>
             <div class="col-lg-3">
-                @if($quest->groups)
-                    <h5>Group Members</h5>
-                        {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
-                    <hr/>
-                @endif
 
                 <div class="panel panel-default">
                   <div class="panel-heading"> {!! $quest->skills()->sum('amount') !!} Points Available</div>
