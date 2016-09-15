@@ -317,7 +317,7 @@ class CourseController extends Controller
         $user->courses()->detach($course->id);
         $user->save();
         //CLEAR QUESTS/SKILLS/ETC?
-        return redirect()->route('students.manage')->withFlashSuccess($user->name "has been removed from this course.");
+        return redirect()->route('students.manage')->withFlashSuccess($user->name . " has been removed from this course.");
 
     }
 
