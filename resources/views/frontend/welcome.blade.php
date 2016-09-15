@@ -13,7 +13,7 @@
                             <div>
                                 {!! $announcement->body !!}
                             </div>
-
+                            <hr>
                         @endforeach
                     @else
                         <p>No Announcements</p>
