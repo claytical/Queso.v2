@@ -306,6 +306,21 @@ class CourseController extends Controller
         }
     
     }
+    
+    public function leave($user_id) {
+        $course = Course::find(session('current_course'));
+        $user = User::find($user_id);
+        if($user->default_course_id == $course->id) {
+            $user->default_course_id = 0;
+        }
+        $user->detachRole($course->student_role_id);
+        $user->courses()->detach($course->id);
+        $user->save();
+        //CLEAR QUESTS/SKILLS/ETC?
+        return redirect()->route('students.manage')->withFlashSuccess($user->name "has been removed from this course.");
+
+    }
+
     public function join(Request $request) {
     	//redirect to dashboard with message
         $course = Course::where('code', '=', $request->registration_code);

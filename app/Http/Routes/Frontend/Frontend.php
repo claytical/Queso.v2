@@ -102,7 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('manage/quest/clone', 'QuestController@clone')->name('quest.clone');
         Route::get('manage/students', 'StudentController@index')->name('students.manage');
         Route::get('manage/student/{student_id}', 'StudentController@detail')->name('student.detail');
-
+        Route::get('manage/student/{student_id}/leave', 'CourseController@leave')->name('course.leave');
         Route::get('manage/student/{student_id}/team/assign/{team_id}', 'StudentController@assign_team')->name('assign.team');
         Route::get('manage/student/{student_id}/team/remove', 'StudentController@remove_team')->name('remove.team');
 

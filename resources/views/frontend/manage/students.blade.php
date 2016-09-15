@@ -12,6 +12,7 @@
             <th data-field="email" data-sortable="true">Email</th>
             <th data-field="points" 
             data-sortable="true">Points</th>
+            <th></th>
         </thead>
 
         @foreach($students as $student)
@@ -19,6 +20,7 @@
                 <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
                 <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
                 <td>{!! $student->skills()->where('course_id', '=', session('current_course'))->sum('amount') !!}</td>
+                <td>{{ link_to('manage/student/'.$student->id.'/leave', 'Remove') }}</td>
             </tr>
         @endforeach
 </table>
