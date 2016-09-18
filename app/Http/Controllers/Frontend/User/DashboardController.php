@@ -31,10 +31,14 @@ class DashboardController extends Controller
             }
             else {
                 $course = Course::find($user->default_course_id);
+                session()->put('current_course', $user->default_course_id);
+
             }
         }
         else {
             $course = Course::find($user->default_course_id);
+            session()->put('current_course', $user->default_course_id);
+
         }
 
         $notifications = Notice::where('user_id', '=', $user->id)

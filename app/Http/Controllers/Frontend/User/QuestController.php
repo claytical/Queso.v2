@@ -38,7 +38,6 @@ class QuestController extends Controller
 //this only catches graded quests, 
         $user = access()->user();
         $course = Course::find(session('current_course'));
-
         $quests_attempted = $user->quests();
         $quests_attempted_ids = $quests_attempted->pluck('quest_id');
 
