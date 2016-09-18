@@ -59,11 +59,16 @@ class QuestController extends Controller
                             ->whereNotIn('id', $group_quests_attempted_ids)
                             ->get();
 
-
+        if($course->timezone) {
+			$timezone = $course->timezone;        	
+        }
+        else {
+        	$timezone = "America/New_York";
+        }
 
         $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
                     ->whereNotIn('id', $quests_attempted_ids)
-                    ->where('expires_at', '>', Carbon::now(new \DateTimeZone($course->timezone))->subDay())
+                    ->where('expires_at', '>', Carbon::now(new \DateTimeZone($timezone))->subDay())
                     ->where('groups', '=', false)
                     ->orderBy('expires_at')
                     ->get();
