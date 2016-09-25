@@ -36,9 +36,9 @@
                 <br/>
                 {{ Form::select('default_course_id', Form::courseList(), $user->default_course_id, ['class' => 'selectpicker', 'id' => 'course_dropdown']) }}
             </div>
-
+        <div class="col-lg-6">
             {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary pull-right']) }}
-
+        </div>
         </div>
 
         <div class="col-lg-12">
