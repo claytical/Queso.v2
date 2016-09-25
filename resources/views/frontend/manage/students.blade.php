@@ -20,7 +20,7 @@
                 <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
                 <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
                 <td class="grades">{!! $student->skills()->where('course_id', '=', session('current_course'))->sum('amount') !!}</td>
-                <td>{{ link_to('manage/student/'.$student->id.'/leave', 'Remove') }}</td>
+                <td>{{ link_to('manage/student/'.$student->id.'/leave', 'Remove', ['class' => 'btn btn-danger']) }}</td>
             </tr>
         @endforeach
 </table>
@@ -44,8 +44,10 @@
             $(this).text("Show Points");
         }
     });
-    
-    $(".grades").hide();
+
+    $( document ).ready(function() {
+        $(".grades").hide();
+    });
 
     </script>
 @stop
