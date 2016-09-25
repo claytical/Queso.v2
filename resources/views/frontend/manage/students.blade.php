@@ -10,7 +10,7 @@
             <th data-field="name" 
             data-sortable="true">Name</th>
             <th data-field="email" data-sortable="true">Email</th>
-            <th data-field="points" 
+            <th data-field="points" class="grades"
             data-sortable="true">Points</th>
             <th></th>
         </thead>
@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
                 <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
-                <td style="display: none;" class="grades">{!! $student->skills()->where('course_id', '=', session('current_course'))->sum('amount') !!}</td>
+                <td class="grades">{!! $student->skills()->where('course_id', '=', session('current_course'))->sum('amount') !!}</td>
                 <td>{{ link_to('manage/student/'.$student->id.'/leave', 'Remove') }}</td>
             </tr>
         @endforeach
@@ -44,10 +44,8 @@
             $(this).text("Show Points");
         }
     });
-  /*      var quest_list_options = {
-        valueNames: [ 'submission', 'date', 'student' ]
-    };
-*/
-//    var hackerList = new List('submission-list', submission_list_options);
+    
+    $(".grades").hide();
+
     </script>
 @stop
