@@ -72,7 +72,7 @@
             <div class="checkbox">
               <label>
                 {!! Form::checkbox('groups_allowed', 1, $quest->groups) !!}
-                Peer Feedback
+                Group Submission
               </label>
             </div>
 
