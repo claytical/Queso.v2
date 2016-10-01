@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Progress</h2>
+<h2>Quest Progress</h2>
 <div style="display:none">
     @foreach($idz as $k)
     {!! $k !!}
