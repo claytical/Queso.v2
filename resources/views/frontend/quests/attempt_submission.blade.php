@@ -76,6 +76,19 @@
 
 @section('after-scripts-end')
     <script>
+    var something_uploaded = false;
+
+    $( "#submission-form" ).submit(function( event ) {
+
+        if(!something_uploaded) {
+            if(tinyMCE.activeEditor.getContent().length <= 0) {
+                event.preventDefault();
+                alert( "You haven't provided anything to submit!" );
+            }
+        }
+
+    });
+
     Dropzone.autoDiscover = false;
     $(".multiselect").select2();
     if ( $( "div#submission_upload" ).length ) {
@@ -92,6 +105,7 @@
 
         submission_upload.on("successmultiple", function(event, response) {
             console.log("MULTIPLE");
+            something_uploaded = true;
 
             for (var i = 0, len = response.files.length; i < len; i++) {
                 $('<input>').attr({
@@ -105,6 +119,7 @@
         });
 
         submission_upload.on("success", function(event, response) {
+            something_uploaded = true;
             for (var i = 0, len = response.files.length; i < len; i++) {
                 $('<input>').attr({
                     type: 'number',
