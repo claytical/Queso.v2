@@ -97,5 +97,16 @@
           });
         $("span#total").html(totz);
     });    
+    $(document).ready(function () {
+        $(window).on('beforeunload', function(){
+            return "You have unsaved changes!";
+        });
+        $(document).on("submit", "form", function(event){
+            $(window).off('beforeunload');
+        });
+    });
+
+
+
     </script>
 @stop

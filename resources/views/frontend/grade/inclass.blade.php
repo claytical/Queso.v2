@@ -32,6 +32,5 @@
 
 @section('after-scripts-end')
     <script>
-
-    </script>
+        </script>
 @stop
