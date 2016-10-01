@@ -586,15 +586,19 @@
     });
 
     $( "#expiration_set").click(function() {
-        $("#set_expiration").hide();
-        $("#expiration_date").hide();
-        $("#expires_selection h5").html($("#expiration_date").val());
-        $("#expires_selection").show();
 
-
-        qf.append($("#expiration_date"));
-        $("#skills").show();
-//        $("#quest_description").show();
+          var xd = new Date($("#expiration_date").val());
+          if(!isNaN(xd)) {
+            $("#set_expiration").hide();
+            $("#expiration_date").hide();
+            $("#expires_selection h5").html($("#expiration_date").val());
+            $("#expires_selection").show();
+            qf.append($("#expiration_date"));
+            $("#skills").show();
+          }
+          else {
+            alert("Please enter a valid date.");
+          }
     });
 /*
     $( "#description_set" ).click(function() {

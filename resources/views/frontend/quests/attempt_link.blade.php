@@ -53,6 +53,17 @@
 @section('after-scripts-end')
     <script>
     $(".multiselect").select2();
+    $( "form" ).submit(function( event ) {
+        if($('input[name="link"]').val().length > 0) {
+
+        }
+        else {
+          event.preventDefault();
+        alert( "You need to enter a link into the text field." );
+
+        }
+    });
+
 
     </script>
 @stop
