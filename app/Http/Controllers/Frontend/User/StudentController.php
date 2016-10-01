@@ -119,9 +119,11 @@ class StudentController extends Controller
             $revisions = $quest->count();
             $skills = $user->skills()->where('quest_id', $id)->orderBy('created_at', 'asc')->get();
             $earned = $user->skills()->where('quest_id', $id)->sum('amount');
+            $earned_skills = $user->skills()->where('quest_id', $id)->count();
+
             $available = Quest::find($id)->skills()->sum('amount');
             $quest = $quest->first();
-            if($earned > 0) {
+            if($earned_skills > 0) {
                 $quests_graded[] = ['quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
 /*
             //CHART SERIES
