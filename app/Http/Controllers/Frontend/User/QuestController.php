@@ -587,7 +587,7 @@ class QuestController extends Controller
             Mail::send('emails.quest_submitted', ['link' => $notice->url, 'student' => $user->name, 'quest' => $quest, 'attempt' => $attempt], 
                 function ($message) use ($quest, $user, $instructor) {
                 $message->subject($quest->name . " has been submitted.");
-                $message->from($user->email, $user->email);
+                $message->from($user->email, $user->name);
                 $message->to($instructor->email);
             });
         }
@@ -945,7 +945,9 @@ class QuestController extends Controller
     }
 
     public function submit_feedback(Request $request) {
+        $quest = Quest::find($request->quest_id);
         $user = access()->user();
+        $to_user = User::find($request->user_id);
         $feedback_positive = new Feedback;
         $feedback_positive->quest_id = $request->quest_id;
         $feedback_positive->to_user_id = $request->user_id;
@@ -979,6 +981,12 @@ class QuestController extends Controller
             $notice->url = "quest/". $quest->id ."/feedback";
             $notice->course_id = session('current_course');
             $notice->save();
+            Mail::send('emails.feedback_sent', ['link' => $notice->url, 'sender' => $user->name, 'positive' => $feedback_positive, 'negative' => $feedback_negative, 'quest' => $quest], 
+                function ($message) use ($quest, $user, $to_user) {
+                $message->subject($quest->name . " has received feedback.");
+                $message->from($user->email, $user->name);
+                $message->to($to_user->email);
+            });
 
             return redirect()->route('frontend.user.dashboard')->withFlashSuccess("Feedback has been sent.");
 

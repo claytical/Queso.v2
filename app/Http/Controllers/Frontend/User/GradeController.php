@@ -227,7 +227,13 @@ class GradeController extends Controller
             $notice->url = "quest/". $quest->id ."/feedback";
             $notice->course_id = session('current_course');
             $notice->save();
-
+            $prof = access()->user();
+            Mail::send('emails.instructor_feedback', ['link' => $notice->url, 'sender' => $prof, 'feedback' => $request->feedback, 'quest' => $quest, 'total_points' => $total_points, 'sum_points' => $quest->skills()->sum('amount')], 
+                function ($message) use ($quest, $user, $prof) {
+                    $message->subject($quest->name . " has been graded");
+                    $message->from($prof->email, $prof->name);
+                    $message->to($user->email);
+                });
             $user->quests()->where('revision', $attempt->revision)
                         ->updateExistingPivot($attempt->quest_id, ['graded' => true]);
         }
@@ -289,8 +295,9 @@ class GradeController extends Controller
                 }
 
                 //add feedback
+                $prof = access()->user();
                 $feedback = new Feedback;
-                $feedback->from_user_id = access()->user()->id;
+                $feedback->from_user_id = $prof->id;
                 $feedback->to_user_id = $student;
                 $feedback->quest_id = $request->quest_id;
                 $feedback->revision = 0;
@@ -305,6 +312,12 @@ class GradeController extends Controller
                 $notice->url = "quest/". $quest->id ."/feedback";
                 $notice->course_id = session('current_course');
                 $notice->save();
+                Mail::send('emails.instructor_feedback', ['link' => $notice->url, 'sender' => $prof, 'feedback' => $request->feedback, 'quest' => $quest, 'total_points' => $total_points, 'sum_points' => $quest->skills()->sum('amount')], 
+                    function ($message) use ($quest, $user, $prof) {
+                        $message->subject($quest->name . " has been graded");
+                        $message->from($prof->email, $prof->name);
+                        $message->to($user->email);
+                    });
 
             }
 

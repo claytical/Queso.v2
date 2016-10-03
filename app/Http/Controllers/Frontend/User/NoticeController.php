@@ -20,6 +20,17 @@ class NoticeController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
+    public function dismiss_all() {
+    	$user = access()->user();
+    	$notices = Notice::where('user_id', '=', $user->id)
+    						->where('course_id', '=', session('current_course'));
+    	foreach($notices as $notice) {
+    		$notice->received = Carbon::now();
+    		$notice->save();
+    	}
+        return redirect()->route('frontend.user.dashboard')->withFlashSuccess("All notification has been dismissed.");
+
+    }
 
     public function dismiss($id) {
         $notice = Notice::find($id);
