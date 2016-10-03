@@ -34,6 +34,9 @@ trait Dropdowns
                                     ->where('graded', '=', false)
                                     ->count();
         }
+        if($submission_count == 0) {
+            return "";
+        }
         return $submission_count;
     }
 
