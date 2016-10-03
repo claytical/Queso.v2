@@ -22,7 +22,7 @@ use Carbon\Carbon;
 use App\Notice;
 use App\GroupQuest;
 use DB;
-
+use Mail;
 
 /**
  * Class QuestController
@@ -583,6 +583,12 @@ class QuestController extends Controller
             $notice->url = "grade/quest/". $quest->id ."/" . $attempt->id;
             $notice->course_id = session('current_course');
             $notice->save();
+
+            Mail::send('emails.quest_submitted', ['link' => $notice->url, 'student' => $user->name, 'quest' => $quest, 'attempt' => $attempt], function ($message) {
+                $message->subject($quest->name . " has been submitted.");
+                $message->from($user->email, $user->email);
+                $message->to($instructor->email);
+            });
         }
         if ($request->revision == 0) {
             return redirect()->route('frontend.user.dashboard')->withFlashSuccess($quest->name . " has been successfully submitted. ");
