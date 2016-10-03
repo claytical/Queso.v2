@@ -27,6 +27,7 @@ class GradeController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     public function submission_list() {
         $course = Course::find(session('current_course'));
         $quests = $course->quests()->where('groups', '=', false)->get();

@@ -19,6 +19,7 @@
 
             @if (access()->instructor())
                 <li class="{{ Active::pattern('grade/submissions') }}">
+                <a href="grade/submissions">Submissions <span class="badge pull-right">{!! Form::submission_count() !!}</span></a>
                     {{ link_to('grade/submissions', 'Submissions') }}
                 </li>
 

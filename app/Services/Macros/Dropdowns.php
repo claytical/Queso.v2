@@ -21,6 +21,23 @@ trait Dropdowns
      * @return string
      */
 
+    public function submission_count() {
+        $course = Course::find(session('current_course'));
+        $quests = $course->quests()->where('groups', '=', false)->get();
+        $group_quests = $course->quests()->where('groups', '=', true)->get();
+        $submission_count = 0;
+        foreach($quests as $quest) {
+            $submission_count += $quest->users()->where('graded', false)->count();
+        }
+        foreach($group_quests as $quest) {
+            $submission_count += GroupQuest::where('quest_id', '=', $quest->id)
+                                    ->where('graded', '=', false)
+                                    ->count();
+        }
+        return $submission_count;
+    }
+
+
     public function singleResourceList() {
         
         $resources = Content::where('course_id', '=', session('current_course'))
