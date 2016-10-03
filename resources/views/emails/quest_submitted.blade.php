@@ -7,4 +7,4 @@
 @endif
 
 
-<a href="http://queso.cc/{{!! $notice->url !!}">Click to Grade</a>
+<a href="http://queso.cc/{{!! $link !!}">Click to Grade</a>
