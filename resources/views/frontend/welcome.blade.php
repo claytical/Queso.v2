@@ -69,7 +69,7 @@
             @endif
             <div class="col-lg-6">                
                 <div class="panel panel-default">
-                    <div class="panel-heading">Notifications</div>
+                    <div class="panel-heading">Notifications {{ link_to('notifications/dismiss', 'Dismiss All', ['class' =>'btn btn-default btn-xs pull-right']) }}</div>
                         <div class="panel-body">
                         <ul class="list-unstyled">
                         @if(!$notifications->isEmpty())
