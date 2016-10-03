@@ -1,9 +1,9 @@
-@if($quest->quest_type_id == 1)
+@if($quest->quest_type_id == 1 && $quest->submissions)
     {!! $attempt->submission !!}
 @endif
 
 @if($quest->quest_type_id == 4)
-    {!! $attempt->url !!}
+    <a href="{!! $attempt->url !!}">Link to Attempt</a>
 @endif
 
 
