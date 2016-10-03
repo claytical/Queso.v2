@@ -25,6 +25,10 @@ class CourseController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
+    public function index() {
+        $courses = Course::all();
+        return view('frontend.courses.index', ['courses' => $courses]);       
+    }
     public function create_form() {
     	return view('frontend.manage.course.create')
            ->withUser(access()->user());
