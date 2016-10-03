@@ -23,7 +23,8 @@ class NoticeController extends Controller
     public function dismiss_all() {
     	$user = access()->user();
     	$notices = Notice::where('user_id', '=', $user->id)
-    						->where('course_id', '=', session('current_course'));
+    						->where('course_id', '=', session('current_course'))
+    						->get();
     	foreach($notices as $notice) {
     		$notice->received = Carbon::now();
     		$notice->save();
