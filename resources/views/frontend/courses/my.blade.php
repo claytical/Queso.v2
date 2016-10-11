@@ -7,7 +7,7 @@
             <p class="lead">You aren't in any courses!</p>
         @endif
         @foreach($courses as $course)
-                <h4>{!! link_to('course/switch/'.$class->id, $class->name) !!}</h4>
+                <h4>{!! link_to('course/switch/'.$course->id, $course->name) !!}</h4>
         @endforeach
 
     </div>
