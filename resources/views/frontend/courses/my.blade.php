@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-lg-12">
         <h2>Your Courses</h2>
-        @if($courses->isEmpty())
+        @if(!$courses)
             <p class="lead">You aren't in any courses!</p>
         @endif
         @foreach($courses as $course)
