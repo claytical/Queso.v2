@@ -43,7 +43,7 @@ class DashboardController extends Controller
 
         $notifications = Notice::where('user_id', '=', $user->id)
                         ->whereNull('received')
-//                      ->where('course_id', '=', session('current_course'))
+	                    ->where('course_id', '=', session('current_course'))
                         ->get();
 
         $feedback_request_quest_ids = FeedbackRequest::distinct()
