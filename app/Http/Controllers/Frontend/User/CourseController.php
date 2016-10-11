@@ -29,6 +29,12 @@ class CourseController extends Controller
         $courses = Course::all();
         return view('frontend.courses.index', ['courses' => $courses]);       
     }
+
+    public function my() {
+        $courses = access()->user()->courses();
+        return view('frontend.courses.my', ['courses' => $courses]);
+    }
+    
     public function create_form() {
     	return view('frontend.manage.course.create')
            ->withUser(access()->user());

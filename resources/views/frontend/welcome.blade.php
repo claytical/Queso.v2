@@ -1,26 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<div class="modal fade" id="course_list" tabindex="-1" role="dialog" aria-labelledby="courseListLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="courseListLabel">Switch Course</h4>
-      </div>
-      <div class="modal-body">
-        <ul class="list-unstyled">
-        @foreach($courses as $class)
-            <li> {!! link_to('course/switch/'.$class->id, $class->name) !!}
-        @endforeach
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
    <div class="row">
         <div class="col-lg-12">
@@ -118,6 +98,26 @@
     </div>
 
 
+<div class="modal fade" id="course_list" tabindex="-1" role="dialog" aria-labelledby="courseListLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="courseListLabel">Switch Course</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-unstyled">
+        @foreach($courses as $class)
+            <li> {!! link_to('course/switch/'.$class->id, $class->name) !!}
+        @endforeach
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 @endsection
 

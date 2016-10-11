@@ -19,7 +19,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'User'], function() {
 		Route::get('dashboard', 'DashboardController@index')->name('frontend.user.dashboard');
         Route::get('choose', 'DashboardController@choose')->name('frontend.user.choose');
-        Route::get('courses', 'CourseController@index')->name('frontend.courses');
+        Route::get('courses/public', 'CourseController@index')->name('frontend.courses');
+        Route::get('courses', 'CourseController@my')->name('frontend.my.courses');
         Route::get('course/join', 'CourseController@register')->name('course.register');
         Route::post('course/join', 'CourseController@join')->name('course.join');
         Route::get('course/switch/{course_id}', 'CourseController@change')->name('course.change');
