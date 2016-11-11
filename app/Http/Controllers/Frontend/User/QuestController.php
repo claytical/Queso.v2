@@ -863,13 +863,17 @@ class QuestController extends Controller
         }
         else {
             $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
-            if ($user_quest->pivot->graded) {
-                $graded = true;
+            if($user_quest->pivot) {
+                if ($user_quest->pivot->graded) {
+                    $graded = true;
+                }
+                else {
+                    $graded = false;
+                }
             }
             else {
                 $graded = false;
             }
-
         }
         $files = false;
         $attempt = null;
