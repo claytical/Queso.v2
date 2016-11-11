@@ -10,7 +10,10 @@
     <div class="row">
         <div class="col-lg-9">
             @if($quest->quest_type_id == 1)
-                {!! $attempt->submission !!}
+                @if($attempt)
+                    {!! $attempt->submission !!}
+                @endif
+
              @if(!$files->isEmpty())
                     <h6>Attached Files</h6>
                     @foreach($files as $file)
@@ -20,7 +23,11 @@
             @endif
 
             @if($quest->quest_type_id == 4)
-              <a href="{{ $attempt->url }}" data-iframely-url>{{ $attempt->url }}</a>
+                @if($attempt)
+                  <a href="{{ $attempt->url }}" data-iframely-url>{{ $attempt->url }}</a>
+                @else
+                 <p>Attempt Missing</p>
+                @endif
             @endif
 
         </div>
