@@ -79,7 +79,7 @@
         @endif
 
         @if($quest->quest_type_id == 4)
-          <a href="{{ $attempt->url }}" data-iframely-url>{{ $attempt->url }}</a>
+          <a href="{{ $attempt->url }}" >{{ $attempt->url }}</a>
         @endif
           @if(!$positive_feedback->isEmpty() || !$negative_feedback->isEmpty())
             <h4>Peer Feedback</h4>
