@@ -70,7 +70,7 @@
 
         <!-- JavaScripts -->
         {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
-        {{ HTML::script('https://cdn.tinymce.com/4/tinymce.min.js')}}
+        <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/jquery/multiselect.min.js') }}
         {{ Html::script('js/vendor/jquery/jquery.minipreview.js') }}
