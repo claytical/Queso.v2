@@ -77,7 +77,13 @@
         {{ Html::script('js/vendor/jquery/select2.full.min.js') }}
         {{ Html::script('js/vendor/chartist.js') }}
 
-        <script>tinymce.init({  selector:'textarea'                                            
+        <script>tinymce.init({  selector:'textarea', 
+                                plugins: [
+                                            'autolink autoresize link image',
+                                            'searchreplace wordcount visualblocks fullscreen',
+                                            'media contextmenu',
+                                            'paste textpattern'],
+                                toolbar: 'insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'                                            
                                 });</script>
 
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
