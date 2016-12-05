@@ -79,7 +79,7 @@
 
         <script>tinymce.init({  selector:'textarea', 
                                 plugins: [
-                                            'autolink autoresize link image',
+                                            'autolink autoresize link image lists',
                                             'searchreplace wordcount visualblocks fullscreen',
                                             'media contextmenu',
                                             'paste textpattern'],
