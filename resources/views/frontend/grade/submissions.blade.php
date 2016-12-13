@@ -20,11 +20,13 @@
         </thead>
         <tbody>
             @foreach($lists as $list)
+            	@if($list['attempt'])
                 <tr>
                     <td>{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</td>
                     <td>{!! date('m-d-Y', strtotime($list['attempt']->created_at)) !!}</td>
                     <td>{!! $list['student'] !!}</td>
                 </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
