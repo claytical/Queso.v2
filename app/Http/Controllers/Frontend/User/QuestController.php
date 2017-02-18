@@ -756,9 +756,12 @@ class QuestController extends Controller
         $levels = $course->levels()->orderBy('amount')->get();
 
         javascript()->put(['levels' => $levels]);
-
-        $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
-
+        if(!isset($current_level->amount) || !isset($next_level->amount)) {
+            $percentage = 100;
+        }
+        else {
+            $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
+        }
         $quest_ids = $user->quests()
                             ->where('course_id', '=', session('current_course'))
                             ->distinct()
