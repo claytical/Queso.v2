@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-lg-9">
-    <h2>{!! $quest->name !!}, {!! $user->name !!}</h2>
+    <h2>{!! $quest->name !!}, {!! $student->name !!}</h2>
     <h6>Submitted {!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h6>
 </div>
 <div class="col-lg-3">

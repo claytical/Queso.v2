@@ -87,6 +87,7 @@ class GradeController extends Controller
 
 
     public function quest($quest_id, $attempt_id) {
+
         $quest = Quest::find($quest_id);
         $files = false;
         if ($quest->quest_type_id == 1) {
@@ -102,7 +103,7 @@ class GradeController extends Controller
             $attempts = Link::where('quest_id', '=', $quest->id)
                                 ->where('user_id', '=', $attempt->user_id);
         }
-
+        $student = User::find($attempt->user_id);
         $positive_feedback = Feedback::where('to_user_id', '=', $attempt->user_id)
                                 ->where('quest_id', '=', $quest_id)
                                 ->where('revision', '=', $attempt->revision)
@@ -132,7 +133,8 @@ class GradeController extends Controller
                                                     'files' => $files,
                                                     'positive_feedback' => $positive_feedback,
                                                     'negative_feedback' => $negative_feedback,
-                                                    'previous_feedback' => $previous_feedback]
+                                                    'previous_feedback' => $previous_feedback,
+                                                    'student' => $student]
                                                     )->withUser(access()->user());
     }
 
