@@ -165,7 +165,7 @@ class StudentController extends Controller
         }
 
         $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
-                    ->whereNotIn('id', array_merge(implode(",", $quest_ids), $group_quest_ids))
+                    ->whereNotIn('id', array_merge($quest_ids->toArray(), $group_quest_ids))
                     ->orderBy('expires_at')
                     ->get();
         $quests_revisable = Quest::where('course_id', '=', session('current_course'))
