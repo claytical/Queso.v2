@@ -68,6 +68,7 @@ class StudentController extends Controller
         }
 
         $total_points_earned = $user->skills()->where('course_id', '=', session('current_course'))->sum('amount');
+        $total_points_potential = 0;
         if(!$total_points_earned) {
             $total_points_earned = 0;
         }
@@ -124,6 +125,7 @@ class StudentController extends Controller
             $available = Quest::find($id)->skills()->sum('amount');
             $quest = $quest->first();
             if($earned_skills > 0) {
+                $total_points_potential += $available;
                 $quests_graded[] = ['quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
 /*
             //CHART SERIES
@@ -193,7 +195,7 @@ class StudentController extends Controller
             }
         }
 
-        return view('frontend.manage.student', ['student' => $user, 'total_points' => $total_points_earned, 'current_level' => $current_level, 'next_level' => $next_level, 'graded_quests' => $quests_graded, 'pending_quests' => $quests_ungraded, 'available_quests' => $quests_unlocked, 'locked_quests' => $quests_locked, 'team' => $team, 'teams' => $teams, 'acquired_skills' => $acquired_skills, 'percentage' => $percentage])
+        return view('frontend.manage.student', ['student' => $user, 'total_points' => $total_points_earned, 'current_level' => $current_level, 'next_level' => $next_level, 'graded_quests' => $quests_graded, 'pending_quests' => $quests_ungraded, 'available_quests' => $quests_unlocked, 'locked_quests' => $quests_locked, 'team' => $team, 'teams' => $teams, 'acquired_skills' => $acquired_skills, 'percentage' => $percentage, 'total_points_potential' => $total_points_potential])
             ->withUser(access()->user());
     }
 

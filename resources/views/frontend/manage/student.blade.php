@@ -18,7 +18,7 @@
                             <li>{!! link_to('manage/student/'.$student->id.'/team/remove', 'Remove Team Assignment') !!}</li>
                       </ul>
         </div>
-    <h4>{!! $current_level->name !!}, {!! $total_points !!} points</h4>
+    <h4>{!! $current_level->name !!}, {!! $total_points !!} / {!! $total_points_potential !!} points</h4>
         <div class="progress">
           <div class="progress-bar" role="progressbar" aria-valuenow="{!! $total_points !!}" aria-valuemin="{!! $current_level->amount !!}" aria-valuemax="{!! $next_level->amount !!}" style="width: {!! $percentage !!}%;">
 
