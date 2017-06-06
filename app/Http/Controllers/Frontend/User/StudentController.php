@@ -117,7 +117,7 @@ class StudentController extends Controller
                 $history = $user->quests()->where('quest_id', $id)->first();
 
             }
-            $revisions = $quest->count();
+            $revisions = $quest->count() - 1;
             $skills = $user->skills()->where('quest_id', $id)->orderBy('created_at', 'asc')->get();
             $earned = $user->skills()->where('quest_id', $id)->sum('amount');
             $earned_skills = $user->skills()->where('quest_id', $id)->count();

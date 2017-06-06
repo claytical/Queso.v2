@@ -65,7 +65,11 @@
                     {!! date('m-d-Y', strtotime($quest['history']->pivot->created_at)) !!}
                 </td>
                 <td>
+                    @if($quest['quest']->revisions)
                     {!! $quest['revisions'] !!}
+                    @else
+                    N/A
+                    @endif
                 </td>
                 <td>
                     {!! $quest['earned'] !!} / {!! $quest['available'] !!}
