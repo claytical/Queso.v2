@@ -114,7 +114,7 @@
                     </div>
                 @endforeach
             @endif
-            @if($negative)
+            @if($negative->first())
                 <h4>Suggestions From Your Peers</h4>
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
