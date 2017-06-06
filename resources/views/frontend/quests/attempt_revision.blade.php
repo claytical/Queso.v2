@@ -70,7 +70,7 @@
                 <div id="submission_upload" class="dropzone"></div>
             @endif
 
-            @if(!$files->isEmpty())
+            @if($files)
                 <h4>Previously Submitted Files</h4>
                 @foreach($files as $file)
                     {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => 'btn btn-default preview', 'download' => substr($file->name,5)]) !!}
@@ -93,7 +93,7 @@
         <h4 class="modal-title" id="myModalLabel">Feedback</h4>
       </div>
       <div class="modal-body">
-            @if(!$positive->isEmpty())
+            @if($positive)
                 <h4>What Your Peers Liked</h4>
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
@@ -114,7 +114,7 @@
                     </div>
                 @endforeach
             @endif
-            @if(!$negative->isEmpty())
+            @if($negative)
                 <h4>Suggestions From Your Peers</h4>
                 @foreach($negative as $feedback)
                     <div class="col-lg-12">
