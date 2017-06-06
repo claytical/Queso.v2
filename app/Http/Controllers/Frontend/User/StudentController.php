@@ -126,7 +126,7 @@ class StudentController extends Controller
             $quest = $quest->first();
             if($earned_skills > 0) {
                 $total_points_potential += $available;
-                $quests_graded[] = ['quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
+                $quests_graded[] = ['quest_master' => $q, 'quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
 /*
             //CHART SERIES
                 if($quest->groups) {

@@ -65,8 +65,8 @@
                     {!! date('m-d-Y', strtotime($quest['history']->pivot->created_at)) !!}
                 </td>
                 <td>
-                    @if($quest['quest']->revisions)
-                    {!! $quest['revisions'] !!}
+                    @if($quest['quest_master']->revisions)
+                        {!! $quest['revisions'] !!}
                     @else
                     N/A
                     @endif
