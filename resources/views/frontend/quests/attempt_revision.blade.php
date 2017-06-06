@@ -93,8 +93,7 @@
         <h4 class="modal-title" id="myModalLabel">Feedback</h4>
       </div>
       <div class="modal-body">
-            @if($positive)
-            {!! $positive !!}
+            @if($positive->first())
                 <h4>What Your Peers Liked</h4>
                 @foreach($positive as $feedback)            
                     <div class="col-lg-12">
