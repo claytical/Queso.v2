@@ -83,6 +83,7 @@ class QuestController extends Controller
 
         $quests_unattempted = $quests_unattempted->merge($group_quests);
 
+//TODO: Check if max points have been achieved
         $quests_revisable = Quest::where('course_id', '=', session('current_course'))
                     ->whereIn('id', $quests_attempted_ids)
                     ->where('revisions', '=', true)
