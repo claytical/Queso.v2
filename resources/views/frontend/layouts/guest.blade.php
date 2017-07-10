@@ -21,7 +21,7 @@
         <header>
             <nav class="navbar">
               <div class="navbar-brand">
-                <a class="navbar-item" href="http://bulma.io">
+                <a class="navbar-item" href="{!! URL::to('/') !!}">
                   <img src="{!! URL::to('img/logo.png')!!}" alt="Queso: A Gameful Learning Management System"/>
                 </a>
 
@@ -34,25 +34,13 @@
             </nav>
         </header>
 
+        @include('includes.partials.messages')
+        
+        <section class="guest-content">
+            @yield('content')
+        </section>
 
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-
-            <section class="content-header">
-                @yield('page-header')
-
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-                @include('includes.partials.messages')
-                @yield('content')
-            </section><!-- /.content -->
-
-            {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
-
-        </div>
-    </div>
+        {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
+    
     </body>
 </html>
