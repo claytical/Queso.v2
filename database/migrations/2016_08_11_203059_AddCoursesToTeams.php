@@ -16,7 +16,7 @@ class AddCoursesToTeams extends Migration
  /*           $table->dropForeign('team_user_team_id_foreign');
             $table->dropForeign('team_user_user_id_foreign');
    */
-            $table->integer('course_id')->unsigned()->index();
+       //     $table->integer('course_id')->unsigned()->index();
      //       $table->primary(['course_id', 'user_id', 'team_id']);
         });
 
