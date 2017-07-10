@@ -14,6 +14,7 @@
         @yield('meta')
 
         <!-- Fonts -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
         <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">        
     </head>
     <body>
