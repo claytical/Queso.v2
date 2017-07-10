@@ -47,7 +47,7 @@
             <div class="field">
               <div class="control">
                 <label class="checkbox">
-                    {{ Form::checkbox('remember', ['class' => 'label']) }} 
+                    {{ Form::checkbox('remember') }} 
                     {{ trans('labels.frontend.auth.remember_me') }}
                 </label>
               </div>
