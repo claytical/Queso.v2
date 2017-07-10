@@ -20,10 +20,6 @@ class CreateFileAttachmentSubmissionPivotTable extends Migration
             $table->primary(['file_attachment_id', 'submission_id'], 'file_sub_primary');
         });
 
-        Schema::table('file_attachment_submission', function ($table) {
-            $table->primary(['file_attachment_id', 'submission_id'], 'file_sub_primary');
-
-        });
     }
 
     /**
