@@ -6,11 +6,12 @@
 
 
 @section('content')
+<img src="{!! URL::to('img/logo.png')!!}" alt="Queso: A Gameful Learning Management System"/>
 
-<div class="tile is-ancestor">
+<div class="tile">
   <div class="tile is-6 is-parent">
     <div class="tile is-child box">
-        <p class="title">Queso</p>
+        <p class="title">Welcome</p>
         <p>Queso is a classroom management system for gameful classrooms. We help you take your existing classroom and reshape it using concepts from game design. This is not about points, badges, and leaderboards. This is about increasing student engagement through gameful design. You can use Queso for your class without "gamifying" it. It's simple and intuitive for creating an engaging class in the 21st century.</p>      
     </div>
   </div>
@@ -35,7 +36,7 @@
         <div class="field">
             {{ Form::label('password', trans('validation.attributes.frontend.password'), ['class' => 'label']) }}        
           <p class="control">
-            {{ Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.password')]) }}
+            {{ Form::input('password', 'password', null, ['class' => 'input', 'placeholder' => trans('validation.attributes.frontend.password')]) }}
             <span class="icon is-small is-left">
               <i class="fa fa-lock"></i>
             </span>
