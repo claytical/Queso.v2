@@ -13,39 +13,26 @@
         <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
         @yield('meta')
 
-        <!-- Styles -->
-        @yield('before-styles-end')
-
-        {{ Html::style(elixir('css/backend.css')) }}
-
-        <!-- Check if the language is set to RTL, so apply the RTL layouts -->
-        @langRTL
-            {!! Html::style(elixir('css/rtl.css')) !!}
-        @endif
-
-        @yield('after-styles-end')
-
         <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet">    </head>
-    <body class="skin-{{ config('backend.theme') }} sidebar-collapse">
-        <div class="wrapper">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">        
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+              <div class="navbar-brand">
+                <a class="navbar-item" href="http://bulma.io">
+                  <img src="{!! URL::to('img/logo.png')!!}" alt="Queso: A Gameful Learning Management System"/>
+                </a>
 
-<header class="main-header">
+                <div class="navbar-burger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </nav>
+        </header>
 
-    <nav class="navbar navbar-static-top" role="navigation" style="margin-left: 0px;">
-            <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
-        </a>
-
-        <div class="navbar-custom-menu pull-right">
-            <ul class="nav navbar-nav">
-
-                    <li>{{ link_to('login', trans('navs.frontend.login')) }}</li>
-                    <li>{{ link_to('register', trans('navs.frontend.register')) }}</li>
-
-            </ul>
-        </div><!-- /.navbar-custom-menu -->
-    </nav>
-</header>
 
 
         <!-- Content Wrapper. Contains page content -->
@@ -54,8 +41,6 @@
             <section class="content-header">
                 @yield('page-header')
 
-                {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
-                {!! Breadcrumbs::renderIfExists() !!}
             </section>
 
             <!-- Main content -->
@@ -64,14 +49,8 @@
                 @yield('content')
             </section><!-- /.content -->
 
-            <!-- JavaScripts -->
-            {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
-            <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
             {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
 
-            @yield('before-scripts-end')
-            {{ HTML::script(elixir('js/frontend.js')) }}
-            @yield('after-scripts-end')
         </div>
     </div>
     </body>
