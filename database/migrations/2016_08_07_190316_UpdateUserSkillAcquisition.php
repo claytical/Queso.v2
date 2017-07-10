@@ -14,8 +14,8 @@ class UpdateUserSkillAcquisition extends Migration
     {
         Schema::table('skill_user', function ($table) {
 
-            $table->dropForeign('skill_user_skill_id_foreign');
-            $table->dropForeign('skill_user_user_id_foreign');
+//            $table->dropForeign('skill_user_skill_id_foreign');
+//            $table->dropForeign('skill_user_user_id_foreign');
 //            $table->integer('quest_id');
  //           $table->integer('amount');
             $table->dropPrimary('skill_id');
