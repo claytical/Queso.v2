@@ -1,18 +1,22 @@
 @extends('frontend.layouts.unassigned')
 
 @section('content')
+  <div class="hero-body">
+    <div class="container is-fluid">
+      <h1 class="title">
+        Join a Course
+      </h1>
+      <h2 class="subtitle">To join a class, you should have been given a registration code. Please enter it below.</h2>
+        {!! Form::open(['url' => 'course/join', 'class' => '', 'id' => 'add-skill']) !!}
+            
+            {{ Form::input('text', 'registration_code', null, ['class' => 'input is-large', 'placeholder' => 'Registration Code', 'id' => 'registration_code']) }}
 
-    <div class="col-lg-12">
-        <h2>Join a Course</h2>
-
-
-        <p class="lead">To join a class, you should have been given a registration code. Please enter it below.</p>
-               {!! Form::open(['url' => 'course/join', 'class' => '', 'id' => 'add-skill']) !!}
-               {{ Form::input('text', 'registration_code', null, ['class' => 'form-control', 'placeholder' => 'Registration Code', 'id' => 'registration_code']) }}
-                {!! Form::submit('Join Course', ['class' => 'btn btn-primary btn-lg']) !!}
-                {!! Form::close() !!}
-
+            {!! Form::submit('Join Course', ['class' => 'button is-large']) !!}
+            
+        {!! Form::close() !!}
     </div>
+  </div>
+</section>
 
 
 @endsection
