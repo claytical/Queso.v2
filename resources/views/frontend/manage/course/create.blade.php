@@ -29,7 +29,7 @@
             <div class="field">
                 <label class="label">Meeting Time</label>
                 <p class="control">
-                    {{ Form::input('text', 'meeting_time', null, ['class' => 'form-control', 'placeholder' => 'Tuesdays at Midnight', 'id' => 'meeting_time']) }}
+                    {{ Form::input('text', 'meeting_time', null, ['class' => 'input', 'placeholder' => 'Tuesdays at Midnight', 'id' => 'meeting_time']) }}
 
                 </p>
             </div>
