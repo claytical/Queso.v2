@@ -19,7 +19,7 @@
               </a>
 
               <a class="navbar-item" href="{!! URL::to('register') !!}">
-                trans('navs.frontend.register')
+                {!! trans('navs.frontend.register') !!}
               </a>
             @else
 
