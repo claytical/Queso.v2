@@ -10,7 +10,7 @@
         Levels
       </h1>
       <h2 class="subtitle">You probably want more than one level. Traditionally, most classes require over 60% to get a D. That means most of your students will have an F for the majority of the class and make great progress towards the end of the course. To encourage motivation, try creating levels in between levels that correspond to letter grades. Additionally, you can lock students out of assigments until they reach a specific level.</h2>
-
+        @if($levels)
         <table class="table is-narrow">
             <thead>
             </thead>
@@ -38,6 +38,7 @@
             <tfoot>
             </tfoot>
         </table>
+        @endif
         <div class="box">
 
             {!! Form::open(['url' => 'course/add/level', 'class' => '', 'id' => 'add-level']) !!}
@@ -55,9 +56,12 @@
                   <p class="control">
                    {{ Form::input('number', 'amount', null, ['class' => 'input', 'placeholder' => '0', 'id' => 'level_amount']) }}
                   </p>
+                  <div class="field-label is-normal">
+                    <label class="label">Points Required</label>
+                  </div>
                 </div>
                 <p class="control">
-                    {!! Form::submit('Add Level', ['class' => 'button is-primary is-large']) !!}
+                    {!! Form::submit('Add Level', ['class' => 'button is-primary is-medium']) !!}
                 </p>
               </div>
             </div>
