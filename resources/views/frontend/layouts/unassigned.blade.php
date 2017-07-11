@@ -22,11 +22,6 @@
         @include('includes.partials.logged-in-as')
 
         @include('frontend.includes.header')
-        <div class="wrapper">
-
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
                 <section class="content-header">
                     @yield('page-header')
 
@@ -39,7 +34,6 @@
                     @include('includes.partials.messages')
                     @yield('content')
                 </section><!-- /.content -->
-            </div><!-- /.content-wrapper -->
 
             @include('backend.includes.footer')
         </div><!-- ./wrapper -->

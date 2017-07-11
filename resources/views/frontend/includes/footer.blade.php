@@ -1,9 +1,14 @@
-<!-- Main Footer -->
-<footer class="main-footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-        <a href="http://laravel-boilerplate.com" target="_blank">{{ trans('strings.backend.general.boilerplate_link') }}</a>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Queso</strong> by <a href="http://claytical.com">Clay Ewing</a>.
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/claytical/Queso.v2">
+          <i class="fa fa-github"></i>
+        </a>
+      </p>
     </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; {{ date('Y') }} <a href="#">{{ app_name() }}</a>.</strong> {{ trans('strings.backend.general.all_rights_reserved') }}
+  </div>
 </footer>
