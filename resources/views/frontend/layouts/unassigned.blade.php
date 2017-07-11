@@ -13,29 +13,16 @@
         <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
         @yield('meta')
 
-        <!-- Styles -->
-        @yield('before-styles-end')
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">        
 
-        {{ Html::style(elixir('css/backend.css')) }}
-
-        <!-- Check if the language is set to RTL, so apply the RTL layouts -->
-        @langRTL
-            {!! Html::style(elixir('css/rtl.css')) !!}
-        @endif
-
-        @yield('after-styles-end')
-
-        <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet">
-
-<script>
-</script>
     </head>
-    <body class="skin-{{ config('backend.theme') }}">
+    <body>
         @include('includes.partials.logged-in-as')
 
+        @include('frontend.includes.header')
         <div class="wrapper">
-            @include('frontend.includes.header')
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">

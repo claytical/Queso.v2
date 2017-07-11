@@ -1,46 +1,47 @@
-<header class="main-header">
-    {{ link_to_route('frontend.user.dashboard', app_name(), [], ['class' => 'logo']) }}
+<header>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{!! URL::to('/') !!}">
+              <img src="/img/logo.png" alt="Queso: A Gameful Learning Management System">
+            </a>
 
-    <nav class="navbar navbar-static-top" role="navigation">
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
-        </a>
+            <div class="navbar-burger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+        </div>
 
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
+        <div class="navbar-end">
+            @if (access()->guest())
+              <a class="navbar-item" href="{!! URL::to('login') !!}">
+                {!! trans('navs.frontend.login') !!}
+              </a>
 
-                @if (access()->guest())
-                    <li>{{ link_to('login', trans('navs.frontend.login')) }}</li>
-                    <li>{{ link_to('register', trans('navs.frontend.register')) }}</li>
-                @else
+              <a class="navbar-item" href="{!! URL::to('register') !!}">
+                trans('navs.frontend.register')
+              </a>
+            @else
 
-                <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="hidden-xs">{{ access()->user()->name }}</span>
-                    </a>
 
-                    <ul class="dropdown-menu">
-                        <li>{{ link_to('profile/edit', 'Settings') }}</li>
-                        <li>{{ link_to('password/change', 'Change Password') }}</li>
+            <div class="navbar-item has-dropdown is-hoverable navbar-end">
+                <a class="navbar-link  is-active" href="#">
+                  {{ access()->user()->name }}
+                </a>
+                <div class="navbar-dropdown">
+                  <a class="navbar-item " href="{!! URL::to('profile/edit')!!}">
+                    Settings
+                  </a>
+                  <a class="navbar-item" href="{!! URL::to('password/change') !!}">
+                    Change Password
+                  </a>
+                  <a class="navbar-item" href="{!! URL::to('logout') !!}">
+                    {!! trans('navs.general.logout') !!}
+                  </a>
+                </div>
+              </div>
 
-                        <!--
-
-                            @if (access()->user()->canChangePassword())
-                                <li>{{ link_to_route('auth.password.change', trans('navs.frontend.user.change_password')) }}</li>
-                            @endif
-
-                            @permission('view-backend')
-                            <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
-                            @endauth
-                        -->
-
-                        <li>{{ link_to_route('auth.logout', trans('navs.general.logout'), []) }}</li>
-                    </ul>
-                </li>
-
-                @endif
-
-            </ul>
-        </div><!-- /.navbar-custom-menu -->
+            @endif
+        </div>
     </nav>
 </header>
