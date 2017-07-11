@@ -15,7 +15,7 @@
                 {!! Form::hidden('skill', $skill->id) !!}
                 <span class="tag is-light is-large">
                     {!! $skill->name !!}
-                    {!! Form::submit('', ['class' => 'delete']) !!}                           
+                    <button type="submit" class="delete"></button>
                 </span>
                 {!! Form::close() !!}
         @endforeach
@@ -27,7 +27,8 @@
                 {{ Form::input('text', 'skill', null, ['class' => 'input is-large', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
               </p>
               <p class="control">
-                <button type="submit" value="" class="button delete is-large"></button>              
+
+                {!! Form::submit('Add Skill', ['class' => 'button is-primary is-large']) !!}
               </p>
             </div>            
 
