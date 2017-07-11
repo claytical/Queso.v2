@@ -24,7 +24,7 @@
             @else
 
               <a class="navbar-item navbar-end" href="{!! URL::to('logout') !!}">
-                trans('navs.general.logout')
+                {!! trans('navs.general.logout') !!}
               </a>
 <!--
             <div class="navbar-item has-dropdown is-hoverable navbar-end">
