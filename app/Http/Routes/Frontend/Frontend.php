@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('course/switch/{course_id}', 'CourseController@change')->name('course.change');
         Route::get('course/create', 'CourseController@create_form')->name('course.create');
         Route::post('course/create', 'CourseController@create')->name('course.created');
-        Route::get('course/add/levels', 'CourseController@add_levels')->name('course.add.levels');
+        Route::post('course/add/levels', 'CourseController@add_levels')->name('course.add.levels');
         Route::post('course/add/level', 'CourseController@add_level')->name('course.add.level');
         Route::post('course/remove/level', 'CourseController@remove_level')->name('course.remove.level');
         Route::get('course/add/skills', 'CourseController@add_skills')->name('course.add.skills');
