@@ -10,7 +10,7 @@
         Levels
       </h1>
       <h2 class="subtitle">You probably want more than one level. Traditionally, most classes require over 60% to get a D. That means most of your students will have an F for the majority of the class and make great progress towards the end of the course. To encourage motivation, try creating levels in between levels that correspond to letter grades. Additionally, you can lock students out of assigments until they reach a specific level.</h2>
-        @if($levels->isNotEmpty())
+        @if(!$levels->isEmpty())
         <table class="table is-narrow">
             <thead>
             </thead>
