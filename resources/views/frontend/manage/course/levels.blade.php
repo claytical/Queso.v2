@@ -21,17 +21,19 @@
             </tr>
             @foreach($levels as $level)
             <tr>
-                    <td>
                         {!! Form::open(['url' => 'course/remove/level', 'class' => 'remove-level']) !!}
+
+                    <td>
                         {!! Form::hidden('level', $level->id) !!}
                         {!! $level->name !!}
                     </td>
                     <td>
                         {!! $level->amount !!}
                         <button type="submit" class="delete is-pulled-right"></button>
-                        {!! Form::close() !!}
                     </td>
             </tr>
+                        {!! Form::close() !!}
+
             @endforeach
             </tbody>
             <tfoot>
