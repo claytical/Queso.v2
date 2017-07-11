@@ -23,7 +23,10 @@
               </a>
             @else
 
-
+              <a class="navbar-item navbar-end" href="{!! URL::to('logout') !!}">
+                trans('navs.general.logout')
+              </a>
+<!--
             <div class="navbar-item has-dropdown is-hoverable navbar-end">
                 <a class="navbar-link  is-active" href="#">
                   {{ access()->user()->name }}
@@ -35,12 +38,9 @@
                   <a class="navbar-item" href="{!! URL::to('password/change') !!}">
                     Change Password
                   </a>
-                  <a class="navbar-item" href="{!! URL::to('logout') !!}">
-                    {!! trans('navs.general.logout') !!}
-                  </a>
                 </div>
               </div>
-
+-->
             @endif
         </div>
     </nav>
