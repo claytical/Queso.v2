@@ -18,6 +18,7 @@
               <p class="control">
                 {{ Form::input('text', 'name', null, ['class' => 'input', 'placeholder' =>  'My New Course Name', 'id' => 'course_name']) }}
               </p>
+            </div>
             <div class="field">
                 <label class="label">Physical Location</label>
                 <p class="control">
@@ -40,7 +41,6 @@
                 </p>
             </div>
 
-            </div>
         </div>
       </div>
       <div class="tile is-6 is-parent">
