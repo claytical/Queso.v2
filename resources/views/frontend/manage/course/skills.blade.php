@@ -17,7 +17,8 @@
                     {!! $skill->name !!}
                     <button type="submit" class="delete"></button>
                 </span> 
-                {!! Form::close() !!}
+                {!! Form::close() !!} 
+                &nbsp;
         @endforeach
         </div>
         <div class="box">
