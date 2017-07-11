@@ -30,10 +30,8 @@
                 </section>
 
                 <!-- Main content -->
-                <section class="content">
-                    @include('includes.partials.messages')
-                    @yield('content')
-                </section><!-- /.content -->
+                @include('includes.partials.messages')
+                @yield('content')
 
             @include('frontend.includes.footer')
         </div><!-- ./wrapper -->
