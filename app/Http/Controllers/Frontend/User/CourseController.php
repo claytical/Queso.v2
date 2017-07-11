@@ -233,7 +233,7 @@ class CourseController extends Controller
     }
 
     public function add_levels() {
-    	$levels = Course::find(session('current_course'))->levels->orderBy('amount');
+    	$levels = Course::find(session('current_course'))->levels->sortBy('amount');
         return view('frontend.manage.course.levels', ['levels' => $levels])
             ->withUser(access()->user());
 
