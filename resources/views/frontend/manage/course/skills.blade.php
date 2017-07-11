@@ -9,17 +9,17 @@
       </h1>
       <h2 class="subtitle">Skills allow you to evaluate quests. You can set thresholds of points for specific skills before specific quests are able to be attempted by a student. The combined totals of each skill will be used to assign levels. If you prefer to not use sets of skills, you can create just one skill. For example, "Points" or "XP."</h2>
 
-
+        <div class="field is-grouped">
         @foreach($skills as $skill)
                 {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
                 {!! Form::hidden('skill', $skill->id) !!}
                 <span class="tag is-light is-large">
                     {!! $skill->name !!}
                     <button type="submit" class="delete"></button>
-                </span>
+                </span> 
                 {!! Form::close() !!}
         @endforeach
-
+        </div>
         <div class="box">
             {!! Form::open(['url' => 'course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
             <div class="field has-addons">
