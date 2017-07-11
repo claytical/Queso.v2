@@ -32,7 +32,7 @@
               <i class="fa fa-warning"></i>
             </span>
           </p>
-          <p class="help is-danger">This email is invalid</p>
+          <p class="help is-danger is-hidden">This email is invalid</p>
         </div>
 
 
@@ -47,7 +47,7 @@
               <i class="fa fa-warning"></i>
             </span>
           </p>
-          <p class="help is-danger">This email is invalid</p>
+          <p class="help is-danger is-hidden">This email is invalid</p>
         </div>
 
         <div class="field is-horizontal">
@@ -64,8 +64,7 @@
         </div>
         {{ Form::submit(trans('labels.frontend.auth.login_button'), ['class' => 'button is-primary']) }}
         {{ Form::close() }}
-
-        {{ link_to('password/reset', trans('labels.frontend.passwords.forgot_password', ['class' => 'button is-link is-pulled-right'])) }}
+        <a href="{!! URL::to('password/reset')!!}" class="is-button is-link is-pulled-right">{!! trans('labels.frontend.passwords.forgot_password') !!}</a>
     </div>
   </div>
 </div>
