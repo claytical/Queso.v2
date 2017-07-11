@@ -17,7 +17,7 @@
 
           </p>
           <p class="control">
-            {!! Form::submit('Join Course', ['class' => 'button is-large']) !!}  </p>
+            {!! Form::submit('Join Course', ['class' => 'button is-large is-primary']) !!}  </p>
         </div>
             
         {!! Form::close() !!}
