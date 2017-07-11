@@ -39,7 +39,7 @@
         </section>
 
 
-        @include('backend.includes.footer')
+        @include('frontend.includes.footer')
     
     </body>
 </html>
