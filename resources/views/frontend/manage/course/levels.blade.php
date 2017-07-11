@@ -13,12 +13,15 @@
         @if(!$levels->isEmpty())
             <div class="columns">
                 @foreach($levels as $level)
-                    <div class="column notification is-bold is-light">
-                        {!! Form::open(['url' => 'course/remove/level', 'class' => 'remove-level']) !!}
-                        {!! Form::hidden('level', $level->id) !!}
-                        <h3 class="title">{!! $level->name !!} <button type="submit" class="delete is-pulled-right"></button></h3>
-                        <h4 class="subtitle">{!! $level->amount !!} Points Required</h4>
-                        {!! Form::close() !!}
+                    <div class="column">
+                        <div class="notification is-dark">
+                            {!! Form::open(['url' => 'course/remove/level', 'class' => 'remove-level']) !!}
+                            <button type="submit" class="delete is-pulled-right"></button>
+                            {!! Form::hidden('level', $level->id) !!}
+                            <h3 class="title">{!! $level->name !!} </h3>
+                            <h4 class="subtitle">{!! $level->amount !!} Points Required</h4>
+                            {!! Form::close() !!}
+                        </div>
                     </div>
                 @endforeach
 
