@@ -24,12 +24,15 @@
 
         <div class="box">
             {!! Form::open(['url' => 'course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
-            <p class="control"> 
+            <div class="field has-addons">
+              <p class="control">
                 {{ Form::input('text', 'skill', null, ['class' => 'input', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
-            </p>
-            <p class="control">
-                {!! Form::submit('Add Skill', ['class' => 'button is-large is-primary']) !!}
-            </p>
+              </p>
+              <p class="control">
+                {!! Form::submit('Add Skill', ['class' => 'button is-info']) !!}
+              </p>
+            </div>            
+
             {!! Form::close() !!}
         </div>
 
