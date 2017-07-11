@@ -1,43 +1,44 @@
 @extends('frontend.layouts.unassigned')
 
 @section('content')
-    <div class="col-lg-12">
-        <h2>Skills</h2>
-        <p>Skills allow you to evaluate quests. You can set thresholds of points for specific skills before specific quests are able to be attempted by a student. The combined totals of each skill will be used to assign levels.</p>
+<section class="hero is-dark is-bold is-large">
+  <div class="hero-body">
+    <div class="container is-fluid">
+      <h1 class="title">
+        Skills
+      </h1>
+      <h2 class="subtitle">Skills allow you to evaluate quests. You can set thresholds of points for specific skills before specific quests are able to be attempted by a student. The combined totals of each skill will be used to assign levels.</h2>
 
-        <p>If you prefer to not use sets of skills, you can create just one skill. For example, "Points" or "XP."</p>
+      <p>If you prefer to not use sets of skills, you can create just one skill. For example, "Points" or "XP."</p>
 
-        <div id="skills">
-            @foreach($skills as $skill)
-                <div>
-                    {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
-                    {!! Form::hidden('skill', $skill->id) !!}
-                    {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-xs pull-right']) !!}                           
-                    <h5>{!! $skill->name !!}</h5>
-                    {!! Form::close() !!}
-                </div>
-            @endforeach
-        </div>
-    </div>
 
-    <div class="col-lg-12">
-        {!! Form::open(['url' => 'course/add/skill', 'class' => 'form-inline', 'id' => 'add-skill']) !!}
-          <div class="input-group">
-                {{ Form::input('text', 'skill', null, ['class' => 'form-control', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
-                <span class="input-group-btn">
-                {!! Form::submit('Add Skill', ['class' => 'btn btn-primary']) !!}
-                {!! Form::close() !!}
+        @foreach($skills as $skill)
+                {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
+                {!! Form::hidden('skill', $skill->id) !!}
+                <span class="tag is-light is-large">
+                    {!! $skill->name !!}
+                    {!! Form::submit('', ['class' => 'delete']) !!}                           
                 </span>
-          </div>
+                {!! Form::close() !!}
+        @endforeach
+
+        <div class="box">
+            {!! Form::open(['url' => 'course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
+            <p class="control"> 
+                {{ Form::input('text', 'skill', null, ['class' => 'input', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
+            </p>
+            <p class="control">
+                {!! Form::submit('Add Skill', ['class' => 'button is-large is-primary']) !!}
+            </p>
+            {!! Form::close() !!}
+        </div>
+
+        {{ link_to('course/add/levels', 'Continue to Levels', ['class' => 'button is-large is-light']) }}
+
+
     </div>
-
-
-    
-    <div class="col-lg-12">
-        <hr/>
-        {{ link_to('course/add/levels', 'Continue to Levels', ['class' => 'btn btn-default btn-block pull-right']) }}
-    </div>
-
+  </div>
+</section>
 
 
 @endsection
