@@ -27,7 +27,7 @@
                 {{ Form::input('text', 'skill', null, ['class' => 'input is-large', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
               </p>
               <p class="control">
-                {!! Form::submit('Add Skill', ['class' => 'button is-primary is-large']) !!}
+                <button type="submit" value="" class="button delete is-large"></button>              
               </p>
             </div>            
 
