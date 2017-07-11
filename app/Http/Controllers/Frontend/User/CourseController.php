@@ -244,9 +244,8 @@ class CourseController extends Controller
     	$level->amount = $request->amount;
     	$level->course_id = $request->session()->get('current_course');
     	$level->save();
-        $url = route('course.manage') . '#levels';
-        return redirect($url);
-    
+//        $url = route('course.manage') . '#levels';
+        return redirect(route('course.add.levels'));  
     }
 
     public function remove_level(Request $request) {

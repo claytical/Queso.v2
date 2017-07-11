@@ -38,7 +38,7 @@
         @endif
         <div class="box">
 <!-- Not continuing setup, using course admin instead-->
-            {!! Form::open(['url' => 'course/add/levels', 'class' => '', 'id' => 'add-level']) !!}
+            {!! Form::open(['url' => 'course/add/level', 'class' => '', 'id' => 'add-level']) !!}
 
             <div class="field">
               <label class="label">Level Name</label>
