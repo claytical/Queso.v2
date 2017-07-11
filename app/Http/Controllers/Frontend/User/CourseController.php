@@ -239,17 +239,13 @@ class CourseController extends Controller
 
     }
     public function add_level(Request $request) {
-//not in use?
     	$level = new Level;
     	$level->name = $request->level;
     	$level->amount = $request->amount;
     	$level->course_id = $request->session()->get('current_course');
     	$level->save();
-//		return redirect(route('course.add.levels'));
         $url = route('course.manage') . '#levels';
         return redirect($url);
-
-//    	return response()->json($level);
     
     }
 

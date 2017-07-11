@@ -3,7 +3,7 @@
 @section('content')
 
 
-<section class="hero is-dark is-bold is-large">
+<section class="hero is-dark is-bold is-medium">
   <div class="hero-body">
     <div class="container is-fluid">
       <h1 class="title">
@@ -18,19 +18,16 @@
             <tr>
                 <th>Level Name</th>
                 <th>Points Required</th>
-                <th></th>
             </tr>
             @foreach($levels as $level)
                     <td>
                         {!! Form::open(['url' => 'course/remove/level', 'class' => 'remove-level']) !!}
                         {!! Form::hidden('level', $level->id) !!}
                         {!! $level->name !!}
+                        <button type="submit" class="delete"></button>
                     </td>
                     <td>
                         {!! $level->amount !!}
-                    </td>
-                    <td>
-                        <button type="submit" class="delete"></button>
                         {!! Form::close() !!}
                     </td>
             @endforeach
@@ -40,8 +37,8 @@
         </table>
         @endif
         <div class="box">
-
-            {!! Form::open(['url' => 'course/add/level', 'class' => '', 'id' => 'add-level']) !!}
+<!-- Not continuing setup, using course admin instead-->
+            {!! Form::open(['url' => 'course/add/levels', 'class' => '', 'id' => 'add-level']) !!}
 
             <div class="field">
               <label class="label">Level Name</label>
