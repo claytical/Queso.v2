@@ -20,16 +20,18 @@
                 <th>Points Required</th>
             </tr>
             @foreach($levels as $level)
+            <tr>
                     <td>
                         {!! Form::open(['url' => 'course/remove/level', 'class' => 'remove-level']) !!}
                         {!! Form::hidden('level', $level->id) !!}
                         {!! $level->name !!}
-                        <button type="submit" class="delete"></button>
                     </td>
                     <td>
                         {!! $level->amount !!}
+                        <button type="submit" class="delete is-pulled-right"></button>
                         {!! Form::close() !!}
                     </td>
+            </tr>
             @endforeach
             </tbody>
             <tfoot>
