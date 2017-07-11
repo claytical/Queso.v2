@@ -35,7 +35,7 @@
                     @yield('content')
                 </section><!-- /.content -->
 
-            @include('backend.includes.footer')
+            @include('frontend.includes.footer')
         </div><!-- ./wrapper -->
 
         <!-- JavaScripts -->
