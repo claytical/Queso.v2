@@ -99,9 +99,9 @@
   <div class="hero-body">
     <div class="container is-fluid">
         <h1 class="title">
-        Submission Method
+        Submission Revisions
       </h1>
-        <h2 class="subtitle">Should students submit their work individually or as a group?</h2>
+        <h2 class="subtitle">Should students be able to revise their submission?</h2>
 
                     <button type="button" class="btn btn-default btn-lg" id="revisions_allowed">Yes</button>
                     <button type="button" class="btn btn-default btn-lg" id="revisions_disallowed">No</button>
