@@ -1,6 +1,66 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child box">
+          <p class="title">Course Name with Instructor</p>
+          <p class="subtitle">Current Level</p>
+          <p>Class Time and Location</p>
+          <p>Instructor Info Modal</p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Announcement Headline</p>
+          <p class="subtitle">Class Name</p>
+          <p>Lorem Ipsum</p>
+        </article>
+        <article class="tile is-child box">
+          <p class="title">Announcement Headline</p>
+          <p class="subtitle">Class Name</p>
+          <p>Lorem Ipsum</p>
+        </article>
+        <article class="tile is-child box">
+          <p class="title">Announcement Headline</p>
+          <p class="subtitle">Class Name</p>
+          <p>Lorem Ipsum</p>
+        </article>
+        <article class="tile is-child box">
+          <p class="title">Announcement Headline</p>
+          <p class="subtitle">Class Name</p>
+          <p>Lorem Ipsum</p>
+        </article>
+
+      </div>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <div class="content">
+        <p class="title">Agenda</p>
+        <p class="subtitle">Upcoming Deadlines</p>
+        <div class="content">
+            <p>Assignment Name</p>
+            <p>Assignment #2 Name</p>
+        </div>
+        <p class="subtitle">Due Later</p>
+        <div class="content">
+            <p>Assignment #3</p>
+            <p>Assignment #4</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</div>
+
+
+
+
     <div class="row">
 
         <div class="col-md-10 col-md-offset-1">

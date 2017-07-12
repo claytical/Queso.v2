@@ -66,9 +66,9 @@
             <div class="tile is-12">
               <div class="tile is-parent is-vertical">
                 
-                <article class="tile is-child notification is-primary">
+                <article class="tile is-child notification is-dark">
                   <p class="title">Invite</p>
-                  <p class="subtitle">You can email your students a link to sign up for the course</p>
+                  <p class="subtitle">When you're ready to launch, you can email your students a link to sign up for the course.</p>
                 {{ link_to('dashboard', 'Invite Students', ['class' => 'button is-light is-medium is-pulled-right is-outlined']) }}
 
                 </article>
