@@ -2,20 +2,35 @@
 
 @section('content')
 
-<section class="hero is-dark is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Announcements
-      </h1>
-        @if($announcements->isEmpty())
-        <h2 class="subtitle">There are currently no announcements</h2>
-        @endif
+@if($announcements->isEmpty())
 
-        <a href="{!! URL::to('manage/announcement/create') !!}" class="button is-pulled-right is-primary">New Announcement</a>
-    </div>
-  </div>
-</section>
+    <section class="hero is-dark is-bold is-large">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Announcements
+          </h1>
+            <h2 class="subtitle">There are currently no announcements. When you create an announcement, it will show up on the dashboard for all students to see.</h2>
+
+            <a href="{!! URL::to('manage/announcement/create') !!}" class="button is-pulled-right is-primary">Make an Announcement</a>
+        </div>
+      </div>
+    </section>
+@else
+    <section class="hero is-dark is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Announcements
+          </h1>
+
+            <a href="{!! URL::to('manage/announcement/create') !!}" class="button is-pulled-right is-primary">New Announcement</a>
+        </div>
+      </div>
+    </section>
+
+@endif
+
 
 @if(!$announcements->isEmpty())
 
