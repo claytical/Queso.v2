@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="section is-dark is-bold">
+<section class="section">
     <div class="tile is-ancestor">
       <div class="tile is-parent is-vertical is-5">
         <div class="tile is-child notification">
@@ -43,7 +43,7 @@
 
       </div>
 
-      <div class="tile is-2 is-vertical is-parent">
+      <div class="tile is-3 is-vertical is-parent">
         @if($feedback_requests || !$notifications->isEmpty())
 
         <div class="tile is-child notification">
@@ -85,13 +85,17 @@
                 <p>{!! $current_level->name !!}</p>
                 @endif
                 <div class="content is-small">
-                    <h3>Class Location: {!! $course->meeting_location !!}</h3>
-                    <h3>Class Time: {!! $course->meeting !!}</h3>
+                    <h5>Class Location</h5>
+                    <p><strong>{!! $course->meeting_location !!}</p>
+                    <h5>Class Time</h5>
+                    <p><strong>{!! $course->meeting !!}</strong></p>
                 </div>
                 <div class="content is-small">
-                    <h2><a href="mailto:{!! $course->instructor_contact !!}">{!! $course->instructor_display_name !!}</a></h2>
-                    <h3>Office Location: {!! $course->instructor_office_location !!}</h3>
-                    <h3>Office Hours: {!! $course->office_hours !!}</h3>
+                    <h3>{!! $course->instructor_display_name !!}</h3> | <a href="mailto:{!! $course->instructor_contact !!}">Email</a>
+                    <h5>Office Location</h5>
+                    <p><strong>{!! $course->instructor_office_location !!}</strong></p>
+                    <h5>Office Hours</h5>
+                    <p><strong>{!! $course->office_hours !!}</strong></p>
                 </div>
         </div>
         <div class="tile is-child notification">
