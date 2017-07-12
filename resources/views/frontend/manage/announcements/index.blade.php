@@ -20,11 +20,8 @@
     <section class="hero is-dark is-bold">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
-            Announcements
-          </h1>
-
             <a href="{!! URL::to('manage/announcement/create') !!}" class="button is-pulled-right is-primary">New Announcement</a>
+            <h1 class="title">Announcements</h1>
         </div>
       </div>
     </section>
@@ -33,37 +30,44 @@
 
 
 @if(!$announcements->isEmpty())
-
+<section class="section">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Headline</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Headline</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </tfoot>
+      <tbody>
     @foreach($announcements as $announcement)
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">{!! $announcement->title !!}</p>
-            <a class="card-header-icon">
-              <span class="icon">
-                <i class="fa fa-angle-down"></i>
-              </span>
-            </a>
-          </header>
-          <div class="card-content">
-            <div class="content">
-            {!! $announcement->body !!}
-              <br>
-              <small>{!! date('m-d-Y', strtotime($announcement->created_at)) !!}</small>
-            </div>
-          </div>
-          <footer class="card-footer">
+
+        <tr>
+          <td>{!! $announcement->title !!}</td>
+          <td>{!! date('m-d-Y', strtotime($announcement->created_at)) !!}</td>
+          <td>            
             @if($announcement->sticky)
-                <a class="card-footer-item" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"> Hide</a>
+                <a class="button is-medium" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"> Hide</a>
             @else
-                <a class="card-footer-item" href="{!! url('manage/announcement/'.$announcement->id.'/show');!!}"> Show</a>
+                <a class="button is-medium" href="{!! url('manage/announcement/'.$announcement->id.'/show');!!}"> Show</a>
             @endif
 
-            <a class="card-footer-item" href="{!! URL::to('manage/announcement/' . $announcement->id) !!}">Edit</a>
-            <a class="card-footer-item" href="{!! URL::to('manage/announcement/' . $announcement->id . '/delete') !!}">Delete</a>
-          </footer>
-        </div>
-
+            <a class="button is-medium" href="{!! URL::to('manage/announcement/' . $announcement->id) !!}">Edit</a>
+            <a class="button is-medium is-danger" href="{!! URL::to('manage/announcement/' . $announcement->id . '/delete') !!}">Delete</a>
+            </td>
+        </tr>
      @endforeach
+
+      </tbody>
+    </table>
+</section>
 @endif
 
 @endsection

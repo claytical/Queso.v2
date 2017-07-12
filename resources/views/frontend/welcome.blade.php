@@ -8,7 +8,7 @@
           <p class="title">Announcements</p>
         @if(!$announcements->isEmpty())
             @foreach($announcements as $announcement)
-            <span class="tag is-info">{!! $course->name !!}</span>
+            <span class="tag is-info is-pulled-right">{!! $course->name !!}</span>
             <p class="subtitle">{!! $announcement->title !!}</p>
             <div class="content">
                 <p>{!! $announcement->body !!}</p>

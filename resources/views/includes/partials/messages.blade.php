@@ -1,47 +1,83 @@
 @if ($errors->any())
-    <div class="alert alert-danger">
-        @foreach ($errors->all() as $error)
-            {!! $error !!}<br/>
-        @endforeach
-    </div>
+    <article class="message is-danger">
+      <div class="message-header">
+        <p>Error</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
+             @foreach ($errors->all() as $error)
+                {!! $error !!}<br/>
+            @endforeach
+      </div>
+    </article>
 @elseif (session()->get('flash_success'))
-    <div class="alert alert-success">
+    <article class="message is-success">
+      <div class="message-header">
+        <p>Success</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
         @if(is_array(json_decode(session()->get('flash_success'), true)))
             {!! implode('', session()->get('flash_success')->all(':message<br/>')) !!}
         @else
             {!! session()->get('flash_success') !!}
         @endif
-    </div>
+      </div>
+    </article>
 @elseif (session()->get('flash_warning'))
-    <div class="alert alert-warning">
+    <article class="message is-warning">
+      <div class="message-header">
+        <p>Success</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
         @if(is_array(json_decode(session()->get('flash_warning'), true)))
             {!! implode('', session()->get('flash_warning')->all(':message<br/>')) !!}
         @else
             {!! session()->get('flash_warning') !!}
         @endif
-    </div>
+      </div>
+    </article>
 @elseif (session()->get('flash_info'))
-    <div class="alert alert-info">
+    <article class="message is-info">
+      <div class="message-header">
+        <p>Information</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
         @if(is_array(json_decode(session()->get('flash_info'), true)))
             {!! implode('', session()->get('flash_info')->all(':message<br/>')) !!}
         @else
             {!! session()->get('flash_info') !!}
         @endif
-    </div>
+      </div>
+    </article>
 @elseif (session()->get('flash_danger'))
-    <div class="alert alert-danger">
+    <article class="message is-danger">
+      <div class="message-header">
+        <p>Danger!</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
         @if(is_array(json_decode(session()->get('flash_danger'), true)))
             {!! implode('', session()->get('flash_danger')->all(':message<br/>')) !!}
         @else
             {!! session()->get('flash_danger') !!}
         @endif
-    </div>
+      </div>
+    </article>
 @elseif (session()->get('flash_message'))
-    <div class="alert alert-info">
+    <article class="message is-info">
+      <div class="message-header">
+        <p>Information</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
         @if(is_array(json_decode(session()->get('flash_message'), true)))
             {!! implode('', session()->get('flash_message')->all(':message<br/>')) !!}
         @else
             {!! session()->get('flash_message') !!}
         @endif
-    </div>
+      </div>
+    </article>
 @endif
