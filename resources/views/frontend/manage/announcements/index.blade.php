@@ -1,44 +1,55 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12">
-        <h2>Manage Announcements {{ link_to('manage/announcement/create', 'New Announcement', ['class' => 'btn btn-primary btn-lg pull-right']) }}</h2>
+
+<section class="hero is-dark is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Announcements
+      </h1>
+        @if($announcements->isEmpty())
+        <h2 class="subtitle">There are currently no announcements</h2>
+        @endif
+
+        <a href="{!! URL::to('manage/announcement/create') !!}" class="button is-pulled-right is-primary">New Announcement</a>
     </div>
-</div>
+  </div>
+</section>
 
 @if(!$announcements->isEmpty())
-    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
-            <thead>
-                <th data-field="name" 
-            data-sortable="true">Headline</th>
-                <th data-field="date" 
-            data-sortable="true">Date</th>
-                <th></th>
-            </thead>
-            <tbody>
-                @foreach($announcements as $announcement)
-                    <tr>
-                        <td>{{ link_to('manage/announcement/' . $announcement->id, $announcement->title) }}</td>
-                        <td>{!! date('m-d-Y', strtotime($announcement->created_at)) !!}</td>
-                        <td>
-                            @if($announcement->sticky)
-                                <a class="btn btn-default" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"><span class="glyphicon glyphicon-eye-close"></span> Hide</a>
 
-                            @else
-                                <a class="btn btn-default" href="{!! url('manage/announcement/'.$announcement->id.'/show');!!}"><span class="glyphicon glyphicon-eye-open"></span> Show</a>
+    @foreach($announcements as $announcement)
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">{!! $announcement->title !!}</p>
+            <a class="card-header-icon">
+              <span class="icon">
+                <i class="fa fa-angle-down"></i>
+              </span>
+            </a>
+          </header>
+          <div class="card-content">
+            <div class="content">
+            {!! $announcement->body !!}
+              <br>
+              <small>{!! date('m-d-Y', strtotime($announcement->created_at)) !!}</small>
+            </div>
+          </div>
+          <footer class="card-footer">
+            @if($announcement->sticky)
+                <a class="card-footer-item" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"> Hide</a>
+            @else
+                <a class="card-footer-item" href="{!! url('manage/announcement/'.$announcement->id.'/show');!!}"> Show</a>
+            @endif
 
-                            @endif
-                                <a class="btn btn-danger" href="{!! url('manage/announcement/'.$announcement->id.'/delete');!!}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-    </table>
-@else
-<p class="lead">There are currently no announcements.</p>
+            <a class="card-footer-item" href="{!! URL::to('manage/announcement/' . $announcement->id) !!}">Edit</a>
+            <a class="card-footer-item" href="{!! URL::to('manage/announcement/' . $announcement->id . '/delete') !!}">Delete</a>
+          </footer>
+        </div>
+
+     @endforeach
 @endif
-
 
 @endsection
 
