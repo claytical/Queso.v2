@@ -8,7 +8,7 @@
       <h1 class="title">
         Your Course Has Been Created!
       </h1>
-      <h2 class="subtitle">All that's left is to invite the students and create some quests!</h2>
+      <h2 class="subtitle">All that's left is to invite the students and create some quests</h2>
 
         <div class="tile is-ancestor">
           <div class="tile is-4">
@@ -62,6 +62,21 @@
           
         </div>
 
+        <div class="tile is-ancestor">
+            <div class="tile is-12">
+              <div class="tile is-parent is-vertical">
+                
+                <article class="tile is-child notification is-primary">
+                  <p class="title">Invite</p>
+                  <p class="subtitle">You can email your students a link to sign up for the course</p>
+                {{ link_to('dashboard', 'Invite Students', ['class' => 'button is-light is-medium is-pulled-right is-outlined']) }}
+
+                </article>
+              </div>
+              
+            </div>
+            
+        </div>
     </div>
   </div>
 </section>
