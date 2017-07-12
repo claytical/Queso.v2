@@ -13,6 +13,7 @@
             <div class="content">
                 <p>{!! $announcement->body !!}</p>
             </div>
+            <hr/>
             @endforeach
         @else
             <p class="subtitle">Fake Announcement #1</p>
