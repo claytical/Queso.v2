@@ -5,48 +5,60 @@
 <div class="tile is-ancestor">
   <div class="tile is-4 is-vertical is-parent">
     <div class="tile is-child box">
-      <p class="title">{!! $course->name !!} with <a href="mailto:{!! $course->instructor_contact !!}">{!! $course->instructor_display_name !!}</a></p>
-            @if (access()->instructor())
-            <p class="subtitle">Instructor</h5>
-            @else
-            <p class="subtitle">{!! $current_level->name !!}</p>
+      <p class="title">Courses</p>
+      <p class="subtitle">{!! $course->name !!}</p>
+            @if (!access()->instructor())
+            <p>{!! $current_level->name !!}</p>
             @endif
           <p>{!! $course->meeting_location !!}, {!! $course->meeting !!}</p>
-          <p>Instructor Info Modal</p>
-          <p>{!! $course->instructor_office_location !!}, {!! $course->office_hours !!}</p>
-            @if($team_members)
-                <h6>Your Peer Group</h6>
-                <ul class="list-unstyled">
-                    @foreach($team_members as $team_member)
-                        <li><a href="mailto:{!! $team_member->email !!}">{!! $team_member->name !!}</a></li>
-                    @endforeach
-                </ul>
-            @endif
-            @foreach($courses as $class)
-                <p> {!! link_to('course/switch/'.$class->id, $class->name) !!}</p>
-            @endforeach
+            <div class="content is-small">
+                <h1>Instructor Info</h1>
+                <h2><a href="mailto:{!! $course->instructor_contact !!}">{!! $course->instructor_display_name !!}</a></h2>
+                <h3>Office Location and Hours</h3>
+                  <p>{!! $course->instructor_office_location !!}, {!! $course->office_hours !!}</p>
+            </div>
     </div>
     <div class="tile is-child box">
-      <p class="title">Course Two</p>
+      <p class="title">Peer Groups</p>
+            @if($team_members)
+                <p class="subtitle">Class Name</p>
+                    @foreach($team_members as $team_member)
+                        <p><a href="mailto:{!! $team_member->email !!}">{!! $team_member->name !!}</p>
+                    @endforeach
+            @endif
+            <p class="subtitle">Example Course</p>
+            <p>John Winslow</p>
+            <p>Betty Rubble</p>
+            <p>Fred Flinstone</p>
     </div>
   </div>
   <div class="tile is-parent is-vertical is-4">
     <div class="tile is-child box">
-      <p class="title">Announcement #1</p>
-    </div>
-    <div class="tile is-child box">
-      <p class="title">Announcement #2</p>
-    </div>
+      <p class="title">Announcements</p>
     @if(!$announcements->isEmpty())
         @foreach($announcements as $announcement)
-            <div class="tile is-child box">
-              <p class="title">{!! $announcement->title !!}</p>
-              <p class="subtitle">Class Name</p>
-              <p>{!! $announcement->body !!}</p>
-            </div>
+        <p class="subtitle">{!! $announcement->title !!}</p>
+        <span class="tag is-info">{!! $course->name !!}</span>
+        <div class="content">
+            <p>{!! $announcement->body !!}</p>
+        </div>
         @endforeach
     @else
+        <p class="subtitle">Fake Announcement #1</p>
+        <span class="tag is-info">Demo Course</span>
+        <div class="content">
+            <p>Lorem ipsum dolor consequat</p>
+        </div>
+        <p class="subtitle">Fake Announcement #2</p>
+        <span class="tag is-info">Example Course</span>
+        <div class="content">
+            <p>Lorem ipsum dolor consequat</p>
+        </div>
+
     @endif
+
+
+    </div>
 
 
   </div>
@@ -54,17 +66,19 @@
     <div class="tile is-child box">
       <p class="title">Notifications</p>
             @if($feedback_requests)
-
+                <p class="subtitle">Feedback Requests</p>
+                <div class="content is-small">
                 @foreach($feedback_requests as $feedback_request)
-                    <p class="subtitle">{!! $feedback_request->quest_name !!}</p>
-                        <ul class="unstyled-list">
+                    <h1>{!! $feedback_request->quest_name !!}</h1>
                         @foreach($feedback_request->requests as $request)
-                            <li>{{ link_to('review/'.$feedback_request->quest_id.'/'.$request->sender->id.'/'.$request->revision, $request->sender->name) }}</li>
+                            <p>{{ link_to('review/'.$feedback_request->quest_id.'/'.$request->sender->id.'/'.$request->revision, $request->sender->name) }}</p>
                         @endforeach
-                        </ul>
                 @endforeach
+                </div>
             @endif
+
             @if(!$notifications->isEmpty())
+
                     @foreach($notifications as $notice)
                         <p>
                             @if($notice->url)
