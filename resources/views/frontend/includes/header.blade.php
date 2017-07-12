@@ -31,9 +31,12 @@
                           Manage
                         </a>
                         <div class="navbar-dropdown is-boxed">
-                        <div class="navbar-item">
+                        <a class="navbar-item {{ Active::pattern('manage/announcements') }}" href="{!! URL::to('manage/course') !!}">
                           <strong>Class #1</strong>
-                        </div>
+                        </a>
+                          <a class="navbar-item {{ Active::pattern('manage/quests') }}" href="{!! URL::to('manage/quests') !!}">
+                            Quests
+                          </a>
                           <a class="navbar-item {{ Active::pattern('manage/announcements') }}" href="{!! URL::to('manage/announcements') !!}">
                             Announcements
                           </a>
