@@ -39,6 +39,7 @@
           <th></th>
         </tr>
       </thead>
+      <!--
       <tfoot>
         <tr>
           <th>Headline</th>
@@ -46,21 +47,22 @@
           <th></th>
         </tr>
       </tfoot>
+      -->
       <tbody>
     @foreach($announcements as $announcement)
 
         <tr>
           <td>{!! $announcement->title !!}</td>
-          <td>{!! date('m-d-Y', strtotime($announcement->created_at)) !!}</td>
+          <td>{!! date('m/d/Y', strtotime($announcement->created_at)) !!}</td>
           <td>            
             @if($announcement->sticky)
-                <a class="button is-medium" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"> Hide</a>
+                <a class="button is-small" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"> Hide</a>
             @else
-                <a class="button is-medium" href="{!! url('manage/announcement/'.$announcement->id.'/show');!!}"> Show</a>
+                <a class="button is-small" href="{!! url('manage/announcement/'.$announcement->id.'/show');!!}"> Show</a>
             @endif
 
-            <a class="button is-medium" href="{!! URL::to('manage/announcement/' . $announcement->id) !!}">Edit</a>
-            <a class="button is-medium is-danger" href="{!! URL::to('manage/announcement/' . $announcement->id . '/delete') !!}">Delete</a>
+            <a class="button is-small" href="{!! URL::to('manage/announcement/' . $announcement->id) !!}">Edit</a>
+            <a class="button is-small is-danger" href="{!! URL::to('manage/announcement/' . $announcement->id . '/delete') !!}">Delete</a>
             </td>
         </tr>
      @endforeach

@@ -1,33 +1,41 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+<section class="hero is-dark is-bold">
+  <div class="hero-body">
+    <div class="container is-fluid">
     {!! Form::open(['url' => 'manage/announcement/update', 'id'=>'announcement-update-form']) !!}
-<div class="col-lg-12">
-    <h2>Update Announcement</h2>
-</div>
+        {{ Form::hidden('announcement_id', $announcement->id)}}
 
-<div class="col-lg-9">
-    {{ Form::hidden('announcement_id', $announcement->id)}}
-    <div class="form-group">
-    {{ Form::input('text', 'title', $announcement->title, ['class' => 'form-control', 'placeholder' => 'Adventure Awaits!', 'id' => 'headline']) }}
+        <h1 class="title">
+        Update Announcement
+      </h1>
+        <div class="field">
+          <p class="control">
+            {{ Form::input('text', 'title', $announcement->title, ['class' => 'input', 'placeholder' => 'Adventure Awaits!', 'id' => 'headline']) }}
+          </p>
+        </div>
+        <div class="field">
+            <p class="control">
+                {!! Form::textarea('body', $announcement->body, ['class' => 'input', 'files' => true]) !!}
+            </p>
+        </div>
+
+        <div class="field">
+            <p class="control">
+                {!! Form::checkbox('sticky', 1, $announcement->sticky) !!} Show on Dashboard
+            </p>
+        </div>
+
+        {!! Form::submit('Update', ['class' => 'button is-primary is-large']) !!}
+
+
+        {!! Form::close() !!}
     </div>
-    {!! Form::textarea('body', $announcement->body, ['class' => 'field', 'files' => true]) !!}
-
-</div>
-
-
-<div class="col-lg-3">
-
-    {!! Form::checkbox('sticky', 1, $announcement->sticky) !!} Show on Dashboard
-    <hr>
-
-    {!! Form::submit('Update', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
-
-</div>
-    {!! Form::close() !!}
+  </div>
+</section>
 @endsection
 
 @section('after-scripts-end')
-    <script>
-    </script>
+
 @stop
