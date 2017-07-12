@@ -1,178 +1,189 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12">
-        <h2>Create Quest</h2>
-    </div>
-</div>
 
-<div class="col-lg-8">
+{!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form']) !!}
 
-    <div id="quest_name">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>What's the name of this quest?</h3>
-                    <div class="input-group">
-                        {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
-                       <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" id="name_next" style="margin-left: 10px;">Next</button>
-                        </span>
-                    </div>
-            </div>
+<section class="hero is-dark is-bold" id="quest_name">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">
+        New Quest
+      </h1>
+        <h2 class="subtitle">What's the name of this quest?</h2>
+
+        <div class="field">
+          <p class="control">
+            {{ Form::input('text', 'name', null, ['class' => 'input', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
+          </p>
         </div>
-    </div>
 
-    <div id="quest_type_style" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Do students need to submit something to complete this quest?</h3>
+        <a href="#" class="button is-primary is-large">Next</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-dark is-bold" id="quest_type_style">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">
+        Quest Type
+      </h1>
+        <h2 class="subtitle">Do students need to submit something online to complete this quest?</h2>
                     <button type="button" class="btn btn-default btn-lg" id="submit_something_next">Yes</button>
                     <button type="button" class="btn btn-default btn-lg" id="no_submission_next">No</button>
-            </div>
-        </div>
+
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-    <div id="quest_type_submission" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>How will the students submit their work?</h3>
 
+<section class="hero is-dark is-bold" id="quest_type_submission">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">
+        Submission Method
+      </h1>
+        <h2 class="subtitle">How will the students submit their work?</h2>
                     <button type="button" class="btn btn-default btn-block" id="submission_link">Link to a Website</button> 
                     <button type="button" class="btn btn-default btn-block" id="submission_upload">Upload a File</button>
-                    <button type="button" class="btn btn-default btn-block" id="submission_write">Write in a Textbox</button> 
-                    <button type="button" class="btn btn-default btn-block" id="submission_either">Write in a Textbox or Upload a File</button>
+                    <button type="button" class="btn btn-default btn-block" id="submission_either">Either</button>
                     {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
                     {{ Form::hidden('submissions_allowed', true, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('uploads_allowed', true, ['id' => 'uploads_allowed']) }}
 
-            </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-    <div id="quest_type_activity" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>How will students get points?</h3>
+
+<section class="hero is-dark is-bold" id="quest_type_activity">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">
+        Submission Method
+      </h1>
+        <h2 class="subtitle">How will students get points?</h2>
+
                     <button type="button" class="btn btn-default btn-block" id="activity_next">In Class Activity, I'll Assign Points</button> <!-- #inclass_instant -->
                     <button type="button" class="btn btn-default btn-block" id="watch_next">Watch a Video Online</button> <!-- #video_url -->
                     {{ Form::hidden('quest_type', null, ['id' => 'quest_type_id']) }}
 
-            </div>
-        </div>
+
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-<!--
-    <div id="submission_selection" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>How should students submit their work?</h3>
-                    <button type="button" class="btn btn-default btn-lg" id="written_next">Write in a Textbox</button>
-                    <button type="button" class="btn btn-default btn-lg" id="upload_next">Upload Files</button>
-                    <button type="button" class="btn btn-default btn-lg" id="either_next">Either</button>
+<section class="hero is-dark is-bold" id="submission_group">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">
+        Submission Method
+      </h1>
+        <h2 class="subtitle">Should students submit their work individually or as a group?</h2>
 
-
-            </div>
-        </div>
-    </div>
-
-    -->
-
-    <div id="submission_group" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Should students submit their work individually or as a group?</h3>
                     <button type="button" class="btn btn-default btn-block" id="individual_next">Individual</button>
                     <button type="button" class="btn btn-default btn-block" id="groups_next">Group</button>
                     {{ Form::hidden('groups_allowed', true, ['id' => 'groups_allowed']) }}
 
-            </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
+<section class="hero is-dark is-bold" id="submission_revisions">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">
+        Submission Method
+      </h1>
+        <h2 class="subtitle">Should students submit their work individually or as a group?</h2>
 
-    <div id="submission_revisions" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Should a student be able to revise their work after it has been submitted?</h3>
                     <button type="button" class="btn btn-default btn-lg" id="revisions_allowed">Yes</button>
                     <button type="button" class="btn btn-default btn-lg" id="revisions_disallowed">No</button>
                     {{ Form::hidden('revisions', true, ['id' => 'revisions_option']) }}
-
-            </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-    <div id="peer_feedback" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Do you want a student's other team members to provide feedback on their submitted work?</h3>
+
+<section class="hero is-dark is-bold" id="peer_feedback">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">Peer Feedback</h1>
+        <h2 class="subtitle">Do you want a student's other team members to provide feedback on their submitted work?</h2>
                     <button type="button" class="btn btn-default btn-lg" id="feedback_allowed">Yes</button>
                     <button type="button" class="btn btn-default btn-lg" id="feedback_disallowed">No</button>
                     {{ Form::hidden('feedback', false, ['id' => 'feedback_option']) }}
-
-            </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-    <div id="inclass_instant" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Do you want to allow a student to enter unique code for instant credit on this quest?</h3>
+
+<section class="hero is-dark is-bold" id="inclass_instant">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">Instant Credit</h1>
+        <h2 class="subtitle">Do you want to allow a student to enter unique code for instant credit on this quest?</h2>
                     <button type="button" class="btn btn-default btn-lg" id="instant_allowed">Yes</button>
                     <button type="button" class="btn btn-default btn-lg" id="instant_disallowed">No</button>
                     {{ Form::hidden('instant', true, ['id' => 'instant_option']) }}
 
-            </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-    <div id="video_url" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>What's the URL for the video?</h3>
-                <p>Please note, for the automatic point assignment to happen, the video needs to be hosted by YouTube.</p>
-                    <div class="input-group">
+<section class="hero is-dark is-bold" id="video_url">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">What's the URL for the video?</h1>
+        <h2 class="subtitle">Please note, for the automatic point assignment to happen, the video needs to be hosted by YouTube.</h2>
                     {{ Form::input('text', 'video_url', null, ['class' => 'form-control', 'placeholder' => 'http://youtube.com/watch/?v=AAAAAAA', 'id' => 'video_url']) }}
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" id="video_next">Next</button>
-                    </span>
-                    </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="expiration" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Should this quest disappear after a certain date?</h3>
-                <p>Please note, if you use this feature you should set a timezone for the course.</p>
+
+        <a href="#" class="button is-primary is-large">Next</a>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-dark is-bold" id="expiration">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">Should this quest disappear after a certain date?</h1>
+        <h2 class="subtitle">Please note, if you use this feature you should set a timezone for the course.</h2>
                     <button type="button" class="btn btn-default btn-lg" id="expiration_allowed">Yes</button>
                     <button type="button" class="btn btn-default btn-lg" id="expiration_disallowed">No</button>
-            </div>
-        </div>
-    </div>
 
-    <div id="set_expiration" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>When should the quest disappear?</h3>
-                <div class="input-group">                    
+
+        <a href="#" class="button is-primary is-large">Next</a>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-dark is-bold" id="set_expiration">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">When should the quest disappear?</h1>
+
                     {{ Form::input('date', 'expiration', null, ['class' => 'form-control', 'id' => 'expiration_date']) }}
-                    <span class="input-group-btn">               
-                    <button type="button" class="btn btn-default" id="expiration_set">Next</button>
-                    </span>
-                </div>
-            </div>
-        </div>
+
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-
-    <div id="skills" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>What are the maximum point values for each skill?</h3>
-                    <form class="form-horizontal">
+<section class="hero is-dark is-bold" id="skills">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">What are the maximum point values for each skill?</h1>
+        <h2 class="subtitle">Please note, if you use this feature you should set a timezone for the course.</h2>
                     @foreach($skills as $skill)
                       <div class="form-group">
                         <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
@@ -182,29 +193,28 @@
                         </div>
                       </div>
                     @endforeach
-                
-                    <button type="button" class="btn btn-default" id="skills_set">Next</button>
-                    </form>
-            </div>
-        </div>
-    </div>
 
-    <div id="thresholds" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Should a student be required to have a minimum skill level in order to see this quest?</h3>
+        <a href="#" class="button is-primary is-large">Next</a>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-dark is-bold" id="thresholds">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">Should a student be required to have a minimum skill level in order to see this quest?</h1>
                     <button type="button" class="btn btn-default btn-lg" id="thresholds_allowed">Yes</button>
                     <button type="button" class="btn btn-default btn-lg" id="thresholds_disallowed">No</button>
-            </div>
-        </div>
-    </div>
 
-    <div id="set_thresholds" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>What are the minimum skill level values in order to see this quest?</h3>
-                    <form class="form-horizontal">
-                      <div class="form-group">
+        <a href="#" class="button is-primary is-large">Next</a>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-dark is-bold" id="set_thresholds">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">What are the minimum skill level values in order to see this quest?</h1>
                       @foreach($skills as $skill)
                         <label for="threshold{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name!!}</label>
                         <div class="col-sm-10">
@@ -213,125 +223,49 @@
 
                         </div>
                       @endforeach
-                      </div>
-                      <div class="form-group">
-                        <button type="button" class="btn btn-default" id="thresholds_set">Next</button>
-                      </div>
 
-                    </form>
-            </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-    <div id="attach_files" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Would you like to attach any supporting files to this quest?</h3>
+<section class="hero is-dark is-bold" id="attach_files">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">Would you like to attach any supporting files to this quest?</h1>
                     <button type="button" class="btn btn-default btn-lg" id="files_allowed">Yes</button>
                     <button type="button" class="btn btn-default btn-lg" id="files_disallowed">No</button>
-            </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
+  </div>
+</section>
 
-    <div id="file_attachments" style="display:none;">
-        <div class="row">
-                <div class="col-lg-12">
+
+<section class="hero is-dark is-bold" id="file_attachments">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">Drop the files you would like to upload onto the box below</h1>
                     <div id="quest_uploads" class="dropzone"></div>
-                </div>
-                <div class="col-lg-12">
-                    <hr/>
-                      <div class="form-group">
-                        <button type="button" class="btn btn-default btn-lg pull-right" id="set_files">Next</button>
-
-                      </div>
-                </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Next</a>
     </div>
-
-    <div id="finished" style="display:none;">
-        <div class="row">
-            <div class="col-lg-12">
-
-                <h3>Almost there!</h3>
-                    {!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form']) !!}
-                <p class="lead">Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</p>
-                   {!! Form::textarea('description', null, ['class' => 'field', 'files' => false, 'id' => 'description']) !!}
+  </div>
+</section>
 
 
+<section class="hero is-dark is-bold" id="attach_files">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">Describe this quest for the student. It could be a prompt for writing, guidelines for uploads, or whatever you want them to do in order to get points.</h1>
+        {!! Form::textarea('description', null, ['class' => 'field', 'files' => false, 'id' => 'description']) !!}
 
-            </div>
-        </div>
+        <a href="#" class="button is-primary is-large">Finish</a>
     </div>
-</div>
+  </div>
+</section>
 
-<div class="col-lg-4">
-    <div id="quest_name_selection" style="display:none;">
-    <label>Quest Name</label>
-        <h5></h5>
-    </div>
-    <div id="quest_type_selection" style="display:none;">
-        <label>Type</label>
-        <h5></h5>
-    </div>
+{!! Form::submit('Create', ['class' => 'btn btn-primary btn-lg btn-block', 'style' => 'display:none;', 'id' => 'create-button']) !!}
 
-    <div id="url_selection" style="display:none;">
-        <label>URL</label>
-        <h5></h5>
-    </div>
-
-    <div id="instant_selection" style="display:none;">
-    <label>Instant Credit</label>
-        <h5></h5>
-    </div>
-
-    <div id="upload_selection" style="display:none;">
-    <label>Method</label>
-        <h5></h5>
-    </div>
-    <div id="group_selection" style="display:none;">
-    <label>Submitted</label>
-        <h5></h5>
-    </div>
-
-    <div id="revision_selection" style="display:none;">
-        <label>Revisions</label>
-        <h5></h5>
-    </div>
-    
-    <div id="feedback_selection" style="display:none;">
-        <label>Peer Feedback</label>
-        <h5></h5>
-    </div>
-
-    <div id="expires_selection" style="display:none;">
-        <label>Expires</label>
-        <h5></h5>
-    </div>
-    
-    <div id="file_selection" style="display:none;">
-    <label>Files Attached</label>
-        <ul id="file-list" class="unstyled-list">
-            <li></li>
-        </ul>
-    </div>
-
-    <div id="skills_selection" style="display:none;">
-        <h5>Skills</h5>
-        <ul id="skill-list" class="unstyled-list">
-            <li></li>
-        </ul>
-    </div>
-    <div id="thresholds_selection" style="display:none;">
-        <h5>Thresholds</h5>
-       <ul id="threshold-list" class="unstyled-list">
-            <li></li>
-        </ul>
- 
-    </div>
-    {!! Form::submit('Create', ['class' => 'btn btn-primary btn-lg btn-block', 'style' => 'display:none;', 'id' => 'create-button']) !!}
-    {!! Form::close() !!}
-</div>
-    
+{!! Form::close() !!}
 
 @endsection
 
