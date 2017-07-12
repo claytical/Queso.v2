@@ -4,7 +4,14 @@
             <a class="navbar-item" href="{!! URL::to('/') !!}">
               <img src="/img/logo.png" alt="Queso: A Gameful Learning Management System">
             </a>
-            <div class="navbar-start">
+ 
+            <div class="navbar-burger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+        </div>
+           <div class="navbar-start">
               <!-- navbar items -->
               @if (access()->guest())
 
@@ -31,13 +38,13 @@
                           Manage
                         </a>
                         <div class="navbar-dropdown is-boxed">
-                        <a class="navbar-item {{ Active::pattern('manage/announcements') }}" href="{!! URL::to('manage/course') !!}">
+                        <a class="navbar-item {{ Active::pattern('manage/announcements', 'is-active') }}" href="{!! URL::to('manage/course') !!}">
                           <strong>Class #1</strong>
                         </a>
-                          <a class="navbar-item {{ Active::pattern('manage/quests') }}" href="{!! URL::to('manage/quests') !!}">
+                          <a class="navbar-item {{ Active::pattern('manage/quests', 'is-active') }}" href="{!! URL::to('manage/quests') !!}">
                             Quests
                           </a>
-                          <a class="navbar-item {{ Active::pattern('manage/announcements') }}" href="{!! URL::to('manage/announcements') !!}">
+                          <a class="navbar-item {{ Active::pattern('manage/announcements', 'is-active') }}" href="{!! URL::to('manage/announcements') !!}">
                             Announcements
                           </a>
 
@@ -62,13 +69,6 @@
                 </div>
               @endif
             </div>
-
-            <div class="navbar-burger">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-        </div>
 
         <div class="navbar-end">
             @if (access()->guest())
