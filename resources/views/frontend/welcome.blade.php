@@ -86,12 +86,13 @@
                 @endif
                 <div class="content is-small">
                     <h5>Class Location</h5>
-                    <p><strong>{!! $course->meeting_location !!}</p>
+                    <p><strong>{!! $course->meeting_location !!}</strong></p>
                     <h5>Class Time</h5>
                     <p><strong>{!! $course->meeting !!}</strong></p>
                 </div>
                 <div class="content is-small">
-                    <h3>{!! $course->instructor_display_name !!}</h3> | <a href="mailto:{!! $course->instructor_contact !!}">Email</a>
+                    <a class="is-large is-pulled-right" href="mailto:{!! $course->instructor_contact !!}"><span class="icon is-small"><i class="fa fa-envelope"></i></span></a>                
+                    <h3>{!! $course->instructor_display_name !!}</h3>
                     <h5>Office Location</h5>
                     <p><strong>{!! $course->instructor_office_location !!}</strong></p>
                     <h5>Office Hours</h5>
