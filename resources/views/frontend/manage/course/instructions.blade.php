@@ -17,9 +17,9 @@
                 
                 <article class="tile is-child notification is-primary">
                   <p class="title">Quests</p>
-                  <p class="subtitle">Some people call them assignments, we call them quests. From the management page, you can create new quests for your students to complete.</p>
+                  <p class="subtitle">Some people call them assignments, we call them quests. This is the heart of Queso.</p>
 
-                {{ link_to('dashboard', 'Create Quest', ['class' => 'button is-primary is-medium']) }}
+                {{ link_to('dashboard', 'Create Quest', ['class' => 'button is-light is-medium is-pulled-right']) }}
 
                 </article>
               </div>
@@ -34,8 +34,8 @@
                 
                 <article class="tile is-child notification is-primary">
                   <p class="title">Resources</p>
-                  <p class="subtitle">Have something to share with students? Resources will be added to the sidebar as you create them. If you consolidate multiple resources into a category, they'll be aggregated.</p>
-                {{ link_to('dashboard', 'Create Resource', ['class' => 'button is-primary is-medium']) }}
+                  <p class="subtitle">Have something to share with students? Resources will be added to a separate page for your course.</p>
+                {{ link_to('dashboard', 'Create Resource', ['class' => 'button is-light is-medium is-pulled-right']) }}
 
                 </article>
               </div>
@@ -48,10 +48,10 @@
             <div class="tile">
               <div class="tile is-parent is-vertical">
                 
-                <article class="tile is-child notification is-warning">
+                <article class="tile is-child notification is-primary">
                   <p class="title">Announcements</p>
                   <p class="subtitle">Want to let your students know what's happening? Announcements go straight to the dashboard.</p>
-                {{ link_to('dashboard', 'Create Announcement', ['class' => 'button is-primary is-medium']) }}
+                {{ link_to('dashboard', 'Create Announcement', ['class' => 'button is-light is-medium is-pull-right']) }}
 
                 </article>
               </div>
