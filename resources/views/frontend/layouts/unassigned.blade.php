@@ -37,7 +37,6 @@
         </div><!-- ./wrapper -->
 
         <!-- JavaScripts -->
-        {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
 
     </body>
 </html>

@@ -4,6 +4,51 @@
             <a class="navbar-item" href="{!! URL::to('/') !!}">
               <img src="/img/logo.png" alt="Queso: A Gameful Learning Management System">
             </a>
+            <div class="navbar-start">
+              <!-- navbar items -->
+              @if (access()->guest())
+
+              @else
+                <a class="navbar-item" href="#">Quests</a>
+                <a class="navbar-item" href="#">Resources</a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link  is-active" href="#">
+                          Resources
+                        </a>
+                        <div class="navbar-dropdown is-boxed">
+                          <a class="navbar-item " href="#">
+                            Class #1
+                          </a>
+                          <a class="navbar-item " href="#">
+                            Class #2
+                          </a>
+                        </div>
+                </div>
+                <a class="navbar-item" href="#">Grade</a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link  is-active" href="#">
+                          Manage
+                        </a>
+                        <div class="navbar-dropdown is-boxed">
+                        <p>Class #1</p>
+                          <a class="navbar-item " href="#">
+                            Students
+                          </a>
+                          <a class="navbar-item " href="#">
+                            Resources
+                          </a>
+                        <p>Class #2</p>
+                          <a class="navbar-item " href="#">
+                            Students
+                          </a>
+                          <a class="navbar-item " href="#">
+                            Resources
+                          </a>
+                        </div>
+                </div>
+              @endif
+            </div>
 
             <div class="navbar-burger">
               <span></span>

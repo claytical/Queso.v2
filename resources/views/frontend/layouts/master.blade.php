@@ -9,67 +9,48 @@
         <title>@yield('title', app_name())</title>
 
         <!-- Meta -->
-        <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <meta name="description" content="@yield('meta_description', 'Queso Gameful Learning Management System')">
+        <meta name="author" content="@yield('meta_author', 'Clay Ewing')">
         @yield('meta')
 
         <!-- Styles -->
         @yield('before-styles-end')
 
-        {{ Html::style(elixir('css/backend.css')) }}
-
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
-        @langRTL
-            {!! Html::style(elixir('css/rtl.css')) !!}
-        @endif
 
         @yield('after-styles-end')
 
         <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">        
+
         <!-- front loading scripts -->
         {{ HTML::script('js/vendor/dropzone/dropzone.js')}}
         {{ HTML::script('js/vendor/list.min.js')}}
         <script async charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=a705fe8012d914a446d7e4" ></script>
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
-        {{ Html::style('css/bootstrap-select.min.css') }}
-        {{ Html::style('css/bootstrap-table.css') }}
         {{ Html::style('css/vendor/jquery.minipreview.css') }}
         {{ Html::style('css/vendor/select2.min.css') }}
         {{ Html::style('css/vendor/chartist.css') }}
 
-<script>
-</script>
     </head>
-    <body class="skin-{{ config('backend.theme') }}">
+    <body>
         @include('includes.partials.logged-in-as')
 
-        <div class="wrapper">
-            @include('frontend.includes.header')
-            @include('frontend.includes.sidebar') 
+        @include('frontend.includes.header')
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    @yield('page-header')
-
-                    {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
-                    {!! Breadcrumbs::renderIfExists() !!}
-                </section>
-
-                <!-- Main content -->
-                <section class="content">
-                    @include('includes.partials.messages')
-                    @yield('content')
-                </section><!-- /.content -->
-            </div><!-- /.content-wrapper -->
-
-            @include('backend.includes.footer')
+        @yield('page-header')
+        
+        @include('includes.partials.messages')
+        
+        @yield('content')
+        
+        @include('frontend.includes.footer')
         </div><!-- ./wrapper -->
 
         <!-- JavaScripts -->
-        {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/tinymce/tinymce.min.js') }}
         {{ Html::script('js/vendor/jquery/multiselect.min.js') }}
@@ -86,15 +67,9 @@
                                 toolbar: 'insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'                                            
                                 });</script>
 
-        <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
-        {{ Html::script('js/vendor/bootstrap/bootstrap.min.js') }}
-        {{ Html::script('js/vendor/bootstrap/bootstrap-table.js') }}
-        {{ Html::script('js/vendor/bootstrap/bootstrap-table-multiple-sort.min.js') }}
-        {{ Html::script('js/vendor/bootstrap/bootstrap-select.min.js')}}
         <script>
         $( document ).ready(function() {
             $('select[name=default_course]').selectpicker();
-//            $('a.preview').miniPreview();
         });
 
         window.setTimeout(function() {
@@ -104,8 +79,7 @@
         }, 5000);     
         </script>  
         @yield('before-scripts-end')
-      
-        {{ HTML::script(elixir('js/backend.js')) }}
+ 
         @yield('after-scripts-end')
     </body>
 </html>
