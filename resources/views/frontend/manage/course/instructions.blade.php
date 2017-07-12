@@ -19,7 +19,7 @@
                   <p class="title">Quests</p>
                   <p class="subtitle">Some people call them assignments, we call them quests. This is the heart of Queso.</p>
 
-                {{ link_to('dashboard', 'Create Quest', ['class' => 'button is-light is-medium is-pulled-right']) }}
+                {{ link_to('dashboard', 'Create Quest', ['class' => 'button is-light is-medium is-pulled-right is-outlined']) }}
 
                 </article>
               </div>
@@ -35,7 +35,7 @@
                 <article class="tile is-child notification is-primary">
                   <p class="title">Resources</p>
                   <p class="subtitle">Have something to share with students? Resources will be added to a separate page for your course.</p>
-                {{ link_to('dashboard', 'Create Resource', ['class' => 'button is-light is-medium is-pulled-right']) }}
+                {{ link_to('dashboard', 'Create Resource', ['class' => 'button is-light is-medium is-pulled-right is-outlined']) }}
 
                 </article>
               </div>
@@ -51,7 +51,7 @@
                 <article class="tile is-child notification is-primary">
                   <p class="title">Announcements</p>
                   <p class="subtitle">Want to let your students know what's happening? Announcements go straight to the dashboard.</p>
-                {{ link_to('dashboard', 'Create Announcement', ['class' => 'button is-light is-medium is-pull-right']) }}
+                {{ link_to('dashboard', 'Create Announcement', ['class' => 'button is-light is-medium is-pulled-right is-outlined']) }}
 
                 </article>
               </div>
