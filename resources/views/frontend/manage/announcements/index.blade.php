@@ -10,7 +10,7 @@
           <h1 class="title">
             Announcements
           </h1>
-            <h2 class="subtitle">There are currently no announcements. When you create an announcement, it will show up on the dashboard for all students to see.</h2>
+            <h2 class="subtitle">Announcements show up on the dashboard for all students to see.</h2>
 
             <a href="{!! URL::to('manage/announcement/create') !!}" class="button is-pulled-right is-primary">Make an Announcement</a>
         </div>

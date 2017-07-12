@@ -1,29 +1,42 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    {!! Form::open(['url' => 'manage/announcements/create', 'id'=>'quest-create-form']) !!}
-<div class="col-lg-12">
-    <h2>Create Announcement</h2>
-</div>
 
-<div class="col-lg-9">
-	<div class="form-group">
-    	{{ Form::input('text', 'title', null, ['class' => 'form-control', 'placeholder' => 'Adventure Awaits!', 'id' => 'headline']) }}
-	</div>
-    {!! Form::textarea('body', null, ['class' => 'field', 'files' => true]) !!}
-</div>
+<section class="hero is-dark is-bold">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        {!! Form::open(['url' => 'manage/announcements/create', 'id'=>'quest-create-form']) !!}
+
+        <h1 class="title">
+        New Announcement
+      </h1>
+        <div class="field">
+          <p class="control">
+            {{ Form::input('text', 'title', null, ['class' => 'input', 'placeholder' => 'Adventure Awaits!', 'id' => 'headline']) }}
+          </p>
+        </div>
+        <div class="field">
+            <p class="control">
+            {!! Form::textarea('body', null, ['class' => 'input', 'files' => true]) !!}
+            </p>
+        </div>
+
+        <div class="field">
+            <p class="control">
+                {!! Form::checkbox('sticky', 1) !!} Show on Dashboard
+            </p>
+        </div>
+
+        {!! Form::submit('Post', ['class' => 'button is-primary is-large']) !!}
 
 
-<div class="col-lg-3">
-    {!! Form::checkbox('sticky', 1) !!} Show on Dashboard
-    <hr>
-    {!! Form::submit('Post', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+        {!! Form::close() !!}
+    </div>
+  </div>
+</section>
 
-</div>
-    {!! Form::close() !!}
 @endsection
 
 @section('after-scripts-end')
-    <script>
-    </script>
+
 @stop
