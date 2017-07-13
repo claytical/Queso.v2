@@ -12,10 +12,10 @@
 
             <div class="tile is-ancestor">
               <div class="tile is-parent">
-                <article class="tile is-child box">
+                <article class="tile is-child notification">
                   <p class="title">Submission</p>
                   <p class="subtitle">Students send a link or upload a file through Queso</p>
-                  <a class="button is-light is-large is-pulled-right is-outlined" href="{!! URL::to('manage/quest/create/submission/'.$course_id)!!}">
+                  <a class="button is-light is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/submission/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-link"></i>
                     </span>
@@ -24,10 +24,10 @@
                 </article>
               </div>
               <div class="tile is-parent">
-                <article class="tile is-child box">
+                <article class="tile is-child notification">
                   <p class="title">Group Submission</p>
                   <p class="subtitle">One student sends a link or uploads a file through Queso on behalf of a group of students</p>
-                  <a class="button is-light is-large is-pulled-right is-outlined" href="{!! URL::to('manage/quest/create/group_submission/'.$course_id)!!}">
+                  <a class="button is-light is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/group_submission/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-users" aria-hidden="true"></i>
                     </span>
@@ -36,10 +36,10 @@
                 </article>
               </div>
               <div class="tile is-parent">
-                <article class="tile is-child box">
+                <article class="tile is-child notification">
                   <p class="title">Video</p>
                   <p class="subtitle">A student watches a YouTube video through Queso and receives credit automatically</p>
-                  <a class="button is-light is-large is-pulled-right is-outlined" href="{!! URL::to('manage/quest/create/video/'.$course_id)!!}">
+                  <a class="button is-light is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/video/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-youtube-play" aria-hidden="true"></i>
                     </span>
@@ -48,10 +48,10 @@
                 </article>
               </div>
               <div class="tile is-parent">
-                <article class="tile is-child box">
+                <article class="tile is-child notification">
                   <p class="title">Classroom Activity</p>
                   <p class="subtitle">An activity that happened outside of Queso</p>
-                  <a class="button is-light is-large is-pulled-right is-outlined" href="{!! URL::to('manage/quest/create/activity/'.$course_id)!!}">
+                  <a class="button is-light is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/activity/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-trophy" aria-hidden="true"></i>
                     </span>
