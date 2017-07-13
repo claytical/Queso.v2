@@ -19,24 +19,11 @@
         <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">        
     </head>
     <body>
-        <header>
-            <nav class="navbar">
-              <div class="navbar-brand">
 
-                <div class="navbar-burger">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </nav>
-        </header>
 
         @include('includes.partials.messages')
         
-        <section class="guest-content">
-            @yield('content')
-        </section>
+        @yield('content')
 
 
         @include('frontend.includes.footer')
