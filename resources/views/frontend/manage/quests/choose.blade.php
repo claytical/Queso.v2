@@ -12,9 +12,9 @@
 
             <div class="tile is-ancestor">
               <div class="tile is-parent">
-                <article class="tile is-child notification">
+                <article class="tile is-child notification is-dark">
                   <p class="title">Submission</p>
-                  <p class="subtitle">Students send a link or upload a file through Queso</p>
+                  <p class="subtitle">Students send a link or upload a file to Queso</p>
                   <a class="button is-light is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/submission/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-link"></i>
@@ -24,8 +24,8 @@
                 </article>
               </div>
               <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Group Submission</p>
+                <article class="tile is-child notification is-dark">
+                  <p class="title">Team Work</p>
                   <p class="subtitle">One student sends a link or uploads a file through Queso on behalf of a group of students</p>
                   <a class="button is-light is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/group_submission/'.$course_id)!!}">
                     <span class="icon">
@@ -36,7 +36,7 @@
                 </article>
               </div>
               <div class="tile is-parent">
-                <article class="tile is-child notification">
+                <article class="tile is-child notification is-dark">
                   <p class="title">Video</p>
                   <p class="subtitle">A student watches a YouTube video through Queso and receives credit automatically</p>
                   <a class="button is-light is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/video/'.$course_id)!!}">
@@ -48,9 +48,9 @@
                 </article>
               </div>
               <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Classroom Activity</p>
-                  <p class="subtitle">An activity that happened outside of Queso</p>
+                <article class="tile is-child notification is-dark">
+                  <p class="title">Activity</p>
+                  <p class="subtitle">Assign points for things that happen outside of Queso</p>
                   <a class="button is-light is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/activity/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-trophy" aria-hidden="true"></i>
