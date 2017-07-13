@@ -121,6 +121,37 @@ class QuestController extends Controller
 
     }
 
+    public function choose($course_id) {
+        return view('frontend.manage.quests.choose', ['course_id' => $course_id])
+            ->withUser(access()->user());
+
+    }
+    public function create_submission_form($course_id) {
+        $skills = Skill::where('course_id', '=', session('current_course'))->get();
+        return view('frontend.manage.quests.create', ['skills' => $skills])
+            ->withUser(access()->user());
+
+    }
+    public function create_group_submission_form($course_id) {
+        $skills = Skill::where('course_id', '=', session('current_course'))->get();
+        return view('frontend.manage.quests.create', ['skills' => $skills])
+            ->withUser(access()->user());
+
+    }
+    public function create_activity_form($course_id) {
+        $skills = Skill::where('course_id', '=', session('current_course'))->get();
+        return view('frontend.manage.quests.create', ['skills' => $skills])
+            ->withUser(access()->user());
+
+    }
+
+    public function create_video_form($course_id) {
+        $skills = Skill::where('course_id', '=', session('current_course'))->get();
+        return view('frontend.manage.quests.create', ['skills' => $skills])
+            ->withUser(access()->user());
+
+    }
+
     public function create_form() {
         $skills = Skill::where('course_id', '=', session('current_course'))->get();
         return view('frontend.manage.quests.create', ['skills' => $skills])

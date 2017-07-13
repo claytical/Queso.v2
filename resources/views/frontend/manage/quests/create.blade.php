@@ -15,30 +15,46 @@
             <div class="tile is-ancestor">
               <div class="tile is-parent">
                 <article class="tile is-child box">
-                  <p class="title">Online Submission</p>
+                  <p class="title">Submission</p>
                   <p class="subtitle">Students send a link or upload a file through Queso</p>
-                  <a href="#" class="button is-info is-large">Create</a>
+                    <span class="icon">
+                      <i class="fa fa-link"></i>
+                    </span>
+                    <span>Create</span>
+                  </a>                  
                 </article>
               </div>
               <div class="tile is-parent">
                 <article class="tile is-child box">
                   <p class="title">Group Submission</p>
                   <p class="subtitle">One student sends a link or uploads a file through Queso on behalf of a group of students</p>
-                  <a href="#" class="button is-info is-large">Create</a>
+                    <span class="icon">
+                      <i class="fa fa-users" aria-hidden="true"></i>
+                    </span>
+                    <span>Create</span>
+                  </a>                  
                 </article>
               </div>
               <div class="tile is-parent">
                 <article class="tile is-child box">
-                  <p class="title">Watch a Video</p>
-                  <p class="subtitle">A student watches a video through Queso and receives credit automatically</p>
-                  <a href="#" class="button is-info is-large">Create</a>
+                  <p class="title">Video</p>
+                  <p class="subtitle">A student watches a YouTube video through Queso and receives credit automatically</p>
+                    <span class="icon">
+                      <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    </span>
+                    <span>Create</span>
+                  </a>                  
                 </article>
               </div>
               <div class="tile is-parent">
                 <article class="tile is-child box">
                   <p class="title">Classroom Activity</p>
                   <p class="subtitle">An activity that happened outside of Queso</p>
-                  <a href="#" class="button is-info is-large">Create</a>
+                    <span class="icon">
+                      <i class="fa fa-trophy" aria-hidden="true"></i>
+                    </span>
+                    <span>Create</span>
+                  </a>                  
                 </article>
               </div>
             </div>

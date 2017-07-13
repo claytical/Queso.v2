@@ -89,6 +89,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('grade/confirm/activity', 'GradeController@group_confirm')->name('grade.group.confirm');
 
         Route::get('manage/quests', 'QuestController@manage')->name('quests.manage');
+        Route::get('manage/quest/create/{course_id}', 'QuestController@choose')->name('quests.choose');
+
+        Route::get('manage/quest/create/submission/{course_id}', 'QuestController@create_submission_form')->name('quests.create.submission.form');
+        Route::get('manage/quest/create/group_submission/{course_id}', 'QuestController@create_group_submission_form')->name('quests.create.group.submission.form');
+        Route::get('manage/quest/create/video/{course_id}', 'QuestController@create_video_form')->name('quests.create.video.form');
+        Route::get('manage/quest/create/activity/{course_id}', 'QuestController@create_activity_form')->name('quests.create.activity.form');
+
+
         Route::get('manage/quest/create', 'QuestController@create_form')->name('quests.create.begin');
         Route::post('manage/quest/create', 'QuestController@create')->name('quests.create');
         Route::get('manage/quest/{quest_id}/delete', 'QuestController@delete')->name('quests.delete');
