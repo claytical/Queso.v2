@@ -4,6 +4,51 @@
 
 {!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form']) !!}
 
+<section class="hero is-dark is-bold" id="choose_quest">
+  <div class="hero-body">
+    <div class="container is-fluid">
+        <h1 class="title">
+        New Quest
+      </h1>
+        <h2 class="subtitle">What kind of quest is this?</h2>
+
+            <div class="tile is-ancestor">
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Online Submission</p>
+                  <p class="subtitle">Students send a link or upload a file through Queso</p>
+                  <a href="#" class="button is-info is-large">Create</a>
+                </article>
+              </div>
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Group Submission</p>
+                  <p class="subtitle">One student sends a link or uploads a file through Queso on behalf of a group of students</p>
+                  <a href="#" class="button is-info is-large">Create</a>
+                </article>
+              </div>
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Watch a Video</p>
+                  <p class="subtitle">A student watches a video through Queso and receives credit automatically</p>
+                  <a href="#" class="button is-info is-large">Create</a>
+                </article>
+              </div>
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Classroom Activity</p>
+                  <p class="subtitle">An activity that happened outside of Queso</p>
+                  <a href="#" class="button is-info is-large">Create</a>
+                </article>
+              </div>
+            </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 <section class="hero is-dark is-bold" id="quest_name">
   <div class="hero-body">
     <div class="container is-fluid">
@@ -77,6 +122,7 @@
     </div>
   </div>
 </section>
+
 
 <section class="hero is-dark is-bold" id="submission_group">
   <div class="hero-body">

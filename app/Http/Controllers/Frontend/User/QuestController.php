@@ -123,7 +123,7 @@ class QuestController extends Controller
 
     public function create_form() {
         $skills = Skill::where('course_id', '=', session('current_course'))->get();
-        return view('frontend.manage.quests.new', ['skills' => $skills])
+        return view('frontend.manage.quests.create', ['skills' => $skills])
             ->withUser(access()->user());
 
     }
