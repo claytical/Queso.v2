@@ -17,7 +17,6 @@
 
               @else
                 <a class="navbar-item" href="#">Quests</a>
-                <a class="navbar-item" href="#">Resources</a>
                 <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link  is-active" href="#">
                           Resources
@@ -39,23 +38,22 @@
                         </a>
                         <div class="navbar-dropdown is-boxed">
                         @foreach(access()->courses_taught() as $c)
-                        <a class="navbar-item {{ Active::pattern('manage/announcements', 'is-active') }}" href="{!! URL::to('manage/course') !!}">
-                          <strong>{!! $c->name !!}</strong>
-                        </a>
-                          <a class="navbar-item {{ Active::pattern('manage/quests', 'is-active') }}" href="{!! URL::to('manage/quests') !!}">
-                            Quests
+                          <a class="navbar-item {{ Active::pattern('manage/course/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/course/'.$c->id) !!}">
+                            <strong>{!! $c->name !!}</strong>
                           </a>
-                          <a class="navbar-item {{ Active::pattern('manage/announcements', 'is-active') }}" href="{!! URL::to('manage/announcements') !!}">
-                            Announcements
-                          </a>
+                            <a class="navbar-item {{ Active::pattern('manage/quests/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/quests/'.$c->id) !!}">
+                              Quests
+                            </a>
+                            <a class="navbar-item {{ Active::pattern('manage/announcements/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/announcements/'.$c->id) !!}">
+                              Announcements
+                            </a>
 
-                          <a class="navbar-item " href="#">
-                            Students
-                          </a>
-                          <a class="navbar-item " href="#">
-                            Resources
-                          </a>
-                         <hr class="navbar-divider">
+                            <a class="navbar-item " href="#">
+                              Students
+                            </a>
+                            <a class="navbar-item " href="#">
+                              Resources
+                            </a>
                          @endforeach
                 </div>
               @endif

@@ -114,9 +114,9 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
-    public function manage() {
-        $quests = Quest::where('course_id', '=', session('current_course'))->get();
-        return view('frontend.manage.quests.index', ['quests' => $quests])
+    public function manage($course_id) {
+        $quests = Quest::where('course_id', '=', $course_id)->get();
+        return view('frontend.manage.quests.index', ['quests' => $quests, 'course_id' => $course_id])
             ->withUser(access()->user());
 
     }

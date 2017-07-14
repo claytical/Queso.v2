@@ -11,7 +11,7 @@
           </h1>
             <h2 class="subtitle">Quests are completed by students to gain points.</h2>
 
-            <a href="{!! URL::to('manage/quest/create') !!}" class="button is-pulled-right is-primary">Make a Quest</a>
+            <a href="{!! URL::to('manage/quest/create/'.$course_id) !!}" class="button is-pulled-right is-primary">Make a Quest</a>
         </div>
       </div>
     </section>
@@ -19,7 +19,7 @@
     <section class="hero is-dark is-bold">
       <div class="hero-body">
         <div class="container">
-            <a href="{!! URL::to('manage/quest/create') !!}" class="button is-pulled-right is-primary">New Quest</a>
+            <a href="{!! URL::to('manage/quest/create/'.$course_id) !!}" class="button is-pulled-right is-primary">New Quest</a>
             <h1 class="title">Quests</h1>
         </div>
       </div>
