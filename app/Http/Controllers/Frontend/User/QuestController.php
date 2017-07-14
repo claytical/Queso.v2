@@ -352,7 +352,7 @@ class QuestController extends Controller
         $quest->instructions = $request->description;
         $quest->course_id = $request->course_id;
         $quest->submissions = $request->submissions_allowed;
-        $quest->uploads_allowed = $request->uploads_allowed;
+        $quest->uploads = $request->uploads_allowed;
         $quest->groups = $request->groups;
         $quest->instant = $quest->instant;
 
