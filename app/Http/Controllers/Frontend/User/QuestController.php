@@ -156,12 +156,20 @@ class QuestController extends Controller
             ->withUser(access()->user());
 
     }
-    public function create_group_submission_form($course_id) {
-        $skills = Skill::where('course_id', '=', session('current_course'))->get();
-        return view('frontend.manage.quests.create', ['skills' => $skills])
+    public function create_group_link_form($course_id) {
+        $skills = Skill::where('course_id', '=', $course_id)->get();
+        return view('frontend.manage.quests.create.group_link', ['skills' => $skills, 'course_id' => $course_id])
             ->withUser(access()->user());
 
     }
+
+    public function create_group_upload_form($course_id) {
+        $skills = Skill::where('course_id', '=', $course_id)->get();
+        return view('frontend.manage.quests.create.group_upload', ['skills' => $skills, 'course_id' => $course_id])
+            ->withUser(access()->user());
+    }
+
+
     public function create_activity_form($course_id) {
         $skills = Skill::where('course_id', '=', $course_id)->get();
         return view('frontend.manage.quests.create.activity', ['skills' => $skills, 'course_id' => $course_id])
