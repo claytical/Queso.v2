@@ -20,7 +20,6 @@
             <div class="columns">
               <div class="msf-step column"><i class="fa fa-info"></i> <span>Information</span></div>
               <div class="msf-step column"><i class="fa fa-trophy"></i><span>Skills &amp; Thresholds</span></div>
-              <div class="msf-step column"><i class="fa fa-paperclip"></i> <span>File Attachments</span></div>
             </div>
           </div>
         </div>
@@ -105,60 +104,70 @@
                   <!-- Skills -->            
                     <h4 class="subtitle">Points Awarded</h4>
 
-                    <div class="field has-addons">
-                      <p class="control">
-                        <a class="button is-static is-large">
-                          Reading
-                        </a>
-                      </p><p class="control">
-                        <input class="input is-large" type="number" placeholder="Maximum Points">
-                      </p>
-                      
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">Reading</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field is-grouped">
+                          <p class="control is-expanded has-icons-left">
+                            <input class="input is-large" type="number" placeholder="Maximum Points">
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
-                    <div class="field has-addons">
-                      <p class="control">
-                        <a class="button is-static is-large">
-                          Writing
-                        </a>
-                      </p><p class="control">
-                        <input class="input is-large" type="number" placeholder="Maximum Points">
-                      </p>
-                      
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">Writing</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field is-grouped">
+                          <p class="control is-expanded has-icons-left">
+                            <input class="input is-large" type="number" placeholder="Maximum Points">
+                          </p>
+                        </div>
+                      </div>
                     </div>
+
                   </div>
                 </div>
 
                 <div class="tile is-6 is-parent">
-                    <div class="tile is-child notification">
+                    <div class="tile is-child">
                       <h4 class="subtitle">Minimum Skill Level Required</h4>
-                        <div class="field has-addons">
-                          <p class="control">
-                            <a class="button is-static is-large">
-                              Reading
-                            </a>
-                          </p><p class="control">
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">Reading</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field is-grouped">
+                          <p class="control is-expanded has-icons-left">
                             <input class="input is-large" type="number" placeholder="Maximum Points">
                           </p>
-                          
                         </div>
+                      </div>
+                    </div>
 
-                        <div class="field has-addons">
-                          <p class="control">
-                            <a class="button is-static is-large">
-                              Writing
-                            </a>
-                          </p><p class="control">
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">Writing</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field is-grouped">
+                          <p class="control is-expanded has-icons-left">
                             <input class="input is-large" type="number" placeholder="Maximum Points">
                           </p>
-                          
                         </div>
+                      </div>
+                    </div>
                       
                     </div>
                 </div>
               </div>
 
             </div>
+<!--
             <div class="msf-view">
 
            <div class="tile">
@@ -215,13 +224,13 @@
 
 
             </div>
+-->
           </div>
-
           <div class="msf-navigation">
               <nav class="pagination is-large">
-                <button data-type="back" class="pagination-previous msf-nav-button" type="button">Previous</button>
-                <button data-type="next" class="pagination-next msf-nav-button is-primary" type="button">Next</button>
-                <button data-type="submit" class="button msf-nav-button is-primary" type="submit">Submit</button>
+                <button data-type="back" class="pagination-previous msf-nav-button" type="button">Information</button>
+                <button data-type="next" class="pagination-next msf-nav-button is-primary" type="button">Skills &amp; Thresholds</button>
+                <button data-type="submit" class="button msf-nav-button is-primary is-large" type="submit">Create Quest</button>
 
               </nav>
           </div>
@@ -246,7 +255,7 @@
         }
     });
 
-
+/*
     Dropzone.autoDiscover = false;
     var quest_upload = new Dropzone('div#quest_uploads',
         {url:'/dropzone/uploadFiles',
@@ -285,6 +294,8 @@
         }
 
     });
+
+    */
 
 
 
