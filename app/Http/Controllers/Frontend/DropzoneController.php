@@ -51,7 +51,7 @@ public function uploadFiles(Request $request) {
             $attachment->user_id = $user->id;
             $attachment->save();
 
-            $files_on_server[] = ["name" => $random_name, "id" => $attachment->id];
+            $files_on_server[] = ["name" => $random_name, "original_name" => $files->getClientOriginalName(), "id" => $attachment->id];
             //TODO: Store in database with user id
 
             return response()->json(array("error" => "Success!", "files" => $files_on_server));
@@ -70,7 +70,7 @@ public function uploadFiles(Request $request) {
                     $attachment->user_id = $user->id;
                     $attachment->save();
 
-                    $files_on_server[] = ["name" => $random_name, "id" => $attachment->id];
+                    $files_on_server[] = ["name" => $random_name, "id" => $attachment->id, "original_name" => $file->getClientOriginalName()];
 
                 }
             }

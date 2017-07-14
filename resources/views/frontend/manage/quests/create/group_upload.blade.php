@@ -18,6 +18,7 @@
             <div class="columns">
               <div class="msf-step column"><i class="fa fa-info"></i> <p>Information</p></div>
               <div class="msf-step column"><i class="fa fa-trophy"></i><p>Skills &amp; Thresholds</p></div>
+              <div class="msf-step column"><i class="fa fa-paperclip"></i><p>File Attachments</p></div>
             </div>
           </div>
         </div>
@@ -152,8 +153,8 @@
                 </div>
 
               </div>
-<!--
-            <div class="msf-view">
+
+          <div class="msf-view">
 
            <div class="tile">
                 <div class="tile is-6 is-parent">
@@ -165,43 +166,9 @@
                 <div class="tile is-6 is-parent">
                     <div class="tile is-child notification">
                       <h4 class="subtitle">Attached Files</h4>
-
-
-                        <article class="media">
-                          <figure class="media-left">
-                            <p class="image is-64x64">
-                              <img src="http://bulma.io/images/placeholders/128x128.png">
-                            </p>
-                          </figure>
-                          <div class="media-content">
-                            <div class="content">
-                              <p>filename.pdf
-                              </p>
-                            </div>
-                          </div>
-                          <div class="media-right">
-                            <button class="delete"></button>
-                          </div>
-                        </article>
-
-                        <article class="media">
-                          <figure class="media-left">
-                            <p class="image is-64x64">
-                              <img src="http://bulma.io/images/placeholders/128x128.png">
-                            </p>
-                          </figure>
-                          <div class="media-content">
-                            <div class="content">
-                              <p>filename.pdf
-                              </p>
-                            </div>
-                          </div>
-                          <div class="media-right">
-                            <button class="delete"></button>
-                          </div>
-                        </article>
-
-
+                        <div id="attached_files">
+                          <p id="no_attached_files">No files have been attached yet.</p>
+                        </div>
                     </div>
                 </div>
               </div>
@@ -209,7 +176,7 @@
 
 
             </div>
--->
+
           </div>
           <div class="msf-navigation">
                 <button data-type="back" class="button is-large msf-nav-button" type="button">Previous</button>
@@ -246,7 +213,8 @@
         }
       });
 
-/*
+    var qf = $("#quest-create-form");
+
     Dropzone.autoDiscover = false;
     var quest_upload = new Dropzone('div#quest_uploads',
         {url:'/dropzone/uploadFiles',
@@ -274,6 +242,7 @@
     });
 
     quest_upload.on("success", function(event, response) {
+        $("#no_attached_files").hide();
         for (var i = 0, len = response.files.length; i < len; i++) {
             $('<input>').attr({
                 type: 'number',
@@ -282,11 +251,13 @@
                 name: 'files[]',
                 style: 'display:none;'
             }).appendTo(qf);
+            var htmlToAppend = "<article class='media'><div class='media-content'><div class='content'><p>";
+            htmlToAppend += response.files[i].original_name;
+            htmlToAppend += "</p></div></div><div class='media-right'><button class='delete'></button></div></article>";
+            $("#attached_files").append(htmlToAppend);
         }
 
     });
-
-    */
 
 
 
