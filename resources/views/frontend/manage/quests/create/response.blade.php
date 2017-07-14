@@ -86,7 +86,7 @@
                         </div>
                         <div class="field">
                           <p class="control">
-                              {{ Form::input('date', 'expiration', null, ['class' => 'input', 'id' => 'expiration_date']) }}
+                              {{ Form::input('date', 'expiration', null, ['class' => 'input', 'style:display:none;', 'id' => 'expiration_date']) }}
                           </p>
                         </div>
 
@@ -108,31 +108,22 @@
                     <!-- Skills -->            
                       <h4 class="subtitle has-text-centered">Points Awarded</h4>
 
-                      <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                          <label class="label">Reading</label>
-                        </div>
-                        <div class="field-body">
-                          <div class="field is-grouped">
-                            <p class="control is-expanded has-icons-left">
-                              <input class="input is-large" type="number" placeholder="Maximum Points">
-                            </p>
+                      @foreach($skills as $skill)
+                        <div class="field is-horizontal">
+                          <div class="field-label is-normal">
+                            <label class="label">{!! $skill->name !!}</label>
+                          </div>
+                          <div class="field-body">
+                            <div class="field is-grouped">
+                              <p class="control is-expanded has-icons-left">
+                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points">
+                                <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                          <label class="label">Writing</label>
-                        </div>
-                        <div class="field-body">
-                          <div class="field is-grouped">
-                            <p class="control is-expanded has-icons-left">
-                              <input class="input is-large" type="number" placeholder="Maximum Points">
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                    
+                      @endforeach
 
                     </div>
                   </div>
@@ -140,32 +131,22 @@
                   <div class="tile is-6 is-parent">
                       <div class="tile is-child">
                         <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
-                      <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                          <label class="label">Reading</label>
-                        </div>
-                        <div class="field-body">
-                          <div class="field is-grouped">
-                            <p class="control is-expanded has-icons-left">
-                              <input class="input is-large" type="number" placeholder="Maximum Points">
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                          @foreach($skills as $skill)
+                            <div class="field is-horizontal">
+                              <div class="field-label is-normal">
+                                <label class="label">{!! $skill->name !!}</label>
+                              </div>
+                              <div class="field-body">
+                                <div class="field is-grouped">
+                                  <p class="control is-expanded has-icons-left">
+                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points">
+                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $skill->id !!}>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
 
-                      <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                          <label class="label">Writing</label>
-                        </div>
-                        <div class="field-body">
-                          <div class="field is-grouped">
-                            <p class="control is-expanded has-icons-left">
-                              <input class="input is-large" type="number" placeholder="Maximum Points">
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                        
+                          @endforeach                       
                       </div>
                   </div>
                 </div>
@@ -256,6 +237,14 @@
           }
         }
     });
+    $('input[name=expires]').change(function() {
+        if($(this).val() == "0") {
+          $("#expiration_date").hide();
+        }
+        else {
+          $("#expiration_date").show();
+        }
+      });
 
 /*
     Dropzone.autoDiscover = false;
