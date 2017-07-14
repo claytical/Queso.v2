@@ -3,7 +3,7 @@
 @section('content')
 
 {!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form', 'class' => 'msf']) !!}
-                    {{ Form::hidden('quest_type_id', 2, ['id' => 'quest_type_id']) }}
+                    {{ Form::hidden('quest_type_id', 3, ['id' => 'quest_type_id']) }}
                     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                     {{ Form::hidden('submissions_allowed', false, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('uploads_allowed', false, ['id' => 'uploads_allowed']) }}
@@ -44,44 +44,27 @@
 
                 <div class="tile is-4 is-parent">
                     <div class="tile is-child notification">
-                      <h4 class="subtitle">Instant Credit</h4>
-                      <div>
-                        <p>Queso will generate unique one time use codes that students can redeem for points immediately. The QR code generator can also place these codes onto a sheet that you can print out and use as handouts.</p>
-                      </div>
+                      <h4 class="subtitle">YouTube URL</h4>
                         <div class="field">
                           <p class="control">
-                            <label class="radio">
-                              <input type="radio" name="instant" value="1" checked>
-                              Yes
-                            </label>
-                            <label class="radio">
-                              <input type="radio" name="instant" value="0">
-                              No
-                            </label>
+                            {{ Form::input('text', 'video_url', null, ['class' => 'input', 'placeholder' => 'http://youtube.com/watch/?v=AAAAAAA', 'id' => 'video_url']) }}
+
                           </p>
                         </div>
-                      <div id="generate_codes">
-                        <h4 class="subtitle">Number of Codes</h4>
-                        <div class="field">
-                          <p class="control">
-                            {{ Form::input('number', 'number_of_codes', null, ['class' => 'input is-large', 'placeholder' => 'Amount', 'id' => 'generate_qrcodes']) }}
-                          </p>
-                        </div>
-                      </div>
                     </div>
                 </div>
               </div>
             </div>
             <div class="msf-view">
 
-              <div class="tile is-12 is-parent">
+              <div class="tile is-6 is-parent">
                   <div class="container is-fluid">
                       <p>You can set a maximum amount of points you're able to award to a student for completing this quest for each skill.</p>
                   </div>
               </div>
 
               <div class="tile">
-                  <div class="tile is-12 is-parent">
+                  <div class="tile is-6 is-parent">
                     <div class="tile is-child">
                     <!-- Skills -->            
                       <h4 class="subtitle has-text-centered">Points Awarded</h4>
@@ -105,6 +88,29 @@
 
                     </div>
                   </div>
+                  <div class="tile is-6 is-parent">
+                      <div class="tile is-child">
+                        <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
+                          @foreach($skills as $skill)
+                            <div class="field is-horizontal">
+                              <div class="field-label is-normal">
+                                <label class="label">{!! $skill->name !!}</label>
+                              </div>
+                              <div class="field-body">
+                                <div class="field is-grouped">
+                                  <p class="control is-expanded has-icons-left">
+                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points">
+                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $skill->id !!}>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+
+                          @endforeach                       
+                      </div>
+                  </div>
+                </div>
+                  
                 </div>
 
               </div>

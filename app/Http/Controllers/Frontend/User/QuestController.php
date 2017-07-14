@@ -154,8 +154,8 @@ class QuestController extends Controller
     }
 
     public function create_video_form($course_id) {
-        $skills = Skill::where('course_id', '=', session('current_course'))->get();
-        return view('frontend.manage.quests.create', ['skills' => $skills])
+        $skills = Skill::where('course_id', '=', $course_id)->get();
+        return view('frontend.manage.quests.create.video', ['skills' => $skills, 'course_id' => $course_id])
             ->withUser(access()->user());
 
     }
@@ -368,6 +368,16 @@ class QuestController extends Controller
                     $quest->expires_at = $request->expiration;
                 }
                 break;
+            case '3':
+                if (strpos($request->video_url, 'youtube.com') !== false) {
+                    $youtube_url = [];
+                    $yid = parse_str( parse_url( $request->video_url, PHP_URL_QUERY ), $youtube_url );
+                    $quest->youtube_id = $youtube_url['v'];
+                }
+                else {
+                    //give error
+                    return redirect()->route('quests.create.video.form', $course_id)->withFlashDanger("This feature requires a YouTube URL.");
+                }
         }    
 
         $quest->save();
