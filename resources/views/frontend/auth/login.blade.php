@@ -10,11 +10,13 @@
     <div class="hero-body">
         <div class="container is-fluid">
             <div class="tile">
-                <div class="tile is-6 is-parent">
+                <div class="tile is-6 is-parent is-vertical">
+                    <div class="tile is-child">
+                        <img class="" src="https://queso.nerdlab.miami/img/logo_long.png" alt="Queso: A Gameful Learning Management System">                            
+                  </div>
                   <div class="tile is-child">
-                    <img src="{!! URL::to('img/logo_long.png')!!}" alt="Queso: A Gameful Learning Management System"/>
-
-                      <p>Queso is a classroom management system for gameful classrooms. We help you take your existing classroom and reshape it using concepts from game design. This is not about points, badges, and leaderboards. This is about increasing student engagement through gameful design. You can use Queso for your class without "gamifying" it. It's simple and intuitive for creating an engaging class in the 21st century.</p>      
+                
+                      <p class="subtitle">Queso is a classroom management system for gameful classrooms. We help you take your existing classroom and reshape it using concepts from game design. This is not about points, badges, and leaderboards. This is about increasing student engagement through gameful design. You can use Queso for your class without "gamifying" it. It's simple and intuitive for creating an engaging class in the 21st century.</p>      
                   </div>
                 </div>
                 <div class="tile is-6 is-parent">
