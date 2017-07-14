@@ -10,6 +10,8 @@
                     {{ Form::hidden('groups', false, ['id' => 'groups_allowed']) }}
                     {{ Form::hidden('feedback', false, ['id' => 'feedback_allowed']) }}
                     {{ Form::hidden('revisions', false, ['id' => 'revisions_allowed']) }}
+                    {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
+                    
 
 <section class="hero" id="choose_quest">
   <div class="hero-body">
@@ -110,7 +112,7 @@
                       </div>
                   </div>
                 </div>
-                  
+
                 </div>
 
               </div>
