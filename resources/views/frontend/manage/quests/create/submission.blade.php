@@ -16,10 +16,12 @@
         New Response Quest
       </h1>
         <div class="msf-header">
-          <div class="row text-center">
-            <div class="msf-step col-md-4"><i class="fa fa-clipboard"></i> <span>Step 1</span></div>
-            <div class="msf-step col-md-4"><i class="fa fa-credit-card"></i><span>Step 2</span></div>
-            <div class="msf-step col-md-4"><i class="fa fa-check"></i> <span>Step 3</span></div>
+          <div class="has-text-centered">
+            <div class="columns">
+              <div class="msf-step column"><i class="fa fa-info"></i> <span>Information</span></div>
+              <div class="msf-step column"><i class="fa fa-trophy"></i><span>Skills &amp; Thresholds</span></div>
+              <div class="msf-step column"><i class="fa fa-paperclip"></i> <span>File Attachments</span></div>
+            </div>
           </div>
         </div>
         <div class="msf-content">
@@ -96,30 +98,136 @@
               </div>
             </div>
             <div class="msf-view">
-                Skills
+
+            <div class="tile">
+                <div class="tile is-6 is-parent">
+                  <div class="tile is-child">
+                  <!-- Skills -->            
+                    <h4 class="subtitle">Points Awarded</h4>
+
+                    <div class="field has-addons">
+                      <p class="control">
+                        <a class="button is-static is-large">
+                          Reading
+                        </a>
+                      </p><p class="control">
+                        <input class="input is-large" type="number" placeholder="Maximum Points">
+                      </p>
+                      
+                    </div>
+
+                    <div class="field has-addons">
+                      <p class="control">
+                        <a class="button is-static is-large">
+                          Writing
+                        </a>
+                      </p><p class="control">
+                        <input class="input is-large" type="number" placeholder="Maximum Points">
+                      </p>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tile is-6 is-parent">
+                    <div class="tile is-child notification">
+                      <h4 class="subtitle">Minimum Skill Level Required</h4>
+                        <div class="field has-addons">
+                          <p class="control">
+                            <a class="button is-static is-large">
+                              Reading
+                            </a>
+                          </p><p class="control">
+                            <input class="input is-large" type="number" placeholder="Maximum Points">
+                          </p>
+                          
+                        </div>
+
+                        <div class="field has-addons">
+                          <p class="control">
+                            <a class="button is-static is-large">
+                              Writing
+                            </a>
+                          </p><p class="control">
+                            <input class="input is-large" type="number" placeholder="Maximum Points">
+                          </p>
+                          
+                        </div>
+                      
+                    </div>
+                </div>
+              </div>
+
             </div>
             <div class="msf-view">
-                Thresholds
-            </div>
-            <div class="msf-view">
-                Files
+
+           <div class="tile">
+                <div class="tile is-6 is-parent">
+                  <div class="tile is-child">
+                     <div id="quest_uploads" class="dropzone"></div>
+                  </div>
+                </div>
+
+                <div class="tile is-6 is-parent">
+                    <div class="tile is-child notification">
+                      <h4 class="subtitle">Attached Files</h4>
+
+
+                        <article class="media">
+                          <figure class="media-left">
+                            <p class="image is-64x64">
+                              <img src="http://bulma.io/images/placeholders/128x128.png">
+                            </p>
+                          </figure>
+                          <div class="media-content">
+                            <div class="content">
+                              <p>filename.pdf
+                              </p>
+                            </div>
+                          </div>
+                          <div class="media-right">
+                            <button class="delete"></button>
+                          </div>
+                        </article>
+
+                        <article class="media">
+                          <figure class="media-left">
+                            <p class="image is-64x64">
+                              <img src="http://bulma.io/images/placeholders/128x128.png">
+                            </p>
+                          </figure>
+                          <div class="media-content">
+                            <div class="content">
+                              <p>filename.pdf
+                              </p>
+                            </div>
+                          </div>
+                          <div class="media-right">
+                            <button class="delete"></button>
+                          </div>
+                        </article>
+
+
+                    </div>
+                </div>
+              </div>
+
+
+
             </div>
           </div>
 
           <div class="msf-navigation">
               <nav class="pagination is-large">
                 <button data-type="back" class="pagination-previous msf-nav-button" type="button">Previous</button>
-                <button data-type="next" class="pagination-next msf-nav-button" type="button">Next</button>
-                <button data-type="submit" class="button msf-nav-button" type="submit">Submit</button>
+                <button data-type="next" class="pagination-next msf-nav-button is-primary" type="button">Next</button>
+                <button data-type="submit" class="button msf-nav-button is-primary" type="submit">Submit</button>
 
               </nav>
           </div>
     </div>
   </div>
 </section>
-
-      {!! Form::submit('Next', ['class' => 'button is-large is-primary', 'id' => 'create-button']) !!}
-
       {!! Form::close() !!}
 
 
@@ -139,302 +247,6 @@
     });
 
 
-
-
-
-
-    $("#submission_link").click(function() {
-        $("#quest_type_id").val(4);        
-        qf.append($("#quest_type_id"));
-        $("#quest_type_selection h5").html("Send a Link");
-        $("#quest_type_selection").show();
-        $("#submission_group").show();
-        $("#quest_type_submission").hide();        
-
-    });
-
-    $("#submission_upload").click(function() {
-       $("#quest_type_id").val(1);        
-        $("#upload_selection h5").html("Upload File");
-        $("#upload_selection").show();
-        qf.append($("#quest_type_id"));
-        qf.append($("#uploads_allowed"));
-        $("#upload_selection").show();        
-        $("#quest_type_submission").hide();        
-        $("#submission_group").show();
-    });
-
-    $("#submission_write").click(function() {
-        $("#quest_type_id").val(1);        
-        $("#upload_selection h5").html("Text Entry");
-        $("#upload_selection").show();
-        qf.append($("#quest_type_id"));
-        qf.append($("#submissions_allowed"));
-        $("#quest_type_submission").hide();        
-        $("#submission_group").show();
-
-    });
-
-    $("#submission_either").click(function() {
-        $("#quest_type_id").val(1);
-        $("#upload_selection").show();
-        $("#upload_selection h5").html("Upload File or Text Entry");
-        $("#upload_selection").show();
-        $("#quest_type_submission").hide();        
-
-        qf.append($("#quest_type_id"));
-        qf.append($("#submissions_allowed"));
-        qf.append($("#uploads_allowed"));
-        $("#submission_group").show();
-
-    });
-
-    $( "#submission_next" ).click(function() {
-        $("#quest_type").hide();
-        $("#quest_type_selection h5").html("Submission");
-        $("#quest_type_selection").show();
-        $("#quest_type_id").val(1);
-        $("#submission_selection").show();
-        qf.append($("#quest_type_id"));
-    });
-
-    $( "#activity_next" ).click(function() {
-        $("#quest_type_activity").hide();
-        //flag to skip minimum thresholds
-        skipThresholds = true;
-        $("#quest_type_selection h5").html("In Class Activity");
-        $("#quest_type_selection").show();
-        $("#quest_type").hide();
-        $("#quest_type_id").val(2);
-        $("#inclass_instant").show();
-        qf.append($("#quest_type_id"));
-    });
-
-    $( "#instant_allowed" ).click(function() {
-        $("#inclass_instant").hide();
-        $("#instant_selection h5").html("Enabled");
-        $("#instant_selection").show();
-        $("#instant_option").val(1);        
-        qf.append($("#instant_option")); 
-        $("#expiration").show();
-    });
-
-    $( "#instant_disallowed" ).click(function() {
-        $("#inclass_instant").hide();
-//        ("#instant_option").val(0);
-//        qf.append($("#instant_option")); 
-        $("#expiration").show();
-    });
-
-    $( "#watch_next" ).click(function() {
-
-        $("#quest_type_activity").hide();
-        $("#quest_type_selection h5").html("Watch Video");
-        $("#quest_type_selection").show();
-
-        $("#quest_type_id").val(3);
-        qf.append($("#quest_type_id"));
-        $("#video_url").show();
-    });
-
-    $( "#video_next" ).click(function() {
-        $("#video_url").hide();
-        $("#url_selection h5").html($("#video_url").val())
-        $("#url_selection").show();
-        qf.append($("#video_url"));
-        $("#expiration").show();
-    });
-/*
-    $( "#link_next" ).click(function() {
-        $("#quest_type").hide();
-        $("#quest_type_id").val(4);        
-        qf.append($("#quest_type_id"));
-        $("#quest_type_selection h5").html("Submit Link");
-        $("#quest_type_selection").show();
-        $("#submission_group").show();
-//        $("#submission_revisions").show();
-
-//        $("#peer_feedback").show();
-    });
-*/
-/*
-    $( "#written_next" ).click(function() {
-        $("#submission_selection").hide();
-        $("#submission_type_id").val(1);
-        $("#upload_selection h5").html("Written");
-        $("#upload_selection").show();
-
-        qf.append($("#submission_type_id"));
-        qf.append($("#submissions_allowed"));
-        //written only
-//        $("#submission_revisions").show();
-        $("#submission_group").show();
-
-    });
-*/
-
-/*
-    $( "#upload_next" ).click(function() {
-        $("#submission_selection").hide();
-        $("#submission_type_id").val(2);
-        $("#upload_selection h5").html("Uploads Only");
-        $("#upload_selection").show();
-
-        //uploads only
-        qf.append($("#submission_type_id"));
-        qf.append($("#uploads_allowed"));
-        $("#upload_selection").show();
-//        $("#submission_revisions").show();
-        $("#submission_group").show();
-
-    });
-*/
-    $( "#either_next" ).click(function() {
-        $("#submission_selection").hide();
-        $("#submission_type_id").val(3);
-        //both written and upload
-        $("#upload_selection").show();
-        $("#upload_selection h5").html("Upload or Text Entry");
-        $("#upload_selection").show();
-
-        qf.append($("#submissions_allowed"));
-        qf.append($("#uploads_allowed"));
-        qf.append($("#submission_type_id"));
-//        $("#submission_revisions").show();
-        $("#submission_group").show();
-
-    });
-
-    $("#individual_next").click(function() {
-        $('#submission_group').hide();
-        $("#group_selection h5").html("Individually");
-        $("#group_selection").show();
-        $("#submission_revisions").show();
-    });
-
-    $("#groups_next").click(function()  {
-        $('#submission_group').hide();
-        $("#submission_revisions").show();        
-        $("#group_selection h5").html("In Groups");
-        $("#group_selection").show();
-        qf.append($("#groups_allowed"));
-
-    });
-
-    $( "#revisions_allowed" ).click(function() {
-        $("#submission_revisions").hide();
-        $("#revisions_option").val(1);
-        $("#revision_selection h5").html("Enabled");
-        $("#revision_selection").show();
-        qf.append($("#revisions_option"));
-        $("#peer_feedback").show();
-    });
-
-    $( "#revisions_disallowed" ).click(function() {
-        $("#submission_revisions").hide();
-        $("#revision_selection h5").html("Disabled");
-        $("#revision_selection").show();        
-        $("#peer_feedback").show();
-    });
-
-    $( "#feedback_disallowed" ).click(function() {
-        $("#peer_feedback").hide();
-        $("#expiration").show();
-        $("#feedback_selection h5").html("Disabled");
-        $("#feedback_selection").show();
-    });
-
-    $( "#feedback_allowed" ).click(function() {
-        $("#peer_feedback").hide();
-        $("#feedback_selection h5").html("Enabled");
-        $("#feedback_selection").show();
-        $("#feedback_option").val(1);        
-        qf.append($("#feedback_option")); 
-        $("#expiration").show();
-    });
-
-    $( "#expiration_allowed" ).click(function() {
-        $("#expiration").hide();
-        $("#set_expiration").show();
-    });
-
-    $( "#expiration_disallowed" ).click(function() {
-        $("#expiration").hide();
-        $("#expires_selection h5").html("Never");
-        $("#expires_selection").show();
-        $("#skills").show();
-//        $("#quest_description").show();
-    });
-
-    $( "#expiration_set").click(function() {
-
-          var xd = new Date($("#expiration_date").val());
-          if(!isNaN(xd)) {
-            $("#set_expiration").hide();
-            $("#expiration_date").hide();
-            $("#expires_selection h5").html($("#expiration_date").val());
-            $("#expires_selection").show();
-            qf.append($("#expiration_date"));
-            $("#skills").show();
-          }
-          else {
-            alert("Please enter a valid date.");
-          }
-    });
-/*
-    $( "#description_set" ).click(function() {
-        $("#quest_description").hide();
-        qf.append($("#description"));
-//        $("#skills").show();
-    });
-*/
-    $( "#skills_set" ).click(function() {
-        $("#skills").hide();
-        $(".skills-input").hide();
-        qf.append($(".skills-input"));
-        if (skipThresholds) {
-            $("#attach_files").show();
-
-        }
-        else {
-            $("#thresholds").show();
-
-        }
-    });
-
-    $( "#thresholds_allowed" ).click(function() {
-        $("#thresholds").hide();
-        $("#set_thresholds").show();
-    });
-
-    $( "#thresholds_disallowed" ).click(function() {
-        $("#thresholds").hide();
-        $("#attach_files").show();
-    });
-
-    $( "#thresholds_set" ).click(function() {
-        $("#set_thresholds").hide();
-        $(".thresholds-input").hide();
-        qf.append($(".thresholds-input"));
-        $("#attach_files").show();
-    });
-
-    $( "#files_allowed").click(function() {
-        $("#attach_files").hide();
-        $("#file_attachments").show();
-    });
-
-    $( "#set_files").click(function() {
-        $("#file_attachments").hide();
-        $("#create-button").show();
-        $("#finished").show();
-    });
-
-    $( "#files_disallowed" ).click(function() {
-        $("#attach_files").hide();
-        $("#create-button").show();
-        $("#finished").show();
-    });
     Dropzone.autoDiscover = false;
     var quest_upload = new Dropzone('div#quest_uploads',
         {url:'/dropzone/uploadFiles',
