@@ -476,7 +476,7 @@ class QuestController extends Controller
 
 
 
-        return redirect()->route('quests.manage')->withFlashSuccess($quest->name . " has been successfully created.");
+        return redirect()->route('quests.manage', $request->course_id)->withFlashSuccess($quest->name . " has been successfully created.");
 
 //        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest])
 //            ->withUser(access()->user());
