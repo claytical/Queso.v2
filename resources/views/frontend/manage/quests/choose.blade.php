@@ -19,19 +19,19 @@
                     <span class="icon">
                       <i class="fa fa-link"></i>
                     </span>
-                    <span>Create</span>
+                    <span>Create Submission</span>
                   </a>                  
                 </article>
               </div>
               <div class="tile is-parent">
                 <article class="tile is-child box">
-                  <p class="title">Group Submission</p>
+                  <p class="title">Group Work</p>
                   <p class="subtitle">One submission through Queso on behalf of a group of students</p>
                   <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/group_submission/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-users" aria-hidden="true"></i>
                     </span>
-                    <span>Create</span>
+                    <span>Create Group Work</span>
                   </a>                  
                 </article>
               </div>
@@ -45,7 +45,7 @@
                     <span class="icon">
                       <i class="fa fa-youtube-play" aria-hidden="true"></i>
                     </span>
-                    <span>Create</span>
+                    <span>Create Video</span>
                   </a>                  
                 </article>
               </div>
@@ -57,7 +57,7 @@
                     <span class="icon">
                       <i class="fa fa-trophy" aria-hidden="true"></i>
                     </span>
-                    <span>Create</span>
+                    <span>Create Activity</span>
                   </a>                  
                 </article>
               </div>

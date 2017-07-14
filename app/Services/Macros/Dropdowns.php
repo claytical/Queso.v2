@@ -57,7 +57,32 @@ trait Dropdowns
 
     public function courseList() {
         $user = access()->user();
+        $courses = $user->courses();
         return $user->courses()->lists('name', 'id');
+    }
+
+    public function courses() {
+        $user = access()->user();
+        $courses = $user->courses();
+        $teaching = array();
+        $not_teaching = array();
+
+        foreach($courses as $course) {
+            if(access()->hasRole($course->instructor_role_id)) {
+                //Instructor
+                $teaching[] = $course;                
+            }
+            else {
+                //Student
+                $not_teaching[] = $course;
+            }
+
+
+        }
+
+
+        return ["teaching" => $teaching, "not_teaching" => $not_teaching];
+
     }
 
     public function teamEmailList($id) {

@@ -38,8 +38,9 @@
                           Manage
                         </a>
                         <div class="navbar-dropdown is-boxed">
+                        @foreach(Form::courses()['teaching'] as $c)
                         <a class="navbar-item {{ Active::pattern('manage/announcements', 'is-active') }}" href="{!! URL::to('manage/course') !!}">
-                          <strong>Class #1</strong>
+                          <strong>{!! $c->name !!}</strong>
                         </a>
                           <a class="navbar-item {{ Active::pattern('manage/quests', 'is-active') }}" href="{!! URL::to('manage/quests') !!}">
                             Quests
@@ -55,17 +56,7 @@
                             Resources
                           </a>
                          <hr class="navbar-divider">
-                          <div class="navbar-item">
-                            <strong>Class #1</strong>
-                          </div>
-                          
-                          <a class="navbar-item " href="#">
-                            Students
-                          </a>
-                          <a class="navbar-item " href="#">
-                            Resources
-                          </a>
-                        </div>
+                         @endforeach
                 </div>
               @endif
             </div>
