@@ -495,15 +495,13 @@ class QuestController extends Controller
         }     
 
 //files
-        /*
+        
         if($request->has('files')) {
             $files = $request->input('files');
             for($i = 0; $i < count($files); $i++) {
                 $quest->files()->attach($files[$i]);
             }
         }
-        */
-
 
 
         return redirect()->route('quests.manage', $request->course_id)->withFlashSuccess($quest->name . " has been successfully created.");
