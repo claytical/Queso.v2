@@ -3,167 +3,102 @@
 @section('content')
 
 {!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form']) !!}
+                    {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
+                    {{ Form::hidden('submissions_allowed', true, ['id' => 'submissions_allowed']) }}
+                    {{ Form::hidden('uploads_allowed', true, ['id' => 'uploads_allowed']) }}
+                    {{ Form::hidden('revisions', true, ['id' => 'revisions_option']) }}
+                    {{ Form::hidden('feedback', false, ['id' => 'feedback_option']) }}
 
 <section class="hero is-dark is-bold" id="choose_quest">
   <div class="hero-body">
     <div class="container is-fluid">
         <h1 class="title">
-        New Online Submission Quest
+        New Upload Quest
       </h1>
-    </div>
-  </div>
-</section>
+            <div class="tile">
+                <div class="tile is-6 is-parent">
+                  <div class="tile is-child">
+                  <!-- Title and Description -->                
+                    <div class="field">
+                      <p class="control">
+                        {{ Form::input('text', 'name', null, ['class' => 'input', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
+                      </p>
+                    </div>
 
+                    <div class="field">
+                      <p class="control">
+                        {!! Form::textarea('description', null, ['class' => 'input', 'files' => false, 'id' => 'description']) !!}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-
-
-<section class="hero is-dark is-bold" id="quest_name">
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h2 class="subtitle">What's the name of this quest?</h2>
-
-        <div class="field">
-          <p class="control">
-            {{ Form::input('text', 'name', null, ['class' => 'input', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
-          </p>
-        </div>
-
-        <a href="#" class="button is-primary is-large">Next</a>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="hero is-dark is-bold" id="quest_type_submission">
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h1 class="title">
-        Submission Method
-      </h1>
-        <h2 class="subtitle">How will the students submit their work?</h2>
-                    <button type="button" class="btn btn-default btn-block" id="submission_link">Link to a Website</button> 
-                    <button type="button" class="btn btn-default btn-block" id="submission_upload">Upload a File</button>
-                    <button type="button" class="btn btn-default btn-block" id="submission_either">Either</button>
-                    {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
-                    {{ Form::hidden('submissions_allowed', true, ['id' => 'submissions_allowed']) }}
-                    {{ Form::hidden('uploads_allowed', true, ['id' => 'uploads_allowed']) }}
-
-        <a href="#" class="button is-primary is-large">Next</a>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="hero is-dark is-bold" id="submission_revisions">
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h1 class="title">
-        Submission Revisions
-      </h1>
-        <h2 class="subtitle">Should students be able to revise their submission?</h2>
-
-                    <button type="button" class="btn btn-default btn-lg" id="revisions_allowed">Yes</button>
-                    <button type="button" class="btn btn-default btn-lg" id="revisions_disallowed">No</button>
-                    {{ Form::hidden('revisions', true, ['id' => 'revisions_option']) }}
-        <a href="#" class="button is-primary is-large">Next</a>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-dark is-bold" id="peer_feedback">
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h1 class="title">Peer Feedback</h1>
-        <h2 class="subtitle">Do you want a student's other team members to provide feedback on their submitted work?</h2>
-                    <button type="button" class="btn btn-default btn-lg" id="feedback_allowed">Yes</button>
-                    <button type="button" class="btn btn-default btn-lg" id="feedback_disallowed">No</button>
-                    {{ Form::hidden('feedback', false, ['id' => 'feedback_option']) }}
-        <a href="#" class="button is-primary is-large">Next</a>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-dark is-bold" id="set_expiration">
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h1 class="title">When should the quest disappear?</h1>
-
-                    {{ Form::input('date', 'expiration', null, ['class' => 'form-control', 'id' => 'expiration_date']) }}
-
-        <a href="#" class="button is-primary is-large">Next</a>
-    </div>
-  </div>
-</section>
-
-<section class="hero is-dark is-bold" id="skills">
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h1 class="title">What are the maximum point values for each skill?</h1>
-        <h2 class="subtitle">Please note, if you use this feature you should set a timezone for the course.</h2>
-                    @foreach($skills as $skill)
-                      <div class="form-group">
-                        <label for="skill{!! $skill->id!!}" class="col-sm-2 control-label">{!! $skill->name !!}</label>
-                        <div class="col-sm-10">
-                          <input type="number" class="form-control skills-input" id="skill{!! $skill->id!!}" name="skill[]">
-                          <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
+                <div class="tile is-6 is-parent">
+                    <div class="tile is-child notification is-primary">
+                      <h4 class="title">Allow Revisions</h4>
+                        <div class="field">
+                          <p class="control">
+                            <label class="radio" disabled>
+                              <input type="radio" name="question" disabled>
+                              Yes
+                            </label>
+                            <label class="radio" disabled>
+                              <input type="radio" name="question" disabled>
+                              No
+                            </label>
+                          </p>
+                        </div>                      
+                      
+                      <h4 class="title">Peer Feedback</h4>
+                        <div class="field">
+                          <p class="control">
+                            <label class="radio" disabled>
+                              <input type="radio" name="question3" disabled>
+                              Yes
+                            </label>
+                            <label class="radio" disabled>
+                              <input type="radio" name="question3" disabled>
+                              No
+                            </label>
+                          </p>
+                        </div>   
+                  
+                      <h4 class="title">Due</h4>
+                        <div class="field">
+                          <p class="control">
+                            <label class="radio" disabled>
+                              <input type="radio" name="question4" disabled>
+                              Anytime
+                            </label>
+                            <label class="radio" disabled>
+                              <input type="radio" name="question4" disabled>
+                              Specific Date
+                            </label>
+                          </p>
                         </div>
-                      </div>
-                    @endforeach
+                        <div class="field">
+                          <p class="control">
+                              {{ Form::input('date', 'expiration', null, ['class' => 'input', 'id' => 'expiration_date']) }}
+                          </p>
+                        </div>
 
-        <a href="#" class="button is-primary is-large">Next</a>
+                    </div>
+                </div>
+              </div>
+      {!! Form::submit('Next', ['class' => 'button is-large is-primary', 'id' => 'create-button']) !!}
+
+      {!! Form::close() !!}
+
     </div>
   </div>
 </section>
 
-<section class="hero is-dark is-bold" id="thresholds">
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h1 class="title">Should a student be required to have a minimum skill level in order to see this quest?</h1>
-                    <button type="button" class="btn btn-default btn-lg" id="thresholds_allowed">Yes</button>
-                    <button type="button" class="btn btn-default btn-lg" id="thresholds_disallowed">No</button>
 
-        <a href="#" class="button is-primary is-large">Next</a>
-    </div>
-  </div>
-</section>
-
-
-{!! Form::submit('Create', ['class' => 'btn btn-primary btn-lg btn-block', 'style' => 'display:none;', 'id' => 'create-button']) !!}
-
-{!! Form::close() !!}
 
 @endsection
 
 @section('after-scripts-end')
     <script>
-    var qf = $("#quest-create-form");
-    var skipThresholds = false;
-    $( "#name_next" ).click(function() {
-        $("#quest_name").hide();
-        $("#quest_title").hide();
-        qf.append($("#quest_title"));
-        $("#quest_name_selection h5").html($("#quest_title").val());
-        $("#quest_name_selection").show();
-        $("#quest_type_style").show();
-    });
-
-    //
-    $("#submit_something_next").click(function() {
-        //what kind of submission?
-        $("#quest_type_style").hide();
-        $("#quest_type_submission").show();
-    });
-
-    $("#no_submission_next").click(function() {
-        //what kind of activity?
-        $("#quest_type_style").hide();
-        $("#quest_type_activity").show();
-
-    });
 
     $("#submission_link").click(function() {
         $("#quest_type_id").val(4);        

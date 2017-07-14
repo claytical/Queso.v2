@@ -13,28 +13,68 @@
             <div class="tile is-ancestor">
               <div class="tile is-parent">
                 <article class="tile is-child box">
-                  <p class="title">Online Submission</p>
-                  <p class="subtitle">Students send a link or upload a file to Queso</p>
-                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/submission/'.$course_id)!!}">
+                  <p class="title">Send Link</p>
+                  <p class="subtitle">Students submit a link of their work to Queso</p>
+                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/link/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-link"></i>
                     </span>
-                    <span>Create Submission</span>
+                    <span>Create Link Quest</span>
                   </a>                  
                 </article>
               </div>
               <div class="tile is-parent">
                 <article class="tile is-child box">
-                  <p class="title">Group Work</p>
-                  <p class="subtitle">One submission through Queso on behalf of a group of students</p>
-                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/group_submission/'.$course_id)!!}">
+                  <p class="title">Send File</p>
+                  <p class="subtitle">Students upload a file to Queso</p>
+                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/upload/'.$course_id)!!}">
                     <span class="icon">
-                      <i class="fa fa-users" aria-hidden="true"></i>
+                      <i class="fa fa-link"></i>
                     </span>
-                    <span>Create Group Work</span>
+                    <span>Create Upload Quest</span>
                   </a>                  
                 </article>
               </div>
+
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Written Response</p>
+                  <p class="subtitle">Students write a response directly on Queso</p>
+                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/submission/'.$course_id)!!}">
+                    <span class="icon">
+                      <i class="fa fa-link"></i>
+                    </span>
+                    <span>Create Written Quest</span>
+                  </a>                  
+                </article>
+              </div>
+
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Group Link</p>
+                  <p class="subtitle">One student submits a link behalf of a group of students</p>
+                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/link/group/'.$course_id)!!}">
+                    <span class="icon">
+                      <i class="fa fa-users" aria-hidden="true"></i>
+                    </span>
+                    <span>Create Group Link Quest</span>
+                  </a>                  
+                </article>
+              </div>
+
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Group File</p>
+                  <p class="subtitle">One student submits a link behalf of a group of students</p>
+                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/upload/group'.$course_id)!!}">
+                    <span class="icon">
+                      <i class="fa fa-users" aria-hidden="true"></i>
+                    </span>
+                    <span>Create Group Link Quest</span>
+                  </a>                  
+                </article>
+              </div>
+
             </div>
             <div class="tile is-ancestor">              
               <div class="tile is-parent">
