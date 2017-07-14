@@ -3,7 +3,7 @@
 @section('content')
 
 {!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form', 'class' => 'msf']) !!}
-                    {{ Form::hidden('quest_type_id', 5, ['id' => 'submission_type_id']) }}
+                    {{ Form::hidden('quest_type_id', 6, ['id' => 'submission_type_id']) }}
                     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                     {{ Form::hidden('submissions_allowed', false, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('uploads_allowed', true, ['id' => 'uploads_allowed']) }}

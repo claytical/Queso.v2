@@ -68,6 +68,12 @@
               @if($quest->quest_type_id == 5)
                 File Upload
               @endif            
+              @if($quest->quest_type_id == 6)
+                Group File Upload
+              @endif            
+              @if($quest->quest_type_id == 7)
+                Group Link
+              @endif            
 
           </td>
           <td>

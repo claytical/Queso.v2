@@ -344,12 +344,9 @@ class QuestController extends Controller
     }
     public function delete($id) {
         $quest = Quest::find($id);
+        $course_id = $quest->course_id;
         $quest->delete();
-        return redirect()->route('quests.manage')->withFlashSuccess($quest->name . " has been removed");
-/*
-        return view('frontend.manage.quests.deleted')
-            ->withUser(access()->user());
-*/
+        return redirect()->route('quests.manage', $course_id)->withFlashSuccess($quest->name . " has been removed");
     }
 
     public function clone_form($id) {
