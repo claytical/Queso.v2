@@ -94,7 +94,7 @@ class Access
         $teaching = array();
 
         foreach($courses as $course) {
-            if(access()->hasRole($course->instructor_role_id)) {
+            if($this->user()->hasRole($course->instructor_role_id)) {
                 //Instructor
                 $teaching[] = $course;                
             }
