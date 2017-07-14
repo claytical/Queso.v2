@@ -9,55 +9,55 @@
                     {{ Form::hidden('revisions', true, ['id' => 'revisions_option']) }}
                     {{ Form::hidden('feedback', false, ['id' => 'feedback_option']) }}
 
-<section class="hero is-dark is-bold" id="choose_quest">
+<section class="hero" id="choose_quest">
   <div class="hero-body">
     <div class="container is-fluid">
         <h1 class="title">
-        New Upload Quest
+        New Response Quest
       </h1>
             <div class="tile">
-                <div class="tile is-6 is-parent">
+                <div class="tile is-8 is-parent">
                   <div class="tile is-child">
                   <!-- Title and Description -->                
                     <div class="field">
                       <p class="control">
-                        {{ Form::input('text', 'name', null, ['class' => 'input', 'placeholder' => 'A New Adventure', 'id' => 'quest_title']) }}
+                        {{ Form::input('text', 'name', null, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
                       </p>
                     </div>
 
                     <div class="field">
                       <p class="control">
-                        {!! Form::textarea('description', null, ['class' => 'input', 'files' => false, 'id' => 'description']) !!}
+                        {!! Form::textarea('description', null, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div class="tile is-6 is-parent">
-                    <div class="tile is-child notification is-primary">
-                      <h4 class="title">Allow Revisions</h4>
+                <div class="tile is-4 is-parent">
+                    <div class="tile is-child notification">
+                      <h4 class="subtitle">Allow Revisions</h4>
                         <div class="field">
                           <p class="control">
-                            <label class="radio" disabled>
-                              <input type="radio" name="question" disabled>
+                            <label class="radio">
+                              <input type="radio" name="question" >
                               Yes
                             </label>
-                            <label class="radio" disabled>
-                              <input type="radio" name="question" disabled>
+                            <label class="radio">
+                              <input type="radio" name="question">
                               No
                             </label>
                           </p>
                         </div>                      
                       
-                      <h4 class="title">Peer Feedback</h4>
+                      <h4 class="subtitle">Peer Feedback</h4>
                         <div class="field">
                           <p class="control">
-                            <label class="radio" disabled>
-                              <input type="radio" name="question3" disabled>
+                            <label class="radio">
+                              <input type="radio" name="question3">
                               Yes
                             </label>
                             <label class="radio" disabled>
-                              <input type="radio" name="question3" disabled>
+                              <input type="radio" name="question3">
                               No
                             </label>
                           </p>
@@ -67,11 +67,11 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio" disabled>
-                              <input type="radio" name="question4" disabled>
+                              <input type="radio" name="question4">
                               Anytime
                             </label>
                             <label class="radio" disabled>
-                              <input type="radio" name="question4" disabled>
+                              <input type="radio" name="question4">
                               Specific Date
                             </label>
                           </p>
