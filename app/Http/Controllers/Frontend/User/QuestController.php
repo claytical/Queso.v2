@@ -134,6 +134,13 @@ class QuestController extends Controller
 
     }
 
+    public function create_link_form($course_id) {
+        $skills = Skill::where('course_id', '=', $course_id)->get();
+        return view('frontend.manage.quests.create.link', ['skills' => $skills, 'course_id' => $course_id])
+            ->withUser(access()->user());
+
+    }
+
     public function create_submission_form($course_id) {
         $skills = Skill::where('course_id', '=', session('current_course'))->get();
         return view('frontend.manage.quests.create.submission', ['skills' => $skills])
@@ -362,7 +369,8 @@ class QuestController extends Controller
         $quest->visible = true;
         switch($request->quest_type_id) {
             case '1':
-                //individual written response
+            case '4':
+                //individual written response, link
                 //conditional expiration, feedback, revisions
                 if($request->expires) {
                     $quest->expires_at = $request->expiration;
