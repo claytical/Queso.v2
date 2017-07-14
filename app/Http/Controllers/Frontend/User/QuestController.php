@@ -376,7 +376,7 @@ class QuestController extends Controller
                 }
                 else {
                     //give error
-                    return redirect()->route('quests.create.video.form', $course_id)->withFlashDanger("This feature requires a YouTube URL.");
+                    return redirect()->route('quests.create.video.form', $request->course_id)->withFlashDanger("This feature requires a YouTube URL.");
                 }
         }    
 
