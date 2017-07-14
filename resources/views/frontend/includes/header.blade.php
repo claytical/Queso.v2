@@ -38,6 +38,7 @@
                           Manage
                         </a>
                         <div class="navbar-dropdown is-boxed">
+                        {!! access()->courses_taught() !!}
                         @foreach(access()->courses_taught() as $c)
                         <a class="navbar-item {{ Active::pattern('manage/announcements', 'is-active') }}" href="{!! URL::to('manage/course') !!}">
                           <strong>{!! $c->name !!}</strong>
