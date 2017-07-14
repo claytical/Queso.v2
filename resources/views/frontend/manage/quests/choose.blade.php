@@ -19,7 +19,7 @@
                     <span class="icon">
                       <i class="fa fa-link"></i>
                     </span>
-                    <span>Create Link Quest</span>
+                    <span>Link Quest</span>
                   </a>                  
                 </article>
               </div>
@@ -31,20 +31,20 @@
                     <span class="icon">
                       <i class="fa fa-link"></i>
                     </span>
-                    <span>Create Upload Quest</span>
+                    <span>Upload Quest</span>
                   </a>                  
                 </article>
               </div>
 
               <div class="tile is-parent">
                 <article class="tile is-child box">
-                  <p class="title">Written Response</p>
+                  <p class="title">Response</p>
                   <p class="subtitle">Students write a response directly on Queso</p>
                   <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/submission/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-link"></i>
                     </span>
-                    <span>Create Written Quest</span>
+                    <span>Response Quest</span>
                   </a>                  
                 </article>
               </div>
@@ -57,7 +57,7 @@
                     <span class="icon">
                       <i class="fa fa-users" aria-hidden="true"></i>
                     </span>
-                    <span>Create Group Link Quest</span>
+                    <span>Group Link Quest</span>
                   </a>                  
                 </article>
               </div>
@@ -70,7 +70,7 @@
                     <span class="icon">
                       <i class="fa fa-users" aria-hidden="true"></i>
                     </span>
-                    <span>Create Group Link Quest</span>
+                    <span>Group File Quest</span>
                   </a>                  
                 </article>
               </div>
@@ -85,19 +85,19 @@
                     <span class="icon">
                       <i class="fa fa-youtube-play" aria-hidden="true"></i>
                     </span>
-                    <span>Create Video</span>
+                    <span>Video Quest</span>
                   </a>                  
                 </article>
               </div>
               <div class="tile is-parent">
                 <article class="tile is-child box">
-                  <p class="title">Class Activity</p>
+                  <p class="title">Activity</p>
                   <p class="subtitle">Assign points for things that happen outside of Queso</p>
                   <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/activity/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-trophy" aria-hidden="true"></i>
                     </span>
-                    <span>Create Activity</span>
+                    <span>Activity Quest</span>
                   </a>                  
                 </article>
               </div>
