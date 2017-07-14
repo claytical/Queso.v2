@@ -3,7 +3,8 @@
         }
         
         .msf-navigation {
-            text-align: center;
+            text-align: right;
+            margin-right: 10px;
         }
         
         .msf-nav-button {
@@ -14,6 +15,7 @@
             padding-top: 10px;
             margin-bottom: 40px;
             color: #777;
+            background: #fefefe;
         }
         
         .msf-header .msf-step {
@@ -35,23 +37,23 @@
         }
         
         .msf-header .msf-step.msf-step-active {
-            color: #ef4035;
+            color: #952e81;
             /*color:#3c763d;*/
         }
         
         .msf-header .msf-step.msf-step-active i.fa {
-            border-color: #ef4035;
+            border-color: #952e81;
             /*border-color : #3c763d;*/
         }
         
         .msf-header .msf-step.msf-step-complete {
             /*color: #ef4035;*/
-            color: #3c763d;
+            color: #303049;
         }
         
         .msf-header .msf-step.msf-step-complete i.fa {
             /*border-color : #ef4035;*/
-            border-color: #3c763d;
+            border-color: #303049;
         }
 
         

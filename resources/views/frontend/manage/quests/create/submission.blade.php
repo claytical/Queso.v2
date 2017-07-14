@@ -12,9 +12,6 @@
 <section class="hero" id="choose_quest">
   <div class="hero-body">
     <div class="container is-fluid">
-        <h1 class="title">
-        New Response Quest
-      </h1>
         <div class="msf-header">
           <div class="has-text-centered">
             <div class="columns">
@@ -98,75 +95,81 @@
             </div>
             <div class="msf-view">
 
-            <div class="tile">
-                <div class="tile is-6 is-parent">
-                  <div class="tile is-child">
-                  <!-- Skills -->            
-                    <h4 class="subtitle has-text-centered">Points Awarded</h4>
+              <div class="tile is-12 is-parent">
+                  <div class="container is-fluid">
+                      <p>You can set a maximum amount of points you're able to award to a student for completing this quest for each skill. If you set a minimum point value for a skill, the student will only be able to see this quest when they have been awarded at least that amount of points for that specific skill.</p>
+                  </div>
+              </div>
 
-                    <div class="field is-horizontal">
-                      <div class="field-label is-normal">
-                        <label class="label">Reading</label>
-                      </div>
-                      <div class="field-body">
-                        <div class="field is-grouped">
-                          <p class="control is-expanded has-icons-left">
-                            <input class="input is-large" type="number" placeholder="Maximum Points">
-                          </p>
+              <div class="tile">
+                  <div class="tile is-6 is-parent">
+                    <div class="tile is-child">
+                    <!-- Skills -->            
+                      <h4 class="subtitle has-text-centered">Points Awarded</h4>
+
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Reading</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field is-grouped">
+                            <p class="control is-expanded has-icons-left">
+                              <input class="input is-large" type="number" placeholder="Maximum Points">
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div class="field is-horizontal">
-                      <div class="field-label is-normal">
-                        <label class="label">Writing</label>
-                      </div>
-                      <div class="field-body">
-                        <div class="field is-grouped">
-                          <p class="control is-expanded has-icons-left">
-                            <input class="input is-large" type="number" placeholder="Maximum Points">
-                          </p>
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Writing</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field is-grouped">
+                            <p class="control is-expanded has-icons-left">
+                              <input class="input is-large" type="number" placeholder="Maximum Points">
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
+                    </div>
+                  </div>
+
+                  <div class="tile is-6 is-parent">
+                      <div class="tile is-child">
+                        <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Reading</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field is-grouped">
+                            <p class="control is-expanded has-icons-left">
+                              <input class="input is-large" type="number" placeholder="Maximum Points">
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Writing</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field is-grouped">
+                            <p class="control is-expanded has-icons-left">
+                              <input class="input is-large" type="number" placeholder="Maximum Points">
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                        
+                      </div>
                   </div>
                 </div>
 
-                <div class="tile is-6 is-parent">
-                    <div class="tile is-child">
-                      <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
-                    <div class="field is-horizontal">
-                      <div class="field-label is-normal">
-                        <label class="label">Reading</label>
-                      </div>
-                      <div class="field-body">
-                        <div class="field is-grouped">
-                          <p class="control is-expanded has-icons-left">
-                            <input class="input is-large" type="number" placeholder="Maximum Points">
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="field is-horizontal">
-                      <div class="field-label is-normal">
-                        <label class="label">Writing</label>
-                      </div>
-                      <div class="field-body">
-                        <div class="field is-grouped">
-                          <p class="control is-expanded has-icons-left">
-                            <input class="input is-large" type="number" placeholder="Maximum Points">
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                      
-                    </div>
-                </div>
               </div>
-
-            </div>
 <!--
             <div class="msf-view">
 
@@ -227,9 +230,9 @@
 -->
           </div>
           <div class="msf-navigation">
-                <button data-type="back" class="button is-large is-pulled-right msf-nav-button" type="button">Information</button>
-                <button data-type="next" class="button is-large is-pulled-right msf-nav-button" type="button">Skills &amp; Thresholds</button>
-                <button data-type="submit" class="button msf-nav-button is-primary is-large is-pulled-right" type="submit">Create Quest</button>
+                <button data-type="back" class="button is-large msf-nav-button" type="button">Next</button>
+                <button data-type="next" class="button is-large msf-nav-button" type="button">Previous</button>
+                <button data-type="submit" class="button msf-nav-button is-primary is-large" type="submit">Create Quest</button>
           </div>
     </div>
   </div>
@@ -247,7 +250,8 @@
         hideBackButton : false,
         validate: {
           rules: {
-            name: "required"
+            name: "required",
+            description: "required"
           }
         }
     });
