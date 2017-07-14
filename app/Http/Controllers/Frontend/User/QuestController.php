@@ -126,6 +126,14 @@ class QuestController extends Controller
             ->withUser(access()->user());
 
     }
+
+    public function create_response_form($course_id) {
+        $skills = Skill::where('course_id', '=', session('current_course'))->get();
+        return view('frontend.manage.quests.create.response', ['skills' => $skills, 'course_id' => $course_id])
+            ->withUser(access()->user());
+
+    }
+
     public function create_submission_form($course_id) {
         $skills = Skill::where('course_id', '=', session('current_course'))->get();
         return view('frontend.manage.quests.create.submission', ['skills' => $skills])
@@ -340,57 +348,48 @@ class QuestController extends Controller
     public function create(Request $request) {
         $quest = new Quest;
         $quest->name = $request->name;
+        $quest->quest_type_id = $request->quest_type_id;
         $quest->instructions = $request->description;
-        $quest->course_id = session('current_course');
+        $quest->course_id = $request->course_id;
+        $quest->submissions = $request->submissions_allowed;
+        $quest->uploads_allowed = $request->uploads_allowed;
+        $quest->groups = $request->groups;
+        $quest->instant = $quest->instant;
+
+
         $quest->visible = true;
+        switch($request->quest_type_id) {
+            case '1':
+                //individual written response
+
+                //conditional expiration, feedback, revisions
+                if($request->expires) {
+                    $quest->expires_at = $request->expiration;
+                }
+
+                $quest->peer_feedback = $request->feedback;
+                $quest->revisions = $request->revisions;
+
+                break;
+        }    
+
+        $quest->save();
+
+        //RESPONSE FORM
+
 //category?
 //color?        
 
 
-//expirations
-        if ($request->has('expiration')) {
-            $quest->expires_at = $request->expiration;
-        }
-        if ($request->has('groups_allowed')) {
-            $quest->groups = true;
-        }
 //file attachments
 
 //type specific options
+        /*
         switch($request->quest_type) {
             //SUBMISSION
             
             case '1':
-                $quest->quest_type_id = 1;
-                //feedback
-                if ($request->has('feedback')) {
-                    $quest->peer_feedback = true;
-                }
-                else {
-                    $quest->peer_feedback = false;
-                }
-                //revisions
-                if($request->has('revisions')) {
-                    $quest->revisions = true;
-                }
-                else {
-                    $quest->revisions = false;
-                }
-                //written
-                if($request->has('submissions_allowed')) {
-                    $quest->submissions = true;
-                }
-                else {
-                    $quest->submissions = false;
-                }
 
-                //uploads
-                if($request->has('uploads_allowed')) {
-                    $quest->uploads = true;
-                }
-                else {
-                    $quest->uploads = false;
-                }
 
                 break;
 
@@ -442,7 +441,7 @@ class QuestController extends Controller
 
         }
 
-        $quest->save();
+        */
 
 //skills
         for($i = 0; $i < count($request->skill); $i++) {

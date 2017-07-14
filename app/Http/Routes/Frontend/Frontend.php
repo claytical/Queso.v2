@@ -90,6 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('manage/quests/{course_id}', 'QuestController@manage')->name('quests.manage');
         Route::get('manage/quest/create/{course_id}', 'QuestController@choose')->name('quests.choose');
+        Route::get('manage/quest/create/response/{course_id}', 'QuestController@create_response_form')->name('quests.create.response.form');
 
         Route::get('manage/quest/create/submission/{course_id}', 'QuestController@create_submission_form')->name('quests.create.submission.form');
         Route::get('manage/quest/create/group_submission/{course_id}', 'QuestController@create_group_submission_form')->name('quests.create.group.submission.form');
@@ -97,7 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/quest/create/activity/{course_id}', 'QuestController@create_activity_form')->name('quests.create.activity.form');
 
 
-        Route::get('manage/quest/create', 'QuestController@create_form')->name('quests.create.begin');
+//        Route::get('manage/quest/create', 'QuestController@create_form')->name('quests.create.begin');
         Route::post('manage/quest/create', 'QuestController@create')->name('quests.create');
         Route::get('manage/quest/{quest_id}/delete', 'QuestController@delete')->name('quests.delete');
         Route::get('manage/quest/{quest_id}/show', 'QuestController@show')->name('quests.show');

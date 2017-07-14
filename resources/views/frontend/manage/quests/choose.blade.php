@@ -15,7 +15,7 @@
                 <article class="tile is-child box">
                   <p class="title">Response</p>
                   <p class="subtitle">Students write a response directly on Queso</p>
-                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/submission/'.$course_id)!!}">
+                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/response/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-link"></i>
                     </span>

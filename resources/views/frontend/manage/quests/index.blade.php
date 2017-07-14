@@ -48,7 +48,7 @@
       </tfoot>
       -->
       <tbody>
-    @foreach($quests as $quests)
+    @foreach($quests as $quest)
         <tr>
           <td>{!! $quest->name !!}</td>
           <td>
