@@ -354,7 +354,7 @@ class QuestController extends Controller
         $quest->submissions = $request->submissions_allowed;
         $quest->uploads = $request->uploads_allowed;
         $quest->groups = $request->groups;
-        $quest->instant = $quest->instant;
+        $quest->instant = $request->instant;
 
 
         $quest->visible = true;
