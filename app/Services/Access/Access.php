@@ -102,7 +102,7 @@ class Access
         }
 
 
-        return $courses;
+        return $teaching;
 
     }
 
