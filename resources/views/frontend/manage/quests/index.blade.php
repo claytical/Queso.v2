@@ -35,6 +35,7 @@
         <tr>
           <th>Quest</th>
           <th>Type</th>
+          <th>Due Date</th>
           <th></th>
         </tr>
       </thead>
@@ -53,17 +54,24 @@
           <td>{!! $quest->name !!}</td>
           <td>
               @if($quest->quest_type_id == 1)
-                  <td>Online Submission</td>
+                Response
               @endif
               @if($quest->quest_type_id == 2)
-                  <td>In Class Activity</td>
+                In Class Activity
               @endif
               @if($quest->quest_type_id == 3)
-                  <td>Video</td>
+                Video
               @endif
               @if($quest->quest_type_id == 4)
-                  <td>Link</td>
+                Link
               @endif            
+          </td>
+          <td>
+            @if($quest->expires_at)
+            {!! date('m-d-Y', strtotime($quest->expires_at)) !!}
+            @else
+              Anytime
+            @endif
           </td>
           <td>
             <a class="button is-small" href="{!! url('manage/quest/'.$quest->id);!!}">Edit</a>
