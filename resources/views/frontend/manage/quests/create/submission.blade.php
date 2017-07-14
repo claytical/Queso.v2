@@ -18,8 +18,8 @@
         <div class="msf-header">
           <div class="has-text-centered">
             <div class="columns">
-              <div class="msf-step column"><i class="fa fa-info"></i> <span>Information</span></div>
-              <div class="msf-step column"><i class="fa fa-trophy"></i><span>Skills &amp; Thresholds</span></div>
+              <div class="msf-step column"><i class="fa fa-info"></i> <p>Information</p></div>
+              <div class="msf-step column"><i class="fa fa-trophy"></i><p>Skills &amp; Thresholds</p></div>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
                           </p>
                         </div>   
                   
-                      <h4 class="subtitle">Due</h4>
+                      <h4 class="subtitle">Due Date</h4>
                         <div class="field">
                           <p class="control">
                             <label class="radio" disabled>
@@ -102,7 +102,7 @@
                 <div class="tile is-6 is-parent">
                   <div class="tile is-child">
                   <!-- Skills -->            
-                    <h4 class="subtitle">Points Awarded</h4>
+                    <h4 class="subtitle has-text-centered">Points Awarded</h4>
 
                     <div class="field is-horizontal">
                       <div class="field-label is-normal">
@@ -135,7 +135,7 @@
 
                 <div class="tile is-6 is-parent">
                     <div class="tile is-child">
-                      <h4 class="subtitle">Minimum Skill Level Required</h4>
+                      <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
                     <div class="field is-horizontal">
                       <div class="field-label is-normal">
                         <label class="label">Reading</label>
@@ -227,12 +227,9 @@
 -->
           </div>
           <div class="msf-navigation">
-              <nav class="pagination is-large">
-                <button data-type="back" class="pagination-previous msf-nav-button" type="button">Information</button>
-                <button data-type="next" class="pagination-next msf-nav-button is-primary" type="button">Skills &amp; Thresholds</button>
-                <button data-type="submit" class="button msf-nav-button is-primary is-large" type="submit">Create Quest</button>
-
-              </nav>
+                <button data-type="back" class="button is-large is-pulled-right msf-nav-button" type="button">Information</button>
+                <button data-type="next" class="button is-large is-pulled-right msf-nav-button" type="button">Skills &amp; Thresholds</button>
+                <button data-type="submit" class="button msf-nav-button is-primary is-large is-pulled-right" type="submit">Create Quest</button>
           </div>
     </div>
   </div>
