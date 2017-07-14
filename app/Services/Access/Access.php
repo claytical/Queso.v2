@@ -89,6 +89,24 @@ class Access
         return false;
     }
 
+    public function courses_taught() {
+        $courses = $this->user()->courses();
+        $teaching = array();
+
+        foreach($courses as $course) {
+            if(access()->hasRole($course->instructor_role_id)) {
+                //Instructor
+                $teaching[] = $course;                
+            }
+
+        }
+
+
+        return $teaching;
+
+    }
+
+
     public function course_instructors() {
         $course = Course::find(session('current_course'));
         $instructors = [];
