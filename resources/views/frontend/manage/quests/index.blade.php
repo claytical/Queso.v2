@@ -57,7 +57,7 @@
                 Response
               @endif
               @if($quest->quest_type_id == 2)
-                In Class Activity
+                Activity
               @endif
               @if($quest->quest_type_id == 3)
                 Video
@@ -65,6 +65,10 @@
               @if($quest->quest_type_id == 4)
                 Link
               @endif            
+              @if($quest->quest_type_id == 5)
+                File Upload
+              @endif            
+
           </td>
           <td>
             @if($quest->expires_at)

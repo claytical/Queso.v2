@@ -92,6 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/quest/create/{course_id}', 'QuestController@choose')->name('quests.choose');
         Route::get('manage/quest/create/response/{course_id}', 'QuestController@create_response_form')->name('quests.create.response.form');
         Route::get('manage/quest/create/link/{course_id}', 'QuestController@create_link_form')->name('quests.create.link.form');
+        Route::get('manage/quest/create/upload/{course_id}', 'QuestController@create_upload_form')->name('quests.create.upload.form');
 
         Route::get('manage/quest/create/submission/{course_id}', 'QuestController@create_submission_form')->name('quests.create.submission.form');
         Route::get('manage/quest/create/group_submission/{course_id}', 'QuestController@create_group_submission_form')->name('quests.create.group.submission.form');

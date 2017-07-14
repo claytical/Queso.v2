@@ -141,6 +141,15 @@ class QuestController extends Controller
 
     }
 
+    public function create_upload_form($course_id) {
+        $skills = Skill::where('course_id', '=', $course_id)->get();
+        return view('frontend.manage.quests.create.upload', ['skills' => $skills, 'course_id' => $course_id])
+            ->withUser(access()->user());
+
+    }
+
+
+
     public function create_submission_form($course_id) {
         $skills = Skill::where('course_id', '=', session('current_course'))->get();
         return view('frontend.manage.quests.create.submission', ['skills' => $skills])
@@ -370,6 +379,7 @@ class QuestController extends Controller
         switch($request->quest_type_id) {
             case '1':
             case '4':
+            case '5':
                 //individual written response, link
                 //conditional expiration, feedback, revisions
                 if($request->expires) {
