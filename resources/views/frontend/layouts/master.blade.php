@@ -30,7 +30,9 @@
         {{ Html::script('js/vendor/list.min.js')}}
         <script async charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=a705fe8012d914a446d7e4" ></script>
         {{ Html::style('css/vendor/dropzone/dropzone.css') }}
+        {{ Html::style('css/vendor/multi-step-form.css') }}
         {{ Html::style('css/vendor/jquery.minipreview.css') }}
+
         {{ Html::style('css/vendor/select2.min.css') }}
         {{ Html::style('css/vendor/chartist.css') }}
 
@@ -51,6 +53,8 @@
 
         <!-- JavaScripts -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        {{ Html::script('js/vendor/jquery/jquery.validate.min.js') }}
+        {{ Html::script('js/vendor/jquery/multi-step-form.js') }}
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/tinymce/tinymce.min.js') }}
         {{ Html::script('js/vendor/jquery/multiselect.min.js') }}

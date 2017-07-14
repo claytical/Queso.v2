@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form']) !!}
+{!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form', 'class' => 'msf']) !!}
                     {{ Form::hidden('submission_type', null, ['id' => 'submission_type_id']) }}
                     {{ Form::hidden('submissions_allowed', true, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('uploads_allowed', true, ['id' => 'uploads_allowed']) }}
@@ -15,6 +15,15 @@
         <h1 class="title">
         New Response Quest
       </h1>
+        <div class="msf-header">
+          <div class="row text-center">
+            <div class="msf-step col-md-4"><i class="fa fa-clipboard"></i> <span>Step 1</span></div>
+            <div class="msf-step col-md-4"><i class="fa fa-credit-card"></i><span>Step 2</span></div>
+            <div class="msf-step col-md-4"><i class="fa fa-check"></i> <span>Step 3</span></div>
+          </div>
+        </div>
+        <div class="msf-content">
+        <div class="msf-view">
             <div class="tile">
                 <div class="tile is-8 is-parent">
                   <div class="tile is-child">
@@ -63,7 +72,7 @@
                           </p>
                         </div>   
                   
-                      <h4 class="title">Due</h4>
+                      <h4 class="subtitle">Due</h4>
                         <div class="field">
                           <p class="control">
                             <label class="radio" disabled>
@@ -85,20 +94,54 @@
                     </div>
                 </div>
               </div>
-      {!! Form::submit('Next', ['class' => 'button is-large is-primary', 'id' => 'create-button']) !!}
+            </div>
+            <div class="msf-view">
+                Skills
+            </div>
+            <div class="msf-view">
+                Thresholds
+            </div>
+            <div class="msf-view">
+                Files
+            </div>
+          </div>
 
-      {!! Form::close() !!}
+          <div class="msf-navigation">
+              <nav class="pagination is-large">
+                <button data-type="back" class="pagination-previous msf-nav-button" type="button">Previous</button>
+                <button data-type="next" class="pagination-next msf-nav-button" type="button">Next</button>
+                <button data-type="submit" class="button msf-nav-button" type="submit">Submit</button>
 
+              </nav>
+          </div>
     </div>
   </div>
 </section>
 
+      {!! Form::submit('Next', ['class' => 'button is-large is-primary', 'id' => 'create-button']) !!}
+
+      {!! Form::close() !!}
 
 
 @endsection
 
 @section('after-scripts-end')
     <script>
+
+    $(".msf:first").multiStepForm({
+        activeIndex: 0,
+        hideBackButton : false,
+        validate: {
+          rules: {
+            name: "required"
+          }
+        }
+    });
+
+
+
+
+
 
     $("#submission_link").click(function() {
         $("#quest_type_id").val(4);        
