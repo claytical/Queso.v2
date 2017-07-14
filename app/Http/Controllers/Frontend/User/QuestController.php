@@ -128,7 +128,7 @@ class QuestController extends Controller
     }
 
     public function create_response_form($course_id) {
-        $skills = Skill::where('course_id', '=', session('current_course'))->get();
+        $skills = Skill::where('course_id', '=', $course_id)->get();
         return view('frontend.manage.quests.create.response', ['skills' => $skills, 'course_id' => $course_id])
             ->withUser(access()->user());
 
@@ -147,8 +147,8 @@ class QuestController extends Controller
 
     }
     public function create_activity_form($course_id) {
-        $skills = Skill::where('course_id', '=', session('current_course'))->get();
-        return view('frontend.manage.quests.create', ['skills' => $skills])
+        $skills = Skill::where('course_id', '=', $course_id)->get();
+        return view('frontend.manage.quests.create.activity', ['skills' => $skills, 'course_id' => $course_id])
             ->withUser(access()->user());
 
     }
@@ -355,21 +355,18 @@ class QuestController extends Controller
         $quest->uploads = $request->uploads_allowed;
         $quest->groups = $request->groups;
         $quest->instant = $request->instant;
+        $quest->peer_feedback = $request->feedback;
+        $quest->revisions = $request->revisions;
 
 
         $quest->visible = true;
         switch($request->quest_type_id) {
             case '1':
                 //individual written response
-
                 //conditional expiration, feedback, revisions
                 if($request->expires) {
                     $quest->expires_at = $request->expiration;
                 }
-
-                $quest->peer_feedback = $request->feedback;
-                $quest->revisions = $request->revisions;
-
                 break;
         }    
 
