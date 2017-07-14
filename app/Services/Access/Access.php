@@ -90,7 +90,7 @@ class Access
     }
 
     public function courses_taught() {
-        $courses = $this->user()->courses();
+        $courses = $this->user()->courses;
         $teaching = array();
 
         foreach($courses as $course) {
