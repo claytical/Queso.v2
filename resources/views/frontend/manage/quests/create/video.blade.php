@@ -11,7 +11,7 @@
                     {{ Form::hidden('feedback', false, ['id' => 'feedback_allowed']) }}
                     {{ Form::hidden('revisions', false, ['id' => 'revisions_allowed']) }}
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
-                    
+
 
 <section class="hero" id="choose_quest">
   <div class="hero-body">
@@ -21,6 +21,7 @@
             <div class="columns">
               <div class="msf-step column"><i class="fa fa-info"></i> <p>Information</p></div>
               <div class="msf-step column"><i class="fa fa-trophy"></i><p>Skills</p></div>
+
             </div>
           </div>
         </div>
@@ -116,64 +117,6 @@
                 </div>
 
               </div>
-<!--
-            <div class="msf-view">
-
-           <div class="tile">
-                <div class="tile is-6 is-parent">
-                  <div class="tile is-child">
-                     <div id="quest_uploads" class="dropzone"></div>
-                  </div>
-                </div>
-
-                <div class="tile is-6 is-parent">
-                    <div class="tile is-child notification">
-                      <h4 class="subtitle">Attached Files</h4>
-
-
-                        <article class="media">
-                          <figure class="media-left">
-                            <p class="image is-64x64">
-                              <img src="http://bulma.io/images/placeholders/128x128.png">
-                            </p>
-                          </figure>
-                          <div class="media-content">
-                            <div class="content">
-                              <p>filename.pdf
-                              </p>
-                            </div>
-                          </div>
-                          <div class="media-right">
-                            <button class="delete"></button>
-                          </div>
-                        </article>
-
-                        <article class="media">
-                          <figure class="media-left">
-                            <p class="image is-64x64">
-                              <img src="http://bulma.io/images/placeholders/128x128.png">
-                            </p>
-                          </figure>
-                          <div class="media-content">
-                            <div class="content">
-                              <p>filename.pdf
-                              </p>
-                            </div>
-                          </div>
-                          <div class="media-right">
-                            <button class="delete"></button>
-                          </div>
-                        </article>
-
-
-                    </div>
-                </div>
-              </div>
-
-
-
-            </div>
--->
           </div>
           <div class="msf-navigation">
                 <button data-type="back" class="button is-large msf-nav-button" type="button">Previous</button>
@@ -209,50 +152,6 @@
           $("#generate_codes").show();
         }
       });
-
-/*
-    Dropzone.autoDiscover = false;
-    var quest_upload = new Dropzone('div#quest_uploads',
-        {url:'/dropzone/uploadFiles',
-        method: "post"
-        });
-
-    quest_upload.on('sending', function(file, xhr, formData){
-            var tok = $('input[name="_token"]').val();
-            console.log("Appending Token " + tok)
-            formData.append('_token', tok);
-        });
-
-    quest_upload.on("successmultiple", function(event, response) {
-        console.log("MULTIPLE");
-
-        for (var i = 0, len = response.files.length; i < len; i++) {
-            $('<input>').attr({
-                type: 'hidden',
-                id: 'files',
-                value: response.files[i].id,
-                name: 'files[]'
-            }).appendTo(qf);
-        }
-
-    });
-
-    quest_upload.on("success", function(event, response) {
-        for (var i = 0, len = response.files.length; i < len; i++) {
-            $('<input>').attr({
-                type: 'number',
-                id: 'file' + i,
-                value: parseInt(response.files[i].id),
-                name: 'files[]',
-                style: 'display:none;'
-            }).appendTo(qf);
-        }
-
-    });
-
-    */
-
-
-
     </script>
+
 @stop
