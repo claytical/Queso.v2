@@ -46,11 +46,11 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="question" >
+                              <input type="radio" name="question">
                               Yes
                             </label>
                             <label class="radio">
-                              <input type="radio" name="question">
+                              <input type="radio" name="question" checked>
                               No
                             </label>
                           </p>
@@ -63,8 +63,8 @@
                               <input type="radio" name="question3">
                               Yes
                             </label>
-                            <label class="radio" disabled>
-                              <input type="radio" name="question3">
+                            <label class="radio">
+                              <input type="radio" name="question3" checked>
                               No
                             </label>
                           </p>
@@ -73,11 +73,11 @@
                       <h4 class="subtitle">Due Date</h4>
                         <div class="field">
                           <p class="control">
-                            <label class="radio" disabled>
-                              <input type="radio" name="question4">
+                            <label class="radio">
+                              <input type="radio" name="question4" checked>
                               Anytime
                             </label>
-                            <label class="radio" disabled>
+                            <label class="radio">
                               <input type="radio" name="question4">
                               Specific Date
                             </label>
@@ -230,8 +230,8 @@
 -->
           </div>
           <div class="msf-navigation">
-                <button data-type="back" class="button is-large msf-nav-button" type="button">Next</button>
-                <button data-type="next" class="button is-large msf-nav-button" type="button">Previous</button>
+                <button data-type="back" class="button is-large msf-nav-button" type="button">Previous</button>
+                <button data-type="next" class="button is-large msf-nav-button" type="button">Next</button>
                 <button data-type="submit" class="button msf-nav-button is-primary is-large" type="submit">Create Quest</button>
           </div>
     </div>
