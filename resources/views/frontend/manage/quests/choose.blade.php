@@ -90,7 +90,7 @@
                 <article class="tile is-child box">
                   <p class="title">Group File</p>
                   <p class="subtitle">One student submits a link behalf of a group of students</p>
-                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/upload/group'.$course_id)!!}">
+                  <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/quest/create/upload/group/'.$course_id)!!}">
                     <span class="icon">
                       <i class="fa fa-users" aria-hidden="true"></i>
                     </span>
