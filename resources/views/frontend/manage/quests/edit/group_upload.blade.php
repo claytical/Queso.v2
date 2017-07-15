@@ -192,7 +192,22 @@
                       <div class="tile is-child notification">
                         <h4 class="subtitle">Attached Files</h4>
                           <div id="attached_files">
-                            <p id="no_attached_files">No files have been attached yet.</p>
+                            @if(!$files->isEmpty())
+                              @foreach($files as $file)
+                                <article class='media'>
+                                  <div class='media-content'>
+                                    <div class='content'>
+                                      <p>{!! link_to('uploads/' . $file->name, substr($file->name,5), ['download' => substr($file->name,5)]) !!}</p>
+                                    </div>
+                                  </div>
+                                  <div class='media-right'>
+                                    {!! link_to('file/remove/' . $file->id, "x", ['class' => 'delete']) !!}
+                                  </div>
+                                </article>
+                              @endforeach
+                            @else
+                              <p id="no_attached_files">No files have been attached yet.</p>
+                            @endif
                           </div>
                       </div>
                   </div>
