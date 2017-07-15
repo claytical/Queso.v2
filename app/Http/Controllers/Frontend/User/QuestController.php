@@ -198,7 +198,14 @@ class QuestController extends Controller
         $thresholds = $quest->thresholds()->with('skill')->get();
         $codes = $quest->redemption_codes()->get();
         $files = $quest->files;
-        return view('frontend.manage.quests.details', ['quest' => $quest, 
+
+        if($quest->quest_type_id == 2) {
+            $selected_view = "frontend.manage.quests.edit.activity";
+        }
+        else {
+            $selected_view = "frontend.manage.quests.details";
+        }
+        return view($selected_view, ['quest' => $quest, 
                                                         'skills' => $skills, 
                                                         'thresholds' => $thresholds,
                                                         'codes' => $codes,

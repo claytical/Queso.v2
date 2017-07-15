@@ -37,8 +37,10 @@
                 style: 'display:none;'
             }).appendTo(qf);
             var htmlToAppend = "<article class='media'><div class='media-content'><div class='content'><p>";
-            htmlToAppend += response.files[i].original_name;
-            htmlToAppend += "</p></div></div><div class='media-right'><button class='delete'></button></div></article>";
+                htmlToAppend += response.files[i].original_name;
+                htmlToAppend += "</p></div></div><div class='media-right'><a class='delete' href='";
+                htmlToAppend += "/file/remove/" + response.files[i].id;
+                htmlToAppend += "'></a></div></article>";
             $("#attached_files").append(htmlToAppend);
         }
 

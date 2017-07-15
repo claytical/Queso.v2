@@ -85,7 +85,6 @@
           </td>
           <td>
             <a class="button is-small" href="{!! url('manage/quest/'.$quest->id);!!}">Edit</a>
-            <a class="button is-small" href="{!! url('manage/quest/'.$quest->id.'/files');!!}">Files</a>
             <a class="button is-small" href="{!! url('quest/'.$quest->id.'/attempt/submission');!!}">View</a>
             <a class="button is-small" href="{!! url('manage/quest/'.$quest->id.'/clone');!!}">Clone</a>
 
