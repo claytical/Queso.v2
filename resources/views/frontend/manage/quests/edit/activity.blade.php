@@ -104,7 +104,7 @@
                           <div class="field-body">
                             <div class="field is-grouped">
                               <p class="control is-expanded has-icons-left">
-                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points">
+                                <input class="input is-large" type="number" value="{!! $skill->pivot->amount !!}" name="skill[]" placeholder="Maximum Points">
                                 <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
                               </p>
                             </div>
@@ -132,7 +132,7 @@
                       <div class="tile is-child notification">
                         <h4 class="subtitle">Attached Files</h4>
                           <div id="attached_files">
-                            @if($files)
+                            @if(!$files->isEmpty())
                               @foreach($files as $file)
                                 <article class='media'>
                                   <div class='media-content'>
