@@ -102,7 +102,7 @@
                               <div class="field-body">
                                 <div class="field is-grouped">
                                   <p class="control is-expanded has-icons-left">
-                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" {!! $threshold->amount !!}>
+                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" value="{!! $threshold->amount !!}">
                                     <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->id !!}>
                                   </p>
                                 </div>
