@@ -28,7 +28,7 @@
 
                 <div class="tile is-4 is-parent">
                     <div class="tile is-child notification">
-                      <h4 class="subtitle">Allow Revisions</h4>
+                      <h4 class="subtitle">Category</h4>
                         <div class="field">
                           <p class="control">
                             {{ Form::input('text', 'tag', null, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
@@ -37,6 +37,8 @@
                     </div>
                 </div>
               </div>
+        <button data-type="submit" class="button is-primary is-large" type="submit">Create Link</button>
+
     </div>
   </div>
 </section>
