@@ -210,10 +210,13 @@ class QuestController extends Controller
                 break;
             case '4':
                 $selected_view = "frontend.manage.quests.edit.link";
-
+                break;
             case '5':
             case '6':
             case '7':
+                $selected_view = "frontend.manage.quests.edit.group_link";
+                break;
+
         }
         return view($selected_view, ['quest' => $quest, 
                                                         'skills' => $skills, 
