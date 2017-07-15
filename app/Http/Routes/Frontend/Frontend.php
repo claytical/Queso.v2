@@ -136,7 +136,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/announcement/delete/{announcement_id}', 'AnnouncementController@delete')->name('announcement.delete');
 
         Route::get('manage/resources/{course_id}', 'ResourceController@manage')->name('resources.manage');
-        Route::get('manage/resources/create/{course_id}', 'ResourceController@create')->name('resource.create');
+        Route::get('manage/resources/create/{course_id}', 'ResourceController@choose')->name('resource.choose');
+        Route::get('manage/resource/create/link/{course_id}', 'ResourceController@create_link')->name('resource.create.link');
+        Route::get('manage/resource/create/content/{course_id}', 'ResourceController@create_content')->name('resource.create.content');
+
         Route::get('manage/resource/edit/{resource_id}', 'ResourceController@details')->name('resource.details');
         Route::get('manage/resource/delete/{resource_id}', 'ResourceController@delete')->name('resource.delete');
 

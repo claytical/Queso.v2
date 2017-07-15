@@ -41,8 +41,18 @@ class ResourceController extends Controller
             ->withUser(access()->user());
     }
 
-    public function create($course_id) {
-        return view('frontend.manage.resources.create', ['course_id' => $course_id])
+    public function choose($course_id) {
+        return view('frontend.manage.resources.choose', ['course_id' => $course_id])
+            ->withUser(access()->user());
+    }
+
+    public function create_link($course_id) {
+        return view('frontend.manage.resources.create.link', ['course_id' => $course_id])
+            ->withUser(access()->user());
+    }
+
+    public function create_content($course_id) {
+        return view('frontend.manage.resources.create.content', ['course_id' => $course_id])
             ->withUser(access()->user());
     }
 
