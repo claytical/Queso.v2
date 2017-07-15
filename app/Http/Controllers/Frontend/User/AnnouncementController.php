@@ -79,8 +79,9 @@ class AnnouncementController extends Controller
     public function delete(Request $request) {
         $announcement = Announcement::find($request->announcement_id);
         $title = $announcement->title;
+        $course_id = $announcement->course_id;
         $announcement->delete();
-        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been removed");
+        return redirect()->route('announcements.manage', $course_id)->withFlashSuccess($announcement->title . " has been removed");
     }
 
     public function manage($course_id)

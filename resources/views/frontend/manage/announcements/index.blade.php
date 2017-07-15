@@ -62,7 +62,7 @@
             @endif
 
             <a class="button is-small" href="{!! URL::to('manage/announcement/edit/' . $announcement->id) !!}">Edit</a>
-            <a class="button is-small is-danger" href="{!! URL::to('manage/announcement/' . $announcement->id . '/delete') !!}">Delete</a>
+            <a class="button is-small is-danger" href="{!! URL::to('manage/announcement/delete/' . $announcement->id) !!}">Delete</a>
             </td>
         </tr>
      @endforeach

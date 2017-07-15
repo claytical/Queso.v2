@@ -133,7 +133,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('manage/announcements/create', 'AnnouncementController@save')->name('announcements.created'); 
         Route::post('manage/announcement/update', 'AnnouncementController@update')->name('announcement.update');
-        Route::get('manage/announcement/{announcement_id}/delete', 'AnnouncementController@delete')->name('announcement.delete');
+        Route::get('manage/announcement/delete/{announcement_id}', 'AnnouncementController@delete')->name('announcement.delete');
 
         Route::get('manage/resources', 'ResourceController@manage')->name('resources.manage');
         Route::get('manage/resources/create', 'ResourceController@create')->name('resource.create');
