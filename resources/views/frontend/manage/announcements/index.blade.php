@@ -56,12 +56,12 @@
           <td>{!! date('m/d/Y', strtotime($announcement->created_at)) !!}</td>
           <td>            
             @if($announcement->sticky)
-                <a class="button is-small" href="{!! url('manage/announcement/'.$announcement->id.'/hide');!!}"> Hide</a>
+                <a class="button is-small" href="{!! url('manage/announcement/hide/'.$announcement->id);!!}"> Hide</a>
             @else
-                <a class="button is-small" href="{!! url('manage/announcement/'.$announcement->id.'/show');!!}"> Show</a>
+                <a class="button is-small" href="{!! url('manage/announcement/show/'.$announcement->id);!!}"> Show</a>
             @endif
 
-            <a class="button is-small" href="{!! URL::to('manage/announcement/' . $announcement->id) !!}">Edit</a>
+            <a class="button is-small" href="{!! URL::to('manage/announcement/edit/' . $announcement->id) !!}">Edit</a>
             <a class="button is-small is-danger" href="{!! URL::to('manage/announcement/' . $announcement->id . '/delete') !!}">Delete</a>
             </td>
         </tr>
