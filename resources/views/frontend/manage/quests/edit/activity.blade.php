@@ -71,7 +71,8 @@
                           </p>
                         </div>
                       <div id="generate_codes">
-                        <h4 class="subtitle">Number of Codes</h4>
+                        <p>{!! count($codes) !!} Codes</p>
+                        <h4 class="subtitle">Number of New Codes to Generate</h4>
                         <div class="field">
                           <p class="control">
                             {{ Form::input('number', 'number_of_codes', null, ['class' => 'input is-large', 'placeholder' => 'Amount', 'id' => 'generate_qrcodes']) }}
@@ -182,6 +183,9 @@
           }
         }
     });
+    if($('input[name=instant]').val() == "0") {
+          $("#generate_codes").hide();      
+    }
     $('input[name=instant]').change(function() {
         if($(this).val() == "0") {
           $("#generate_codes").hide();
