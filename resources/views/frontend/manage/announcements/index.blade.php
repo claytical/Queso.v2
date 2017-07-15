@@ -12,7 +12,7 @@
           </h1>
             <h2 class="subtitle">Announcements show up on the dashboard for all students to see.</h2>
 
-            <a href="{!! URL::to('manage/announcement/create') !!}" class="button is-pulled-right is-primary">Make an Announcement</a>
+            <a href="{!! URL::to('manage/announcements/create') !!}" class="button is-large is-pulled-right is-primary">Make an Announcement</a>
         </div>
       </div>
     </section>
@@ -20,7 +20,7 @@
     <section class="hero is-dark is-bold">
       <div class="hero-body">
         <div class="container">
-            <a href="{!! URL::to('manage/announcement/create') !!}" class="button is-pulled-right is-primary">New Announcement</a>
+            <a href="{!! URL::to('manage/announcements/create') !!}" class="button is-large is-pulled-right is-primary">New Announcement</a>
             <h1 class="title">Announcements</h1>
         </div>
       </div>
