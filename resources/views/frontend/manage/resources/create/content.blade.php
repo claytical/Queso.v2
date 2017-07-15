@@ -3,6 +3,7 @@
 @section('content')
 {!! Form::open(['url' => 'manage/resources/create', 'id'=>'resource-create-form', 'class' => 'msf']) !!}
     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
+    {{ Form::hidden('resource_type', 1, ['id' => 'resource_type']) }}
 
 <section class="hero" id="create_resource">
   <div class="hero-body">
@@ -42,7 +43,7 @@
                                 </div>
                                 <div class="field">
                                     <p class="control">
-                                        {{ Form::input('text', 'tag', null, ['class' => 'input', 'placeholder' => 'Category', 'id' => 'tag']) }}
+                                        {{ Form::input('text', 'tag', null, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
                                     </p>
                                 </div>                      
                             </div>

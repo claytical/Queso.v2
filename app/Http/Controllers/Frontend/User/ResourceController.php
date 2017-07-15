@@ -76,13 +76,16 @@ class ResourceController extends Controller
         $resource = new Content;
         $resource->course_id = $request->course_id;
         $resource->title = $request->title;
-        $resource->description = $request->description;
-        $resource->link = $request->link;
-        if($request->has('link_label')) {
-            $resource->link_label = $request->link_label;
-        }
         if(strlen($request->tag) > 0) {
             $resource->tag = $request->tag;
+        }
+
+        if($resource->resource_type == 1) {
+            $resource->description = $request->description;
+        }
+        if($resource->resource_type == 2) {
+            $resource->link = $request->link;
+            $resource->description = "";
         }
         
         $resource->save();
