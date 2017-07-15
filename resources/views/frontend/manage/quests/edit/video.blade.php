@@ -80,7 +80,7 @@
                           <div class="field-body">
                             <div class="field is-grouped">
                               <p class="control is-expanded has-icons-left">
-                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points">
+                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points" value="{!! $skill->pivot->amount !!}">
                                 <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
                               </p>
                             </div>
