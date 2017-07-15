@@ -48,7 +48,7 @@ class AnnouncementController extends Controller
         $announcement->sticky = $request->has('sticky');
         $announcement->course_id = session('current_course');
         $announcement->save();
-        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been updated");
+        return redirect()->route('announcements.manage', $request->course_id)->withFlashSuccess($announcement->title . " has been updated");
     }
 
     public function save(Request $request) {
