@@ -212,7 +212,11 @@ class QuestController extends Controller
                 $selected_view = "frontend.manage.quests.edit.link";
                 break;
             case '5':
+                $selected_view = "frontend.manage.quests.edit.upload";
+                break;
             case '6':
+                $selected_view = "frontend.manage.quests.edit.group_upload";
+                break;
             case '7':
                 $selected_view = "frontend.manage.quests.edit.group_link";
                 break;

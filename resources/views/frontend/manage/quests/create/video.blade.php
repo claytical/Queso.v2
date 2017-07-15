@@ -156,14 +156,21 @@
           }
         }
     });
-    $('input[name=instant]').change(function() {
+
+    if($('input[name=expires]:checked').val() == "0") {
+          $("#expiration_date").hide();      
+    }
+
+    $('input[name=expires]').change(function() {
         if($(this).val() == "0") {
-          $("#generate_codes").hide();
+          $("#expiration_date").hide();
         }
         else {
-          $("#generate_codes").show();
+          $("#expiration_date").show();
         }
       });
+
+
     </script>
 
 @stop

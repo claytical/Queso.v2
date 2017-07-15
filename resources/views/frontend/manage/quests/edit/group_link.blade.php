@@ -112,7 +112,7 @@
                         </div>
                         <div class="field">
                           <p class="control">
-                              {{ Form::input('date', 'expiration', null, ['class' => 'input', 'style' => 'display:none;', 'id' => 'expiration_date']) }}
+                              {{ Form::input('date', 'expiration', $quest->expires_at, ['class' => 'input', 'id' => 'expiration_date']) }}
                           </p>
                         </div>
 
@@ -242,6 +242,11 @@
           }
         }
     });
+
+    if($('input[name=expires]:checked').val() == "0") {
+          $("#expiration_date").hide();      
+    }
+
     $('input[name=expires]').change(function() {
         if($(this).val() == "0") {
           $("#expiration_date").hide();
