@@ -142,7 +142,7 @@
                                     </div>
                                   </div>
                                   <div class='media-right'>
-                                    {!! link_to('file/remove/' . $file->id, null, ['class' => 'delete']) !!}
+                                    {!! link_to('file/remove/' . $file->id, "", ['class' => 'delete']) !!}
                                   </div>
                                 </article>
                               @endforeach
