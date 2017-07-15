@@ -83,9 +83,9 @@ class AnnouncementController extends Controller
         return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been removed");
     }
 
-    public function manage()
+    public function manage($course_id)
     {
-        $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
+        $announcements = Announcement::where('course_id', '=', $course_id)->get();
      //   $announcements = Announcement::all();
         return view('frontend.manage.announcements.index', ['announcements' => $announcements])
             ->withUser(access()->user());
