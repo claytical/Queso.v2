@@ -6,7 +6,7 @@
   <div class="hero-body">
     <div class="container is-fluid">
         {!! Form::open(['url' => 'manage/announcements/create', 'id'=>'quest-create-form']) !!}
-
+        {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
         <h1 class="title">
         New Announcement
       </h1>

@@ -26,10 +26,10 @@ class AnnouncementController extends Controller
             ->withUser(access()->user());
     }
 
-    public function create()
+    public function create($course_id)
     {
         return view('frontend.manage.announcements.create')
-            ->withUser(access()->user());
+            ->withUser(access()->user(), ['course_id' => $course_id]);
     }
 
     public function details($id) {
@@ -55,7 +55,7 @@ class AnnouncementController extends Controller
         $announcement = new Announcement;
         $announcement->title = $request->title;
         $announcement->body = $request->body;
-        $announcement->course_id = session('current_course');
+        $announcement->course_id = $request->course_id;
         $announcement->sticky = $request->has('sticky');
         $announcement->save();
         return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " has been created");
@@ -65,7 +65,7 @@ class AnnouncementController extends Controller
         $announcement = Announcement::find($id);
         $announcement->sticky = true;
         $announcement->save();
-        return redirect()->route('announcements.manage')->withFlashSuccess($announcement->title . " now shown on dashboard");
+        return redirect()->route('announcements.manage', $announcement->course_id)->withFlashSuccess($announcement->title . " now shown on dashboard");
     }
 
     public function hide($id) {

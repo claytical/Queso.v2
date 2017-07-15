@@ -126,7 +126,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('manage/student/{student_id}/remove/quest/{quest_id}', 'QuestController@remove_student_attempt')->name('remove.student.quest');
         Route::get('manage/announcements/{course_id}', 'AnnouncementController@manage')->name('announcements.manage');
-        Route::get('manage/announcement/create', 'AnnouncementController@create')->name('announcements.create');
+        Route::get('manage/announcement/create/{course_id}', 'AnnouncementController@create')->name('announcements.create');
         Route::get('manage/announcement/edit/{announcement_id}', 'AnnouncementController@details')->name('announcements.details');
         Route::get('manage/announcement/show/{announcement_id}', 'AnnouncementController@show')->name('announcements.show');
         Route::get('manage/announcement/hide/{announcement_id}', 'AnnouncementController@hide')->name('announcements.hide');
