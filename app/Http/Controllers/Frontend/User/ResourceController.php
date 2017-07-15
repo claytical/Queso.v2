@@ -41,15 +41,15 @@ class ResourceController extends Controller
             ->withUser(access()->user());
     }
 
-    public function create() {
-        return view('frontend.manage.resources.create')
+    public function create($course_id) {
+        return view('frontend.manage.resources.create', ['course_id' => $course_id])
             ->withUser(access()->user());
     }
 
-    public function manage() {
-        $resources = Content::where('course_id', '=', session('current_course'))
+    public function manage($course_id) {
+        $resources = Content::where('course_id', '=', $course_id)
                     ->get();
-        return view('frontend.manage.resources.index', ['resources' => $resources])
+        return view('frontend.manage.resources.index', ['resources' => $resources, 'course_id' => $course_id])
             ->withUser(access()->user());
 
     }
@@ -64,7 +64,7 @@ class ResourceController extends Controller
     
     public function save(Request $request) {
         $resource = new Content;
-        $resource->course_id = session('current_course');
+        $resource->course_id = $request->course_id;
         $resource->title = $request->title;
         $resource->description = $request->description;
         $resource->link = $request->link;
@@ -82,7 +82,7 @@ class ResourceController extends Controller
                 $resource->files()->attach($files[$i]);
             }
         }        
-        return redirect()->route('resources.manage')->withFlashSuccess($resource->title . " has been created");
+        return redirect()->route('resources.manage', $request->course_id)->withFlashSuccess($resource->title . " has been created");
     }
 
     public function update(Request $request) {
@@ -110,14 +110,15 @@ class ResourceController extends Controller
                 $resource->files()->attach($files[$i]);
             }
         }
-        return redirect()->route('resources.manage')->withFlashSuccess($resource->title . " has been updated");
+        return redirect()->route('resources.manage', ['course_id' => $course_id])->withFlashSuccess($resource->title . " has been updated");
 
     }    
 
     public function delete($id) {
         $resource = Content::find($id);
+        $course_id = $resource->course_id;
         $resource->delete();
-        return redirect()->route('resources.manage')->withFlashSuccess($resource->title . " has been removed");
+        return redirect()->route('resources.manage', ['course_id' => $course_id])->withFlashSuccess($resource->title . " has been removed");
 
     }
 

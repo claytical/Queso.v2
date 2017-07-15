@@ -47,12 +47,12 @@
                             <a class="navbar-item {{ Active::pattern('manage/announcements/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/announcements/'.$c->id) !!}">
                               Announcements
                             </a>
+                            <a class="navbar-item {{ Active::pattern('manage/resources/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/resources/'.$c->id) !!}">
+                              Resources
+                            </a>
 
                             <a class="navbar-item " href="#">
                               Students
-                            </a>
-                            <a class="navbar-item " href="#">
-                              Resources
                             </a>
                          @endforeach
                 </div>

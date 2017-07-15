@@ -135,12 +135,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('manage/announcement/update', 'AnnouncementController@update')->name('announcement.update');
         Route::get('manage/announcement/delete/{announcement_id}', 'AnnouncementController@delete')->name('announcement.delete');
 
-        Route::get('manage/resources', 'ResourceController@manage')->name('resources.manage');
-        Route::get('manage/resources/create', 'ResourceController@create')->name('resource.create');
-        Route::get('manage/resource/{resource_id}', 'ResourceController@details')->name('resource.details');
+        Route::get('manage/resources/{course_id}', 'ResourceController@manage')->name('resources.manage');
+        Route::get('manage/resources/create/{course_id}', 'ResourceController@create')->name('resource.create');
+        Route::get('manage/resource/edit/{resource_id}', 'ResourceController@details')->name('resource.details');
+        Route::get('manage/resource/delete/{resource_id}', 'ResourceController@delete')->name('resource.delete');
+
         Route::post('manage/resources/create', 'ResourceController@save')->name('resources.created');
         Route::post('manage/resource/update', 'ResourceController@update')->name('resource.update');
-        Route::get('manage/resource/{resource_id}/delete', 'ResourceController@delete')->name('resource.delete');
 
         Route::get('manage/course', 'CourseController@manage')->name('course.manage');
         Route::post('manage/course/update', 'CourseController@update')->name('course.update');
