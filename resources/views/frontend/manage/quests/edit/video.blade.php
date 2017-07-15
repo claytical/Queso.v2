@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form', 'class' => 'msf']) !!}
+{!! Form::open(['url' => 'manage/quest/update', 'id'=>'quest-update-form', 'class' => 'msf']) !!}
                     {{ Form::hidden('quest_type_id', 3, ['id' => 'quest_type_id']) }}
                     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                     {{ Form::hidden('submissions_allowed', false, ['id' => 'submissions_allowed']) }}
@@ -20,7 +20,7 @@
           <div class="has-text-centered">
             <div class="columns">
               <div class="msf-step column"><i class="fa fa-info"></i> <p>Information</p></div>
-              <div class="msf-step column"><i class="fa fa-trophy"></i><p>Skills</p></div>
+              <div class="msf-step column"><i class="fa fa-trophy"></i><p>Skills &amp; Thresholds</p></div>
 
             </div>
           </div>
@@ -33,13 +33,13 @@
                   <!-- Title and Description -->                
                     <div class="field">
                       <p class="control">
-                        {{ Form::input('text', 'name', null, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
+                        {{ Form::input('text', 'name', $quest->name, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
                       </p>
                     </div>
 
                     <div class="field">
                       <p class="control">
-                        {!! Form::textarea('description', null, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
+                        {!! Form::textarea('description', $quest->instructions, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
                       </p>
                     </div>
                   </div>
@@ -50,7 +50,7 @@
                       <h4 class="subtitle">YouTube URL</h4>
                         <div class="field">
                           <p class="control">
-                            {{ Form::input('text', 'video_url', null, ['class' => 'input', 'placeholder' => 'http://youtube.com/watch/?v=AAAAAAA', 'id' => 'video_url']) }}
+                            {{ Form::input('text', 'youtube_url', "http://youtube.com/watch/?v=".$quest->youtube_id, ['class' => 'input', 'placeholder' => 'http://youtube.com/watch/?v=AAAAAAA', 'id' => 'video_url']) }}
 
                           </p>
                         </div>
@@ -94,16 +94,16 @@
                   <div class="tile is-6 is-parent">
                       <div class="tile is-child">
                         <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
-                          @foreach($skills as $skill)
+                          @foreach($thresholds as $threshold)
                             <div class="field is-horizontal">
                               <div class="field-label is-normal">
-                                <label class="label">{!! $skill->name !!}</label>
+                                <label class="label">{!! $threshold->skill->name !!}</label>
                               </div>
                               <div class="field-body">
                                 <div class="field is-grouped">
                                   <p class="control is-expanded has-icons-left">
-                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points">
-                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $skill->id !!}>
+                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" {!! $threshold->amount !!}>
+                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->id !!}>
                                   </p>
                                 </div>
                               </div>
