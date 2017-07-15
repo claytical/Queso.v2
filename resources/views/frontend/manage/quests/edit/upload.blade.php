@@ -205,7 +205,7 @@
           <div class="msf-navigation">
                 <button data-type="back" class="button is-large msf-nav-button" type="button">Previous</button>
                 <button data-type="next" class="button is-large msf-nav-button" type="button">Next</button>
-                <button data-type="submit" class="button msf-nav-button is-primary is-large" type="submit">Create Quest</button>
+                <button data-type="submit" class="button msf-nav-button is-primary is-large" type="submit">Update Quest</button>
           </div>
     </div>
   </div>
