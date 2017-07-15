@@ -209,7 +209,8 @@ class QuestController extends Controller
                                                         'skills' => $skills, 
                                                         'thresholds' => $thresholds,
                                                         'codes' => $codes,
-                                                        'files' => $files])
+                                                        'files' => $files,
+                                                        'course_id' => $course_id])
             ->withUser(access()->user());
 
     }
