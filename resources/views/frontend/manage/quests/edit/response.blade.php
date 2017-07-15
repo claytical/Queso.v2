@@ -209,7 +209,7 @@
                             @else
                               <p id="no_attached_files">No files have been attached yet.</p>
                             @endif
-                      </div>
+                          </div>
                   </div>
                 </div>
 
