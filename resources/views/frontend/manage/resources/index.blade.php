@@ -35,6 +35,7 @@
         <tr>
           <th>Name</th>
           <th>Tag</th>
+          <th>Type</th>
           <th></th>
         </tr>
       </thead>
@@ -53,8 +54,21 @@
         <tr>
           <td>{!! $resource->title !!}</td>
           <td>{!! $resource->tag !!}</td>
+          <td>
+            @if($resource->link)
+              Link
+            @else
+              Content
+            @endif
+          </td>
           <td>            
-            <a class="button is-small" href="{!! URL::to('manage/resource/edit/' . $resource->id) !!}">Edit</a>
+            @if($resource->link)
+              <a class="button is-small" href="{!! URL::to('manage/resource/link/edit/' . $resource->id) !!}">Edit</a>
+
+            @else
+              <a class="button is-small" href="{!! URL::to('manage/resource/content/edit/' . $resource->id) !!}">Edit</a>
+            @endif
+
             <a class="button is-small is-danger" href="{!! URL::to('manage/resource/delete/' . $resource->id) !!}">Delete</a>
             </td>
         </tr>
