@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form', 'class' => 'msf']) !!}
+{!! Form::open(['url' => 'manage/quest/update', 'id'=>'quest-create-form', 'class' => 'msf']) !!}
                     {{ Form::hidden('quest_type_id', 1, ['id' => 'submission_type_id']) }}
                     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                     {{ Form::hidden('submissions_allowed', true, ['id' => 'submissions_allowed']) }}
@@ -30,13 +30,13 @@
                   <!-- Title and Description -->                
                     <div class="field">
                       <p class="control">
-                        {{ Form::input('text', 'name', null, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
+                        {{ Form::input('text', 'name', $quest->name, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
                       </p>
                     </div>
 
                     <div class="field">
                       <p class="control">
-                        {!! Form::textarea('description', null, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
+                        {!! Form::textarea('description', $quest->instructions, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
                       </p>
                     </div>
                   </div>
@@ -48,11 +48,19 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="revisions" value="1">
+                              <input type="radio" name="revisions" value="1" 
+                              @if($quest->revisions)
+                                checked
+                              @endif
+                              >
                               Yes
                             </label>
                             <label class="radio">
-                              <input type="radio" name="revisions" value="0" checked>
+                              <input type="radio" name="revisions" value="0"
+                              @if(!$quest->revisions)
+                                checked
+                              @endif
+                              >
                               No
                             </label>
                           </p>
@@ -62,11 +70,19 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="feedback" value="1">
+                              <input type="radio" name="feedback" value="1"
+                              @if($quest->feedback)
+                                checked
+                              @endif 
+                              >
                               Yes
                             </label>
                             <label class="radio">
-                              <input type="radio" name="feedback" value="0" checked>
+                              <input type="radio" name="feedback" value="0"
+                              @if($quest->feedback)
+                                checked
+                              @endif
+                              >
                               No
                             </label>
                           </p>
@@ -76,18 +92,26 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="expires" value="0" checked>
+                              <input type="radio" name="expires" value="0"
+                              @if(!$quest->expires_at)
+                                checked
+                              @endif
+                              >
                               Anytime
                             </label>
                             <label class="radio">
-                              <input type="radio" name="expires" value="1">
+                              <input type="radio" name="expires" value="1"
+                              @if($quest->expires_at)
+                                checked
+                              @endif
+                              >
                               Specific Date
                             </label>
                           </p>
                         </div>
                         <div class="field">
                           <p class="control">
-                              {{ Form::input('date', 'expiration', null, ['class' => 'input', 'style' => 'display:none;', 'id' => 'expiration_date']) }}
+                              {{ Form::input('date', 'expiration', date('Y-m-d', strtotime($quest->expires_at)), ['class' => 'input', 'style' => 'display:none;', 'id' => 'expiration_date']) }}
                           </p>
                         </div>
 
@@ -168,8 +192,22 @@
                       <div class="tile is-child notification">
                         <h4 class="subtitle">Attached Files</h4>
                           <div id="attached_files">
-                            <p id="no_attached_files">No files have been attached yet.</p>
-                          </div>
+                            @if(!$files->isEmpty())
+                              @foreach($files as $file)
+                                <article class='media'>
+                                  <div class='media-content'>
+                                    <div class='content'>
+                                      <p>{!! link_to('uploads/' . $file->name, substr($file->name,5), ['download' => substr($file->name,5)]) !!}</p>
+                                    </div>
+                                  </div>
+                                  <div class='media-right'>
+                                    {!! link_to('file/remove/' . $file->id, "x", ['class' => 'delete']) !!}
+                                  </div>
+                                </article>
+                              @endforeach
+                            @else
+                              <p id="no_attached_files">No files have been attached yet.</p>
+                            @endif
                       </div>
                   </div>
                 </div>
@@ -202,6 +240,9 @@
           }
         }
     });
+    if($('input[name=expires]').val() == "0") {
+          $("#expiration_date").hide();      
+    }
     $('input[name=expires]').change(function() {
         if($(this).val() == "0") {
           $("#expiration_date").hide();
