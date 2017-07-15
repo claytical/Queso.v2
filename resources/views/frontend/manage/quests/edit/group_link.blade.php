@@ -3,7 +3,7 @@
 @section('content')
 
 {!! Form::open(['url' => 'manage/quest/create', 'id'=>'quest-create-form', 'class' => 'msf']) !!}
-                    {{ Form::hidden('quest_type_id', 7, ['id' => 'submission_type_id']) }}
+                    {{ Form::hidden('quest_type_id', 4, ['id' => 'submission_type_id']) }}
                     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                     {{ Form::hidden('submissions_allowed', false, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('uploads_allowed', false, ['id' => 'uploads_allowed']) }}
@@ -19,7 +19,7 @@
               <div class="msf-step column"><i class="fa fa-info"></i> <p>Information</p></div>
               <div class="msf-step column"><i class="fa fa-trophy"></i><p>Skills &amp; Thresholds</p></div>
               <div class="msf-step column"><i class="fa fa-paperclip"></i><p>File Attachments</p></div>
-              
+
             </div>
           </div>
         </div>
@@ -31,13 +31,13 @@
                   <!-- Title and Description -->                
                     <div class="field">
                       <p class="control">
-                        {{ Form::input('text', 'name', null, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
+                        {{ Form::input('text', 'name', $quest->name, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
                       </p>
                     </div>
 
                     <div class="field">
                       <p class="control">
-                        {!! Form::textarea('description', null, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
+                        {!! Form::textarea('description', $quest->instructions, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
                       </p>
                     </div>
                   </div>
@@ -49,11 +49,19 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="revisions" value="1">
+                              <input type="radio" name="revisions" value="1"
+                              @if($quest->revisions)
+                                checked
+                              @endif
+                              >
                               Yes
                             </label>
                             <label class="radio">
-                              <input type="radio" name="revisions" value="0" checked>
+                              <input type="radio" name="revisions" value="0"
+                              @if(!$quest->revisions)
+                                checked
+                              @endif
+                              >
                               No
                             </label>
                           </p>
@@ -63,11 +71,19 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="feedback" value="1">
+                              <input type="radio" name="feedback" value="1"
+                              @if($quest->feedback)
+                                checked
+                              @endif
+                              >
                               Yes
                             </label>
                             <label class="radio">
-                              <input type="radio" name="feedback" value="0" checked>
+                              <input type="radio" name="feedback" value="0"
+                              @if(!$quest->feedback)
+                                checked
+                              @endif
+                              >
                               No
                             </label>
                           </p>
@@ -77,11 +93,19 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="expires" value="0" checked>
+                              <input type="radio" name="expires" value="0"
+                              @if(!$quest->expires_at)
+                                checked
+                              @endif
+                              >
                               Anytime
                             </label>
                             <label class="radio">
-                              <input type="radio" name="expires" value="1">
+                              <input type="radio" name="expires" value="1"
+                              @if($quest->expires_at)
+                                checked
+                              @endif
+                              >
                               Specific Date
                             </label>
                           </p>
@@ -118,7 +142,7 @@
                           <div class="field-body">
                             <div class="field is-grouped">
                               <p class="control is-expanded has-icons-left">
-                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points">
+                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points" value={!! $skill->pivot->amount !!}>
                                 <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
                               </p>
                             </div>
@@ -127,22 +151,23 @@
                     
                       @endforeach
 
+
                     </div>
                   </div>
 
                   <div class="tile is-6 is-parent">
                       <div class="tile is-child">
                         <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
-                          @foreach($skills as $skill)
+                          @foreach($thresholds as $threshold)
                             <div class="field is-horizontal">
                               <div class="field-label is-normal">
-                                <label class="label">{!! $skill->name !!}</label>
+                                <label class="label">{!! $threshold->skill->name !!}</label>
                               </div>
                               <div class="field-body">
                                 <div class="field is-grouped">
                                   <p class="control is-expanded has-icons-left">
-                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points">
-                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $skill->id !!}>
+                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" {!! $threshold->amount !!}>
+                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->id !!}>
                                   </p>
                                 </div>
                               </div>
@@ -154,8 +179,9 @@
                 </div>
 
               </div>
-
             <div class="msf-view">
+
+
              <div class="tile">
                   <div class="tile is-6 is-parent">
                     <div class="tile is-child">
@@ -167,14 +193,28 @@
                       <div class="tile is-child notification">
                         <h4 class="subtitle">Attached Files</h4>
                           <div id="attached_files">
-                            <p id="no_attached_files">No files have been attached yet.</p>
+                            @if(!$files->isEmpty())
+                              @foreach($files as $file)
+                                <article class='media'>
+                                  <div class='media-content'>
+                                    <div class='content'>
+                                      <p>{!! link_to('uploads/' . $file->name, substr($file->name,5), ['download' => substr($file->name,5)]) !!}</p>
+                                    </div>
+                                  </div>
+                                  <div class='media-right'>
+                                    {!! link_to('file/remove/' . $file->id, "x", ['class' => 'delete']) !!}
+                                  </div>
+                                </article>
+                              @endforeach
+                            @else
+                              <p id="no_attached_files">No files have been attached yet.</p>
+                            @endif
                           </div>
                       </div>
                   </div>
                 </div>
 
             </div>
-
           </div>
           <div class="msf-navigation">
                 <button data-type="back" class="button is-large msf-nav-button" type="button">Previous</button>
@@ -210,8 +250,6 @@
           $("#expiration_date").show();
         }
       });
-
-
 
     </script>
     {{ Html::script('js/manage.quest.files.js')}}
