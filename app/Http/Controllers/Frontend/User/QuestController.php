@@ -201,6 +201,7 @@ class QuestController extends Controller
         switch($quest->quest_type_id) {
             case '1':
                 $selected_view = "frontend.manage.quests.edit.response";
+                break;
             case '2':
                 $selected_view = "frontend.manage.quests.edit.activity";
                 break;
