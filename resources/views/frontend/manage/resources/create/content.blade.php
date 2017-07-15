@@ -95,8 +95,7 @@
         hideBackButton : false,
         validate: {
           rules: {
-            name: "required",
-            description: "required"
+            title: "required"
           }
         }
     });
