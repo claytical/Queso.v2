@@ -145,6 +145,20 @@
         }
     });
 
+    if($('input[name=expires]:checked').val() == "0") {
+          $("#expiration_date").hide();      
+    }
+
+    $('input[name=expires]').change(function() {
+        if($(this).val() == "0") {
+          $("#expiration_date").hide();
+        }
+        else {
+          $("#expiration_date").show();
+        }
+      });
+
+
     </script>
 
 @stop

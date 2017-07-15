@@ -72,10 +72,6 @@
                                 });</script>
 
         <script>
-        $( document ).ready(function() {
-            $('select[name=default_course]').selectpicker();
-        });
-
         window.setTimeout(function() {
             $(".message").fadeTo(500, 0).slideUp(500, function(){
                 $(this).remove(); 

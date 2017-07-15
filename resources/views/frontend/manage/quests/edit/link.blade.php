@@ -31,13 +31,13 @@
                   <!-- Title and Description -->                
                     <div class="field">
                       <p class="control">
-                        {{ Form::input('text', 'name', null, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
+                        {{ Form::input('text', 'name', $quest->name, ['class' => 'input is-large', 'placeholder' => 'Quest Title', 'id' => 'quest_title']) }}
                       </p>
                     </div>
 
                     <div class="field">
                       <p class="control">
-                        {!! Form::textarea('description', null, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
+                        {!! Form::textarea('description', $quest->instructions, ['class' => 'input', 'placeholder' => 'Enter an explanation or instructions for the quest here...', 'files' => false, 'id' => 'description']) !!}
                       </p>
                     </div>
                   </div>
@@ -49,11 +49,19 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="revisions" value="1">
+                              <input type="radio" name="revisions" value="1"
+                              @if($quest->revisions)
+                                checked
+                              @endif
+                              >
                               Yes
                             </label>
                             <label class="radio">
-                              <input type="radio" name="revisions" value="0" checked>
+                              <input type="radio" name="revisions" value="0"
+                              @if(!$quest->revisions)
+                                checked
+                              @endif
+                              >
                               No
                             </label>
                           </p>
@@ -63,11 +71,19 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="feedback" value="1">
+                              <input type="radio" name="feedback" value="1"
+                              @if($quest->feedback)
+                                checked
+                              @endif
+                              >
                               Yes
                             </label>
                             <label class="radio">
-                              <input type="radio" name="feedback" value="0" checked>
+                              <input type="radio" name="feedback" value="0"
+                              @if(!$quest->feedback)
+                                checked
+                              @endif
+                              >
                               No
                             </label>
                           </p>
@@ -77,11 +93,19 @@
                         <div class="field">
                           <p class="control">
                             <label class="radio">
-                              <input type="radio" name="expires" value="0" checked>
+                              <input type="radio" name="expires" value="0"
+                              @if(!$quest->expires_at)
+                                checked
+                              @endif
+                              >
                               Anytime
                             </label>
                             <label class="radio">
-                              <input type="radio" name="expires" value="1">
+                              <input type="radio" name="expires" value="1"
+                              @if($quest->expires_at)
+                                checked
+                              @endif
+                              >
                               Specific Date
                             </label>
                           </p>

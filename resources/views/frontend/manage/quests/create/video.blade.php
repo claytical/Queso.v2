@@ -8,8 +8,6 @@
                     {{ Form::hidden('submissions_allowed', false, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('uploads_allowed', false, ['id' => 'uploads_allowed']) }}
                     {{ Form::hidden('groups', false, ['id' => 'groups_allowed']) }}
-                    {{ Form::hidden('feedback', false, ['id' => 'feedback_allowed']) }}
-                    {{ Form::hidden('revisions', false, ['id' => 'revisions_allowed']) }}
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
 
 
@@ -52,6 +50,19 @@
                           <p class="control">
                             {{ Form::input('text', 'video_url', null, ['class' => 'input', 'placeholder' => 'http://youtube.com/watch/?v=AAAAAAA', 'id' => 'video_url']) }}
 
+                          </p>
+                        </div>
+                      <h4 class="subtitle">Due Date</h4>
+                        <div class="field">
+                          <p class="control">
+                            <label class="radio">
+                              <input type="radio" name="expires" value="0" checked>
+                              Anytime
+                            </label>
+                            <label class="radio">
+                              <input type="radio" name="expires" value="1">
+                              Specific Date
+                            </label>
                           </p>
                         </div>
                     </div>
