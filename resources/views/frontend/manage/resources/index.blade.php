@@ -63,6 +63,7 @@
       </tbody>
     </table>
 </section>
+@endif
 
 @endsection
 
