@@ -240,7 +240,7 @@
           }
         }
     });
-    if($('input[name=expires]').val() == "0") {
+    if($('input[name=expires]:checked').val() == "0") {
           $("#expiration_date").hide();      
     }
     $('input[name=expires]').change(function() {

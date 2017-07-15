@@ -183,7 +183,7 @@
           }
         }
     });
-    if($('input[name=instant]').val() == "0") {
+    if($('input[name=instant]:checked').val() == "0") {
           $("#generate_codes").hide();      
     }
     $('input[name=instant]').change(function() {
