@@ -6,7 +6,7 @@
     <div class="container is-fluid">
     {!! Form::open(['url' => 'manage/announcement/update', 'id'=>'announcement-update-form']) !!}
         {{ Form::hidden('announcement_id', $announcement->id)}}
-        {{ Form::hidden('course_id', $course_id)}}
+        {{ Form::hidden('course_id', $announcement->course_id)}}
 
         <h1 class="title">
         Update Announcement
