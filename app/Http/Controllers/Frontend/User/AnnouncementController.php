@@ -28,8 +28,8 @@ class AnnouncementController extends Controller
 
     public function create($course_id)
     {
-        return view('frontend.manage.announcements.create')
-            ->withUser(access()->user(), ['course_id' => $course_id]);
+        return view('frontend.manage.announcements.create', ['course_id' => $course_id])
+            ->withUser(access()->user());
     }
 
     public function details($id) {
