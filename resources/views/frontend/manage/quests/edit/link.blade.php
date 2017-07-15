@@ -112,7 +112,7 @@
                         </div>
                         <div class="field">
                           <p class="control">
-                              {{ Form::input('date', 'expiration', null, ['class' => 'input', 'style' => 'display:none;', 'id' => 'expiration_date']) }}
+                              {{ Form::input('date', 'expiration', date('Y-m-d', strtotime($quest->expires_at)), ['class' => 'input', 'id' => 'expiration_date']) }}
                           </p>
                         </div>
 

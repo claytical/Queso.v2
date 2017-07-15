@@ -112,7 +112,7 @@
                         </div>
                         <div class="field">
                           <p class="control">
-                              {{ Form::input('date', 'expiration', $quest->expires_at, ['class' => 'input', 'id' => 'expiration_date']) }}
+                              {{ Form::input('date', 'expiration', date('Y-m-d', strtotime($quest->expires_at)), ['class' => 'input', 'id' => 'expiration_date']) }}
                           </p>
                         </div>
 
@@ -142,7 +142,7 @@
                           <div class="field-body">
                             <div class="field is-grouped">
                               <p class="control is-expanded has-icons-left">
-                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points">
+                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points" value={!! $skill->pivot->amount !!}>
                                 <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
                               </p>
                             </div>
@@ -157,16 +157,16 @@
                   <div class="tile is-6 is-parent">
                       <div class="tile is-child">
                         <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
-                          @foreach($skills as $skill)
+                          @foreach($thresholds as $threshold)
                             <div class="field is-horizontal">
                               <div class="field-label is-normal">
-                                <label class="label">{!! $skill->name !!}</label>
+                                <label class="label">{!! $threshold->skill->name !!}</label>
                               </div>
                               <div class="field-body">
                                 <div class="field is-grouped">
                                   <p class="control is-expanded has-icons-left">
-                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points">
-                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $skill->id !!}>
+                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" {!! $threshold->amount !!}>
+                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->id !!}>
                                   </p>
                                 </div>
                               </div>
