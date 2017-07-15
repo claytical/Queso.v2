@@ -210,7 +210,7 @@ class QuestController extends Controller
                                                         'thresholds' => $thresholds,
                                                         'codes' => $codes,
                                                         'files' => $files,
-                                                        'course_id' => $course_id])
+                                                        'course_id' => $quest->course_id])
             ->withUser(access()->user());
 
     }
