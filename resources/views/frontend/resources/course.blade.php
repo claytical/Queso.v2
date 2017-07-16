@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="columns is-multiline is-mobile">
-{!! var_dump($resources) !!}
+{!! json_encode(var_dump($resources)) !!}
 </div>
 
 @endsection
