@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="section">
-    <div class="tile is-ancestor">
+<div class="tile is-ancestor">
       <div class="tile is-parent is-vertical is-5">
         <div class="tile is-child notification">
           <p class="title">Announcements</p>
@@ -28,13 +28,9 @@
             </div>
 
         @endif
-
-
         </div>
-
-
       </div>
-      <div class="tile is-parent is-vertical is-4">
+    <div class="tile is-parent is-vertical is-4">
         <div class="tile is-child notification">
           <p class="title">Agenda</p>
             <div class="column is-half">
@@ -66,13 +62,15 @@
                     @endforeach
             @endforeach
             </div>
-            <div class="tile is-child notification">
-                <p class="title">Submissions</p>
-            </div>
+        </div>
 
-      </div>
+        <div class="tile is-child notification">
+            <p class="title">Submissions</p>
+        </div>
 
-      <div class="tile is-3 is-vertical is-parent">
+    </div>
+
+    <div class="tile is-3 is-vertical is-parent">
         @if($feedback_requests || !$notifications->isEmpty())
 
         <div class="tile is-child notification">
@@ -142,9 +140,9 @@
                 <p>Betty Rubble</p>
                 <p>Fred Flinstone</p>
         </div>
-      </div>
-
     </div>
+
+</div>
 </section>
 @endsection
 
