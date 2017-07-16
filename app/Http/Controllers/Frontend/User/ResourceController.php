@@ -34,7 +34,7 @@ class ResourceController extends Controller
     public function by_course($course_id) {
         $resources = Content::where('course_id', '=', $course_id)
                                 ->with('files')
-                                ->orderBy('tag', 'desc')
+                                ->orderBy('tag', 'asc')
                                 ->orderBy('display_order', 'asc')
                                 ->get()
                                 ->groupBy('tag');
