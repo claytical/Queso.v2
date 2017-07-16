@@ -89,6 +89,10 @@ class Access
         return false;
     }
 
+    public function courses() {
+        return $this->user()->courses;        
+    }
+
     public function courses_taught() {
         $courses = $this->user()->courses;
         $teaching = array();

@@ -17,17 +17,17 @@
 
               @else
                 <a class="navbar-item" href="#">Quests</a>
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-item has-dropdown is-hoverable">                
                         <a class="navbar-link  is-active" href="#">
                           Resources
                         </a>
                         <div class="navbar-dropdown is-boxed">
-                          <a class="navbar-item " href="#">
-                            Class #1
-                          </a>
-                          <a class="navbar-item " href="#">
-                            Class #2
-                          </a>
+                          @foreach(access()->courses() as $c)
+
+                            <a class="navbar-item {{ Active::pattern('resources/'.$c->id, 'is-active') }}" href="{!! URL::to('resources/'.$c->id) !!}">
+                              {!! $c->name !!}
+                            </a>
+                          @endforeach
                         </div>
                 </div>
                 <a class="navbar-item" href="#">Grade</a>
