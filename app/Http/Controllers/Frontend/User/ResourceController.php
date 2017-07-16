@@ -64,12 +64,17 @@ class ResourceController extends Controller
 
     }
 
-    public function details($id) {
+    public function details_content($id) {
         $resource = Content::find($id);
         $files = $resource->files;
-        return view('frontend.manage.resources.details', ['resource' => $resource, 'files' => $files])
+        return view('frontend.manage.resources.edit.content', ['resource' => $resource, 'files' => $files])
             ->withUser(access()->user());
 
+    }
+        public function details_link($id) {
+            $resource = Content::find($id);
+            return view('frontend.manage.resources.edit.link', ['resource' => $resource])
+                ->withUser(access()->user());
     }
     
     public function save(Request $request) {

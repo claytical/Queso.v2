@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-{!! Form::open(['url' => 'manage/resources/create', 'id'=>'resource-form', 'class' => 'msf']) !!}
+{!! Form::open(['url' => 'manage/resource/update', 'id'=>'resource-form', 'class' => 'msf']) !!}
     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
     {{ Form::hidden('resource_type', 1, ['id' => 'resource_type']) }}
 
@@ -24,12 +24,12 @@
                          <!-- Title and Description -->                
                                 <div class="field">
                                     <p class="control">
-                                     {{ Form::input('text', 'title', null, ['class' => 'input is-large', 'placeholder' => 'Title for Resource', 'id' => 'resource_title']) }}
+                                     {{ Form::input('text', 'title', $resource->title, ['class' => 'input is-large', 'placeholder' => 'Title for Resource', 'id' => 'resource_title']) }}
                                     </p>
                                 </div>
                                 <div class="field">
                                     <p class="control">
-                                 {!! Form::textarea('description', null, ['class' => 'input', 'placeholder' => 'Content goes here...', 'files' => false, 'id' => 'description']) !!}
+                                 {!! Form::textarea('description', $resource->description, ['class' => 'input', 'placeholder' => 'Content goes here...', 'files' => false, 'id' => 'description']) !!}
                                     </p>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="field">
                                     <p class="control">
-                                        {{ Form::input('text', 'tag', null, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
+                                        {{ Form::input('text', 'tag', $resource->tag, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
                                     </p>
                                 </div>                      
                             </div>
@@ -64,7 +64,22 @@
                             <div class="tile is-child notification">
                                 <h4 class="subtitle">Attached Files</h4>
                                 <div id="attached_files">
-                                    <p id="no_attached_files">No files have been attached yet.</p>
+                                    @if(!$files->isEmpty())
+                                      @foreach($files as $file)
+                                        <article class='media'>
+                                          <div class='media-content'>
+                                            <div class='content'>
+                                              <p>{!! link_to('uploads/' . $file->name, substr($file->name,5), ['download' => substr($file->name,5)]) !!}</p>
+                                            </div>
+                                          </div>
+                                          <div class='media-right'>
+                                            {!! link_to('file/remove/' . $file->id, "", ['class' => 'delete']) !!}
+                                          </div>
+                                        </article>
+                                      @endforeach
+                                    @else
+                                      <p id="no_attached_files">No files have been attached yet.</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

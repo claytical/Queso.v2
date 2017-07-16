@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-{!! Form::open(['url' => 'manage/resources/create', 'id'=>'resource-form', 'class' => '']) !!}
+{!! Form::open(['url' => 'manage/resources/create', 'id'=>'resource-create-form', 'class' => '']) !!}
     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
     {{ Form::hidden('resource_type', 2, ['id' => 'resource_type']) }}
 

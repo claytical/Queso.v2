@@ -1,4 +1,4 @@
-    var qf = $("#quest-create-form");
+    var qf = $("#quest-form");
 
     Dropzone.autoDiscover = false;
     var quest_upload = new Dropzone('div#quest_uploads',

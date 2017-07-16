@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'manage/quest/update', 'id'=>'quest-update-form', 'class' => 'msf']) !!}
+{!! Form::open(['url' => 'manage/quest/update', 'id'=>'quest-form', 'class' => 'msf']) !!}
                     {{ Form::hidden('quest_type_id', 1, ['id' => 'submission_type_id']) }}
                     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                     {{ Form::hidden('submissions_allowed', true, ['id' => 'submissions_allowed']) }}

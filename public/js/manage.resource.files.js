@@ -1,4 +1,4 @@
-    var rf = $("#resource-create-form");
+    var rf = $("#resource-form");
     Dropzone.autoDiscover = false;
     var resource_upload = new Dropzone('div#resource_uploads',
         {url:'/dropzone/uploadFiles',
