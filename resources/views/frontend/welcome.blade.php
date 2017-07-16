@@ -34,12 +34,14 @@
         <div class="tile is-child notification">
           <h3 class="title">Agenda</h3>           
             @foreach(access()->agenda() as $date => $quest)
-                @if($date)
-                    <h4 class="subtitle">{!! date('m-d-Y', strtotime($date)) !!}</h4>
-                @else
-                    <h4 class="subtitle">Anytime</h4>
-                @endif
-
+                <div class="is-clearfix">
+                    @if($date)
+                        <h4 class="subtitle is-pulled-right">{!! date('m-d-Y', strtotime($date)) !!}</h4>
+                    @else
+                        <h4 class="subtitle is-pulled-right">Anytime</h4>
+                    @endif
+                        <hr/>
+                </div>
                 @foreach($quest as $q)
                     <h5>{!! $q->name !!}</h5>
                 @endforeach
