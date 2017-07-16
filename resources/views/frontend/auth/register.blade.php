@@ -1,6 +1,7 @@
 @extends('frontend.layouts.guest')
 
 @section('page-header')
+@endsection
 
 @section('content')
 <section class="hero is-dark is-medium">
