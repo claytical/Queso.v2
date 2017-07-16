@@ -37,7 +37,7 @@
       <div class="tile is-parent is-vertical is-4">
         <div class="tile is-child notification">
           <p class="title">Agenda</p>
-          {!! var_dump(access()->agenda() !!}
+          {!! var_dump(access()->agenda()) !!}
         </div>
         <div class="tile is-child notification">
           <p class="title">Submissions</p>
