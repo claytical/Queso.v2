@@ -134,7 +134,7 @@ class ResourceController extends Controller
                 $resource->files()->attach($files[$i]);
             }
         }
-        return redirect()->route('resources.manage', ['course_id' => $course_id])->withFlashSuccess($resource->title . " has been updated");
+        return redirect()->route('resources.manage', ['course_id' => $request->course_id])->withFlashSuccess($resource->title . " has been updated");
 
     }    
 
