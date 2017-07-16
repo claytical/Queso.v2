@@ -154,12 +154,7 @@ class Access
                             ->whereNotIn('id', $group_quests_attempted_ids)
                             ->get();
 
-        if($course->timezone) {
-            $timezone = $course->timezone;          
-        }
-        else {
-            $timezone = "America/New_York";
-        }
+        $timezone = "America/New_York";
 
         $quests_unattempted_expiring = Quest::whereIn('course_id', '=', $enrolled_courses)
                     ->whereNotIn('id', $quests_attempted_ids)
