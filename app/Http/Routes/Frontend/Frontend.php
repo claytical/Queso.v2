@@ -73,8 +73,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('quest/feedback', 'QuestController@submit_feedback')->name('feedback.submitted');
         Route::get('feedback', 'QuestController@feedback_overview')->name('feedback.overview');
 
-        Route::get('resource/{resource_id}', 'ResourceController@by_id')->name('resource.view');
-        Route::get('resources/{resource_slug}', 'ResourceController@by_slug')->name('resource.slug.view');
+        Route::get('resources/{course_id}', 'ResourceController@by_course')->name('resource.course');
+//        Route::get('resource/{resource_id}', 'ResourceController@by_id')->name('resource.view');
+        Route::get('resource/{resource_slug}', 'ResourceController@by_slug')->name('resource.slug.view');
         Route::get('resource/category/{category_id}', 'ResourceController@by_category')->name('resource.category');
 
         Route::get('announcements', 'AnnouncementController@index')->name('announcements');

@@ -31,6 +31,14 @@ class ResourceController extends Controller
             ->withUser(access()->user());
     }
 
+    public function by_course($course_id) {
+        $resources = Content::where('course_id', '=', $course_id)
+                                ->with('files')
+                                ->groupBy('category')
+                                ->get();
+        return view('frontend.resources.course', 'resources' => $resources, 'course_id' => $course_id);
+    }
+
     public function by_category($category) {
         $category = str_replace(" ", "-", $category);
         $resources = Content::where('course_id', '=', session('current_course'))
