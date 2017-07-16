@@ -36,7 +36,8 @@ class ResourceController extends Controller
                                 ->with('files')
                                 ->groupBy('category')
                                 ->get();
-        return view('frontend.resources.course', 'resources' => $resources, 'course_id' => $course_id);
+        return view('frontend.resources.course', ['resources' => $resources, 'course_id' => $course_id])
+                ->withUser(access()->user());
     }
 
     public function by_category($category) {

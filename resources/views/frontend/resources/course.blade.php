@@ -3,7 +3,14 @@
 @section('content')
 
 <div class="columns is-multiline is-mobile">
-{!! var_dump($resources) !!}
+    @foreach($resources as $category => $resource)
+        <div class="column is-half">
+            <p class="title">{!! $category !!}</p>
+            @foreach($resource as $category => $r)
+                {!! $r->title !!}
+            @endforeach
+        </div>
+    @endforeach
 </div>
 
 @endsection
