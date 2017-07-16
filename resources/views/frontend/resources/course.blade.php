@@ -3,7 +3,11 @@
 @section('content')
 
 <div class="columns is-multiline is-mobile">
-{!! json_encode(var_dump($resources)) !!}
+    @foreach($resources as $tag => $resource)
+        <div class="column is-half">
+        {!! var_dump($resource) !!}
+        </div>
+    @endforeach
 </div>
 
 @endsection
