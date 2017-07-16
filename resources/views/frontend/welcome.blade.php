@@ -37,17 +37,7 @@
       <div class="tile is-parent is-vertical is-4">
         <div class="tile is-child notification">
           <p class="title">Agenda</p>
-          @foreach(access()->agenda() as $quest)
-            <p class="subtitle">{!! $quest->name !!}
-            <div class="content is-small">
-                @if($quest->expires_at)
-                    Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}
-                @else
-                    Due Anytime
-                @endif
-
-            </div>
-          @endforeach
+          {!! var_dump(access()->agenda() !!}
         </div>
         <div class="tile is-child notification">
           <p class="title">Submissions</p>
