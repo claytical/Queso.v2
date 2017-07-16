@@ -34,6 +34,8 @@
         </div>
         <div class="column">
         {!! Form::open(['url' => 'manage/course/update', 'id'=>'resource-form', 'class' => '']) !!}
+        {{ Form::hidden('course_id', $course->id, ['id' => 'course_id']) }}
+
         <div class="tile">
             <div class="tile is-6 is-parent">
                 <div class="tile is-child">

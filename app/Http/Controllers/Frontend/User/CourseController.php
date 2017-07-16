@@ -374,7 +374,7 @@ class CourseController extends Controller
     }
 
     public function update(Request $request) {
-    	$course = Course::find(session('current_course'));
+    	$course = Course::find($request->course_id);
     	$course->name = $request->name;
     	$course->code = $request->reg_code;
     	$course->meeting = $request->meeting_time;
@@ -386,7 +386,7 @@ class CourseController extends Controller
         $course->timezone = $request->timezone;
         
     	$course->save();
-    	return redirect(route('course.manage'));
+    	return redirect(route('course.manage', $course->id));
 
     }
 
