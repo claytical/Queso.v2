@@ -117,11 +117,11 @@ class ResourceController extends Controller
     public function update(Request $request) {
         $resource = Content::find($request->id);
         $resource->title = $request->title;
-        if($request->request_type == 1){
+        if($request->resource_type == 1){
             $resource->description = $request->description;
 
         }
-        if($request->request_type == 2) {
+        if($request->resource_type == 2) {
           $resource->link = $request->link;
         }
 
@@ -130,12 +130,6 @@ class ResourceController extends Controller
         }
         else {
             $resource->tag = null;
-        }
-        if($request->has('link_label')) {
-            $resource->link_label = $request->link_label;
-        }
-        else {
-            $resource->link_label = null;
         }
 
         $resource->save();

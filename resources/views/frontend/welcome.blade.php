@@ -41,10 +41,10 @@
                         <h4 class="subtitle is-pulled-right">Anytime</h4>
                     @endif
                 </div>
-                <hr/>
                 @foreach($quest as $q)
                     <h5>{!! $q->name !!}</h5>
                 @endforeach
+                <hr/>
             @endforeach 
         </div>
 
