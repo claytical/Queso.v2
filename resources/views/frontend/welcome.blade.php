@@ -41,7 +41,7 @@
                 @endif
 
                 @foreach($quest as $q)
-                    <h5>{!! $q->name !!} <a class="button is-success is-pulled-right is-small">Attempt</a></h5>
+                    <h5>{!! $q->name !!}</h5>
                 @endforeach
             @endforeach 
         </div>
