@@ -56,7 +56,7 @@
                     <div class="tile">
                         <div class="tile is-6 is-parent">
                             <div class="tile is-child">
-                                <div id="resource_upload" class="dropzone"></div>
+                                <div id="resource_uploads" class="dropzone"></div>
                             </div>
                         </div>
 
