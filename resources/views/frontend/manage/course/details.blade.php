@@ -42,7 +42,7 @@
                     <h2 class="subtitle">Course</h2>
                     <div class="field">
                         <p class="control">
-                            {{ Form::input('text', 'title', $course->name, ['class' => 'input', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}                    
+                            {{ Form::input('text', 'name', $course->name, ['class' => 'input', 'placeholder' => 'Course Name', 'id' => 'course_name']) }}                    
                         </p>
                     </div>
                     <div class="field">
