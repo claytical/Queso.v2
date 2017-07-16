@@ -2,13 +2,14 @@
 
 @section('content')
 
-<section class="hero is-light is-bold" id="choose_quest">
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h1 class="title">
-        New Quest
-      </h1>
-        <h2 class="subtitle">What kind of quest is this?</h2>
+<section class="section">
+    <div class="columns">
+        <div class="column is-2">
+        @include('frontend.includes.admin')
+        </div>
+        <div class="column">
+          <h1 class="title">New Quest</h1>
+          <h2 class="subtitle">What kind of quest is this?</h2>
 
             <div class="tile is-ancestor">              
               <div class="tile is-parent">
@@ -100,8 +101,7 @@
               </div>
 
             </div>
-
-    </div>
+        </div>
   </div>
 </section>
 

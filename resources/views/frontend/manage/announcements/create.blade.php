@@ -31,7 +31,7 @@
                 </p>
             </div>
 
-            {!! Form::submit('Post', ['class' => 'button is-primary is-large']) !!}
+            {!! Form::submit('Post', ['class' => 'button is-primary is-large is-pulled-right']) !!}
 
 
             {!! Form::close() !!}

@@ -3,7 +3,6 @@
 @section('content')
 
 @if($announcements->isEmpty())
-
     <section class="hero is-dark is-bold is-large">
       <div class="hero-body">
         <div class="container">
@@ -16,16 +15,6 @@
         </div>
       </div>
     </section>
-@else
-    <section class="hero is-dark is-bold">
-      <div class="hero-body">
-        <div class="container">
-            <a href="{!! URL::to('manage/announcement/create/'.$course_id) !!}" class="button is-large is-pulled-right is-primary">New Announcement</a>
-            <h1 class="title">Announcements</h1>
-        </div>
-      </div>
-    </section>
-
 @endif
 
 
@@ -36,45 +25,46 @@
         @include('frontend.includes.admin')
         </div>
         <div class="column">
+            <a href="{!! URL::to('manage/announcement/create/'.$course_id) !!}" class="button is-large is-pulled-right is-primary">New Announcement</a>
+            <h1 class="title">Announcements</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Headline</th>
+                <th>Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <!--
+            <tfoot>
+              <tr>
+                <th>Headline</th>
+                <th>Date</th>
+                <th></th>
+              </tr>
+            </tfoot>
+            -->
+            <tbody>
+          @foreach($announcements as $announcement)
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Headline</th>
-          <th>Date</th>
-          <th></th>
-        </tr>
-      </thead>
-      <!--
-      <tfoot>
-        <tr>
-          <th>Headline</th>
-          <th>Date</th>
-          <th></th>
-        </tr>
-      </tfoot>
-      -->
-      <tbody>
-    @foreach($announcements as $announcement)
+              <tr>
+                <td>{!! $announcement->title !!}</td>
+                <td>{!! date('m/d/Y', strtotime($announcement->created_at)) !!}</td>
+                <td>            
+                  @if($announcement->sticky)
+                      <a class="button is-small" href="{!! url('manage/announcement/hide/'.$announcement->id);!!}"> Hide</a>
+                  @else
+                      <a class="button is-small" href="{!! url('manage/announcement/show/'.$announcement->id);!!}"> Show</a>
+                  @endif
 
-        <tr>
-          <td>{!! $announcement->title !!}</td>
-          <td>{!! date('m/d/Y', strtotime($announcement->created_at)) !!}</td>
-          <td>            
-            @if($announcement->sticky)
-                <a class="button is-small" href="{!! url('manage/announcement/hide/'.$announcement->id);!!}"> Hide</a>
-            @else
-                <a class="button is-small" href="{!! url('manage/announcement/show/'.$announcement->id);!!}"> Show</a>
-            @endif
+                  <a class="button is-small" href="{!! URL::to('manage/announcement/edit/' . $announcement->id) !!}">Edit</a>
+                  <a class="button is-small is-danger" href="{!! URL::to('manage/announcement/delete/' . $announcement->id) !!}">Delete</a>
+                  </td>
+              </tr>
+           @endforeach
 
-            <a class="button is-small" href="{!! URL::to('manage/announcement/edit/' . $announcement->id) !!}">Edit</a>
-            <a class="button is-small is-danger" href="{!! URL::to('manage/announcement/delete/' . $announcement->id) !!}">Delete</a>
-            </td>
-        </tr>
-     @endforeach
-
-      </tbody>
-    </table>
+            </tbody>
+          </table>
     </div>
   </div>
 </section>

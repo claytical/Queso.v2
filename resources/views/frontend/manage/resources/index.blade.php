@@ -15,16 +15,6 @@
         </div>
       </div>
     </section>
-@else
-    <section class="hero is-dark is-bold">
-      <div class="hero-body">
-        <div class="container">
-            <a href="{!! URL::to('manage/resources/create/'.$course_id) !!}" class="button is-large is-pulled-right is-primary">New Resource</a>
-            <h1 class="title">Resources</h1>
-        </div>
-      </div>
-    </section>
-
 @endif
 
 
@@ -35,52 +25,55 @@
         @include('frontend.includes.admin')
         </div>
         <div class="column">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Tag</th>
-          <th>Type</th>
-          <th></th>
-        </tr>
-      </thead>
-      <!--
-      <tfoot>
-        <tr>
-          <th>Headline</th>
-          <th>Date</th>
-          <th></th>
-        </tr>
-      </tfoot>
-      -->
-      <tbody>
-    @foreach($resources as $resource)
+            <a href="{!! URL::to('manage/resources/create/'.$course_id) !!}" class="button is-large is-pulled-right is-primary">New Resource</a>
+            <h1 class="title">Resources</h1>
 
-        <tr>
-          <td>{!! $resource->title !!}</td>
-          <td>{!! $resource->tag !!}</td>
-          <td>
-            @if($resource->link)
-              Link
-            @else
-              Content
-            @endif
-          </td>
-          <td>            
-            @if($resource->link)
-              <a class="button is-small" href="{!! URL::to('manage/resource/link/edit/' . $resource->id) !!}">Edit</a>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Tag</th>
+                <th>Type</th>
+                <th></th>
+              </tr>
+            </thead>
+            <!--
+            <tfoot>
+              <tr>
+                <th>Headline</th>
+                <th>Date</th>
+                <th></th>
+              </tr>
+            </tfoot>
+            -->
+            <tbody>
+          @foreach($resources as $resource)
 
-            @else
-              <a class="button is-small" href="{!! URL::to('manage/resource/content/edit/' . $resource->id) !!}">Edit</a>
-            @endif
+              <tr>
+                <td>{!! $resource->title !!}</td>
+                <td>{!! $resource->tag !!}</td>
+                <td>
+                  @if($resource->link)
+                    Link
+                  @else
+                    Content
+                  @endif
+                </td>
+                <td>            
+                  @if($resource->link)
+                    <a class="button is-small" href="{!! URL::to('manage/resource/link/edit/' . $resource->id) !!}">Edit</a>
 
-            <a class="button is-small is-danger" href="{!! URL::to('manage/resource/delete/' . $resource->id) !!}">Delete</a>
-            </td>
-        </tr>
-     @endforeach
+                  @else
+                    <a class="button is-small" href="{!! URL::to('manage/resource/content/edit/' . $resource->id) !!}">Edit</a>
+                  @endif
 
-      </tbody>
-    </table>
+                  <a class="button is-small is-danger" href="{!! URL::to('manage/resource/delete/' . $resource->id) !!}">Delete</a>
+                  </td>
+              </tr>
+           @endforeach
+
+            </tbody>
+          </table>
     </div>
   </div>
 </section>
