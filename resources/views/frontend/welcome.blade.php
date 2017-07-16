@@ -40,7 +40,7 @@
         @foreach(access()->agenda() as $date => $quest)
             <div class="column is-half">
                 @if($date)
-                    <p class="subtitle is-pulled-right">{!! date('m-d-Y', strtotime($quest->expires_at)) !!}</p>
+                    <p class="subtitle is-pulled-right">{!! date('m-d-Y', strtotime($date)) !!}</p>
                 @else
                     <p class="subtitle is-pulled-right">Anytime</p>
                 @endif
