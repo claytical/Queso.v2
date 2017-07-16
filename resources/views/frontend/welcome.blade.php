@@ -79,27 +79,28 @@
 
         </div>
         @endif
+
         <div class="tile is-child notification">
-          <p class="title">Courses</p>
-          <p class="subtitle">{!! $course->name !!}</p>
-                @if (!access()->instructor())
-                <p>{!! $current_level->name !!}</p>
-                @endif
+            <p class="title">Courses</p>
+            @foreach(access()->courses() as $c)
+                <p class="subtitle">{!! $c->name !!}</p>
                 <div class="content is-small">
                     <h5>Class Location</h5>
-                    <p><strong>{!! $course->meeting_location !!}</strong></p>
+                    <p><strong>{!! $c->meeting_location !!}</strong></p>
                     <h5>Class Time</h5>
-                    <p><strong>{!! $course->meeting !!}</strong></p>
+                    <p><strong>{!! $c->meeting !!}</strong></p>
                 </div>
                 <div class="content is-small">
-                    <a class="is-large is-pulled-right" href="mailto:{!! $course->instructor_contact !!}"><span class="icon is-small"><i class="fa fa-envelope"></i></span></a>                
-                    <h3>{!! $course->instructor_display_name !!}</h3>
+                    <a class="is-large is-pulled-right" href="mailto:{!! $c->instructor_contact !!}"><span class="icon is-small"><i class="fa fa-envelope"></i></span></a>                
+                    <h3>{!! $c->instructor_display_name !!}</h3>
                     <h5>Office Location</h5>
-                    <p><strong>{!! $course->instructor_office_location !!}</strong></p>
+                    <p><strong>{!! $c->instructor_office_location !!}</strong></p>
                     <h5>Office Hours</h5>
-                    <p><strong>{!! $course->office_hours !!}</strong></p>
+                    <p><strong>{!! $c->office_hours !!}</strong></p>
                 </div>
+            @endforeach
         </div>
+
         <div class="tile is-child notification">
           <p class="title">Peer Groups</p>
                 @if($team_members)

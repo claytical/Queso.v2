@@ -110,6 +110,23 @@ class Access
 
     }
 
+    public function courses_enrolled() {
+        $courses = $this->user()->courses;
+        $enrolled = array();
+
+        foreach($courses as $course) {
+            if($this->user()->hasRole($course->student_role_id)) {
+                //Instructor
+                $enrolled[] = $course;                
+            }
+
+        }
+
+
+        return $enrolled;
+
+    }
+
 
     public function course_instructors() {
         $course = Course::find(session('current_course'));
