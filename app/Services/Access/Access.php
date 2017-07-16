@@ -148,7 +148,7 @@ class Access
         $quests_attempted_ids = $quests_attempted->pluck('quest_id');
         $group_quests_attempted = $user->group_quests()->with('quest')->get();
         $group_quests_attempted_ids = $group_quests_attempted->pluck('quest_id');
-        $enrolled_courses = $this->user()->courses->pluck('course_id');
+        $enrolled_courses = $this->user()->courses->pluck('id');
 
         $group_quests = Quest::whereIn('course_id', $enrolled_courses)
                             ->where('groups', '=', true)
@@ -174,8 +174,8 @@ class Access
         $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
 
         $quests_unattempted = $quests_unattempted->merge($group_quests);
-        return $enrolled_courses;
-//        return $quests_unattempted;
+//        return $enrolled_courses;
+        return $quests_unattempted;
     }
 
 
