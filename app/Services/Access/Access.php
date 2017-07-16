@@ -143,7 +143,6 @@ class Access
     }
 
     public function agenda() {
-//this only catches graded quests, 
         $user = $this->user();
         $quests_attempted = $user->quests();
         $quests_attempted_ids = $quests_attempted->pluck('quest_id');
@@ -176,8 +175,8 @@ class Access
 
         $quests_unattempted = $quests_unattempted->merge($group_quests);
 
-
-        return $quests_unattempted;
+        return $enrolled_courses;
+//        return $quests_unattempted;
     }
 
 
