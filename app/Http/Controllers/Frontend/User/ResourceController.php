@@ -67,13 +67,13 @@ class ResourceController extends Controller
     public function details_content($id) {
         $resource = Content::find($id);
         $files = $resource->files;
-        return view('frontend.manage.resources.edit.content', ['resource' => $resource, 'files' => $files])
+        return view('frontend.manage.resources.edit.content', ['resource' => $resource, 'files' => $files, 'course_id' => $resource->course_id])
             ->withUser(access()->user());
 
     }
         public function details_link($id) {
             $resource = Content::find($id);
-            return view('frontend.manage.resources.edit.link', ['resource' => $resource])
+            return view('frontend.manage.resources.edit.link', ['resource' => $resource, 'course_id' => $resource->course_id])
                 ->withUser(access()->user());
     }
     
