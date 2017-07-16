@@ -2,9 +2,9 @@
 
 @section('content')
 <section class="section">
-    <div class="columns is-multiline is-mobile">
+    <div class="tile is-ancestor">
         @foreach($resources as $tag => $resource)
-            <div class="column is-half">
+            <div class="tile is-6">
                 @if($tag)
                     <p class="title">{!! $tag !!}</p>
                 @else
