@@ -17,7 +17,8 @@
                   <div class="tile is-child">
                 
                       <p class="subtitle">Queso is a classroom management system with a gameful twist. Using concepts from game design the focus is on being simple, intuitive and engaging.</p>
-                      <a href="{!! URL::to('register')!!}" class="button is-inverted is-outlined is-large">Create an Account</a>      
+                      <p class="subtitle">Queso is open source and free to use.</p>
+                      <a href="{!! URL::to('register')!!}" class="button is-inverted is-outlined is-large is-primary">Create an Account</a>      
                   </div>
                 </div>
                 <div class="tile is-6 is-parent">
