@@ -7,10 +7,14 @@
             <div class="column is-half">
                 @if($tag)
                     <p class="title">{!! $tag !!}</p>
+                @else
+                    <p class="title">Resources</p>
+
                 @endif
                 @foreach($resource as $r)
                     @if($r->link)
                         <a href="{{ $r->link }}" data-iframely-url>{{ $r->link }}</a>
+                        <br/>
                     @else
 
                         <article class="media">
