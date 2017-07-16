@@ -37,7 +37,7 @@
                     </div>
                 </div>
               </div>
-        <button data-type="submit" class="button is-primary is-pulled-right is-large" type="submit">Create Link</button>
+        <button data-type="submit" class="button is-primary is-pulled-right is-large" type="submit">Update Link</button>
 
     </div>
   </div>
