@@ -38,15 +38,29 @@
         <div class="tile is-child notification">
           <p class="title">Agenda</p>
           @foreach(access()->agenda() as $quest)
-            <p class="subtitle">{!! $quest->name !!}
-            <div class="content is-small">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{!! $quest->name !!}</strong>
+                  </p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fa fa-play"></i></span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+              <div class="media-right">
                 @if($quest->expires_at)
-                    Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}
+                    {!! date('m-d-Y', strtotime($quest->expires_at)) !!}
                 @else
-                    Due Anytime
-                @endif
-
-            </div>
+                    Anytime
+                @endif              
+              </div>
+            </article>
           @endforeach
         </div>
         <div class="tile is-child notification">
