@@ -37,38 +37,38 @@
       <div class="tile is-parent is-vertical is-4">
         <div class="tile is-child notification">
           <p class="title">Agenda</p>
-        @foreach(access()->agenda() as $date => $quest)
             <div class="column is-half">
-                @if($date)
-                    <p class="subtitle is-pulled-right">{!! date('m-d-Y', strtotime($date)) !!}</p>
-                @else
-                    <p class="subtitle is-pulled-right">Anytime</p>
-                @endif
-                @foreach($quest as $q)
-                    <article class="media">
-                      <div class="media-content">
-                        <div class="content">
-                          <p>
-                            <strong>{!! $q->name !!}</strong>
-                          </p>
-                        </div>
-                        <nav class="level is-mobile">
-                          <div class="level-left">
-                            <a class="level-item">
-                              Attempt
-                            </a>
+            @foreach(access()->agenda() as $date => $quest)
+                    @if($date)
+                        <p class="subtitle is-pulled-right">{!! date('m-d-Y', strtotime($date)) !!}</p>
+                    @else
+                        <p class="subtitle is-pulled-right">Anytime</p>
+                    @endif
+                    @foreach($quest as $q)
+                        <article class="media">
+                          <div class="media-content">
+                            <div class="content">
+                              <p>
+                                <strong>{!! $q->name !!}</strong>
+                              </p>
+                            </div>
+                            <nav class="level is-mobile">
+                              <div class="level-left">
+                                <a class="level-item">
+                                  Attempt
+                                </a>
+                              </div>
+                            </nav>
                           </div>
-                        </nav>
-                      </div>
-                      <div class="media-right">
-                     </div>
-                    </article>
-                @endforeach
-        @endforeach
-        </div>
-        <div class="tile is-child notification">
-          <p class="title">Submissions</p>
-        </div>
+                          <div class="media-right">
+                         </div>
+                        </article>
+                    @endforeach
+            @endforeach
+            </div>
+            <div class="tile is-child notification">
+                <p class="title">Submissions</p>
+            </div>
 
       </div>
 
