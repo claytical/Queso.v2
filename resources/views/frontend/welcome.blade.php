@@ -41,21 +41,7 @@
                         <p class="subtitle is-pulled-right">Anytime</p>
                     @endif
                     @foreach($quest as $q)
-                        <nav class="level">
-                          <!-- Left side -->
-                          <div class="level-left">
-                            <div class="level-item">
-                              <p class="subtitle">
-                                <strong>{!! $q->name !!}</strong>
-                              </p>
-                            </div>
-                          </div>
-
-                          <!-- Right side -->
-                          <div class="level-right">
-                            <p class="level-item"><a class="button is-success">Attempt</a></p>
-                          </div>
-                        </nav>
+                        <p><strong>{!! $q->name !!}</strong> <a class="button is-success is-pulled-right is-small">Attempt</a></p>
                     @endforeach
             @endforeach
            
