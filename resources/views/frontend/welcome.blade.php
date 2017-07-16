@@ -32,19 +32,18 @@
       </div>
     <div class="tile is-parent is-vertical is-4">
         <div class="tile is-child notification">
-          <p class="title">Agenda</p>
-            
+          <h3 class="title">Agenda</h3>           
             @foreach(access()->agenda() as $date => $quest)
-                    @if($date)
-                        <p class="subtitle is-pulled-right">{!! date('m-d-Y', strtotime($date)) !!}</p>
-                    @else
-                        <p class="subtitle is-pulled-right">Anytime</p>
-                    @endif
-                    @foreach($quest as $q)
-                        <p><strong>{!! $q->name !!}</strong> <a class="button is-success is-pulled-right is-small">Attempt</a></p>
-                    @endforeach
-            @endforeach
-           
+                @if($date)
+                    <h4 class="subtitle">{!! date('m-d-Y', strtotime($date)) !!}</h4>
+                @else
+                    <h4 class="subtitle">Anytime</h4>
+                @endif
+
+                @foreach($quest as $q)
+                    <h5>{!! $q->name !!} <a class="button is-success is-pulled-right is-small">Attempt</a></h5>
+                @endforeach
+            @endforeach 
         </div>
 
         <div class="tile is-child notification">
