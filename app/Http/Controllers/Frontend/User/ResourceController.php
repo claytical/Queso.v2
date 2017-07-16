@@ -106,8 +106,14 @@ class ResourceController extends Controller
     public function update(Request $request) {
         $resource = Content::find($request->id);
         $resource->title = $request->title;
-        $resource->description = $request->description;
-        $resource->link = $request->link;
+        if($request->request_type == 1){
+            $resource->description = $request->description;
+
+        }
+        if($request->request_type == 2) {
+          $resource->link = $request->link;
+        }
+
         if(strlen($request->tag) > 0) {
             $resource->tag = $request->tag;
         }

@@ -4,6 +4,7 @@
 {!! Form::open(['url' => 'manage/resource/update', 'id'=>'resource-form', 'class' => 'msf']) !!}
     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
     {{ Form::hidden('resource_type', 1, ['id' => 'resource_type']) }}
+    {{ Form::hidden('id', $resource->id, ['id' => 'resource_id']) }}
 
 <section class="hero" id="create_resource">
   <div class="hero-body">
