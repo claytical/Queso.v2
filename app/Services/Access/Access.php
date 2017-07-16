@@ -138,6 +138,60 @@ class Access
         }
         return $instructors;
     }
+
+    public function agenda() {
+//this only catches graded quests, 
+        $user = $this->user();
+        $quests_attempted = $user->quests();
+        $quests_attempted_ids = $quests_attempted->pluck('quest_id');
+        $group_quests_attempted = $user->group_quests()->with('quest')->get();
+        $group_quests_attempted_ids = $group_quests_attempted->pluck('quest_id');
+        $enrolled_courses = $user->courses()->get()->pluck('course_id');
+
+        $group_quests = Quest::whereIn('course_id', $enrolled_courses)
+                            ->where('groups', '=', true)
+                            ->whereNotIn('id', $group_quests_attempted_ids)
+                            ->get();
+
+        if($course->timezone) {
+            $timezone = $course->timezone;          
+        }
+        else {
+            $timezone = "America/New_York";
+        }
+
+        $quests_unattempted_expiring = Quest::whereIn('course_id', '=', $enrolled_courses)
+                    ->whereNotIn('id', $quests_attempted_ids)
+                    ->where('expires_at', '>', Carbon::now(new \DateTimeZone($timezone))->subDay())
+                    ->where('groups', '=', false)
+                    ->orderBy('expires_at')
+                    ->get();
+
+        $quests_unattempted_not_expiring = Quest::whereIn('course_id', $enrolled_courses)
+                    ->whereNotIn('id', $quests_attempted_ids)
+                    ->where('groups', '=', false)
+                    ->whereNull('expires_at')
+                    ->orderBy('name')
+                    ->get();
+
+        $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
+
+        $quests_unattempted = $quests_unattempted->merge($group_quests);
+
+
+        return $quests_unattempted;
+    }
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Return if the current session user is a guest or not
      * @return mixed
