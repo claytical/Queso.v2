@@ -91,8 +91,8 @@ trait Dropdowns
         return $students->implode('email', ',');  
     }
 
-    public function courseEmailList() {
-        $course = Course::find(session('current_course'));
+    public function courseEmailList($course_id) {
+        $course = Course::find($course_id);
         $students = $course->users()
                     ->where('users.id', '!=', access()->user()->id)
                     ->get();

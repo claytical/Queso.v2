@@ -362,8 +362,8 @@ class CourseController extends Controller
 
     }
 
-    public function manage() {
-    	$course = Course::find(session('current_course'));
+    public function manage($course_id) {
+    	$course = Course::find($course_id);
     	$skills = $course->skills()->orderBy('name')->get();
     	$levels = $course->levels()->orderBy('amount', 'desc')->get();
     	$teams = $course->teams;
