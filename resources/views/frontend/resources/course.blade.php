@@ -5,7 +5,10 @@
 <div class="columns is-multiline is-mobile">
     @foreach($resources as $tag => $resource)
         <div class="column is-half">
-        {!! var_dump($resource) !!}
+            <p class="title">{!! $tag !!}</p>
+            @foreach($resource as $r)
+                {!! $r->title !!}
+            @endforeach
         </div>
     @endforeach
 </div>
