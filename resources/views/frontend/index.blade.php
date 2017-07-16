@@ -16,7 +16,8 @@
                   </div>
                   <div class="tile is-child">
                 
-                      <p class="subtitle">Queso is a classroom management system for gameful classrooms. We help you take your existing classroom and reshape it using concepts from game design. This is not about points, badges, and leaderboards. This is about increasing student engagement through gameful design. You can use Queso for your class without "gamifying" it. It's simple and intuitive for creating an engaging class in the 21st century.</p>      
+                      <p class="subtitle">Queso is a classroom management system with a gameful twist. Using concepts from game design the focus is on being simple, intuitive and engaging.</p>
+                      <a href="{!! URL::to('register')!!}" class="button is-inverted is-outlined is-large">Create an Account</a>      
                   </div>
                 </div>
                 <div class="tile is-6 is-parent">
