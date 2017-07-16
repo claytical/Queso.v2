@@ -34,10 +34,10 @@ class ResourceController extends Controller
     public function by_course($course_id) {
         $resources = Content::where('course_id', '=', $course_id)
                                 ->with('files')
+                                ->orderBy('tag', 'desc')
                                 ->orderBy('display_order', 'asc')
                                 ->get()
                                 ->groupBy('tag')
-                                ->sortBy('-tag');
         return view('frontend.resources.course', ['resources' => $resources, 'course_id' => $course_id])
                 ->withUser(access()->user());
     }
