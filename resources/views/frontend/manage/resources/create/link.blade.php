@@ -14,13 +14,13 @@
                   <!-- Title and Description -->                
                     <div class="field">
                       <p class="control">
-                        {{ Form::input('text', 'title', $resource->title, ['class' => 'input is-large', 'placeholder' => 'Title for Resource', 'id' => 'resource_title']) }}
+                        {{ Form::input('text', 'title', null, ['class' => 'input is-large', 'placeholder' => 'Title for Resource', 'id' => 'resource_title']) }}
                       </p>
                     </div>
 
                     <div class="field">
                       <p class="control">
-                       {{ Form::input('text', 'link', $resource->link, ['class' => 'input is-large', 'placeholder' => 'http://www.example.com/cool-stuff', 'id' => 'link']) }}
+                       {{ Form::input('text', 'link', null, ['class' => 'input is-large', 'placeholder' => 'http://www.example.com/cool-stuff', 'id' => 'link']) }}
                       </p>
                     </div>
                   </div>
@@ -31,7 +31,7 @@
                       <h4 class="subtitle">Category</h4>
                         <div class="field">
                           <p class="control">
-                            {{ Form::input('text', 'tag', $resource->tag, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
+                            {{ Form::input('text', 'tag', null, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
                           </p>
                         </div>                      
                     </div>
