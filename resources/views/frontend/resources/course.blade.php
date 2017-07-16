@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="columns is-multiline is-mobile">
-    @foreach($resources as $category => $resource)
+    @foreach($resources as $tag => $resource)
         <div class="column is-half">
-            <p class="title">{!! $category !!}</p>
-            @foreach($resource as $category => $r)
+            <p class="title">{!! $tag !!}</p>
+            @foreach($resource as $r)
                 {!! $r->title !!}
             @endforeach
         </div>

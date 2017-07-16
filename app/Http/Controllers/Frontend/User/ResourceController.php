@@ -34,7 +34,7 @@ class ResourceController extends Controller
     public function by_course($course_id) {
         $resources = Content::where('course_id', '=', $course_id)
                                 ->with('files')
-                                ->groupBy('category')
+                                ->groupBy('tag')
                                 ->get();
         return view('frontend.resources.course', ['resources' => $resources, 'course_id' => $course_id])
                 ->withUser(access()->user());
