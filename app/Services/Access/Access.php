@@ -158,7 +158,7 @@ class Access
 
         $timezone = "America/New_York";
 
-        $quests_unattempted_expiring = Quest::whereIn('course_id', '=', $enrolled_courses)
+        $quests_unattempted_expiring = Quest::whereIn('course_id', $enrolled_courses)
                     ->whereNotIn('id', $quests_attempted_ids)
                     ->where('expires_at', '>', Carbon::now(new \DateTimeZone($timezone))->subDay())
                     ->where('groups', '=', false)
