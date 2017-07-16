@@ -2,6 +2,7 @@
 
 namespace App\Services\Access;
 use App\Course;
+use App\Quest;
 
 /**
  * Class Access
