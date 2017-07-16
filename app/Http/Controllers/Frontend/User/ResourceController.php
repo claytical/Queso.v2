@@ -80,10 +80,10 @@ class ResourceController extends Controller
             $resource->tag = $request->tag;
         }
 
-        if($resource->resource_type == 1) {
+        if($request->resource_type == 1) {
             $resource->description = $request->description;
         }
-        if($resource->resource_type == 2) {
+        if($request->resource_type == 2) {
             $resource->link = $request->link;
             $resource->description = "";
         }
