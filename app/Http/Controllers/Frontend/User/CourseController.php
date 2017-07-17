@@ -250,14 +250,25 @@ class CourseController extends Controller
     	$level = new Level;
     	$level->name = $request->level;
     	$level->amount = $request->amount;
-    	$level->course_id = $request->session()->get('current_course');
-    	$level->save();
+        if($request->course_exists) {
+            $level->course_id = $request->course_id;
+            $level->save();
+            return redirect(route('course.manage.levels', ['course_id' => $request->course_id]));
+
+        }
+        else {
+            $level->course_id = $request->session()->get('current_course');
+            $level->save();
+            return redirect(route('course.add.levels'));  
+        }
 //        $url = route('course.manage') . '#levels';
-        return redirect(route('course.add.levels'));  
     }
 
     public function remove_level(Request $request) {
     	Level::find($request->level)->delete();
+        if($request->course_exists) {
+            return redirect(route('course.manage.levels', ['course_id' => $request->course_id]));
+        }
 		return redirect(route('course.add.levels'));
 
     }

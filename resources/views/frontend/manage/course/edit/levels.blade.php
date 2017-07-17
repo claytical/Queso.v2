@@ -37,6 +37,7 @@
                 <tr>
                   <th>Level</th>
                   <th>Points Required</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
