@@ -9,7 +9,7 @@
         <div class="column">
             {!! Form::open(array('url' => 'manage/course/team')) !!}
             {!! Form::hidden('team_id', $team->id ) !!}
-            <select class="input is-large" multiple name="from[]" id="add_to_team" placeholder="Select Students...">
+            <select style="width: 80%" multiple name="from[]" id="add_to_team" placeholder="Select Students...">
                     @foreach($students_not_on_team as $student)
                         <option value="{!! $student->id !!}">{!! $student->name !!}</option>
                     @endforeach
