@@ -4,7 +4,7 @@
 <section class="section">
 <div class="tile is-ancestor">
       <div class="tile is-parent is-vertical is-4">
-        <div class="tile is-child notification">
+        <div class="tile is-child">
           <p class="title">Announcements</p>
         @if(!$announcements->isEmpty())
             @foreach($announcements as $announcement)
@@ -31,7 +31,7 @@
         </div>
       </div>
     <div class="tile is-parent is-vertical is-4">
-        <div class="tile is-child notification">
+        <div class="tile is-child">
           <h3 class="title">Agenda</h3>           
             @foreach(access()->agenda() as $date => $quest)
                 <div class="is-clearfix">
@@ -71,7 +71,7 @@
             @endforeach 
         </div>
 
-        <div class="tile is-child notification">
+        <div class="tile is-child">
             <p class="title">Submissions</p>
         </div>
 
@@ -80,7 +80,7 @@
     <div class="tile is-4 is-vertical is-parent">
         @if($feedback_requests || !$notifications->isEmpty())
 
-        <div class="tile is-child notification">
+        <div class="tile is-child">
           <p class="title">Notifications</p>
                 @if($feedback_requests)
                     <p class="subtitle">Feedback Requests</p>
@@ -100,9 +100,11 @@
 
                             <div class="notification">
                                  <a href="{!! url('notification/dismiss', [$notice->id]);!!}" class="delete"></a>
-                                    {!! $notice->message !!}                         
+                                                             
                                 @if($notice->url)
-                                    {{ link_to($notice->url, "View") }}
+                                    {{ link_to($notice->url, $notice->message) }}
+                                @else
+                                    {!! $notice->message !!}
                                 @endif                              
                             </div>
                         @endforeach
@@ -113,7 +115,7 @@
         </div>
         @endif
 
-        <div class="tile is-child notification">
+        <div class="tile is-child">
             <p class="title">Courses</p>
             @foreach(access()->courses() as $c)
                 <p class="subtitle">{!! $c->name !!}</p>
@@ -134,7 +136,7 @@
             @endforeach
         </div>
 
-        <div class="tile is-child notification">
+        <div class="tile is-child">
           <p class="title">Peer Groups</p>
                 @if($team_members)
                     <p class="subtitle">Class Name</p>
