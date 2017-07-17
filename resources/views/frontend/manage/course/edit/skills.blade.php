@@ -33,15 +33,6 @@
                   <th></th>
                 </tr>
               </thead>
-              <!--
-              <tfoot>
-                <tr>
-                  <th>Headline</th>
-                  <th>Date</th>
-                  <th></th>
-                </tr>
-              </tfoot>
-              -->
               <tbody>
               @foreach($skills as $skill)
                       <tr>
