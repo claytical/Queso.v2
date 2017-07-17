@@ -14,6 +14,7 @@
               <div class="field has-addons">
                 <p class="control is-expanded">
                   {{ Form::hidden('course_exists', true, ['id' => 'course_check']) }}
+                  {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
 
                   {{ Form::input('text', 'skill', null, ['class' => 'input is-large', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
                 </p>
@@ -48,6 +49,7 @@
                         <td>
                           {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
                           {!! Form::hidden('skill', $skill->id) !!}
+                          {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                           {{ Form::hidden('course_exists', true, ['id' => 'course_check']) }}
 
                           <button type="submit" class="delete"></button>
