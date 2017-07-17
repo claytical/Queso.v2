@@ -80,7 +80,10 @@
                 @foreach($quest as $q)
                     @if($q['attempt'])
                     <div class="field">
-                        <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>, {!! $q['student'] . ' on ' . date('m-d-Y', strtotime($q['attempt']->created_at)) !!}                
+                        <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>
+                        <div class="is-pulled-right">
+                            {!! $q['student'] . ' on ' . date('m/d', strtotime($q['attempt']->created_at)) !!}
+                        </div>                
                     </div>
                     @endif
                 @endforeach
