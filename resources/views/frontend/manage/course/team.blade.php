@@ -38,8 +38,7 @@
                             <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
                             <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
                             <td class="grades">{!! $student->skills()->where('course_id', '=', $team->course_id)->sum('amount') !!}</td>
-
-                            <td><a href="{!! URL::to('manage/student/'.$student->id.'/team/remove') !!}" class='delete'></a></td>
+                            <td><a href="{!! URL::to('manage/student/'.$student->id.'/team/remove/'.$team->course_id) !!}" class='delete'></a></td>
                         </tr>
                     @endforeach
                   </tbody>
