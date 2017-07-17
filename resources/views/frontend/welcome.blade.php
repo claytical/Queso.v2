@@ -73,6 +73,18 @@
 
         <div class="tile is-child">
             <p class="title">Submissions</p>
+            @foreach(access()->awaiting_grade() as $course => $quest)
+                <div class="is-clearfix">
+                    <h4 class="subtitle">{!! $course !!}</h4>
+                </div>
+                @foreach($quest as $q)
+                    <div class="field">
+                        <a href="{!! URL::to('#'.$q->id) !!}" class="">{!! $q->name !!}</a>                  
+                    @if($q->quest_type_id == 1)
+                      
+                    @endif
+                    </div>
+            @endforeach
         </div>
 
     </div>

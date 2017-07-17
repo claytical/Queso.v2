@@ -142,6 +142,72 @@ class Access
         return $instructors;
     }
 
+
+    public function awaiting_grade() {
+        $courses = $this->user()->courses;
+        $list = [];
+        foreach($courses as $course) {
+            $list[$course->name] = [];
+            if($this->user()->hasRole($course->instructor_role_id)) {
+                //Instructor
+                $quests = $course->quests()->where('groups', '=', false)->get();
+                $group_quests = $course->quests()->where('groups', '=', true)->get();
+
+                foreach($quests as $quest) {
+                        //quest name, quest type, student name, revision number, date submitted
+                    $users = $quest->users()->where('graded', false)->get();
+
+                    foreach($users as $user) {
+
+                        if($quest->quest_type_id == 1) {
+                            $attempt = Submission::where('user_id', '=', $user->id)
+                                                    ->where('quest_id', '=', $quest->id)
+                                                    ->where('revision', '=', $user->pivot->revision)
+                                                    ->first();
+                        }
+                        if($quest->quest_type_id == 4) {
+                            $attempt = Link::where('user_id', '=', $user->id)
+                                                    ->where('quest_id', '=', $quest->id)
+                                                    ->where('revision', '=', $user->pivot->revision)
+                                                    ->first();
+                        }
+
+                       $list[$course->name][] =  ["quest" => $quest->name,
+                                    "quest_id" => $quest->id,
+                                    "type" => $quest->quest_type_id,
+                                    "student" => $user->name,
+                                    "attempt" => $attempt];
+                    }
+
+                }
+
+                foreach($group_quests as $quest) {
+                    $groups = GroupQuest::where('quest_id', '=', $quest->id)
+                                            ->where('graded', '=', false)
+                                            ->get();
+                    foreach($groups as $group) {
+                        if($quest->quest_type_id == 1) {
+                            $attempt = Submission::find($group->attempt_id);
+                        }
+                        if($quest->quest_type_id == 4) {
+                            $attempt = Link::find($group->attempt_id);
+                        }
+
+                       $list[$course->name][] =  ["quest" => $quest->name,
+                                    "quest_id" => $quest->id,
+                                    "type" => $quest->quest_type_id,
+                                    "student" => $group->users->implode('name', ','),
+                                    "attempt" => $attempt];
+                    }
+                }
+            }
+        }
+
+        return $list;
+    }
+
+
+
     public function agenda() {
         $user = $this->user();
         $quests_attempted = $user->quests();
