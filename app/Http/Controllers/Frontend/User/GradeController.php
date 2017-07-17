@@ -343,7 +343,7 @@ class GradeController extends Controller
                         ->users()
                         ->where('user_id', '!=', access()->user()->id)
                         ->count();        
-        return view('frontend.grade.activity_select', ['quests' => $quests, 'users' => $users])
+        return view('frontend.grade.activity_select', ['quests' => $quests, 'users' => $users, 'course_id' => $course_id])
             ->withUser(access()->user());
     }    
     public function activity($quest_id) {
