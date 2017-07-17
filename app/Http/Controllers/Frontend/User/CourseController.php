@@ -199,8 +199,18 @@ class CourseController extends Controller
     public function set_team(Request $request) {
         $team = Team::find($request->team_id);
         //remove everyone from the team
-        $team->users()->detach();
 
+        for($i = 0; $i < count($request->students_added); $i++) {
+            $user_id = $request->students_added[$i];
+            $user = User::find($user_id);
+            //remove from existing team if they have one
+            $existing_user_team = $user->teams()->where('team_user.course_id', '=', $team->course_id);
+            $existing_user_team->detach();
+            //add user to team
+            $team->users()->attach($user_id, ['course_id' => $team->course_id]);
+        }
+//        $team->users()->detach();
+/*
         for($i = 0; $i < count($request->to); $i++) {
             $user_id = $request->to[$i];
             $user = User::find($user_id);
@@ -210,7 +220,7 @@ class CourseController extends Controller
             //add user to team
             $team->users()->attach($user_id, ['course_id' => session('current_course')]);
         }
-
+*/
         return redirect()->route('course.manage.team', [$team->id])->withFlashSuccess($team->name . " has been successfully updated.");
     }
 
