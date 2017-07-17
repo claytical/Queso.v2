@@ -42,7 +42,30 @@
                     @endif
                 </div>
                 @foreach($quest as $q)
-                    <h5>{!! $q->name !!}</h5>
+                    <div class="field">
+                    @if($q->quest_type_id == 1)
+                        <a href="{!! URL::to('quest/attempt/response/'.$q->id) !!}" class="button is-small is-pulled-right">Attempt</a>                    
+                    @endif
+                    @if($q->quest_type_id == 2)
+                    @endif
+                    @if($q->quest_type_id == 3)
+                        <a href="{!! URL::to('quest/watch/'.$q->id) !!}" class="button is-small is-pulled-right">Attempt</a>                    
+                    @endif
+                    @if($q->quest_type_id == 4)
+                        <a href="{!! URL::to('quest/attempt/link/'.$q->id) !!}" class="button is-small is-pulled-right">Attempt</a>                    
+                    @endif
+                    @if($q->quest_type_id == 5)
+                        <a href="{!! URL::to('quest/attempt/upload/'.$q->id) !!}" class="button is-small is-pulled-right">Attempt</a>                    
+                    @endif
+                    @if($q->quest_type_id == 6)
+                        <a href="{!! URL::to('quest/attempt/group/upload/'.$q->id) !!}" class="button is-small is-pulled-right">Attempt</a>                    
+                    @endif
+                    @if($q->quest_type_id == 7)
+                        <a href="{!! URL::to('quest/attempt/group/link/'.$q->id) !!}" class="button is-small is-pulled-right">Attempt</a>                    
+                    @endif
+                        
+                        <h5>{!! $q->name !!}</h5>
+                    </div>
                 @endforeach
                 <hr/>
             @endforeach 

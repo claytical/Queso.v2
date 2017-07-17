@@ -552,7 +552,7 @@ class QuestController extends Controller
     public function attempt_link($quest_id) {
         $quest = Quest::find($quest_id);
         $skills = $quest->skills()->get();
-        return view('frontend.quests.attempt_link', ['quest' => $quest, 'skills' => $skills])
+        return view('frontend.quests.attempt.link', ['quest' => $quest, 'skills' => $skills])
             ->withUser(access()->user());
     }
 

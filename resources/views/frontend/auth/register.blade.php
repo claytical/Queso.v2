@@ -12,14 +12,14 @@
                 <div class="field">                      
                     {{ Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'label']) }}
                     <p class="control">
-                    {{ Form::input('name', 'name', null, ['class' => 'input is-large', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
+                    {{ Form::input('name', 'name', null, ['class' => 'input', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
                     </p>
                 </div>
                 <div class="field">
                     {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'label']) }}
 
                     <p class="control has-icons-left has-icons-right">
-                    {{ Form::input('email', 'email', null, ['class' => 'input is-large', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                    {{ Form::input('email', 'email', null, ['class' => 'input', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
 
                   <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
