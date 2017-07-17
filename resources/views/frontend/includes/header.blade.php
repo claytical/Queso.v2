@@ -38,21 +38,8 @@
                         <div class="navbar-dropdown is-boxed">
                         @foreach(access()->courses_taught() as $c)
                           <a class="navbar-item {{ Active::pattern('manage/course/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/course/'.$c->id) !!}">
-                            <strong>{!! $c->name !!}</strong>
+                            {!! $c->name !!}
                           </a>
-                            <a class="navbar-item {{ Active::pattern('manage/quests/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/quests/'.$c->id) !!}">
-                              Quests
-                            </a>
-                            <a class="navbar-item {{ Active::pattern('manage/announcements/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/announcements/'.$c->id) !!}">
-                              Announcements
-                            </a>
-                            <a class="navbar-item {{ Active::pattern('manage/resources/'.$c->id, 'is-active') }}" href="{!! URL::to('manage/resources/'.$c->id) !!}">
-                              Resources
-                            </a>
-
-                            <a class="navbar-item " href="#">
-                              Students
-                            </a>
                          @endforeach
                 </div>
               @endif
