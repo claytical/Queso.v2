@@ -97,12 +97,14 @@
                 @if(!$notifications->isEmpty())
 
                         @foreach($notifications as $notice)
-                            @if($notice->url)
-                            <p class="">{{ link_to($notice->url, $notice->message) }}</p>
-                            @else
-                            <p class="">{!! $notice->message !!}</p>
-                            @endif
-                            <a href="{!! url('notification/dismiss', [$notice->id]);!!}"><span class="delete"></span></a>
+
+                            <div class="notification">
+                              <a href="{!! url('notification/dismiss', [$notice->id]);!!}" class="delete"></button>
+                              {!! $notice->message !!}
+                                @if($notice->url)
+                                    {{ link_to($notice->url, "View") }}
+                                @endif                              
+                            </div>
                         @endforeach
                     @endif
 
