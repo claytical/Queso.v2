@@ -7,12 +7,13 @@
             {!! Form::open(array('url' => 'quest/submit', 'class' => '')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}       
             {!! Form::hidden('revision', 0) !!}
+            <h2 class="title">{!! $quest->name !!}</h2>
+            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
+
             <div class="tile">
                 <div class="tile is-parent">
                     <div class="tile is-child">
                         <div class="container is-fluid">
-                            <h2 class="title">{!! $quest->name !!}</h2>
-                            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
                             <div class="field">
                                 <p class="control">
                                     {!! Form::textarea('submission', ''); !!}
