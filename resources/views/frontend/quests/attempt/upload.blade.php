@@ -1,33 +1,34 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light is-medium" id="create_resource">
+<section class="hero is-bold is-light" id="create_resource">
     <div class="hero-body">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/submit', 'id' => 'upload-quest')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}       
             {!! Form::hidden('revision', 0) !!}
-            <div class="tile">
-                <div class="tile is-parent is-4">
-                    <div class="tile is-child">
-                        <div class="container is-fluid">
-                            <h2 class="title">{!! $quest->name !!}</h2>
-                            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
-                            <div id="attached_files">
-                                <p id="no_attached_files">No files have been attached yet.</p>
-                            </div>
+            <h2 class="title">{!! $quest->name !!}</h2>
+            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
 
-                        </div>
-                    </div>
-                </div>
+            <div class="tile">
                 <div class="tile is-parent is-4">
                     <div class="tile is-child">
                         <div class="container is-fluid">
                             <div id="submission_upload" class="dropzone"></div>                        
                         </div>
                     </div>
-                    {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
-
+                </div>
+                <div class="tile is-parent is-4 is-vertical">
+                    <div class="tile is-child">
+                        <div class="container is-fluid">
+                            <div id="attached_files">
+                                <p id="no_attached_files">No files have been attached yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container is-fluid">
+                        {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
+                    </div>
                 </div>
                 <div class="is-4 is-child box">
                     @if($quest->expires_at)
