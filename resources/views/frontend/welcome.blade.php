@@ -79,6 +79,7 @@
                 </div>
                 @foreach($quest as $q)
                     <div class="field">
+                        <a href="{!! URL::to('#'.$q['quest_id']) !!}" class="">{!! $q['quest'] !!}</a>                  
                     </div>
                 @endforeach
             @endforeach
