@@ -734,7 +734,7 @@ class QuestController extends Controller
     }
 
     public function redeem() {
-        return view('frontend.quests.redeem')
+        return view('frontend.quests.attempt.redeem')
             ->withUser(access()->user());
     }
 

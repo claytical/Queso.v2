@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light is-medium" id="create_resource">
+<section class="hero is-bold is-light is-medium" id="quest_attempt">
     <div class="hero-body">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/submit', 'class' => '')) !!}

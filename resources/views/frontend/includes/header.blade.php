@@ -16,7 +16,7 @@
               @if (access()->guest())
 
               @else
-                <a class="navbar-item" href="#">Quests</a>
+                <a class="navbar-item" href="{!! URL::to('quest/redeem')!!}">Quests</a>
                 <div class="navbar-item has-dropdown is-hoverable">                
                         <a class="navbar-link  is-active" href="#">
                           Resources
