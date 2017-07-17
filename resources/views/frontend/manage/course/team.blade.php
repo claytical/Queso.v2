@@ -21,7 +21,7 @@
 
             <h1 class="title">{!! $team->name !!}</h1>
 
-            @if(!$team->isEmpty())
+            @if(!$students->isEmpty())
 
                 <table class="table">
                   <thead>

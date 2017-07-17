@@ -24,7 +24,7 @@
               </div>            
             {!! Form::close() !!}
           </div>
-          @if($students->isEmpty())
+          @if($teams->isEmpty())
             <h2 class="subtitle">Teams allow you to group students together for easier management. For example, if you teach two sections of the same course you might have a Monday Team and a Tuesday Team.</h2>
           @else
 
