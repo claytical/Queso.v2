@@ -16,7 +16,6 @@
 
                 {{ Form::input('text', 'team', null, ['class' => 'input is-large', 'placeholder' => 'Team Name', 'id' => 'team_title']) }}
                 {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
-                {!! Form::submit('Add', ['class' => 'button is-primary is-large']) !!}
                 {!! Form::close() !!}
                 </p>
                 <p class="control">
@@ -25,6 +24,9 @@
               </div>            
             {!! Form::close() !!}
           </div>
+          @if($teams->isEmpty())
+            <h2 class="subtitle">Teams allow you to group students together for easier management. For example, if you teach two sections of the same course you might have a Monday Team and a Tuesday Team.</h2>
+          @else
 
             <table class="table">
               <thead>
@@ -51,6 +53,7 @@
 
               </tbody>
             </table>
+          @endif
     </div>
   </div>
 </section>
