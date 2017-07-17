@@ -149,6 +149,10 @@ class CourseController extends Controller
 
     public function remove_skill(Request $request) {
     	Skill::find($request->skill)->delete();
+        if($request->course_exists) {
+            return redirect(route('course.manage.skills'));
+        }
+
 		return redirect(route('course.add.skills'));
 
     }

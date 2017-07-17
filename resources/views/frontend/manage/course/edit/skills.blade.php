@@ -48,6 +48,7 @@
                         <td>
                           {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
                           {!! Form::hidden('skill', $skill->id) !!}
+                          {{ Form::hidden('course_exists', true, ['id' => 'course_check']) }}
 
                           <button type="submit" class="delete"></button>
                           {!! Form::close() !!} 
