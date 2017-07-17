@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero" id="create_resource">
+<section class="hero is-bold is-light is-medium" id="create_resource">
     <div class="hero-body">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/submit', 'class' => '')) !!}
@@ -28,7 +28,7 @@
                                     {!! Form::text('link', '', ['class' => 'input is-large', 'placeholder' => 'http://www.example.com']) !!}
                                   </p>
                                   <p class="control">
-                                      {!! Form::submit('Submit', ['class' => 'button is-primary']) !!}
+                                      {!! Form::submit('Submit', ['class' => 'button is-primary is-large']) !!}
                                   </p>
                                 </div>
                     </div>
