@@ -8,7 +8,7 @@
             {!! Form::hidden('quest_id', $quest->id) !!}       
             {!! Form::hidden('revision', 0) !!}
             <div class="tile">
-                <div class="tile is-8 is-parent">
+                <div class="tile is-parent">
                     <div class="tile is-child">
 
                         @if($quest->expires_at)
@@ -23,13 +23,16 @@
                                     @endif
                                     </p>
                                 </div>
-                                <div class="field">
-                                    <p class="control">
-                                        {!! Form::text('link', '', ['class' => 'input is-large', 'placeholder' => 'http://www.example.com']) !!}
-                                    </p>
+                                <div class="field has-addons">
+                                  <p class="control">
+                                    {!! Form::text('link', '', ['class' => 'input is-large', 'placeholder' => 'http://www.example.com']) !!}
+                                  </p>
+                                  <p class="control">
+                                      {!! Form::submit('Submit', ['class' => 'button is-primary']) !!}
+                                  </p>
                                 </div>
                     </div>
-                    <div class="is-4 is-child notification">
+                    <div class="is-4 is-child box">
                         <p class="title">{!! $quest->skills()->sum('amount') !!} Points Available</p>
                             @foreach($skills as $skill)
                                 {!! $skill->name !!} / 
@@ -39,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            {!! Form::submit('Submit', ['class' => 'button is-primary']) !!}
+            
             {!! Form::close() !!}
 
         </div>
