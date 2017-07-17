@@ -550,6 +550,14 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
+    public function attempt_upload($quest_id) {
+        $quest = Quest::find($quest_id);
+        $skills = $quest->skills()->get();
+        $files = $quest->files;
+        return view('frontend.quests.attempt.upload', ['quest' => $quest, 'skills' => $skills, 'files' => $files])
+            ->withUser(access()->user());
+    }    
+
     public function watch_video($quest_id) {
         $quest = Quest::find($quest_id);
         $skills = $quest->skills()->get();
