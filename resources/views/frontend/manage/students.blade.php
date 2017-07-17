@@ -2,32 +2,43 @@
 
 @section('content')
 
-<h2>Manage Students</h2>
-<a href="#" class="btn btn-default pull-right" id="show_points">Show Points</a>
-@if(!$students->isEmpty())
-<table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
-        <thead>
-            <th data-field="name" 
-            data-sortable="true">Name</th>
-            <th data-field="email" data-sortable="true">Email</th>
-            <th data-field="points" class="grades"
-            data-sortable="true">Points</th>
-            <th></th>
-        </thead>
+<section class="section">
+    <div class="columns">
+        <div class="column is-2">
+        @include('frontend.includes.admin')
+        </div>
+        <div class="column">
+            <a href="#" class="button is-pulled-right is-large" id="show_points">Show Points</a>
+            <h1 class="title">Students</h1>
 
-        @foreach($students as $student)
-            <tr>
-                <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
-                <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
-                <td class="grades">{!! $student->skills()->where('course_id', '=', session('current_course'))->sum('amount') !!}</td>
-                <td>{{ link_to('manage/student/'.$student->id.'/leave', 'Remove', ['class' => 'btn btn-danger']) }}</td>
-            </tr>
-        @endforeach
-</table>
+        @if(!$students->isEmpty())
 
-@else
-    <p class="lead">There are currently no students in this course.</p>
-@endif
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email Address</th>
+                  <th class="grades">Points</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($students as $student)
+                    <tr>
+                        <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
+                        <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
+                        <td class="grades">{!! $student->skills()->where('course_id', '=', $course_id)->sum('amount') !!}</td>
+                        <td>{{ link_to('manage/student/'.$student->id.'/leave', '', ['class' => 'delete']) }}</td>
+                    </tr>
+                @endforeach
+              </tbody>
+            </table>
+        @else
+        <p class="subtitle">There are currently no students enrolled in this course</p>
+        @endif
+        </div>
+      </div>
+</section>
 
 @endsection
 

@@ -27,16 +27,16 @@ class StudentController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function index()
+    public function index($course_id)
     {
-        $course = Course::find(session('current_course'));
+        $course = Course::find($course_id);
         $students = $course->users()
                             ->where('id', '!=', access()->user()->id)
                             ->with('skills', 'teams')
                             ->where('course_id', $course->id)
                             ->get();
 
-        return view('frontend.manage.students', ['students' => $students])
+        return view('frontend.manage.students', ['students' => $students, 'course_id' => $course_id])
             ->withUser(access()->user());
     }    
     public function detail($id) {

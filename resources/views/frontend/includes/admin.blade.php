@@ -15,7 +15,7 @@
     <li><a class="{{ Active::pattern('manage/quests/'.$course_id, 'is-active') }}" href="{!! URL::to('manage/quests/'.$course_id) !!}">Quests</a></li>
     <li><a class="{{ Active::pattern('manage/resources/'.$course_id, 'is-active') }}" href="{!! URL::to('manage/resources/'.$course_id) !!}">Resources</a></li>
     <li><a class="{{ Active::pattern('manage/announcements/'.$course_id, 'is-active') }}" href="{!! URL::to('manage/announcements/'.$course_id) !!}">Announcements</a></li>
-    <li><a>Students</a></li>
+    <li><a class="{{ Active::pattern('manage/students/'.$course_id, 'is-active') }}" href="{!! URL::to('manage/students/'.$course_id) !!}">Students</a></li>
     <li><a>Teams</a></li>
   </ul>
   <p class="menu-label">
