@@ -13,8 +13,9 @@
                         <div class="container is-fluid">
                             <h2 class="title">{!! $quest->name !!}</h2>
                             <h3 class="subtitle">{!! $quest->instructions !!}</h3>
-                            <div id="submission_upload" class="dropzone"></div>
-                            {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
+                            <div id="attached_files">
+                                <p id="no_attached_files">No files have been attached yet.</p>
+                            </div>
 
                         </div>
                     </div>
@@ -22,12 +23,11 @@
                 <div class="tile is-parent is-4">
                     <div class="tile is-child">
                         <div class="container is-fluid">
-                                <h4 class="subtitle">Attached Files</h4>
-                                <div id="attached_files">
-                                    <p id="no_attached_files">No files have been attached yet.</p>
-                                </div>
+                            <div id="submission_upload" class="dropzone"></div>                        
                         </div>
                     </div>
+                    {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
+
                 </div>
                 <div class="is-4 is-child box">
                     @if($quest->expires_at)
