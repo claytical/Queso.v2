@@ -155,6 +155,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('manage/resource/update', 'ResourceController@update')->name('resource.update');
 
         Route::get('manage/course/{course_id}', 'CourseController@manage')->name('course.manage');
+        Route::get('manage/skills/course/{course_id}', 'CourseController@manage_skills')->name('course.manage.skills');
         Route::post('manage/course/update', 'CourseController@update')->name('course.update');
 
 
