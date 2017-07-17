@@ -20,7 +20,7 @@
                                 </p>
                             </div>
                             <div class="field has-addons">
-                              <p class="control">
+                              <p class="control is-expanded">
                                 {!! Form::text('link', '', ['class' => 'input is-large', 'placeholder' => 'http://www.example.com']) !!}
                               </p>
                               <p class="control">
