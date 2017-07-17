@@ -79,10 +79,6 @@
                 </div>
                 @foreach($quest as $q)
                     <div class="field">
-                        <a href="{!! URL::to('#'.$q->id) !!}" class="">{!! $q->name !!}</a>                  
-                    @if($q->quest_type_id == 1)
-                      
-                    @endif
                     </div>
                 @endforeach
             @endforeach
