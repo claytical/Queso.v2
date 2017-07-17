@@ -192,7 +192,7 @@ class CourseController extends Controller
                                 ->whereNotIn('user_id', $students->pluck('id'))
                                 ->where('user_id', '!=', access()->user()->id)
                                 ->get();
-        return view('frontend.manage.course.team', ['team' => $team, 'students' => $students, 'students_not_on_team' => $students_not_on_team]);
+        return view('frontend.manage.course.team', ['team' => $team, 'students' => $students, 'students_not_on_team' => $students_not_on_team, 'course_id' => $team->course_id]);
         
     }
 
