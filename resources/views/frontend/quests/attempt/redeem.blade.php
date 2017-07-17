@@ -7,17 +7,16 @@
             {!! Form::open(array('url' => 'quest/redeem', 'class' => 'form', 'id' => 'redeem-form')) !!}
 
             <h2 class="title">Instant Credit Redemption</h2>
-            <h3 class="subtitle">Enter the code to get points</h3>
+            <h3 class="subtitle">Enter the code to get points or hold the QR code up to your camera</h3>
 
             <div class="tile">
                 <div class="tile is-parent">
                     <div class="tile is-child">
-                            <div id="reader" style="width:250px;height:250px">
+                            <div id="reader" class="is-fullwidth">
                              </div>
 
-
                             <div class="field has-addons">
-                              <p class="control">
+                              <p class="control is-expanded">
                             {!! Form::text('code', '', ['class' => 'input is-large', 'id' => 'code']); !!}
 
                               </p>
