@@ -229,7 +229,7 @@ class CourseController extends Controller
     	$team->name = $request->team;
         $team->course_id = $request->course_id;
     	$team->save();
-        $url = route('course.manage.teams', $request->course-id);
+        $url = route('course.manage.teams', $request->course->id);
         return redirect($url);
 
     }
