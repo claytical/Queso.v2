@@ -227,9 +227,9 @@ class CourseController extends Controller
     public function remove_from_team($student_id, $course_id) {
         $student = User::find($student_id);
         $teams = $student->teams()->where('teams.course_id', $course_id);
-        $team_id = $teams->first()->id;
+        $team = $teams->first();
         $teams->detach();
-        return redirect()->route('course.manage.team', $team_id)->withFlashSuccess($team->name . " has been successfully updated.");
+        return redirect()->route('course.manage.team', $team->id)->withFlashSuccess($team->name . " has been successfully updated.");
 
     }
 
