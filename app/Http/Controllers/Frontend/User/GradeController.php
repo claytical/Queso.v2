@@ -325,25 +325,25 @@ class GradeController extends Controller
 
             }
 
-            return redirect()->route('grade.inclass')
+            return redirect()->route('grade.activity')
                                 ->withFlashSuccess($quest->name . " graded for " . implode(",", $student_list) . ".");
         }
         else {
-            return redirect()->route('grade.inclass')
+            return redirect()->route('grade.activity')
                                 ->withFlashDanger("You must include students to be graded for a quest.");
 
         }
     }
 
 
-    public function inclass()
+    public function activity_select($course_id)
     {
-        $quests = Course::find(session('current_course'))->quests()->where('quest_type_id', 2)->get();
-        $users =  Course::find(session('current_course'))
+        $quests = Course::find($course_id)->quests()->where('quest_type_id', 2)->get();
+        $users =  Course::find($course_id)
                         ->users()
                         ->where('user_id', '!=', access()->user()->id)
                         ->count();        
-        return view('frontend.grade.inclass', ['quests' => $quests, 'users' => $users])
+        return view('frontend.grade.activity_select', ['quests' => $quests, 'users' => $users])
             ->withUser(access()->user());
     }    
     public function activity($quest_id) {
