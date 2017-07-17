@@ -39,7 +39,7 @@
                             <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
                             <td class="grades">{!! $student->skills()->where('course_id', '=', $team->course_id)->sum('amount') !!}</td>
 
-                            <td>{{ link_to({!! URL::to('manage/student/'.$student->id.'/team/remove') !!}, '', ['class' => 'delete']) }}</td>
+                            <td><a href="{!! URL::to('manage/student/'.$student->id.'/team/remove') !!}" class='delete'></a></td>
                         </tr>
                     @endforeach
                   </tbody>
