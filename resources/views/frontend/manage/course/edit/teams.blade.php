@@ -38,7 +38,7 @@
               <tbody>
 
                 @foreach($teams as $team)
-
+                  <tr>
                     <td>{!! link_to('manage/course/team/' . $team->id, $team->name) !!}</td>
                     <td>
 
@@ -49,7 +49,7 @@
                       {!! Form::submit('Remove', ['class' => 'button is-small is-danger']) !!}                           
                       {!! Form::close() !!}
                     </td>
-                    
+                    </tr>
                 @endforeach
 
               </tbody>
