@@ -9,7 +9,7 @@
         </div>
         <div class="column">
             <h1 class="title">Skills</h1>
-          <div class="box">
+          <div class="field">
               {!! Form::open(['url' => 'course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
               <div class="field has-addons">
                 <p class="control is-expanded">
@@ -46,9 +46,8 @@
                         <td>
                           {!! Form::open(['url' => 'course/remove/skill', 'class' => 'remove-skill']) !!}
                           {!! Form::hidden('skill', $skill->id) !!}
-                          <span class="tag is-light is-large">
-                            <button type="submit" class="delete"></button>
-                          </span> 
+
+                          <button type="submit" class="delete"></button>
                           {!! Form::close() !!} 
                         </td>
               @endforeach
