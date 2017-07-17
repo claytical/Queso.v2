@@ -601,10 +601,6 @@ class QuestController extends Controller
             $attempt->url = $request->link;
         }
 
-        $user = access()->user();
-
-
-
         $attempt->quest_id = $request->quest_id;
         $attempt->user_id = $user->id;
         $attempt->revision = $request->revision;
@@ -626,7 +622,7 @@ class QuestController extends Controller
                     $notice->user_id = $request->students[$i];
                     $notice->message = $quest->name . " has been submitted for your group by ". $user->name;
                     $notice->url = null;
-                    $notice->course_id = session('current_course');
+                    $notice->course_id = $quest->course_id;
                     $notice->save();
 
               }
