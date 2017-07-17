@@ -227,17 +227,18 @@ class CourseController extends Controller
     public function add_team(Request $request) {
     	$team = new Team;
     	$team->name = $request->team;
-        $team->course_id = session('current_course');
+        $team->course_id = $request->course_id;
     	$team->save();
-        $url = route('course.manage') . '#teams';
+        $url = route('course.manage.teams', $request->course-id);
         return redirect($url);
 
     }
 
     public function remove_team(Request $request) {
     	$team = Team::find($request->team_id);
+        $course_id = $team->course_id;
     	$team->delete();
-    	return redirect(route('course.manage'));
+    	return redirect(route('course.manage', $course_id));
     }
 
     public function add_levels() {
@@ -384,12 +385,18 @@ class CourseController extends Controller
     public function manage($course_id) {
     	$course = Course::find($course_id);
 //    	$skills = $course->skills()->orderBy('name')->get();
-    	$teams = $course->teams;
         $tzlist = \DateTimeZone::listIdentifiers(\DateTimeZone::ALL);
         return view('frontend.manage.course.details', ['course' => $course, 'teams' => $teams, 'zones' => $tzlist, 'course_id' => $course_id])
             ->withUser(access()->user());
 
     }
+    public function manage_teams($course_id) {
+        $course = Course::find($course_id);
+        $teams = $course->teams;
+        return view('frontend.manage.course.edit.teams', ['course' => $course, 'teams' => $teams, 'course_id' => $course->id])
+            ->withUser(access()->user());
+    }
+
 
     public function manage_skills($course_id) {
         $course = Course::find($course_id);

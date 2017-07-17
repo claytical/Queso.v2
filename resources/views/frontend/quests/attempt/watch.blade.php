@@ -51,7 +51,7 @@
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          width: '100%',
+          width: '99%',
           videoId: '{!! $quest->youtube_id !!}',
           playerVars: {'controls': 0, 'autoplay': 0},
           events: {

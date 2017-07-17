@@ -161,27 +161,6 @@
 
             <div class="tile is-6 is-parent">
                 <div class="tile is-child">
-                    @foreach($teams as $team)
-                        {!! $team->name !!}
-                        {!! Form::open(['url' => 'manage/course/remove/team', 'class' => 'remove-team']) !!}
-                        {!! Form::hidden('team_id', $team->id) !!}
-                        {!! Form::submit('Remove', ['class' => 'button']) !!}                           
-                        {!! Form::close() !!}
-                        {!! link_to('manage/course/team/' . $team->id, 'Manage', ['class' => 'button']) !!}
-                        <a class="button" href="mailto:{!! Form::teamEmailList($team->id) !!}">Mail</a>
-                                         
-                        {!! Form::open(['url' => 'manage/course/edit/team', 'class' => 'edit-team']) !!}
-                        {!! Form::hidden('team_id', $team->id) !!}
-                        {!! Form::input('text', 'team', $team->name, ['class' => 'input edit-team', 'placeholder' => $team->name, 'id' => 'team_name']) !!}
-                        {!! Form::submit('Save', ['class' => 'button']) !!}                  
-                        {!! Form::close() !!}
-                    @endforeach
-
-                    {!! Form::open(['url' => 'manage/course/add/team', 'class' => '', 'id' => 'add-team']) !!}
-                    {!! Form::input('text', 'team', null, ['class' => 'input', 'placeholder' => 'Team Name', 'id' => 'team_title']) !!}
-                    {!! Form::submit('Add This Team', ['class' => 'button']) !!}
-                    {!! Form::close() !!}
-
                     {!! Form::textarea('email_list', null, ['class' => 'input']) !!}
 
                     {!! Form::submit('Share Course', ['class' => 'button']) !!}

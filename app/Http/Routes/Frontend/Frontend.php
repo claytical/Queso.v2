@@ -157,6 +157,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/course/{course_id}', 'CourseController@manage')->name('course.manage');
         Route::get('manage/skills/course/{course_id}', 'CourseController@manage_skills')->name('course.manage.skills');
         Route::get('manage/levels/course/{course_id}', 'CourseController@manage_levels')->name('course.manage.levels');
+        Route::get('manage/teams/course/{course_id}', 'CourseController@manage_teams')->name('course.manage.teams');
 
 
         Route::post('manage/course/update', 'CourseController@update')->name('course.update');
