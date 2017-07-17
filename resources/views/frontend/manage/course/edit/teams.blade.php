@@ -41,10 +41,11 @@
 
                     <td>{!! link_to('manage/course/team/' . $team->id, $team->name) !!}</td>
                     <td>
-                      <a class="button is-small" href="mailto:{!! Form::teamEmailList($team->id) !!}">Mail</a>
 
                       {!! Form::open(['url' => 'manage/course/remove/team', 'class' => 'remove-team']) !!}
                       {!! Form::hidden('team_id', $team->id) !!}
+                      <a class="button is-small" href="mailto:{!! Form::teamEmailList($team->id) !!}">Mail</a>
+
                       {!! Form::submit('Remove', ['class' => 'button is-small is-danger']) !!}                           
                       {!! Form::close() !!}
                     </td>
