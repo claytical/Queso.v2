@@ -13,6 +13,8 @@
               {!! Form::open(['url' => 'course/add/skill', 'class' => '', 'id' => 'add-skill']) !!}
               <div class="field has-addons">
                 <p class="control is-expanded">
+                  {{ Form::hidden('course_exists', true, ['id' => 'course_check']) }}
+
                   {{ Form::input('text', 'skill', null, ['class' => 'input is-large', 'placeholder' => 'Skill Name', 'id' => 'skill_name']) }}
                 </p>
                 <p class="control">

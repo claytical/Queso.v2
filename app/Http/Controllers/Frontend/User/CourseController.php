@@ -137,8 +137,12 @@ class CourseController extends Controller
     	$skill->name = $request->skill;
     	$skill->course_id = $request->session()->get('current_course');
     	$skill->save();
-		return redirect(route('course.add.skills'));
-
+        if($request->course_exists) {
+            return redirect(route('course.manage.skills'));
+        }
+        else {
+	       	return redirect(route('course.add.skills'));
+        }
 //    	return response()->json($skill);
     
     }
