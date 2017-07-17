@@ -12,7 +12,7 @@
             <div class="tile">
                 <div class="tile is-parent">
                     <div class="tile is-child">
-                            <div id="reader" style="width: 250px; height: 250px;" class="has-text-centered">
+                            <div id="reader" style="width: 250px; height: 250px; margin: auto;">
                              </div>
 
                             <div class="field has-addons">
