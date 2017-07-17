@@ -5,6 +5,8 @@ use App\Course;
 use App\Quest;
 use Carbon\Carbon;
 use App\Submission;
+use App\Link;
+use App\GroupQuest;
 
 
 /**
