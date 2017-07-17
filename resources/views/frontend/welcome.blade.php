@@ -99,8 +99,8 @@
                         @foreach($notifications as $notice)
 
                             <div class="notification">
-                              <a href="{!! url('notification/dismiss', [$notice->id]);!!}" class="delete"></button>
-                              {!! $notice->message !!}
+                                 <a href="{!! url('notification/dismiss', [$notice->id]);!!}" class="delete"></a>
+                                    {!! $notice->message !!}                         
                                 @if($notice->url)
                                     {{ link_to($notice->url, "View") }}
                                 @endif                              
