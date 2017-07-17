@@ -33,7 +33,7 @@
         {{ Html::style('css/vendor/multi-step-form.css') }}
         {{ Html::style('css/vendor/jquery.minipreview.css') }}
 
-        {{ Html::style('css/vendor/multiple-select.css') }}
+        {{ Html::style('css/vendor/selectize.css') }}
         {{ Html::style('css/vendor/chartist.css') }}
 
     </head>
@@ -57,7 +57,7 @@
         {{ Html::script('js/vendor/jquery/multi-step-form.js') }}
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/tinymce/tinymce.min.js') }}
-        {{ Html::script('js/vendor/jquery/multiple-select.js') }}
+        {{ Html::script('js/vendor/jquery/selectize.js') }}
         {{ Html::script('js/vendor/jquery/jquery.minipreview.js') }}
         {{ Html::script('js/vendor/jquery/select2.full.min.js') }}
         {{ Html::script('js/vendor/chartist.js') }}
