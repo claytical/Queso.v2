@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
 <div class="tile is-ancestor">
-      <div class="tile is-parent is-vertical is-5">
+      <div class="tile is-parent is-vertical is-4">
         <div class="tile is-child notification">
           <p class="title">Announcements</p>
         @if(!$announcements->isEmpty())
@@ -77,7 +77,7 @@
 
     </div>
 
-    <div class="tile is-3 is-vertical is-parent">
+    <div class="tile is-4 is-vertical is-parent">
         @if($feedback_requests || !$notifications->isEmpty())
 
         <div class="tile is-child notification">
@@ -97,14 +97,12 @@
                 @if(!$notifications->isEmpty())
 
                         @foreach($notifications as $notice)
-                            <p>
-                                @if($notice->url)
-                                <p class="subtitle">{{ link_to($notice->url, $notice->message) }}</p>
-                                @else
-                                <p class="subtitle">{!! $notice->message !!}</p>
-                                @endif
-                                <a href="{!! url('notification/dismiss', [$notice->id]);!!}"><span class="delete"></span></a>
-                            </p>
+                            @if($notice->url)
+                            <p class="">{{ link_to($notice->url, $notice->message) }}</p>
+                            @else
+                            <p class="">{!! $notice->message !!}</p>
+                            @endif
+                            <a href="{!! url('notification/dismiss', [$notice->id]);!!}"><span class="delete"></span></a>
                         @endforeach
                     @endif
 
