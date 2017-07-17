@@ -17,9 +17,10 @@
                                 <p class="control">
                                     {!! Form::textarea('submission', ''); !!}
                                 </p>
+                            {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
+
                             </div>
                         </div>
-                            {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
                     </div>
                 </div>
                 <div class="is-4 is-child box">
