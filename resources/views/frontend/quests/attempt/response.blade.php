@@ -10,44 +10,45 @@
             <div class="tile">
                 <div class="tile is-parent">
                     <div class="tile is-child">
-
-                        @if($quest->expires_at)
-                            <h4 class="is-pulled-right">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
-                        @endif
+                        <div class="container is-fluid">
                             <h2 class="title">{!! $quest->name !!}</h2>
                             <h3 class="subtitle">{!! $quest->instructions !!}</h3>
-                                <div class="field">
-                                    <p class="control">
-                                        {!! Form::textarea('submission', ''); !!}
-                                    </p>
-                                </div>
-                                      {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
-                    </div>
-                    <div class="is-4 is-child box">
-                        @if(!$files->isEmpty())
-                            <p class="title">Attached Files</p>
-
-                            @foreach($files as $file)
-                                <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
-                                <span class="icon is-small"><i class="fa fa-paperclip"></i></span> 
-                                {!! substr($file->name,5) !!}
-                                </a>
-                            @endforeach
-                        @endif
-                        <p class="title">{!! $quest->skills()->sum('amount') !!} Points Available</p>
-                            @foreach($skills as $skill)
-                                {!! $skill->name !!} / 
-                                {!! $skill->pivot->amount !!}
-                            @endforeach
-
+                            <div class="field">
+                                <p class="control">
+                                    {!! Form::textarea('submission', ''); !!}
+                                </p>
+                            </div>
+                        </div>
+                            {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
                     </div>
                 </div>
-            </div>
-            
-            {!! Form::close() !!}
+                <div class="is-4 is-child box">
+                    @if($quest->expires_at)
+                        <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
+                    @endif
 
+                    @if(!$files->isEmpty())
+                        <p class="subtitle">Attached Files</p>
+
+                        @foreach($files as $file)
+                            <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
+                            <span class="icon is-small"><i class="fa fa-paperclip"></i></span> 
+                            {!! substr($file->name,5) !!}
+                            </a>
+                        @endforeach
+                    @endif
+                    <p class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</p>
+                        @foreach($skills as $skill)
+                            {!! $skill->name !!} / 
+                            {!! $skill->pivot->amount !!}
+                        @endforeach
+
+                </div>
+            </div>
         </div>
+            {!! Form::close() !!}
     </div>
+</div>
 </section>
 
 @endsection
