@@ -132,11 +132,10 @@ class CourseController extends Controller
     }
 
     public function add_skill(Request $request) {
-    
     	$skill = new Skill;
     	$skill->name = $request->skill;
         if($request->course_exists) {
-            $skill->course_id = $request->course_id);
+            $skill->course_id = $request->course_id;
             return redirect(route('course.manage.skills'), ['course_id' => $request->course_id]);
         }
         else {

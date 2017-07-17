@@ -22,8 +22,8 @@
     Course Settings
   </p>
   <ul class="menu-list">
-    <li><a class="{{ Active::pattern('course/manage/'.$course_id, 'is-active') }}" href="{!! URL::to('manage/course/'.$course_id) !!}">General</a></li>
-    <li><a class="{{ Active::pattern('course/manage/skills/'.$course_id, 'is-active') }}" href="{!! URL::to('manage/skills/course/'.$course_id) !!}">Skills</a></li>
+    <li><a class="{{ Active::pattern('manage/course/'.$course_id, 'is-active') }}" href="{!! URL::to('manage/course/'.$course_id) !!}">General</a></li>
+    <li><a class="{{ Active::pattern('manage/course/skills/'.$course_id, 'is-active') }}" href="{!! URL::to('manage/skills/course/'.$course_id) !!}">Skills</a></li>
     <li><a>Levels</a></li>
   </ul>
 </aside>
