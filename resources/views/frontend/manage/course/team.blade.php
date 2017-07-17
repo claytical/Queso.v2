@@ -7,16 +7,16 @@
         @include('frontend.includes.admin')
         </div>
         <div class="column">
+            <div class="field">
             {!! Form::open(array('url' => 'manage/course/team')) !!}
             {!! Form::hidden('team_id', $team->id ) !!}
+            {!! Form::submit('Add to Team', ['class' => 'button is-primary is-pulled-right']) !!}
             <select style="width: 80%" multiple name="from[]" id="add_to_team" placeholder="Select Students...">
                     @foreach($students_not_on_team as $student)
                         <option value="{!! $student->id !!}">{!! $student->name !!}</option>
                     @endforeach
             </select>
-
-            {!! Form::submit('Add to Team', ['class' => 'button is-large is-primary is-pulled-right']) !!}
-            
+            </div>
             {!! Form::close() !!}
 
             <h1 class="title">{!! $team->name !!}</h1>
