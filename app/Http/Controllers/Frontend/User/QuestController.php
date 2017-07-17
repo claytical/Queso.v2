@@ -542,6 +542,14 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
     
+    public function attempt_response($quest_id) {
+        $quest = Quest::find($quest_id);
+        $skills = $quest->skills()->get();
+        $files = $quest->files;
+        return view('frontend.quests.attempt.response', ['quest' => $quest, 'skills' => $skills, 'files' => $files])
+            ->withUser(access()->user());
+    }
+
     public function watch_video($quest_id) {
         $quest = Quest::find($quest_id);
         $skills = $quest->skills()->get();

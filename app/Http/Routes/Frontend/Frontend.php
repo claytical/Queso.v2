@@ -55,6 +55,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('notifications/dismiss', 'NoticeController@dismiss_all')->name('frontend.notification.dismiss.all');
         Route::get('quests/available', 'QuestController@available')->name('quests.available'); 
         Route::get('quest/attempt/submission/{quest_id}', 'QuestController@attempt_submission')->name('submission.attempt');
+        Route::get('quest/attempt/response/{quest_id}', 'QuestController@attempt_response')->name('response.attempt');
+
         Route::get('quest/attempt/link/{quest_id}', 'QuestController@attempt_link')->name('link.attempt');
         Route::get('quest/watch/{quest_id}', 'QuestController@watch_video')->name('quest.watch');
         Route::get('quest/redeem', 'QuestController@redeem')->name('quest.redeem');
