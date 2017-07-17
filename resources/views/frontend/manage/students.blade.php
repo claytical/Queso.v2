@@ -8,7 +8,7 @@
         @include('frontend.includes.admin')
         </div>
         <div class="column">
-            <a href="#" class="button is-pulled-right is-large" id="show_points">Show Points</a>
+            <a href="#" class="button is-pulled-right is-large is-primary" id="show_points">Show Points</a>
             <h1 class="title">Students</h1>
 
         @if(!$students->isEmpty())

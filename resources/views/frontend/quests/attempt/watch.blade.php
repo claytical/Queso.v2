@@ -1,31 +1,40 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-        <div class="col-lg-12">
-            <div class="col-md-9">
-              <h2>{!! $quest->name !!}</h2>
-                {!! $quest->instructions !!}
-            </div>
-            <div class="col-md-3">
-            </div>
-            <div id="player" class="col-md-9"></div>
-            <div id="player" class="col-md-3">
-                {!! Form::open(array('url' => 'quest/watched')) !!}
-                {!! Form::hidden('quest_id', $quest->id) !!}
-                {!! Form::hidden('user_id', access()->user()->id) !!}
-                @foreach($skills as $skill)
-                <h4>{!! $skill->name !!}</h4>
-                <div class="progress skill-{!! $skill->id !!}">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="{!! $skill->pivot->amount !!}" style="width:0%;"></div>
-                </div>
-                {!! Form::hidden('skills[]', 0, ['id' => 'skill-'.$skill->id]) !!}
-                {!! Form::hidden('skill_id[]', $skill->id, ['id' => 'v-skill-'.$skill->id]) !!}
+<section class="hero is-bold is-light is-medium" id="quest_attempt">
+    <div class="hero-body">
+        <div class="container is-fluid">        
+            {!! Form::open(array('url' => 'quest/watched')) !!}
+            {!! Form::hidden('quest_id', $quest->id) !!}
+            {!! Form::hidden('user_id', access()->user()->id) !!}
 
-                @endforeach
-                {!! Form::submit('Claim Points', ['class' => 'btn btn-primary btn-submit btn-block', 'disabled' => '']) !!}
-                {!! Form::close() !!}
+            <h2 class="title">{!! $quest->name !!}</h2>
+            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
+
+            <div class="tile">
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                        <div id="player"></div>
+                    </div>
+                    <div class="is-4 is-child box">
+                      @foreach($skills as $skill)
+                        <h4>{!! $skill->name !!}</h4>
+                        <progress class="progress is-success skill-{!! $skill->id !!}" value="0" max="{!! $skill->pivot->amount !!}">0</progress>                        
+                        {!! Form::hidden('skills[]', 0, ['id' => 'skill-'.$skill->id]) !!}
+                        {!! Form::hidden('skill_id[]', $skill->id, ['id' => 'v-skill-'.$skill->id]) !!}
+                      @endforeach
+                      {!! Form::submit('Claim Points', ['class' => 'button is-primary is-large submit-button', 'disabled' => '']) !!}
+
+                    </div>
+                </div>
             </div>
+            
+            {!! Form::close() !!}
+
         </div>
+    </div>
+</section>
+
 
 @endsection
 
@@ -69,10 +78,12 @@
           @foreach($skills as $skill)
             var amount = pct * {!! $skill->pivot->amount !!};
             $('#skill-{!! $skill->id !!}').val(amount);
+            $('.progress.skill-{!! $skill->id !!}').attr('value', amount);
+
           @endforeach
-          $('.progress-bar').attr('style', 'width: '+(pct*100)+'%');
+
           if (pct >= .99) {
-            $('.btn-submit').prop('disabled', false);
+            $('.submit-button').prop('disabled', false);
             @foreach($skills as $skill)
                 $('#skill-{!! $skill->id !!}').val({!! $skill->pivot->amount !!});
             @endforeach
