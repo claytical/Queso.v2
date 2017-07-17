@@ -224,6 +224,16 @@ class CourseController extends Controller
         return redirect()->route('course.manage.team', [$team->id])->withFlashSuccess($team->name . " has been successfully updated.");
     }
 
+    public function remove_from_team($student_id, $course_id) {
+        $student = User::find($student_id);
+        $team = $student->teams()->where('course_id', $course_id);
+        $team_id = $team->id;
+        $team->detach();
+        return redirect()->route('course.manage.team', $team_id)->withFlashSuccess($team->name . " has been successfully updated.");
+
+    }
+
+
 
     public function edit_level(Request $request) {
         $level = Level::find($request->level_id);

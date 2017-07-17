@@ -212,6 +212,4 @@ class StudentController extends Controller
         $student = User::find($student_id);
         $student->teams()->where('course_id', session('current_course'))->detach();
         return redirect()->route('student.detail',  ['student_id' => $student_id])->withFlashSuccess($student->name . " has been removed from their team");
-
-    }
 }
