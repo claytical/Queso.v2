@@ -136,16 +136,15 @@ class CourseController extends Controller
     	$skill->name = $request->skill;
         if($request->course_exists) {
             $skill->course_id = $request->course_id;
+            $skill->save();
             return redirect(route('course.manage.skills', ['course_id' => $request->course_id]));
         }
         else {
             $skill->course_id = $request->session()->get('current_course');
+            $skill->save();
 	       	return redirect(route('course.add.skills'));
         }
-        $skill->save();
 
-//    	return response()->json($skill);
-    
     }
 
     public function remove_skill(Request $request) {
