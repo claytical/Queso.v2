@@ -123,9 +123,9 @@ class CourseController extends Controller
     	
     }
 
-    public function add_skills() {
+    public function add_skills($course_id) {
     	
-    	$skills = Course::find(session('current_course'))->skills;
+    	$skills = Course::find($course_id)->skills;
         return view('frontend.manage.course.skills', ['skills' => $skills])
             ->withUser(access()->user());
     
@@ -135,14 +135,16 @@ class CourseController extends Controller
     
     	$skill = new Skill;
     	$skill->name = $request->skill;
-    	$skill->course_id = $request->session()->get('current_course');
-    	$skill->save();
         if($request->course_exists) {
+            $skill->course_id = $request->course_id);
             return redirect(route('course.manage.skills'), ['course_id' => $request->course_id]);
         }
         else {
+            $skill->course_id = $request->session()->get('current_course');
 	       	return redirect(route('course.add.skills'));
         }
+        $skill->save();
+
 //    	return response()->json($skill);
     
     }
