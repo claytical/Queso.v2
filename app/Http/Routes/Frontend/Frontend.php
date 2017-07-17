@@ -128,7 +128,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('manage/student/{student_id}/leave', 'CourseController@leave')->name('course.leave');
         Route::get('manage/student/{student_id}/team/assign/{team_id}', 'StudentController@assign_team')->name('assign.team');
         Route::get('manage/student/{student_id}/team/remove', 'StudentController@remove_team')->name('remove.team');
-        Route::get('manage/student/{student_id}/team/remove/{course_id}', 'CourseController@remove_from_team')->('remove.team.course');
+        Route::get('manage/student/{student_id}/team/remove/{course_id}', 'CourseController@remove_from_team')->name('remove.team.course');
         Route::get('manage/student/{student_id}/remove/quest/{quest_id}', 'QuestController@remove_student_attempt')->name('remove.student.quest');
         Route::get('manage/announcements/{course_id}', 'AnnouncementController@manage')->name('announcements.manage');
         Route::get('manage/announcement/create/{course_id}', 'AnnouncementController@create')->name('announcements.create');
