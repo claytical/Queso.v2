@@ -13,6 +13,12 @@
             <div class="tile">
                 <div class="tile is-parent">
                     <div class="tile is-child">
+
+                            <div class="field">
+                                <p class="control">
+                                    {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect input']) !!}
+                                </p>
+                            </div>
                             <div class="field has-addons">
                               <p class="control">
                                 {!! Form::text('link', '', ['class' => 'input is-large', 'placeholder' => 'http://www.example.com']) !!}

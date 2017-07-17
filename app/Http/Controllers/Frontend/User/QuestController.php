@@ -556,6 +556,14 @@ class QuestController extends Controller
         $files = $quest->files;
         return view('frontend.quests.attempt.upload', ['quest' => $quest, 'skills' => $skills, 'files' => $files])
             ->withUser(access()->user());
+    }
+
+    public function attempt_upload_group($quest_id) {
+        $quest = Quest::find($quest_id);
+        $skills = $quest->skills()->get();
+        $files = $quest->files;
+        return view('frontend.quests.attempt.upload_group', ['quest' => $quest, 'skills' => $skills, 'files' => $files])
+            ->withUser(access()->user());
     }    
 
     public function watch_video($quest_id) {
@@ -572,6 +580,15 @@ class QuestController extends Controller
         return view('frontend.quests.attempt.link', ['quest' => $quest, 'skills' => $skills, 'files' => $files])
             ->withUser(access()->user());
     }
+
+    public function attempt_link_group($quest_id) {
+        $quest = Quest::find($quest_id);
+        $skills = $quest->skills()->get();
+        $files = $quest->files;
+        return view('frontend.quests.attempt.link_group', ['quest' => $quest, 'skills' => $skills, 'files' => $files])
+            ->withUser(access()->user());
+    }
+
 
     public function submit(Request $request) {
         $quest = Quest::find($request->quest_id);
