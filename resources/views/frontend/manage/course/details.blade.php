@@ -12,7 +12,7 @@
         <div class="column">
         {!! Form::open(['url' => 'manage/course/update', 'id'=>'resource-form', 'class' => '']) !!}
         {{ Form::hidden('course_id', $course->id, ['id' => 'course_id']) }}
-            <a href="mailto:{!! Form::courseEmailList($course->id) !!}" class="button is-large is-pulled-right is-primary">Email Entire Class</a>
+            <a href="mailto:{!! Form::courseEmailList($course->id) !!}" class="button is-large is-pulled-right">Email Entire Class</a>
             <h1 class="title">{!! $course->name !!}</h1>
 
         <div class="tile">

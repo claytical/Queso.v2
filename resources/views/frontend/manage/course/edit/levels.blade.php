@@ -1,81 +1,69 @@
 @extends('frontend.layouts.unassigned')
 
 @section('content')
-
-
-<section class="hero is-dark is-bold">
-  <div class="hero-body">
-    <div class="container is-fluid">
-      <h1 class="title">
-        Levels
-      </h1>
-      <h2 class="subtitle">You probably want more than one level. Traditionally, most classes require over 60% to get a D. That means most of your students will have an F for the majority of the class and make great progress towards the end of the course. To encourage motivation, try creating levels in between levels that correspond to letter grades. Additionally, you can lock students out of assigments until they reach a specific level.</h2>
-        @if(!$levels->isEmpty())
-            <div class="columns is-multiline">
-                @foreach($levels as $level)
-                    <div class="column is-one-quarter">
-                        <div class="notification is-dark">
-                            {!! Form::open(['url' => 'course/remove/level', 'class' => 'remove-level']) !!}
-                            <button type="submit" class="delete is-pulled-right"></button>
-                            {!! Form::hidden('level', $level->id) !!}
-                            <h3 class="title">{!! $level->name !!} </h3>
-                            <h4 class="">{!! $level->amount !!} Points Required</h4>
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>        
-                        
-        @endif
-        <div class="box">
-<!-- Not continuing setup, using course admin instead-->
-            {!! Form::open(['url' => 'course/add/level', 'class' => '', 'id' => 'add-level']) !!}
-
-            <div class="field">
-              <label class="label">Level Name</label>
-              <p class="control">
-                {{ Form::input('text', 'level', null, ['class' => 'input', 'placeholder' => 'Newbie', 'id' => 'level_name']) }}
-              </p>
-            </div>
-
-            <div class="field">
-              <label class="label">Points Required</label>
-              <p class="control">
-                {{ Form::input('number', 'amount', null, ['class' => 'input', 'placeholder' => '0', 'id' => 'level_amount']) }}
-              </p>
-            </div>
-
+<section class="section">
+    <div class="columns">
+        <div class="column is-2">
+        @include('frontend.includes.admin')
+        </div>
+        <div class="column">
+            <h1 class="title">Levels</h1>
+                {!! Form::open(['url' => 'course/add/level', 'class' => '', 'id' => 'add-level']) !!}
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Level Name</label>
+                </div>
+                <div class="field-body">
+                  <div class="field is-grouped">
+                    <p class="control is-expanded">
+                    {{ Form::input('text', 'level', null, ['class' => 'input is-large', 'placeholder' => 'Name', 'id' => 'level_name']) }}
+                    </p>
+                  </div>
+                  <div class="field">
+                    <p class="control is-expanded">
+                      {{ Form::input('number', 'amount', null, ['class' => 'input is-large', 'placeholder' => '0', 'id' => 'level_amount']) }}                      
+                    </p>
+                  </div>
+                </div>
+              </div>
             <p class="control">
+                {{ Form::hidden('course_exists', true, ['id' => 'course_check']) }}
+                {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
+
                 {!! Form::submit('Add Level', ['class' => 'button is-primary is-medium']) !!}
             </p>
 
             {!! Form::close() !!}
 
-        </div>
+          </div>
 
-        {{ link_to('course/instructions', 'Finish!', ['class' => 'button is-large is-light']) }}
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Level</th>
+                  <th>Points Required</th>
+                </tr>
+              </thead>
+              <tbody>
 
+              @foreach($levels as $level)
+                      <tr>
+                        <td>{!! $level->name !!}</td>
+                        <td>{!! $level->amount !!}</td>
+                        <td>
+                          {!! Form::open(['url' => 'course/remove/level', 'class' => 'remove-level']) !!}
+                          {!! Form::hidden('level', $level->id) !!}                          
+                          {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
+                          {{ Form::hidden('course_exists', true, ['id' => 'course_check']) }}
+                          <button type="submit" class="delete"></button>
+                          {!! Form::close() !!} 
+                        </td>
+              @endforeach
+              </tbody>
+            </table>
     </div>
   </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @endsection
 

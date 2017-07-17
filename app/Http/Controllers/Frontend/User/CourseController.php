@@ -373,10 +373,9 @@ class CourseController extends Controller
     public function manage($course_id) {
     	$course = Course::find($course_id);
 //    	$skills = $course->skills()->orderBy('name')->get();
-    	$levels = $course->levels()->orderBy('amount', 'desc')->get();
     	$teams = $course->teams;
         $tzlist = \DateTimeZone::listIdentifiers(\DateTimeZone::ALL);
-        return view('frontend.manage.course.details', ['course' => $course, 'levels' => $levels, 'teams' => $teams, 'zones' => $tzlist, 'course_id' => $course_id])
+        return view('frontend.manage.course.details', ['course' => $course, 'teams' => $teams, 'zones' => $tzlist, 'course_id' => $course_id])
             ->withUser(access()->user());
 
     }
@@ -391,6 +390,13 @@ class CourseController extends Controller
             ->withUser(access()->user());
     }
 
+    public function manage_levels($course_id) {
+        $course = Course::find($course_id);
+        $levels = $course->levels()->orderBy('amount', 'desc')->get();
+
+        return view('frontend.manage.course.edit.levels', ['course' => $course, 'levels' => $levels, 'course_id' => $course->id])
+            ->withUser(access()->user());
+    }
 
 
     public function update(Request $request) {
