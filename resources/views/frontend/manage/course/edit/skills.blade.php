@@ -46,6 +46,7 @@
                           <button type="submit" class="delete"></button>
                           {!! Form::close() !!} 
                         </td>
+                        </tr>
               @endforeach
               </tbody>
             </table>

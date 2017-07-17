@@ -35,8 +35,6 @@
 
             {!! Form::close() !!}
 
-          </div>
-
             <table class="table">
               <thead>
                 <tr>
@@ -58,11 +56,12 @@
                           <button type="submit" class="delete"></button>
                           {!! Form::close() !!} 
                         </td>
+                        </tr>
               @endforeach
               </tbody>
             </table>
-    </div>
-  </div>
+        </div>
+      </div>
 </section>
 
 @endsection
