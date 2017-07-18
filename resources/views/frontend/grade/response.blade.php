@@ -109,6 +109,7 @@
 
     @foreach($skills as $skill)
       $("#skill-input-{{ $skill->id }}").rangeslider({
+            polyfill: false,
             rangeClass: 'rangeslider',
             disabledClass: 'rangeslider--disabled',
             horizontalClass: 'rangeslider--horizontal',
