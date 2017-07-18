@@ -84,7 +84,8 @@
                   <div class="field">
                     <label class="label">{!! $skill->name !!}</label>                  
                     <div class="control">
-                      <input type="range" min="0" step="1" class="input point-val" name="skills[]" max="{!! $skill->pivot->amount !!}">
+                      <input type="range" min="0" step="1" class="point-val" name="skills[]" max="{!! $skill->pivot->amount !!}" id="skill-input-{{ $skill->id }}">
+                      <output id="skill-output-{{ $skill->id }}" style="display: inline-block">0</output>
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
                     </div>
                   </div>
@@ -102,7 +103,15 @@
 
 @section('after-scripts-end')
     <script>
-    $('input[type="range"]').rangeslider();
+
+    @foreach($skills as $skill)
+      $("#skill-input-{{ $skill->id }}").rangeslider();
+
+      $(document).on('input', '#skill-input-{{ $skill->id }}', function() {
+          $('#skill-output-{{ $skill->id }}').html( $(this).val() );
+      });
+    @endforeach
+
 
     $('.point-val').change(function() {
         var totz = 0;
