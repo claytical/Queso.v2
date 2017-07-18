@@ -112,14 +112,14 @@ function updateHandle(el, val) {
       $("#skill-input-{{ $skill->id }}").rangeslider({
           polyfill: false,
           onInit: function() {
-                    $handle = $(this.$handle, this.$range);
+              $handle = $(this.$handle, this.$range);
 
 //            $handle = $('.rangeslider__handle', this.$range);
-            updateHandle($handle, this.value);
+            updateHandle(this.$handle, this.value);
           }
           })
         .on('input', function() {
-            updateHandle($handle, this.value);
+            updateHandle(this.$handle, this.value);
         });
 /*
       $(document).on('input', '#skill-input-{{ $skill->id }}', function() {
