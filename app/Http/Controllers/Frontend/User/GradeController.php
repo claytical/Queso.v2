@@ -238,7 +238,7 @@ class GradeController extends Controller
             $notice->user_id = $user->id;
             $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
             $notice->url = "quest/". $quest->id ."/feedback";
-            $notice->course_id = session('current_course');
+            $notice->course_id = $quest->course_id;
             $notice->save();
             $prof = access()->user();
             Mail::send('emails.instructor_feedback', ['link' => $notice->url, 'sender' => $prof, 'feedback' => $request->feedback, 'quest' => $quest, 'total_points' => $total_points, 'sum_points' => $quest->skills()->sum('amount')], 
@@ -253,10 +253,10 @@ class GradeController extends Controller
         if($quest->groups) {
             $group->graded = true;
             $group->save();
-           return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $users->implode('name', ',') . ".");
+           return redirect()->route('grade.submissions', $quest->course_id)->withFlashSuccess($quest->name . " has been successfully graded for " . $users->implode('name', ',') . ".");
         }
         else {
-            return redirect()->route('grade.submissions')->withFlashSuccess($quest->name . " has been successfully graded for " . $users[0]->name . ".");
+            return redirect()->route('grade.submissions', $quest->course_id)->withFlashSuccess($quest->name . " has been successfully graded for " . $users[0]->name . ".");
  
         }
     }
