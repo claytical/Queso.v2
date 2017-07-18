@@ -107,19 +107,17 @@
 function updateHandle(el, val) {
   el.textContent = val;
 }
-var s_handle_id = 0;
     @foreach($skills as $skill)
-      $("#skill-input-{{ $skill->id }}").rangeslider({
+      $(".rangeslider").rangeslider({
           polyfill: false,
           onInit: function() {
-            $handle = $('.rangeslider__handle', this.$range);
-            updateHandle($handle[s_handle_id], this.value);
+ //           $handle = $('.rangeslider__handle', this.$range);
+            updateHandle($(this).children('.rangeslider__handle'), this.value);
           }
           })
         .on('input', function() {
-            updateHandle($handle[s_handle_id], this.value);
+            updateHandle($(this).children('.rangeslider__handle'), this.value);
         });
-        s_handle_id++;
 
     @endforeach
 
