@@ -98,7 +98,7 @@ class GradeController extends Controller
                 $attempts = Submission::where('quest_id', '=', $quest->id)
                                             ->where('user_id', '=', $attempt->user_id);
                $files = $attempt->files;
-               $view_name = "frontend.grade.quest.response";
+               $view_name = "frontend.grade.response";
                 break;
             case '2':
             case '3':
