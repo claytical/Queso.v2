@@ -4,7 +4,7 @@
   </p>
   <ul class="menu-list">
     <li><a class="{{ Active::pattern('grade/activity/select/'.$course_id, 'is-active') }}" href="{{ URL::to('grade/activity/select/'.$course_id)}}">Activity</a></li>
-    <li><a>Submissions</a></li>
+    <li><a class="{{ Active::pattern('grade/submissions/'.$course_id, 'is-active') }}" href="{{ URL::to('grade/submissions/'.$course_id)}}">Submissions</a></li>
   </ul>
 
   <p class="menu-label">

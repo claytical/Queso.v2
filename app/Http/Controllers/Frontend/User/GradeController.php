@@ -28,8 +28,8 @@ class GradeController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function submission_list() {
-        $course = Course::find(session('current_course'));
+    public function submission_list($course_id) {
+        $course = Course::find($course_id);
         $quests = $course->quests()->where('groups', '=', false)->get();
         $group_quests = $course->quests()->where('groups', '=', true)->get();
 
@@ -40,7 +40,7 @@ class GradeController extends Controller
 
             foreach($users as $user) {
 
-                if($quest->quest_type_id == 1) {
+                if($quest->quest_type_id == 1 || $quest->quest_type_id == 5) {
                     $attempt = Submission::where('user_id', '=', $user->id)
                                             ->where('quest_id', '=', $quest->id)
                                             ->where('revision', '=', $user->pivot->revision)
@@ -66,10 +66,10 @@ class GradeController extends Controller
                                     ->where('graded', '=', false)
                                     ->get();
             foreach($groups as $group) {
-                if($quest->quest_type_id == 1) {
+                if($quest->quest_type_id == 1 || $quest->quest_type_id == 6) {
                     $attempt = Submission::find($group->attempt_id);
                 }
-                if($quest->quest_type_id == 4) {
+                if($quest->quest_type_id == 4 || $quest->quest_type_id == 7) {
                     $attempt = Link::find($group->attempt_id);
                 }
 
@@ -81,7 +81,7 @@ class GradeController extends Controller
             }
         }
 
-        return view('frontend.grade.submissions', ['lists' => $list])
+        return view('frontend.grade.submissions', ['lists' => $list, 'course_id' => $course_id])
             ->withUser(access()->user());
     }
 

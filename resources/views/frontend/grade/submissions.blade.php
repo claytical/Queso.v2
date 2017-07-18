@@ -2,47 +2,51 @@
 
 @section('content')
 @if($lists)
-<div class="col-lg-12">
-    <h2>Ungraded Submissions</h2>
-</div>
+    <section class="section">
+        <div class="columns">
+            <div class="column is-2">
+            @include('frontend.includes.admin')
+            </div>
+            <div class="column">
+                <h1 class="title">Ungraded Quests</h1>
 
-<div class="col-lg-12">
-    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
-        <thead>
-            <tr>
-                <th data-field="name" 
-                data-sortable="true">Quest</th>
-                <th data-field="submitted" 
-                data-sortable="true">Submitted On</th>
-                <th data-field="student" 
-                data-sortable="true">Student</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($lists as $list)
-            	@if($list['attempt'])
-                <tr>
-                    <td>{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</td>
-                    <td>{!! date('m-d-Y', strtotime($list['attempt']->created_at)) !!}</td>
-                    <td>{!! $list['student'] !!}</td>
-                </tr>
-                @endif
-            @endforeach
-        </tbody>
-    </table>
-</div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Quest</th>
+                      <th>Student</th>
+                      <th>Date Submitted</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($lists as $list)
+                        @if($list['attempt'])
+                        <tr>
+                            <td>{{ link_to('grade/quest/'.$list['quest_id'].'/'.$list['attempt']->id, $list['quest']) }}</td>
+                            <td>{!! $list['student'] !!}</td>
+                            <td>{!! date('m/d/Y', strtotime($list['attempt']->created_at)) !!}</td>
+                        </tr>
+                        @endif
+                    @endforeach
+                  </tbody>
+                </table>
+        </div>
+      </div>
+    </section>
 @else
-    <h2>Ungraded Submissions</h2>
-    <p class="lead">There are no submissions to grade!</p>
+    <section class="hero is-dark is-bold is-large">
+      <div class="hero-body">
+        <div class="container">
+            <h1 class="title">Ungraded Quests</h1>
+            <h2 class="subtitle">There are no quests to grade.</h2>
+        </div>
+      </div>
+    </section>
 @endif
+
+
 @endsection
 
 @section('after-scripts-end')
-    <script>
-        var submission_list_options = {
-        valueNames: [ 'submission', 'date', 'student' ]
-    };
 
-    var hackerList = new List('submission-list', submission_list_options);
-    </script>
 @stop

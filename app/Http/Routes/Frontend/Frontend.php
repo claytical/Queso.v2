@@ -85,7 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('announcements', 'AnnouncementController@index')->name('announcements');
 
-        Route::get('grade/submissions', 'GradeController@submission_list')->name('grade.submissions');
+        Route::get('grade/submissions/{course_id}', 'GradeController@submission_list')->name('grade.submissions');
         Route::get('grade/quest/{quest_id}/{submission_id}', 'GradeController@quest')->name('grade.quest');
 //        Route::get('grade/submission/{submission_id}', 'GradeController@submission')->name('grade.submission');
 //        Route::get('grade/link/{link_id}', 'GradeController@link')->name('grade.link');
