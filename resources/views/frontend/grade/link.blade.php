@@ -16,12 +16,6 @@
 
                           <a href="{{ $attempt->url }}" target="_blank">{{ $attempt->url }}</a>
                           
-                          @if(!$files->isEmpty())
-                              @foreach($files as $file)
-                                {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => '', 'download' => substr($file->name,5)]) !!}
-                              @endforeach
-                          @endif
-
                           @if($revision_count > 1)
                             <h4 class="subtitle">Previous Feedback</h4>
                             @foreach($previous_feedback as $feedback)
