@@ -84,7 +84,6 @@
                     <label class="label">{!! $skill->name !!}</label>                  
                     <div class="control">
                       <input type="range" min="0" step="1" class="rangeslider rangeslider--horizontal point-val" value="0" name="skills[]" max="{!! $skill->pivot->amount !!}" id="skill-input-{{ $skill->id }}">
-                      <output id="skill-output-{{ $skill->id }}" class="is-pulled-right" style="display: inline-block">0</output>
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
                     </div>
                   </div>
@@ -122,10 +121,11 @@ function updateHandle(el, val) {
           polyfill: false,
           onInit: function() {
             $handle = $('.rangeslider__handle', this.$range);
-            updateHandle($handle[0], this.value);
+            $handle = $('#skill-input-{{ $skill->id }} .rangeslider__handle', this.$range);
           }
           })
         .on('input', function() {
+
             updateHandle($handle[0], this.value);
         });
 /*
