@@ -87,7 +87,7 @@
                     <label class="label">{!! $skill->name !!}</label>                  
                     <div class="control">
                       <input type="range" min="0" step="1" class="point-val" value="0" name="skills[]" max="{!! $skill->pivot->amount !!}" id="skill-input-{{ $skill->id }}">
-                      <output id="skill-output-{{ $skill->id }}" style="display: inline-block">0</output>
+                      <output id="skill-output-{{ $skill->id }}" class="is-pulled-right" style="display: inline-block">0</output>
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
                     </div>
                   </div>
