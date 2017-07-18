@@ -35,6 +35,8 @@
 
         {{ Html::style('css/vendor/selectize.css') }}
         {{ Html::style('css/vendor/chartist.css') }}
+        {{ Html::style('css/vendor/rangeslider.css') }}
+
 
     </head>
     <body>
@@ -55,6 +57,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         {{ Html::script('js/vendor/jquery/jquery.validate.min.js') }}
         {{ Html::script('js/vendor/jquery/multi-step-form.js') }}
+        {{ Html::script('js/vendor/jquery/rangeslider.min.js') }}
+
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/tinymce/tinymce.min.js') }}
         {{ Html::script('js/vendor/jquery/selectize.js') }}

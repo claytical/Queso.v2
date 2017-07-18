@@ -7,13 +7,13 @@
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'grade/confirm')) !!}
 
-            <h2 class="title">{!! $quest->name !!}, {!! $student->name !!}, {!! date('m/d/Y', strtotime($attempt->created_at)) !!}</h2>
-            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
-
             <div class="tile">
                 <div class="tile is-parent">
                     <div class="tile is-child">
                         <div class="container is-fluid">
+                          <h2 class="title">{!! $quest->name !!}, {!! $student->name !!}, {!! date('m/d/Y', strtotime($attempt->created_at)) !!}</h2>
+                          <h3 class="subtitle">{!! $quest->instructions !!}</h3>
+
                           @if($quest->quest_type_id == 1)
                             {!! $attempt->submission !!}
                           @endif
@@ -72,7 +72,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             <div class="tile is-4 is-child box">
                 @if($revision_count > 1)
                   <h4 class="title">{!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h4>
@@ -82,17 +81,20 @@
                 @endif
 
                 @foreach($skills as $skill)
-                  <label>{!! $skill->name !!}</label>
-                  <div class="input-group">
-                    <input type="number" class="input point-val" name="skills[]" max="{!! $skill->pivot->amount !!}">
+                  <div class="field">
+                    <label class="label">{!! $skill->name !!}</label>                  
+                    <div class="control">
+                      <input type="range" min="0" step="1" class="input point-val" name="skills[]" max="{!! $skill->pivot->amount !!}">
                       {!! Form::hidden('skill_id[]', $skill->id) !!}
-                    <div class="input-group-addon"> / {!! $skill->pivot->amount !!}</div>
+                    </div>
                   </div>
                 @endforeach
-                <h3><span id="total">0</span> / {!! $quest->skills()->sum('amount') !!}</h3>
+                <h5>Total Points Awarded</h5>
+                <span id="total">0</span> of {!! $quest->skills()->sum('amount') !!}</h3>
             </div>
-        </div>
-      {!! Form::close() !!}
+            {!! Form::close() !!}
+          </div>
+      </div>
     </div>
 </section>
 
@@ -100,6 +102,8 @@
 
 @section('after-scripts-end')
     <script>
+    $('input[type="range"]').rangeslider();
+
     $('.point-val').change(function() {
         var totz = 0;
         $( ".point-val" ).each(function( index ) {
