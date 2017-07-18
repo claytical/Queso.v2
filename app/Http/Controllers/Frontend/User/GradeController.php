@@ -90,19 +90,28 @@ class GradeController extends Controller
 
         $quest = Quest::find($quest_id);
         $files = false;
-        if ($quest->quest_type_id == 1) {
-            //SUBMISSION
-            $attempt = Submission::find($attempt_id);
-            $attempts = Submission::where('quest_id', '=', $quest->id)
-                                        ->where('user_id', '=', $attempt->user_id);
-           $files = $attempt->files;
-        }
-        if ($quest->quest_type_id == 4) {
-            //LINK
-            $attempt = Link::find($attempt_id);
-            $attempts = Link::where('quest_id', '=', $quest->id)
+        switch($quest->quest_type_id) {
+            case '1':
+            case '5':
+            case '6':
+                $attempt = Submission::find($attempt_id);
+                $attempts = Submission::where('quest_id', '=', $quest->id)
+                                            ->where('user_id', '=', $attempt->user_id);
+               $files = $attempt->files;
+               $view_name = "frontend.grade.quest.response";
+                break;
+            case '2':
+            case '3':
+            case '4':
+            case '7':
+                $attempt = Link::find($attempt_id);
+                $attempts = Link::where('quest_id', '=', $quest->id)
                                 ->where('user_id', '=', $attempt->user_id);
+               $view_name = "frontend.grade.quest.link";
+
+                break;
         }
+
         $student = User::find($attempt->user_id);
         $positive_feedback = Feedback::where('to_user_id', '=', $attempt->user_id)
                                 ->where('quest_id', '=', $quest_id)
@@ -125,7 +134,7 @@ class GradeController extends Controller
         $revisions = $attempts->get();
         $skills = $quest->skills()->get();
 
-        return view('frontend.grade.quest',   ['attempt' => $attempt, 
+        return view($view_name,   ['attempt' => $attempt, 
                                                     'quest' => $quest, 
                                                     'skills' => $skills,
                                                     'revision_count' => $revision_count,
