@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">        
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.1/rangeslider.css" />
         <!-- front loading scripts -->
         {{ Html::script('js/vendor/dropzone/dropzone.js')}}
         {{ Html::script('js/vendor/list.min.js')}}
@@ -35,7 +35,6 @@
 
         {{ Html::style('css/vendor/selectize.css') }}
         {{ Html::style('css/vendor/chartist.css') }}
-        {{ Html::style('css/vendor/rangeslider.css') }}
 
 
     </head>
@@ -57,8 +56,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         {{ Html::script('js/vendor/jquery/jquery.validate.min.js') }}
         {{ Html::script('js/vendor/jquery/multi-step-form.js') }}
-        {{ Html::script('js/vendor/jquery/rangeslider.min.js') }}
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.1/rangeslider.js"></script>
         {{ Html::script('js/vendor/jquery/jquery.form.js') }}
         {{ Html::script('js/vendor/tinymce/tinymce.min.js') }}
         {{ Html::script('js/vendor/jquery/selectize.js') }}
