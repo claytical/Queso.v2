@@ -877,7 +877,7 @@ class QuestController extends Controller
         $total_points = $existing_skills->sum('amount');
         $existing_skills = $existing_skills->get();
 
-        return view('frontend.quests.revise.link', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills, 'total' => $total_points, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'instructor_feedback' => $instructor_feedback])
+        return view('frontend.quests.revise.link', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills, 'total' => $total_points, 'files' => $files, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'instructor_feedback' => $instructor_feedback])
             ->withUser(access()->user());
     }
 
