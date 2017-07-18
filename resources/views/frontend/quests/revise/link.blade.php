@@ -79,7 +79,7 @@
                             <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                         @endif
 
-                        @if(!$files->isEmpty())
+                        @if($files)
                             <p class="subtitle">Attached Files</p>
 
                             @foreach($files as $file)
