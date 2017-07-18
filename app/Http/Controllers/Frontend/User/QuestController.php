@@ -848,7 +848,7 @@ class QuestController extends Controller
         $quest = Quest::find($quest_id);
         $user = access()->user();
         $skills = $quest->skills()->get();
-
+        $files = false;
         $instructor_feedback = Feedback::where('quest_id', '=', $quest_id)
                                         ->where('to_user_id', $user->id)
                                         ->where('subtype', '=', 1)
