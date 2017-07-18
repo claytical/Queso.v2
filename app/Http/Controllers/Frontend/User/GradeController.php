@@ -92,8 +92,11 @@ class GradeController extends Controller
         $files = false;
         switch($quest->quest_type_id) {
             case '1':
+            /* RESPONSE */
             case '5':
+            /* UPLOAD */
             case '6':
+            /* GROUP UPLOAD */
                 $attempt = Submission::find($attempt_id);
                 $attempts = Submission::where('quest_id', '=', $quest->id)
                                             ->where('user_id', '=', $attempt->user_id);
@@ -101,13 +104,18 @@ class GradeController extends Controller
                $view_name = "frontend.grade.response";
                 break;
             case '2':
+            /* MANUAL OR INSTANT  */
+
             case '3':
+            /* VIDEO */
             case '4':
+            /* SOLO LINK */
             case '7':
+            /* GROUP LINK */
                 $attempt = Link::find($attempt_id);
                 $attempts = Link::where('quest_id', '=', $quest->id)
                                 ->where('user_id', '=', $attempt->user_id);
-               $view_name = "frontend.grade.quest.link";
+               $view_name = "frontend.grade.link";
 
                 break;
         }
