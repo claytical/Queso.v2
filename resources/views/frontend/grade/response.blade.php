@@ -106,21 +106,26 @@
 
 @section('after-scripts-end')
     <script>
+function updateHandle(el, val) {
+  el.textContent = " " + "$" + val + " ";
+}
 
     @foreach($skills as $skill)
       $("#skill-input-{{ $skill->id }}").rangeslider({
-            polyfill: false,
-            rangeClass: 'rangeslider',
-            disabledClass: 'rangeslider--disabled',
-            horizontalClass: 'rangeslider--horizontal',
-            verticalClass: 'rangeslider--vertical',
-            fillClass: 'rangeslider__fill',
-            handleClass: 'rangeslider__handle',
-      });
-
+          polyfill: false,
+          onInit: function() {
+            $handle = $('.rangeslider__handle', this.$range);
+            updateHandle($handle[0], this.value);
+          }
+          })
+        .on('input', function() {
+            updateHandle($handle[0], this.value);
+        });
+/*
       $(document).on('input', '#skill-input-{{ $skill->id }}', function() {
           $('#skill-output-{{ $skill->id }}').html( $(this).val() );
       });
+*/
     @endforeach
 
 
