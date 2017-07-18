@@ -68,7 +68,9 @@
                             {!! Form::hidden('quest_id', $quest->id) !!}
                             {!! Form::hidden('attempt_id', $attempt->id) !!}
                             {!! Form::textarea('feedback', null, ['class' => 'field', 'files' => true]) !!}
-                            {!! Form::submit('Grade', ['class' => 'button is-primary is-large']) !!}
+                            <div class="field">
+                              {!! Form::submit('Grade', ['class' => 'button is-primary is-large is-pulled-right']) !!}
+                            </div>
                         </div>
                     </div>
                 </div>
