@@ -105,7 +105,7 @@
 </style>
     <script>
 function updateHandle(el, val) {
-  el.textContent = val;
+  el.html(val);
 }
     @foreach($skills as $skill)
       $("#skill-input-{{ $skill->id }}").rangeslider({
