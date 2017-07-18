@@ -68,9 +68,6 @@
                             {!! Form::hidden('quest_id', $quest->id) !!}
                             {!! Form::hidden('attempt_id', $attempt->id) !!}
                             {!! Form::textarea('feedback', null, ['class' => 'field', 'files' => true]) !!}
-                            <div class="field">
-                              {!! Form::submit('Grade', ['class' => 'button is-primary is-large is-pulled-right']) !!}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,6 +91,10 @@
                 @endforeach
                 <h5>Total Points Awarded</h5>
                 <span id="total">0</span> of {!! $quest->skills()->sum('amount') !!}</h3>
+                <div class="field">
+                  {!! Form::submit('Grade', ['class' => 'button is-primary is-large is-fullwidth']) !!}
+                </div>
+
             </div>
             {!! Form::close() !!}
           </div>
