@@ -843,6 +843,46 @@ class QuestController extends Controller
             ->withUser(access()->user());
     }
 
+
+    public function revise_link($quest_id) {
+        $quest = Quest::find($quest_id);
+        $user = access()->user();
+        $skills = $quest->skills()->get();
+
+        $instructor_feedback = Feedback::where('quest_id', '=', $quest_id)
+                                        ->where('to_user_id', $user->id)
+                                        ->where('subtype', '=', 1)
+                                        ->orderBy('revision')
+                                        ->get();
+
+        $positive_feedback = Feedback::where('quest_id', '=', $quest_id)
+                                        ->where('to_user_id', $user->id)
+                                        ->where('subtype', '=', 2)
+                                        ->orderBy('revision')  
+                                        ->get();
+
+        $negative_feedback = Feedback::where('quest_id', '=', $quest_id)
+                                        ->where('to_user_id', $user->id)
+                                        ->where('subtype', '=', 3)
+                                        ->orderBy('revision')
+                                        ->get();
+
+        $previous_attempt = Link::where('quest_id', '=', $quest_id)
+                                            ->where('user_id', '=', $user->id)
+//                                            ->where('graded', '=', true)
+                                            ->orderBy('revision')
+                                            ->first();
+        $existing_skills = $user->skills()
+                                ->where('quest_id', $quest_id);
+        $total_points = $existing_skills->sum('amount');
+        $existing_skills = $existing_skills->get();
+
+        return view('frontend.quests.revise.link', ['previous_attempt' => $previous_attempt, 'quest' => $quest, 'skills' => $skills, 'existing_skills' => $existing_skills, 'total' => $total_points, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'instructor_feedback' => $instructor_feedback])
+            ->withUser(access()->user());
+    }
+
+
+
     public function history() {
         $user = access()->user();
         

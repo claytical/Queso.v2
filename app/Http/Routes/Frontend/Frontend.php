@@ -62,6 +62,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('quest/attempt/link/{quest_id}', 'QuestController@attempt_link')->name('link.attempt');
         Route::get('quest/attempt/group/link/{quest_id}', 'QuestController@attempt_link_group')->name('link.attempt.group');
 
+        Route::get('quest/revise/response/{quest_id}', 'QuestController@revise_response')->name('revise.response');
+        Route::get('quest/revise/link/{quest_id}', 'QuestController@revise_link')->name('revise.link');
+        Route::get('quest/revise/upload/{quest_id}', 'QuestController@revise_upload')->name('revise.upload');
+        Route::get('quest/revise/group/upload/{quest_id}', 'QuestController@revise_group_upload')->name('revise.upload.group');
+        Route::get('quest/revise/group/link/{quest_id}', 'QuestController@revise_group_link')->name('revise.link.group');
+
+
+
+
         Route::get('quest/watch/{quest_id}', 'QuestController@watch_video')->name('quest.watch');
         Route::get('quest/redeem', 'QuestController@redeem')->name('quest.redeem');
         Route::post('quest/redeem', 'QuestController@redeemed')->name('quest.redeemed');

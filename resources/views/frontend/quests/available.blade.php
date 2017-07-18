@@ -83,25 +83,19 @@
                             <tr>
                                 <td>
                                     @if($q->quest_type_id == 1)
-                                        <a href="{!! URL::to('quest/attempt/response/'.$q->id) !!}">{!! $q->name !!}</a>            
-                                    @endif
-                                    @if($q->quest_type_id == 2)
-                                        {!! $q->name !!}
-                                    @endif
-                                    @if($q->quest_type_id == 3)
-                                        <a href="{!! URL::to('quest/watch/'.$q->id) !!}">{!! $q->name !!}</a>                    
+                                        <a href="{!! URL::to('quest/revise/response/'.$q->id) !!}">{!! $q->name !!}</a>            
                                     @endif
                                     @if($q->quest_type_id == 4)
-                                        <a href="{!! URL::to('quest/attempt/link/'.$q->id) !!}">{!! $q->name !!}</a>
+                                        <a href="{!! URL::to('quest/revise/link/'.$q->id) !!}">{!! $q->name !!}</a>
                                     @endif
                                     @if($q->quest_type_id == 5)
-                                        <a href="{!! URL::to('quest/attempt/upload/'.$q->id) !!}">{!! $q->name !!}</a>
+                                        <a href="{!! URL::to('quest/revise/upload/'.$q->id) !!}">{!! $q->name !!}</a>
                                     @endif
                                     @if($q->quest_type_id == 6)
-                                        <a href="{!! URL::to('quest/attempt/group/upload/'.$q->id) !!}">{!! $q->name !!}</a>
+                                        <a href="{!! URL::to('quest/revise/group/upload/'.$q->id) !!}">{!! $q->name !!}</a>
                                     @endif
                                     @if($q->quest_type_id == 7)
-                                        <a href="{!! URL::to('quest/attempt/group/link/'.$q->id) !!}">{!! $q->name !!}</a>
+                                        <a href="{!! URL::to('quest/revise/group/link/'.$q->id) !!}">{!! $q->name !!}</a>
                                     @endif
                                 </td>
                                 <td>
