@@ -105,9 +105,16 @@
 @endsection
 
 @section('after-scripts-end')
+<style>
+.rangeslider__handle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+</style>
     <script>
 function updateHandle(el, val) {
-  el.textContent = " " + "$" + val + " ";
+  el.textContent = val;
 }
 
     @foreach($skills as $skill)
@@ -138,7 +145,7 @@ function updateHandle(el, val) {
           });
         $("span#total").html(totz);
     });
-
+/*
     $(document).ready(function () {
         $(window).on('beforeunload', function(){
             return "You have unsaved changes!";
@@ -147,6 +154,6 @@ function updateHandle(el, val) {
             $(window).off('beforeunload');
         });
     });
-
+*/
     </script>
 @stop
