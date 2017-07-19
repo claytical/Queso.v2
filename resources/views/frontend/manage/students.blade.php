@@ -25,7 +25,7 @@
               <tbody>
                 @foreach($students as $student)
                     <tr>
-                        <td>{{ link_to('manage/student/'.$student->id, $student->name) }}</td>
+                        <td>{{ link_to('manage/student/'.$student->id.'/'.$course_id, $student->name) }}</td>
                         <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
                         <td class="grades">{!! $student->skills()->where('course_id', '=', $course_id)->sum('amount') !!}</td>
                         <td>{{ link_to('manage/student/'.$student->id.'/leave', '', ['class' => 'delete']) }}</td>

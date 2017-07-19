@@ -39,11 +39,27 @@ class StudentController extends Controller
         return view('frontend.manage.students', ['students' => $students, 'course_id' => $course_id])
             ->withUser(access()->user());
     }    
-    public function detail($id) {
+
+    public function assign_team($student_id, $team_id) {
+        $student = User::find($student_id);
+        $student->teams()->where('course_id', session('current_course'))->detach();
+        $student->teams()->attach($team_id, ['course_id' => session('current_course')]);
+        $team = Team::find($team_id);
+        return redirect()->route('student.detail',  ['student_id' => $student_id])->withFlashSuccess($student->name . " has been successfully assigned to " . $team->name);
+
+    }
+
+    public function remove_team($student_id) {
+        $student = User::find($student_id);
+        $student->teams()->where('course_id', session('current_course'))->detach();
+        return redirect()->route('student.detail',  ['student_id' => $student_id])->withFlashSuccess($student->name . " has been removed from their team");
+    }
+
+    public function detail($user_id, $course_id) {
         //team, pending
         $user = User::find($id);
 
-        $course = Course::find(session('current_course'));
+        $course = Course::find($course_id);
         $teams = $course->teams()->get();
 
         $team_assignment = $user->teams()->where('team_user.course_id', session('current_course'));
@@ -127,32 +143,14 @@ class StudentController extends Controller
             if($earned_skills > 0) {
                 $total_points_potential += $available;
                 $quests_graded[] = ['quest_master' => $q, 'quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
-/*
-            //CHART SERIES
-                if($quest->groups) {
-                    $skill_dates[] = $history->created_at->format('m/d');
 
-                }
-                else {
-                    $skill_dates[] = $history->pivot->created_at->format('m/d');
-                }
-//                $skill_dates[] = $skills[0]->created_at->format('m/d');
-//                $skill_dates[] = "01-20-2003";
-                $skill_points = [];
-                $bar_total = 0;
-*/
                 foreach($course_skills as $skill) {
                     $amount = $user->skills()->where('skill_id', $skill->id)->where('quest_id', '=', $quest->id)->sum('amount');
-  //                  $bar_total += $amount;
                     if(!$amount) {
                         $amount = 0;
                     }
-//                    $skill_points[] = $amount;
-//                    $skill_points[] = $bar_total;
                 }
                 
- //               $skill_amounts[] = $skill_points;
-            //END CHART
             }
             else {
                 $quests_ungraded[] = ['quest' => $quest, 'revisions' => $revisions, 'skills' => $skills, 'available' => $available];
@@ -195,21 +193,24 @@ class StudentController extends Controller
             }
         }
 
-        return view('frontend.manage.student', ['student' => $user, 'total_points' => $total_points_earned, 'current_level' => $current_level, 'next_level' => $next_level, 'graded_quests' => $quests_graded, 'pending_quests' => $quests_ungraded, 'available_quests' => $quests_unlocked, 'locked_quests' => $quests_locked, 'team' => $team, 'teams' => $teams, 'acquired_skills' => $acquired_skills, 'percentage' => $percentage, 'total_points_potential' => $total_points_potential])
-            ->withUser(access()->user());
-    }
+        return view('frontend.manage.student', ['student' => $user, 
+                                                'total_points' => $total_points_earned, 
+                                                'current_level' => $current_level, 
+                                                'next_level' => $next_level, 
+                                                'graded_quests' => $quests_graded, 
+                                                'pending_quests' => $quests_ungraded, 
+                                                'available_quests' => $quests_unlocked, 
+                                                'locked_quests' => $quests_locked, 
+                                                'team' => $team, 
+                                                'teams' => $teams, 
+                                                'acquired_skills' => $acquired_skills, 
+                                                'percentage' => $percentage, 
+                                                'total_points_potential' => $total_points_potential])
+                                                ->withUser(access()->user());
+        }
 
-    public function assign_team($student_id, $team_id) {
-        $student = User::find($student_id);
-        $student->teams()->where('course_id', session('current_course'))->detach();
-        $student->teams()->attach($team_id, ['course_id' => session('current_course')]);
-        $team = Team::find($team_id);
-        return redirect()->route('student.detail',  ['student_id' => $student_id])->withFlashSuccess($student->name . " has been successfully assigned to " . $team->name);
 
-    }
 
-    public function remove_team($student_id) {
-        $student = User::find($student_id);
-        $student->teams()->where('course_id', session('current_course'))->detach();
-        return redirect()->route('student.detail',  ['student_id' => $student_id])->withFlashSuccess($student->name . " has been removed from their team");
+
+    
 }
