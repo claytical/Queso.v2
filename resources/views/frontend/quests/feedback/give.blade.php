@@ -3,6 +3,8 @@
 @section('content')
 
 <section class="hero is-bold is-light" id="activity">
+    {!! Form::open(array('url' => 'quest/feedback')) !!}
+
     <div class="hero-body">
         <div class="container is-fluid">
             <h1 class="title">{!! $quest->name !!}</h1>
@@ -22,12 +24,11 @@
                     @if($quest->quest_type_id == 4 || $quest->quest_type_id == 7)
                       <a href="{{ $attempt->url }}" data-iframely-url>{{ $attempt->url }}</a>
                     @endif
-
+                    <hr/>
                 </div>
                 <div class="tile is-ancestor">
-                    {!! Form::open(array('url' => 'quest/feedback')) !!}
                     <div class="tile is-parent">
-                        <div class="tile is-child">
+                        <div class="tile is-child is-6">
                             <h3 class="subtitle">What did you like?</h3>
                             <p>Share your thoughts on what you liked about this.</p>
                                 {!! Form::hidden('user_id', $user->id) !!}
@@ -35,7 +36,7 @@
                                 {!! Form::hidden('revision', $attempt->revision) !!}
                                 {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}            
                         </div>
-                        <div class="tile is-child">
+                        <div class="tile is-child is-6">
                             <h3 class="subtitle">What could be improved?</h3>
                             <p>Share your thoughts on how this could be improved.</p>
 
@@ -48,10 +49,11 @@
                             {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
                         </p>
                     </div>
-                    {!! Form::close() !!}
                 </div>
         </div>
     </div>
+{!! Form::close() !!}
+
 </section>
 
 @endsection
