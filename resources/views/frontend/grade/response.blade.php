@@ -112,28 +112,22 @@
 }
 </style>
     <script>
-function updateHandle(el, val) {
-  el.textContent = val;
-}
+        function updateHandle(el, val) {
+          el.html(val);
+        }
+            @foreach($skills as $skill)
+              $("#skill-input-{{ $skill->id }}").rangeslider({
+                  polyfill: false,
+                  onInit: function() {
+                    updateHandle($('#skill-input-{{ $skill->id }}+.rangeslider .rangeslider__handle'), 0);
+                  }
+                  })
+                .on('input', function() {
+                    updateHandle($('#skill-input-{{ $skill->id }}+.rangeslider .rangeslider__handle'), this.value);
+                });
 
-    @foreach($skills as $skill)
-      $("#skill-input-{{ $skill->id }}").rangeslider({
-          polyfill: false,
-          onInit: function() {
-            $handle = $('.rangeslider__handle', this.$range);
-            $handle = $('#skill-input-{{ $skill->id }} .rangeslider__handle', this.$range);
-          }
-          })
-        .on('input', function() {
+            @endforeach
 
-            updateHandle($handle[0], this.value);
-        });
-/*
-      $(document).on('input', '#skill-input-{{ $skill->id }}', function() {
-          $('#skill-output-{{ $skill->id }}').html( $(this).val() );
-      });
-*/
-    @endforeach
 
 
     $('.point-val').change(function() {
