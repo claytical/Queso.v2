@@ -25,11 +25,12 @@
                     <tr>
                         <td>
                         @if($quest['earned'])
-                            {{ link_to('quest/' . $quest['quest']->id . '/feedback', $quest['quest']->name) }}
-                        @else
-                            {!! $quest['quest']->name !!}
-                        @endif
-                            </td>
+                            @if($quest['quest']->quest_type_id == 6 || $quest['quest']->quest_type_id == 7)
+                                {{ link_to('quest/' . $quest['quest']->id . '/group/feedback', $quest['quest']->name) }}
+                            @else
+                                {!! $quest['quest']->name !!}
+                            @endif
+                        </td>
                         <td>
                             @if($quest['revisions'])
                                 {!! count($quest['revisions']) !!}
