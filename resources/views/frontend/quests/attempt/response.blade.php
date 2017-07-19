@@ -24,7 +24,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="is-4 is-child box">
+                <div class="tile is-4 is-parent box">
+                    <div class="tile is-child">
                     @if($quest->expires_at)
                         <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                     @endif
@@ -44,13 +45,12 @@
                             {!! $skill->name !!} / 
                             {!! $skill->pivot->amount !!}
                         @endforeach
-
+                    </div>
                 </div>
             </div>
         </div>
             {!! Form::close() !!}
     </div>
-</div>
 </section>
 
 @endsection
