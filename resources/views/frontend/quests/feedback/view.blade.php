@@ -13,7 +13,7 @@
                     {!! link_to('manage/student/' . $student->id, 'Back to Student Overview', ['class' => 'button is-primary is-medium']) !!}
                     <h2 class="title">{!! $student->name !!}, {!! $quest->name !!}</h2>
                 @endif
-
+                <div class="content">
                 @if($quest->quest_type_id == 1)
                     @if($attempt)
                         {!! $attempt->submission !!}
@@ -35,14 +35,16 @@
                      <p>Attempt Missing</p>
                     @endif
                 @endif
+                </div>
 
                 @if(!$positive->isEmpty())
                     <h4 class="subtitle">What Your Peers Liked</h4>
                         @foreach($positive as $feedback)
-                        <div>
+                        <div class="content">
+                            <blockquote>
                             <h6>{!! $feedback->user_from->name !!}</h6>
                             <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
-                            <blockquote>{!! $feedback->note !!}</blockquote>
+                            {!! $feedback->note !!}</blockquote>
                         </div>
                     @endforeach
                 @endif
@@ -50,20 +52,24 @@
                 @if(!$negative->isEmpty())
                     <h4>Suggestions From Your Peers</h4>
                     @foreach($negative as $feedback)
-                        <div>
+                        <div class="content">
+                            <blockquote>
                             <h6>{!! $feedback->user_from->name !!}</h6>
                               <a class="is-pulled-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                            <blockquote>{!! $feedback->note !!}</blockquote>
+                            {!! $feedback->note !!}
+                            </blockquote>
                         </div>    
                     @endforeach
                 @endif
 
                 @if($graded)
-                    <h4>From The Professor</h4>
                     @foreach($instructor_feedback as $feedback)
-                        <div>
-                            <h6>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h6>
-                            <blockquote>{!! $feedback->note !!}</blockquote>
+                        <div class="content">    
+                            <blockquote>
+                                <h4>From The Professor</h4>
+                                <h6>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h6>
+                                {!! $feedback->note !!}
+                            </blockquote>
                         </div>
                     @endforeach
                 @endif
