@@ -28,7 +28,9 @@
                 @if($quest->quest_type_id == 5 | $quest->quest_type_id == 6)
                     @if(!$files->isEmpty())
                         @foreach($files as $file)
+                            <p>
                             {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => 'preview', 'download' => substr($file->name,5)]) !!}
+                            </p>
                         @endforeach
                     @endif
                 @endif
