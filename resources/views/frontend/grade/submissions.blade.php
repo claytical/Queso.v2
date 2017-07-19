@@ -5,7 +5,7 @@
     <section class="section">
         <div class="columns">
             <div class="column is-2">
-            @include('frontend.includes.admin')
+              @include('frontend.includes.admin')
             </div>
             <div class="column">
                 <h1 class="title">Ungraded Quests</h1>
@@ -34,12 +34,18 @@
       </div>
     </section>
 @else
-    <section class="hero is-dark is-bold is-large">
-      <div class="hero-body">
-        <div class="container">
-            <h1 class="title">Ungraded Quests</h1>
-            <h2 class="subtitle">There are no quests to grade.</h2>
-        </div>
+    <section class="section">
+        <div class="columns">
+            <div class="column is-2">
+              @include('frontend.includes.admin')
+            </div>
+            <div class="column">
+
+              <div class="container">
+                  <h1 class="title">Ungraded Quests</h1>
+                  <h2 class="subtitle">There are no quests to grade.</h2>
+              </div>
+            </div>
       </div>
     </section>
 @endif
