@@ -1082,7 +1082,7 @@ public function view_group_feedback($quest_id, $user_id = null) {
         $attempt = null;
         if($quest->quest_type_id == 6) {  
             $attempt = Submission::find($user_quest->attempt_id);
-            if($attempt->isEmpty()){
+            if(!$attempt){
                 //LOOKUP AS SOLO QUEST
                 $attempt = Submission::where('quest_id', '=', $quest_id)
                                                 ->where('user_id', '=', $user->id)
@@ -1095,7 +1095,7 @@ public function view_group_feedback($quest_id, $user_id = null) {
         }
         if($quest->quest_type_id == 7) {
             $attempt = Link::find($user_quest->attempt_id);
-            if($attempt->isEmpty()) {
+            if(!$attempt) {
             $attempt = Link::where('quest_id', '=', $quest->id)
                             ->where('user_id', '=', $user_id)
                             ->orderBy('revision')
