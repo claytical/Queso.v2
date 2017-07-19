@@ -151,19 +151,6 @@
             @endforeach
         </div>
 
-        <div class="tile is-child">
-          <p class="title">Peer Groups</p>
-                @if($team_members)
-                    <p class="subtitle">Class Name</p>
-                        @foreach($team_members as $team_member)
-                            <p><a href="mailto:{!! $team_member->email !!}">{!! $team_member->name !!}</a></p>
-                        @endforeach
-                @endif
-                <p class="subtitle">Example Course</p>
-                <p>John Winslow</p>
-                <p>Betty Rubble</p>
-                <p>Fred Flinstone</p>
-        </div>
     </div>
 
 </div>

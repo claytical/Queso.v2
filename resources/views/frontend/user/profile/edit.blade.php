@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light" id="profile-edit">
+<section class="hero is-bold is-light is-medium" id="profile-edit">
     <div class="hero-body">
         <div class="container is-fluid">        
 
