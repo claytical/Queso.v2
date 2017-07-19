@@ -16,7 +16,7 @@
                           <h4>Students Receiving Points</h4>
                             <div class="field">
                                 <p class="control">
-                                    <select name="students[]" class="multiselect input" multiple placeholder="Select Students...">
+                                    <select name="students[]" class="multiselect" multiple placeholder="Select Students...">
                                     @foreach($students as $student)
                                         <option value="{!! $student->id !!}">{!! $student->name !!}</option>
                                     @endforeach
@@ -93,6 +93,7 @@
                   });
                 $("span#total").html(totz);
             });
+    $(".multiselect").selectize();
 
 
 

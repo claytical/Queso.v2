@@ -64,7 +64,7 @@
 
 @section('after-scripts-end')
     <script>
-    $(".multiselect").select2();
+    $(".multiselect").selectize();
     $( "form" ).submit(function( event ) {
         if($('input[name="link"]').val().length > 0) {
 
