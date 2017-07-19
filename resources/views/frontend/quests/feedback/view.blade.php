@@ -8,7 +8,12 @@
           <div class="tile is-parent is-vertical is-8">
             <div class="tile is-child">
                 @if($student->id == access()->user()->id)
+                    @if($quest->quest_type_id == 2)
+                    <h2 class="title">{!! $quest->name !!}</h2>
+                    <h3 class="subtitle">Watched Video</h3>
+                    @else
                     <h2 class="title">Feedback for {!! $quest->name !!}</h2>
+                    @endif
                 @else
                     {!! link_to('manage/student/' . $student->id, 'Back to Student Overview', ['class' => 'button is-primary is-medium']) !!}
                     <h2 class="title">{!! $student->name !!}, {!! $quest->name !!}</h2>

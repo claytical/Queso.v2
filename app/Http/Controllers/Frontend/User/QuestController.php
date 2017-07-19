@@ -1080,29 +1080,25 @@ public function view_group_feedback($quest_id, $user_id = null) {
 
         $files = false;
         $attempt = null;
-        if($quest->quest_type_id == 1) {
-            if($quest->groups) {
-                $attempt = Submission::find($user_quest->attempt_id);
-            }
-            else {
+        if($quest->quest_type_id == 6) {  
+            $attempt = Submission::find($user_quest->attempt_id);
+            if($attempt->isEmpty()){
+                //LOOKUP AS SOLO QUEST
                 $attempt = Submission::where('quest_id', '=', $quest_id)
-                                            ->where('user_id', '=', $user->id)
-                                            ->orderBy('revision')
-                                            ->first();
+                                                ->where('user_id', '=', $user->id)
+                                                ->orderBy('revision')
+                                                ->first();
 
-            }            
+            }
             $files = $attempt->files;
 
         }
-        if($quest->quest_type_id == 4) {
-            if($quest->groups) {
-                $attempt = Link::find($user_quest->attempt_id);
-            }
-            else {
+        if($quest->quest_type_id == 7) {
+            $attempt = Link::find($user_quest->attempt_id);
+            if($attempt->isEmpty()) {
             $attempt = Link::where('quest_id', '=', $quest->id)
                             ->where('user_id', '=', $user_id)
                             ->orderBy('revision')
-                        //    ->where('revision', '=', $revision)
                             ->first();
             }
         }
@@ -1122,7 +1118,7 @@ public function view_group_feedback($quest_id, $user_id = null) {
                                         ->get();
 
 
-        return view('frontend.quests.feedback.view_group', ['student' => $user, 'quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback]);
+        return view('frontend.quests.feedback.view', ['student' => $user, 'quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback]);
     }
 
 
