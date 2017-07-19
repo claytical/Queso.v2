@@ -612,7 +612,7 @@ class QuestController extends Controller
             }
 
         }
-        if($quest->quest_type_id == 1) {
+        if($quest->quest_type_id == 1 || $quest->quest_type_id == 5 || $quest->quest_type_id == 6) {
             $attempt = new Submission;
             if($quest->submissions) {
                 $attempt->submission = $request->submission;
