@@ -57,19 +57,24 @@
                         <td>{!! date('m/d', strtotime($quest['quest']->created_at)) !!}</td>
 
                         <td>
-
-                            @foreach($quest['skills'] as $skill)
-                                <p>{!! $skill->name!!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
-                            @endforeach
-                            
                             @if(!$quest['earned'])
                               <p><em>Pending</em></p>
                             @else
                                 @if(count($quest['skills']) > 1)
-                                    <p><strong>Combined</strong> <span class="is-pulled-right">{!! $quest['earned'] !!} / {!! $quest['available'] !!}</span></p>
+                                    @foreach($quest['skills'] as $skill)
+                                        <p>{!! $skill->name!!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
+                                    @endforeach
+
+                                    <p><strong>Total</strong> <span class="is-pulled-right">{!! $quest['earned'] !!} / {!! $quest['available'] !!}</span></p>
+                                @else
+                                    <p><strong>Total</strong> <span class="is-pulled-right">{!! $quest['earned'] !!} / {!! $quest['available'] !!}</span></p>
+
                                 @endif
                               
                             @endif
+
+
+                            
                         </td>
 
                     </tr>
