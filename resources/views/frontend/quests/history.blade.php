@@ -8,8 +8,6 @@
         <div class="tile is-child">
 
             <h2 class="title">Available Quests</h2>
-            <h5 id="predicted-level">{!! $current_level->name !!}</h5>
-            <span id="potential-total">{!! $total_points !!}</span> / <span id="all-points">{!! $total_potential !!}</span>
 
             <table class="table">
                 <th>Quest</th>
@@ -31,12 +29,12 @@
                     <tr>
                         <th data-field="name" 
                         data-sortable="true">Quest</th>
-                        <th data-field="submitted" 
-                        data-sortable="true">Submitted On</th>
                         <th data-field="revisions" 
                         data-sortable="true">Revisions</th>
                         <th data-field="points"
                         data-sortable="true">Points</th>
+                        <th data-field="submitted" 
+                        data-sortable="true">Submitted On</th>
                     </tr>            
                 </thead>
                 <tbody>
@@ -51,28 +49,27 @@
                         <br/>
                                 <em>{!! $quest['quest']->instructions !!}</em>
                             </td>
-                        <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
                         <td>
                             @if($quest['revisions'])
                                 {!! count($quest['revisions']) !!}
+                            @else
+                                None
                             @endif
                         </td>
                         <td>
-                            <dl class="dl-horizontal">
-                                @foreach($quest['skills'] as $skill)
-                                  <dt>{!! $skill->name!!}</dt>
-                                  <dd>{!! $skill->pivot->amount !!}</dd>
-                                @endforeach
-                                
-                                @if(!$quest['earned'])
-                                  <dt>Grade</dt>
-                                  <dd>Pending</dd>
-                                @else
-                                  <dt>Total</dt>
-                                  <dd>{!! $quest['earned'] !!} / {!! $quest['available'] !!}</dd>
-                                @endif
-                            </dl>
+
+                            @foreach($quest['skills'] as $skill)
+                                <p><strong>{!! $skill->name!!}</strong> <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
+                            @endforeach
+                            
+                            @if(!$quest['earned'])
+                              <p><em>Pending</em></p>
+                            @else
+                                <progress class="progress is-small is-success" value="{!! $quest['earned'] !!}" min="0" max="{!! $quest['available'] !!}">{!! $quest['earned'] !!}</progress>                              
+                            @endif
                         </td>
+                        <td>{!! date('m/d/Y', strtotime($quest['quest']->created_at)) !!}</td>
+
                     </tr>
                     @endforeach
                 </tbody>
@@ -94,7 +91,12 @@
             @else
                 <p><strong>{!! $skill[0]['name'] !!}</strong> <span class="is-pulled-right">{!! $skill[0]['amount'] !!}</span></p>
             @endif
-    
+            
+            <h2 class="subtitle">Predicted Level</h2>
+            <h5 id="predicted-level">{!! $current_level->name !!}</h5>
+            <span id="potential-total">{!! $total_points !!}</span> / <span id="all-points">{!! $total_potential !!}</span>
+
+
             <a class="button is-medium is-fullwidth is-info" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">Grade Predictor</a>
 
         </div>
