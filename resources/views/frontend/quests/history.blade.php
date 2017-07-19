@@ -1,53 +1,29 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<h2>Quest Progress</h2>
-<div style="display:none">
-    @foreach($idz as $k)
-    {!! $k !!}
-    @endforeach
-
-</div>
-<div class="col-lg-12">
-    <div class="col-lg-6">
-    <h4>{!! $current_level->name !!}</h4>
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="{!! $total_points !!}" aria-valuemin="{!! $current_level->amount !!}" aria-valuemax="{!! $next_level->amount !!}" style="width: {!! $percentage !!}%;">
-
-
-            <span class="sr-only"></span>
-          </div>
+<section class="section">
+    <h1 class="title">Quest Progress</h1>
+        <div style="display:none">
+            @foreach($idz as $k)
+            {!! $k !!}
+            @endforeach
         </div>
-    </div>
+    <h2 class="subtitle">{!! $current_level->name !!}</h2>
+    <progress class="progress is-large is-success" value="{!! $total_points !!}" min="{!! $current_level->amount !!}" max="{!! $next_level->amount !!}">{!! $total_points !!}</progress>
 
-    <div class="col-lg-6">
-        @foreach($skills as $skill)
-            <div class="col-lg-6">
-                {!! $skill['name'] !!}
-            </div>
-            <div class="col-lg-6">
-                {!! $skill['amount'] !!}
-            </div>
-        @endforeach
-            <div class="col-lg-6">
-                Total
-            </div>
-            <div class="col-lg-6">
-                <span id="earned-points">{!! $total_points !!}</span> / <span id="used-points">{!! $total_potential !!}</span>
-            </div>
-    </div>
+    @foreach($skills as $skill)
+            <p>{!! $skill['name'] !!} : {!! $skill['amount'] !!}</p>
+    @endforeach
+            <p>Total : <span id="earned-points">{!! $total_points !!}</span> / <span id="used-points">{!! $total_potential !!}</span></p>
 
-    <div class="col-lg-12">
-        <a class="btn btn-primary pull-right" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">
-          Grade Predictor
-        </a>
+        <a class="button is-large is-info" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">Grade Predictor</a>
         <div class="collapse" id="availableQuests">
             <div class="col-lg-12">
             <h4>Predicted Level</h4>
             <h5 id="predicted-level">{!! $current_level->name !!}</h5>
             <span id="potential-total">{!! $total_points !!}</span> / <span id="all-points">{!! $total_potential !!}</span>
             </div>
-            <table class="table table-hover">
+            <table class="table">
                 <th>Quest</th>
                 <th>Points Available</th>
                 <th></th>
@@ -56,68 +32,98 @@
                     <tr>
                         <td>{!! $quest->name !!} </td>
                         <td class="amount">{!! $quest->skills()->sum('amount') !!}</td>
-                        <td><button class="btn btn-success predictive pull-right btn-xs">Add</button></td>
+                        <td><button class="button is-small">Add</button></td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
-    </div>
+
+        <h3 class="title">Quests Completed</h3>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th data-field="name" 
+                        data-sortable="true">Quest</th>
+                        <th data-field="submitted" 
+                        data-sortable="true">Submitted On</th>
+                        <th data-field="revisions" 
+                        data-sortable="true">Revisions</th>
+                        <th data-field="points"
+                        data-sortable="true">Points</th>
+                    </tr>            
+                </thead>
+                <tbody>
+                    @foreach($quests as $quest)
+                    <tr>
+                        <td>
+                        @if($quest['earned'])
+                            {{ link_to('quest/' . $quest['quest']->id . '/feedback', $quest['quest']->name) }}
+                        @else
+                            {!! $quest['quest']->name !!}
+                        @endif
+                        <br/>
+                                <em>{!! $quest['quest']->instructions !!}</em>
+                            </td>
+                        <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
+                        <td>
+                            @if($quest['revisions'])
+                                {!! count($quest['revisions']) !!}
+                            @endif
+                        </td>
+                        <td>
+                            <dl class="dl-horizontal">
+                                @foreach($quest['skills'] as $skill)
+                                  <dt>{!! $skill->name!!}</dt>
+                                  <dd>{!! $skill->pivot->amount !!}</dd>
+                                @endforeach
+                                
+                                @if(!$quest['earned'])
+                                  <dt>Grade</dt>
+                                  <dd>Pending</dd>
+                                @else
+                                  <dt>Total</dt>
+                                  <dd>{!! $quest['earned'] !!} / {!! $quest['available'] !!}</dd>
+                                @endif
+                            </dl>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
-<h3>Quests Completed</h3>
-
-    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
-        <thead>
-            <tr>
-                <th data-field="name" 
-                data-sortable="true">Quest</th>
-                <th data-field="submitted" 
-                data-sortable="true">Submitted On</th>
-                <th data-field="revisions" 
-                data-sortable="true">Revisions</th>
-                <th data-field="points"
-                data-sortable="true">Points</th>
-            </tr>            
-        </thead>
-        <tbody>
-            @foreach($quests as $quest)
-            <tr>
-                <td>
-                @if($quest['earned'])
-                    {{ link_to('quest/' . $quest['quest']->id . '/feedback', $quest['quest']->name) }}
-                @else
-                    {!! $quest['quest']->name !!}
-                @endif
-                <br/>
-                        <em>{!! $quest['quest']->instructions !!}</em>
-                    </td>
-                <td>{!! date('m-d-Y', strtotime($quest['quest']->created_at)) !!}</td>
-                <td>
-                    @if($quest['revisions'])
-                        {!! count($quest['revisions']) !!}
-                    @endif
-                </td>
-                <td>
-                    <dl class="dl-horizontal">
-                        @foreach($quest['skills'] as $skill)
-                          <dt>{!! $skill->name!!}</dt>
-                          <dd>{!! $skill->pivot->amount !!}</dd>
-                        @endforeach
-                        
-                        @if(!$quest['earned'])
-                          <dt>Grade</dt>
-                          <dd>Pending</dd>
-                        @else
-                          <dt>Total</dt>
-                          <dd>{!! $quest['earned'] !!} / {!! $quest['available'] !!}</dd>
-                        @endif
-                    </dl>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
 
 @endsection
 
