@@ -310,8 +310,8 @@ class QuestController extends Controller
                 }
         }
 
-        $quest->instant = $request->has('instant');
-        $quest->groups = $request->has('group_submission');
+        $quest->instant = $request->instant;
+        $quest->groups = $request->groups;
         
         if($quest->instant) {
             if($request->new_codes > 0) {
@@ -329,8 +329,8 @@ class QuestController extends Controller
                 }
             }
         }
-        $quest->peer_feedback = $request->has('peer_feedback');
-        $quest->revisions = $request->has('revisions');
+        $quest->peer_feedback = $request->feedback;
+        $quest->revisions = $request->revisions;
 
 //UPDATE SKILLS
         for($i = 0; $i < count($request->skill); $i++) {
@@ -362,7 +362,7 @@ class QuestController extends Controller
         $quest->save();
         //session->flash('flash_success', );
 //        return view('frontend.manage.quests.updated')
-        return redirect()->route('quests.manage')->withFlashSuccess($quest->name . " has been successfully updated");
+        return redirect()->route('quests.manage', $quest->course_id)->withFlashSuccess($quest->name . " has been successfully updated");
 
   //          ->withUser(access()->user());
 
