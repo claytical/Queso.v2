@@ -415,6 +415,9 @@ class QuestController extends Controller
                 if($request->expires) {
                     $quest->expires_at = $request->expiration;
                 }
+                else {
+                    $quest->expires_at = null;
+                }
                 break;
             case '3':
                 if (strpos($request->video_url, 'youtube.com') !== false) {
