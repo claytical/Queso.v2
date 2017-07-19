@@ -2,27 +2,15 @@
 
 @section('content')
 <section class="section">
-    <h1 class="title">Quest Progress</h1>
-        <div style="display:none">
-            @foreach($idz as $k)
-            {!! $k !!}
-            @endforeach
-        </div>
-    <h2 class="subtitle">{!! $current_level->name !!}</h2>
-    <progress class="progress is-large is-success" value="{!! $total_points !!}" min="{!! $current_level->amount !!}" max="{!! $next_level->amount !!}">{!! $total_points !!}</progress>
 
-    @foreach($skills as $skill)
-            <p>{!! $skill['name'] !!} : {!! $skill['amount'] !!}</p>
-    @endforeach
-            <p>Total : <span id="earned-points">{!! $total_points !!}</span> / <span id="used-points">{!! $total_potential !!}</span></p>
+<div class="tile is-ancestor">
+      <div class="tile is-parent is-vertical is-8">
+        <div class="tile is-child">
 
-        <a class="button is-large is-info" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">Grade Predictor</a>
-        <div class="collapse" id="availableQuests">
-            <div class="col-lg-12">
-            <h4>Predicted Level</h4>
+            <h2 class="title">Available Quests</h2>
             <h5 id="predicted-level">{!! $current_level->name !!}</h5>
             <span id="potential-total">{!! $total_points !!}</span> / <span id="all-points">{!! $total_potential !!}</span>
-            </div>
+
             <table class="table">
                 <th>Quest</th>
                 <th>Points Available</th>
@@ -37,10 +25,7 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
-
-        <h3 class="title">Quests Completed</h3>
-
+            <h2 class="title">Completed Quests</h2>
             <table class="table">
                 <thead>
                     <tr>
@@ -91,40 +76,31 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>
+            </table>          
+        </div>
+      </div>
+    <div class="tile is-parent is-vertical is-4">
+        <div class="tile is-child">
+            <h3 class="title">Current Level</h3>
+            <h2 class="subtitle">{!! $current_level->name !!}</h2>
+            <progress class="progress is-large is-success" value="{!! $total_points !!}" min="{!! $current_level->amount !!}" max="{!! $next_level->amount !!}">{!! $total_points !!}</progress>
 
-</section>
+            @if(count($skills) > 1)
+                @foreach($skills as $skill)
+                    <p><strong>{!! $skill['name'] !!}</strong> <span class="is-pulled-right">{!! $skill['amount'] !!}</span></p>
+                @endforeach
+                <hr/>
+                <p><strong>Total</strong> <span class="is-pulled-right">{!! $total_points !!}</span></p>
+            @else
+                <p><strong>{!! $skill[0]['name'] !!}</strong> <span class="is-pulled-right">{!! $skill[0]['amount'] !!}</span></p>
+            @endif
+    
+            <a class="button is-medium is-fullwidth is-info" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">Grade Predictor</a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
+    </div>
 </div>
-
+</section>
 @endsection
 
 @section('after-scripts-end')
