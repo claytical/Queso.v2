@@ -16,7 +16,7 @@
 
                             <div class="field">
                                 <p class="control">
-                                {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect']) !!}
+                                {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect', 'placeholder' => 'Select Other Students...']) !!}
                                 </p>
                             </div>
                             <div class="field has-addons">
