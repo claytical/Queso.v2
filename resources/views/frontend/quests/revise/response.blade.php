@@ -11,7 +11,7 @@
             <h3 class="subtitle">{!! $quest->instructions !!}</h3>
 
             <div class="tile">
-                <div class="tile is-parent is-8">
+                <div class="tile is-parent">
                     <div class="tile is-child">
                             <div class="field">
                                 <p class="control">
@@ -25,7 +25,8 @@
                                 </p>
                             </div>
                     </div>
-                    <div class="tile is-child box">
+                    <div class="tile is-child is-4">
+                        <div class="box">
                         @if(empty($existing_skills[0]))
                             <h3><span class="label is-danger">UNGRADED</span></h3>
                             <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
@@ -54,6 +55,7 @@
                                 </a>
                             @endforeach
                         @endif
+                        </div>
                     </div>
             </div>
         </div>
