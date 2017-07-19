@@ -60,7 +60,7 @@
                 @endif
 
                 @if(!$negative->isEmpty())
-                    <h4>Suggestions From Your Peers</h4>
+                    <h4 class="subtitle">Suggestions From Your Peers</h4>
                     @foreach($negative as $feedback)
                         <div class="content">
                             <blockquote>

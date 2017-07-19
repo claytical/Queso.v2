@@ -99,8 +99,8 @@
               <p class="title">Notifications</p>
                     @if($feedback_requests)
                         <div class="notification">
-                             <p>You have {!! count($feedback_requests) !!} feedback requests.</p>
                              <a href="{!! URL::to('feedback') !!}" class="button is-small is-primary is-pulled-right">View</a>
+                             <p>You have {!! count($feedback_requests) !!} feedback requests.</p>
                         </div>
                     @endif
 
