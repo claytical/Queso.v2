@@ -62,19 +62,6 @@
                         <h4 class="title">Due {!! date('m/d/Y', strtotime($quest->expires_at)) !!}</h4>
                     @endif
 
-                    @if($files)
-                        <h5 class="subtitle">Attached Files</h5>
-
-                        @foreach($files as $file)
-                            <p>
-                            <a href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
-                            <span class="icon is-small"><i class="fa fa-paperclip"></i></span> 
-                            {!! substr($file->name,5) !!}
-                            </a>
-                            </p>
-                        @endforeach
-                    @endif
-
                     </div>
                 </div>
             </div>
@@ -121,8 +108,5 @@
 @endsection
 
 @section('after-scripts-end')
-    <script>
     {{ Html::script('js/upload.quest.files.js')}}
-
-    </script>
 @stop
