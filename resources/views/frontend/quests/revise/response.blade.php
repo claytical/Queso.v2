@@ -17,41 +17,43 @@
                                 <p class="control">
                                     {!! Form::textarea('submission', ''); !!}
                                 </p>
+                            </div>
+                            <div class="field">
+                                <p class="control">
 
                                   {!! Form::submit('Submit', ['class' => 'button is-primary is-large']) !!}
-                            
+                                </p>
                             </div>
                     </div>
-                </div>
-                <div class="is-4 is-child box">
-                    @if(empty($existing_skills[0]))
-                        <h3><span class="label is-danger">UNGRADED</span></h3>
-                        <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
-                    @endif
+                    <div class="tile is-child box">
+                        @if(empty($existing_skills[0]))
+                            <h3><span class="label is-danger">UNGRADED</span></h3>
+                            <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
+                        @endif
 
-                    @if(!empty($existing_skills[0]))
-                        <h4 class="subtitle">Current Grade</h4>
-                        @foreach($skills as $index => $skill)
-                            <h5>{!! $skill->name !!} <span class="is-pulled-right">{!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}</span></h5>
-                                        
-                        @endforeach
-                            <h5>Total Points <span class="is-pulled-right">{!! $total !!} / {!! $quest->skills()->sum('amount') !!}</span></h5>
-                    @endif
+                        @if(!empty($existing_skills[0]))
+                            <h4 class="subtitle">Current Grade</h4>
+                            @foreach($skills as $index => $skill)
+                                <h5>{!! $skill->name !!} <span class="is-pulled-right">{!! $existing_skills[$index]->pivot->amount !!} / {!! $skill->pivot->amount !!}</span></h5>
+                                            
+                            @endforeach
+                                <h5>Total Points <span class="is-pulled-right">{!! $total !!} / {!! $quest->skills()->sum('amount') !!}</span></h5>
+                        @endif
 
-                    @if($quest->expires_at)
-                        <h4 class="title">Due {!! date('m/d/Y', strtotime($quest->expires_at)) !!}</h4>
-                    @endif
+                        @if($quest->expires_at)
+                            <h4 class="title">Due {!! date('m/d/Y', strtotime($quest->expires_at)) !!}</h4>
+                        @endif
 
-                    @if($files)
-                        <p class="subtitle">Attached Files</p>
+                        @if($files)
+                            <p class="subtitle">Attached Files</p>
 
-                        @foreach($files as $file)
-                            <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
-                            <span class="icon is-small"><i class="fa fa-paperclip"></i></span> 
-                            {!! substr($file->name,5) !!}
-                            </a>
-                        @endforeach
-                    @endif
+                            @foreach($files as $file)
+                                <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
+                                <span class="icon is-small"><i class="fa fa-paperclip"></i></span> 
+                                {!! substr($file->name,5) !!}
+                                </a>
+                            @endforeach
+                        @endif
                 </div>
             </div>
             @if($positive->first())
