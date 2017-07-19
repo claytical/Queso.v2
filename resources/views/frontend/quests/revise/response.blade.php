@@ -54,49 +54,49 @@
                                 </a>
                             @endforeach
                         @endif
-                </div>
+                    </div>
             </div>
-            @if($positive->first())
-                <h4>What Your Peers Liked</h4>
-                <div class="content">
-                @foreach($positive as $feedback)            
-                    <blockquote>
-                    <h5>{!! $feedback->user_from->name !!}, {!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h5>
-                    {!! $feedback->note !!}
-                    </blockquote>
-                @endforeach
-                </div>
-            @endif
-            @if($negative->first())
-                <h4>Suggestions From Your Peers</h4>
-                <div class="content">
-                @foreach($negative as $feedback)
-                    <blockquote>
-                    <h5>{!! $feedback->user_from->name !!}, {!! date('m-d-Y', strtotime($feedback->created_at)) !!}</h5>
-                    {!! $feedback->note !!}    
-                    </blockquote>
-                @endforeach
-                </div>
-            @endif
-            
-            @if(!empty($existing_skills[0]))
-                <h4>From The Professor</h4>
-                <div class="content">
-                @foreach($instructor_feedback as $feedback)
-                    <blockquote>
-                    <h6>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h6>
-                    {!! $feedback->note !!}
-                    </blockquote>
-                @endforeach
-                </div>
-            @endif
+        </div>
+        @if($positive->first())
+            <h4>What Your Peers Liked</h4>
+            <div class="content">
+            @foreach($positive as $feedback)            
+                <blockquote>
+                <h5>{!! $feedback->user_from->name !!}, {!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h5>
+                {!! $feedback->note !!}
+                </blockquote>
+            @endforeach
+            </div>
+        @endif
+        @if($negative->first())
+            <h4>Suggestions From Your Peers</h4>
+            <div class="content">
+            @foreach($negative as $feedback)
+                <blockquote>
+                <h5>{!! $feedback->user_from->name !!}, {!! date('m-d-Y', strtotime($feedback->created_at)) !!}</h5>
+                {!! $feedback->note !!}    
+                </blockquote>
+            @endforeach
+            </div>
+        @endif
+        
+        @if(!empty($existing_skills[0]))
+            <h4>From The Professor</h4>
+            <div class="content">
+            @foreach($instructor_feedback as $feedback)
+                <blockquote>
+                <h6>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h6>
+                {!! $feedback->note !!}
+                </blockquote>
+            @endforeach
+            </div>
+        @endif
 
-            </div>
+    </div>
             
             {!! Form::close() !!}
 
-        </div>
-    </div>
+</div>
 </section>
 
 @endsection
