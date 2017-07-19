@@ -37,17 +37,18 @@
                         </div>
                         <div class="tile is-child">
                             <h3 class="subtitle">What could be improved?</h3>
-                            <p>Share your thoughts on where this could be improved. Is there something you wished they explored? Are there other possibilities to explore?</p>
+                            <p>Share your thoughts on how this could be improved.</p>
 
                             {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
                         </div>
-                            <div class="field">
-                                <p class="control">
-                                    {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
-                                </p>
-                            </div>
                     </div>
-                            {!! Form::close() !!}
+    
+                    <div class="field">
+                        <p class="control">
+                            {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
+                        </p>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
         </div>
     </div>
