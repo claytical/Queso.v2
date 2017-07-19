@@ -25,7 +25,7 @@
                     @endif
                 @endif
     
-                @if($quest->quest_type_id == 5)
+                @if($quest->quest_type_id == 5 | $quest->quest_type_id == 6)
                     @if(!$files->isEmpty())
                         @foreach($files as $file)
                             {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => 'preview', 'download' => substr($file->name,5)]) !!}
@@ -33,7 +33,7 @@
                     @endif
                 @endif
 
-                @if($quest->quest_type_id == 4)
+                @if($quest->quest_type_id == 4 || $quest->quest_type_id == 7)
                     @if($attempt)
                       <a href="{{ $attempt->url }}" data-iframely-url>{{ $attempt->url }}</a>
                     @else
