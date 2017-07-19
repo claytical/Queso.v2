@@ -25,7 +25,6 @@
 
                         <h4>Feedback to Student</h4>
                             {!! Form::hidden('quest_id', $quest->id) !!}
-                            {!! Form::hidden('attempt_id', $attempt->id) !!}
                             {!! Form::textarea('feedback', null, ['class' => 'field', 'files' => true]) !!}
                         </div>
                     </div>
