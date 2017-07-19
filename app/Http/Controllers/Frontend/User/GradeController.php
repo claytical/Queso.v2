@@ -207,7 +207,12 @@ class GradeController extends Controller
             $group = GroupQuest::where('quest_id', '=', $quest->id)
                                 ->where('attempt_id', '=', $request->attempt_id)
                                 ->first();
-            $users = $group->users;
+            if($group) {
+                $users = $group->users;
+            }
+            else {
+                $users[] = User::find($attempt->user_id);
+            }
         }
         else {
             $users[] = User::find($attempt->user_id);
