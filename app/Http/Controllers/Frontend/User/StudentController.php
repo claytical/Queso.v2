@@ -27,8 +27,7 @@ class StudentController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function index($course_id)
-    {
+    public function index($course_id) {
         $course = Course::find($course_id);
         $students = $course->users()
                             ->where('id', '!=', access()->user()->id)
@@ -57,7 +56,7 @@ class StudentController extends Controller
 
     public function detail($user_id, $course_id) {
         //team, pending
-        $user = User::find($id);
+        $user = User::find($user_id);
 
         $course = Course::find($course_id);
         $teams = $course->teams()->get();
@@ -83,7 +82,7 @@ class StudentController extends Controller
                                     "name" => $skill->name];
         }
 
-        $total_points_earned = $user->skills()->where('course_id', '=', session('current_course'))->sum('amount');
+        $total_points_earned = $user->skills()->where('course_id', '=', $course_id)->sum('amount');
         $total_points_potential = 0;
         if(!$total_points_earned) {
             $total_points_earned = 0;
@@ -164,11 +163,11 @@ class StudentController extends Controller
             $user_skill_levels[$skill->id] = $user->skills()->where('skill_id', $skill->id)->sum('amount');
         }
 
-        $quests_unattempted = Quest::where('course_id', '=', session('current_course'))
+        $quests_unattempted = Quest::where('course_id', '=', $course_id)
                     ->whereNotIn('id', array_merge($quest_ids->toArray(), $group_quest_ids->toArray()))
                     ->orderBy('expires_at')
                     ->get();
-        $quests_revisable = Quest::where('course_id', '=', session('current_course'))
+        $quests_revisable = Quest::where('course_id', '=', $course_id)
                     ->whereIn('id', $quest_ids)
                     ->where('revisions', '=', true)
                     ->orderBy('expires_at')
@@ -212,5 +211,5 @@ class StudentController extends Controller
 
 
 
-    
+
 }
