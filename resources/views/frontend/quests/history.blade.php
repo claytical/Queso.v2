@@ -59,13 +59,16 @@
                         <td>
 
                             @foreach($quest['skills'] as $skill)
-                                <p><strong>{!! $skill->name!!}</strong> <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
+                                <p>{!! $skill->name!!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
                             @endforeach
                             
                             @if(!$quest['earned'])
                               <p><em>Pending</em></p>
                             @else
-                                <progress class="progress is-small is-success" value="{!! $quest['earned'] !!}" min="0" max="{!! $quest['available'] !!}">{!! $quest['earned'] !!}</progress>                              
+                                @if(count($quest['skills']) > 1)
+                                    <p><strong>Combined</strong> <span class="is-pulled-right">{!! $quest['earned'] !!} / {!! $quest['available'] !!}</span></p>
+                                @endif
+                              
                             @endif
                         </td>
 
