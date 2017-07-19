@@ -4,7 +4,7 @@
 <section class="hero is-bold is-light" id="quest_attempt">
     <div class="hero-body">
         <div class="container is-fluid">        
-            {!! Form::open(array('url' => 'quest/submit', 'class' => '')) !!}
+            {!! Form::open(array('url' => 'quest/submit', 'id' => 'upload-quest')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}       
             {!! Form::hidden('revision', $previous_attempt->revision + 1) !!}
             <h2 class="title">{!! $quest->name !!}</h2>
@@ -75,10 +75,6 @@
                         @endforeach
                     @endif
 
-                    <p class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</p>
-                        @foreach($skills as $skill)
-                            <h5>{!! $skill->name !!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></h5>
-                        @endforeach
                     </div>
                 </div>
             </div>
@@ -126,17 +122,7 @@
 
 @section('after-scripts-end')
     <script>
-    $(".multiselect").select2();
-    $( "form" ).submit(function( event ) {
-        if($('input[name="link"]').val().length > 0) {
-
-        }
-        else {
-            event.preventDefault();
-            alert( "You need to enter a link into the text field." );
-        }
-    });
-
+    {{ Html::script('js/upload.quest.files.js')}}
 
     </script>
 @stop
