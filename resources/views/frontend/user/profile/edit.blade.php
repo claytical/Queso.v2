@@ -32,8 +32,10 @@
                 </p>
             </div>
             <div class="field">
-                {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary pull-right']) }}
+                {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'button is-large is-primary']) }}
             </div>
             {{ Form::close() }}
-    </div>
+            </div>
+        </div>
+    </section>
 @endsection
