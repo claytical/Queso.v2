@@ -188,14 +188,18 @@ class GradeController extends Controller
 
     public function confirm(Request $request) {
         $quest = Quest::find($request->quest_id);
-        if ($quest->quest_type_id == 1) {
-            $attempt = Submission::find($request->attempt_id);
-
+        switch($quest->quest_type_id) {
+            case 1:
+            case 5:
+            case 6:
+                $attempt = Submission::find($request->attempt_id);
+                break;
+            case 4:
+            case 7:
+                $attempt = Link::find($request->attempt_id);
+                break;
         }
-        if ($quest->quest_type_id == 4) {
-            $attempt = Link::find($request->attempt_id);
 
-        }
         $users = [];
 
         if($quest->groups) {
