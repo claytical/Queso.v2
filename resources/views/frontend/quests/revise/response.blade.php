@@ -23,40 +23,37 @@
                             </div>
                             @if($positive->first())
                                 <h4>What Your Peers Liked</h4>
+                                <div class="content">
                                 @foreach($positive as $feedback)            
-                                    <h5>{!! $feedback->user_from->name !!}</h5>
-                                    <h6>Sent {!! date('m/d/Y', strtotime($feedback->created_at)) !!}
-                                        @if($feedback->revision > 0)
-                                                <span class="label is-pulled-right">Revision #{!! $feedback->revision !!}</span>
-                                        @endif
-                                    </h6>
+                                    <blockquote>
+                                    <h5>{!! $feedback->user_from->name !!}, {!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h5>
                                     {!! $feedback->note !!}
+                                    </blockquote>
                                 @endforeach
-
+                                </div>
                             @endif
                             @if($negative->first())
                                 <h4>Suggestions From Your Peers</h4>
+                                <div class="content">
                                 @foreach($negative as $feedback)
-                                    <h5>{!! $feedback->user_from->name !!}</h5>
-                                    <h6>Sent {!! date('m-d-Y', strtotime($feedback->created_at)) !!}
-                                        @if($feedback->revision > 0)
-                                            <span class="label is-pulled-right">Revision #{!! $feedback->revision !!}</span>
-                                        @endif
-                                    </h6>
+                                    <blockquote>
+                                    <h5>{!! $feedback->user_from->name !!}, {!! date('m-d-Y', strtotime($feedback->created_at)) !!}</h5>
                                     {!! $feedback->note !!}    
+                                    </blockquote>
                                 @endforeach
+                                </div>
                             @endif
                             
                             @if(!empty($existing_skills[0]))
                                 <h4>From The Professor</h4>
+                                <div class="content">
                                 @foreach($instructor_feedback as $feedback)
-                                    <h6>Sent {!! date('m/d/Y', strtotime($feedback->created_at)) !!}
-                                        @if($feedback->revision > 0)
-                                            <span class="label is-pulled-right">Revision #{!! $feedback->revision !!}</span>
-                                        @endif
-                                    </h6>
+                                    <blockquote>
+                                    <h6>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h6>
                                     {!! $feedback->note !!}
+                                    </blockquote>
                                 @endforeach
+                                </div>
                             @endif
 
                     </div>
@@ -89,12 +86,6 @@
                                 </a>
                             @endforeach
                         @endif
-
-                        <p class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</p>
-                            @foreach($skills as $skill)
-                                {!! $skill->name !!} / 
-                                {!! $skill->pivot->amount !!}
-                            @endforeach
 
                     </div>
                 </div>
