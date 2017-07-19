@@ -884,10 +884,10 @@ class QuestController extends Controller
 
 
 
-    public function history() {
+    public function history($course_id) {
         $user = access()->user();
         
-        $course = Course::find(session('current_course'));
+        $course = Course::find($course_id);
         $course_skills = $course->skills()->get();
         $acquired_skills = [];
 
@@ -950,7 +950,7 @@ class QuestController extends Controller
                 $quest = DB::table('group_quest_users')
                                 ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
                                 ->join('quests', 'group_quest.quest_id', '=', 'quests.id')
-                                ->select('quests.name', 'quests.created_at', 'quests.instructions', 'quests.id')
+                                ->select('quests.name', 'quests.created_at', 'quests.instructions', 'quests.id', 'quests.quest_type_id')
                                 ->where('user_id', '=', $user->id)
                                 ->where('quest_id', '=', $id)
                                 ->orderBy('group_quest.created_at');
