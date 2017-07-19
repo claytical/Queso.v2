@@ -43,13 +43,13 @@
                             {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
                         </div>
                     </div>
-    
-                    <div class="field">
-                        <p class="control">
-                            {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
-                        </p>
-                    </div>
                 </div>
+
+               <div class="field">
+                    <p class="control">
+                        {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
+                    </p>
+                </div>                
         </div>
     </div>
 {!! Form::close() !!}
