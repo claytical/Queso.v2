@@ -10,7 +10,7 @@
                     {{ Form::hidden('groups', false, ['id' => 'groups_allowed']) }}
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
                     {{ Form::hidden('id', $quest->id, ['id' => 'quest_type_id']) }}
-                    
+
 
 <section class="hero" id="choose_quest">
   <div class="hero-body">
@@ -74,7 +74,7 @@
                           <p class="control">
                             <label class="radio">
                               <input type="radio" name="feedback" value="1"
-                              @if($quest->feedback)
+                              @if($quest->peer_feedback)
                                 checked
                               @endif
                               >
@@ -82,7 +82,7 @@
                             </label>
                             <label class="radio">
                               <input type="radio" name="feedback" value="0"
-                              @if(!$quest->feedback)
+                              @if(!$quest->peer_feedback)
                                 checked
                               @endif
                               >
