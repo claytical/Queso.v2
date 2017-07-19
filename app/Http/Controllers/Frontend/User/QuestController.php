@@ -1032,9 +1032,7 @@ class QuestController extends Controller
                                     ->first();
             $files = $attempt->files;
         }            
-        
 
-        }
         if($quest->quest_type_id == 4) {
             $attempt = Link::where('quest_id', '=', $quest->id)
                             ->where('user_id', '=', $user_id)
