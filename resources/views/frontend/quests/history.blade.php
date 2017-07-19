@@ -60,20 +60,8 @@
                             @if(!$quest['earned'])
                               <p><em>Pending</em></p>
                             @else
-                                @if(count($quest['skills']) > 1)
-                                    @foreach($quest['skills'] as $skill)
-                                        <p>{!! $skill->name!!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
-                                    @endforeach
-
-                                    <p><strong>Total</strong> <span class="is-pulled-right">{!! $quest['earned'] !!} / {!! $quest['available'] !!}</span></p>
-                                @else
-                                    <p><strong>Total</strong> <span class="is-pulled-right">{!! $quest['earned'] !!} / {!! $quest['available'] !!}</span></p>
-
-                                @endif
-                              
+                                 <p>{!! $quest['earned'] !!} / {!! $quest['available'] !!}</p>
                             @endif
-
-
                             
                         </td>
 
