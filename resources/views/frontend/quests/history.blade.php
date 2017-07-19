@@ -6,23 +6,6 @@
 <div class="tile is-ancestor">
       <div class="tile is-parent is-vertical is-8">
         <div class="tile is-child">
-
-            <h2 class="title">Available Quests</h2>
-
-            <table class="table">
-                <th>Quest</th>
-                <th>Points Available</th>
-                <th></th>
-                <tbody>
-                @foreach($available_quests as $quest)
-                    <tr>
-                        <td>{!! $quest->name !!} </td>
-                        <td class="amount">{!! $quest->skills()->sum('amount') !!}</td>
-                        <td><button class="button is-small">Add</button></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
             <h2 class="title">Completed Quests</h2>
             <table class="table">
                 <thead>
@@ -86,15 +69,7 @@
             @else
                 <p><strong>{!! $skill[0]['name'] !!}</strong> <span class="is-pulled-right">{!! $skill[0]['amount'] !!}</span></p>
             @endif
-            
-            <h2 class="subtitle">Predicted Level</h2>
-            <h5 id="predicted-level">{!! $current_level->name !!}</h5>
-            <span id="potential-total">{!! $total_points !!}</span> / <span id="all-points">{!! $total_potential !!}</span>
-
-
-            <a class="button is-medium is-fullwidth is-info" role="button" data-toggle="collapse" href="#availableQuests" aria-expanded="false" aria-controls="availableQuests">Grade Predictor</a>
-
-        </div>
+            </div>
     </div>
 </div>
 </section>
