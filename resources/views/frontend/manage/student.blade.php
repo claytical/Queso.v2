@@ -184,7 +184,7 @@
             <h4>{!! $total_points !!} points</h4>           
             <progress class="progress is-large is-success" value="{!! $total_points !!}" min="{!! $current_level->amount !!}" max="{!! $total_points_potential !!} "></progress>
 
-            @if(count($skills) > 1)
+            @if(count($acquired_skills) > 1)
                 @foreach($acquired_skills as $skill)
                         <p><strong>{!! $skill['name'] !!}</strong> <span class="is-pulled-right">{!! $skill['amount'] !!}</span></p>
 
