@@ -49,9 +49,12 @@
                         @foreach($positive as $feedback)
                         <div class="content">
                             <blockquote>
-                            <h6>{!! $feedback->user_from->name !!}</h6>
+                            
                             <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
-                            {!! $feedback->note !!}</blockquote>
+                            {!! $feedback->note !!}
+                            <br/>
+                            &mdash;{!! $feedback->user_from->name !!}
+                            </blockquote>
                         </div>
                     @endforeach
                 @endif
@@ -61,9 +64,11 @@
                     @foreach($negative as $feedback)
                         <div class="content">
                             <blockquote>
-                            <h6>{!! $feedback->user_from->name !!}</h6>
                               <a class="is-pulled-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><i class="fa fa-heart" aria-hidden="true"></i></a>
                             {!! $feedback->note !!}
+                            <br/>
+                            &mdash;{!! $feedback->user_from->name !!}
+
                             </blockquote>
                         </div>    
                     @endforeach
@@ -72,8 +77,8 @@
                 @if($graded)
                     @foreach($instructor_feedback as $feedback)
                         <div class="content">    
+                            <h4>From The Professor</h4>
                             <blockquote>
-                                <h4>From The Professor</h4>
                                 <h6>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h6>
                                 {!! $feedback->note !!}
                             </blockquote>
