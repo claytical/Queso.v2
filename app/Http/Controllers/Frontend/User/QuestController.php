@@ -293,7 +293,7 @@ class QuestController extends Controller
         $quest = Quest::find($request->id);
         $quest->name = $request->name;
         $quest->instructions = $request->description;
-        if($request->has('expiration')) {
+        if($request->expires) {
             $quest->expires_at = $request->expiration;
         }
         else {
