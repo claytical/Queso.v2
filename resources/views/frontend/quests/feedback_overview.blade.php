@@ -2,15 +2,11 @@
 
 @section('content')
 <section class="section">
-    <div class="container is-fluid">
-      <h1 class="title">
-        Feedback Requests
-      </h1>
-    </div>
     <div class="tile">
       <div class="tile is-6 is-parent">
         <div class="tile is-child">
-            <p class="title">Feedback Received</p>
+            <h3 class="title">Feedback Received</h3>
+            <hr/>
             @if($feedback_received)
                 @foreach($feedback_received as $received)
                     @if($received->fulfilled > 0)
@@ -37,7 +33,8 @@
       </div>
       <div class="tile is-6 is-parent">
         <div class="tile is-child">
-            <p class="title">Awaiting Feedback</p>
+            <h3 class="title">Awaiting Feedback</h3>
+            <hr/>
                 @if($feedback_requested)
                     @foreach($feedback_requested as $request)
                         <h4 class="subtitle">{!! $request->quest_name !!}</h4>
