@@ -1009,32 +1009,77 @@ class QuestController extends Controller
         }
         $skills = $user->skills()->where('quest_id', $quest_id)->get();
         $quest_skills = $quest->skills()->get();
-        if($quest->groups) {
-            $user_quest = DB::table('group_quest_users')
-                                ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
-                                ->join('quests', 'group_quest.quest_id', '=', 'quests.id')
-                                ->select('quests.name', 'quests.created_at', 'group_quest.graded', 'group_quest.attempt_id')
-                                ->where('user_id', '=', $user->id)
-                                ->where('quest_id', '=', $quest_id)
-                                ->orderBy('group_quest.created_at')
-                                ->first();
-            $graded = $user_quest->graded;
 
-        }
-        else {
-            $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
-            if($user_quest) {
-                if ($user_quest->pivot->graded) {
-                    $graded = true;
-                }
-                else {
-                    $graded = false;
-                }
+        $user_quest = $user->quests()->where('quest_id', $quest_id)->first();
+        if($user_quest) {
+            if ($user_quest->pivot->graded) {
+                $graded = true;
             }
             else {
                 $graded = false;
             }
         }
+        else {
+            $graded = false;
+        }
+
+        $files = false;
+        $attempt = null;
+        if($quest->quest_type_id == 1 || $quest->quest_type_id == 5) {
+            $attempt = Submission::where('quest_id', '=', $quest_id)
+                                    ->where('user_id', '=', $user->id)
+                                    ->orderBy('revision')
+                                    ->first();
+            $files = $attempt->files;
+        }            
+        
+
+        }
+        if($quest->quest_type_id == 4) {
+            $attempt = Link::where('quest_id', '=', $quest->id)
+                            ->where('user_id', '=', $user_id)
+                            ->orderBy('revision')
+                            ->first();
+        }
+
+        $instructor_feedback = Feedback::where('quest_id', '=', $quest->id)
+                                        ->where('to_user_id', '=', $user->id)
+                                        ->where('subtype', '=', 1)
+                                        ->get();
+        $positive_feedback = Feedback::where('quest_id', '=', $quest->id)
+                                        ->where('to_user_id', '=', $user->id)
+                                        ->where('subtype', '=', 2)
+                                        ->get();
+
+        $negative_feedback = Feedback::where('quest_id', '=', $quest->id)
+                                        ->where('to_user_id', '=', $user->id)
+                                        ->where('subtype', '=', 3)
+                                        ->get();
+
+
+    	return view('frontend.quests.feedback.view', ['student' => $user, 'quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback]);
+    }
+
+public function view_group_feedback($quest_id, $user_id = null) {
+        $quest = Quest::find($quest_id);
+        if($user_id) {
+            $user = User::find($user_id);
+        }
+        else {
+            $user = access()->user();
+        }
+        $skills = $user->skills()->where('quest_id', $quest_id)->get();
+        $quest_skills = $quest->skills()->get();
+        $user_quest = DB::table('group_quest_users')
+                            ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
+                            ->join('quests', 'group_quest.quest_id', '=', 'quests.id')
+                            ->select('quests.name', 'quests.created_at', 'group_quest.graded', 'group_quest.attempt_id')
+                            ->where('user_id', '=', $user->id)
+                            ->where('quest_id', '=', $quest_id)
+                            ->orderBy('group_quest.created_at')
+                            ->first();
+        $graded = $user_quest->graded;
+
         $files = false;
         $attempt = null;
         if($quest->quest_type_id == 1) {
@@ -1079,8 +1124,13 @@ class QuestController extends Controller
                                         ->get();
 
 
-    	return view('frontend.quests.view_feedback', ['student' => $user, 'quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback]);
+        return view('frontend.quests.feedback.view_group', ['student' => $user, 'quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback]);
     }
+
+
+
+
+
 
     public function give_feedback($quest_id, $user_id, $revision) {
         $quest = Quest::find($quest_id);

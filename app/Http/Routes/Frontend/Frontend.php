@@ -82,6 +82,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('quests/history', 'QuestController@history')->name('quests.history');
         
         Route::get('quest/{quest_id}/feedback/{user_id?}', 'QuestController@view_feedback')->name('quest.feedback');
+        Route::get('quest/{quest_id}/group/feedback/{user_id?}', 'QuestController@view_group_feedback')->name('quest.feedback.group');
+
         Route::get('feedback/like/{id}', 'FeedbackController@like')->name('feedback.like');
         Route::get('review/{quest_id}/{user_id}/{revision}', 'QuestController@give_feedback')->name('quest.review');
         Route::post('quest/feedback', 'QuestController@submit_feedback')->name('feedback.submitted');
