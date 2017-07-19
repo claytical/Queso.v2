@@ -194,11 +194,16 @@ class Access
                                             ->where('graded', '=', false)
                                             ->get();
                     foreach($groups as $group) {
-                        if($quest->quest_type_id == 1) {
-                            $attempt = Submission::find($group->attempt_id);
-                        }
-                        if($quest->quest_type_id == 4) {
-                            $attempt = Link::find($group->attempt_id);
+                        switch($quest->quest_type_id) {
+                            case '1':
+                            case '5':
+                            case '6':
+                                $attempt = Submission::find($group->attempt_id);
+                                break;
+                            case '4':
+                            case '7':
+                                $attempt = Link::find($group->attempt_id);
+                            break;
                         }
 
                        $list[$course->name][] =  ["quest" => $quest->name,
