@@ -46,7 +46,7 @@
                                     {!! $quest['earned'] !!} / {!! $quest['available'] !!}
                                 </td>
                                 <td>
-                                    {!! link_to('manage/student/'.$student->id.'/remove/quest/'.$quest['quest']->id, 'Remove', ['class' => 'button is-small is-danger']) !!}                                
+                                    <a class="delete" href="{!! URL::to('manage/student/'.$student->id.'/remove/quest/'.$quest['quest']->id) !!}"></a>
                                 </td>
 
                             </tr>
@@ -79,7 +79,7 @@
                                         <td>{!! $quest['revisions'] !!}</td>
                                         <td>{!! $quest['available'] !!}</td>
                                         <td>
-                                            {!! link_to('manage/student/'.$student->id.'/remove/quest/'.$quest['quest']->id, 'Remove', ['class' => 'button is-small is-danger']) !!}
+                                        <a class="delete" href="{!! URL::to('manage/student/'.$student->id.'/remove/quest/'.$quest['quest']->id) !!}"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -193,10 +193,11 @@
 
             @if($team)            
                 <h3 class="subtitle">{!! $team->name !!}</h3>                
-                {!! link_to('manage/student/'.$student->id.'/team/remove', '', 'class' => 'delete') !!}
+                <a class="delete" href="{!! URL::to('manage/student/'.$student->id.'/team/remove') !!}"></a>
+
             @else
             @endif
-            @foreach($teams as $team)
+            @foreach($teams as $team)            
                 <p>{!! link_to('manage/student/'.$student->id.'/team/assign/'.$team->id, "Assign to " . $team->name) !!}</p>
             @endforeach
         </div>
