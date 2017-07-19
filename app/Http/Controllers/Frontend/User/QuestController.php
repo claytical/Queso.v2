@@ -1215,7 +1215,7 @@ public function view_group_feedback($quest_id, $user_id = null) {
         $quest = Quest::find($quest_id);
         $user = User::find($user_id);
         $files = false;
-        if ($quest->quest_type_id == 1) {
+        if ($quest->quest_type_id == 1 || $quest->quest_type_id == 5 || $quest->quest_type_id == 6) {
             //SUBMISSION
             $attempt = Submission::where('quest_id', '=', $quest->id)
                                         ->where('user_id', '=', $user_id)
@@ -1225,7 +1225,7 @@ public function view_group_feedback($quest_id, $user_id = null) {
             $files = $attempt->files;
             
         }
-        if ($quest->quest_type_id == 4) {
+        if ($quest->quest_type_id == 4 || $quest->quest_type == 7) {
             //LINK
             $attempt = Link::where('quest_id', '=', $quest->id)
                                         ->where('user_id', '=', $user_id)
@@ -1233,7 +1233,7 @@ public function view_group_feedback($quest_id, $user_id = null) {
                                         ->first();
         }
 
-    	return view('frontend.quests.give_feedback', ['quest' => $quest, 'attempt' => $attempt, 'user' => $user, 'files' => $files]);
+    	return view('frontend.quests.feedback.give', ['quest' => $quest, 'attempt' => $attempt, 'user' => $user, 'files' => $files]);
 
     }
 

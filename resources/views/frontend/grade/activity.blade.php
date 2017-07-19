@@ -1,9 +1,9 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light" id="create_resource">
+<section class="hero is-bold is-light" id="activity">
     <div class="hero-body">
-        <div class="container is-fluid">        
+        <div class="container is-fluid">
             {!! Form::open(array('url' => 'grade/confirm/activity')) !!}
             {!! Form::hidden('quest_id', $quest->id ) !!}
 
