@@ -16,7 +16,7 @@
                         <div class="container is-fluid">
                             <div class="field">
                                 <p class="control">
-                                    {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect input']) !!}
+                                    {!! Form::remainingStudentList('students[]', $quest->id, null, ['multiple' => 'multiple', 'class' => 'multiselect', 'placeholder' => 'Other Students...']) !!}
                                 </p>
                             </div>
                         
@@ -68,6 +68,8 @@
 @endsection
 
 @section('after-scripts-end')
+    $(".multiselect").selectize();
+
     {{ Html::script('js/upload.quest.files.js')}}
 
 @stop
