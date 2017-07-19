@@ -161,19 +161,24 @@ class Access
                     $users = $quest->users()->where('graded', false)->get();
 
                     foreach($users as $user) {
+                        switch($quest->quest_type_id) {
+                            case '1':
+                            case '5':
+                            case '6':
+                                $attempt = Submission::where('user_id', '=', $user->id)
+                                                    ->where('quest_id', '=', $quest->id)
+                                                    ->where('revision', '=', $user->pivot->revision)
+                                                    ->first();
+                                break;
+                            case '4':
+                            case '7':
+                                $attempt = Link::where('user_id', '=', $user->id)
+                                                    ->where('quest_id', '=', $quest->id)
+                                                    ->where('revision', '=', $user->pivot->revision)
+                                                    ->first();
+                                break;
+                        }
 
-                        if($quest->quest_type_id == 1) {
-                            $attempt = Submission::where('user_id', '=', $user->id)
-                                                    ->where('quest_id', '=', $quest->id)
-                                                    ->where('revision', '=', $user->pivot->revision)
-                                                    ->first();
-                        }
-                        if($quest->quest_type_id == 4) {
-                            $attempt = Link::where('user_id', '=', $user->id)
-                                                    ->where('quest_id', '=', $quest->id)
-                                                    ->where('revision', '=', $user->pivot->revision)
-                                                    ->first();
-                        }
 
                        $list[$course->name][] =  ["quest" => $quest->name,
                                     "quest_id" => $quest->id,
