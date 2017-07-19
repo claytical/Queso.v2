@@ -95,21 +95,16 @@
     <div class="tile is-4 is-vertical is-parent">
         @if($feedback_requests || !$notifications->isEmpty())
 
-        <div class="tile is-child">
-          <p class="title">Notifications</p>
-                @if($feedback_requests)
-                    <p class="subtitle">Feedback Requests</p>
-                    <div class="content is-small">
-                    @foreach($feedback_requests as $feedback_request)
-                        <h1>{!! $feedback_request->quest_name !!}</h1>
-                            @foreach($feedback_request->requests as $request)
-                                <p>{{ link_to('review/'.$feedback_request->quest_id.'/'.$request->sender->id.'/'.$request->revision, $request->sender->name) }}</p>
-                            @endforeach
-                    @endforeach
-                    </div>
-                @endif
+            <div class="tile is-child">
+              <p class="title">Notifications</p>
+                    @if($feedback_requests)
+                        <div class="notification">
+                             <p>You have {!! count($feedback_requests) !!} feedback requests.</p>
+                             <a href="{!! URL::to('feedback') !!}" class="button is-small is-primary is-pulled-right">View</a>
+                        </div>
+                    @endif
 
-                @if(!$notifications->isEmpty())
+                    @if(!$notifications->isEmpty())
 
                         @foreach($notifications as $notice)
 
@@ -124,10 +119,7 @@
                             </div>
                         @endforeach
                     @endif
-
-
-
-        </div>
+            </div>
         @endif
 
         <div class="tile is-child">
