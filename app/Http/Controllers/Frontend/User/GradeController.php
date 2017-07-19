@@ -342,11 +342,11 @@ class GradeController extends Controller
 
             }
 
-            return redirect()->route('grade.activity', $quest->id)
+            return redirect()->route('grade.activity.select', $quest->course_id)
                                 ->withFlashSuccess($quest->name . " graded for " . implode(",", $student_list) . ".");
         }
         else {
-            return redirect()->route('grade.activity', $quest->id)
+            return redirect()->route('grade.activity.select', $quest->course_id)
                                 ->withFlashDanger("You must include students to be graded for a quest.");
 
         }
