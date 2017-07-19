@@ -104,18 +104,6 @@
                 <h4 class="subtitle">UNGRADED</h4>
             @endif
 
-            <h2 class="subtitle">{!! $current_level->name !!}</h2>
-            <progress class="progress is-large is-success" value="{!! $total_points !!}" min="{!! $current_level->amount !!}" max="{!! $next_level->amount !!}">{!! $total_points !!}</progress>
-
-            @if(count($skills) > 1)
-                @foreach($skills as $skill)
-                    <p><strong>{!! $skill['name'] !!}</strong> <span class="is-pulled-right">{!! $skill['amount'] !!}</span></p>
-                @endforeach
-                <hr/>
-                <p><strong>Total</strong> <span class="is-pulled-right">{!! $total_points !!}</span></p>
-            @else
-                <p><strong>{!! $skill[0]['name'] !!}</strong> <span class="is-pulled-right">{!! $skill[0]['amount'] !!}</span></p>
-            @endif
             </div>
         </div>
     </div>
