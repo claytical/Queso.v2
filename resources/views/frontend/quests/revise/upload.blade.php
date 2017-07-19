@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light is-medium" id="quest_attempt">
+<section class="hero is-bold is-light" id="quest_attempt">
     <div class="hero-body">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/submit', 'class' => '')) !!}
@@ -43,6 +43,7 @@
                     </div>
                 </div>
                 <div class="tile is-4 is-parent box">
+                    <div class="tile is-child">
                     @if(empty($existing_skills[0]))
                         <h3><span class="label is-danger">UNGRADED</span></h3>
                         <p>By submitting this revision, your previously submitted and ungraded attempt will be discarded.</p>
@@ -62,22 +63,23 @@
                     @endif
 
                     @if($files)
-                        <p class="subtitle">Attached Files</p>
+                        <h5 class="subtitle">Attached Files</h5>
 
                         @foreach($files as $file)
-                            <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
+                            <p>
+                            <a href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
                             <span class="icon is-small"><i class="fa fa-paperclip"></i></span> 
                             {!! substr($file->name,5) !!}
                             </a>
+                            </p>
                         @endforeach
                     @endif
 
                     <p class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</p>
                         @foreach($skills as $skill)
-                            {!! $skill->name !!} / 
-                            {!! $skill->pivot->amount !!}
+                            <h5>{!! $skill->name !!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></h5>
                         @endforeach
-
+                    </div>
                 </div>
             </div>
                 @if($positive->first())
