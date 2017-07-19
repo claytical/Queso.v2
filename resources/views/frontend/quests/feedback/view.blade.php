@@ -42,7 +42,7 @@
                         <div>
                             <h6>{!! $feedback->user_from->name !!}</h6>
                             <a class="pull-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><span class="glyphicon glyphicon-heart"></span></a>
-                            <div>{!! $feedback->note !!}</div>
+                            <blockquote>{!! $feedback->note !!}</blockquote>
                         </div>
                     @endforeach
                 @endif
@@ -53,7 +53,7 @@
                         <div>
                             <h6>{!! $feedback->user_from->name !!}</h6>
                               <a class="is-pulled-right give-feedback" href="{!! url('feedback/like', [$feedback->id])!!}" role="button"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                            <div>{!! $feedback->note !!}</div>
+                            <blockquote>{!! $feedback->note !!}</blockquote>
                         </div>    
                     @endforeach
                 @endif
@@ -63,7 +63,7 @@
                     @foreach($instructor_feedback as $feedback)
                         <div>
                             <h6>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h6>
-                            <div>{!! $feedback->note !!}</div>
+                            <blockquote>{!! $feedback->note !!}</blockquote>
                         </div>
                     @endforeach
                 @endif
