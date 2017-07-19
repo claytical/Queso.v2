@@ -6,8 +6,6 @@
     <div class="hero-body">
         <div class="container is-fluid">
             <h1 class="title">{!! $quest->name !!}</h1>
-            <h2 class="subtitle">Submitted by {!! $quest->name !!}</h2>
-
                 <div class="content">
                     @if($quest->quest_type_id == 1)
                         {!! $attempt->submission !!}
@@ -26,21 +24,31 @@
                     @endif
 
                 </div>
-                <hr/>
-                <h3 class="subtitle">What did you like?</h3>
-                <p>Share your thoughts on what you liked about this.</p>
+                <div class="tile is-ancestor">
                     {!! Form::open(array('url' => 'quest/feedback')) !!}
-                    {!! Form::hidden('user_id', $user->id) !!}
-                    {!! Form::hidden('quest_id', $quest->id) !!}
-                    {!! Form::hidden('revision', $attempt->revision) !!}
-                    {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}
-                <h3 class="subtitle">What could be improved?</h3>
-                <p>Share your thoughts on where this could be improved. Is there something you wished they explored? Are there other possibilities to explore?</p>
+                    <div class="tile is-parent">
+                        <div class="tile is-child">
+                            <h3 class="subtitle">What did you like?</h3>
+                            <p>Share your thoughts on what you liked about this.</p>
+                                {!! Form::hidden('user_id', $user->id) !!}
+                                {!! Form::hidden('quest_id', $quest->id) !!}
+                                {!! Form::hidden('revision', $attempt->revision) !!}
+                                {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}            
+                        </div>
+                        <div class="tile is-child">
+                            <h3 class="subtitle">What could be improved?</h3>
+                            <p>Share your thoughts on where this could be improved. Is there something you wished they explored? Are there other possibilities to explore?</p>
 
-                {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}
-                {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}
-                {!! Form::close() !!}
-
+                            {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
+                        </div>
+                            <div class="field">
+                                <p class="control">
+                                    {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
+                                </p>
+                            </div>
+                    </div>
+                            {!! Form::close() !!}
+                </div>
         </div>
     </div>
 </section>
