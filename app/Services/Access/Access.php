@@ -158,7 +158,10 @@ class Access
 
                 foreach($quests as $quest) {
                         //quest name, quest type, student name, revision number, date submitted
-                    $users = $quest->users()->where('graded', false)->get();
+                    $users = $quest->users()
+                                    ->where('graded', false)
+                                    ->orderBy('revision')
+                                    ->get();
 
                     foreach($users as $user) {
                         switch($quest->quest_type_id) {
@@ -175,6 +178,7 @@ class Access
                                 $attempt = Link::where('user_id', '=', $user->id)
                                                     ->where('quest_id', '=', $quest->id)
                                                     ->where('revision', '=', $user->pivot->revision)
+                                                    ->orderBy('revision')
                                                     ->first();
                                 break;
                         }
