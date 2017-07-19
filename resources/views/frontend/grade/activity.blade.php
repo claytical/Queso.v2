@@ -1,110 +1,99 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+<section class="hero is-bold is-light" id="create_resource">
+    <div class="hero-body">
+        <div class="container is-fluid">        
+            {!! Form::open(array('url' => 'grade/confirm/activity')) !!}
+            {!! Form::hidden('quest_id', $quest->id ) !!}
 
-<div class="col-lg-9">
-    <h2>{!! $quest->name !!}</h2>
-</div>
-{!! Form::open(array('url' => 'grade/confirm/activity')) !!}
-{!! Form::hidden('quest_id', $quest->id ) !!}
+            <div class="tile">
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                        <div class="container is-fluid">
+                          <h2 class="title">{!! $quest->name !!}</h2>
+                          <h3 class="subtitle">{!! $quest->instructions !!}</h3>
+                          <h4>Students Receiving Points</h4>
+                            <div class="field">
+                                <p class="control">
+                                    <select name="students[]" class="multiselect input" multiple>
+                                    @foreach($students as $student)
+                                        <option value="{!! $student->id !!}">{!! $student->name !!}</option>
+                                    @endforeach
+                                </p>
+                            </div>
 
-<div class="col-lg-3">
-
-</div>
-
-<div class="col-lg-9">
-        <div class="col-xs-5">
-            <b>Available Students</b>
-            <select name="from[]" class="multiselect form-control" size="8" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
-            @foreach($students as $student)
-                <option value="{!! $student->id !!}">{!! $student->name !!}</option>
-            @endforeach
-            </select>
-        </div>
-        
-        <div class="col-xs-2">
-            &nbsp;
-            <button type="button" id="right_All_1" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
-            <button type="button" id="right_Selected_1" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
-            <button type="button" id="left_Selected_1" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
-            <button type="button" id="left_All_1" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
-        </div>
-        
-        <div class="col-xs-5">
-            <b>Selected Students to Receive Grade</b>
-            <select name="students[]" id="multiselect_to_1" class="form-control" size="8" multiple="multiple"></select>
-        </div>
-</div>
-
-<div class="col-lg-3">
-                <h5><b>Skills</b></h5>                
-                @foreach($skills as $skill)
-                  <div class="col-lg-5">
-                      <label>{!! $skill->name !!}</label>
-                  </div>
-
-                  <div class="col-lg-7">
-                    <div class="input-group">
-                        <input type="number" class="form-control point-val" name="skills[]" max="{!! $skill->pivot->amount !!}">
-                        <div class="input-group-addon"> / {!! $skill->pivot->amount !!}</div>
-                    </div>
-                      {!! Form::hidden('skill_id[]', $skill->id) !!}
-
-                  </div>                    
-                @endforeach
-
-
-                <div class="col-lg-12">
-                    <div class="pull-right">
-                        <h3><span id="total">0</span> / {!! $quest->skills()->sum('amount') !!}</h3>
+                        <h4>Feedback to Student</h4>
+                            {!! Form::hidden('quest_id', $quest->id) !!}
+                            {!! Form::hidden('attempt_id', $attempt->id) !!}
+                            {!! Form::textarea('feedback', null, ['class' => 'field', 'files' => true]) !!}
+                        </div>
                     </div>
                 </div>
+            <div class="tile is-4 is-child box">
 
+                @foreach($skills as $skill)
+                  <div class="field">
+                    <label class="label">{!! $skill->name !!}</label>                  
+                    <div class="control">
+                      <input type="range" min="0" step="1" class="point-val" value="0" name="skills[]" max="{!! $skill->pivot->amount !!}" id="skill-input-{{ $skill->id }}">
+                      {!! Form::hidden('skill_id[]', $skill->id) !!}
+                    </div>
+                  </div>
+                @endforeach
+                <h5>Total Points Awarded</h5>
+                <span id="total">0</span> of {!! $quest->skills()->sum('amount') !!}</h3>
+                <div class="field">
+                  {!! Form::submit('Grade', ['class' => 'button is-primary is-large is-fullwidth']) !!}
+                </div>
 
-</div>
-
-
-    <div class="col-lg-12">
-
-        <h4>Feedback</h4>
-
-        <div class="row">
-            <div class="col-lg-9">
-                {!! Form::textarea('feedback', null, ['class' => 'field', 'files' => false]) !!}
             </div>
-            <div class="col-lg-3">
-                    {!! Form::submit('Submit Grade', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
-            </div>
-
-
-        </div>
-        {!! Form::close() !!}
-
+            {!! Form::close() !!}
+          </div>
+      </div>
     </div>
+</section>
+
+
 @endsection
 
 @section('after-scripts-end')
+<style>
+.rangeslider__handle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+</style>
+
     <script>
-    jQuery(document).ready(function($) {
-        $('.multiselect').multiselect();
-    });
-    $('.point-val').change(function() {
-        var totz = 0;
-        $( ".point-val" ).each(function( index ) {
-            if($(this).val()) {
-              totz = totz + parseInt($(this).val());
-            }
-          });
-        $("span#total").html(totz);
-    });    
-    $(document).ready(function () {
-        $(window).on('beforeunload', function(){
-            return "You have unsaved changes!";
-        });
-        $(document).on("submit", "form", function(event){
-            $(window).off('beforeunload');
-        });
-    });
+        
+        function updateHandle(el, val) {
+          el.html(val);
+        }
+            @foreach($skills as $skill)
+              $("#skill-input-{{ $skill->id }}").rangeslider({
+                  polyfill: false,
+                  onInit: function() {
+                    updateHandle($('#skill-input-{{ $skill->id }}+.rangeslider .rangeslider__handle'), 0);
+                  }
+                  })
+                .on('input', function() {
+                    updateHandle($('#skill-input-{{ $skill->id }}+.rangeslider .rangeslider__handle'), this.value);
+                });
+
+            @endforeach
+
+
+            $('.point-val').change(function() {
+                var totz = 0;
+                $( ".point-val" ).each(function( index ) {
+                    if($(this).val()) {
+                      totz = totz + parseInt($(this).val());
+                    }
+                  });
+                $("span#total").html(totz);
+            });
 
 
 
