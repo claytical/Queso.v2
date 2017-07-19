@@ -268,8 +268,10 @@ class GradeController extends Controller
                         ->updateExistingPivot($attempt->quest_id, ['graded' => true]);
         }
         if($quest->groups) {
-            $group->graded = true;
-            $group->save();
+            if($group) {
+                $group->graded = true;
+                $group->save();
+            }
            return redirect()->route('grade.submissions', $quest->course_id)->withFlashSuccess($quest->name . " has been successfully graded for " . $users->implode('name', ',') . ".");
         }
         else {
