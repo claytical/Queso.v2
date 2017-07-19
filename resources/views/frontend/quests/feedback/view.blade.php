@@ -15,7 +15,7 @@
                     <h2 class="title">Feedback for {!! $quest->name !!}</h2>
                     @endif
                 @else
-                    {!! link_to('manage/student/' . $student->id, 'Back to Student Overview', ['class' => 'button is-primary is-medium']) !!}
+                    {!! link_to('manage/student/' . $student->id, 'Back to Student Overview', ['class' => 'button is-primary is-small is-pulled-right is-outlined']) !!}
                     <h2 class="title">{!! $student->name !!}, {!! $quest->name !!}</h2>
                 @endif
                 <div class="content">

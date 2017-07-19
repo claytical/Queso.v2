@@ -88,8 +88,8 @@
                 @endif
 
                 @if($available_quests)
-                    <h3>Available Quests</h3>
-                    <table class="table table-hover" data-toggle="table" data-classes="table-no-bordered">
+                    <h3 class="subtitle">Available Quests</h3>
+                    <table class="table">
                     <thead>
                         <tr>
                             <th data-field="name" 
@@ -192,7 +192,7 @@
             @endif
 
             @if($team)
-            <h3>Teams</h3>            
+            <h3 class="subtitle">Teams</h3>            
                 <a class="button is-small is-pulled-right is-danger" href="{!! URL::to('manage/student/'.$student->id.'/team/remove') !!}">Remove</a>
                 <p>Current Team: {!! $team->name !!}</p>                
             @else

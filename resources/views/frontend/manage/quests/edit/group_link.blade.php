@@ -4,6 +4,8 @@
 
 {!! Form::open(['url' => 'manage/quest/update', 'id'=>'quest-form', 'class' => 'msf']) !!}
                     {{ Form::hidden('quest_type_id', 7, ['id' => 'submission_type_id']) }}
+                    {{ Form::hidden('id', $quest->id, ['id' => 'quest_type_id']) }}
+
                     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                     {{ Form::hidden('submissions_allowed', false, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('uploads_allowed', false, ['id' => 'uploads_allowed']) }}

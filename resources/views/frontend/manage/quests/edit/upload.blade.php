@@ -9,6 +9,8 @@
                     {{ Form::hidden('uploads_allowed', true, ['id' => 'uploads_allowed']) }}
                     {{ Form::hidden('groups', false, ['id' => 'groups_allowed']) }}
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
+                    {{ Form::hidden('id', $quest->id, ['id' => 'quest_type_id']) }}
+                    
 
 <section class="hero" id="choose_quest">
   <div class="hero-body">

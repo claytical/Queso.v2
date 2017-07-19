@@ -7,7 +7,8 @@
                     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
                     {{ Form::hidden('submissions_allowed', false, ['id' => 'submissions_allowed']) }}
                     {{ Form::hidden('uploads_allowed', false, ['id' => 'uploads_allowed']) }}
-                    {{ Form::hidden('groups', false, ['id' => 'groups_allowed']) }}
+                    {{ Form::hidden('groups', false, ['id' => 'groups_allowed']) }}                    
+                    {{ Form::hidden('id', $quest->id, ['id' => 'quest_type_id']) }}
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
 
 <section class="hero" id="choose_quest">

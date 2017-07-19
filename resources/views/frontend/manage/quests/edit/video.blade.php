@@ -11,6 +11,8 @@
                     {{ Form::hidden('feedback', false, ['id' => 'feedback_allowed']) }}
                     {{ Form::hidden('revisions', false, ['id' => 'revisions_allowed']) }}
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
+                    {{ Form::hidden('id', $quest->id, ['id' => 'quest_type_id']) }}
+                    
 
 
 <section class="hero" id="choose_quest">
