@@ -191,10 +191,10 @@
                 @endforeach
             @endif
 
-            @if($team)            
-                <h3 class="subtitle">{!! $team->name !!}</h3>                
-                <a class="delete" href="{!! URL::to('manage/student/'.$student->id.'/team/remove') !!}"></a>
-
+            @if($team)
+            <h3>Teams</h3>            
+                <a class="button is-small is-pulled-right is-danger" href="{!! URL::to('manage/student/'.$student->id.'/team/remove') !!}">Remove</a>
+                <p>Current Team: {!! $team->name !!}</p>                
             @else
             @endif
             @foreach($teams as $team)            
