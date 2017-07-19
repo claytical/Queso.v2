@@ -11,9 +11,9 @@
                 <div class="tile is-parent">
                     <div class="tile is-child">
                         <div class="container is-fluid">
-                          <h2 class="title">{!! $quest->name !!}, {!! $student->name !!}, {!! date('m/d/Y', strtotime($attempt->created_at)) !!}</h2>
+                          <h2 class="title">{!! $quest->name !!}, {!! $student->name !!}</h2>
                           <h3 class="subtitle">{!! $quest->instructions !!}</h3>
-
+                          <div class="content">
                           @if($quest->quest_type_id == 1)
                             {!! $attempt->submission !!}
                           @endif
@@ -23,44 +23,44 @@
                                 {!! link_to('uploads/' . $file->name, substr($file->name,5), ['class' => '', 'download' => substr($file->name,5)]) !!}
                               @endforeach
                           @endif
-
+                          </div>
                           @if($revision_count > 1)
                             <h4 class="subtitle">Previous Feedback</h4>
+                              <div class="content">
                             @foreach($previous_feedback as $feedback)
-                                <blockquote>
-                                  {!! $feedback->note !!}
-                                  <footer>Revision #{!! $feedback->revision !!} 
-                                  <cite title="Source Title">
-                                    {!! date('m/d/Y', strtotime($feedback->created_at)) !!}</cite>
-                                  </footer>
-                                  
-                                </blockquote>
+                                  <blockquote>
+                                    <h5>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h5>
+                                    {!! $feedback->note !!}                                    
+                                  </blockquote>
                             @endforeach
+                              </div>
                           @endif
               
                           @if(!$positive_feedback->isEmpty() || !$negative_feedback->isEmpty())
                             <h4 class="subtitle">Peer Feedback</h4>
                           @endif
                           @if(!$positive_feedback->isEmpty())
-                            <h5 class="subtitle">Positives</h5>    
+                            <h5 class="subtitle">Positives</h5>
+                            <div class="content">    
                             @foreach($positive_feedback as $feedback)
-
                               <blockquote>
+                              <h6>{!! $feedback->user_from->name !!}</h6>
                                 {!! $feedback->note !!}
-                                <footer><cite title="Source Title">{!! $feedback->user_from->name !!}</cite></footer>
                               </blockquote>
                             @endforeach
+                            </div>
                         @endif
 
                         @if(!$negative_feedback->isEmpty())
                           <h5 class="subtitle">Areas for Improvement</h5>
-
+                            <div class="content">
                             @foreach($negative_feedback as $feedback)
                               <blockquote>
+                                <h6>{!! $feedback->user_from->name !!}</h6>
                                 {!! $feedback->note !!}
-                                <footer><cite title="Source Title">{!! $feedback->user_from->name !!}</cite></footer>
                               </blockquote>
                             @endforeach
+                            </div>
                         @endif
 
                         <hr/>
@@ -72,11 +72,16 @@
                     </div>
                 </div>
             <div class="tile is-4 is-child box">
+                <h4 class="title">{!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h4>
                 @if($revision_count > 1)
-                  <h4 class="title">{!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h4>
+                  <div class="box">
+                    <h5 class="subtitle">Previous Submissions</h5>
                   @foreach($revisions as $revision)
-                    {{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m-d-Y', strtotime($revision->created_at))) }}
+                    <p>
+                    {{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m/d/Y', strtotime($revision->created_at))) }}
+                    </p>
                   @endforeach
+                  </div>
                 @endif
 
                 @foreach($skills as $skill)

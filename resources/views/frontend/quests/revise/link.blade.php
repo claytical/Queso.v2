@@ -76,7 +76,7 @@
                         @endif
 
                         @if($quest->expires_at)
-                            <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
+                            <h4 class="title">Due {!! date('m/d/Y', strtotime($quest->expires_at)) !!}</h4>
                         @endif
 
                         @if($files)

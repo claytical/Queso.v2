@@ -18,12 +18,14 @@
                           </div>                        
                           @if($revision_count > 1)
                             <h4 class="subtitle">Previous Feedback</h4>
+                            <div class="content">
                             @foreach($previous_feedback as $feedback)
                                 <blockquote>
                                   <h5>{!! date('m/d/Y', strtotime($feedback->created_at)) !!}</h5>
                                   {!! $feedback->note !!}                                  
                                 </blockquote>
                             @endforeach
+                            </div>
                           @endif
               
                           @if(!$positive_feedback->isEmpty() || !$negative_feedback->isEmpty())
@@ -31,24 +33,26 @@
                           @endif
                           @if(!$positive_feedback->isEmpty())
                             <h5 class="subtitle">Positives</h5>    
+                            <div class="content">
                             @foreach($positive_feedback as $feedback)
-
                               <blockquote>
+                                <h6>{!! $feedback->user_from->name !!}</h6>
                                 {!! $feedback->note !!}
-                                <footer><cite title="Source Title">{!! $feedback->user_from->name !!}</cite></footer>
                               </blockquote>
                             @endforeach
+                            </div>
                         @endif
 
                         @if(!$negative_feedback->isEmpty())
                           <h5 class="subtitle">Areas for Improvement</h5>
-
+                            <div class="content">
                             @foreach($negative_feedback as $feedback)
                               <blockquote>
+                              <h6>{!! $feedback->user_from->name !!}</h6>
                                 {!! $feedback->note !!}
-                                <footer><cite title="Source Title">{!! $feedback->user_from->name !!}</cite></footer>
                               </blockquote>
                             @endforeach
+                            </div>
                         @endif
 
                         <hr/>
