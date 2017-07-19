@@ -31,6 +31,8 @@
                         </div>
                     <div class="tile is-child">
                         <div class="container is-fluid">
+                                <h4>New Files</h4>
+
                             <div id="attached_files">
                                 <p id="no_attached_files">No files have been attached yet.</p>
                             </div>
