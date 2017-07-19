@@ -31,10 +31,10 @@
                         data-sortable="true">Quest</th>
                         <th data-field="revisions" 
                         data-sortable="true">Revisions</th>
-                        <th data-field="points"
-                        data-sortable="true">Points</th>
                         <th data-field="submitted" 
                         data-sortable="true">Submitted On</th>
+                        <th data-field="points"
+                        data-sortable="true">Points</th>
                     </tr>            
                 </thead>
                 <tbody>
@@ -46,8 +46,6 @@
                         @else
                             {!! $quest['quest']->name !!}
                         @endif
-                        <br/>
-                                <em>{!! $quest['quest']->instructions !!}</em>
                             </td>
                         <td>
                             @if($quest['revisions'])
@@ -56,6 +54,8 @@
                                 None
                             @endif
                         </td>
+                        <td>{!! date('m/d', strtotime($quest['quest']->created_at)) !!}</td>
+
                         <td>
 
                             @foreach($quest['skills'] as $skill)
@@ -68,7 +68,6 @@
                                 <progress class="progress is-small is-success" value="{!! $quest['earned'] !!}" min="0" max="{!! $quest['available'] !!}">{!! $quest['earned'] !!}</progress>                              
                             @endif
                         </td>
-                        <td>{!! date('m/d/Y', strtotime($quest['quest']->created_at)) !!}</td>
 
                     </tr>
                     @endforeach
