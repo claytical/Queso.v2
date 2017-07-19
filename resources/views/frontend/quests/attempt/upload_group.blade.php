@@ -68,8 +68,9 @@
 @endsection
 
 @section('after-scripts-end')
-    $(".multiselect").selectize();
-
+    <script>
+        $(".multiselect").selectize();
+    </script>
     {{ Html::script('js/upload.quest.files.js')}}
 
 @stop
