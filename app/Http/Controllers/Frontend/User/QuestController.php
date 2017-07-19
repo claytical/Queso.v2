@@ -612,27 +612,28 @@ class QuestController extends Controller
             }
 
         }
-        if($quest->quest_type_id == 1 || $quest->quest_type_id == 5 || $quest->quest_type_id == 6) {
-            $attempt = new Submission;
-            if($quest->submissions) {
-                $attempt->submission = $request->submission;
-            }
+        switch($quest->quest_type_id) {
+            case '1':
+            case '5':
+            case '6':
+                $attempt = new Submission;
+                if($quest->submissions) {
+                    $attempt->submission = $request->submission;
+                }
+                break;
+            case '4':
+            case '7':
+                $validator = Validator::make(
+                                            ['link' => $request->link],
+                                            ['link' => 'url']);
+                if ($validator->fails()) {
+                    // The given data did not pass validation
+                    return redirect()->route('frontend.user.dashboard')->withFlashDanger("Link for . " . $quest->name . " is invalid.");
+                }
 
-        }
-
-        if($quest->quest_type_id == 4) {
-            $validator = Validator::make(
-                ['link' => $request->link],
-                ['link' => 'url']
-            );
-            
-            if ($validator->fails()) {
-                // The given data did not pass validation
-                return redirect()->route('frontend.user.dashboard')->withFlashDanger("Link for . " . $quest->name . " is invalid.");
-            }
-
-            $attempt = new Link;
-            $attempt->url = $request->link;
+                $attempt = new Link;
+                $attempt->url = $request->link;                        
+                break;
         }
 
         $attempt->quest_id = $request->quest_id;
