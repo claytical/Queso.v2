@@ -185,6 +185,8 @@
                                   <p class="control is-expanded has-icons-left">
                                     <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" value={!! $threshold->amount !!}>
                                     <input type="hidden" name="threshold_id[]" class="thresholds-input" value={!! $threshold->id !!}>
+                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->skill->id !!}>
+
                                   </p>
                                 </div>
                               </div>
@@ -316,7 +318,9 @@
           skillHtml += s_name;
           skillHtml += "</label></div><div class='field-body'><div class='field is-grouped'><p class='control is-expanded has-icons-left'>";
           skillHtml += "<input class='input is-large' type='number' name='threshold[]' placeholder='Maximum Points'>";
-          skillHtml += "<input type='hidden' name='threshold_id[]' class='thresholds-input' value=" + s_id + ">";
+          skillHtml += "<input type='hidden' name='threshold_id[]' class='thresholds-input' value=0>";
+
+          skillHtml += "<input type='hidden' name='threshold_skill_id[]' class='thresholds-input' value=" + s_id + ">";
           skillHtml += "</p></div></div></div>";
           $("#new_thresholds").append(skillHtml);
           if($("#additional_thresholds option").length == 0) {
