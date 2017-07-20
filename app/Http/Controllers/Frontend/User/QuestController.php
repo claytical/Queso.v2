@@ -366,7 +366,7 @@ class QuestController extends Controller
                 else {
                     $threshold = new Threshold;
                     $threshold->quest_id = $quest->id;
-                    $threshold->skill_id = $threshold_skill_id[$i];
+                    $threshold->skill_id = $request->threshold_skill_id[$i];
                 }
                 $threshold->save();
             }
