@@ -36,7 +36,7 @@
                         {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
                     </div>
                 </div>
-                <div class="is-4 is-child box">
+                <div class="box tile">
                     @if($quest->expires_at)
                         <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                     @endif
@@ -53,8 +53,7 @@
                     @endif
                     <p class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</p>
                         @foreach($skills as $skill)
-                            {!! $skill->name !!} / 
-                            {!! $skill->pivot->amount !!}
+                            <p>{!! $skill->name !!}<span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
                         @endforeach
 
                 </div>
