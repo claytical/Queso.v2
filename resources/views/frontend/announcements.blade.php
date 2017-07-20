@@ -9,8 +9,7 @@
         @endif
         @foreach($announcements as $announcement)
 
-                <h2 class="subtitle">{!! $announcement->title !!}</h2>
-                <h3 class="is-pulled-right">{!! date('m/d/Y', strtotime($announcement->created_at)) !!}</h3>
+                <h2 class="subtitle">{!! $announcement->title !!} <span class="is-pulled-right">{!! date('m/d/Y', strtotime($announcement->created_at)) !!}</span></h2>
                 {!! $announcement->body !!}
                 <hr/>
         @endforeach
