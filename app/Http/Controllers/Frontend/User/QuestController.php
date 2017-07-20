@@ -1127,7 +1127,7 @@ class QuestController extends Controller
             $files = $attempt->files;
         }            
 
-        if($quest->quest_type_id == 4 || $quest_type_id == 7) {
+        if($quest->quest_type_id == 4 || $quest->quest_type_id == 7) {
             $attempt = Link::where('quest_id', '=', $quest->id)
                             ->where('user_id', '=', $user_id)
                             ->orderBy('revision')
