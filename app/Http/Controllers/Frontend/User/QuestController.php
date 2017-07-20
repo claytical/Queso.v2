@@ -1111,22 +1111,11 @@ class QuestController extends Controller
 
         $files = false;
         $attempt = null;
-        if($quest->quest_type_id == 1 || $quest->quest_type_id == 5 || $quest->quest_type_id == 6) {
+        if($quest->quest_type_id == 1 || $quest->quest_type_id == 5) {
             $attempt = Submission::where('quest_id', '=', $quest_id)
                                     ->where('user_id', '=', $user->id)
                                     ->orderBy('revision')
                                     ->first();
-            if($quest->groups && !$attempt) {
-
-                $group_quest_attempt_id = GroupQuest::where('quest_id', '=', $quest->id)
-                                        ->users
-                                        ->where('user_id', '=', $user->id)
-                                        ->first()
-                                        ->attempt_id;
-
-                $attempt = Submission::find($group_quest_attempt_id);
-            }
-
             $files = $attempt->files;
         }            
 
@@ -1168,13 +1157,14 @@ public function view_group_feedback($quest_id, $user_id = null) {
         $user_quest = DB::table('group_quest_users')
                             ->join('group_quest', 'group_quest_users.group_quest_id', '=', 'group_quest.id')
                             ->join('quests', 'group_quest.quest_id', '=', 'quests.id')
-                            ->select('quests.name', 'quests.created_at', 'group_quest.graded', 'group_quest.attempt_id')
+                            ->select('quests.name', 'quests.created_at', 'group_quest.graded', 'group_quest.attempt_id', 'group_quest.id')
                             ->where('user_id', '=', $user->id)
                             ->where('quest_id', '=', $quest_id)
                             ->orderBy('group_quest.created_at')
                             ->first();
         $graded = $user_quest->graded;
-
+        $group_quest = GroupQuest::find($user_quest->id);
+        $group_members = $group_quest->users();
         $files = false;
         $attempt = null;
         if($quest->quest_type_id == 6) {  
@@ -1215,7 +1205,7 @@ public function view_group_feedback($quest_id, $user_id = null) {
                                         ->get();
 
 
-        return view('frontend.quests.feedback.view', ['student' => $user, 'quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback]);
+        return view('frontend.quests.feedback.view', ['students' => $group_members, 'student' => $user, 'quest' => $quest, 'positive' => $positive_feedback, 'negative' => $negative_feedback, 'attempt' => $attempt, 'files' => $files, 'graded' => $graded, 'skills' => $skills, 'quest_skills' => $quest_skills, 'instructor_feedback' => $instructor_feedback]);
     }
 
 

@@ -13,6 +13,13 @@
                     <h3 class="subtitle">Watched Video</h3>
                     @else
                     <h2 class="title">Feedback for {!! $quest->name !!}</h2>
+                    @if($quest->groups)
+                    <h3 class="subtitle">Group Members</h3>
+                        @foreach($students as $s)
+                            <p>{!! $student->name !!}</p>
+                        @endforeach
+                    @endif
+
                     @endif
                 @else
                     {!! link_to('manage/student/' . $student->id, 'Back to Student Overview', ['class' => 'button is-primary is-small is-pulled-right is-outlined']) !!}
