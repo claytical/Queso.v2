@@ -152,7 +152,7 @@
                     
                       @endforeach
                       <div id="new_skills" class="field"></div>
-                      <div class="field is-horizontal">
+                      <div class="field is-horizontal" id="additional_skills_parent">
                         <div class="field-label is-normal">
                           <label class="label">Add Skill</label>
                         </div>
@@ -286,8 +286,7 @@
           skillHtml += "</p></div></div></div>";
           $("#new_skills").append(skillHtml);
           if($("#additional_skills option").length == 0) {
-            $("#additional_skills").remove();
-            $("#add_skill").remove();
+            $("#additional_skills_parent").remove();
           }
     });
 
