@@ -3,7 +3,7 @@
 @section('content')
 <section class="hero" id="clone_quest">
     {!! Form::open(['url' => 'manage/quest/create', 'id' => 'quest-clone-form']) !!}
-    {!! Form::hidden('quest_type', $quest->quest_type_id) !!}
+    {!! Form::hidden('quest_type_id', $quest->quest_type_id) !!}
     {!! Form::hidden('instant', $quest->instant) !!}
     {!! Form::hidden('feedback', $quest->peer_feedback) !!}
     {!! Form::hidden('groups_allowed', $quest->groups) !!}
@@ -46,7 +46,9 @@
 
                 <div class="tile is-4 is-parent">
                     <div class="tile is-child notification">
-                        <p>The new quest will inherit everything from the quest you're cloning except the name.</p>
+                        <div class="field">
+                            <p>The new quest will inherit everything from the quest you're cloning except the name.</p>
+                        </div>
                         <div class="field">
                             <p class="control">
                             {!! Form::submit('Clone', ['class' => 'button is-primary is-large']) !!}
