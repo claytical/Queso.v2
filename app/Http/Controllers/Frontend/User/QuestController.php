@@ -1116,7 +1116,7 @@ class QuestController extends Controller
                                     ->where('user_id', '=', $user->id)
                                     ->orderBy('revision')
                                     ->first();
-            if($quest->groups && $attempt->isEmpty()) {
+            if($quest->groups && !$attempt) {
                 $attempt = Submission::where('quest_id', '=', $quest_id)
 //                                        ->where('user_id', '=', $user->id)
                                         ->orderBy('revision')
