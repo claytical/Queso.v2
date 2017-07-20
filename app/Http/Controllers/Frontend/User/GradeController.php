@@ -254,7 +254,12 @@ class GradeController extends Controller
             $notice = new Notice;
             $notice->user_id = $user->id;
             $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
-            $notice->url = "quest/". $quest->id ."/feedback";
+            if($quest->groups) {
+                $notice->url ="quest/".$quest->id."/group/feedback"
+            }
+            else {
+                $notice->url = "quest/". $quest->id ."/feedback";
+            }
             $notice->course_id = $quest->course_id;
             $notice->save();
             $prof = access()->user();

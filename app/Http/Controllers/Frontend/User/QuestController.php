@@ -195,6 +195,9 @@ class QuestController extends Controller
     public function edit_form($id) {
         $quest = Quest::find($id);
         $skills = $quest->skills()->get();
+        $other_skills = Skill::where('course_id', '=', $quest->course_id)
+                            ->whereNotIn('id', $skills->pluck('id'))
+                            ->get();
         $thresholds = $quest->thresholds()->with('skill')->get();
         $codes = $quest->redemption_codes()->get();
         $files = $quest->files;
@@ -227,7 +230,8 @@ class QuestController extends Controller
                                                         'thresholds' => $thresholds,
                                                         'codes' => $codes,
                                                         'files' => $files,
-                                                        'course_id' => $quest->course_id])
+                                                        'course_id' => $quest->course_id,
+                                                        'other_skills' => $other_skills])
             ->withUser(access()->user());
 
     }

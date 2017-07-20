@@ -151,7 +151,20 @@
                         </div>
                     
                       @endforeach
-
+                      <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                                                  <label class="label">Add Skill</label>
+                                                </div>
+                          <div class="field-body">
+                          <div class="select is-large">
+                            <select class="valid" aria-invalid="false">
+                              @foreach($other_skills as $os)
+                                <option value="{!! $os->id !!}">{!! $os->name !!}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 

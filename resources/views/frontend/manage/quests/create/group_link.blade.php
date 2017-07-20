@@ -9,6 +9,7 @@
                     {{ Form::hidden('uploads_allowed', false, ['id' => 'uploads_allowed']) }}
                     {{ Form::hidden('groups', true, ['id' => 'groups_allowed']) }}
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
+                    {{ Form::hidden('revisions', 0) }}
 
 <section class="hero" id="choose_quest">
   <div class="hero-body">
@@ -45,6 +46,8 @@
 
                 <div class="tile is-4 is-parent">
                     <div class="tile is-child notification">
+
+                    <!--
                       <h4 class="subtitle">Allow Revisions</h4>
                         <div class="field">
                           <p class="control">
@@ -58,7 +61,7 @@
                             </label>
                           </p>
                         </div>                      
-                      
+                      -->
                       <h4 class="subtitle">Peer Feedback</h4>
                         <div class="field">
                           <p class="control">

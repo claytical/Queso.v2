@@ -25,12 +25,14 @@
                   </p>
                 </div>                   
             @endif
+
             <div class="field">
                 <p class="control">
                 {{ Form::checkbox('email_notifications', 1) }}
                 Email Notifications</label>
                 </p>
             </div>
+
             <div class="field">
                 {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'button is-large is-primary']) }}
             </div>

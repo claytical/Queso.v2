@@ -13,13 +13,6 @@
                     <h3 class="subtitle">Watched Video</h3>
                     @else
                     <h2 class="title">Feedback for {!! $quest->name !!}</h2>
-                    @if($quest->groups)
-                    <h3 class="subtitle">Group Members</h3>
-                        @foreach($students as $s)
-                            <p>{!! $s->name !!}</p>
-                        @endforeach
-                    @endif
-
                     @endif
                 @else
                     {!! link_to('manage/student/' . $student->id, 'Back to Student Overview', ['class' => 'button is-primary is-small is-pulled-right is-outlined']) !!}
@@ -98,7 +91,14 @@
     <div class="tile is-parent is-vertical is-4">
         <div class="tile is-child">
             @if($graded)
-                <h3 class="title">Current Grade</h3>
+                @if($quest->groups)
+                <h3 class="subtitle">Group Members</h3>                
+                    @foreach($students as $s)
+                        <p>{!! $s->name !!}</p>
+                    @endforeach
+                @endif
+
+                <h3 class="subtitle">Current Grade</h3>
                     @if(count($quest_skills) > 1)
                         @foreach($quest_skills as $index => $quest_skill)
                             <p>{!! $quest_skill->name !!} 
