@@ -167,8 +167,8 @@
                           </div>
                           <a class="button is-pulled-right is-large" id="add_skill">Add</a>                          
                         </div>
-                      @endif
                       </div>
+                      @endif
                     </div>
                   </div>
 
@@ -195,6 +195,7 @@
                           @endforeach
                       <div id="new_thresholds" class="field"></div>
                       @if(count($other_thresholds))
+
                       <div class="field is-horizontal" id="additional_thresholds_parent">
                         <div class="field-label is-normal">
                           <label class="label">Add Threshold</label>
@@ -209,9 +210,8 @@
                           </div>
                           <a class="button is-pulled-right is-large" id="add_threshold">Add</a>                          
                         </div>
-                      @endif
                       </div>                                         
-                                               
+                      @endif                                               
                       </div>
                   </div>
                 </div>
