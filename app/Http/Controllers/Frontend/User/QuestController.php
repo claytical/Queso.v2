@@ -1164,7 +1164,7 @@ public function view_group_feedback($quest_id, $user_id = null) {
                             ->first();
         $graded = $user_quest->graded;
         $group_quest = GroupQuest::find($user_quest->id);
-        $group_members = $group_quest->users();
+        $group_members = $group_quest->users;
         $files = false;
         $attempt = null;
         if($quest->quest_type_id == 6) {  
