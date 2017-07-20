@@ -340,7 +340,12 @@ class QuestController extends Controller
         for($i = 0; $i < count($request->skill); $i++) {
             $skill_id = $request->skill_id[$i];
             if (is_numeric($request->skill[$i])) {
-                $quest->skills()->updateExistingPivot($skill_id, ['amount' => $request->skill[$i]]);
+                if($quest->skills()->where('skill_id', $skill_id)->exists()) {
+                    $quest->skills()->updateExistingPivot($skill_id, ['amount' => $request->skill[$i]]);
+                }
+                else { 
+                    $quest->skills()->attach($skill_id, ['amount' => $request->skill[$i]]);                
+                }
             }
         }
 
