@@ -6,7 +6,7 @@
     {!! Form::hidden('quest_type_id', $quest->quest_type_id) !!}
     {!! Form::hidden('instant', $quest->instant) !!}
     {!! Form::hidden('feedback', $quest->peer_feedback) !!}
-    {!! Form::hidden('groups_allowed', $quest->groups) !!}
+    {!! Form::hidden('groups', $quest->groups) !!}
     {!! Form::hidden('revisions', $quest->revisions) !!}
     {!! Form::hidden('submissions_allowed', $quest->submissions_allowed) !!}
     {!! Form::hidden('uploads_allowed', $quest->uploads) !!}
