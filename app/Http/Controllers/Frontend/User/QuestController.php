@@ -1119,7 +1119,7 @@ class QuestController extends Controller
             if($quest->groups && !$attempt) {
 
                 $group_quest_attempt_id = GroupQuest::where('quest_id', '=', $quest->id)
-                                        ->users()
+                                        ->users
                                         ->where('user_id', '=', $user->id)
                                         ->first()
                                         ->attempt_id;
