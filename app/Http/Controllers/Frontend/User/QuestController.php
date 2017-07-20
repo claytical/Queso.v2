@@ -452,74 +452,6 @@ class QuestController extends Controller
 
         $quest->save();
 
-        //RESPONSE FORM
-
-//category?
-//color?        
-
-
-//file attachments
-
-//type specific options
-        /*
-        switch($request->quest_type) {
-            //SUBMISSION
-            
-            case '1':
-
-
-                break;
-
-            //IN CLASS
-            case '2':
-                $quest->quest_type_id = 2;
-
-                if($request->has('instant')) {
-                    $quest->instant = true;
-                }
-                else {
-                    $quest->instant = false;
-                }
-                break;
-            //WATCH VIDEO
-            case '3':
-                $quest->quest_type_id = 3;
-                if (strpos($request->video_url, 'youtube.com') !== false) {
-                    $youtube_url = [];
-                    $yid = parse_str( parse_url( $request->video_url, PHP_URL_QUERY ), $youtube_url );
-                    $quest->youtube_id = $youtube_url['v'];
-                }
-                else {
-                    //give error
-                    return redirect()->route('quests.manage')->withFlashDanger("This feature requires a YouTube URL.");
-                }
-                break;
-            //LINK
-            case '4':
-                $quest->quest_type_id = 4;
-                //feedback
-                if ($request->has('feedback_option')) {
-                    $quest->peer_feedback = true;
-                }
-                else {
-                    $quest->peer_feedback = false;
-                }
-                if($request->has('revisions')) {
-                    $quest->revisions = true;
-                }
-                else {
-                    $quest->revisions = false;
-                }
-
-                break;
-            
-            default:
-                break;
-
-        }
-
-        */
-
 //skills
         for($i = 0; $i < count($request->skill); $i++) {
             $skill_id = $request->skill_id[$i];
@@ -550,11 +482,27 @@ class QuestController extends Controller
             }
         }
 
+        if($quest->instant) {
+            if($request->number_of_codes > 0) {
+                for ($i = 0; $i < $request->number_of_codes; $i++) {
+                    $code = new Redemption;
+                    $code->quest_id = $quest->id;
+                    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $charactersLength = strlen($characters);
+                    $randomString = '';
+                    for ($j = 0; $j < 10; $j++) {
+                        $randomString .= $characters[rand(0, $charactersLength - 1)];
+                    }
+                    $code->code = $randomString;
+                    $code->save();
+                }
+            }
+        }
+
+
 
         return redirect()->route('quests.manage', $request->course_id)->withFlashSuccess($quest->name . " has been successfully created.");
 
-//        return view('frontend.manage.quests.created', ['data' => $request->all(), 'quest' => $quest])
-//            ->withUser(access()->user());
     }
     public function attempt_submission($quest_id) {
         $quest = Quest::find($quest_id);
