@@ -88,7 +88,7 @@
                     <a class="button is-small" href="{!! url('manage/quest/'.$quest->id.'/clone');!!}">Clone</a>
 
                     @if($quest->instant)
-                      <a class="button is-small" href="{!! url('manage/quest/'.$quest->id.'/qrcards');!!}">QR Code Sheet</a>
+                      <a class="button is-small" target="_blank" href="{!! url('manage/quest/'.$quest->id.'/qrcards');!!}">QR Code Sheet</a>
                     @endif
                     <a class="button is-small is-danger" href="{!! url('manage/quest/'.$quest->id.'/delete');!!}">Delete</a>
                     </td>
