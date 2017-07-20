@@ -1117,11 +1117,14 @@ class QuestController extends Controller
                                     ->orderBy('revision')
                                     ->first();
             if($quest->groups && !$attempt) {
-                $attempt = Submission::where('quest_id', '=', $quest_id)
-//                                        ->where('user_id', '=', $user->id)
-                                        ->orderBy('revision')
-                                        ->first();
 
+                $group_quest_attempt_id = GroupQuest::where('quest_id', '=', $quest->id)
+                                        ->users()
+                                        ->where('user_id', '=', $user->id)
+                                        ->first()
+                                        ->attempt_id;
+
+                $attempt = Submission::find($group_quest_attempt_id);
             }
 
             $files = $attempt->files;
