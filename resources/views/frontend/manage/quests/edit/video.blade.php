@@ -62,9 +62,9 @@
             </div>
             <div class="msf-view">
 
-              <div class="tile is-6 is-parent">
+              <div class="tile is-12 is-parent">
                   <div class="container is-fluid">
-                      <p>You can set a maximum amount of points you're able to award to a student for completing this quest for each skill.</p>
+                      <p>You can set a maximum amount of points you're able to award to a student for completing this quest for each skill. If you set a minimum point value for a skill, the student will only be able to see this quest when they have been awarded at least that amount of points for that specific skill.</p>
                   </div>
               </div>
 
@@ -82,7 +82,7 @@
                           <div class="field-body">
                             <div class="field is-grouped">
                               <p class="control is-expanded has-icons-left">
-                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points" value="{!! $skill->pivot->amount !!}">
+                                <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points" value={!! $skill->pivot->amount !!}>
                                 <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
                               </p>
                             </div>
@@ -90,9 +90,27 @@
                         </div>
                     
                       @endforeach
-
+                      @if(count($other_skills))
+                      <div id="new_skills" class="field"></div>
+                      <div class="field is-horizontal" id="additional_skills_parent">
+                        <div class="field-label is-normal">
+                          <label class="label">Add Skill</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="select is-large">
+                            <select class="valid" aria-invalid="false" placeholder="Select Skill..." id="additional_skills">
+                              @foreach($other_skills as $os)
+                                <option value="{!! $os->id !!}">{!! $os->name !!}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <a class="button is-pulled-right is-large" id="add_skill">Add</a>                          
+                        </div>
+                      </div>
+                      @endif
                     </div>
                   </div>
+
                   <div class="tile is-6 is-parent">
                       <div class="tile is-child">
                         <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
@@ -104,22 +122,40 @@
                               <div class="field-body">
                                 <div class="field is-grouped">
                                   <p class="control is-expanded has-icons-left">
-                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" value="{!! $threshold->amount !!}">
-                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->id !!}>
+                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" value={!! $threshold->amount !!}>
+                                    <input type="hidden" name="threshold_id[]" class="thresholds-input" value={!! $threshold->id !!}>
+                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->skill->id !!}>
+
                                   </p>
                                 </div>
                               </div>
                             </div>
 
-                          @endforeach                       
+                          @endforeach
+                      <div id="new_thresholds" class="field"></div>
+                      @if(count($other_thresholds))
+
+                      <div class="field is-horizontal" id="additional_thresholds_parent">
+                        <div class="field-label is-normal">
+                          <label class="label">Add Threshold</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="select is-large">
+                            <select class="valid" aria-invalid="false" placeholder="Select Skill..." id="additional_thresholds">
+                              @foreach($other_thresholds as $ot)
+                                <option value="{!! $ot->id !!}">{!! $ot->name !!}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <a class="button is-pulled-right is-large" id="add_threshold">Add</a>                          
+                        </div>
+                      </div>                                         
+                      @endif                                               
                       </div>
                   </div>
                 </div>
 
-                </div>
-
               </div>
-          </div>
           <div class="msf-navigation">
                 <button data-type="back" class="button is-large msf-nav-button" type="button">Previous</button>
                 <button data-type="next" class="button is-large msf-nav-button" type="button">Next</button>
@@ -162,5 +198,6 @@
 
 
     </script>
+    {{ Html::script('js/manage.quest.skills.js')}}
 
 @stop

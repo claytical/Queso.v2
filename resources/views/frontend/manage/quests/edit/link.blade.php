@@ -151,8 +151,24 @@
                         </div>
                     
                       @endforeach
-
-
+                      @if(count($other_skills))
+                      <div id="new_skills" class="field"></div>
+                      <div class="field is-horizontal" id="additional_skills_parent">
+                        <div class="field-label is-normal">
+                          <label class="label">Add Skill</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="select is-large">
+                            <select class="valid" aria-invalid="false" placeholder="Select Skill..." id="additional_skills">
+                              @foreach($other_skills as $os)
+                                <option value="{!! $os->id !!}">{!! $os->name !!}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <a class="button is-pulled-right is-large" id="add_skill">Add</a>                          
+                        </div>
+                      </div>
+                      @endif
                     </div>
                   </div>
 
@@ -167,20 +183,41 @@
                               <div class="field-body">
                                 <div class="field is-grouped">
                                   <p class="control is-expanded has-icons-left">
-                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" {!! $threshold->amount !!}>
-                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->id !!}>
+                                    <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" value={!! $threshold->amount !!}>
+                                    <input type="hidden" name="threshold_id[]" class="thresholds-input" value={!! $threshold->id !!}>
+                                    <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->skill->id !!}>
+
                                   </p>
                                 </div>
                               </div>
                             </div>
 
-                          @endforeach                       
+                          @endforeach
+                      <div id="new_thresholds" class="field"></div>
+                      @if(count($other_thresholds))
+
+                      <div class="field is-horizontal" id="additional_thresholds_parent">
+                        <div class="field-label is-normal">
+                          <label class="label">Add Threshold</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="select is-large">
+                            <select class="valid" aria-invalid="false" placeholder="Select Skill..." id="additional_thresholds">
+                              @foreach($other_thresholds as $ot)
+                                <option value="{!! $ot->id !!}">{!! $ot->name !!}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <a class="button is-pulled-right is-large" id="add_threshold">Add</a>                          
+                        </div>
+                      </div>                                         
+                      @endif                                               
                       </div>
                   </div>
                 </div>
 
               </div>
-            <div class="msf-view">
+          <div class="msf-view">
 
 
              <div class="tile">
@@ -254,5 +291,7 @@
 
     </script>
     {{ Html::script('js/manage.quest.files.js')}}
+    {{ Html::script('js/manage.quest.skills.js')}}
+    
 
 @stop
