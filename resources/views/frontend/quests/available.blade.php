@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="section">
-
+    <a href="{!! URL::to('quest/redeem') !!}" class="is-pulled-right button is-medium is-primary is-outlined">Instant Credit</a>
     <h1 class="title">Available Quests</h1>
     @if($unlocked)
         <table class="table">
@@ -50,7 +50,7 @@
                             <td>{!! $q->course->name !!}</td>
                             <td>
                                 @if($q->expires_at)
-                                {!! date('m-d-Y', strtotime($q->expires_at)) !!}
+                                {!! date('m/d/Y', strtotime($q->expires_at)) !!}
                                 @else
                                 Never
                                 @endif
