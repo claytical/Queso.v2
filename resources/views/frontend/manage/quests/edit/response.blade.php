@@ -276,7 +276,7 @@
 
     $("#add_skill").click(function() {
       var s_id = $("#additional_skills").val();
-      var s_name = $("#additional_skills").text();
+      var s_name = $("#additional_skills :selected").text();
       $("#additional_skills option[value="+s_id+"]").remove();
       var skillHtml = '<div class="field is-horizontal"><div class="field-label is-normal"><label class="label">';
           skillHtml += s_name;
