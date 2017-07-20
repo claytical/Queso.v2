@@ -258,12 +258,14 @@ class GradeController extends Controller
             $notice->course_id = $quest->course_id;
             $notice->save();
             $prof = access()->user();
+            /*
             Mail::send('emails.instructor_feedback', ['link' => $notice->url, 'sender' => $prof, 'feedback' => $request->feedback, 'quest' => $quest, 'total_points' => $total_points, 'sum_points' => $quest->skills()->sum('amount')], 
                 function ($message) use ($quest, $user, $prof) {
                     $message->subject($quest->name . " has been graded");
                     $message->from($prof->email, $prof->name);
                     $message->to($user->email);
                 });
+            */
             $user->quests()->where('revision', $attempt->revision)
                         ->updateExistingPivot($attempt->quest_id, ['graded' => true]);
         }
