@@ -1,11 +1,9 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light">
+<section class="hero is-bold is-dark">
     <div class="hero-body">
-        <div class="container is-fluid">        
-            <h1 class="title">Announcements</h1>
-        </div>
+        <h1 class="title">Announcements</h1>
     </div>
 </section>
 
