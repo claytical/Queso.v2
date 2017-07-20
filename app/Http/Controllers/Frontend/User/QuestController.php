@@ -1092,6 +1092,7 @@ class QuestController extends Controller
         else {
             $user = access()->user();
         }
+
         $skills = $user->skills()->where('quest_id', $quest_id)->get();
         $quest_skills = $quest->skills()->get();
 
@@ -1115,6 +1116,14 @@ class QuestController extends Controller
                                     ->where('user_id', '=', $user->id)
                                     ->orderBy('revision')
                                     ->first();
+            if($quest->groups && $attempt->isEmpty()) {
+                $attempt = Submission::where('quest_id', '=', $quest_id)
+//                                        ->where('user_id', '=', $user->id)
+                                        ->orderBy('revision')
+                                        ->first();
+
+            }
+
             $files = $attempt->files;
         }            
 
