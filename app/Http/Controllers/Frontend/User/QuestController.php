@@ -200,7 +200,7 @@ class QuestController extends Controller
                             ->get();
         $thresholds = $quest->thresholds()->with('skill')->get();
         $other_thresholds = Skill::where('course_id', '=', $quest->course_id)
-                            ->whereNotIn('id', $thresholds->pluck('id'))
+                            ->whereNotIn('id', $thresholds->pluck('skill_id'))
                             ->get();
 
         $codes = $quest->redemption_codes()->get();
