@@ -17,9 +17,6 @@
 
               @else
                   <a class="navbar-item" href="{!! URL::to('quests/available')!!}">Quests</a>
-                  <a class="navbar-item" href="{!! URL::to('quests/history/1')!!}">Progress</a>
-
-
                     @if(count(access()->courses()) > 1)
                         <div class="navbar-item has-dropdown is-hoverable">                
                                 <a class="navbar-link  is-active" href="#">
