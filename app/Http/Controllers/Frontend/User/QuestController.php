@@ -360,14 +360,12 @@ class QuestController extends Controller
             $threshold_id = $request->threshold_id[$i];
             if (is_numeric($request->threshold[$i])) {
                 $threshold = Threshold::find($threshold_id);
-                if($threshold) {
-                    $threshold->amount = $request->threshold[$i];
-                }
-                else {
+                if(!$threshold) {
                     $threshold = new Threshold;
                     $threshold->quest_id = $quest->id;
                     $threshold->skill_id = $request->threshold_skill_id[$i];
                 }
+                $threshold->amount = $request->threshold[$i];
                 $threshold->save();
             }
         }        
