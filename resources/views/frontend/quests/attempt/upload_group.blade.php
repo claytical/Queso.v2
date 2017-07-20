@@ -36,7 +36,7 @@
                         {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
                     </div>
                 </div>
-                <div class="box tile">
+                <div class="box tile is-vertical">
                     @if($quest->expires_at)
                         <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                     @endif
