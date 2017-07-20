@@ -151,12 +151,12 @@
                         </div>
                     
                       @endforeach
+                      @if(count($other_skills))
                       <div id="new_skills" class="field"></div>
                       <div class="field is-horizontal" id="additional_skills_parent">
                         <div class="field-label is-normal">
                           <label class="label">Add Skill</label>
                         </div>
-                      @if(count($other_skills))
                         <div class="field-body">
                           <div class="select is-large">
                             <select class="valid" aria-invalid="false" placeholder="Select Skill..." id="additional_skills">
@@ -194,11 +194,11 @@
 
                           @endforeach
                       <div id="new_thresholds" class="field"></div>
+                      @if(count($other_thresholds))
                       <div class="field is-horizontal" id="additional_thresholds_parent">
                         <div class="field-label is-normal">
                           <label class="label">Add Threshold</label>
                         </div>
-                      @if(count($other_thresholds))
                         <div class="field-body">
                           <div class="select is-large">
                             <select class="valid" aria-invalid="false" placeholder="Select Skill..." id="additional_thresholds">
