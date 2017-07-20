@@ -199,6 +199,10 @@ class QuestController extends Controller
                             ->whereNotIn('id', $skills->pluck('id'))
                             ->get();
         $thresholds = $quest->thresholds()->with('skill')->get();
+        $other_thresholds = Skill::where('course_id', '=', $quest->course_id)
+                            ->whereNotIn('id', $thresholds->pluck('id'))
+                            ->get();
+
         $codes = $quest->redemption_codes()->get();
         $files = $quest->files;
         switch($quest->quest_type_id) {
@@ -231,7 +235,8 @@ class QuestController extends Controller
                                                         'codes' => $codes,
                                                         'files' => $files,
                                                         'course_id' => $quest->course_id,
-                                                        'other_skills' => $other_skills])
+                                                        'other_skills' => $other_skills,
+                                                        'other_thresholds' => $other_thresholds])
             ->withUser(access()->user());
 
     }

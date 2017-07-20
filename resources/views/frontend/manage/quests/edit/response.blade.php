@@ -190,7 +190,25 @@
                               </div>
                             </div>
 
-                          @endforeach                       
+                          @endforeach
+                      <div id="new_thresholds" class="field"></div>
+                      <div class="field is-horizontal" id="additional_thresholds_parent">
+                        <div class="field-label is-normal">
+                          <label class="label">Add Threshold</label>
+                        </div>
+                      @if(count($other_thresholds))
+                        <div class="field-body">
+                          <div class="select is-large">
+                            <select class="valid" aria-invalid="false" placeholder="Select Skill..." id="additional_thresholds">
+                              @foreach($other_thresholds as $ot)
+                                <option value="{!! $ot->id !!}">{!! $ot->name !!}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <a class="button is-pulled-right is-large" id="add_threshold">Add</a>                          
+                        </div>
+                      @endif
+                      </div>                                         
                                                
                       </div>
                   </div>
@@ -286,9 +304,27 @@
           skillHtml += "</p></div></div></div>";
           $("#new_skills").append(skillHtml);
           if($("#additional_skills option").length == 0) {
-            $("#additional_skills_parent").remove();
+             $("#additional_skills_parent").remove();
           }
     });
+
+    $("#add_threshold").click(function() {
+      var s_id = $("#additional_thresholds").val();
+      var s_name = $("#additional_thresholds :selected").text();
+      $("#additional_thresholds option[value="+s_id+"]").remove();
+      var skillHtml = '<div class="field is-horizontal"><div class="field-label is-normal"><label class="label">';
+          skillHtml += s_name;
+          skillHtml += "</label></div><div class='field-body'><div class='field is-grouped'><p class='control is-expanded has-icons-left'>";
+          skillHtml += "<input class='input is-large' type='number' name='threshold[]' placeholder='Maximum Points'>";
+          skillHtml += "<input type='hidden' name='threshold_id[]' class='thresholds-input' value=" + s_id + ">";
+          skillHtml += "</p></div></div></div>";
+          $("#new_thresholds").append(skillHtml);
+          if($("#additional_thresholds option").length == 0) {
+             $("#additional_thresholds_parent").remove();
+          }
+    });
+
+
 
     </script>
     {{ Html::script('js/manage.quest.files.js')}}
