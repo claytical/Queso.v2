@@ -151,7 +151,7 @@
                         </div>
                     
                       @endforeach
-                      <div id="new_skills"></div>
+                      <div id="new_skills" class="field"></div>
                       <div class="field is-horizontal">
                         <div class="field-label is-normal">
                           <label class="label">Add Skill</label>
@@ -285,6 +285,10 @@
           skillHtml += "<input type='hidden' name='skill_id[]' class='skills-input' value=" + s_id + ">";
           skillHtml += "</p></div></div></div>";
           $("#new_skills").append(skillHtml);
+          if($("#additional_skills option").length == 0) {
+            $("#additional_skills").remove();
+            $("#add_skill").remove();
+          }
     });
 
     </script>
