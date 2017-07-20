@@ -10,6 +10,8 @@
     {!! Form::hidden('revisions', $quest->revisions) !!}
     {!! Form::hidden('submissions_allowed', $quest->submissions_allowed) !!}
     {!! Form::hidden('uploads_allowed', $quest->uploads) !!}
+    {!! Form::hidden('course_id', $quest->course_id) !!}
+
 
 
     @foreach($skills as $skill)
