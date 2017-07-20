@@ -19,9 +19,8 @@ class AnnouncementController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function index() {
-        $announcements = Announcement::where('course_id', '=', session('current_course'))->get();
-//        $announcements = Announcement::all();
+    public function index($course_id) {
+        $announcements = Announcement::where('course_id', '=', $course_id)->get();
         return view('frontend.announcements', ['announcements' => $announcements])
             ->withUser(access()->user());
     }

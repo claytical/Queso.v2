@@ -94,7 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('resource/{resource_slug}', 'ResourceController@by_slug')->name('resource.slug.view');
         Route::get('resource/category/{category_id}', 'ResourceController@by_category')->name('resource.category');
 
-        Route::get('announcements', 'AnnouncementController@index')->name('announcements');
+        Route::get('announcements/{course_id}', 'AnnouncementController@index')->name('announcements');
 
         Route::get('grade/submissions/{course_id}', 'GradeController@submission_list')->name('grade.submissions');
         Route::get('grade/quest/{quest_id}/{submission_id}', 'GradeController@quest')->name('grade.quest');

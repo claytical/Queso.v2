@@ -1,20 +1,24 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="col-lg-12">
-        <h2>Announcements</h2>
+<section class="content" id="announcements">
+    <div class="container is-fluid">        
+        <h1 class="title">Announcements</h1>
         @if($announcements->isEmpty())
-            <p class="lead">There are no announcements!</p>
+            <h2 class="subtitle">There are no announcements!</h2>
         @endif
         @foreach($announcements as $announcement)
 
-                <h4>{!! $announcement->title !!}</h4>
-                <h5>{!! date('m-d-Y', strtotime($announcement->created_at)) !!}</h5>
+                <h2 class="subtitle">{!! $announcement->title !!}</h2>
+                <h3 class="is-pulled-right">{!! date('m/d/Y', strtotime($announcement->created_at)) !!}</h3>
                 {!! $announcement->body !!}
                 <hr/>
         @endforeach
 
+
     </div>
+</section>
+
 @endsection
 
 @section('after-scripts-end')
