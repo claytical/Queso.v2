@@ -16,7 +16,7 @@
                     @if($quest->groups)
                     <h3 class="subtitle">Group Members</h3>
                         @foreach($students as $s)
-                            <p>{!! $student->name !!}</p>
+                            <p>{!! $s->name !!}</p>
                         @endforeach
                     @endif
 
