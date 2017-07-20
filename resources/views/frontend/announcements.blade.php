@@ -1,9 +1,16 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+<section class="hero is-bold is-light">
+    <div class="hero-body">
+        <div class="container is-fluid">        
+            <h1 class="title">Announcements</h1>
+        </div>
+    </div>
+</section>
+
 <section class="content" id="announcements">
     <div class="container is-fluid">        
-        <h1 class="title">Announcements</h1>
         @if($announcements->isEmpty())
             <h2 class="subtitle">There are no announcements!</h2>
         @endif

@@ -20,7 +20,9 @@ class AnnouncementController extends Controller
      */
 
     public function index($course_id) {
-        $announcements = Announcement::where('course_id', '=', $course_id)->get();
+        $announcements = Announcement::where('course_id', '=', $course_id)
+                        ->orderBy('created_at')
+                        ->get();
         return view('frontend.announcements', ['announcements' => $announcements])
             ->withUser(access()->user());
     }
