@@ -1111,7 +1111,7 @@ class QuestController extends Controller
 
         $files = false;
         $attempt = null;
-        if($quest->quest_type_id == 1 || $quest->quest_type_id == 5) {
+        if($quest->quest_type_id == 1 || $quest->quest_type_id == 5 || $quest->quest_type_id == 6) {
             $attempt = Submission::where('quest_id', '=', $quest_id)
                                     ->where('user_id', '=', $user->id)
                                     ->orderBy('revision')
@@ -1127,7 +1127,7 @@ class QuestController extends Controller
             $files = $attempt->files;
         }            
 
-        if($quest->quest_type_id == 4) {
+        if($quest->quest_type_id == 4 || $quest_type_id == 7) {
             $attempt = Link::where('quest_id', '=', $quest->id)
                             ->where('user_id', '=', $user_id)
                             ->orderBy('revision')
