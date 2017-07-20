@@ -31,14 +31,34 @@
         </div>
       </div>
     <div class="tile is-parent is-vertical is-4">
+        @if(count(access()->courses_taught()) > 0)
+            <div class="tile is-child">
+                <p class="title">Submissions</p>
+                @foreach(access()->awaiting_grade() as $course => $quest)
+                    <div class="is-clearfix">
+                        <h4 class="subtitle">{!! $course !!}</h4>
+                    </div>
+                    @foreach($quest as $q)
+                        @if($q['attempt'])
+                        <div class="field">
+                            <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>
+                            <div class="is-pulled-right">
+                                {!! $q['student'] . ' on ' . date('m/d', strtotime($q['attempt']->created_at)) !!}
+                            </div>                
+                        </div>
+                        @endif
+                    @endforeach
+                @endforeach
+            </div>
+        @endif
         <div class="tile is-child">
           <h3 class="title">Agenda</h3>           
             @foreach(access()->agenda() as $date => $quest)
                 <div class="is-clearfix">
                     @if($date)
-                        <h4 class="subtitle is-pulled-right">{!! date('m-d-Y', strtotime($date)) !!}</h4>
+                        <h4 class="subtitle is-pulled-right">Due {!! date('m/d', strtotime($date)) !!}</h4>
                     @else
-                        <h4 class="subtitle is-pulled-right">Anytime</h4>
+                        <h4 class="subtitle is-pulled-right">Due Anytime</h4>
                     @endif
                 </div>
                 @foreach($quest as $q)
@@ -67,25 +87,6 @@
                 @endforeach
                 <hr/>
             @endforeach 
-        </div>
-
-        <div class="tile is-child">
-            <p class="title">Submissions</p>
-            @foreach(access()->awaiting_grade() as $course => $quest)
-                <div class="is-clearfix">
-                    <h4 class="subtitle">{!! $course !!}</h4>
-                </div>
-                @foreach($quest as $q)
-                    @if($q['attempt'])
-                    <div class="field">
-                        <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>
-                        <div class="is-pulled-right">
-                            {!! $q['student'] . ' on ' . date('m/d', strtotime($q['attempt']->created_at)) !!}
-                        </div>                
-                    </div>
-                    @endif
-                @endforeach
-            @endforeach
         </div>
 
     </div>
