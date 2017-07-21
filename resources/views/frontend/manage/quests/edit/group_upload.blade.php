@@ -52,28 +52,6 @@
 
                   <div class="tile is-4 is-parent">
                       <div class="tile is-child notification">
-                        <h4 class="subtitle">Allow Revisions</h4>
-                          <div class="field">
-                            <p class="control">
-                              <label class="radio">
-                                <input type="radio" name="revisions" value="1"
-                                @if($quest->revisions)
-                                  checked
-                                @endif
-                                >
-                                Yes
-                              </label>
-                              <label class="radio">
-                                <input type="radio" name="revisions" value="0"
-                                @if(!$quest->revisions)
-                                  checked
-                                @endif
-                                >
-                                No
-                              </label>
-                            </p>
-                          </div>                      
-                        
                         <h4 class="subtitle">Peer Feedback</h4>
                           <div class="field">
                             <p class="control">
