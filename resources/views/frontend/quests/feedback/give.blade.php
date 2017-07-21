@@ -43,9 +43,9 @@
                         <div class="tile is-child is-6">
                             <h3 class="subtitle">What could be improved?</h3>
                             <p>Share your thoughts on how this could be improved.</p>
-                            <div class="field">
+                            <div class="field" style="margin-left: 10px;">
                                 <p class="control">
-                                    {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true, 'style' => 'width: 99%;']) !!}            
+                                    {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
                                 </p>
                             </div>
                         </div>
@@ -53,11 +53,7 @@
                     </div>
                 </div>
                 <div class="tile is-parent">
-                       <div class="field">
-                            <p class="control">
-                                {!! Form::submit('Submit', ['class' => 'button is-large is-primary is-fullwidth']) !!}        
-                            </p>
-                        </div>                
+                    {!! Form::submit('Submit', ['class' => 'button is-large is-primary is-fullwidth']) !!}        
                 </div>
 
         </div>
