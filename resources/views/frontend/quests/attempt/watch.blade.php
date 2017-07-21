@@ -1,8 +1,8 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light" id="quest_attempt">
-    <div class="hero-body">
+<section class="section dark-section" id="quest_attempt">
+    <div class="box">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/watched')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}
@@ -13,10 +13,10 @@
 
             <div class="tile">
                 <div class="tile is-parent">
-                    <div class="tile is-child">
+                    <div class="tile is-8 is-child">
                         <div id="player"></div>
                     </div>
-                    <div class="is-4 is-child box">
+                    <div class="is-4 is-child">
                       @foreach($skills as $skill)
                         <h4>{!! $skill->name !!}</h4>
                         <progress class="progress is-success skill-{!! $skill->id !!}" value="0" max="{!! $skill->pivot->amount !!}">0</progress>                        
