@@ -24,9 +24,14 @@
         <input type="hidden" name="threshold_skill_id[]" class="threshold-input" value={!! $threshold->skill_id !!}>
     @endforeach
 
-  <div class="hero-body">
-    <div class="container is-fluid">
-        <h1 class="title">Cloning {!! $quest->name !!}</h1>
+<section class="section dark-section" id="create_quest">
+  <div class="columns">
+    <div class="column is-2">
+            @include('frontend.includes.admin')
+    </div>
+    <div class="column">
+      <div class="box">
+        <h1 class="title headline is-uppercase">Cloning {!! $quest->name !!}</h1>
             <div class="tile">
                 <div class="tile is-8 is-parent">
                   <div class="tile is-child">
@@ -59,9 +64,9 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-  </div>
-
+</div>
 {!! Form::close() !!}
 
 </section>
