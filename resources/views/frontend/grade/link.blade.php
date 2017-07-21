@@ -54,7 +54,6 @@
                             </div>
                         @endif
 
-                        <hr/>
                         <h4>Feedback to Student</h4>
                             {!! Form::hidden('quest_id', $quest->id) !!}
                             {!! Form::hidden('attempt_id', $attempt->id) !!}
@@ -62,12 +61,13 @@
                         </div>
                     </div>
                 </div>
-            <div class="tile is-4 is-child box">
+            <div class="tile is-4 is-parent">
+              <div class="tile is-child box">
                 @if($revision_count > 1)
                   <h4 class="title headline is-uppercase">{!! date('m/d/Y', strtotime($attempt->created_at)) !!}</h4>
                   <nav class="navbar">
                     <div class="navbar-menu">
-                      <div class="navbar-start">
+                      <div class="navbar-end">
                         <div class="navbar-item has-dropdown is-hoverable">
                           <a class="navbar-link  is-active" href="/documentation/overview/start/">
                             Previous Submissions
@@ -75,7 +75,7 @@
                           @if(count($revisions) > 0)
                             <div class="navbar-dropdown ">
                               @foreach($revisions as $revision)
-                                {{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m/d/Y', strtotime($revision->created_at)), "['class' => 'navbar-item']") }}
+                                {{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m/d/Y', strtotime($revision->created_at)), ['class' => 'navbar-item']) }}
                               @endforeach
                             </div>
                           @endif
@@ -100,7 +100,7 @@
                 <div class="field">
                   {!! Form::submit('Grade', ['class' => 'button is-primary is-large is-fullwidth']) !!}
                 </div>
-
+              </div>
             </div>
             {!! Form::close() !!}
           </div>
