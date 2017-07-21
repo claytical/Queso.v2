@@ -7,12 +7,15 @@
     {{ Form::hidden('id', $resource->id, ['id' => 'resource_id']) }}
     
 
-<section class="hero" id="create_resource">
-  <div class="hero-body">
+<section class="section dark-section" id="create_resource">
     <div class="container is-fluid">
             <div class="tile">
-                <div class="tile is-8 is-parent">
-                  <div class="tile is-child">
+                <div class="tile is-2 is-parent">
+                  @include('frontend.includes.admin')
+                </div>
+
+                <div class="tile is-6 is-parent">
+                  <div class="tile is-child box">
                   <!-- Title and Description -->                
                     <div class="field">
                       <p class="control">
@@ -29,19 +32,22 @@
                 </div>
 
                 <div class="tile is-4 is-parent">
-                    <div class="tile is-child notification">
+                    <div class="tile is-child box">
                       <h4 class="subtitle">Category</h4>
                         <div class="field">
                           <p class="control">
-                            {{ Form::input('text', 'tag', $resource->tag, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
+                            {{ Form::input('text', 'tag', $resource->tag, ['class' => 'input is-large', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
                           </p>
-                        </div>                      
+                        </div>      
+                        <div class="field">
+                        <p class="control">
+                          <button data-type="submit" class="button is-primary is-fullwidth is-large" type="submit">Update Link</button>
+                        </p>
+                        </div>                
                     </div>
                 </div>
               </div>
-        <button data-type="submit" class="button is-primary is-pulled-right is-large" type="submit">Update Link</button>
 
-    </div>
   </div>
 </section>
 {!! Form::close() !!}

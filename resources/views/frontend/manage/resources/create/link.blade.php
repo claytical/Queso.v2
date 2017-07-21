@@ -34,7 +34,7 @@
                       <h4 class="subtitle">Category</h4>
                         <div class="field">
                           <p class="control">
-                            {{ Form::input('text', 'tag', null, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
+                            {{ Form::input('text', 'tag', null, ['class' => 'input is-large', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
                           </p>
                         </div>  
 
