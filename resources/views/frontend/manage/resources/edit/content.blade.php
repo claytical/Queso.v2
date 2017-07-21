@@ -6,7 +6,7 @@
     {{ Form::hidden('resource_type', 1, ['id' => 'resource_type']) }}
     {{ Form::hidden('id', $resource->id, ['id' => 'resource_id']) }}
 
-<section class="section" id="create_resource">
+<section class="section dark-section" id="create_resource">
     <div class="container is-fluid">
         <div class="columns">
             <div class="column is-2">
