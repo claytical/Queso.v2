@@ -1,11 +1,11 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="section">
+<section class="section dark-section">
 
 <div class="tile is-ancestor">
       <div class="tile is-parent is-vertical is-8">
-        <div class="tile is-child">
+        <div class="tile is-child box">
             <h2 class="title headline is-uppercase">Quests</h2>
 
             <div class="tabs is-large is-boxed">
@@ -256,8 +256,8 @@
         </div>
       </div>
     <div class="tile is-parent is-vertical is-4">
-        <div class="tile is-child">
-            <h3 class="title headline">Current Level</h3>
+        <div class="tile is-child box">
+            <h3 class="title headline is-uppercase">Current Level</h3>
             <a href="{!! URL::to('quest/redeem') !!}" class="is-pulled-right button is-small is-primary is-outlined">Instant Credit</a>
             <h2 class="subtitle">{!! $current_level->name !!}</h2>
             <progress class="progress is-large is-success" value="{!! $total_points !!}" min="{!! $current_level->amount !!}" max="{!! $next_level->amount !!}">{!! $total_points !!}</progress>
