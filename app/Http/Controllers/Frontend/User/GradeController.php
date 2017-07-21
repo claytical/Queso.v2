@@ -235,19 +235,19 @@ class GradeController extends Controller
     //TODO: Add to Skill History
 
             $total_points = 0;
-            for($i = 0; $i < count($request->skills); $i++) {
-                $skill_id = $request->skill_id[$i];
-            //remove existing points for the quest
-//                    $user->skills()->where('quest_id', $attempt->quest_id)->detach($skill_id);
-                    if (is_numeric($request->skills[$i])) {
-                        $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $attempt->quest_id]);
-                        $total_points += $request->skills[$i];
+                for($i = 0; $i < count($request->skills); $i++) {
+                    $skill_id = $request->skill_id[$i];
+                //remove existing points for the quest
+    //                    $user->skills()->where('quest_id', $attempt->quest_id)->detach($skill_id);
+                        if (is_numeric($request->skills[$i])) {
+                            $user->skills()->attach($skill_id, ['amount' => $request->skills[$i], 'quest_id' => $attempt->quest_id]);
+                            $total_points += $request->skills[$i];
+                        }
+                        else {
+                            $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $attempt->quest_id]);   
                     }
-                    else {
-                        $user->skills()->attach($skill_id, ['amount' => 0, 'quest_id' => $attempt->quest_id]);   
                 }
-            }
-            
+                
             $attempt->graded = true;
             $attempt->save();
             //send notification to user
@@ -274,6 +274,7 @@ class GradeController extends Controller
             $user->quests()->where('revision', $attempt->revision)
                         ->updateExistingPivot($attempt->quest_id, ['graded' => true]);
         }
+        
         if($quest->groups) {
             if($group) {
                 $group->graded = true;
@@ -281,10 +282,9 @@ class GradeController extends Controller
             }
            return redirect()->route('grade.submissions', $quest->course_id)->withFlashSuccess($quest->name . " has been successfully graded for " . $users->implode('name', ',') . ".");
         }
-        else {
-            return redirect()->route('grade.submissions', $quest->course_id)->withFlashSuccess($quest->name . " has been successfully graded for " . $users[0]->name . ".");
+        
+        return redirect()->route('grade.submissions', $quest->course_id)->withFlashSuccess($quest->name . " has been successfully graded for " . $users[0]->name . ".");
  
-        }
     }
 
     public function watched(Request $request) {
