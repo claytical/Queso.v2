@@ -398,7 +398,7 @@ class QuestController extends Controller
         $skills = $quest->skills()->get();
         $thresholds = $quest->thresholds()->with('skill')->get();
 
-        return view('frontend.manage.quests.clone', ['quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds])
+        return view('frontend.manage.quests.clone', ['quest' => $quest, 'skills' => $skills, 'thresholds' => $thresholds, 'course_id' => $quest->course_id])
             ->withUser(access()->user());
 
     }
