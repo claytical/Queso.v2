@@ -34,20 +34,29 @@
                                 {!! Form::hidden('user_id', $user->id) !!}
                                 {!! Form::hidden('quest_id', $quest->id) !!}
                                 {!! Form::hidden('revision', $attempt->revision) !!}
-                                {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}            
+                                <div class="field">
+                                    <p class="control">
+                                        {!! Form::textarea('liked', null, ['class' => 'field', 'files' => true]) !!}            
+                                    </p>
+                                </div>
                         </div>
                         <div class="tile is-child is-6">
                             <h3 class="subtitle">What could be improved?</h3>
                             <p>Share your thoughts on how this could be improved.</p>
+                            <div class="field">
+                                <p class="control">
+                                    {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
+                                </p>
+                            </div>
+                        </div>
 
-                            {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
+                    </div>
+                    <div class="tile is-parent">
                            <div class="field">
                                 <p class="control">
-                                    {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
+                                    {!! Form::submit('Submit', ['class' => 'button is-large is-primary is-fullwidth']) !!}        
                                 </p>
                             </div>                
-
-                        </div>
                     </div>
                 </div>
 
