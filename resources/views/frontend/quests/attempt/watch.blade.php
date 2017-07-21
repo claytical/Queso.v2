@@ -16,7 +16,7 @@
                     <div class="tile is-8 is-child">
                         <div id="player"></div>
                     </div>
-                    <div class="is-4 is-child">
+                    <div class="tile is-4 is-child">
                       @foreach($skills as $skill)
                         <h4>{!! $skill->name !!}</h4>
                         <progress class="progress is-success skill-{!! $skill->id !!}" value="0" max="{!! $skill->pivot->amount !!}">0</progress>                        
