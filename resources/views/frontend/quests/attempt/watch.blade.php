@@ -23,7 +23,7 @@
                         {!! Form::hidden('skills[]', 0, ['id' => 'skill-'.$skill->id]) !!}
                         {!! Form::hidden('skill_id[]', $skill->id, ['id' => 'v-skill-'.$skill->id]) !!}
                       @endforeach
-                      {!! Form::submit('Claim Points', ['class' => 'button is-primary is-large submit-button', 'disabled' => '']) !!}
+                      {!! Form::submit('Claim Points', ['class' => 'button is-primary is-large submit-button is-fullwidth', 'disabled' => '']) !!}
 
                     </div>
                 </div>
