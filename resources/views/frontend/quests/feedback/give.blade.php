@@ -41,12 +41,14 @@
                                 </div>
                         </div>
                         <div class="tile is-child is-6">
-                            <h3 class="subtitle">What could be improved?</h3>
-                            <p>Share your thoughts on how this could be improved.</p>
-                            <div class="field" style="margin-left: 10px;">
-                                <p class="control">
-                                    {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
-                                </p>
+                            <div class="nudge" style="margin-left: 10px;">
+                                <h3 class="subtitle">What could be improved?</h3>
+                                <p>Share your thoughts on how this could be improved.</p>
+                                <div class="field">
+                                    <p class="control">
+                                        {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
