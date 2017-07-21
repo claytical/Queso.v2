@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="tile is-1"></div>
-                <div class="tile is-4">
+                <div class="tile is-4 is-vertical">
                     <div class="tile is-child">
                         @if($quest->expires_at)
                             <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
