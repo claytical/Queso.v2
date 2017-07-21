@@ -117,7 +117,7 @@ body {
   overflow-x: hidden; }
 
 a {
-  color: #f7931d;
+  color: #24abe2;
   cursor: pointer;
   text-decoration: none;
   transition: none 86ms ease-out; }
@@ -473,9 +473,9 @@ a.has-text-danger:hover, a.has-text-danger:focus {
     margin-bottom: 1.5rem; }
 
 a.box:hover, a.box:focus {
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px #f7931d; }
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px #24abe2; }
 a.box:active {
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #f7931d; }
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #24abe2; }
 
 .button {
   -moz-appearance: none;
@@ -1291,7 +1291,7 @@ input[type="submit"].button {
   .textarea.is-focused,
   .textarea:active,
   .textarea.is-active {
-    border-color: #f7931d; }
+    border-color: #24abe2; }
   .input[disabled],
   .textarea[disabled] {
     background-color: whitesmoke;
@@ -1395,7 +1395,7 @@ input[type="submit"].button {
   position: relative;
   vertical-align: top; }
   .select:after {
-    border: 1px solid #f7931d;
+    border: 1px solid #24abe2;
     border-right: 0;
     border-top: 0;
     content: " ";
@@ -1443,7 +1443,7 @@ input[type="submit"].button {
     .select select:hover, .select select.is-hovered {
       border-color: #b5b5b5; }
     .select select:focus, .select select.is-focused, .select select:active, .select select.is-active {
-      border-color: #f7931d; }
+      border-color: #24abe2; }
     .select select[disabled] {
       background-color: whitesmoke;
       border-color: whitesmoke;
@@ -2478,9 +2478,9 @@ input[type="submit"].button {
     padding: 0.5em 0.75em; }
     .menu-list a:hover {
       background-color: whitesmoke;
-      color: #f7931d; }
+      color: #24abe2; }
     .menu-list a.is-active {
-      background-color: #f7931d;
+      background-color: #24abe2;
       color: #fff; }
   .menu-list li ul {
     border-left: 1px solid #dbdbdb;
@@ -2794,7 +2794,7 @@ input[type="submit"].button {
   .nav-toggle:hover {
     background-color: whitesmoke; }
   .nav-toggle.is-active span {
-    background-color: #f7931d; }
+    background-color: #24abe2; }
     .nav-toggle.is-active span:nth-child(1) {
       margin-left: -5px;
       transform: rotate(45deg);
@@ -2960,7 +2960,7 @@ a.nav-item:not(.button) {
   .navbar-burger:hover {
     background-color: whitesmoke; }
   .navbar-burger.is-active span {
-    background-color: #f7931d; }
+    background-color: #24abe2; }
     .navbar-burger.is-active span:nth-child(1) {
       margin-left: -5px;
       transform: rotate(45deg);
@@ -3070,7 +3070,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
       transform: translateY(0); }
 
   .navbar-link::after {
-    border: 1px solid #f7931d;
+    border: 1px solid #24abe2;
     border-right: 0;
     border-top: 0;
     content: " ";
@@ -3251,8 +3251,8 @@ a.navbar-item:hover, a.navbar-item.is-active,
   white-space: nowrap; }
 
 .pagination-link.is-current {
-  background-color: #f7931d;
-  border-color: #f7931d;
+  background-color: #24abe2;
+  border-color: #24abe2;
   color: #fff; }
 
 .pagination-ellipsis {
@@ -3344,7 +3344,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
 .panel-list a {
   color: #4a4a4a; }
   .panel-list a:hover {
-    color: #f7931d; }
+    color: #24abe2; }
 
 .panel-block {
   align-items: center;
@@ -3361,10 +3361,10 @@ a.navbar-item:hover, a.navbar-item.is-active,
   .panel-block.is-wrapped {
     flex-wrap: wrap; }
   .panel-block.is-active {
-    border-left-color: #f7931d;
+    border-left-color: #24abe2;
     color: #363636; }
     .panel-block.is-active .panel-icon {
-      color: #f7931d; }
+      color: #24abe2; }
 
 a.panel-block,
 label.panel-block {
@@ -4808,4 +4808,4 @@ label.panel-block {
   background-color: whitesmoke;
   padding: 3rem 1.5rem 6rem; }
 
-/*# sourceMappingURL=css.map */
+/*# sourceMappingURL=bulma.css.map */
