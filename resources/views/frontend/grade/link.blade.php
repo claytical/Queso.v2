@@ -95,16 +95,17 @@
                     </div>
                   </div>
                 @endforeach
-                <h5>Total Points Awarded</h5>
-                <span id="total">0</span> of {!! $quest->skills()->sum('amount') !!}</h3>
-                <div class="field">
+                <h5>Total Points Awarded 
+                    <div class="is-pulled-right"><span id="total">0</span> of {!! $quest->skills()->sum('amount') !!}
+                    </div>
+                  </h5>
+                  <hr/>
                   {!! Form::submit('Grade', ['class' => 'button is-primary is-large is-fullwidth']) !!}
-                </div>
               </div>
             </div>
-            {!! Form::close() !!}
           </div>
-    </div>
+      </div>
+            {!! Form::close() !!}
 </section>
 
 @endsection
