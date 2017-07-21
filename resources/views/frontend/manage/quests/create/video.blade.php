@@ -11,7 +11,7 @@
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
 
 
-<section class="section section-dark" id="choose_quest">
+<section class="section dark-section" id="create_quest">
   <div class="columns">
     <div class="column is-2">
             @include('frontend.includes.admin')
