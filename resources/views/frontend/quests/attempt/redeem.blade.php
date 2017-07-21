@@ -1,12 +1,12 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light is-medium" id="quest_attempt">
-    <div class="hero-body">
+<section class="section dark-section" id="quest_attempt">
+    <div class="box">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/redeem', 'class' => 'form', 'id' => 'redeem-form')) !!}
 
-            <h2 class="title">Instant Credit Redemption</h2>
+            <h2 class="title headline is-uppercase">Instant Credit Redemption</h2>
             <h3 class="subtitle">Enter the code to get points or hold the QR code up to your camera</h3>
 
             <div class="tile">
@@ -17,7 +17,7 @@
 
                             <div class="field has-addons">
                               <p class="control is-expanded">
-                            {!! Form::text('code', '', ['class' => 'input is-large', 'id' => 'code']); !!}
+                            {!! Form::text('code', '', ['class' => 'input is-large', 'id' => 'code', 'placeholder' => 'Enter Code Here']); !!}
 
                               </p>
                               <p class="control">
