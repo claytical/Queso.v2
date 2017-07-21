@@ -85,7 +85,28 @@
                   </td>
                   <td>
                     <a class="button is-small" href="{!! url('manage/quest/'.$quest->id);!!}">Edit</a>
-                    <a class="button is-small" href="{!! url('quest/'.$quest->id.'/attempt/submission');!!}">View</a>
+                      @if($quest->quest_type_id == 1)
+                        <a class="button is-small" href="{!! url('quest/attempt/response/'.$quest->id);!!}">View</a>
+                      @endif
+                      @if($quest->quest_type_id == 2)
+                        <a class="button is-small" href="{!! url('quest/attempt/activity/'.$quest->id);!!}">View</a>
+                      @endif
+                      @if($quest->quest_type_id == 3)
+                        <a class="button is-small" href="{!! url('quest/watch/'.$quest->id);!!}">View</a>
+                      @endif
+                      @if($quest->quest_type_id == 4)
+                        <a class="button is-small" href="{!! url('quest/attempt/link/'.$quest->id);!!}">View</a>
+                      @endif            
+                      @if($quest->quest_type_id == 5)
+                        <a class="button is-small" href="{!! url('quest/attempt/upload/'.$quest->id);!!}">View</a>
+                      @endif            
+                      @if($quest->quest_type_id == 6)
+                        <a class="button is-small" href="{!! url('quest/attempt/group/upload/'.$quest->id);!!}">View</a>
+                      @endif            
+                      @if($quest->quest_type_id == 7)
+                        <a class="button is-small" href="{!! url('quest/attempt/group/link/'.$quest->id);!!}">View</a>
+                      @endif            
+
                     <a class="button is-small" href="{!! url('manage/quest/'.$quest->id.'/clone');!!}">Clone</a>
 
                     @if($quest->instant)
