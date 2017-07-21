@@ -6,7 +6,7 @@
     <section class="hero is-dark is-bold is-large">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <h1 class="title headline is-uppercase">
             Quests
           </h1>
             <h2 class="subtitle">Quests are completed by students to gain points.</h2>
@@ -20,14 +20,15 @@
 
 
 @if(!$quests->isEmpty())
-<section class="section">
+<section class="section dark-section">
     <div class="columns">
         <div class="column is-2">
         @include('frontend.includes.admin')
         </div>
         <div class="column">
+          <div class="box">
             <a href="{!! URL::to('manage/quest/create/'.$course_id) !!}" class="button is-pulled-right is-primary is-large">New Quest</a>
-            <h1 class="title">Quests</h1>
+            <h1 class="title headline is-uppercase">Quests</h1>
 
             <table class="table">
               <thead>
@@ -97,6 +98,7 @@
 
               </tbody>
             </table>
+          </div>
     </div>
   </div>
 </section>

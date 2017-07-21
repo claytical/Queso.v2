@@ -14,7 +14,7 @@
                   <article class="tile is-child box">
                     <p class="title headline is-uppercase">Link</p>
                     <p class="subtitle">A link that's shown with a preview card</p>
-                    <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/resource/create/link/'.$course_id)!!}">
+                    <a class="button is-large is-fullwidth is-primary" href="{!! URL::to('manage/resource/create/link/'.$course_id)!!}">
                       <span class="icon">
                         <i class="fa fa-link"></i>
                       </span>
@@ -26,7 +26,7 @@
                   <article class="tile is-child box">
                     <p class="title headline is-uppercase">Content</p>
                     <p class="subtitle">Custom text with optional file attachments</p>
-                    <a class="button is-large is-fullwidth is-outlined" href="{!! URL::to('manage/resource/create/content/'.$course_id)!!}">
+                    <a class="button is-large is-fullwidth is-primary" href="{!! URL::to('manage/resource/create/content/'.$course_id)!!}">
                       <span class="icon">
                         <i class="fa fa-paperclip" aria-hidden="true"></i>
                       </span>
