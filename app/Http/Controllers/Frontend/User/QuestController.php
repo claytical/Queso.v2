@@ -945,7 +945,7 @@ class QuestController extends Controller
         $quests_attempted = $user->quests();
         $quests_attempted_ids = $quests_attempted->pluck('quest_id');
 
-        $course_skills = Skill::where('course_id', '=', session('current_course'))->get();
+        $course_skills = Skill::where('course_id', '=', $course_id)->get();
 
 //GET CURRENT SKILL LEVELS
         $user_skill_levels = array();
@@ -957,7 +957,7 @@ class QuestController extends Controller
 
         $group_quests_attempted_ids = $group_quests_attempted->pluck('quest_id');
 
-        $group_quests = Quest::where('course_id', '=', session('current_course'))
+        $group_quests = Quest::where('course_id', '=', $course_id)
                             ->where('groups', '=', true)
                             ->whereNotIn('id', $group_quests_attempted_ids)
                             ->get();
@@ -969,14 +969,14 @@ class QuestController extends Controller
             $timezone = "America/New_York";
         }
 
-        $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
+        $quests_unattempted_expiring = Quest::where('course_id', '=', $course_id)
                     ->whereNotIn('id', $quests_attempted_ids)
                     ->where('expires_at', '>', Carbon::now(new \DateTimeZone($timezone))->subDay())
                     ->where('groups', '=', false)
                     ->orderBy('expires_at')
                     ->get();
 
-        $quests_unattempted_not_expiring = Quest::where('course_id', '=', session('current_course'))
+        $quests_unattempted_not_expiring = Quest::where('course_id', '=', $course_id)
                     ->whereNotIn('id', $quests_attempted_ids)
                     ->where('groups', '=', false)
                     ->whereNull('expires_at')
@@ -988,7 +988,7 @@ class QuestController extends Controller
         $quests_unattempted = $quests_unattempted->merge($group_quests);
 
 //TODO: Check if max points have been achieved
-        $quests_revisable = Quest::where('course_id', '=', session('current_course'))
+        $quests_revisable = Quest::where('course_id', '=', $course_id)
                     ->whereIn('id', $quests_attempted_ids)
                     ->where('revisions', '=', true)
                     ->where('groups', '=', false)                    
@@ -1029,7 +1029,7 @@ class QuestController extends Controller
                                     "name" => $skill->name];
         }
 
-        $total_points_earned = $user->skills()->where('course_id', '=', session('current_course'))->sum('amount');
+        $total_points_earned = $user->skills()->where('course_id', '=', $course_id)->sum('amount');
 
         if(!$total_points_earned) {
             $total_points_earned = 0;
@@ -1047,7 +1047,7 @@ class QuestController extends Controller
             $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
         }
         $quest_ids = $user->quests()
-                            ->where('course_id', '=', session('current_course'))
+                            ->where('course_id', '=', $course_id)
                             ->distinct()
                             ->select('quest_id')
                             ->orderBy('quest_user.created_at', 'asc')
@@ -1056,13 +1056,13 @@ class QuestController extends Controller
         $group_quest_ids = $user->group_quests()->pluck('quest_id');
 
         $all_quest_ids = $course->quests()
-                            ->where('course_id', '=', session('current_course'))
+                            ->where('course_id', '=', $course_id)
                             ->whereIn('id', $group_quest_ids)
                             ->orWhereIn('id', $quest_ids)
                             ->distinct()
                             ->select('id')
                             ->pluck('id');
-                             
+
         $quest_skills_total = 0;
 
         $quests = [];
@@ -1102,24 +1102,7 @@ class QuestController extends Controller
             $quest_skills_total += $available;
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
-/*
-        $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
-                    ->whereNotIn('id', $all_quest_ids)
-                    ->where('expires_at', '>', Carbon::now(new \DateTimeZone($course->timezone))->subDay())
-                    ->orderBy('expires_at')
-                    ->get();
 
-        $quests_unattempted_not_expiring = Quest::where('course_id', '=', session('current_course'))
-                    ->whereNotIn('id', $all_quest_ids)
-                    ->whereNull('expires_at')
-                    ->orderBy('name')
-                    ->get();
-
-        $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
-
-*/
-
-//not used in current view: available_quests
         return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'unlocked' => $quests_unlocked, 'locked' => $quests_locked, 'revisable' => $quests_revisable, 'idz' => $all_quest_ids])
             ->withUser(access()->user());
     }

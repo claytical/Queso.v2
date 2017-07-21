@@ -6,18 +6,19 @@
 <div class="tile is-ancestor">
       <div class="tile is-parent is-vertical is-8">
         <div class="tile is-child">
-            <h2 class="title">Quests</h2>
+            <a href="{!! URL::to('quest/redeem') !!}" class="is-pulled-right button is-medium is-primary is-outlined">Instant Credit</a>
+            <h2 class="title headline is-uppercase">Quests</h2>
 
-            <div class="tabs">
+            <div class="tabs is-large">
               <ul>
-                <li class="is-active"><a>Available</a></li>
-                <li><a>Completed</a></li>
-                <li><a>Revisable</a></li>
-                <li><a>Locked</a></li>
+                <li class="is-active"><a href="#available">Available</a></li>
+                <li><a href="#completed">Completed</a></li>
+                <li><a href="#revisable">Revisable</a></li>
+                <li><a href="#locked">Locked</a></li>
               </ul>
             </div>
 
-            <table class="table" id="completed">
+            <table class="table" id="completed" style="display: none;">
                 <thead>
                     <tr>
                         <th data-field="name" 
@@ -131,7 +132,7 @@
 
 
     @if(!$revisable->isEmpty())
-        <table class="table" data-toggle="table" id="revisable">
+        <table class="table" data-toggle="table" id="revisable" style="display: none;">
             <thead>
                 <tr>
                     <th data-field="name" 
@@ -181,7 +182,7 @@
     @endif
 
     @if($locked)
-        <table class="table table-hover" id="locked">
+        <table class="table table-hover" id="locked" style="display: none;">
             <thead>
                 <tr>
                     <th data-field="name" 
@@ -267,6 +268,12 @@
 
 @section('after-scripts-end')
     <script>
+    $(".tabs ul li a").click(function() {
+        $(".table").hide();
+        $($(this).href).show();
+    };
+
+
     $('.predictive').click(function() {
         addToPrediction($(this));
 
