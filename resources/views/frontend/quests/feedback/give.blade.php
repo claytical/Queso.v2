@@ -2,12 +2,12 @@
 
 @section('content')
 
-<section class="hero is-bold is-light" id="activity">
+<section class="section dark-section" id="feedback">
     {!! Form::open(array('url' => 'quest/feedback')) !!}
 
-    <div class="hero-body">
+    <div class="box">
         <div class="container is-fluid">
-            <h1 class="title">{!! $quest->name !!}</h1>
+            <h1 class="title headline is-uppercase">{!! $quest->name !!}</h1>
                 <div class="content">
                     @if($quest->quest_type_id == 1)
                         {!! $attempt->submission !!}
@@ -41,15 +41,16 @@
                             <p>Share your thoughts on how this could be improved.</p>
 
                             {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
+                           <div class="field">
+                                <p class="control">
+                                    {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
+                                </p>
+                            </div>                
+
                         </div>
                     </div>
                 </div>
 
-               <div class="field">
-                    <p class="control">
-                        {!! Form::submit('Submit', ['class' => 'button is-large is-primary']) !!}        
-                    </p>
-                </div>                
         </div>
     </div>
 {!! Form::close() !!}
