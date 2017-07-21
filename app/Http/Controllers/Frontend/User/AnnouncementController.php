@@ -36,7 +36,7 @@ class AnnouncementController extends Controller
     public function details($id) {
         $announcement = Announcement::find($id);
 
-        return view('frontend.manage.announcements.details', ['announcement' => $announcement])
+        return view('frontend.manage.announcements.details', ['announcement' => $announcement, 'course_id' => $announcement->course_id])
             ->withUser(access()->user());
 
     }

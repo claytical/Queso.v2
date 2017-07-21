@@ -31,9 +31,11 @@
                         {!! Form::checkbox('sticky', 1) !!} Show on Dashboard
                     </p>
                 </div>
-
-                {!! Form::submit('Post', ['class' => 'button is-primary is-large is-pulled-right']) !!}
-
+                <div class="field">
+                    <p class="control">
+                        {!! Form::submit('Post', ['class' => 'button is-primary is-large']) !!}
+                    </p>
+                </div>
 
                 {!! Form::close() !!}
             </div>
