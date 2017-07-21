@@ -88,9 +88,6 @@
                       @if($quest->quest_type_id == 1)
                         <a class="button is-small" href="{!! url('quest/attempt/response/'.$quest->id);!!}">View</a>
                       @endif
-                      @if($quest->quest_type_id == 2)
-                        <a class="button is-small" href="{!! url('quest/attempt/activity/'.$quest->id);!!}">View</a>
-                      @endif
                       @if($quest->quest_type_id == 3)
                         <a class="button is-small" href="{!! url('quest/watch/'.$quest->id);!!}">View</a>
                       @endif
