@@ -70,7 +70,8 @@
                         </div>
                     </div>
                 </div>
-            <div class="tile is-4 is-child box">
+            <div class="tile is-4 is-parent">
+              <div class="tile is-child box">
                 <h4 class="title headline is-uppercase">{!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h4>
                 @if($revision_count > 1)
                   <h4 class="title headline is-uppercase">{!! date('m/d/Y', strtotime($attempt->created_at)) !!}</h4>
@@ -111,7 +112,7 @@
                   <hr/>
                   {!! Form::submit('Grade', ['class' => 'button is-primary is-large is-fullwidth']) !!}
             </div>
-
+          </div>
         </div>
             {!! Form::close() !!}
       </div>
