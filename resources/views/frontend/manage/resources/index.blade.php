@@ -6,7 +6,7 @@
     <section class="hero is-dark is-bold is-large">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <h1 class="title headline is-uppercase">
             Resources
           </h1>
             <h2 class="subtitle">Resources are available for all students in your course.</h2>
@@ -19,14 +19,15 @@
 
 
 @if(!$resources->isEmpty())
-<section class="section">
+<section class="section dark-section">
     <div class="columns">
         <div class="column is-2">
         @include('frontend.includes.admin')
         </div>
         <div class="column">
+          <div class="box">
             <a href="{!! URL::to('manage/resources/create/'.$course_id) !!}" class="button is-large is-pulled-right is-primary">New Resource</a>
-            <h1 class="title">Resources</h1>
+            <h1 class="title headline is-uppercase">Resources</h1>
 
           <table class="table">
             <thead>
@@ -37,15 +38,7 @@
                 <th></th>
               </tr>
             </thead>
-            <!--
-            <tfoot>
-              <tr>
-                <th>Headline</th>
-                <th>Date</th>
-                <th></th>
-              </tr>
-            </tfoot>
-            -->
+
             <tbody>
           @foreach($resources as $resource)
 
@@ -74,6 +67,7 @@
 
             </tbody>
           </table>
+        </div>
     </div>
   </div>
 </section>
