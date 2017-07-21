@@ -7,7 +7,7 @@
       <div class="tile is-parent is-vertical is-2">
         @include('frontend.includes.admin')
       </div>
-      <div class="tile is-parent is-vertical is-8">
+      <div class="tile is-parent is-vertical is-6">
         <div class="tile is-child box">
             <h2 class="title headline is-uppercase">{!! $student->name !!}</h2>
                 @if($graded_quests)
