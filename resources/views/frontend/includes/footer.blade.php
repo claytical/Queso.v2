@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content has-text-centered">
       <p>
-        <strong>Queso</strong> by <a href="http://claytical.com">Clay Ewing</a>.
+        <strong>Queso</strong> is a product of <a href="http://nerdlab.miami">NERDLab</a> at the University of Miami.
       </p>
       <p>
         <a class="icon" href="https://github.com/claytical/Queso.v2">

@@ -937,10 +937,85 @@ class QuestController extends Controller
 
 
     public function history($course_id) {
+//this only catches graded quests, 
         $user = access()->user();
-        
         $course = Course::find($course_id);
         $course_skills = $course->skills()->get();
+
+        $quests_attempted = $user->quests();
+        $quests_attempted_ids = $quests_attempted->pluck('quest_id');
+
+        $course_skills = Skill::where('course_id', '=', session('current_course'))->get();
+
+//GET CURRENT SKILL LEVELS
+        $user_skill_levels = array();
+        foreach($course_skills as $skill) {
+            $user_skill_levels[$skill->id] = $user->skills()->where('skill_id', $skill->id)->sum('amount');
+        }
+
+        $group_quests_attempted = $user->group_quests()->with('quest')->get();
+
+        $group_quests_attempted_ids = $group_quests_attempted->pluck('quest_id');
+
+        $group_quests = Quest::where('course_id', '=', session('current_course'))
+                            ->where('groups', '=', true)
+                            ->whereNotIn('id', $group_quests_attempted_ids)
+                            ->get();
+
+        if($course->timezone) {
+            $timezone = $course->timezone;          
+        }
+        else {
+            $timezone = "America/New_York";
+        }
+
+        $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
+                    ->whereNotIn('id', $quests_attempted_ids)
+                    ->where('expires_at', '>', Carbon::now(new \DateTimeZone($timezone))->subDay())
+                    ->where('groups', '=', false)
+                    ->orderBy('expires_at')
+                    ->get();
+
+        $quests_unattempted_not_expiring = Quest::where('course_id', '=', session('current_course'))
+                    ->whereNotIn('id', $quests_attempted_ids)
+                    ->where('groups', '=', false)
+                    ->whereNull('expires_at')
+                    ->orderBy('name')
+                    ->get();
+
+        $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
+
+        $quests_unattempted = $quests_unattempted->merge($group_quests);
+
+//TODO: Check if max points have been achieved
+        $quests_revisable = Quest::where('course_id', '=', session('current_course'))
+                    ->whereIn('id', $quests_attempted_ids)
+                    ->where('revisions', '=', true)
+                    ->where('groups', '=', false)                    
+                    ->orderBy('expires_at')
+                    ->get();
+
+        $quests_locked = array();
+        $quests_unlocked = array();
+
+        foreach($quests_unattempted as $quest) {
+            $thresholds = $quest->thresholds()->get();
+            $met = true;
+            foreach($thresholds as $threshold) {
+                if($threshold->amount > $user_skill_levels[$threshold->skill_id]) {
+                    $met = false;
+                }
+            }
+            if($met) {
+                $quests_unlocked[] = $quest;
+            }
+            else {
+                $quests_locked[] = $quest;
+            }
+        }
+
+
+/* START HISTORY */        
         $acquired_skills = [];
 
         foreach($course_skills as $skill) {
@@ -987,12 +1062,7 @@ class QuestController extends Controller
                             ->distinct()
                             ->select('id')
                             ->pluck('id');
-
-
-
-
-//        $all_quest_ids = array_merge($quest_ids,$more_ids);
- 
+                             
         $quest_skills_total = 0;
 
         $quests = [];
@@ -1032,7 +1102,7 @@ class QuestController extends Controller
             $quest_skills_total += $available;
             $quests[] = ['quest' => $quest->first(), 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
         }
-
+/*
         $quests_unattempted_expiring = Quest::where('course_id', '=', session('current_course'))
                     ->whereNotIn('id', $all_quest_ids)
                     ->where('expires_at', '>', Carbon::now(new \DateTimeZone($course->timezone))->subDay())
@@ -1047,7 +1117,10 @@ class QuestController extends Controller
 
         $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
 
-        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'available_quests' => $quests_unattempted, 'idz' => $all_quest_ids])
+*/
+
+//not used in current view: available_quests
+        return view('frontend.quests.history', ['total_points' => $total_points_earned, 'total_potential' => $quest_skills_total, 'quests' => $quests, 'current_level' => $current_level, 'next_level' => $next_level, 'percentage' => $percentage, 'skills' => $acquired_skills, 'unlocked' => $quests_unlocked, 'locked' => $quests_locked, 'revisable' => $quests_revisable, 'idz' => $all_quest_ids])
             ->withUser(access()->user());
     }
 

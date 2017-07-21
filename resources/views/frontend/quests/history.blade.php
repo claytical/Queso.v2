@@ -6,12 +6,22 @@
 <div class="tile is-ancestor">
       <div class="tile is-parent is-vertical is-8">
         <div class="tile is-child">
-            <h2 class="title">Completed Quests</h2>
-            <table class="table">
+            <h2 class="title">Quests</h2>
+
+            <div class="tabs">
+              <ul>
+                <li class="is-active"><a>Available</a></li>
+                <li><a>Completed</a></li>
+                <li><a>Revisable</a></li>
+                <li><a>Locked</a></li>
+              </ul>
+            </div>
+
+            <table class="table" id="completed">
                 <thead>
                     <tr>
                         <th data-field="name" 
-                        data-sortable="true">Quest</th>
+                        data-sortable="true">Name</th>
                         <th data-field="revisions" 
                         data-sortable="true">Revisions</th>
                         <th data-field="submitted" 
@@ -57,7 +67,181 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>          
+            </table>  
+
+    @if($unlocked)
+        <table class="table" id="available">
+            <thead>
+                <tr>
+                    <th data-field="name" 
+                    data-sortable="true">Name</th>
+                    <th data-field="points" 
+                    data-sortable="true">Points</th>
+                    <th data-field="course">Course</th>
+                    <th data-field="expiration" 
+                    data-sortable="true">Expires</th>
+                </tr>            
+            </thead>
+            <tbody>
+
+            @foreach($unlocked as $q)
+                        <tr>
+                            <td>
+                                @if($q->quest_type_id == 1)
+                                    <a href="{!! URL::to('quest/attempt/response/'.$q->id) !!}">{!! $q->name !!}</a>            
+                                @endif
+                                @if($q->quest_type_id == 2)
+                                    {!! $q->name !!}
+                                @endif
+                                @if($q->quest_type_id == 3)
+                                    <a href="{!! URL::to('quest/watch/'.$q->id) !!}">{!! $q->name !!}</a>                    
+                                @endif
+                                @if($q->quest_type_id == 4)
+                                    <a href="{!! URL::to('quest/attempt/link/'.$q->id) !!}">{!! $q->name !!}</a>
+                                @endif
+                                @if($q->quest_type_id == 5)
+                                    <a href="{!! URL::to('quest/attempt/upload/'.$q->id) !!}">{!! $q->name !!}</a>
+                                @endif
+                                @if($q->quest_type_id == 6)
+                                    <a href="{!! URL::to('quest/attempt/group/upload/'.$q->id) !!}">{!! $q->name !!}</a>
+                                @endif
+                                @if($q->quest_type_id == 7)
+                                    <a href="{!! URL::to('quest/attempt/group/link/'.$q->id) !!}">{!! $q->name !!}</a>
+                                @endif
+                            </td>
+                            <td>
+                                {!! $q->skills()->sum('amount') !!}
+                            </td>
+                            <td>{!! $q->course->name !!}</td>
+                            <td>
+                                @if($q->expires_at)
+                                {!! date('m/d/Y', strtotime($q->expires_at)) !!}
+                                @else
+                                Never
+                                @endif
+                            </td>
+                        </tr>
+            @endforeach
+
+                </tbody>
+            </table>
+    @else
+        <p>There are no available quests.</p>
+    @endif
+
+
+    @if(!$revisable->isEmpty())
+        <table class="table" data-toggle="table" id="revisable">
+            <thead>
+                <tr>
+                    <th data-field="name" 
+                    data-sortable="true">Name</th>
+                    <th data-field="points" 
+                    data-sortable="true">Points</th>
+                    <th>Course</th>
+                    <th data-field="expiration" 
+                    data-sortable="true">Expires</th>
+                </tr>            
+            </thead>
+                <tbody>
+                @foreach($revisable as $q)
+                            <tr>
+                                <td>
+                                    @if($q->quest_type_id == 1)
+                                        <a href="{!! URL::to('quest/revise/response/'.$q->id) !!}">{!! $q->name !!}</a>            
+                                    @endif
+                                    @if($q->quest_type_id == 4)
+                                        <a href="{!! URL::to('quest/revise/link/'.$q->id) !!}">{!! $q->name !!}</a>
+                                    @endif
+                                    @if($q->quest_type_id == 5)
+                                        <a href="{!! URL::to('quest/revise/upload/'.$q->id) !!}">{!! $q->name !!}</a>
+                                    @endif
+                                    @if($q->quest_type_id == 6)
+                                        <a href="{!! URL::to('quest/revise/group/upload/'.$q->id) !!}">{!! $q->name !!}</a>
+                                    @endif
+                                    @if($q->quest_type_id == 7)
+                                        <a href="{!! URL::to('quest/revise/group/link/'.$q->id) !!}">{!! $q->name !!}</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    {!! $q->skills()->sum('amount') !!}
+                                </td>
+                                <td>{!! $q->course->name !!}</td>
+                                <td>
+                                    @if($q->expires_at)
+                                    {!! date('m-d-Y', strtotime($q->expires_at)) !!}
+                                    @else
+                                    Never
+                                    @endif
+                                </td>
+                            </tr>
+                @endforeach
+                    </tbody>
+                </table>
+    @endif
+
+    @if($locked)
+        <table class="table table-hover" id="locked">
+            <thead>
+                <tr>
+                    <th data-field="name" 
+                    data-sortable="true">Name</th>
+                    <th data-field="points" 
+                    data-sortable="true">Points</th>
+                    <th>Course</th>
+                    <th data-field="expiration" 
+                    data-sortable="true">Expires</th>
+                </tr>            
+            </thead>
+            <tbody>
+            @foreach($locked as $q)
+                        <tr>
+                            <td>
+                                @if($q->quest_type_id == 1)
+                                    <a href="{!! URL::to('quest/attempt/response/'.$q->id) !!}">{!! $q->name !!}</a>            
+                                @endif
+                                @if($q->quest_type_id == 2)
+                                    {!! $q->name !!}
+                                @endif
+                                @if($q->quest_type_id == 3)
+                                    <a href="{!! URL::to('quest/watch/'.$q->id) !!}">{!! $q->name !!}</a>                    
+                                @endif
+                                @if($q->quest_type_id == 4)
+                                    <a href="{!! URL::to('quest/attempt/link/'.$q->id) !!}">{!! $q->name !!}</a>
+                                @endif
+                                @if($q->quest_type_id == 5)
+                                    <a href="{!! URL::to('quest/attempt/upload/'.$q->id) !!}">{!! $q->name !!}</a>
+                                @endif
+                                @if($q->quest_type_id == 6)
+                                    <a href="{!! URL::to('quest/attempt/group/upload/'.$q->id) !!}">{!! $q->name !!}</a>
+                                @endif
+                                @if($q->quest_type_id == 7)
+                                    <a href="{!! URL::to('quest/attempt/group/link/'.$q->id) !!}">{!! $q->name !!}</a>
+                                @endif
+                            </td>
+                            <td>
+                                {!! $q->skills()->sum('amount') !!}
+                            </td>
+                            <td>{!! $q->course->name !!}</td>
+                            <td>
+                                @if($q->expires_at)
+                                {!! date('m-d-Y', strtotime($q->expires_at)) !!}
+                                @else
+                                Never
+                                @endif
+                            </td>
+                        </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
+
+
+
+
+
+
+
         </div>
       </div>
     <div class="tile is-parent is-vertical is-4">
