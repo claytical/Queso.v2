@@ -9,7 +9,7 @@
             <a href="{!! URL::to('quest/redeem') !!}" class="is-pulled-right button is-medium is-primary is-outlined">Instant Credit</a>
             <h2 class="title headline is-uppercase">Quests</h2>
 
-            <div class="tabs is-large">
+            <div class="tabs is-large is-boxed">
               <ul>
                 <li class="is-active"><a href="#available">Available</a></li>
                 <li><a href="#completed">Completed</a></li>
@@ -200,7 +200,6 @@
                     data-sortable="true">Name</th>
                     <th data-field="points" 
                     data-sortable="true">Points</th>
-                    <th>Course</th>
                     <th data-field="expiration" 
                     data-sortable="true">Expires</th>
                 </tr>            
@@ -234,7 +233,6 @@
                             <td>
                                 {!! $q->skills()->sum('amount') !!}
                             </td>
-                            <td>{!! $q->course->name !!}</td>
                             <td>
                                 @if($q->expires_at)
                                 {!! date('m-d-Y', strtotime($q->expires_at)) !!}
