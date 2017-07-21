@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.control .error {
+    position: absolute;
+    right: 25px;
+    top: 5px;
+    padding: 10px;
+    color: red;
+}
+.is-uppercase {
+  text-transform: uppercase;  
+}
+
+.headline {
+  font-family: "Comfortaa", "Helvetica", "Arial", sans-serif;
+}
+
+.dark-section {
+  background-color: #696883 !important;
+  color: white;
+}

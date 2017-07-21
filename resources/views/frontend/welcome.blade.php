@@ -1,11 +1,11 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="section">
+<section class="section dark-section">
 <div class="tile is-ancestor">
       <div class="tile is-parent is-vertical is-4">
-        <div class="tile is-child">
-          <p class="title">Announcements</p>
+        <div class="tile is-child box">
+          <p class="title is-uppercase headline">Announcements</p>
         @if(!$announcements->isEmpty())
             @foreach($announcements as $announcement)
             <span class="tag is-info is-pulled-right">{!! $course->name !!}</span>
@@ -16,15 +16,8 @@
             <hr/>
             @endforeach
         @else
-            <p class="subtitle">Fake Announcement #1</p>
-            <span class="tag is-info">Demo Course</span>
             <div class="content">
-                <p>Lorem ipsum dolor consequat</p>
-            </div>
-            <p class="subtitle">Fake Announcement #2</p>
-            <span class="tag is-info">Example Course</span>
-            <div class="content">
-                <p>Lorem ipsum dolor consequat</p>
+                <p>No announcements have been made</p>
             </div>
 
         @endif
@@ -32,8 +25,8 @@
       </div>
     <div class="tile is-parent is-vertical is-4">
         @if(count(access()->courses_taught()) > 0)
-            <div class="tile is-child">
-                <p class="title">Submissions</p>
+            <div class="tile is-child box">
+                <p class="title is-uppercase headline">Submissions</p>
                 @foreach(access()->awaiting_grade() as $course => $quest)
                     <div class="is-clearfix">
                         <h4 class="subtitle">{!! $course !!}</h4>
@@ -51,8 +44,8 @@
                 @endforeach
             </div>
         @endif
-        <div class="tile is-child">
-          <h3 class="title">Agenda</h3>           
+        <div class="tile is-child box">
+          <h3 class="title is-uppercase headline">Agenda</h3>           
             @foreach(access()->agenda() as $date => $quest)
                 <div class="is-clearfix">
                     @if($date)
@@ -92,8 +85,8 @@
     </div>
 
     <div class="tile is-4 is-vertical is-parent">
-        <div class="tile is-child">
-            <p class="title">Courses</p>
+        <div class="tile is-child box">
+            <p class="title is-uppercase headline">Courses</p>
             @foreach(access()->courses() as $c)
                 <p class="subtitle">{!! $c->name !!}<a href="{!! URL::to('quests/history/'.$c->id)!!}" class="is-primary button is-pulled-right">Progress</a></p>
                 <div class="content is-small">
@@ -111,7 +104,6 @@
         @if($feedback_requests || !$notifications->isEmpty())
 
             <div class="tile is-child">
-              <p class="title">Notifications</p>
                     @if($feedback_requests)
                         <div class="notification">
                              <a href="{!! URL::to('feedback') !!}" class="button is-small is-primary is-pulled-right">View</a>
