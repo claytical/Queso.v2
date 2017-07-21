@@ -1,13 +1,14 @@
 @extends('frontend.layouts.unassigned')
 
 @section('content')
-<section class="section">
+<section class="section dark-section">
     <div class="columns">
         <div class="column is-2">
         @include('frontend.includes.admin')
         </div>
         <div class="column">
-            <h1 class="title">Levels</h1>
+          <div class="box">
+            <h1 class="title headline is-uppercase">Levels</h1>
                 {!! Form::open(['url' => 'course/add/level', 'class' => '', 'id' => 'add-level']) !!}
               <div class="field is-horizontal">
                 <div class="field-body">
@@ -58,6 +59,7 @@
               @endforeach
               </tbody>
             </table>
+          </div>
         </div>
       </div>
 </section>

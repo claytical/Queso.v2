@@ -41,6 +41,22 @@
                                 </p>
                             </div>
 
+                            <div class="field">
+                                <p class="control">
+
+                                <select class="input" name="timezone">
+                                @foreach($zones as $zone)
+                                    @if($zone == $course->timezone)
+                                        <option value="{!! $zone !!}" selected>{!! $zone !!}</option>
+                                    @else
+                                        <option value="{!! $zone !!}">{!! $zone !!}</option>
+                                    @endif
+                                @endforeach
+                                </select>
+
+                                </p>
+                            </div>
+
                         </div>
                     </div>
 
@@ -70,21 +86,12 @@
                             </div>
                             <div class="field">
                                 <p class="control">
-                                    <select class="input" name="timezone">
-                                    @foreach($zones as $zone)
-                                        @if($zone == $course->timezone)
-                                            <option value="{!! $zone !!}" selected>{!! $zone !!}</option>
-                                        @else
-                                            <option value="{!! $zone !!}">{!! $zone !!}</option>
-                                        @endif
-                                    @endforeach
-                                    </select>
-                                </p>
+                                {!! Form::submit('Update Course', ['class' => 'button is-primary']) !!}
+                               </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                {!! Form::submit('Update Course', ['class' => 'button is-primary is-pulled-right']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

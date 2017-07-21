@@ -1,12 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="section">
+<section class="section dark-section">
 
 <div class="tile is-ancestor">
+      <div class="tile is-parent is-vertical is-2">
+        @include('frontend.includes.admin')
+      </div>
       <div class="tile is-parent is-vertical is-8">
-        <div class="tile is-child">
-            <h2 class="title">{!! $student->name !!}</h2>
+        <div class="tile is-child box">
+            <h2 class="title headline is-uppercase">{!! $student->name !!}</h2>
                 @if($graded_quests)
 
                     <h3 class="subtitle">Graded Quests</h3>
@@ -178,8 +181,8 @@
         </div>
       </div>
     <div class="tile is-parent is-vertical is-4">
-        <div class="tile is-child">
-            <h2 class="title">Current Level</h2>
+        <div class="tile is-child box">
+            <h2 class="title headline is-uppercase">Current Level</h2>
             <h3 class="subtitle">{!! $current_level->name !!}</h3>
             <h4>{!! $total_points !!} points</h4>           
             <progress class="progress is-large is-success" value="{!! $total_points !!}" min="{!! $current_level->amount !!}" max="{!! $total_points_potential !!} "></progress>
