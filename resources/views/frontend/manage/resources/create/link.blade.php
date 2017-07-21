@@ -11,9 +11,10 @@
                 <div class="tile is-2 is-parent">
                   @include('frontend.includes.admin')
                 </div>
-                <div class="tile is-8 is-parent">
+                <div class="tile is-6 is-parent">
                   <div class="tile is-child box">
                   <!-- Title and Description -->                
+                    <h1 class="title is-uppercase headline">Create Link Resource</h1>
                     <div class="field">
                       <p class="control">
                         {{ Form::input('text', 'title', null, ['class' => 'input is-large', 'placeholder' => 'Title for Resource', 'id' => 'resource_title']) }}
@@ -39,7 +40,7 @@
 
                         <div class="field">
                             <p class="control">
-                                <button data-type="submit" class="button is-primary is-large" type="submit">Create Link</button>
+                                <button data-type="submit" class="button is-primary is-large is-fullwidth" type="submit">Create Link</button>
                             </p>
                         </div>                    
                     </div>
