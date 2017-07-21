@@ -11,8 +11,13 @@
                     {{ Form::hidden('instant', false, ['id' => 'instant_allowed']) }}
                     {{ Form::hidden('revisions', 0) }}
 
-<section class="hero" id="choose_quest">
-  <div class="hero-body">
+<section class="section dark-section" id="create_quest">
+  <div class="columns">
+    <div class="column is-2">
+            @include('frontend.includes.admin')
+    </div>
+    <div class="column">
+      <div class="box">
     <div class="container is-fluid">
         <div class="msf-header">
           <div class="has-text-centered">
@@ -184,6 +189,8 @@
                 <button data-type="next" class="button is-large msf-nav-button" type="button">Next</button>
                 <button data-type="submit" class="button msf-nav-button is-primary is-large" type="submit">Create Quest</button>
           </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
