@@ -21,8 +21,7 @@ use Mail;
  * Class GradeController
  * @package App\Http\Controllers\Frontend
  */
-class GradeController extends Controller
-{
+class GradeController extends Controller {
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -255,7 +254,7 @@ class GradeController extends Controller
             $notice->user_id = $user->id;
             $notice->message = $quest->name . " has been graded. You received " . $total_points . " of " . $quest->skills()->sum('amount') . " points.";
             if($quest->groups) {
-                $notice->url ="quest/".$quest->id."/group/feedback"
+                $notice->url ="quest/".$quest->id."/group/feedback";
             }
             else {
                 $notice->url = "quest/". $quest->id ."/feedback";
@@ -363,16 +362,15 @@ class GradeController extends Controller
             return redirect()->route('grade.activity.select', $quest->course_id)
                                 ->withFlashSuccess($quest->name . " graded for " . implode(",", $student_list) . ".");
         }
-        else {
-            return redirect()->route('grade.activity.select', $quest->course_id)
+        
+
+        return redirect()->route('grade.activity.select', $quest->course_id)
                                 ->withFlashDanger("You must include students to be graded for a quest.");
 
-        }
     }
 
 
-    public function activity_select($course_id)
-    {
+    public function activity_select($course_id) {
         $quests = Course::find($course_id)->quests()->where('quest_type_id', 2)->get();
         $users =  Course::find($course_id)
                         ->users()
@@ -380,7 +378,8 @@ class GradeController extends Controller
                         ->count();        
         return view('frontend.grade.activity_select', ['quests' => $quests, 'users' => $users, 'course_id' => $course_id])
             ->withUser(access()->user());
-    }    
+    }
+
     public function activity($quest_id) {
         $quest = Quest::find($quest_id);
         $students =  Course::find(session('current_course'))
