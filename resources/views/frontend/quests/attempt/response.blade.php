@@ -35,10 +35,16 @@
                                 </a>
                             @endforeach
                         @endif
-                        <h3 class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</h3>
-                            @foreach($skills as $skill)
-                                <p>{!! $skill->name !!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
-                           @endforeach
+                        <h3 class="subtitle">Points Available</h3>
+                            @if(count($skills) > 1)
+                                @foreach($skills as $skill)
+                                    <p>{!! $skill->name !!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
+                                @endforeach
+                                <hr/>
+                               <p>Total <span class="is-pulled-right">{!! $quest->skills()->sum('amount') !!}</span></p>
+                            @else
+                               <p>Total <span class="is-pulled-right">{!! $quest->skills()->sum('amount') !!}</span></p>
+                            @endif
                     </div>
                     <div class="tile is-child">
                         <div class="field">
