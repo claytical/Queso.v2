@@ -4,13 +4,14 @@
 
 @if(!$quests->isEmpty())
 
-<section class="section">
+<section class="section dark-section">
     <div class="columns">
         <div class="column is-2">
         @include('frontend.includes.admin')
         </div>
         <div class="column">
-            <h1 class="title">Assign Activity Credit</h1>
+          <div class="box">
+            <h1 class="title headline is-uppercase">Assign Activity Credit</h1>
 
             <table class="table">
               <thead>
@@ -41,6 +42,7 @@
 
               </tbody>
             </table>
+          </div>
     </div>
   </div>
 </section>
@@ -48,7 +50,7 @@
     <section class="hero is-dark is-bold is-large">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <h1 class="title headline is-uppercase">
             Assign Activity Credit
           </h1>
             <h2 class="subtitle">There are no activities available to assign credit for.</h2>

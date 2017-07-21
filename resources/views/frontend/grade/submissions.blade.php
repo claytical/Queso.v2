@@ -2,13 +2,14 @@
 
 @section('content')
 @if($lists)
-    <section class="section">
+    <section class="section dark-section">
         <div class="columns">
             <div class="column is-2">
               @include('frontend.includes.admin')
             </div>
             <div class="column">
-                <h1 class="title">Ungraded Quests</h1>
+              <div class="box">
+                <h1 class="title headline is-uppercase">Ungraded Quests</h1>
 
                 <table class="table">
                   <thead>
@@ -30,23 +31,26 @@
                     @endforeach
                   </tbody>
                 </table>
+              </div>
         </div>
       </div>
     </section>
 @else
-    <section class="section">
+    <section class="section dark-section">
         <div class="columns">
             <div class="column is-2">
               @include('frontend.includes.admin')
             </div>
             <div class="column">
-
-              <div class="container">
-                  <h1 class="title">Ungraded Quests</h1>
-                  <h2 class="subtitle">There are no quests to grade.</h2>
-              </div>
+              <div class="box">
+                <div class="container">
+                    <h1 class="title headline is-uppercase">Ungraded Quests</h1>
+                    <h2 class="subtitle">There are no quests to grade.</h2>
+                </div>
             </div>
+          </div>
       </div>
+
     </section>
 @endif
 
