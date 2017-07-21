@@ -34,16 +34,16 @@
                             </a>
                         @endforeach
                     @endif
-                    <p class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</p>
+                    <h3 class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</h3>
                         @foreach($skills as $skill)
-                            {!! $skill->name !!} / 
-                            {!! $skill->pivot->amount !!}
-                        @endforeach
-                    </div>
+                            <p>{!! $skill->name !!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
+                       @endforeach
                     <div class="field">
                         <p class="control">
                         {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-fullwidth']) !!}
                         </p>
+                    </div>
+
                     </div>
                 </div>
             </div>
