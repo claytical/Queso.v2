@@ -204,7 +204,8 @@ class StudentController extends Controller
                                                 'teams' => $teams, 
                                                 'acquired_skills' => $acquired_skills, 
                                                 'percentage' => $percentage, 
-                                                'total_points_potential' => $total_points_potential])
+                                                'total_points_potential' => $total_points_potential,
+                                                'course_id' => $course_id])
                                                 ->withUser(access()->user());
         }
 
