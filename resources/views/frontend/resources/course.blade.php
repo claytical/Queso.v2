@@ -1,14 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="section">
+<section class="section dark-section">
     <div class="columns is-multiline is-mobile">
         @foreach($resources as $tag => $resource)
             <div class="column is-half">
+                <div class="box">
                 @if($tag)
-                    <p class="title">{!! $tag !!}</p>
+                    <p class="title headline is-uppercase">{!! $tag !!}</p>
                 @else
-                    <p class="title">Resources</p>
+                    <p class="title headline is-uppercase">Resources</p>
 
                 @endif
                 @foreach($resource as $r)
@@ -42,6 +43,7 @@
                         </article>
                     @endif
                 @endforeach
+                </div>
             </div>
         @endforeach
     </div>
