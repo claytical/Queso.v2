@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.control .error {
+.control label.error {
     position: absolute;
     right: 25px;
     top: 5px;
