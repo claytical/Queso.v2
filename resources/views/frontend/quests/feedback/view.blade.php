@@ -3,13 +3,12 @@
 @section('content')
 
 <section class="section dark-section">
-    <div class="box">
     <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical is-8">
-            <div class="tile is-child">
+            <div class="tile is-child box">
                 @if($student->id == access()->user()->id)
                     @if($quest->quest_type_id == 2)
-                    <h2 class="title">{!! $quest->name !!}</h2>
+                    <h2 class="title headline is-uppercase">{!! $quest->name !!}</h2>
                     <h3 class="subtitle">Watched Video</h3>
                     @else
                     <h2 class="title">Feedback for {!! $quest->name !!}</h2>
@@ -89,16 +88,16 @@
             </div>
       </div>
     <div class="tile is-parent is-vertical is-4">
-        <div class="tile is-child">
+        <div class="tile is-child box">
             @if($graded)
                 @if($quest->groups)
-                <h3 class="subtitle">Group Members</h3>                
+                <h3 class="subtitle headline is-uppercase">Group Members</h3>                
                     @foreach($students as $s)
                         <p>{!! $s->name !!}</p>
                     @endforeach
                 @endif
 
-                <h3 class="subtitle">Current Grade</h3>
+                <h3 class="subtitle headline is-uppercase">Current Grade</h3>
                     @if(count($quest_skills) > 1)
                         @foreach($quest_skills as $index => $quest_skill)
                             <p>{!! $quest_skill->name !!} 
@@ -131,7 +130,6 @@
 
             </div>
         </div>
-    </div>
     </div>
 </section>
 @endsection
