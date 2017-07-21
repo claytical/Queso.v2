@@ -45,19 +45,19 @@
                             <p>Share your thoughts on how this could be improved.</p>
                             <div class="field">
                                 <p class="control">
-                                    {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true]) !!}            
+                                    {!! Form::textarea('suggestions', null, ['class' => 'field', 'files' => true, 'style' => 'width: 99%;']) !!}            
                                 </p>
                             </div>
                         </div>
 
                     </div>
-                    <div class="tile is-parent">
-                           <div class="field">
-                                <p class="control">
-                                    {!! Form::submit('Submit', ['class' => 'button is-large is-primary is-fullwidth']) !!}        
-                                </p>
-                            </div>                
-                    </div>
+                </div>
+                <div class="tile is-parent">
+                       <div class="field">
+                            <p class="control">
+                                {!! Form::submit('Submit', ['class' => 'button is-large is-primary is-fullwidth']) !!}        
+                            </p>
+                        </div>                
                 </div>
 
         </div>
