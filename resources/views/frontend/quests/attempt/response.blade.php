@@ -9,17 +9,16 @@
             {!! Form::hidden('revision', 0) !!}
 
             <div class="tile">
-                <div class="tile is-parent">
-                    <h2 class="title">{!! $quest->name !!}</h2>
+                <div class="tile is-child">
+                    <h2 class="title headline is-uppercase">{!! $quest->name !!}</h2>
                     <h3 class="subtitle">{!! $quest->instructions !!}</h3>
-                            <div class="field">
-                                <p class="control">
-                                    {!! Form::textarea('submission', ''); !!}
-                                </p>
-                            {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
+                    <div class="field">
+                        <p class="control">
+                            {!! Form::textarea('submission', ''); !!}
+                        </p>
                     </div>
                 </div>
-                <div class="tile is-4 is-parent">
+                <div class="tile is-4">
                     <div class="tile is-child">
                     @if($quest->expires_at)
                         <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
@@ -40,6 +39,11 @@
                             {!! $skill->name !!} / 
                             {!! $skill->pivot->amount !!}
                         @endforeach
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                        {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-fullwidth']) !!}
+                        </p>
                     </div>
                 </div>
             </div>
