@@ -17,8 +17,9 @@
                 <li><a href="#locked">Locked</a></li>
               </ul>
             </div>
-
-            <table class="table" id="completed" style="display: none;">
+            <div id="completed" class="tab-table" style="display: none;">
+            @if($quests)
+            <table class="table">
                 <thead>
                     <tr>
                         <th data-field="name" 
@@ -68,17 +69,22 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>  
+            </table>
+            @else
+                <p>No quests have been completed</p>
+            @endif  
+            </div>
+    
+    <div id="available" class="tab-table" style="display: none;">
 
     @if($unlocked)
-        <table class="table" id="available">
+        <table class="table">
             <thead>
                 <tr>
                     <th data-field="name" 
                     data-sortable="true">Name</th>
                     <th data-field="points" 
                     data-sortable="true">Points</th>
-                    <th data-field="course">Course</th>
                     <th data-field="expiration" 
                     data-sortable="true">Expires</th>
                 </tr>            
@@ -113,7 +119,6 @@
                             <td>
                                 {!! $q->skills()->sum('amount') !!}
                             </td>
-                            <td>{!! $q->course->name !!}</td>
                             <td>
                                 @if($q->expires_at)
                                 {!! date('m/d/Y', strtotime($q->expires_at)) !!}
@@ -129,17 +134,18 @@
     @else
         <p>There are no available quests.</p>
     @endif
+    </div>
 
+    <div id="revisable" class="tab-table" style="display: none;">
 
     @if(!$revisable->isEmpty())
-        <table class="table" data-toggle="table" id="revisable" style="display: none;">
+        <table class="table" data-toggle="table">
             <thead>
                 <tr>
                     <th data-field="name" 
                     data-sortable="true">Name</th>
                     <th data-field="points" 
                     data-sortable="true">Points</th>
-                    <th>Course</th>
                     <th data-field="expiration" 
                     data-sortable="true">Expires</th>
                 </tr>            
@@ -167,7 +173,6 @@
                                 <td>
                                     {!! $q->skills()->sum('amount') !!}
                                 </td>
-                                <td>{!! $q->course->name !!}</td>
                                 <td>
                                     @if($q->expires_at)
                                     {!! date('m-d-Y', strtotime($q->expires_at)) !!}
@@ -179,10 +184,16 @@
                 @endforeach
                     </tbody>
                 </table>
+    @else
+        <p>No quests are revisable at this time</p>
     @endif
+    
+    </div>
+    
+    <div id="locked" class="tab-table" style="display: none;">
 
     @if($locked)
-        <table class="table table-hover" id="locked" style="display: none;">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th data-field="name" 
@@ -235,8 +246,10 @@
             @endforeach
             </tbody>
         </table>
+    @else
+        <p>No quests are locked at this time</p>
     @endif
-
+    </div>
 
 
 
@@ -269,9 +282,11 @@
 @section('after-scripts-end')
     <script>
     $(".tabs ul li a").click(function() {
-        $(".table").hide();
-        $($(this).href).show();
-    };
+        $(".tabs ul li").removeClass("is-active");
+        $(this).parent().addClass('is-active');        
+        $(".tab-table").hide();
+        $(this.hash).show();
+    });
 
 
     $('.predictive').click(function() {
