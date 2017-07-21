@@ -184,20 +184,25 @@
         <div class="tile is-child box">
             <h2 class="title headline is-uppercase">Current Level</h2>
             <h3 class="subtitle">{!! $current_level->name !!}</h3>
-            <h4>{!! $total_points !!} points</h4>           
             <progress class="progress is-large is-success" value="{!! $total_points !!}" min="{!! $current_level->amount !!}" max="{!! $total_points_potential !!} "></progress>
 
             @if(count($acquired_skills) > 1)
                 @foreach($acquired_skills as $skill)
-                        <p><strong>{!! $skill['name'] !!}</strong> <span class="is-pulled-right">{!! $skill['amount'] !!}</span></p>
+                        <p>{!! $skill['name'] !!} <span class="is-pulled-right">{!! $skill['amount'] !!}</span></p>
 
                 @endforeach
+                    <hr/>
+                    <p>Total <span class="is-pulled-right">{!! $total_points !!}</span></p>           
+            @else
+                    <p>Total <span class="is-pulled-right">{!! $total_points !!}</span></p>           
             @endif
 
             @if($team)
-            <h3 class="subtitle">Teams</h3>            
-                <a class="button is-small is-pulled-right is-danger" href="{!! URL::to('manage/student/'.$student->id.'/team/remove') !!}">Remove</a>
-                <p>Current Team: {!! $team->name !!}</p>                
+            <div class="field">
+                <h3 class="subtitle">Teams</h3>            
+                    <a class="button is-small is-pulled-right is-danger" href="{!! URL::to('manage/student/'.$student->id.'/team/remove') !!}">Remove</a>
+                    <p>Current Team: {!! $team->name !!}</p>                
+            </div>
             @else
             @endif
             @foreach($teams as $team)            
