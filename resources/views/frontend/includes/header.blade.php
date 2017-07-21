@@ -16,8 +16,22 @@
               @if (access()->guest())
 
               @else
-                  <a class="navbar-item" href="{!! URL::to('quests/available')!!}">Quests</a>
                     @if(count(access()->courses()) > 1)
+                        <div class="navbar-item has-dropdown is-hoverable">                
+                                <a class="navbar-link  is-active" href="#">
+                                  Quests
+                                </a>
+                                <div class="navbar-dropdown is-boxed">
+                                  @foreach(access()->courses() as $c)
+
+                                    <a class="navbar-item {{ Active::pattern('quests/history/'.$c->id, 'is-active') }}" href="{!! URL::to('quests/history/'.$c->id) !!}">
+                                      {!! $c->name !!}
+                                    </a>
+                                  @endforeach
+                                </div>
+                        </div>
+
+
                         <div class="navbar-item has-dropdown is-hoverable">                
                                 <a class="navbar-link  is-active" href="#">
                                   Resources
@@ -37,6 +51,9 @@
                           <a class="navbar-item {{ Active::pattern('resources/'.$c->id, 'is-active') }}" href="{!! URL::to('resources/'.$c->id) !!}">
                             Resources
                           </a>
+        
+                          <a class="navbar-item {{ Active::pattern('quests/history/'.$c->id, 'is-active') }}" href="{!! URL::to('quests/history/'.$c->id)!!}">Quests</a>
+
                         @endforeach
 
                     @endif
