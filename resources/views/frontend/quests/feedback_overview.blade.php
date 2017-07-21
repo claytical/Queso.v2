@@ -1,7 +1,8 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="section">
+<section class="section dark-section">
+    <div class="box">
     <div class="tile">
       <div class="tile is-6 is-parent">
         <div class="tile is-child">
@@ -52,6 +53,7 @@
     </div>
     <div class="container is-fluid">
 
+    </div>
     </div>
 </section>
 @endsection

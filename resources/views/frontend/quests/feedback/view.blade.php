@@ -2,8 +2,8 @@
 
 @section('content')
 
-<section class="section">
-
+<section class="section dark-section">
+    <div class="box">
     <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical is-8">
             <div class="tile is-child">
@@ -131,6 +131,7 @@
 
             </div>
         </div>
+    </div>
     </div>
 </section>
 @endsection
