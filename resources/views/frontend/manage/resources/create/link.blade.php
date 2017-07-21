@@ -5,12 +5,14 @@
     {{ Form::hidden('course_id', $course_id, ['id' => 'course_id']) }}
     {{ Form::hidden('resource_type', 2, ['id' => 'resource_type']) }}
 
-<section class="hero" id="create_resource">
-  <div class="hero-body">
+<section class="section dark-section" id="create_resource">
     <div class="container is-fluid">
             <div class="tile">
+                <div class="tile is-2 is-parent">
+                  @include('frontend.includes.admin')
+                </div>
                 <div class="tile is-8 is-parent">
-                  <div class="tile is-child">
+                  <div class="tile is-child box">
                   <!-- Title and Description -->                
                     <div class="field">
                       <p class="control">
@@ -27,19 +29,23 @@
                 </div>
 
                 <div class="tile is-4 is-parent">
-                    <div class="tile is-child notification">
+                    <div class="tile is-child box">
                       <h4 class="subtitle">Category</h4>
                         <div class="field">
                           <p class="control">
                             {{ Form::input('text', 'tag', null, ['class' => 'input', 'placeholder' => 'Category Name', 'id' => 'tag']) }}
                           </p>
-                        </div>                      
+                        </div>  
+
+                        <div class="field">
+                            <p class="control">
+                                <button data-type="submit" class="button is-primary is-large" type="submit">Create Link</button>
+                            </p>
+                        </div>                    
                     </div>
                 </div>
               </div>
-        <button data-type="submit" class="button is-primary is-pulled-right is-large" type="submit">Create Link</button>
 
-    </div>
   </div>
 </section>
 {!! Form::close() !!}

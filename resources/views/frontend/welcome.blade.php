@@ -88,7 +88,6 @@
         <div class="tile is-child box">
             <p class="title is-uppercase headline">Courses</p>
             @foreach(access()->courses() as $c)
-                <p class="subtitle">{!! $c->name !!}<a href="{!! URL::to('quests/history/'.$c->id)!!}" class="is-primary button is-pulled-right">Progress</a></p>
                 <div class="content is-small">
                     <h5>Class Time and Location</h5>
                     <p><strong>{!! $c->meeting !!}, {!! $c->meeting_location !!}</strong></p>

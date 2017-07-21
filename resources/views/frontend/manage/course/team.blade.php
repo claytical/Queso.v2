@@ -20,7 +20,7 @@
                 </div>
                 {!! Form::close() !!}
 
-                <h1 class="title">{!! $team->name !!}</h1>
+                <h1 class="title headline is-uppercase">{!! $team->name !!}</h1>
 
                 @if(!$students->isEmpty())
 
