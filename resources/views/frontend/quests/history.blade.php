@@ -75,7 +75,7 @@
             @endif  
             </div>
     
-    <div id="available" class="tab-table" style="display: none;">
+    <div id="available" class="tab-table">
 
     @if($unlocked)
         <table class="table">
