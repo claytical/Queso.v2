@@ -2,14 +2,15 @@
 
 @section('content')
 
-<section class="section">
+<section class="section dark-section">
     <div class="columns">
         <div class="column is-2">
         @include('frontend.includes.admin')
         </div>
         <div class="column">
+            <div class="box">
             <a href="#" class="button is-pulled-right is-large is-primary" id="show_points">Show Points</a>
-            <h1 class="title">Students</h1>
+            <h1 class="title is-uppercase headline">Students</h1>
 
         @if(!$students->isEmpty())
 
@@ -26,7 +27,7 @@
                 @foreach($students as $student)
                     <tr>
                         <td>{{ link_to('manage/student/'.$student->id.'/'.$course_id, $student->name) }}</td>
-                        <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</td>
+                        <td><a href="mailto:{!! $student->email !!}">{!! $student->email !!}</a></td>
                         <td class="grades">{!! $student->skills()->where('course_id', '=', $course_id)->sum('amount') !!}</td>
                         <td>{{ link_to('manage/student/'.$student->id.'/leave', '', ['class' => 'delete']) }}</td>
                     </tr>
@@ -38,6 +39,7 @@
         @endif
         </div>
       </div>
+    </div>
 </section>
 
 @endsection
