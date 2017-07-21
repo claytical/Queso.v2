@@ -1,30 +1,25 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light is-medium" id="create_resource">
-    <div class="hero-body">
+<section class="section dark-section" id="attempt_quest">
+    <div class="box">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/submit', 'class' => '')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}       
             {!! Form::hidden('revision', 0) !!}
-            <h2 class="title">{!! $quest->name !!}</h2>
-            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
 
             <div class="tile">
                 <div class="tile is-parent">
-                    <div class="tile is-child">
-                        <div class="container is-fluid">
+                    <h2 class="title">{!! $quest->name !!}</h2>
+                    <h3 class="subtitle">{!! $quest->instructions !!}</h3>
                             <div class="field">
                                 <p class="control">
                                     {!! Form::textarea('submission', ''); !!}
                                 </p>
                             {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
-
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div class="tile is-4 is-parent box">
+                <div class="tile is-4 is-parent">
                     <div class="tile is-child">
                     @if($quest->expires_at)
                         <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
