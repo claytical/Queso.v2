@@ -2,16 +2,15 @@
 
 @section('content')
 
-<section class="hero is-bold is-light" id="create_resource">
-    <div class="hero-body">
+<section class="section dark-section" id="attempt_response">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'grade/confirm')) !!}
 
             <div class="tile">
                 <div class="tile is-parent">
-                    <div class="tile is-child">
+                    <div class="tile is-child box">
                         <div class="container is-fluid">
-                          <h2 class="title">{!! $quest->name !!}, {!! $student->name !!}</h2>
+                          <h2 class="title headline is-uppercase">{!! $quest->name !!}, {!! $student->name !!}</h2>
                           <h3 class="subtitle">{!! $quest->instructions !!}</h3>
                           <div class="content">
                           @if($quest->quest_type_id == 1)
@@ -72,16 +71,28 @@
                     </div>
                 </div>
             <div class="tile is-4 is-child box">
-                <h4 class="title">{!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h4>
+                <h4 class="title headline is-uppercase">{!! date('m-d-Y', strtotime($attempt->created_at)) !!}</h4>
                 @if($revision_count > 1)
-                  <div class="box">
-                    <h5 class="subtitle">Previous Submissions</h5>
-                  @foreach($revisions as $revision)
-                    <p>
-                    {{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m/d/Y', strtotime($revision->created_at))) }}
-                    </p>
-                  @endforeach
-                  </div>
+                  <h4 class="title headline is-uppercase">{!! date('m/d/Y', strtotime($attempt->created_at)) !!}</h4>
+                  <nav class="navbar">
+                    <div class="navbar-menu">
+                      <div class="navbar-end">
+                        <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="navbar-link  is-active" href="/documentation/overview/start/">
+                            Previous Submissions
+                          </a>
+                          @if(count($revisions) > 0)
+                            <div class="navbar-dropdown ">
+                              @foreach($revisions as $revision)
+                                {{ link_to('grade/quest/'.$quest->id . '/' . $revision->id, '#'. $revision->revision . ' ' . date('m/d/Y', strtotime($revision->created_at)), ['class' => 'navbar-item']) }}
+                              @endforeach
+                            </div>
+                          @endif
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+
                 @endif
 
                 @foreach($skills as $skill)
@@ -93,17 +104,17 @@
                     </div>
                   </div>
                 @endforeach
-                <h5>Total Points Awarded</h5>
-                <span id="total">0</span> of {!! $quest->skills()->sum('amount') !!}</h3>
-                <div class="field">
+                <h5>Total Points Awarded 
+                    <div class="is-pulled-right"><span id="total">0</span> of {!! $quest->skills()->sum('amount') !!}
+                    </div>
+                  </h5>
+                  <hr/>
                   {!! Form::submit('Grade', ['class' => 'button is-primary is-large is-fullwidth']) !!}
-                </div>
-
             </div>
+
+        </div>
             {!! Form::close() !!}
-          </div>
       </div>
-    </div>
 </section>
 
 @endsection

@@ -61,8 +61,7 @@
                         </div>
                     </div>
                 </div>
-            <div class="tile is-4 is-parent">
-              <div class="tile is-child box">
+            <div class="tile is-4 is-child box">
                 @if($revision_count > 1)
                   <h4 class="title headline is-uppercase">{!! date('m/d/Y', strtotime($attempt->created_at)) !!}</h4>
                   <nav class="navbar">
@@ -104,7 +103,6 @@
               </div>
             </div>
           </div>
-      </div>
             {!! Form::close() !!}
 </section>
 
