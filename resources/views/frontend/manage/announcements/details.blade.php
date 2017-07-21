@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="section section-dark">
+<section class="section dark-section">
     <div class="columns">
         <div class="column is-2">
             @include('frontend.includes.admin')
@@ -14,7 +14,7 @@
                 {{ Form::hidden('announcement_id', $announcement->id)}}
                 {{ Form::hidden('course_id', $announcement->course_id)}}
 
-                <h1 class="title">
+                <h1 class="title headline is-uppercase">
                 Update Announcement
               </h1>
                 <div class="field">
