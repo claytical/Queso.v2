@@ -27,6 +27,8 @@
   border: none !important;
   background-image: none !important;
   box-shadow: none !important;
-  border-radius: none !important;
-  
+}
+
+.rangeslider__handle:after {
+  background-image: none !important;
 }
