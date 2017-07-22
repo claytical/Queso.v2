@@ -6,7 +6,7 @@
         <div class="container is-fluid">
         {{ Form::open(['route' => 'auth.register', 'class' => 'form-horizontal']) }}
             <div class="notification is-primary">
-            <p class="title">Register</p>
+            <p class="title">Create an Account</p>
               {{ Form::open(['route' => 'auth.login', 'class' => '']) }}
               
                 <div class="field">                      
