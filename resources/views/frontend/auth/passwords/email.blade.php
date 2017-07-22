@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-dark is-medium">
+<section class="hero is-dark is-large">
     <div class="hero-body">
         <div class="container is-fluid">
 
@@ -18,7 +18,7 @@
                     <div class="field has-addons">
                                             {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'label']) }}
                       <div class="control">
-                                {{ Form::input('email', 'email', null, ['class' => 'input', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                                {{ Form::input('email', 'email', null, ['class' => 'input is-large', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
                       </div>
                       <div class="control">
                         <a class="button is-primary is-large">
