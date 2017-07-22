@@ -259,7 +259,9 @@
             @if($skills)
                 @if(count($skills) > 1)
                     @foreach($skills as $skill)
-                        <p><strong>{!! $skill['name'] !!}</strong> <span class="is-pulled-right">{!! $skill['amount'] !!}</span></p>
+                        @if($skill)
+                            <p><strong>{!! $skill['name'] !!}</strong> <span class="is-pulled-right">{!! $skill['amount'] !!}</span></p>
+                        @endif
                     @endforeach
                     <hr/>
                     <p><strong>Total</strong> <span class="is-pulled-right">{!! $total_points !!}</span></p>
