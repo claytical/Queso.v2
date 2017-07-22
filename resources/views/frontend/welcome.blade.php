@@ -44,7 +44,6 @@
                 @endforeach
             </div>
         @endif
-        <div class="tile is-child box">
           <h3 class="title is-uppercase headline">Agenda</h3>           
             @foreach(access()->agenda() as $date => $quest)
                 <div class="is-clearfix">
@@ -80,26 +79,9 @@
                 @endforeach
                 <hr/>
             @endforeach 
-        </div>
-
     </div>
 
     <div class="tile is-4 is-vertical is-parent">
-        <div class="tile is-child box">
-            <p class="title is-uppercase headline">Courses</p>
-            @foreach(access()->courses() as $c)
-                <div class="content is-small">
-                    <h5>Class Time and Location</h5>
-                    <p><strong>{!! $c->meeting !!}, {!! $c->meeting_location !!}</strong></p>
-                </div>
-                <div class="content is-small">                                   
-                    <h3>{!! $c->instructor_display_name !!} <a class="is-large is-pulled-right" href="mailto:{!! $c->instructor_contact !!}"><span class="icon is-medium"><i class="fa fa-envelope"></i></span></a></h3>
-                    <h5>Office Hours and Location</h5>
-                    <p><strong>{!! $c->office_hours !!}, {!! $c->instructor_office_location !!}</strong></p>
-                </div>
-            @endforeach
-        </div>
-
         @if($feedback_requests || !$notifications->isEmpty())
 
             <div class="tile is-child">
@@ -127,6 +109,24 @@
                     @endif
             </div>
         @endif
+    
+        <div class="tile is-child box">
+            <p class="title is-uppercase headline">Courses</p>
+            @foreach(access()->courses() as $c)
+                <div class="content is-small">
+                    <h3 class="title is-uppercase">{!! $c->name !!}</h3>
+                    <h5>Class Time and Location</h5>
+                    <p><strong>{!! $c->meeting !!}, {!! $c->meeting_location !!}</strong></p>
+                </div>
+                <div class="content is-small">                                   
+                    <h3>{!! $c->instructor_display_name !!} <a class="is-large is-pulled-right" href="mailto:{!! $c->instructor_contact !!}"><span class="icon is-medium"><i class="fa fa-envelope"></i></span></a></h3>
+                    <h5>Office Hours and Location</h5>
+                    <p><strong>{!! $c->office_hours !!}, {!! $c->instructor_office_location !!}</strong></p>
+                </div>
+                <hr/>
+            @endforeach
+        </div>
+
 
     </div>
 

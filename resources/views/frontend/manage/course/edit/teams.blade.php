@@ -10,6 +10,10 @@
         <div class="column">
           <div class="box">
             <h1 class="title headline is-uppercase">Teams</h1>
+            @if($teams->isEmpty())
+              <h2 class="subtitle">Teams allow you to group students together for easier management. For example, if you teach two sections of the same course you might have a Monday Team and a Tuesday Team.</h2>
+            @endif
+
             <div class="field">
                 {!! Form::open(['url' => 'manage/course/add/team', 'class' => '', 'id' => 'add-team']) !!}
                 <div class="field has-addons">
@@ -25,9 +29,7 @@
                 </div>            
               {!! Form::close() !!}
             </div>
-            @if($teams->isEmpty())
-              <h2 class="subtitle">Teams allow you to group students together for easier management. For example, if you teach two sections of the same course you might have a Monday Team and a Tuesday Team.</h2>
-            @else
+            @if(!$teams->isEmpty())
 
               <table class="table">
                 <thead>

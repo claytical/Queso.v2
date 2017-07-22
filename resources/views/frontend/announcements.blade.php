@@ -1,25 +1,24 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-dark">
-    <div class="hero-body">
-        <h1 class="title">Announcements</h1>
-    </div>
-</section>
 
-<section class="content" id="announcements">
-    <div class="container is-fluid">        
-        @if($announcements->isEmpty())
-            <h2 class="subtitle">There are no announcements!</h2>
-        @endif
-        @foreach($announcements as $announcement)
+<section class="section dark-section" id="announcements">
+    <div class="box">
+        <div class="container is-fluid">
+            <h1 class="title headline is-uppercase">Announcements</h1>
+
+            @if($announcements->isEmpty())
+                <h2 class="subtitle">There are no announcements!</h2>
+            @endif
+            
+            @foreach($announcements as $announcement)
 
                 <h2 class="subtitle">{!! $announcement->title !!} <span class="is-pulled-right">{!! date('m/d/Y', strtotime($announcement->created_at)) !!}</span></h2>
                 {!! $announcement->body !!}
                 <hr/>
-        @endforeach
+            @endforeach
 
-
+        </div>
     </div>
 </section>
 
