@@ -717,7 +717,7 @@ class QuestController extends Controller
             ->where('user_id', '=', $user->id)
             ->delete();
 
-        return redirect()->route('student.detail', ['student_id' => $student_id])
+        return redirect()->route('student.detail', ['student_id' => $student_id, 'course_id' => $quest->course_id])
                             ->withFlashSuccess("Removed " . $quest->name . " from student.");        
     }
 
