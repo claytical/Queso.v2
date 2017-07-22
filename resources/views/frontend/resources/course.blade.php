@@ -27,20 +27,19 @@
                                 {!! $r->description !!}
                               </p>
                                 @if(!$r->files->isEmpty())
+                                    <ul>
                                     @foreach($r->files as $file)
-                                    <p>
-                                        <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" alt="{!! substr($file->name,5) !!}" download>
+                                    <li>
+                                        <a href="{!! URL::to('uploads/' . $file->name) !!}" alt="{!! substr($file->name,5) !!}" download>
                                         <span class="icon is-small"><i class="fa fa-paperclip"></i> {!! substr($file->name,5) !!}</span> 
                                         </a>
-                                    </p>
+                                    </li>
                                     @endforeach
+                                    </ul>
                                 @endif
 
                             </div>
-                            <nav class="level is-mobile">
-                              <div class="level-left">
-                              </div>
-                            </nav>
+
                           </div>
 
                         </article>
