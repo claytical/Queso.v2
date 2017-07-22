@@ -34,17 +34,22 @@
                         <div class="is-clearfix">
                             <h4 class="subtitle is-uppercase">{!! $course !!}</h4>
                         </div>
-                        @foreach($quest as $q)
-                            @if($q['attempt'])
-                            <div class="field">
-                                <div class="is-pulled-right">
-                                    {!! $q['student'] . ' on ' . date('m/d', strtotime($q['attempt']->created_at)) !!}
-                                </div>                
-                                <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>
-                            </div>
-                            @endif
-                        @endforeach
+                        @if(count($quest))
+                            @foreach($quest as $q)
+                                @if($q['attempt'])
+                                <div class="field">
+                                    <div class="is-pulled-right">
+                                        {!! $q['student'] . ' on ' . date('m/d', strtotime($q['attempt']->created_at)) !!}
+                                    </div>                
+                                    <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>
+                                </div>
+                                @endif
+                            @endforeach
+                        @else
+                            <p>No submissions awaiting grading</p>
+                        @endif
                         <hr/>
+
                     @endforeach
                 </div>
             @endif
