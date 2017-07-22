@@ -41,6 +41,6 @@
     box-shadow: 5px 5px 5px #302f48;
 }
 
-.is-info .label {
+.is-info .label, .is-primary .label {
   color: #ffffff;
 }
