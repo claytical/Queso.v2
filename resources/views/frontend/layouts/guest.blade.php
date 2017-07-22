@@ -14,7 +14,8 @@
         @yield('meta')
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
+        {{ Html::style('css/bulma.css') }}
+        {{ Html::style('css/queso.css') }}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">        
     </head>

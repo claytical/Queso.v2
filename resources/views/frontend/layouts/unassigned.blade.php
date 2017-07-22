@@ -12,8 +12,8 @@
         <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
         <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
         @yield('meta')
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
+        {{ Html::style('css/bulma.css') }}
+        {{ Html::style('css/queso.css') }}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">        
 
