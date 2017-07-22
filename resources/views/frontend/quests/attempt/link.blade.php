@@ -9,7 +9,8 @@
 
             <div class="tile">
                 <div class="tile is-parent">
-                    <div class="tile is-child box">
+                    <div class="tile is-child">
+                        <div class="box">
                         <h2 class="title headline is-uppercase">{!! $quest->name !!}</h2>
                         <h3 class="subtitle">{!! $quest->instructions !!}</h3>
 
@@ -21,9 +22,11 @@
                                   {!! Form::submit('Submit', ['class' => 'button is-primary is-large']) !!}
                               </p>
                             </div>
+                        </div>
                     </div>
-                    
+
                     <div class="is-4 is-child box">
+                        <div class="box">
                         @if($quest->expires_at)
                             <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                         @endif
@@ -39,12 +42,16 @@
                             @endforeach
                         @endif
 
-                        <p class="subtitle">{!! $quest->skills()->sum('amount') !!} Points Available</p>
+                        @if(count($skills) > 1)
                             @foreach($skills as $skill)
-                                {!! $skill->name !!} / 
-                                {!! $skill->pivot->amount !!}
+                                <p>{!! $skill->name !!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
                             @endforeach
-
+                            <hr/>
+                            <p>Total <span class="is-pulled-right">{!! $quest->skills()->sum('amount') !!}</span></p>
+                        @else
+                            <p>{!! $quest->skills()->sum('amount') !!} Points Available</p>
+                        @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,7 +59,6 @@
             {!! Form::close() !!}
 
         </div>
-
 </section>
 
 @endsection
