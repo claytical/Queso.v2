@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="section dark-section" id="attempt_">
+<section class="section dark-section" id="attempt_upload">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/submit', 'id' => 'upload-quest')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}       
