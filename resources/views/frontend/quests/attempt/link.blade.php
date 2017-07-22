@@ -8,8 +8,8 @@
             {!! Form::hidden('revision', 0) !!}
 
             <div class="tile">
-                <div class="tile is-parent">
-                            <div class="container">        
+                <div class="container">        
+                    <div class="tile is-parent">
 
                                 <div class="box">
                                     <h2 class="title headline is-uppercase">{!! $quest->name !!}</h2>
@@ -24,42 +24,39 @@
                                       </p>
                                     </div>
                                 </div>
-                            </div>
+                    </div>
 
                     <div class="tile is-4 is-parent">
-                        <div class="container">        
-                        
                             <div class="box">
-                            @if($quest->expires_at)
-                                <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
-                            @endif
+                                @if($quest->expires_at)
+                                    <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
+                                @endif
 
-                            @if(!$files->isEmpty())
-                                <p class="subtitle">Attached Files</p>
+                                @if(!$files->isEmpty())
+                                    <p class="subtitle">Attached Files</p>
 
-                                @foreach($files as $file)
-                                    <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
-                                    <span class="icon is-small"><i class="fa fa-paperclip"></i></span> 
-                                    {!! substr($file->name,5) !!}
-                                    </a>
-                                @endforeach
-                            @endif
+                                    @foreach($files as $file)
+                                        <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" title="{!! substr($file->name,5) !!}" download>
+                                        <span class="icon is-small"><i class="fa fa-paperclip"></i></span> 
+                                        {!! substr($file->name,5) !!}
+                                        </a>
+                                    @endforeach
+                                @endif
 
-                            @if(count($skills) > 1)
-                                @foreach($skills as $skill)
-                                    <p>{!! $skill->name !!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
-                                @endforeach
-                                <hr/>
-                                <p>Total <span class="is-pulled-right">{!! $quest->skills()->sum('amount') !!}</span></p>
-                            @else
-                                <p>{!! $quest->skills()->sum('amount') !!} Points Available</p>
-                            @endif
+                                @if(count($skills) > 1)
+                                    @foreach($skills as $skill)
+                                        <p>{!! $skill->name !!} <span class="is-pulled-right">{!! $skill->pivot->amount !!}</span></p>
+                                    @endforeach
+                                    <hr/>
+                                    <p>Total <span class="is-pulled-right">{!! $quest->skills()->sum('amount') !!}</span></p>
+                                @else
+                                    <p>{!! $quest->skills()->sum('amount') !!} Points Available</p>
+                                @endif
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
         {!! Form::close() !!}
 </section>
 
