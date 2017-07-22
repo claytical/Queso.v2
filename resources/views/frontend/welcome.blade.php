@@ -2,115 +2,121 @@
 
 @section('content')
 <section class="section dark-section">
-<div class="tile is-ancestor">
-      <div class="tile is-parent is-vertical is-4">
-        <div class="tile is-child box">
-          <p class="title is-uppercase headline">Announcements</p>
-        @if(!$announcements->isEmpty())
-            @foreach($announcements as $announcement)
-            <span class="tag is-dark is-pulled-right">{!! $course->name !!}</span>
-            <p class="subtitle">{!! $announcement->title !!}</p>
-            <div class="content">
-                <p>{!! $announcement->body !!}</p>
-            </div>
-            <hr/>
-            @endforeach
-        @else
-            <div class="content">
-                <p>No announcements have been made</p>
+
+    <div class="columns">
+        <div class="column">
+            <div class="box">
+              <p class="title is-uppercase headline">Announcements</p>
+                @if(!$announcements->isEmpty())
+                    @foreach($announcements as $announcement)
+                    <span class="tag is-dark is-pulled-right">{!! $course->name !!}</span>
+                    <p class="subtitle">{!! $announcement->title !!}</p>
+                    <div class="content">
+                        <p>{!! $announcement->body !!}</p>
+                    </div>
+                    <hr/>
+                    @endforeach
+                @else
+                    <div class="content">
+                        <p>No announcements have been made</p>
+                    </div>
+                @endif
             </div>
 
-        @endif
+
+
         </div>
-      </div>
-    <div class="tile is-parent is-vertical is-4">
-        <div class="tile is-child box">
-        @if(count(access()->courses_taught()) > 0)
-                <p class="title is-uppercase headline">Submissions</p>
-                @foreach(access()->awaiting_grade() as $course => $quest)
+        <div class="column">
+            @if(count(access()->courses_taught()) > 0)
+                <div class="box">
+                    <p class="title is-uppercase headline">Submissions</p>
+                    @foreach(access()->awaiting_grade() as $course => $quest)
+                        <div class="is-clearfix">
+                            <h4 class="subtitle is-uppercase">{!! $course !!}</h4>
+                        </div>
+                        @foreach($quest as $q)
+                            @if($q['attempt'])
+                            <div class="field">
+                                <div class="is-pulled-right">
+                                    {!! $q['student'] . ' on ' . date('m/d', strtotime($q['attempt']->created_at)) !!}
+                                </div>                
+                                <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>
+                            </div>
+                            @endif
+                        @endforeach
+                        <hr/>
+                    @endforeach
+                </div>
+            @endif
+
+            <div class="box">
+                <h3 class="title is-uppercase headline">Agenda</h3>           
+                @foreach(access()->agenda() as $date => $quest)
                     <div class="is-clearfix">
-                        <h4 class="subtitle">{!! $course !!}</h4>
+                        @if($date)
+                            <h4 class="subtitle is-pulled-right is-uppercase">Due {!! date('m/d', strtotime($date)) !!}</h4>
+                        @else
+                            <h4 class="subtitle is-pulled-right is-uppercase">Due Anytime</h4>
+                        @endif
                     </div>
                     @foreach($quest as $q)
-                        @if($q['attempt'])
                         <div class="field">
-                            <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>
-                            <div class="is-pulled-right">
-                                {!! $q['student'] . ' on ' . date('m/d', strtotime($q['attempt']->created_at)) !!}
-                            </div>                
-                        </div>
+                        @if($q->quest_type_id == 1)
+                            <a href="{!! URL::to('quest/attempt/response/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
                         @endif
-                    @endforeach
-                @endforeach
-        @endif
-          <h3 class="title is-uppercase headline">Agenda</h3>           
-            @foreach(access()->agenda() as $date => $quest)
-                <div class="is-clearfix">
-                    @if($date)
-                        <h4 class="subtitle is-pulled-right">Due {!! date('m/d', strtotime($date)) !!}</h4>
-                    @else
-                        <h4 class="subtitle is-pulled-right">Due Anytime</h4>
-                    @endif
-                </div>
-                @foreach($quest as $q)
-                    <div class="field">
-                    @if($q->quest_type_id == 1)
-                        <a href="{!! URL::to('quest/attempt/response/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
-                    @endif
-                    @if($q->quest_type_id == 2)
-                    @endif
-                    @if($q->quest_type_id == 3)
-                        <a href="{!! URL::to('quest/watch/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
-                    @endif
-                    @if($q->quest_type_id == 4)
-                        <a href="{!! URL::to('quest/attempt/link/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
-                    @endif
-                    @if($q->quest_type_id == 5)
-                        <a href="{!! URL::to('quest/attempt/upload/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
-                    @endif
-                    @if($q->quest_type_id == 6)
-                        <a href="{!! URL::to('quest/attempt/group/upload/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
-                    @endif
-                    @if($q->quest_type_id == 7)
-                        <a href="{!! URL::to('quest/attempt/group/link/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
-                    @endif
-                    </div>
-                @endforeach
-                <hr/>
-            @endforeach 
-        </div>          
-    </div>
-
-    <div class="tile is-4 is-vertical is-parent">
-        @if($feedback_requests || !$notifications->isEmpty())
-
-            <div class="tile is-child">
-                    @if($feedback_requests)
-                        <div class="notification">
-                             <a href="{!! URL::to('feedback') !!}" class="button is-small is-primary is-pulled-right">View</a>
-                             <p>You have {!! count($feedback_requests) !!} feedback requests.</p>
+                        @if($q->quest_type_id == 2)
+                        @endif
+                        @if($q->quest_type_id == 3)
+                            <a href="{!! URL::to('quest/watch/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
+                        @endif
+                        @if($q->quest_type_id == 4)
+                            <a href="{!! URL::to('quest/attempt/link/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
+                        @endif
+                        @if($q->quest_type_id == 5)
+                            <a href="{!! URL::to('quest/attempt/upload/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
+                        @endif
+                        @if($q->quest_type_id == 6)
+                            <a href="{!! URL::to('quest/attempt/group/upload/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
+                        @endif
+                        @if($q->quest_type_id == 7)
+                            <a href="{!! URL::to('quest/attempt/group/link/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
+                        @endif
                         </div>
-                    @endif
+                    @endforeach
+                    <hr/>
+                @endforeach 
+            </div>          
+        </div>
 
-                    @if(!$notifications->isEmpty())
+        <div class="column">
+            @if($feedback_requests || !$notifications->isEmpty())
 
-                        @foreach($notifications as $notice)
-
+                <div class="box">
+                        @if($feedback_requests)
                             <div class="notification">
-                                 <a href="{!! url('notification/dismiss', [$notice->id]);!!}" class="delete"></a>
-                                                             
-                                @if($notice->url)
-                                    {{ link_to($notice->url, $notice->message) }}
-                                @else
-                                    {!! $notice->message !!}
-                                @endif                              
+                                 <a href="{!! URL::to('feedback') !!}" class="button is-small is-primary is-pulled-right">View</a>
+                                 <p>You have {!! count($feedback_requests) !!} feedback requests.</p>
                             </div>
-                        @endforeach
-                    @endif
-            </div>
-        @endif
+                        @endif
 
-        <div class="tile is-child box">
+                        @if(!$notifications->isEmpty())
+
+                            @foreach($notifications as $notice)
+
+                                <div class="notification">
+                                     <a href="{!! url('notification/dismiss', [$notice->id]);!!}" class="delete"></a>
+                                                                 
+                                    @if($notice->url)
+                                        {{ link_to($notice->url, $notice->message) }}
+                                    @else
+                                        {!! $notice->message !!}
+                                    @endif                              
+                                </div>
+                            @endforeach
+                        @endif
+                </div>
+            @endif
+        <div class="box">
             <p class="title is-uppercase headline">Courses</p>
             @foreach(access()->courses() as $c)
                 <div class="content is-small">
@@ -126,10 +132,7 @@
                 <hr/>
             @endforeach
         </div>
-
-
     </div>
-
 </div>
 </section>
 @endsection
