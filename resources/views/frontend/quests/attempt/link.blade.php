@@ -9,8 +9,9 @@
 
             <div class="tile">
                 <div class="tile is-parent">
-                    <div class="tile is-child">
-                        <div class="tile box">
+                    <div class="tile is-8 is-child">
+                        <div class="tile">
+                            <div class="box">
                             <h2 class="title headline is-uppercase">{!! $quest->name !!}</h2>
                             <h3 class="subtitle">{!! $quest->instructions !!}</h3>
 
@@ -22,11 +23,13 @@
                                       {!! Form::submit('Submit', ['class' => 'button is-primary is-large']) !!}
                                   </p>
                                 </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="tile is-4 is-child">
-                        <div class="tile box">
+                        <div class="tile">
+                            <div class="box">
                             @if($quest->expires_at)
                                 <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                             @endif
@@ -51,6 +54,7 @@
                             @else
                                 <p>{!! $quest->skills()->sum('amount') !!} Points Available</p>
                             @endif
+                            </div>
                         </div>
                     </div>
                 </div>
