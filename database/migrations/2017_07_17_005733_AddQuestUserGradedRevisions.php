@@ -13,9 +13,11 @@ class AddQuestUserGradedRevisions extends Migration
     public function up()
     {
         Schema::table('quest_user', function ($table) {
+            /*
             $table->boolean('graded');
             $table->integer('revision');
             $table->dropColumn('url');
+            */
         });
 
     }

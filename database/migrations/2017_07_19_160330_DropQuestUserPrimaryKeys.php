@@ -13,7 +13,7 @@ class DropQuestUserPrimaryKeys extends Migration
     public function up()
     {
         Schema::table('quest_user', function ($table) {
-            $table->dropPrimary(['user_id', 'quest_id']);
+          //  $table->dropPrimary(['user_id', 'quest_id']);
         });
         //
     }
