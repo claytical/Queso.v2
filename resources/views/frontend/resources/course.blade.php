@@ -26,9 +26,6 @@
                                 <br>
                                 {!! $r->description !!}
                               </p>
-                            </div>
-                            <nav class="level is-mobile">
-                              <div class="level-left">
                                 @if(!$r->files->isEmpty())
                                     @foreach($r->files as $file)
                                     <p>
@@ -38,6 +35,10 @@
                                     </p>
                                     @endforeach
                                 @endif
+
+                            </div>
+                            <nav class="level is-mobile">
+                              <div class="level-left">
                               </div>
                             </nav>
                           </div>
