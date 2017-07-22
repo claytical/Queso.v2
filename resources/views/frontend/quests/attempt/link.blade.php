@@ -26,7 +26,7 @@
                                 </div>
                     </div>
 
-                    <div class="tile is-4 is-parent">
+                    <div class="tile is-4 is-child">
                             <div class="box">
                                 @if($quest->expires_at)
                                     <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
