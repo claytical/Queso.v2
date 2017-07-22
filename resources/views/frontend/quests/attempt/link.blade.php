@@ -9,8 +9,6 @@
 
             <div class="tile">
                 <div class="tile is-parent">
-                    <div class="tile is-8 is-child">
-                        <div class="tile">
                             <div class="container">        
 
                                 <div class="box">
@@ -27,12 +25,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="tile is-4 is-child">
-                        <div class="tile">
-                            <div class="container">        
+                    <div class="tile is-4 is-parent">
+                        <div class="container">        
                         
                             <div class="box">
                             @if($quest->expires_at)
@@ -66,8 +61,6 @@
             </div>
         </div>    
         {!! Form::close() !!}
-
-    </div>
 </section>
 
 @endsection
