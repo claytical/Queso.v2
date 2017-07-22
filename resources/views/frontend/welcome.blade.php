@@ -48,8 +48,6 @@
                         @else
                             <p>No submissions awaiting grading</p>
                         @endif
-                        <hr/>
-
                     @endforeach
                 </div>
             @endif
@@ -57,7 +55,7 @@
             <div class="box">
                 <h3 class="title is-uppercase headline">Agenda</h3>           
                 @foreach(access()->agenda() as $date => $quest)
-                    <div class="is-clearfix">
+                    <div class="is-clearfix agenda">
                         @if($date)
                             <h4 class="subtitle is-pulled-right is-uppercase">Due {!! date('m/d', strtotime($date)) !!}</h4>
                         @else
@@ -88,7 +86,6 @@
                         @endif
                         </div>
                     @endforeach
-                    <hr/>
                 @endforeach 
             </div>          
         </div>

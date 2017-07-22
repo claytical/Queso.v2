@@ -44,3 +44,8 @@
 .is-info .label, .is-primary .label {
   color: #ffffff;
 }
+.agenda {
+    border-bottom: 1px solid #302f48;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
