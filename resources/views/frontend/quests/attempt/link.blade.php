@@ -1,18 +1,18 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<section class="hero is-bold is-light is-medium" id="quest_attempt">
-    <div class="hero-body">
+<section class="section dark-section" id="quest_attempt">
         <div class="container is-fluid">        
             {!! Form::open(array('url' => 'quest/submit', 'class' => '')) !!}
             {!! Form::hidden('quest_id', $quest->id) !!}       
             {!! Form::hidden('revision', 0) !!}
-            <h2 class="title">{!! $quest->name !!}</h2>
-            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
 
             <div class="tile">
                 <div class="tile is-parent">
-                    <div class="tile is-child">
+                    <div class="tile is-child box">
+                        <h2 class="title headline is-uppercase">{!! $quest->name !!}</h2>
+                        <h3 class="subtitle">{!! $quest->instructions !!}</h3>
+
                             <div class="field has-addons">
                               <p class="control is-expanded">
                                 {!! Form::text('link', '', ['class' => 'input is-large', 'placeholder' => 'http://www.example.com']) !!}
@@ -22,6 +22,7 @@
                               </p>
                             </div>
                     </div>
+                    
                     <div class="is-4 is-child box">
                         @if($quest->expires_at)
                             <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
@@ -51,7 +52,7 @@
             {!! Form::close() !!}
 
         </div>
-    </div>
+
 </section>
 
 @endsection

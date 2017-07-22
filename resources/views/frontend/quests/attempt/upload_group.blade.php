@@ -62,7 +62,7 @@
                     <br/>
                     <div class="field">
                         <p class="control">
-                        {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-pulled-right']) !!}
+                        {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-fullwidth']) !!}
                         </p>
                     </div>
                 </div>
