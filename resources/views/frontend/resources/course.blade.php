@@ -27,15 +27,13 @@
                                 {!! $r->description !!}
                               </p>
                                 @if(!$r->files->isEmpty())
-                                    <ul>
                                     @foreach($r->files as $file)
-                                    <li>
+                                    <p>
                                         <a href="{!! URL::to('uploads/' . $file->name) !!}" alt="{!! substr($file->name,5) !!}" download>
-                                        <span class="icon is-small"><i class="fa fa-paperclip"></i> {!! substr($file->name,5) !!}</span> 
+                                        <span class="is-small"><i class="fa fa-paperclip"></i> {!! substr($file->name,5) !!}</span> 
                                         </a>
-                                    </li>
+                                    </p>
                                     @endforeach
-                                    </ul>
                                 @endif
 
                             </div>
