@@ -15,22 +15,18 @@
 
                     {{ Form::open(['route' => 'auth.password.email', 'class' => 'form-horizontal']) }}
 
-                    <div class="form-group">
-                        {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'label']) }}
-                        <div class="field">
-                            <p class="control">
-                            {{ Form::input('email', 'email', null, ['class' => 'input', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
-                            </p>
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                    <div class="field has-addons">
+                                            {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'label']) }}
+                      <div class="control">
+                                {{ Form::input('email', 'email', null, ['class' => 'input', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                      </div>
+                      <div class="control">
+                        <a class="button is-primary is-large">
+                                                {{ Form::submit(trans('labels.frontend.passwords.send_password_reset_link_button'), ['class' => 'button is-primary is-large']) }}
+                        </a>
+                      </div>
+                    </div>
 
-                    <div class="form-group">
-                        <div class="field">
-                            <p class="control">
-                            {{ Form::submit(trans('labels.frontend.passwords.send_password_reset_link_button'), ['class' => 'button is-primary is-large']) }}
-                            </p>
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
 
                     {{ Form::close() }}
 
