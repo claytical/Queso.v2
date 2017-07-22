@@ -23,7 +23,7 @@
                   </div>
                 </div>
                 <div class="tile is-6 is-parent">
-                    <div class="tile is-child notification is-primary">
+                    <div class="tile is-child notification is-info">
                     <p class="title">Login</p>
                       {{ Form::open(['route' => 'auth.login', 'class' => '']) }}
                       
