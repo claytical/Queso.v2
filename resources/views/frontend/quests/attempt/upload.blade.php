@@ -8,7 +8,6 @@
             {!! Form::hidden('revision', 0) !!}
 
             <div class="tile">
-
                 <div class="tile is-parent is-6">
                     <div class="tile is-child box">
                         <div class="container is-fluid">
@@ -54,6 +53,7 @@
                         @else
                             <p>{!! $quest->skills()->sum('amount') !!} Points Available</p>
                         @endif
+                        <br/>
                         <div class="field">
                             <p class="control">
                                 {!! Form::submit('Submit', ['class' => 'button is-primary is-large is-fullwidth']) !!}
