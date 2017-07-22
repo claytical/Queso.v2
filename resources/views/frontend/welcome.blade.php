@@ -24,8 +24,8 @@
         </div>
       </div>
     <div class="tile is-parent is-vertical is-4">
+        <div class="tile is-child box">
         @if(count(access()->courses_taught()) > 0)
-            <div class="tile is-child box">
                 <p class="title is-uppercase headline">Submissions</p>
                 @foreach(access()->awaiting_grade() as $course => $quest)
                     <div class="is-clearfix">
@@ -42,7 +42,6 @@
                         @endif
                     @endforeach
                 @endforeach
-            </div>
         @endif
           <h3 class="title is-uppercase headline">Agenda</h3>           
             @foreach(access()->agenda() as $date => $quest)
@@ -79,6 +78,7 @@
                 @endforeach
                 <hr/>
             @endforeach 
+        </div>          
     </div>
 
     <div class="tile is-4 is-vertical is-parent">
@@ -109,7 +109,7 @@
                     @endif
             </div>
         @endif
-    
+
         <div class="tile is-child box">
             <p class="title is-uppercase headline">Courses</p>
             @foreach(access()->courses() as $c)
