@@ -11,9 +11,11 @@
                 <div class="tile is-parent">
                     <div class="tile is-8 is-child">
                         <div class="tile">
+                            <div class="container is-fluid">        
+
                             <div class="box">
-                            <h2 class="title headline is-uppercase">{!! $quest->name !!}</h2>
-                            <h3 class="subtitle">{!! $quest->instructions !!}</h3>
+                                <h2 class="title headline is-uppercase">{!! $quest->name !!}</h2>
+                                <h3 class="subtitle">{!! $quest->instructions !!}</h3>
 
                                 <div class="field has-addons">
                                   <p class="control is-expanded">
@@ -24,11 +26,14 @@
                                   </p>
                                 </div>
                             </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="tile is-4 is-child">
                         <div class="tile">
+                            <div class="container is-fluid">        
+                        
                             <div class="box">
                             @if($quest->expires_at)
                                 <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
@@ -59,10 +64,10 @@
                     </div>
                 </div>
             </div>
-            
-            {!! Form::close() !!}
+        </div>    
+        {!! Form::close() !!}
 
-        </div>
+    </div>
 </section>
 
 @endsection
