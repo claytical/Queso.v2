@@ -31,10 +31,11 @@
                 <div class="box">
                     <p class="title is-uppercase headline">Submissions</p>
                     @foreach(access()->awaiting_grade() as $course => $quest)
-                        <div class="is-clearfix">
-                            <h4 class="subtitle is-uppercase">{!! $course !!}</h4>
-                        </div>
                         @if(count($quest))
+
+                            <div class="is-clearfix">
+                                <h4 class="subtitle is-uppercase">{!! $course !!}</h4>
+                            </div>
                             @foreach($quest as $q)
                                 @if($q['attempt'])
                                 <div class="field">
@@ -45,8 +46,6 @@
                                 </div>
                                 @endif
                             @endforeach
-                        @else
-                            <p>No submissions awaiting grading</p>
                         @endif
                     @endforeach
                 </div>
