@@ -1,15 +1,12 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="row">
+<section class="hero is-dark is-medium">
+    <div class="hero-body">
+        <div class="container is-fluid">
 
-        <div class="col-md-8 col-md-offset-2">
+                <h1 class="title headline is-uppercase">{{ trans('labels.frontend.passwords.reset_password_box_title') }}</h1>
 
-            <div class="panel panel-default">
-
-                <div class="panel-heading">{{ trans('labels.frontend.passwords.reset_password_box_title') }}</div>
-
-                <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -19,15 +16,19 @@
                     {{ Form::open(['route' => 'auth.password.email', 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
-                        {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                        {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'label']) }}
+                        <div class="field">
+                            <p class="control">
+                            {{ Form::input('email', 'email', null, ['class' => 'input', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                            </p>
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            {{ Form::submit(trans('labels.frontend.passwords.send_password_reset_link_button'), ['class' => 'btn btn-primary']) }}
+                        <div class="field">
+                            <p class="control">
+                            {{ Form::submit(trans('labels.frontend.passwords.send_password_reset_link_button'), ['class' => 'button is-primary is-large']) }}
+                            </p>
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
@@ -37,7 +38,5 @@
 
             </div><!-- panel -->
 
-        </div><!-- col-md-8 -->
-
-    </div><!-- row -->
+</section>
 @endsection
