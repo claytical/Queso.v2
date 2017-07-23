@@ -4,7 +4,7 @@
 <section class="section dark-section">
     <div class="columns is-multiline is-mobile">
         @foreach($resources as $tag => $resource)
-            <div class="column is-half-mobile is-one-half-tablet is-one-third-desktop">
+            <div class="column is-one-half-tablet is-one-third-desktop">
                 <div class="box">
                 @if($tag)
                     <p class="title headline is-uppercase">{!! $tag !!}</p>
