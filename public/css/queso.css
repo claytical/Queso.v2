@@ -49,3 +49,13 @@
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
+
+.course {
+  border-bottom: 1px solid #696883;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.course:last-child {
+  border: none;
+}

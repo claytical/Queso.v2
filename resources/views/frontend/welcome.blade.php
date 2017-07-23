@@ -119,7 +119,7 @@
         <div class="box">
             <p class="title is-uppercase headline">Courses</p>
             @foreach(access()->courses() as $c)
-                <div class="content is-small">
+                <div class="content is-small course">
                     <h3 class="title is-uppercase">{!! $c->name !!}</h3>
                     <h5>Class Time and Location</h5>
                     <p><strong>{!! $c->meeting !!}, {!! $c->meeting_location !!}</strong></p>
