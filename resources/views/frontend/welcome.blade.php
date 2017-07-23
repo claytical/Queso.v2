@@ -91,30 +91,28 @@
         <div class="column">
             @if($feedback_requests || !$notifications->isEmpty())
 
-                <div class="box">
-                        @if($feedback_requests)
-                            <div class="notification">
-                                 <a href="{!! URL::to('feedback') !!}" class="button is-small is-primary is-pulled-right">View</a>
-                                 <p>You have {!! count($feedback_requests) !!} feedback requests.</p>
-                            </div>
-                        @endif
+                @if($feedback_requests)
+                    <div class="notification">
+                         <a href="{!! URL::to('feedback') !!}" class="button is-small is-primary is-pulled-right">View</a>
+                         <p>You have {!! count($feedback_requests) !!} feedback requests.</p>
+                    </div>
+                @endif
 
-                        @if(!$notifications->isEmpty())
+                @if(!$notifications->isEmpty())
 
-                            @foreach($notifications as $notice)
+                    @foreach($notifications as $notice)
 
-                                <div class="notification">
-                                     <a href="{!! url('notification/dismiss', [$notice->id]);!!}" class="delete"></a>
-                                                                 
-                                    @if($notice->url)
-                                        {{ link_to($notice->url, $notice->message) }}
-                                    @else
-                                        {!! $notice->message !!}
-                                    @endif                              
-                                </div>
-                            @endforeach
-                        @endif
-                </div>
+                        <div class="notification">
+                             <a href="{!! url('notification/dismiss', [$notice->id]);!!}" class="delete"></a>
+                                                         
+                            @if($notice->url)
+                                {{ link_to($notice->url, $notice->message) }}
+                            @else
+                                {!! $notice->message !!}
+                            @endif                              
+                        </div>
+                    @endforeach
+                @endif
             @endif
         <div class="box">
             <p class="title is-uppercase headline">Courses</p>
