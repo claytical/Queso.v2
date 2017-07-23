@@ -30,7 +30,7 @@
                                     @foreach($r->files as $file)
                                     <p>
                                         <a href="{!! URL::to('uploads/' . $file->name) !!}" alt="{!! substr($file->name,5) !!}" download>
-                                        <span class="icon"><i class="fa fa-paperclip"></i> {!! substr($file->name,5) !!}</span> 
+                                        <span class=""><i class="fa fa-paperclip"></i> {!! substr($file->name,5) !!}</span> 
                                         </a>
                                     </p>
                                     @endforeach
