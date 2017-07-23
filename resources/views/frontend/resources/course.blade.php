@@ -26,20 +26,16 @@
                                 <br>
                                 {!! $r->description !!}
                               </p>
-                            </div>
-                            <nav class="level is-mobile">
-                              <div class="level-left">
                                 @if(!$r->files->isEmpty())
                                     @foreach($r->files as $file)
                                     <p>
-                                        <a class="level-item" href="{!! URL::to('uploads/' . $file->name) !!}" alt="{!! substr($file->name,5) !!}" download>
-                                        <span class="icon is-small"><i class="fa fa-paperclip"></i> {!! substr($file->name,5) !!}</span> 
+                                        <a href="{!! URL::to('uploads/' . $file->name) !!}" alt="{!! substr($file->name,5) !!}" download>
+                                        <span class="icon"><i class="fa fa-paperclip"></i> {!! substr($file->name,5) !!}</span> 
                                         </a>
                                     </p>
                                     @endforeach
                                 @endif
-                              </div>
-                            </nav>
+                            </div>
                           </div>
 
                         </article>
