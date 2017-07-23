@@ -11,10 +11,9 @@
                     @foreach($announcements as $announcement)
                     <span class="tag is-dark is-pulled-right">{!! $course->name !!}</span>
                     <p class="subtitle">{!! $announcement->title !!}</p>
-                    <div class="content">
+                    <div class="content agenda">
                         <p>{!! $announcement->body !!}</p>
                     </div>
-                    <hr/>
                     @endforeach
                 @else
                     <div class="content">
@@ -120,17 +119,14 @@
         <div class="box">
             <p class="title is-uppercase headline">Courses</p>
             @foreach(access()->courses() as $c)
-                <div class="content is-small">
+                <div class="content is-small agenda">
                     <h3 class="title is-uppercase">{!! $c->name !!}</h3>
                     <h5>Class Time and Location</h5>
                     <p><strong>{!! $c->meeting !!}, {!! $c->meeting_location !!}</strong></p>
-                </div>
-                <div class="content is-small">                                   
                     <h3>{!! $c->instructor_display_name !!} <a class="is-large is-pulled-right" href="mailto:{!! $c->instructor_contact !!}"><span class="icon is-medium"><i class="fa fa-envelope"></i></span></a></h3>
                     <h5>Office Hours and Location</h5>
                     <p><strong>{!! $c->office_hours !!}, {!! $c->instructor_office_location !!}</strong></p>
                 </div>
-                <hr/>
             @endforeach
         </div>
     </div>
