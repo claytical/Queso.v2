@@ -38,7 +38,6 @@ class ResourceController extends Controller
                                 ->orderBy('display_order', 'asc')
                                 ->get()
                                 ->groupBy('tag')
-                                ->split(2);
         return view('frontend.resources.course', ['resources' => $resources, 'course_id' => $course_id])
                 ->withUser(access()->user());
     }
