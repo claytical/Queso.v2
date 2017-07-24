@@ -2,9 +2,9 @@
 
 @section('content')
 <section class="section dark-section">
-    <div id="columns">
+    <div id="masonary">
         @foreach($resources as $tag => $resource)
-            <div class="resource">
+            <div class="masonary-item">
                 @if($tag)
                     <p class="title headline is-uppercase">{!! $tag !!}</p>
                 @else
