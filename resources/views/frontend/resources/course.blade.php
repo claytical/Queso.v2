@@ -9,13 +9,11 @@
               <select id="resource-category" placeholder="Filter by Category">
                 <option value=0>All</option>
                 @foreach($resources as $tag => $resource)
-                    <option value="{!! $tag!!}">
-                    @if($tag == "")
-                        Uncategorized
-                    @else
-                        {!! $tag !!}
+                    @if($tag != "")
+                        <option value="{!! $tag!!}">
+                            {!! $tag !!}
+                        </option>
                     @endif
-                    </option>
                 @endforeach
               </select>
             </div>
