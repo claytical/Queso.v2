@@ -2,9 +2,25 @@
 
 @section('content')
 <section class="section dark-section">
+    <div class="box">
+        <div class="field is-pulled-right">
+          <div class="control">
+            <div class="select is-medium">
+              <select placeholder="Filter by Category">
+                <option value=0>All</option>
+                @foreach($resources as $tag => $resource)
+                    <option value="0">All</option>
+                    <option value="{!! $tag!!}">{!! $tag !!}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+        </div>
+        <h1 class="title is-headline is-uppercase">{!! $course->name !!}</h1>
+    </div>
     <div class="masonary">
         @foreach($resources as $tag => $resource)
-            <div class="masonary-item">
+            <div class="masonary-item" resource-category="{!! $tag !!}">
                 @if($tag)
                     <p class="title headline is-uppercase">{!! $tag !!}</p>
                 @else
