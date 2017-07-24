@@ -2,9 +2,9 @@
       var s_id = $("#additional_skills").val();
       var s_name = $("#additional_skills :selected").text();
       $("#additional_skills option[value="+s_id+"]").remove();
-      var skillHtml = '<div class="field is-horizontal"><div class="field-label is-normal"><label class="label">';
+      var skillHtml = '<div class="field"><div class="field"><label class="label">';
           skillHtml += s_name;
-          skillHtml += "</label></div><div class='field-body'><div class='field is-grouped'><p class='control is-expanded has-icons-left'>";
+          skillHtml += "</label></div><div class='field-body'><div class='field'><p class='control is-expanded'>";
           skillHtml += "<input class='input is-large' type='number' name='skill[]' placeholder='Maximum Points'>";
           skillHtml += "<input type='hidden' name='skill_id[]' class='skills-input' value=" + s_id + ">";
           skillHtml += "</p></div></div></div>";
@@ -18,9 +18,9 @@
       var s_id = $("#additional_thresholds").val();
       var s_name = $("#additional_thresholds :selected").text();
       $("#additional_thresholds option[value="+s_id+"]").remove();
-      var skillHtml = '<div class="field is-horizontal"><div class="field-label is-normal"><label class="label">';
+      var skillHtml = '<div class="field"><div class="field"><label class="label">';
           skillHtml += s_name;
-          skillHtml += "</label></div><div class='field-body'><div class='field is-grouped'><p class='control is-expanded has-icons-left'>";
+          skillHtml += "</label></div><div class='field-body'><div class='field is-grouped'><p class='control is-expanded'>";
           skillHtml += "<input class='input is-large' type='number' name='threshold[]' placeholder='Maximum Points'>";
           skillHtml += "<input type='hidden' name='threshold_id[]' class='thresholds-input' value=0>";
 
