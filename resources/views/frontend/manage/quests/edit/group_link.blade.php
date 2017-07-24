@@ -121,13 +121,13 @@
                       <h4 class="subtitle has-text-centered">Points Awarded</h4>
 
                       @foreach($skills as $skill)
-                        <div class="field is-horizontal">
-                          <div class="field-label is-normal">
+                        <div class="field">
+                          <div class="field">
                             <label class="label">{!! $skill->name !!}</label>
                           </div>
                           <div class="field-body">
-                            <div class="field is-grouped">
-                              <p class="control is-expanded has-icons-left">
+                            <div class="field">
+                              <p class="control is-expanded">
                                 <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points" value={!! $skill->pivot->amount !!}>
                                 <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
                               </p>
@@ -138,8 +138,8 @@
                       @endforeach
                       @if(count($other_skills))
                       <div id="new_skills" class="field"></div>
-                      <div class="field is-horizontal" id="additional_skills_parent">
-                        <div class="field-label is-normal">
+                      <div class="field" id="additional_skills_parent">
+                        <div class="field">
                           <label class="label">Add Skill</label>
                         </div>
                         <div class="field-body">
@@ -161,13 +161,13 @@
                       <div class="tile is-child">
                         <h4 class="subtitle has-text-centered">Minimum Skill Level Required</h4>
                           @foreach($thresholds as $threshold)
-                            <div class="field is-horizontal">
-                              <div class="field-label is-normal">
+                            <div class="field">
+                              <div class="field">
                                 <label class="label">{!! $threshold->skill->name !!}</label>
                               </div>
                               <div class="field-body">
-                                <div class="field is-grouped">
-                                  <p class="control is-expanded has-icons-left">
+                                <div class="field">
+                                  <p class="control is-expanded">
                                     <input class="input is-large" name="threshold[]" type="number" placeholder="Maximum Points" value={!! $threshold->amount !!}>
                                     <input type="hidden" name="threshold_id[]" class="thresholds-input" value={!! $threshold->id !!}>
                                     <input type="hidden" name="threshold_skill_id[]" class="thresholds-input" value={!! $threshold->skill->id !!}>
@@ -181,8 +181,8 @@
                       <div id="new_thresholds" class="field"></div>
                       @if(count($other_thresholds))
 
-                      <div class="field is-horizontal" id="additional_thresholds_parent">
-                        <div class="field-label is-normal">
+                      <div class="field" id="additional_thresholds_parent">
+                        <div class="field">
                           <label class="label">Add Threshold</label>
                         </div>
                         <div class="field-body">
