@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="section dark-section">
-    <div id="masonary">
+    <div class="masonary">
         @foreach($resources as $tag => $resource)
             <div class="masonary-item">
                 @if($tag)
