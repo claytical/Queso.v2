@@ -91,7 +91,7 @@
 
                           @foreach($skills as $skill)
                             <div class="field">
-                              <div class="field-label">
+                              <div class="field">
                                 <label class="label">{!! $skill->name !!}</label>
                               </div>
                               <div class="field-body">
