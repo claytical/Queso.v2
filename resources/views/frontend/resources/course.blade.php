@@ -2,10 +2,9 @@
 
 @section('content')
 <section class="section dark-section">
-    <div class="columns is-multiline is-mobile">
+    <div id="columns">
         @foreach($resources as $tag => $resource)
-            <div class="column">
-                <div class="box">
+            <div class="resource">
                 @if($tag)
                     <p class="title headline is-uppercase">{!! $tag !!}</p>
                 @else
@@ -42,7 +41,6 @@
                     @endif
                 @endforeach
                 </div>
-            </div>
         @endforeach
     </div>
 </section>
