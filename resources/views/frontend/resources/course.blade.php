@@ -6,10 +6,9 @@
         <div class="field is-pulled-right">
           <div class="control">
             <div class="select is-medium">
-              <select placeholder="Filter by Category">
+              <select id="resource-category" placeholder="Filter by Category">
                 <option value=0>All</option>
                 @foreach($resources as $tag => $resource)
-                    <option value="0">All</option>
                     <option value="{!! $tag!!}">{!! $tag !!}</option>
                 @endforeach
               </select>

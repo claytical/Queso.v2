@@ -9,11 +9,11 @@
               <p class="title is-uppercase headline">Announcements</p>
                 @if(!$announcements->isEmpty())
                     @foreach($announcements as $announcement)
-                    <span class="tag is-dark is-pulled-right">{!! $course->name !!}</span>
-                    <p class="subtitle">{!! $announcement->title !!}</p>
-                    <div class="content announcement">
-                        <p>{!! $announcement->body !!}</p>
-                    </div>
+                        <a href="{!! URL::to('announcements/' . $announcement->course_id) !!}"><span class="tag is-dark is-pulled-right">{!! $course->name !!}</span></a>
+                        <p class="subtitle">{!! $announcement->title !!}</p>
+                        <div class="content announcement">
+                            <p>{!! $announcement->body !!}</p>
+                        </div>
                     @endforeach
                 @else
                     <div class="content">
