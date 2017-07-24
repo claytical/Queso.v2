@@ -9,7 +9,13 @@
               <select id="resource-category" placeholder="Filter by Category">
                 <option value=0>All</option>
                 @foreach($resources as $tag => $resource)
-                    <option value="{!! $tag!!}">{!! $tag !!}</option>
+                    <option value="{!! $tag!!}">
+                    @if($tag == "")
+                        Uncategorized
+                    @else
+                        {!! $tag !!}
+                    @endif
+                    </option>
                 @endforeach
               </select>
             </div>
@@ -63,5 +69,16 @@
 
 @section('after-scripts-end')
     <script>
+            $(function() {
+                $("#resource-category").change(function() {
+                    if($(this).val() == 0) {
+                        $(".masonary-item").show();
+                    }
+                    else {
+                        $(".masonary-item").hide();            
+                        $(".masonary-item[resource-category='"+$(this).val()+"']").show();
+                    }
+                });
+            });
     </script>
 @stop
