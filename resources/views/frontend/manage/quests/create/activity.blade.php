@@ -100,7 +100,7 @@
                           </div>
                           <div class="field-body">
                             <div class="field is-grouped">
-                              <p class="control is-expanded has-icons-left">
+                              <p class="control has-icons-left">
                                 <input class="input is-large" type="number" name="skill[]" placeholder="Maximum Points">
                                 <input type="hidden" name="skill_id[]" class="skills-input" value={!! $skill->id !!}>
                               </p>
