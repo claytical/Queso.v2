@@ -17,7 +17,7 @@
                     @endforeach
                 @else
                     <div class="content">
-                        <p>No announcements have been made</p>
+                        <p>No announcements have been made.</p>
                     </div>
                 @endif
             </div>
@@ -135,6 +135,7 @@
                 @endforeach
             @else
                 <p>You aren't enrolled in any active courses.</p>
+                <p><a href="#">View Archived Courses</a> | <a href="{!! URL::to('choose') !!}">Enroll in a New Course</a></p>
             @endif
         </div>
     </div>

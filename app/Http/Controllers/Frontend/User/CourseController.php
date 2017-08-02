@@ -119,7 +119,7 @@ class CourseController extends Controller
         //save course_id as current course session
         $request->session()->put('current_course', $course->id);
 
-    	return redirect()->route('course.add.skills');
+    	return redirect()->route('course.add.skills', $course->id);
     	
     }
 
