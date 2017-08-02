@@ -142,7 +142,7 @@ class CourseController extends Controller
         else {
             $skill->course_id = $request->session()->get('current_course');
             $skill->save();
-	       	return redirect(route('course.add.skills'));
+	       	return redirect(route('course.add.skills', $request->session()->get('current_course'));
         }
 
     }
