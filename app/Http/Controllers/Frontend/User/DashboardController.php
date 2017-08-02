@@ -77,11 +77,11 @@ class DashboardController extends Controller
             
         }
 
-        $announcements = $user->courses_active->announcements
-                                ->where('sticky', '=', true)
+        $announcements = $user->courses_active->announcements;
+ /*                               ->where('sticky', '=', true)
                                 ->orderBy('created_at', 'desc')
                                 ->get();
-
+*/
 /*        $announcements = Announcement::where('course_id', '=', session('current_course'))
                                     ->where('sticky', '=', true)
                                     ->orderBy('created_at', 'desc')
