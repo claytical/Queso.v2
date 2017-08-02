@@ -96,11 +96,11 @@ class Access
     }
 
     public function courses() {
-        return $this->user()->courses;        
+        return $this->user()->courses_active;        
     }
 
     public function courses_taught() {
-        $courses = $this->user()->courses;
+        $courses = $this->user()->courses_active;
         $teaching = array();
 
         foreach($courses as $course) {
@@ -117,7 +117,7 @@ class Access
     }
 
     public function courses_enrolled() {
-        $courses = $this->user()->courses;
+        $courses = $this->user()->courses_active;
         $enrolled = array();
 
         foreach($courses as $course) {
@@ -147,7 +147,7 @@ class Access
 
 
     public function awaiting_grade() {
-        $courses = $this->user()->courses;
+        $courses = $this->user()->courses_active;
         $list = [];
         foreach($courses as $course) {
             $list[$course->name] = [];
