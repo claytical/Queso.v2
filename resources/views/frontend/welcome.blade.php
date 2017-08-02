@@ -52,7 +52,10 @@
 
             <div class="box">
                 <h3 class="title is-uppercase headline">Agenda</h3>           
+
+                {{ $has_agenda = false }}
                 @foreach(access()->agenda() as $date => $quest)
+                    {{ $has_agenda = true }}
                     <div class="is-clearfix agenda">
                         @if($date)
                             <h4 class="subtitle is-pulled-right is-uppercase">Due {!! date('m/d', strtotime($date)) !!}</h4>
@@ -84,7 +87,10 @@
                         @endif
                         </div>
                     @endforeach
-                @endforeach 
+                @endforeach
+                @if(!$has_agenda)
+                    <p>There is nothing currently due.</p>
+                @endif 
             </div>          
         </div>
 
@@ -116,16 +122,20 @@
             @endif
         <div class="box">
             <p class="title is-uppercase headline">Courses</p>
-            @foreach($courses as $c)
-                <div class="content is-small course">
-                    <h3 class="title is-uppercase">{!! $c->name !!}</h3>
-                    <h5>Class Time and Location</h5>
-                    <p><strong>{!! $c->meeting !!}, {!! $c->meeting_location !!}</strong></p>
-                    <h3>{!! $c->instructor_display_name !!} <a class="is-large is-pulled-right" href="mailto:{!! $c->instructor_contact !!}"><span class="icon is-medium"><i class="fa fa-envelope"></i></span></a></h3>
-                    <h5>Office Hours and Location</h5>
-                    <p><strong>{!! $c->office_hours !!}, {!! $c->instructor_office_location !!}</strong></p>
-                </div>
-            @endforeach
+            @if(!$courses->isEmpty)
+                @foreach($courses as $c)
+                    <div class="content is-small course">
+                        <h3 class="title is-uppercase">{!! $c->name !!}</h3>
+                        <h5>Class Time and Location</h5>
+                        <p><strong>{!! $c->meeting !!}, {!! $c->meeting_location !!}</strong></p>
+                        <h3>{!! $c->instructor_display_name !!} <a class="is-large is-pulled-right" href="mailto:{!! $c->instructor_contact !!}"><span class="icon is-medium"><i class="fa fa-envelope"></i></span></a></h3>
+                        <h5>Office Hours and Location</h5>
+                        <p><strong>{!! $c->office_hours !!}, {!! $c->instructor_office_location !!}</strong></p>
+                    </div>
+                @endforeach
+            @else
+                <p>You aren't enrolled in any active courses.</p>
+            @endif
         </div>
     </div>
 </div>
