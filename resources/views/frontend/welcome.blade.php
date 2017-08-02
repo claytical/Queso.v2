@@ -40,7 +40,7 @@
                                 @if($q['attempt'])
                                 <div class="field">
                                     <div class="is-pulled-right">
-                                        {!! $q['student'] . ' on ' . date('m/d', strtotime($q['attempt']->created_at)) !!}
+                                        {!! $q['student'] . ' on ' . date('n/j', strtotime($q['attempt']->created_at)) !!}
                                     </div>                
                                     <a href="{!! URL::to('grade/quest/'.$q['quest_id'].'/'.$q['attempt']->id) !!}">{!! $q['quest'] !!}</a>
                                 </div>
@@ -62,7 +62,7 @@
                     @php($has_agenda = true)
                     <div class="is-clearfix agenda">
                         @if($date)
-                            <h4 class="subtitle is-pulled-right is-uppercase">Due {!! date('m/d', strtotime($date)) !!}</h4>
+                            <h4 class="subtitle is-pulled-right is-uppercase">Due {!! date('n/j', strtotime($date)) !!}</h4>
                         @else
                             <h4 class="subtitle is-pulled-right is-uppercase">Due Anytime</h4>
                         @endif
@@ -73,6 +73,7 @@
                             <a href="{!! URL::to('quest/attempt/response/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
                         @endif
                         @if($q->quest_type_id == 2)
+                        {!! $q->name !!}
                         @endif
                         @if($q->quest_type_id == 3)
                             <a href="{!! URL::to('quest/watch/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    

@@ -988,7 +988,7 @@ class QuestController extends Controller
 
         $quests_unattempted = $quests_unattempted_expiring->merge($quests_unattempted_not_expiring);
 
-        $quests_unattempted = $quests_unattempted->merge($group_quests);
+        $quests_unattempted = $quests_unattempted->merge($group_quests)->sortBy('expires_at');
 
 //TODO: Check if max points have been achieved
         $quests_revisable = Quest::where('course_id', '=', $course_id)
