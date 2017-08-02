@@ -115,7 +115,9 @@ class QuestController extends Controller
     }
 
     public function manage($course_id) {
-        $quests = Quest::where('course_id', '=', $course_id)->get();
+        $quests = Quest::where('course_id', '=', $course_id)
+                                ->orderBy('expires_at')
+                                ->get();
         return view('frontend.manage.quests.index', ['quests' => $quests, 'course_id' => $course_id])
             ->withUser(access()->user());
 

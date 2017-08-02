@@ -29,9 +29,10 @@
             @if(count(access()->courses_taught()) > 0)
                 <div class="box">
                     <p class="title is-uppercase headline">Submissions</p>
+                    @php($has_submissions = false)
                     @foreach(access()->awaiting_grade() as $course => $quest)
                         @if(count($quest))
-
+                            @php($has_submissions = true)
                             <div class="is-clearfix">
                                 <h4 class="subtitle is-uppercase">{!! $course !!}</h4>
                             </div>
@@ -47,15 +48,18 @@
                             @endforeach
                         @endif
                     @endforeach
+                    @if(!$has_submissions)
+                        <p>There are currently no submissions.</p>
+                    @endif
                 </div>
             @endif
 
             <div class="box">
                 <h3 class="title is-uppercase headline">Agenda</h3>           
 
-                {{ $has_agenda = false }}
+                @php($has_agenda = false)
                 @foreach(access()->agenda() as $date => $quest)
-                    {{ $has_agenda = true }}
+                    @php($has_agenda = true)
                     <div class="is-clearfix agenda">
                         @if($date)
                             <h4 class="subtitle is-pulled-right is-uppercase">Due {!! date('m/d', strtotime($date)) !!}</h4>

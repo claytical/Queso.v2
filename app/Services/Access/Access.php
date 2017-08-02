@@ -258,7 +258,7 @@ class Access
 
         $quests_unattempted = $quests_unattempted->merge($group_quests);
 //        return $enrolled_courses;
-        return $quests_unattempted->groupBy('expires_at');
+        return $quests_unattempted->orderBy('expires_at')->groupBy('expires_at');
 
     }
 
