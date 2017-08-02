@@ -42,6 +42,17 @@
                             </div>
 
                             <div class="field">
+
+                                <p class="control">
+                                    <label class="checkbox">
+                                    {{ Form::checkbox('checkbox', 'active', $course->active); }} Active        
+                                    </label>
+                                </p>
+                            </div>
+
+
+
+                            <div class="field">
                                 <p class="control">
 
                                 <select class="input" name="timezone">
