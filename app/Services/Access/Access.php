@@ -231,7 +231,7 @@ class Access
         $quests_attempted_ids = $quests_attempted->pluck('quest_id');
         $group_quests_attempted = $user->group_quests()->with('quest')->get();
         $group_quests_attempted_ids = $group_quests_attempted->pluck('quest_id');
-        $enrolled_courses = $this->user()->courses->pluck('id');
+        $enrolled_courses = $this->user()->courses_active->pluck('id');
 
         $group_quests = Quest::whereIn('course_id', $enrolled_courses)
                             ->where('groups', '=', true)
