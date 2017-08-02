@@ -4,10 +4,10 @@
 <section class="section dark-section">
 
     <div class="columns">
+    @if(!$announcements->isEmpty())
         <div class="column">
             <div class="box">
               <p class="title is-uppercase headline">Announcements</p>
-                @if(!$announcements->isEmpty())
                     @foreach($announcements as $announcement)
                         <a href="{!! URL::to('announcements/' . $announcement->course_id) !!}"><span class="tag is-dark is-pulled-right">{!! $course->name !!}</span></a>
                         <p class="subtitle">{!! $announcement->title !!}</p>
@@ -15,16 +15,10 @@
                             <p>{!! $announcement->body !!}</p>
                         </div>
                     @endforeach
-                @else
-                    <div class="content">
-                        <p>No announcements have been made.</p>
-                    </div>
-                @endif
             </div>
-
-
-
         </div>
+    @endif
+
         <div class="column">
             @if(count(access()->courses_taught()) > 0)
                 <div class="box">
@@ -62,13 +56,13 @@
                     @php($has_agenda = true)
                     <div class="is-clearfix agenda">
                         @if($date)
-                            <h4 class="subtitle is-pulled-right is-uppercase">Due {!! date('n/j', strtotime($date)) !!}</h4>
+                            <h4 class="subtitle is-pulled-right is-uppercase">{!! date('n/j', strtotime($date)) !!}</h4>
                         @else
                             <h4 class="subtitle is-pulled-right is-uppercase">Due Anytime</h4>
                         @endif
                     </div>
                     @foreach($quest as $q)
-                        <div class="field">
+                        <div class="">
                         @if($q->quest_type_id == 1)
                             <a href="{!! URL::to('quest/attempt/response/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
                         @endif
