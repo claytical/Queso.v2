@@ -122,7 +122,7 @@
             @endif
         <div class="box">
             <p class="title is-uppercase headline">Courses</p>
-            @if(!$courses->isEmpty)
+            @if(!$courses->isEmpty())
                 @foreach($courses as $c)
                     <div class="content is-small course">
                         <h3 class="title is-uppercase">{!! $c->name !!}</h3>
