@@ -43,13 +43,11 @@ class DashboardController extends Controller
 
         $notifications = Notice::where('user_id', '=', $user->id)
                         ->whereNull('received')
-	                    ->where('course_id', '=', session('current_course'))
                         ->get();
 
         $feedback_request_quest_ids = FeedbackRequest::distinct()
                                                 ->select('quest_id')
                                                 ->where('user_id', '=', $user->id)
-                                                ->where('course_id', '=', session('current_course'))
                                                 ->where('fulfilled', '=', false)
                                                 ->pluck('quest_id');
 
@@ -83,16 +81,6 @@ class DashboardController extends Controller
                                     ->where('sticky', '=', true)
                                     ->orderBy('created_at', 'desc')
                                     ->get();
-        $team = $user->teams()
-                        ->where('team_user.course_id', session('current_course'))
-                        ->first();
-        if($team) {
-            $team_users = $team->users()->get();
-        }
-        else {
-            $team_users = false;
-        }
-
         $total_points_earned = $user->skills()->sum('amount');
         if(!$total_points_earned) {
             $total_points_earned = 0;
@@ -110,8 +98,7 @@ class DashboardController extends Controller
                                             'course' => $course,
                                             'notifications' => $notifications,
                                             'feedback_requests' => $feedback,
-                                            'team_members' => $team_users,
-                                            'courses' => $user->courses])
+                                            'courses' => $user->courses()->active])
                                             ->withUser(access()->user());
     }
     

@@ -40,6 +40,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Course');
     }
 
+
     public function notifications() {
         return $this->hasMany('App\Notice');
     }
