@@ -77,10 +77,16 @@ class DashboardController extends Controller
             
         }
 
-        $announcements = Announcement::where('course_id', '=', session('current_course'))
+        $announcements = $user->courses_active->announcements()
+                                ->where('sticky', '=', true)
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+
+/*        $announcements = Announcement::where('course_id', '=', session('current_course'))
                                     ->where('sticky', '=', true)
                                     ->orderBy('created_at', 'desc')
                                     ->get();
+  */
         $total_points_earned = $user->skills()->sum('amount');
         if(!$total_points_earned) {
             $total_points_earned = 0;
