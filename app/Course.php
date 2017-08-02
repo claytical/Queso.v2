@@ -13,9 +13,9 @@ class Course extends Model
     
     public function scopeActive($query)
     {
-        return $query->where('active', 1);
+        return $query->where('active', '=', 1);
     }
-        
+
     public function user_quests() {
         return $this->hasManyThrough('App\Models\Access\User\User', 'App\Quest');
     }
