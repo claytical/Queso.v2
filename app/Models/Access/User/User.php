@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Course')->active();
     }
 
+    public function announcements()
+    {
+        return $this->hasManyThrough('App\Announcement', 'App\Course');
+    }
+
     public function notifications() {
         return $this->hasMany('App\Notice');
     }
