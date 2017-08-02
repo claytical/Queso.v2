@@ -98,7 +98,7 @@ class DashboardController extends Controller
                                             'course' => $course,
                                             'notifications' => $notifications,
                                             'feedback_requests' => $feedback,
-                                            'courses' => $user->courses->active()])
+                                            'courses' => $user->courses()->active()])
                                             ->withUser(access()->user());
     }
     
