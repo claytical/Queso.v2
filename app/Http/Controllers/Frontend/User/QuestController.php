@@ -429,9 +429,10 @@ class QuestController extends Controller
         $quest->visible = true;
         switch($request->quest_type_id) {
             case '1':
+            case '2':
             case '4':
             case '5':
-                //individual written response, link
+                //individual written response, activity, link
                 //conditional expiration, feedback, revisions
                 if($request->expires) {
                     $quest->expires_at = $request->expiration;

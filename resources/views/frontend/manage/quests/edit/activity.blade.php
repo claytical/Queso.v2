@@ -54,6 +54,33 @@
 
                     <div class="tile is-4 is-parent">
                         <div class="tile is-child notification">
+                          <h4 class="subtitle">Due Date</h4>
+                            <div class="field">
+                              <p class="control">
+                                <label class="radio">
+                                  <input type="radio" name="expires" value="0"
+                                  @if(!$quest->expires_at)
+                                    checked
+                                  @endif
+                                  >
+                                  Anytime
+                                </label>
+                                <label class="radio">
+                                  <input type="radio" name="expires" value="1"
+                                  @if($quest->expires_at)
+                                    checked
+                                  @endif
+                                  >
+                                  Specific Date
+                                </label>
+                              </p>
+                            </div>
+                            <div class="field">
+                              <p class="control">
+                                  {{ Form::input('date', 'expiration', date('Y-m-d', strtotime($quest->expires_at)), ['class' => 'input', 'id' => 'expiration_date']) }}
+                              </p>
+                            </div>
+
                           <h4 class="subtitle">Instant Credit</h4>
                           <div>
                             <p>Queso will generate unique one time use codes that students can redeem for points immediately. The QR code generator can also place these codes onto a sheet that you can print out and use as handouts.</p>
@@ -204,6 +231,20 @@
           $("#generate_codes").show();
         }
       });
+    if($('input[name=expires]:checked').val() == "0") {
+          $("#expiration_date").hide();      
+    }
+
+    $('input[name=expires]').change(function() {
+        if($(this).val() == "0") {
+          $("#expiration_date").hide();
+        }
+        else {
+          $("#expiration_date").show();
+        }
+      });
+
+    
 
     </script>
     {{ Html::script('js/manage.quest.files.js')}}
