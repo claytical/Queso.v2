@@ -42,10 +42,9 @@
                             </div>
 
                             <div class="field">
-
                                 <p class="control">
                                     <label class="checkbox">
-                                    {{ Form::checkbox('checkbox', 'active', $course->active); }} Active        
+                                    {{ Form::checkbox('checkbox', 'active', $course->active) }} Active        
                                     </label>
                                 </p>
                             </div>
