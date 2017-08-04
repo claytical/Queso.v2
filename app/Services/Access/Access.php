@@ -244,6 +244,7 @@ class Access
                     ->whereNotIn('id', $quests_attempted_ids)
                     ->where('expires_at', '>', Carbon::now(new \DateTimeZone($timezone))->subDay())
                     ->where('groups', '=', false)
+                    ->with('course')
                     ->orderBy('expires_at')
                     ->get();
 
@@ -251,6 +252,7 @@ class Access
                     ->whereNotIn('id', $quests_attempted_ids)
                     ->where('groups', '=', false)
                     ->whereNull('expires_at')
+                    ->with('course')
                     ->orderBy('name')
                     ->get();
 
