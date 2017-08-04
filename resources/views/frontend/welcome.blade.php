@@ -84,7 +84,7 @@
                         @if($q->quest_type_id == 7)
                             <a href="{!! URL::to('quest/attempt/group/link/'.$q->id) !!}" class="">{!! $q->name !!}</a>                    
                         @endif
-                            <span class="tag is-pulled-right is-primary">{!! $q->course->name !!}</span>
+                            <span class="tag is-pulled-right is-primary is-small">{!! $q->course->name !!}</span>
                         </div>
                     @endforeach
                 @endforeach
