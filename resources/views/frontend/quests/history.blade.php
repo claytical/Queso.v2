@@ -269,9 +269,6 @@
                         <hr/>
                         <p><strong>Total</strong> <span class="is-pulled-right">{!! $total_points !!}</span></p>
                     @else
-                        @if($skill)
-                            <p><strong>{!! $skill[0]['name'] !!}</strong> <span class="is-pulled-right">{!! $skill[0]['amount'] !!}</span></p>
-                        @endif
                     @endif
                 @endif
             @endif
