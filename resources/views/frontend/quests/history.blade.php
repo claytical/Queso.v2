@@ -263,10 +263,12 @@
 
                 @if($skills)
                     @if(count($skills) > 1)
+                        @if($skill)
                         @foreach($skills as $skill)
                                 <p><strong>{!! $skill['name'] !!}</strong> <span class="is-pulled-right">{!! $skill['amount'] !!}</span></p>
                         @endforeach
                         <hr/>
+                        @endif
                         <p><strong>Total</strong> <span class="is-pulled-right">{!! $total_points !!}</span></p>
                     @else
                             <p><strong>{!! $skill[0]['name'] !!}</strong> <span class="is-pulled-right">{!! $skill[0]['amount'] !!}</span></p>
