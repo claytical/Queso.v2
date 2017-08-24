@@ -95,6 +95,9 @@
                 {!! trans('navs.frontend.register') !!}
               </a>
             @else
+              <a href="{!! URL::to('course/join') !!}" class="navbar-item navbar-end">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </a>
 
               <a class="navbar-item navbar-end" href="{!! URL::to('logout') !!}">
                 {!! trans('navs.general.logout') !!}
