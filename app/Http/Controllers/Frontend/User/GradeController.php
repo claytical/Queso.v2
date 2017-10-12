@@ -382,7 +382,7 @@ class GradeController extends Controller {
 
     public function activity($quest_id) {
         $quest = Quest::find($quest_id);
-        $students =  Course::find(session('current_course'))
+        $students =  Course::find($quest->course_id)
                         ->users()
                         ->where('user_id', '!=', access()->user()->id)
                         ->whereNotIn('user_id', $quest->users()->pluck('user_id'))
