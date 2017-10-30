@@ -7,6 +7,7 @@ use App\Course;
 use App\Team;
 use App\Models\Access\Role\Role;
 use App\GroupQuest;
+use App\Quest;
 /**
  * Class Dropdowns
  * @package App\Services\Macros
