@@ -101,8 +101,9 @@ trait Dropdowns
 
     public function remainingStudentList($name, $quest_id, $selected = null, $options = array()) {
         $user = access()->user();
-        $course = Course::find(session('current_course'));
         $quest_ids = GroupQuest::where('quest_id', '=', $quest_id)->pluck('id');
+        $quest = Quest::find($quest_id);
+        $course = Course::find($quest->course_id);
         $group = DB::table('group_quest_users')
                         ->select('user_id')
                         ->whereIn('group_quest_id', $quest_ids)
