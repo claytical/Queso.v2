@@ -103,6 +103,7 @@ trait Dropdowns
     public function remainingStudentListSolo($name, $quest_id, $selected = null, $options = array()) {
 
         $user = access()->user();
+        $quest = Quest::find($quest_id);
         $course = Course::find($quest->course_id);
 
         $quest_users = DB::table('quest_user')
