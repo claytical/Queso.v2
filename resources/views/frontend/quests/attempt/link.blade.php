@@ -32,7 +32,7 @@
                             <div class="field">
                                 <h5>Submit On Behalf Of</h5>
                                 <p class="control">
-                                {!! Form::remainingStudentListSolo('user_id', $quest->id, null, ['class' => 'multiselect', 'placeholder' => 'Select Student...']) !!}
+                                {!! Form::remainingStudentListSolo('user_id', $quest->id, null, ['class' => 'soloselect', 'placeholder' => 'Select Student...']) !!}
                                 </p>
                             </div>
 
@@ -69,7 +69,8 @@
 
 @section('after-scripts-end')
     <script>
-    $(".multiselect").select2();
+    $(".soloselect").selectize();
+
     $( "form" ).submit(function( event ) {
         if($('input[name="link"]').val().length > 0) {
 
