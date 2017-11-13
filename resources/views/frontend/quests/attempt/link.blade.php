@@ -29,10 +29,10 @@
                     @endif
 
                     @if(access()->is_instructor($quest->course_id))
-
                             <div class="field">
+                                <h5>Submit On Behalf Of</h5>
                                 <p class="control">
-                                {!! Form::remainingStudentList('user_id', $quest->id, null, ['placeholder' => 'Select Student']) !!}
+                                {!! Form::remainingStudentListSolo('user_id', $quest->id, null, ['class' => 'multiselect', 'placeholder' => 'Select Student...']) !!}
                                 </p>
                             </div>
 

@@ -100,6 +100,26 @@ trait Dropdowns
         return $students->implode(('email'), ',');
     }
 
+    public function remainingStudentListSolo($name, $quest_id, $selected = null, $options = array()) {
+
+        $user = access()->user();
+        $course = Course::find($quest->course_id);
+
+        $quest_users = DB::table('quest_user')
+                        ->select('user_id')
+                        ->where('quest_id', '=', $quest_id)
+                        ->pluck('user_id');
+        $students = Role::find($course->student_role_id)
+                            ->users()
+                            ->where('users.id', '!=', $user->id)
+                            ->whereNotIn('users.id', $quest_users)
+                            ->lists('users.name', 'users.id');
+
+        return $this->select($name, $students, $selected, $options);
+
+    }
+
+
     public function remainingStudentList($name, $quest_id, $selected = null, $options = array()) {
         $user = access()->user();
         $quest_ids = GroupQuest::where('quest_id', '=', $quest_id)->pluck('id');
