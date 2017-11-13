@@ -27,6 +27,9 @@
                     @if($quest->expires_at)
                         <h4 class="title">Due {!! date('m-d-Y', strtotime($quest->expires_at)) !!}</h4>
                     @endif
+                    @if(access()->is_instructor($quest->course_id))
+                        <p style="display:none;">Instructor View</p>
+                    @endif
 
                     @if(!$files->isEmpty())
                         <p class="subtitle">Attached Files</p>

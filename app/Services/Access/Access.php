@@ -95,6 +95,15 @@ class Access
         return false;
     }
 
+    public function is_instructor($course_id) {
+            $course = Course::find($course_id);
+            if ($course) {
+                return $this->user()->hasRole($course->instructor_role_id);
+            }
+        return false;
+    }
+
+
     public function courses() {
         return $this->user()->courses_active;        
     }
