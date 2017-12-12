@@ -269,6 +269,8 @@
                         <hr/>
                         <p><strong>Total</strong> <span class="is-pulled-right">{!! $total_points !!}</span></p>
                     @else
+                        <p><strong>Total</strong> <span class="is-pulled-right">{!! $total_points !!}</span>
+
                     @endif
                 @endif
             @endif
