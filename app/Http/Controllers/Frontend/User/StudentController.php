@@ -61,7 +61,7 @@ class StudentController extends Controller
         $course = Course::find($course_id);
         $teams = $course->teams()->get();
 
-        $team_assignment = $user->teams()->where('team_user.course_id', session('current_course'));
+        $team_assignment = $user->teams()->where('team_user.course_id', $course_id);
         if($team_assignment->count() == 0) {
             $team = new \stdClass;
             $team->name = "No Team Assigned";
@@ -95,7 +95,7 @@ class StudentController extends Controller
         $percentage = ($total_points_earned / ($current_level->amount + $next_level->amount)) * 100;
 
         $quest_ids = $user->quests()
-                            ->where('course_id', '=', session('current_course'))
+                            ->where('course_id', '=', $course_id)
                             ->distinct()
                             ->select('quest_id')
                             ->orderBy('quest_user.created_at', 'asc')
@@ -103,7 +103,7 @@ class StudentController extends Controller
         $group_quest_ids = $user->group_quests()->pluck('quest_id');
 
         $all_quest_ids = $course->quests()
-                            ->where('course_id', '=', session('current_course'))
+                            ->where('course_id', '=', $course_id)
                             ->whereIn('id', $group_quest_ids)
                             ->orWhereIn('id', $quest_ids)
                             ->distinct()
