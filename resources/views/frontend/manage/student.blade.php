@@ -31,6 +31,7 @@
                         <tbody>
 
                             @foreach($graded_quests as $quest)
+                            @if($quest['quest'])
                             <tr>
                                 <td>
                                     {!! link_to('quest/'.$quest['quest']->id.'/feedback/'.$student->id,  $quest['quest']->name) !!}            
@@ -53,12 +54,14 @@
                                 </td>
 
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
                 @endif
 
                 @if($pending_quests)
+
                 <h3 class="subtitle">Pending Quests</h3>
                     <table class="table" data-classes="table-no-bordered">
                         <thead>
@@ -76,6 +79,8 @@
                         </thead>
                         <tbody>
                                 @foreach($pending_quests as $quest)
+                                   @if($quest['quest'])
+
                                     <tr>
                                         <td>{!! $quest['quest']->name !!}</td>
                                         <td>{!! date('m/d/Y', strtotime($quest['quest']->created_at)) !!}</td>
@@ -85,6 +90,7 @@
                                         <a class="delete" href="{!! URL::to('manage/student/'.$student->id.'/remove/quest/'.$quest['quest']->id) !!}"></a>
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                     </table>
@@ -107,6 +113,8 @@
                     </thead>
                     <tbody>
                         @foreach($available_quests as $quest)
+                            @if($quest['quest'])
+
                         <tr>
                             <td>{!! $quest->name !!}</td>
                             @if($quest->quest_type_id == 1)
@@ -139,9 +147,12 @@
 
                             <td>{!! $quest->skills()->sum('amount') !!}</td>
                         </tr>
+                            @endif
                         @endforeach
 
                         @foreach($locked_quests as $quest)
+                            @if($quest['quest'])
+
                             <tr>
                                 <td>{!! $quest->name !!} <span class="is-pulled-right tag is-warning">LOCKED</span></td>
                                 @if($quest->quest_type_id == 1)
@@ -174,6 +185,7 @@
 
                                 <td>{!! $quest->skills()->sum('amount') !!}</td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

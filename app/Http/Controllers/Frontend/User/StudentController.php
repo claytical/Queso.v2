@@ -142,7 +142,7 @@ class StudentController extends Controller
             if($earned_skills > 0) {
                 $total_points_potential += $available;
                 $quests_graded[] = ['quest_master' => $q, 'quest' => $quest, 'history' => $history, 'revisions' => $revisions, 'skills' => $skills,'earned' => $earned, 'available' => $available];
-
+/*
                 foreach($course_skills as $skill) {
                     if($quest) {
                         $amount = $user->skills()->where('skill_id', $skill->id)->where('quest_id', '=', $quest->id)->sum('amount');
@@ -152,6 +152,7 @@ class StudentController extends Controller
                         $amount = 0;
                     }
                 }
+                */
                 
             }
             else {
